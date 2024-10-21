@@ -18,7 +18,7 @@
 
 class Building;
 class RoadNetWork;
-
+class SatisfactionState;
 
 
 /**
@@ -38,6 +38,7 @@ private:
     DepartmentOfPR*  PR; /**<Reference to government's PPR */
     GoToCommand* go;
     CitizenState* state; /**< Current state of the citizen */
+    SatisfactionState* statisState; /**< Current satisfaction state of citizen */
     int age; /**< Age of the citizen */
     int ageThreshhold = 0; /*Maximum age the citizen will get before death*/
     double budget; /**< Budget of the citizen */
