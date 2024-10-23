@@ -38,7 +38,7 @@ private:
     DepartmentOfPR*  PR; /**<Reference to government's PPR */
     GoToCommand* go;
     CitizenState* state; /**< Current state of the citizen */
-    SatisfactionState* statisState; /**< Current satisfaction state of citizen */
+    SatisfactionState* satisState; /**< Current satisfaction state of citizen */
     int age; /**< Age of the citizen */
     int ageThreshhold = 0; /*Maximum age the citizen will get before death*/
     double budget; /**< Budget of the citizen */
@@ -89,6 +89,8 @@ public:
      * @return std::string The name of the citizen.
      */
     std::string getName() const;
+
+    double getSatisfactionLevel();
 
     /**
      * @brief Gets the budget of the citizen.
@@ -170,6 +172,15 @@ public:
      * @return std::string The state name.
      */
     std::string getStateName() const;
+
+    std::string getSatisfactionLevelName() const;
+
+    /**
+     * @brief Sets the citizen's satisfaction state.
+     * 
+     * @param state Pointer to the new state.
+     */
+    void setSatisfactionState(SatisfactionState* state);
 
     /**
      * @brief Sets the citizen's state.

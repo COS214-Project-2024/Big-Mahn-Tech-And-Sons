@@ -8,7 +8,6 @@ DepartmentOfPR::DepartmentOfPR(HousingDept *housingDept, DepartmentUtilities *ut
    this->housing = housingDept; ///< access to the housing department/
    this->utilities = utilitiesDept; ///< access to the utilities department
    this->finance = financeDept; ///< access to the finance department
-
 }
 
 void DepartmentOfPR::update(Building* building)
@@ -20,7 +19,6 @@ void DepartmentOfPR::update(Citizen* citizen)
 {
    notifyTaxman();
 }
-
 
 void DepartmentOfPR::notifyHousingToBuild()
 {
@@ -39,7 +37,7 @@ void DepartmentOfPR::notifyUtilities()
 
 void DepartmentOfPR::notifyTaxman()
 {
-   if(true ) { /*condition to check if economy can afford to lower taxes */
+   if(true) { /*condition to check if economy can afford to lower taxes */
       this->finance->decreaseTaxes();
    } else {
       return;

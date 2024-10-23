@@ -2,6 +2,8 @@
 #include "Child.h"
 #include "Adult.h"
 #include "Pensioner.h"
+#include "SatisfactionState.h"
+#include "NeutralState.h"
 
 #include <random>
 
@@ -17,7 +19,7 @@ Citizen::Citizen(const std::string &nam, double happiness, Node *location, Node 
    age = 1;
    this->state = new ChildState();
 
-   // Set this->budget to a random double between 15000 and 200000
+   ///< Set this->budget to a random double between 15000 and 200000
    std::random_device rd;
    std::mt19937 gen(rd());
    std::uniform_real_distribution<> distr(15000, 200000);
@@ -25,11 +27,12 @@ Citizen::Citizen(const std::string &nam, double happiness, Node *location, Node 
 
    this->health = 100.0;
    this->satisfaction = 50.0;
-
+   this->satisState =  new NeutralState();
    this->modeOfTransport = NULL;
    this->go =  NULL;
    this->ageThreshhold = 0;
 }
+
 
 Citizen::~Citizen()
 {
@@ -71,6 +74,11 @@ int Citizen::getAge()
    return this->age;
 }
 
+double Citizen::getSatisfactionLevel()
+{
+   return this->satisfaction;
+}
+
 double Citizen::getBudget() const
 {
    return this->budget;
@@ -99,6 +107,14 @@ void Citizen::increaseHealth(double percentage)
 void Citizen::decreaseSatisfaction(double amount)
 {
    this->satisfaction -= amount;
+   this->satisState->handle(this); // check if satisfaction state needs to be changed
+}
+
+void Citizen::increaseSatisfaction(double amount)
+{
+   this->satisfaction += amount;
+   this->satisState->handle(this); // check if satisfaction state needs to be changed
+
 }
 
 void Citizen::evacuate()
@@ -130,11 +146,27 @@ std::string Citizen::getStateName() const
    return this->state->getStateName();
 }
 
+std::string Citizen::getSatisfactionLevelName() const
+{
+   return this->satisState->getStateName();
+}
+
+void Citizen::setSatisfactionState(SatisfactionState *state)
+{
+   if(this->satisState) {
+      delete this->satisState;
+   }
+
+   this->satisState = state;
+}
+
 void Citizen::setState(CitizenState *state)
 {
-   if(state) {
-      this->state = state;
+   if(this->state) {
+      delete this->state;
    }
+
+   this->state = state;
 }
 
 void Citizen::updateState()

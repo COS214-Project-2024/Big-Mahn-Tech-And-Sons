@@ -37,7 +37,8 @@ public:
      */
     void execute()
     {
-        /** @bug Citizen must keep track of its current position .*/
+        /*
+        /** @bug Citizen must keep track of its current position .
         Node *startNode = citizen->getCurrentLocation(); 
 
         // Check if already at the destination
@@ -54,7 +55,7 @@ public:
         std::vector<Node *> path = roadNetwork->findPath(startNode, destinationNode);
         if (!path.empty())
         {
-            /** @bug transport strategy invoker needs to be checked*/ 
+            /** @bug transport strategy invoker needs to be checked
             transportStrategy->execute(citizen, path); 
             citizen->setCurrentLocation(destinationNode); // Update position after successful move
         }
@@ -63,6 +64,7 @@ public:
             std::cout << "No path found from " << startNode->getName()
                       << " to " << destinationNode->getName() << "." << std::endl;
         }
+        */
     }
 };
 
