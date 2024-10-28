@@ -123,6 +123,7 @@ public:
     const std::vector<Citizen*>& getTenants() const;
     int getWidth() const;
     int getLength() const;
+    double getPriceTag() const;
 
     // Setters
     void setName(const std::string& name);
