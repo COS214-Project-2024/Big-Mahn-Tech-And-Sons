@@ -5,11 +5,13 @@
 #include "SatisfactionState.h"
 #include "NeutralState.h"
 
-//
+
 #include "AirTrans.h"
 #include "Train.h"
 #include "Walk.h"
 #include "PublicTrans.h"
+
+#include "CityGrid.h"
 
 
 
@@ -59,6 +61,7 @@ void Citizen::getOlder()
    age++;
    if(this->getStateName() == "Pensioner" && age >= ageThreshhold) {
       // kill TODO
+      this->PR->update(this);
       
    }
    ///< @todo update state
@@ -69,7 +72,7 @@ void Citizen::notifyPR()
 {
    if((getSatisfactionLevelName() == "Neutral" || getSatisfactionLevelName() == "Sad") && getBudget()/100000 * 100 < 0.6 ) { // problem with finances
       this->PR->update(this);
-   } 
+   } else if(this)
 }
 
 int Citizen::getAge()
@@ -125,28 +128,16 @@ void Citizen::increaseSatisfaction(double amount)
 
 }
 
-void Citizen::evacuate()
-{
-   // leave building
-}
 
-void Citizen::returnToCity()
-{
-}
-
-void Citizen::becomeUnemployed()
-{
-   //this->workLocation = NULL;
-}
-
-void Citizen::getNewJob()
-{
-   ///< @todo search through grid and find space in relevant Building and set that as job
-}
 
 void Citizen::setThreshhold(int age)
 {
    this->ageThreshhold = age;
+}
+
+int Citizen::getThreshold()
+{
+   return this->ageThreshhold;
 }
 
 std::string Citizen::getStateName() const
@@ -194,24 +185,62 @@ void Citizen::setModeOfTransport(ModeOfTrans *mode)
    }
 }
 
-// Node *Citizen::getCurrentLocation() const
-// {
-//    return this->currentLocation;
-// }
-
-// void Citizen::setCurrentLocation(Node *location)
-// {
-//    if(location) {
-//       this->currentLocation;
-//    }
-// }
-
-// void Citizen::travelTo(Node *destination)
-// {
-//    //this->modeOfTransport->execute(this, destination); //<TODO
-// }
-
-// void Citizen::travelWithStrategy(RoadNetWork *roadNetwork)
-// {
-//    //this->modeOfTransport->
-// }
+void Citizen::travelTo(Building *destination, CityGrid *citi, int x, int y, const std::string &Building)
+{
+   int distance = citi->getDistance(x,y,Building);
+    // Determine available transport modes based on distance
+    std::vector<ModeOfTrans*> availableModes;
+    Walk* walk = new Walk();
+    availableModes.push_back(walk); // Always available
+    if (distance > 5)
+      {  
+         PublicTrans* publicT = new PublicTrans();
+         availableModes.push_back(publicT);
+      }
+    if (distance > 15)
+    {
+         Train* train = new Train();
+         availableModes.push_back(train);
+    } 
+    if (distance > 30)
+    { 
+      AirTrans* air = new AirTrans();
+      availableModes.push_back(air);
+    }
+    
+    
+    std::cout << "Available transport modes for distance " << distance << "km:\n";
+    for (size_t i = 0; i < availableModes.size(); i++) {
+        std::cout << i + 1 << ". " << availableModes[i]->getName() 
+                 << " (Cost: R" << availableModes[i]->getCost() << ")\n";
+    }
+    
+    // Get user choice
+    int choice;
+    std::cout << "Choose transport mode (1-" << availableModes.size() << "): ";
+    std::cin >> choice;
+    
+    if (choice > 0 && choice <= availableModes.size()) {
+        ModeOfTrans* selectedMode = availableModes[choice - 1];
+        double totalCost = (distance * 4.5) + selectedMode->getCost();
+        
+        if (this->Spend(totalCost)) {
+            // Execute transport
+            selectedMode->execute();
+            
+            // Update locations
+            currentLocation->removeTenant(this);
+            destination->addTenant(this);
+            currentLocation = destination;
+            
+            std::cout << "Successfully traveled to " << destination->getName() << "\n";
+        } else {
+            std::cout << "Insufficient funds for travel\n";
+        }
+    }
+    
+    // Cleanup
+    for (auto mode : availableModes) {
+        delete mode;
+    }
+}

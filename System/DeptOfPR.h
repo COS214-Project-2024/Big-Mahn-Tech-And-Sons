@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 class Building;
@@ -77,13 +77,13 @@ public:
      * This function is used when overcrowding or high demand for housing is detected.
      * It acts as a mediator, relaying the information to the Housing Department for further action.
      */
-    void notifyHousingToBuild();
+    void notifyHousingToBuild(string type);
 
 
     /**
      * @brief if building waste is at a certain level, remove it
      */
-    void notifyHousingToRemove(Building* building);
+    void notifyHousingToRemove(string type);
 
     /**
      * @brief Notifies the Utilities Department to address issues or prepare for increased demand.
@@ -101,7 +101,7 @@ public:
      * The PR Department mediates communication, ensuring efficient inter-departmental collaboration.
      * @note Taxman is either notified to try to lower taxes or improve economic health
      */
-    void notifyTaxman();
+    void notifyTaxman(string deptName);
 };
 
 #endif // DEPTOFPR_H
