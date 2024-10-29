@@ -173,8 +173,32 @@ public:
         return netWorth;
     }
 
-    virtual void consumeWater();
-    virtual void consumeElectricity();
+    virtual void consumeWater(double amount)
+    {
+        if (amount >= waterUsage) {
+        // Enough water received to meet the full requirement
+        waterUsage = 0; // Reset as all needs are met
+        std::cout << "Building: " << name << " has received enough water." << std::endl;
+        } else {
+        // Only part of the water requirement is met
+        waterUsage -= amount; // Decrease the unmet requirement
+        std::cout << "Building: " << name << " received partial water. Remaining need: " << waterUsage << " units." << std::endl;
+    }
+    }
+
+    virtual void consumeElectricity(double amount)
+    {
+        if (amount >= electricityUsage) 
+        {
+        // Enough electricity received to meet the full requirement
+        electricityUsage = 0; // Reset as all needs are met
+        std::cout << "Building " << name << " has received enough electricity." << std::endl;
+        } else {
+        // Only part of the electricity requirement is met
+        electricityUsage -= amount; // Decrease the unmet requirement
+        std::cout << "Building " << name << " received partial electricity. Remaining need: " << electricityUsage << " units." << std::endl;
+    }
+    }
 
     virtual void waterCut() {
         waterSupply = false;
@@ -191,6 +215,11 @@ public:
     virtual void clearWaste() {
         std::cout << name << " cleared " << wasteProduction << " kg of waste.\n";
         wasteProduction = 0;
+    }
+
+    double getWasteAmount()
+    {
+        return wasteProduction;
     }
 };
 
