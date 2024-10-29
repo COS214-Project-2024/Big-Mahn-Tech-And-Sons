@@ -10,14 +10,13 @@
  * ConcreteHandler3 : WasteManagement
  */
 
-#ifndef DEPT_OF_UTILITIES_H
-#define DEPT_OF_UTILITIES_H
+#ifndef DEPTOFUTILITIES_H
+#define DEPTOFUTILITIES_H
 
 #include <iostream>
 using namespace std;
 
-#include "DeptPR.h"
-#include "Government.h"
+#include "DeptOfPR.h"
 #include "Request.h"
 
 /**
@@ -95,4 +94,4 @@ public:
 
 };
 
-#endif // DEPT_OF_UTILITIES_H
+#endif // DEPTOFUTILITIES_H

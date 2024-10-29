@@ -10,9 +10,9 @@
 #include <vector>
 #include "Dept.Transportation.h"
 #include "DeptOfFinance.h"
-#include "DeptPR.h"
-#include "DepartmentUtilities.h"
-#include "HousingDept.h"
+#include "DeptOfPR.h"
+#include "DeptOfUtilities.h"
+#include "DeptOfHousing.h"
 #include "Citizen.h"
 #include "EventsCommand.h"
 

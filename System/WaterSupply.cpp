@@ -1,7 +1,7 @@
 #include "WaterSupply.h"
 
 WaterSupply::WaterSupply(string name, double budget, double capacity, Water* waterResource)
-    : DepartmentUtilities(name, budget), waterCapacity(capacity), waterResource(waterResource) {}
+    : DeptOfUtilities(name, budget), waterCapacity(capacity), waterResource(waterResource) {}
 
 
 /**

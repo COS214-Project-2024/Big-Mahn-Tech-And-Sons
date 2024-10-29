@@ -1,7 +1,7 @@
 #include "WasteManagement.h"
 
 WasteManagement::WasteManagement(string name, double budget, double capacity)
-    : DepartmentUtilities(name, budget), wasteCapacity(capacity) {}
+    : DeptOfUtilities(name, budget), wasteCapacity(capacity) {}
 
 /**
  * @brief Adds a building to the waste management system.
