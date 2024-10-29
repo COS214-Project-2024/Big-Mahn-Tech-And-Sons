@@ -1,12 +1,7 @@
 #include "Request.h"
 #include "Building.h"
 
-Request(Type type, Building *building, double amount) 
-{
-    this->type = type;
-    this->building = building;
-    this->amount = amount
-}
+Request(Type type, Building *building, double amount) :  type(type), building(building), amount(amount) {}
 
 Request::Type Request::getType()
 {
@@ -22,4 +17,3 @@ double Request::getAmount()
 {
     return amount;
 }
-

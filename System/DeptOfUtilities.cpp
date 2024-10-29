@@ -1,5 +1,5 @@
 #include "DeptOfUtilities.h"
-
+#include "Building.h"
 /**
  * @brief Constructor for DeptOfUtilities.
  * @param name The name of the department.
@@ -22,7 +22,6 @@ void DeptOfUtilities::displayDepartmentInfo() {
  */
 void DeptOfUtilities::requestBudget()
 {
-
 }
 
 /**
