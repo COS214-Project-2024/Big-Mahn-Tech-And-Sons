@@ -18,27 +18,9 @@ void DepartmentUtilities::displayDepartmentInfo() {
     cout << "Resource Usage: " << resourceUsage << endl;
 }
 
-/**
- * @brief Requests additional budget allocation from the government.
- */
-void DepartmentUtilities::requestBudget() {
-    cout << departmentName << " is requesting additional budget from the government." << endl;
+void DepartmentUtilities::requestBudget()
+{
 }
-
-/**
- * @brief Allocates resources such as energy or water to different sectors of the city.
- */
-void DepartmentUtilities::allocateResources() {
-    cout << departmentName << " is allocating resources to the city." << endl;
-}
-
-/**
- * @brief Tracks the department's resource usage across various sectors or functions.
- */
-void DepartmentUtilities::trackUsage() {
-    cout << "Tracking resource usage for " << departmentName << endl;
-}
-
 
 /**
  * @brief Requests PR department assistance.

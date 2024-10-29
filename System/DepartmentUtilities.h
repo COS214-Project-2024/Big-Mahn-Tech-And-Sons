@@ -55,11 +55,6 @@ public:
     void requestBudget();
 
     /**
-     * @brief Allocates resources such as energy or water to different sectors of the city.
-     */
-    void allocateResources();
-
-    /**
      * @brief Tracks the department's resource usage across various sectors or functions.
      */
     void trackUsage();

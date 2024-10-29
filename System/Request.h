@@ -1,12 +1,8 @@
-// Request.h
 #ifndef REQUEST_H
 #define REQUEST_H
 
 #include <string>
-#include "Building.h"
-
-// Use forward declaration to avoid circular dependency issues
-class Building;
+#include "Building.h"  // Ensure this header is included
 
 class Request 
 {
@@ -26,4 +22,5 @@ public:
     Building* getBuilding();
     double getAmount();
 };
+
 #endif // REQUEST_H

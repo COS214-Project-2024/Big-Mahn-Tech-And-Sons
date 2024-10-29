@@ -11,7 +11,6 @@
 #include "Element.h"
 #include "TaxManager.h"
 
-class Request;
 
 class Node; ///< Forward declaration of Node class
 class Citizen; ///< Forward declaration of Citizen class
@@ -22,7 +21,8 @@ class Citizen; ///< Forward declaration of Citizen class
  *
  * Each building is located at a specific node in the road network.
  */
-class Building {
+class Building 
+{
 private:
     std::string name; ///< The name of the building.
     int capacity; ///< Maximum capacity of the building.
