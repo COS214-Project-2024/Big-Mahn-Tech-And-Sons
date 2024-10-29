@@ -14,7 +14,7 @@
 #include "ModeOfTrans.h"
 #include "cStates.h"
 #include "GoToCommand.h"
-#include "DeptPR.h"
+#include "DeptOfPR.h"
 #include "DeptTransportation.h"
 
 class Building;
@@ -33,14 +33,14 @@ class Citizen {
 private:
     std::string name; /**< Name of the citizen */
     ModeOfTrans* modeOfTransport; /**< Current mode of transport */
-    Building* currentLocation; /**< Current building location */
-    Building* workLocation; /**<Citizen's work location */
-    Building* homeLocation; /**<Citizen's home location */
+    // Node* currentLocation; /**< Current building location */
+    // Node* workLocation; /**<Citizen's work location */
+    // Node* homeLocation; /**<Citizen's home location */
     DepartmentOfPR*  PR; /**<Reference to government's PPR */
     DeptTransportation* DT;
     GoToCommand* go;
     CitizenState* state; /**< Current state of the citizen */
-    SatisfactionState* statisState; /**< Current satisfaction state of citizen */
+    SatisfactionState* satisState; /**< Current satisfaction state of citizen */
     int age; /**< Age of the citizen */
     int ageThreshhold = 0; /*Maximum age the citizen will get before death*/
     double budget; /**< Budget of the citizen */
@@ -65,7 +65,7 @@ public:
      * @note initialize health to 100
      * @note intilize statifaction level at 50
      */
-    Citizen(const std::string& nam,double happiness , Building* location, Building* work, Building* home, DepartmentOfPR* PR);
+    Citizen(const std::string& nam,double happiness , int x, int y, DepartmentOfPR* PR);
 
     /**
      * @brief Destroys the Citizen object.
@@ -91,6 +91,8 @@ public:
      * @return std::string The name of the citizen.
      */
     std::string getName() const;
+
+    double getSatisfactionLevel();
 
     /**
      * @brief Gets the budget of the citizen.
@@ -173,6 +175,15 @@ public:
      */
     std::string getStateName() const;
 
+    std::string getSatisfactionLevelName() const;
+
+    /**
+     * @brief Sets the citizen's satisfaction state.
+     * 
+     * @param state Pointer to the new state.
+     */
+    void setSatisfactionState(SatisfactionState* state);
+
     /**
      * @brief Sets the citizen's state.
      * 
@@ -213,11 +224,7 @@ public:
      * 
      * @param location Pointer to the new building.
      */
-    void setCurrentLocation(Building* location);
-
-
-       
-
+  //  void setCurrentLocation(Node* location);
 
     /**
      * @brief Travels to another building.

@@ -15,19 +15,24 @@
  *
  * This class provides a base for different types of resources used in the simulation.
  */
+class TaxManager;
+
 class Resource: public TaxManager {
 protected:
     std::string name; ///< The name of the resource.
     double amount; ///< The amount of the resource available.
 
 public:
+
+    Resource(){}
+
     /**
      * @brief Constructs a new Resource object.
      * 
      * @param name Name of the resource.
      * @param amount Initial amount of the resource.
      */
-    Resource(const std::string& name, double amount);
+    Resource( std::string& name, double amount);
 
     /**
      * @brief Destroys the Resource object.
