@@ -1,40 +1,46 @@
 /**
- * @file DepartmentUtilities.h
- * @author Aundrea
- * @brief Header file for the DepartmentUtilities class that manages city utility 
+ * @file DeptOfUtilities.h
+ * @brief Header file for the DeptOfUtilities class that manages city utility 
  * departments like power, water, and waste management.
  * 
  * Design Pattern used : Chain of responsibility
- * Handler : DepartmentUtilities
+ * Handler : DeptOfUtilities
  * ConcreteHandler1 : PowerSupply
- * ConcreteHandler2 : waterSupply
+ * ConcreteHandler2 : WaterSupply
  * ConcreteHandler3 : WasteManagement
  */
 
-#ifndef DEPARTMENTUTILITIES_H
-#define DEPARTMENTUTILITIES_H
+#ifndef DEPT_OF_UTILITIES_H
+#define DEPT_OF_UTILITIES_H
 
 #include <iostream>
 using namespace std;
 
+#include "DeptPR.h"
+#include "Government.h"
+#include "Request.h"
+
 /**
- * @class DepartmentUtilities
+ * @class DeptOfUtilities
  * @brief Base class for managing various city utility departments like power, water, and waste management.
  */
-class DepartmentUtilities {
+class DeptOfUtilities {
 private:
     string departmentName; /**< Name of the department (e.g., Power, Water, Waste Management). */
     double resourceUsage;  /**< The amount of resources used by the department. */
     double budget;         /**< The budget allocated to the department. */
-    DepartmentUtilities* successor;
+    DepartmentOfPR* PR;
+
+protected:
+    DeptOfUtilities* successor;
 
 public:
     /**
-     * @brief Constructor for DepartmentUtilities.
+     * @brief Constructor for DeptOfUtilities.
      * @param name The name of the department.
      * @param budget The initial budget allocated to the department.
      */
-    DepartmentUtilities(string name, double budget);
+    DeptOfUtilities(string name, double budget);
 
     /**
      * @brief Displays the information about the department.
@@ -47,11 +53,6 @@ public:
     void requestBudget();
 
     /**
-     * @brief Allocates resources such as energy or water to different sectors of the city.
-     */
-    void allocateResources();
-
-    /**
      * @brief Tracks the department's resource usage across various sectors or functions.
      */
     void trackUsage();
@@ -61,7 +62,14 @@ public:
      *          the request or passing it along the chain to the next handler. It is in the
      *          inherited classes
      */
-    virtual void handleRequest() = 0;
+    virtual void handleRequest(Request &req) = 0;
+
+    /**
+     * @brief if DeptOfUtilities needs to talk to another department for whatever reason
+     */
+    void requestPR();
+
+    void setSuccessor(DeptOfUtilities* nextDepartment);
 
     //+++++++++++++++++========== FOR THE EVENT COMMAND +++++++++++++++++++++++++++++++
 
@@ -85,11 +93,6 @@ public:
      */
     void reduceUsage();
 
-    /**
-     * @brief Repairs infrastructure related to the department.
-     */
-    void repairInfrastructure();
-
 };
 
-#endif // DEPARTMENTUTILITIES_H
+#endif // DEPT_OF_UTILITIES_H
