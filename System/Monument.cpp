@@ -36,8 +36,8 @@ void Monument::displayStats() const {
  * @brief Accepts visitors using the visitor pattern.
  * @param visitor A pointer to the visitor object.
  */
-void Monument::accept(TaxManager* visitor) {
-    visitor->visit(this);  // Visitor pattern implementation
+void Monument::accept(TaxManager* visitor) { // Malaika STUB!!!
+    // visitor->visit(this);  // Visitor pattern implementation
 }
 
 /**

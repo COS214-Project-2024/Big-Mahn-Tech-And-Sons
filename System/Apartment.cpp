@@ -16,7 +16,7 @@ Apartment::Apartment()
     waterMeterBox = 500.0;        // Default water meter reading
     electricityUsage = 0.0;       // Start with no electricity usage
     waterUsage = 0.0;             // Start with no water usage
-    waste = 0.0;                  // Start with no waste production
+    wasteProduction = 0.0;                  // Start with no waste production
     priceTag = 150000.0; // Setting price tag for Apartment
 }
 
@@ -35,7 +35,7 @@ void Apartment::displayStats() const {
  * @param visitor A pointer to the TaxManager visitor.
  */
 void Apartment::accept(TaxManager* visitor) {
-    visitor->visit(this);
+    visitor->visitResidentialBuilding(this);
 }
 
 /**

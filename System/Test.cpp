@@ -5,12 +5,12 @@
 #include "Child.h"
 #include "Pensioner.h"
 #include "Citizen.h"
-#include "DeptPR.h"
+#include "DeptOfPR.h"
 #include "SadState.h"
 #include "SatisfactionState.h"
 #include "HappyState.h"
 #include "NeutralState.h"
-#include "cStates.h"
+#include "CitizenStates.h"
 
 
 

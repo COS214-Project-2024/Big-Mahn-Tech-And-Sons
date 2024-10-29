@@ -6,7 +6,7 @@
 #define PENSIONERSTATE_H
 
 #include <string>
-#include "cStates.h"
+#include "CitizenStates.h"
 
 
 

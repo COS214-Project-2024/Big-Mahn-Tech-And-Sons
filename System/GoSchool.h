@@ -12,9 +12,6 @@
 #include <iostream>
 #include "GoToCommand.h"
 #include "Citizen.h"
-#include "RoadNetWork.h"
-#include "Node.h"
-
 using namespace std;
 
 /**
@@ -28,8 +25,6 @@ class GoSchool : public GoToCommand
 {
 private:
     Citizen* citizen;           /**< Pointer to the citizen who is going to school */
-    Node* destination;          /**< Pointer to the destination (school node) */
-    RoadNetwork* roadNetwork;   /**< Pointer to the road network used for navigation */
 
 public:
     /**
@@ -40,7 +35,7 @@ public:
      * @param citizen A pointer to the Citizen object representing the person going to school.
      * @param roadNetwork A pointer to the RoadNetwork object that the citizen will use to reach the destination.
      */
-    GoSchool(Citizen* citizen, RoadNetwork* roadNetwork);
+    GoSchool(Citizen* citizen);
 };
 
 #endif

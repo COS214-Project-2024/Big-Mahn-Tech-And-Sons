@@ -20,7 +20,7 @@ Warehouse::Warehouse(const std::string& name, int maxCapacity, int maxProduction
     waterMeterBox = 50.0;        ///< Initial water meter reading.
     electricityUsage = 0.0;      ///< Initial electricity usage.
     waterUsage = 0.0;            ///< Initial water usage.
-    waste = 0.0;                 ///< Initial waste production.
+    wasteProduction = 0.0;                 ///< Initial waste production.
     priceTag = 300000.0;         ///< Default price tag for a warehouse.
 }
 
@@ -45,6 +45,6 @@ bool Warehouse::hasStorageSpace() const {
  * @brief Accepts visitors for the visitor pattern.
  * @param visitor A pointer to the visitor object.
  */
-void Warehouse::accept(TaxManager* visitor) {
-    visitor->visit(this);
+void Warehouse::accept(TaxManager* visitor) { // Yohali Stub!!!!!!!
+  //  visitor->visit(this);
 }

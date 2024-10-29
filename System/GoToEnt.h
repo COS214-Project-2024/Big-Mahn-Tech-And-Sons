@@ -3,8 +3,6 @@
 
 #include "GoToCommand.h"
 #include "Citizen.h"
-#include "RoadNetWork.h"
-#include "Node.h"
 
 #include <iostream>
 using namespace std;
@@ -19,11 +17,8 @@ class GoToEnt : public GoToCommand
 {
    private:
       Citizen* citizen;
-      Node* destination;
-      RoadNetwork* roadNetwork;
-
    public:
-      GoToEnt(Citizen* citizen, RoadNetwork* roadNetwork);
+      GoToEnt(Citizen* citizen);
 };
 
 

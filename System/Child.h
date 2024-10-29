@@ -7,7 +7,7 @@
 #define CHILDSTATE_H
 
 #include <string>
-#include "cStates.h"
+#include "CitizenStates.h"
 
 
 

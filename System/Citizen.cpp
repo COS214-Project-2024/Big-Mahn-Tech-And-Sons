@@ -15,7 +15,7 @@
 
 #include <random>
 
-Citizen::Citizen(const std::string &nam, double happiness,int x , int y, DepartmentOfPR *PR)
+Citizen::Citizen(const std::string &nam, double happiness,int x , int y, DeptOfPR *PR)
 {
    name = nam;
    satisfaction = happiness;
@@ -75,6 +75,11 @@ void Citizen::notifyPR()
 int Citizen::getAge()
 {
    return this->age;
+}
+
+double Citizen::getHealth()
+{
+    return this->health;
 }
 
 double Citizen::getSatisfactionLevel()

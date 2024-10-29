@@ -29,7 +29,7 @@ private:
     string departmentName; /**< Name of the department (e.g., Power, Water, Waste Management). */
     double resourceUsage;  /**< The amount of resources used by the department. */
     double budget;         /**< The budget allocated to the department. */
-    DepartmentOfPR* PR;
+    DeptOfPR* PR;
 
 protected:
     DeptOfUtilities* successor;

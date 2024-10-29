@@ -2,8 +2,6 @@
 #define GOTOCOMMAND_H
 
 #include "Citizen.h"
-#include "RoadNetWork.h"
-#include "Node.h"
 
 #include <iostream>
 using namespace std;
@@ -21,8 +19,6 @@ class GoToCommand
 {
 private:
     Citizen *citizen;          ///< Pointer to the citizen who will execute the command.
-    RoadNetwork *roadNetwork;  ///< Pointer to the road network used to find the path.
-    Node* destinationNode;     ///< The destination node where the citizen should go.
 
 public:
     /**

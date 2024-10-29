@@ -149,9 +149,6 @@ public:
         return tenants.size();
     }
 
-    double getNetWorth() const;
-
-
     // Setters
     void setName(const std::string& name);
     void setMaxCapacity(int capacity);

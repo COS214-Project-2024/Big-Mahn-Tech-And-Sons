@@ -34,8 +34,8 @@ void Park::displayStats() const {
  * @brief Accepts visitors using the visitor pattern.
  * @param visitor A pointer to the visitor object.
  */
-void Park::accept(TaxManager* visitor) {
-    visitor->visit(this);  // Visitor pattern implementation
+void Park::accept(TaxManager* visitor) { // Malaika STUB!!!
+    // visitor->visit(this);  // Visitor pattern implementation
 }
 
 /**

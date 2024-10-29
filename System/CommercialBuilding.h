@@ -41,7 +41,7 @@ public:
     /**
      * @brief Displays the stats specific to commercial buildings.
      */
-    void displayStats() const override {
+    void displayStats() const {
         Building::displayStats();  // Call base class method
         std::cout << "Available Jobs: " << availableJobs << std::endl;
         std::cout << "Available Kids' Spaces: " << availableKidsSpaces << std::endl;
@@ -69,7 +69,7 @@ public:
      * This method remains virtual, to be overridden in the final building types.
      * @param visitor A pointer to the visitor object.
      */
-    virtual void accept(TaxManager* visitor) override = 0;
+    virtual void accept(TaxManager* visitor) = 0;
 };
 
 #endif // COMMERCIALBUILDING_H

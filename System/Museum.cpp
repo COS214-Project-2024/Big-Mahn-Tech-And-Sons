@@ -34,8 +34,8 @@ void Museum::displayStats() const {
  * @brief Accepts visitors using the visitor pattern.
  * @param visitor A pointer to the visitor object.
  */
-void Museum::accept(TaxManager* visitor) {
-    visitor->visit(this);  // Visitor pattern implementation
+void Museum::accept(TaxManager* visitor) { // Malaika STUB!!!
+    // visitor->visit(this);  // Visitor pattern implementation
 }
 
 /**

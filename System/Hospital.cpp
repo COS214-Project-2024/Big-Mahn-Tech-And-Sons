@@ -16,7 +16,7 @@ Hospital::Hospital(const std::string& name, int maxCapacity)
     waterMeterBox = 350.0;       // Initial water meter reading
     electricityUsage = 0.0;
     waterUsage = 0.0;
-    waste = 0.0;
+    wasteProduction = 0.0;
     priceTag = 400000.0; // Setting price tag for Hospital
     netWorth = 3000000.0;
 }
@@ -42,5 +42,5 @@ bool Hospital::checkAvailability() const {
  * @param visitor A pointer to the visitor object.
  */
 void Hospital::accept(TaxManager* visitor) {
-    visitor->visit(this);
+    visitor->visitCommercialBuilding(this);
 }

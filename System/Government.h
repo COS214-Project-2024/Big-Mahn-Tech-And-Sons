@@ -8,7 +8,7 @@
 
 #include <string>
 #include <vector>
-#include "Dept.Transportation.h"
+#include "DeptOfTransportation.h"
 #include "DeptOfFinance.h"
 #include "DeptOfPR.h"
 #include "DeptOfUtilities.h"
@@ -48,16 +48,16 @@ public:
 private:
     ///< @brief Departments managed by the Government facade
 
-    DepartmentOfPR PR;
+    DeptOfPR PR;
    // DepartmentUtilities utilities;
     DeptOfFinance finance;
-    HousingDept housing;
+    DeptOfHousing housing;
 
     // Simulation status
     bool simulationIsActive;
 
     // Handles random events affecting the city
-    EventsCommand eventsCommand;
+    //EventsCommand eventsCommand;
 
     // Simulation methods
     void handleCitizenNeeds();

@@ -101,6 +101,11 @@ int DeptOfHousing::findBuildingIndex(const std::string& name) const {
     return -1; // Not found
 }
 
+std::string  DeptOfHousing::findBuildingIndex(int i) const {
+        // Assume getName() returns the building name
+    return buildings[i]->getName();
+}
+
 /**
  * @brief Removes a building from the managed list by its name.
  * @param name The name of the building to be removed.
@@ -166,13 +171,15 @@ void DeptOfHousing::listBuildings() const {
 }
 
 bool DeptOfHousing::requestFunding(double amount) {
-    std::cout << "Requesting additional funds from the DeptOfPR...\n";
-    if (deptOfPR.processFundingRequest(amount)) {
-        budget += amount;
-        std::cout << "Funding request approved. New budget: " << budget << "\n";
-        return true;
-    } else {
-        std::cerr << "Funding request denied.\n";
-        return false;
-    }
+    // std::cout << "Requesting additional funds from the DeptOfPR...\n";
+    // if (deptOfPR.processFundingRequest(amount)) {
+    //     budget += amount;
+    //     std::cout << "Funding request approved. New budget: " << budget << "\n";
+    //     return true;
+    // } else {
+    //     std::cerr << "Funding request denied.\n";
+    //     return false;
+    // }
+
+    return true; // Waiting for DeptOfFinance  to implement the funding request logic (Aundrea)
 }

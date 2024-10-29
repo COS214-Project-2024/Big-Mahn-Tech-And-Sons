@@ -19,6 +19,10 @@ private:
 public:
     DeptOfFinance(TaxManager* taxManager);
 
+    void collectTaxes(Building *building);
+
+    void allocateBudget();
+
     /**
      * @brief Adds an element to the list.
      * 
@@ -62,7 +66,7 @@ public:
      */
     void assessEconomicImpact(); // this needs to return something e.g BOOL= is the economy good or not 
 
-    bool checkMoney(bool ourMoney);
+    bool checkMoney();
 
     void collectTaxes();
 };

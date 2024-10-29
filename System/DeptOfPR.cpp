@@ -1,41 +1,43 @@
 #include "DeptOfPR.h"
 #include "DeptOfFinance.h"
-#include "DepartmentUtilities.h"
-#include "HousingDept.h"
+#include "DeptOfUtilities.h"
+#include "DeptOfHousing.h"
 
-DepartmentOfPR::DepartmentOfPR(HousingDept *housingDept, DepartmentUtilities *utilitiesDept, DeptOfFinance *financeDept)
+DeptOfPR::DeptOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, DeptOfFinance *financeDept)
 {
    this->housing = housingDept; ///< access to the housing department/
    this->utilities = utilitiesDept; ///< access to the utilities department
-   this->finance = financeDept; ///< access to the finance department
+   this->finance = financeDept; ///< access to the finance departt
 }
 
-void DepartmentOfPR::update(Building* building)
+void DeptOfPR::update(Building* building)
 {
   notifyHousingToBuild();
 }
 
-void DepartmentOfPR::update(Citizen* citizen)
+void DeptOfPR::update(Citizen* citizen)
 {
    notifyTaxman();
 }
 
-void DepartmentOfPR::notifyHousingToBuild()
+void DeptOfPR::notifyHousingToBuild() ///call create building w/ string
 {
-   this->housing->addBuilding(NULL); ///< TODO
+  // this->housing->addBuilding(NULL); ///<
+ }
+
+void DeptOfPR::notifyHousingToRemove(Building *building) // same
+{
+   //this->housing->removeBuilding(building);
 }
 
-void DepartmentOfPR::notifyHousingToRemove(Building *building)
+
+void DeptOfPR::notifyUtilities()
 {
-   this->housing->removeBuilding(building);
+ //  this->utilities->allocateResources(); //drey
 }
 
-void DepartmentOfPR::notifyUtilities()
-{
-   this->utilities->allocateResources();
-}
 
-void DepartmentOfPR::notifyTaxman()
+void DeptOfPR::notifyTaxman()
 {
  // Economic conditions
     bool healthyEconomy = this->finance->checkMoney(); // e.g., >2.5% GDP growth
@@ -45,8 +47,9 @@ void DepartmentOfPR::notifyTaxman()
         this->finance->decreaseTaxes();
         std::cout << "Taxes have been lowered based on economic conditions and citizen feedback." << std::endl;
 
+
     // Decision making to increase taxes
-    } else  {
+    } else  { //check dept housing request funding function
         this->finance->increaseTaxes(10);
         std::cout << "Taxes have been increased to support government funding needs." << std::endl;
 

@@ -1,6 +1,6 @@
 #include "GoToWork.h"
 
-GoToWork::GoToWork(DeptTransportation *dept)
+GoToWork::GoToWork(DeptOfTransportation *dept)
 {
    // dept->/* getDistance*/;
 }

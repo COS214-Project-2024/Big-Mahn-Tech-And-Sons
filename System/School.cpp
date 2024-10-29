@@ -16,7 +16,7 @@ School::School(const std::string& name, int maxCapacity)
     waterMeterBox = 300.0;       // Initial water meter reading
     electricityUsage = 0.0;
     waterUsage = 0.0;
-    waste = 0.0;
+    wasteProduction = 0.0;
     priceTag = 300000.0; // Setting price tag for School
     netWorth = 1200000.0;
 }
@@ -42,5 +42,5 @@ bool School::checkAvailability() const {
  * @param visitor A pointer to the visitor object.
  */
 void School::accept(TaxManager* visitor) {
-    visitor->visit(this);
+    visitor->visitCommercialBuilding(this);
 }

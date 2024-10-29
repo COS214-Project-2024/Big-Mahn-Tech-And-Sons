@@ -26,7 +26,7 @@ class DeptOfFinance;
  *    - It acts as a mediator by coordinating communication between departments such as Housing, Utilities, and Finance.
  *    - This helps in streamlining requests, ensuring that departments do not need to communicate directly with each other but rather through this central hub.
  */
-class DepartmentOfPR
+class DeptOfPR
 {
 private:
     DeptOfHousing *housing;                  ///< Reference to the Housing Department.
@@ -41,7 +41,7 @@ public:
      * @param utilitiesDept Pointer to the Utilities Department.
      * @param financeDept Pointer to the Finance Department.
      */
-    DepartmentOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, DeptOfFinance *financeDept);
+    DeptOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, DeptOfFinance *financeDept);
 
     /**
      * @brief Updates the state by checking both buildings and citizens.
@@ -104,4 +104,4 @@ public:
     void notifyTaxman();
 };
 
-#endif // DEPARTMENTOFPR_H
+#endif // DEPTOFPR_H

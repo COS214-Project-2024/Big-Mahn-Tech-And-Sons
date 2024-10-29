@@ -8,7 +8,7 @@
 
 #include "EventsCommand.h"
 #include "DeptOfHousing.h"
-#include "DeptOfTransport.h"
+#include "DeptOfTransportation.h"
 
 /**
  * @class NaturalDisasterCommand
@@ -26,7 +26,7 @@ public:
      * @brief Blocks affected transport routes in the DeptOfTransport.
      * @param deptOfTransport Reference to DeptOfTransport for route management.
      */
-    void blockTransportRoutes(DeptOfTransport& deptOfTransport);
+    void blockTransportRoutes(DeptOfTransportation& deptOfTransport);
 
     /**
      * @brief Repairs damaged infrastructure within the DeptOfHousing.
@@ -39,7 +39,7 @@ public:
      * @param deptOfHousing Reference to DeptOfHousing for building management.
      * @param deptOfTransport Reference to DeptOfTransport for transport route management.
      */
-    void execute(DeptOfHousing& deptOfHousing, DeptOfTransport& deptOfTransport);
+    void execute(DeptOfHousing& deptOfHousing, DeptOfTransportation& deptOfTransport);
 };
 
 #endif // NATURAL_DISASTER_COMMAND_H

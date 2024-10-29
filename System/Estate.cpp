@@ -14,7 +14,7 @@ Estate::Estate()
     waterMeterBox = 800.0;        // Default water meter reading
     electricityUsage = 0.0;       // Start with no electricity usage
     waterUsage = 0.0;             // Start with no water usage
-    waste = 0.0;                  // Start with no waste production
+    wasteProduction = 0.0;                  // Start with no waste production
     priceTag = 500000.0; // Setting price tag for Estate
 }
 
@@ -33,7 +33,7 @@ void Estate::displayStats() const {
  * @param visitor A pointer to the TaxManager visitor.
  */
 void Estate::accept(TaxManager* visitor) {
-    visitor->visit(this);
+    visitor->visitResidentialBuilding(this);
 }
 
 /**

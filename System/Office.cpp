@@ -16,7 +16,7 @@ Office::Office(const std::string& name, int maxCapacity)
     waterMeterBox = 250.0;     
     electricityUsage = 0.0;
     waterUsage = 0.0;
-    waste = 0.0;
+    wasteProduction = 0.0;
     priceTag = 200000.0; // Setting price tag for Office
     netWorth = 500000.0;
 }
@@ -41,6 +41,6 @@ bool Office::checkAvailability() const {
  * @brief Accepts visitors for the visitor pattern.
  * @param visitor A pointer to the visitor object.
  */
-void Office::accept(TaxManager* visitor) {
-    visitor->visit(this);
+void Office::accept(TaxManager* visitor) { // Yohali stub
+   // visitor->visit(this);
 }

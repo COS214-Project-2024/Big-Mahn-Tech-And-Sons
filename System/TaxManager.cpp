@@ -68,6 +68,10 @@ void TaxManager::visitBudget(Budget* budget) {
     budget->setTotalBudget(governmentBudget); // Allocate the collected taxes to the budget
 }
 
+void TaxManager::applyTaxChanges()
+{
+}
+
 // Other getter/setter methods
 float TaxManager::getCollectedTaxes() const {
     return collectedTaxes;

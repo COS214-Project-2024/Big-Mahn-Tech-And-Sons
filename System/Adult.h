@@ -1,6 +1,6 @@
 
 /**
- * @file AdultState.h
+ * @file Adult.h
  * @brief Declaration of the AdultState class.
  */
 
@@ -9,7 +9,7 @@
 #define ADULTSTATE_H
 
 #include <string>
-#include "cStates.h"
+#include "CitizenStates.h"
 
 /**
  * @class AdultState

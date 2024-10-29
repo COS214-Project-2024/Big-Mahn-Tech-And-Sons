@@ -39,7 +39,7 @@ public:
     /**
      * @brief Displays the stats specific to industrial buildings.
      */
-    void displayStats() const override {
+    void displayStats() const {
         Building::displayStats();  // Call base class method
         std::cout << "Max Production Capacity: " << maxProductionCapacity << std::endl;
         std::cout << "Current Production Rate: " << productionRate << std::endl;
@@ -56,7 +56,7 @@ public:
      * This method remains virtual, to be overridden in the final building types.
      * @param visitor A pointer to the visitor object.
      */
-    virtual void accept(TaxManager* visitor) = 0;
+    virtual void accept(TaxManager* visitor);
 
     // Getter and Setter for production rate
     double getProductionRate() const { return productionRate; }

@@ -16,7 +16,7 @@ House::House()
     waterMeterBox = 100.0;       // Default water meter reading
     electricityUsage = 0.0;      // Start with no electricity usage
     waterUsage = 0.0;            // Start with no water usage
-    waste = 0.0;                 // Start with no waste production
+    wasteProduction = 0.0;                 // Start with no waste production
     priceTag = 250000.0; // Setting price tag for House
 }
 
@@ -34,7 +34,7 @@ void House::displayStats() const {
  * @param visitor A pointer to the TaxManager visitor.
  */
 void House::accept(TaxManager* visitor) {
-    visitor->visit(this);
+    visitor->visitResidentialBuilding(this);
 }
 
 /**

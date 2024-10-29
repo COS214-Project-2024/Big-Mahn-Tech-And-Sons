@@ -6,7 +6,7 @@
 #define VISITHOUSING_H
 
 #include "TaxManager.h"
-
+class Budget;
 /**
  * @class visitHousing
  * @brief ConcreteVisitor class for housing taxation.
@@ -14,8 +14,8 @@
 class TaxManager;
 class visitHousing : public TaxManager {
 public:
-    void visitBuilding(Building* building) override;
-    void visitBudget(Budget* budget) override;
+    void visitBuilding(Building* building);
+    void visitBudget(Budget* budget);
 };
 
 #endif // VISITHOUSING_H

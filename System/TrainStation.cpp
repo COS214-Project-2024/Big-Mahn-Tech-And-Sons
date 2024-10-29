@@ -23,7 +23,7 @@ TrainStation::TrainStation(const std::string& name, int maxCapacity, int maxProd
     waterMeterBox = 300.0;       ///< Initial water meter reading.
     electricityUsage = 0.0;      ///< Initial electricity usage.
     waterUsage = 0.0;            ///< Initial water usage.
-    waste = 0.0;                 ///< Initial waste production.
+    wasteProduction = 0.0;                 ///< Initial waste production.
     priceTag = 750000.0;         ///< Default price tag for a train station.
 }
 
@@ -49,6 +49,6 @@ bool TrainStation::canHandleMorePassengers() const {
  * @brief Accepts visitors for the visitor pattern.
  * @param visitor A pointer to the visitor object.
  */
-void TrainStation::accept(TaxManager* visitor) {
-    visitor->visit(this);
+void TrainStation::accept(TaxManager* visitor) { // Yohali Stub!!!!!!!
+    //visitor->visit(this);
 }

@@ -1,16 +1,16 @@
-#ifndef DEPTTRANSPORTATION_H
-#define DEPTTRANSPORTATION_H
+#ifndef DEPTOFTRANSPORTATION_H
+#define DEPTOFTRANSPORTATION_H
 
 #include "CityGrid.h"
 
-class DeptTransportation
+class DeptOfTransportation
 {
 private:
     CityGrid* cityGrid;     // pointer to the city grid object
     
 public:
-    DeptTransportation();   //constructs the department object
-    ~DeptTransportation();  //destructs the department object
+    DeptOfTransportation();   //constructs the department object
+    ~DeptOfTransportation();  //destructs the department object
     void printCityGrid();   //prints the city grid, roads and buildings included
     void printRoadGrid();   //prints the road grid, roads only
     const vector<vector<Cell>> getRoadGrid();   //returns a constant road grid vector , roads

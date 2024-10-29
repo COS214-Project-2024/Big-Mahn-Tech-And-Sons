@@ -12,15 +12,15 @@
 
 #include <string>
 #include "ModeOfTrans.h"
-#include "cStates.h"
+#include "CitizenStates.h"
 #include "GoToCommand.h"
 #include "DeptOfPR.h"
-#include "DeptTransportation.h"
+#include "DeptOfTransportation.h"
 
 class Building;
-class RoadNetWork;
 class SatisfactionState;
-
+class CityGrid;
+class CitizenState;
 
 /**
  * @class Citizen
@@ -36,8 +36,8 @@ private:
     // Node* currentLocation; /**< Current building location */
     // Node* workLocation; /**<Citizen's work location */
     // Node* homeLocation; /**<Citizen's home location */
-    DepartmentOfPR*  PR; /**<Reference to government's PPR */
-    DeptTransportation* DT;
+    DeptOfPR*  PR; /**<Reference to government's PPR */
+    DeptOfTransportation* DT;
     GoToCommand* go;
     CitizenState* state; /**< Current state of the citizen */
     SatisfactionState* satisState; /**< Current satisfaction state of citizen */
@@ -65,7 +65,7 @@ public:
      * @note initialize health to 100
      * @note intilize statifaction level at 50
      */
-    Citizen(const std::string& nam,double happiness , int x, int y, DepartmentOfPR* PR);
+    Citizen(const std::string& nam,double happiness , int x, int y, DeptOfPR* PR);
 
     /**
      * @brief Destroys the Citizen object.
@@ -91,6 +91,8 @@ public:
      * @return std::string The name of the citizen.
      */
     std::string getName() const;
+
+    double getHealth();
 
     double getSatisfactionLevel();
 

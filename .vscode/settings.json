@@ -45,7 +45,22 @@
     "stdexcept": "cpp",
     "streambuf": "cpp",
     "typeinfo": "cpp",
-    "queue": "cpp"
+    "queue": "cpp",
+    "chrono": "cpp",
+    "condition_variable": "cpp",
+    "csignal": "cpp",
+    "cstring": "cpp",
+    "ctime": "cpp",
+    "set": "cpp",
+    "unordered_set": "cpp",
+    "ratio": "cpp",
+    "fstream": "cpp",
+    "iomanip": "cpp",
+    "mutex": "cpp",
+    "semaphore": "cpp",
+    "sstream": "cpp",
+    "stop_token": "cpp",
+    "thread": "cpp"
   },
   "C_Cpp_Runner.msvcBatchPath": ""
 }

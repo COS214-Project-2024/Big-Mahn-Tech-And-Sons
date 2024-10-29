@@ -9,7 +9,6 @@
 #include <string>
 #include <vector>
 class Citizen;
-class Node;
 using namespace std;
  
 /**

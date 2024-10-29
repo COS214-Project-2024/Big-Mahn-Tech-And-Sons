@@ -87,7 +87,8 @@ public:
     ~DeptOfHousing() = default;
 
     int findBuildingIndex(const std::string& name) const; // New method
-    void removeBuildingByName(const std::string& name);   // New method
+    std::string findBuildingIndex(int i) const;
+    void removeBuildingByName(const std::string &name); // New method
     void listBuildings() const; // New method to list buildings
 
     bool requestFunding(double amount);  // Modified to request via DeptOfPR

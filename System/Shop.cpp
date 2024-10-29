@@ -16,7 +16,7 @@ Shop::Shop(const std::string& name, int maxCapacity)
     waterMeterBox = 200.0;
     electricityUsage = 0.0;
     waterUsage = 0.0;
-    waste = 0.0;
+    wasteProduction = 0.0;
     priceTag = 100000.0; // Setting price tag for Shop
     netWorth = 80000.0;
 }
@@ -42,5 +42,5 @@ bool Shop::checkAvailability() const {
  * @param visitor A pointer to the visitor object.
  */
 void Shop::accept(TaxManager* visitor) {
-    visitor->visit(this);
+    visitor->visitCommercialBuilding(this);
 }
