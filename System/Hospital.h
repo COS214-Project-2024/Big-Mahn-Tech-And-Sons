@@ -1,3 +1,5 @@
+// Class defintion of Factory Method - ConcreteProduct (subtype)
+
 /**
  * @file Hospital.h
  * @brief Declaration of the Hospital class.
@@ -10,16 +12,39 @@
 
 /**
  * @class Hospital
- * @brief Represents a hospital in the simulation.
+ * @brief Class representing a hospital as a subtype of CommercialBuilding.
+ *
+ * This class implements the specific attributes and operations for a hospital,
+ * such as managing available beds.
  */
 class Hospital : public CommercialBuilding {
 public:
-    using CommercialBuilding::CommercialBuilding; ///< Inherit constructors.
+    /**
+     * @brief Constructor for Hospital.
+     * @param name Name of the hospital.
+     * @param maxCapacity Maximum capacity of the hospital.
+     */
+    Hospital(const std::string& name, int maxCapacity);
 
-    void reportResourceUsage() const override;
+    /**
+     * @brief Displays the stats specific to the hospital.
+     */
+    void displayStats() const override;
 
-    
-    void healOccupents(); ///< Heal all the citizens in the building, then send them all home via the goHome command
+    /**
+     * @brief Checks the availability of beds in the hospital.
+     * @return True if beds are available, otherwise false.
+     */
+    bool checkAvailability() const override;
+
+    /**
+     * @brief Accepts visitors for the visitor pattern.
+     * @param visitor A pointer to the visitor object.
+     */
+    void accept(TaxManager* visitor) override;
+
+private:
+    int availableBeds;  ///< Number of available beds in the hospital.
 };
 
 #endif // HOSPITAL_H
