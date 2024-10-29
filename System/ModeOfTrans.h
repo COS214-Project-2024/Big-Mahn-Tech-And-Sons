@@ -44,13 +44,8 @@ public:
      * 
      * @return void
      */
-    virtual void execute(Citizen* citizen, vector<Node*> node ) const = 0;
-    /**
-     * @brief Static method for selecting a transportation mode based on the distance to travel.
-     * @param distance Distance between nodes in kilometers.
-     * @return Pointer to the selected ModeOfTrans object.
-     */
-    static ModeOfTrans* selectModeByDistance(double distance);
+    virtual void execute() const = 0;
+  
     
 };
 

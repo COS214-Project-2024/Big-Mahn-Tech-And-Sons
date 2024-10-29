@@ -15,6 +15,7 @@
 #include "cStates.h"
 #include "GoToCommand.h"
 #include "DeptOfPR.h"
+#include "DeptTransportation.h"
 
 class Building;
 class RoadNetWork;
@@ -36,6 +37,7 @@ private:
     // Node* workLocation; /**<Citizen's work location */
     // Node* homeLocation; /**<Citizen's home location */
     DepartmentOfPR*  PR; /**<Reference to government's PPR */
+    DeptTransportation* DT;
     GoToCommand* go;
     CitizenState* state; /**< Current state of the citizen */
     SatisfactionState* satisState; /**< Current satisfaction state of citizen */
@@ -215,7 +217,7 @@ public:
      * 
      * @return Building* Pointer to the current building.
      */
-    Node* getCurrentLocation() const;
+    Building* getCurrentLocation() const;
 
     /**
      * @brief Sets the citizen's current building location.
@@ -231,14 +233,9 @@ public:
      * 
      * If @param destination is (work, home, school etc) execute the relevant command
      */
-  //  void travelTo(Node* destination);
+     void travelTo(Building *destination , CityGrid *citi, int x, int y, const std::string &Building);
 
-    /**
-     * @brief Travels to another building using a specific strategy.
-     * 
-     * @param roadNetwork Pointer to the road network.
-     */
-  //  void travelWithStrategy(RoadNetWork* roadNetwork);
+
 };
 
 #endif
