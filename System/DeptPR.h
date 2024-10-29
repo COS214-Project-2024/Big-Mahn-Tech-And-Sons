@@ -66,7 +66,7 @@ public:
      * overcrowding, lack of maintenance, or resource shortages. If problems are identified,
      * it triggers appropriate responses via mediator functions.
      */
-    void checkBuildings();
+    //void checkBuildings();
 
     /**
      * @brief Checks the state of all observed citizens.
@@ -75,7 +75,7 @@ public:
      * Based on the findings, it may notify relevant departments to take action, such as improving
      * services or infrastructure.
      */
-    void checkCitizens();
+   // void checkCitizens();
 
     // Mediator Functions
     /**

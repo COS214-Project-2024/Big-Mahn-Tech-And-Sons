@@ -32,9 +32,9 @@ class Citizen {
 private:
     std::string name; /**< Name of the citizen */
     ModeOfTrans* modeOfTransport; /**< Current mode of transport */
-    Node* currentLocation; /**< Current building location */
-    Node* workLocation; /**<Citizen's work location */
-    Node* homeLocation; /**<Citizen's home location */
+    // Node* currentLocation; /**< Current building location */
+    // Node* workLocation; /**<Citizen's work location */
+    // Node* homeLocation; /**<Citizen's home location */
     DepartmentOfPR*  PR; /**<Reference to government's PPR */
     GoToCommand* go;
     CitizenState* state; /**< Current state of the citizen */
@@ -63,7 +63,7 @@ public:
      * @note initialize health to 100
      * @note intilize statifaction level at 50
      */
-    Citizen(const std::string& nam,double happiness , Node* location, Node* work, Node* home, DepartmentOfPR* PR);
+    Citizen(const std::string& nam,double happiness , int x, int y, DepartmentOfPR* PR);
 
     /**
      * @brief Destroys the Citizen object.
@@ -222,7 +222,7 @@ public:
      * 
      * @param location Pointer to the new building.
      */
-    void setCurrentLocation(Node* location);
+  //  void setCurrentLocation(Node* location);
 
     /**
      * @brief Travels to another building.
@@ -231,14 +231,14 @@ public:
      * 
      * If @param destination is (work, home, school etc) execute the relevant command
      */
-    void travelTo(Node* destination);
+  //  void travelTo(Node* destination);
 
     /**
      * @brief Travels to another building using a specific strategy.
      * 
      * @param roadNetwork Pointer to the road network.
      */
-    void travelWithStrategy(RoadNetWork* roadNetwork);
+  //  void travelWithStrategy(RoadNetWork* roadNetwork);
 };
 
 #endif

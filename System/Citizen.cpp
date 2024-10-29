@@ -7,13 +7,10 @@
 
 #include <random>
 
-Citizen::Citizen(const std::string &nam, double happiness, Node *location, Node *work, Node *home, DepartmentOfPR *PR)
+Citizen::Citizen(const std::string &nam, double happiness,int x , int y, DepartmentOfPR *PR)
 {
    name = nam;
    satisfaction = happiness;
-   currentLocation = location;
-   workLocation = work;
-   homeLocation = home;
    this->PR = PR;
 
    age = 1;
@@ -62,11 +59,9 @@ void Citizen::getOlder()
 
 void Citizen::notifyPR()
 {
-   if(true) { // problem with finances
-      this->PR->notifyTaxman();
-   } else if(true) { // problem with utility
-      this->PR->notifyUtilities();
-   }
+   if((getSatisfactionLevelName() == "Neutral" || getSatisfactionLevelName() == "Sad") && getBudget()/100000 * 100 < 0.6 ) { // problem with finances
+      this->PR->update(this);
+   } 
 }
 
 int Citizen::getAge()
@@ -128,7 +123,7 @@ void Citizen::returnToCity()
 
 void Citizen::becomeUnemployed()
 {
-   this->workLocation = NULL;
+   //this->workLocation = NULL;
 }
 
 void Citizen::getNewJob()
@@ -186,24 +181,24 @@ void Citizen::setModeOfTransport(ModeOfTrans *mode)
    }
 }
 
-Node *Citizen::getCurrentLocation() const
-{
-   return this->currentLocation;
-}
+// Node *Citizen::getCurrentLocation() const
+// {
+//    return this->currentLocation;
+// }
 
-void Citizen::setCurrentLocation(Node *location)
-{
-   if(location) {
-      this->currentLocation;
-   }
-}
+// void Citizen::setCurrentLocation(Node *location)
+// {
+//    if(location) {
+//       this->currentLocation;
+//    }
+// }
 
-void Citizen::travelTo(Node *destination)
-{
-   //this->modeOfTransport->execute(this, destination); //<TODO
-}
+// void Citizen::travelTo(Node *destination)
+// {
+//    //this->modeOfTransport->execute(this, destination); //<TODO
+// }
 
-void Citizen::travelWithStrategy(RoadNetWork *roadNetwork)
-{
-   //this->modeOfTransport->
-}
+// void Citizen::travelWithStrategy(RoadNetWork *roadNetwork)
+// {
+//    //this->modeOfTransport->
+// }

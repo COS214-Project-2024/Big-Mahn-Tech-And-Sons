@@ -13,8 +13,10 @@
 #include "cStates.h"
 
 
+
 TEST_CASE("Citizen initialisation") {
-   Citizen* person = new Citizen("one", 50, NULL, NULL, NULL, NULL);
+  // DepartmentOfPR*  pr = new DepartmentOfPR(NULL,NULL, NULL,NULL);
+   Citizen* person = new Citizen("one", 50, 10, 10 ,NULL);
    
    CHECK(person->getAge() == 1);
    for(int i = 0; i < 20; i++) {

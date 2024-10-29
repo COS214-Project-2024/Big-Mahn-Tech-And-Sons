@@ -105,6 +105,7 @@ public:
      * @brief Simulates the closure of a building (e.g., during a recession).
      */
     void close();
+    
 
     /**
      * @brief Reopens a building after it was closed during an event.
