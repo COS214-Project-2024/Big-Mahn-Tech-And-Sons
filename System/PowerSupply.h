@@ -13,9 +13,9 @@
 #ifndef POWERSUPPLY_H
 #define POWERSUPPLY_H
 
-#include "DepartmentUtilities.h"
+#include "DeptOfUtilities.h"
 #include "Building.h" // Make sure to include the Building class header
-#include "Electricity.h"
+#include "Power.h"
 #include "Request.h"
 
 /**
@@ -23,11 +23,11 @@
  * @brief Manages the electricity generation and distribution system for the city.
  * Inherits from the DepartmentUtilities class.
  */
-class PowerSupply : public DepartmentUtilities {
+class PowerSupply : public DeptOfUtilities {
 private:
     double powerCapacity; /**< Total electricity capacity available for distribution. */
     vector<Building*> buildings;  /**vector to store building  */
-    Electricity* powerResource;   /**< pointer to  the power resource. */
+    Power* powerResource;   /**< pointer to  the power resource. */
 
 public:
     /**
@@ -36,7 +36,7 @@ public:
      * @param budget The budget allocated to the power supply department.
      * @param capacity The initial power capacity available for the department.
      */
-    PowerSupply(string name, double budget, double capacity,  Electricity* powerResource);
+    PowerSupply(string name, double budget, double capacity,  Power* powerResource);
 
     /**
      * @brief Distributes electricity across various sectors in the city.

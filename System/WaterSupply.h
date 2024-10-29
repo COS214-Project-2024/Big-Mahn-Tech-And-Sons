@@ -13,7 +13,7 @@
 #ifndef WATERSUPPLY_H
 #define WATERSUPPLY_H
 
-#include "DepartmentUtilities.h"
+#include "DeptOfUtilities.h"
 #include "Building.h"
 #include "Water.h"
 #include "Request.h"
@@ -21,9 +21,9 @@
 /**
  * @class WaterSupply
  * @brief Manages the water distribution and supply system for the city.
- * Inherits from the DepartmentUtilities class.
+ * Inherits from the DeptOfUtilities class.
  */
-class WaterSupply : public DepartmentUtilities {
+class WaterSupply : public DeptOfUtilities {
 private:
     double waterCapacity; /**< Total water capacity available for distribution. */
     vector<Building*> buildings;    /**< Vector to store buildings to be sourced  for water supply. */

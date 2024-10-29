@@ -13,7 +13,7 @@
 #ifndef WASTEMANAGEMENT_H
 #define WASTEMANAGEMENT_H
 
-#include "DepartmentUtilities.h"
+#include "DeptOfUtilities.h"
 #include "Building.h"
 #include "Request.h"
 
@@ -22,7 +22,7 @@
  * @brief Manages the waste collection, disposal, and recycling systems for the city.
  * Inherits from the DepartmentUtilities class.
  */
-class WasteManagement : public DepartmentUtilities {
+class WasteManagement : public DeptOfUtilities {
 private:
     double wasteCapacity; /**< Total capacity for handling waste in the city. */
     vector<Building*> buildings;

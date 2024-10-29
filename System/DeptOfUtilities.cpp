@@ -1,31 +1,31 @@
-#include "DepartmentUtilities.h"
+#include "DeptOfUtilities.h"
 #include "DeptPR.h"
 
 /**
- * @brief Constructor for DepartmentUtilities.
+ * @brief Constructor for DeptOfUtilities.
  * @param name The name of the department.
  * @param budget The initial budget allocated to the department.
  */
-DepartmentUtilities::DepartmentUtilities(string name, double budget) 
+DeptOfUtilities::DeptOfUtilities(string name, double budget) 
     : departmentName(name), budget(budget), resourceUsage(0), successor(nullptr), PR(nullptr) {}
 
 /**
  * @brief Displays the information about the department.
  */
-void DepartmentUtilities::displayDepartmentInfo() {
+void DeptOfUtilities::displayDepartmentInfo() {
     cout << "Department: " << departmentName << endl;
     cout << "Budget: ZAR" << budget << endl;
     cout << "Resource Usage: " << resourceUsage << endl;
 }
 
-void DepartmentUtilities::requestBudget()
+void DeptOfUtilities::requestBudget()
 {
 }
 
 /**
  * @brief Requests PR department assistance.
  */
-void DepartmentUtilities::requestPR() {
+void DeptOfUtilities::requestPR() {
     if (PR) {
         cout << "Requesting assistance from PR department for " << departmentName << endl;
         PR->notifyUtilities();
@@ -38,6 +38,6 @@ void DepartmentUtilities::requestPR() {
  * @brief Sets the successor in the chain.
  * @param nextDepartment Pointer to the next department in the chain.
  */
-void DepartmentUtilities::setSuccessor(DepartmentUtilities* nextDepartment) {
+void DeptOfUtilities::setSuccessor(DeptOfUtilities* nextDepartment) {
     successor = nextDepartment;
 }

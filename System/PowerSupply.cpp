@@ -1,7 +1,7 @@
 #include "PowerSupply.h"
 
-PowerSupply::PowerSupply(string name, double budget, double capacity, Electricity* powerResource)
-    : DepartmentUtilities(name, budget), powerCapacity(capacity),  powerResource(powerResource) {}
+PowerSupply::PowerSupply(string name, double budget, double capacity, Power* powerResource)
+    : DeptOfUtilities(name, budget), powerCapacity(capacity),  powerResource(powerResource) {}
 
 /**
  * @brief Adds a building to the power supply system.
