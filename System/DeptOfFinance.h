@@ -61,6 +61,9 @@ public:
      * @brief Assesses the economic impact of an event on the city's finances.
      */
     void assessEconomicImpact();
+
+
+    
 };
 
 #endif // DEPTOFFINANCE_H
