@@ -1,3 +1,5 @@
+// Class defintion of Factory Method - Product
+
 /**
  * @file Building.h
  * @brief Declaration of the Building class.
@@ -8,126 +10,188 @@
 
 #include <string>
 #include <vector>
+#include <memory>
+#include <iostream> // For std::cout
+#include <utility>   // For std::pair
+
 #include "Element.h"
 #include "TaxManager.h"
 
-class Node; ///< Forward declaration of Node class
 class Citizen; ///< Forward declaration of Citizen class
 
 /**
  * @class Building
- * @brief Abstract base class for all types of buildings. Represents a building in the simulation.
+ * @brief Base class for all types of buildings.
  *
- * Each building is located at a specific node in the road network.
+ * This class provides the common attributes and functionalities for all building types,
+ * including managing tenants, utilities, and grid placement.
  */
+
 class Building {
-private:
-    std::string name; ///< The name of the building.
-    int capacity; ///< Maximum capacity of the building.
-    std::vector<Citizen*> tenants; ///< Tenants residing in the building.
-    Node* location; ///< Pointer to the node where the building is located.
+protected:
+    std::string name;                  ///< Name of the building
+    int maxCapacity;                   ///< Maximum capacity of people in the building
+    double electricityMeterBox;        ///< Electric meter reading
+    double waterMeterBox;              ///< Water meter reading
+    double electricityUsage;           ///< Total electricity usage
+    double waterUsage;                 ///< Total water usage
+    double wasteProduction;            ///< Total waste produced
+    std::vector<Citizen*> tenants;     ///< Vector to store tenants or workers
+    int width;                         ///< Width of the building for grid placement
+    int length;                        ///< Length of the building for grid placement
+    double priceTag;                   ///< Price tag of the building
+    double netWorth;                   ///< Net worth of the building
+    bool waterSupply;                  ///< Water supply status
+    bool powerSupply;                  ///< Power supply status
+
+    // Grid coordinates: four (x, y) points representing corners of the building
+    std::vector<std::pair<int, int>> gridCoordinates;
 
 public:
     /**
-     * @brief Constructs a new Building object.
-     * 
+     * @brief Constructor for Building.
      * @param name Name of the building.
-     * @param capacity Maximum number of tenants the building can accommodate.
-     * @param location Pointer to the node where the building is located.
+     * @param maxCapacity Maximum capacity of the building.
      */
-    Building(const std::string& name, int capacity, Node* location);
+    Building(const std::string& name, int maxCapacity)
+        : name(name), maxCapacity(maxCapacity), electricityMeterBox(0.0),
+          waterMeterBox(0.0), electricityUsage(0.0), waterUsage(0.0),
+          wasteProduction(0.0), width(1), length(1), priceTag(0.0),
+          netWorth(0.0), waterSupply(true), powerSupply(true) {}
 
-    /**
-     * @brief Destroys the Building object.
-     */
-    virtual ~Building() {}
-
-    /**
-     * @brief Gets the name of the building.
-     * 
-     * @return std::string The building's name.
-     */
-    std::string getName() const;
-
-    /**
-     * @brief Gets the capacity of the building.
-     * 
-     * @return int The capacity of the building.
-     */
-    int getCapacity() const;
+    // Virtual destructor to allow polymorphism
+    virtual ~Building() = default;
 
     /**
      * @brief Adds a tenant to the building.
-     * 
-     * @param tenant The citizen to be added as a tenant.
+     * @param tenant Pointer to the tenant to be added.
+     * @return true if the tenant was added successfully, false if capacity is reached.
      */
-    void addTenant(Citizen* tenant);
+    bool addTenant(Citizen* tenant);
 
     /**
-     * @brief Gets the current number of tenants in the building.
-     * 
-     * @return int The current number of tenants.
+     * @brief Removes a tenant from the building.
+     * @param tenant Pointer to the tenant to be removed.
+     * @return true if the tenant was removed successfully, false if the tenant was not found.
      */
-    int getCurrentTenants() const;
+    bool removeTenant(Citizen* tenant);
 
     /**
-     * @brief Virtual method to get resource usage, to be overridden by derived classes.
+     * @brief Requests electricity usage.
+     * @param usage Amount of electricity requested.
      */
-    virtual void reportResourceUsage() const = 0;
+    void requestElectricity(double usage);
 
     /**
-     * @brief Gets the location node of the building.
-     * 
-     * @return Node* Pointer to the location node.
+     * @brief Requests water usage.
+     * @param usage Amount of water requested.
      */
-    Node* getLocation() const;
+    void requestWater(double usage);
 
     /**
-     * @brief Sets the location node of the building.
-     * 
-     * @param node Pointer to the new location node.
+     * @brief Calculates the total resource usage (electricity + water).
+     * @return Total resource usage.
      */
-    void setLocation(Node* node);
+    double calculateResourceUsage() const {
+        return electricityUsage + waterUsage;
+    }
 
     /**
-     * @brief Damages the building by a certain percentage.
-     * 
-     * @param percentage The percentage of damage applied to the building.
+     * @brief Gets the grid coordinates of the building's corners.
+     * @return Vector of 4 (x, y) coordinate pairs.
      */
-    void damage(double percentage);
+    std::vector<std::pair<int, int>> getGridCoordinates() const;
+
+    void setCoordinates(const std::vector<std::pair<int, int>>& coords);
 
     /**
-     * @brief Repairs the building after it has been damaged.
-     */
-    void repair();
-
-    /**
-     * @brief Simulates the closure of a building (e.g., during a recession).
-     */
-    void close();
-
-    /**
-     * @brief Reopens a building after it was closed during an event.
-     */
-    void reopen();
-
-    /**
-     * @brief Increases the resource consumption of the building (e.g., during a festival).
-     */
-    void increaseResourceConsumption();
-
-    /**
-     * @brief Decreases the resource consumption of the building, returning it to normal levels.
-     */
-    void decreaseResourceConsumption();
-
-    // Note: The visit and accept methods are typically related to the Visitor design pattern.
-    // virtual void visit(Building* building) = 0;
-    /**
-     * @brief Accepts a visitor (TaxManager).
-     * @param visitor The visitor object.
+     * @brief Accepts visitors for the visitor pattern.
+     * @param visitor A pointer to the visitor that will interact with the building.
      */
     virtual void accept(TaxManager* visitor) = 0;
+
+    /**
+     * @brief Displays the statistics of the building.
+     *
+     * This method prints all the relevant statistics of the building to the console.
+     */
+    virtual void displayStats() const {
+        std::cout << "Building Name: " << name << std::endl;
+        std::cout << "Max Capacity: " << maxCapacity << std::endl;
+        std::cout << "Electricity Meter: " << electricityMeterBox << " kWh" << std::endl;
+        std::cout << "Water Meter: " << waterMeterBox << " L" << std::endl;
+        std::cout << "Electricity Usage: " << electricityUsage << " kWh" << std::endl;
+        std::cout << "Water Usage: " << waterUsage << " L" << std::endl;
+        std::cout << "Waste Produced: " << wasteProduction << " kg" << std::endl;
+        std::cout << "Dimensions (WxL): " << width << " x " << length << " units" << std::endl;
+        std::cout << "Total Resource Usage: " << calculateResourceUsage() << " units" << std::endl;
+        std::cout << "Tenants: ";
+        for (const auto& tenant : tenants) {
+            std::cout << tenant << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    // Getters
+    std::string getName() const;
+    int getMaxCapacity() const;
+    double getElectricityMeterBox() const;
+    double getWaterMeterBox() const;
+    double getElectricityUsage() const;
+    double getWaterUsage() const;
+    double getWasteProduction() const;
+    const std::vector<Citizen*>& getTenants() const;
+    int getWidth() const;
+    int getLength() const;
+    double getPriceTag() const;
+
+    int getCurrentOccupants() const {
+        return tenants.size();
+    }
+
+    double getNetWorth() const;
+
+
+    // Setters
+    void setName(const std::string& name);
+    void setMaxCapacity(int capacity);
+    void setElectricityMeterBox(double reading);
+    void setWaterMeterBox(double reading);
+    void setElectricityUsage(double usage);
+    void setWaterUsage(double usage);
+    void setWaste(double waste);
+    void setWidth(int width);
+    void setLength(int length);
+
+    // New method to subtract tax from net worth
+    void subtractTax(double amount) {
+        netWorth -= amount;
+    }
+
+    // Getter for net worth
+    double getNetWorth() const {
+        return netWorth;
+    }
+
+    virtual void consumeWater();
+    virtual void consumeElectricity();
+
+    virtual void waterCut() {
+        waterSupply = false;
+        waterMeterBox = 0.0;
+        std::cout << "Water supply cut at " << name << ".\n";
+    }
+
+    virtual void powerCut() {
+        powerSupply = false;
+        electricityMeterBox = 0.0;
+        std::cout << "Power supply cut at " << name << ".\n";
+    }
+
+    virtual void clearWaste() {
+        std::cout << name << " cleared " << wasteProduction << " kg of waste.\n";
+        wasteProduction = 0;
+    }
 };
 
 #endif // BUILDING_H

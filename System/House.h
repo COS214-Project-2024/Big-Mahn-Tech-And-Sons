@@ -1,3 +1,5 @@
+// Class defintion of Factory Method - ConcreteProduct (subtype)
+
 /**
  * @file House.h
  * @brief Declaration of the House class.
@@ -10,13 +12,33 @@
 
 /**
  * @class House
- * @brief Represents a house in the simulation.
+ * @brief Represents a residential house building.
  */
 class House : public ResidentialBuilding {
-public:
-    using ResidentialBuilding::ResidentialBuilding; ///< Inherit constructors.
+private:
+    int numFloors;  ///< Number of floors in the house.
 
-    void reportResourceUsage() const override;
+public:
+    /**
+     * @brief Default constructor for House.
+     * Initializes with unique default values.
+     */
+    House();
+
+    /**
+     * @brief Displays the stats specific to the house.
+     */
+    void displayStats() const override;
+
+    /**
+     * @brief Accepts a visitor for the visitor pattern.
+     * @param visitor A pointer to the TaxManager visitor.
+     */
+    void accept(TaxManager* visitor) override;
+
+    // Getters and Setters
+    int getNumFloors() const;
+    void setNumFloors(int floors);
 };
 
 #endif // HOUSE_H
