@@ -15,15 +15,15 @@
 class DeptOfFinance {
 private:
     std::vector<Element*> elements; /**< List of elements in the city */
-
+    TaxManager* taxManager;
 public:
-    DeptOfFinance();
+    DeptOfFinance(TaxManager* taxManager);
 
     /**
      * @brief Adds an element to the list.
      * 
      * @param element The element to add.
-     */
+     */ 
     void addElement(Element* element);
 
     /**
@@ -60,10 +60,11 @@ public:
     /**
      * @brief Assesses the economic impact of an event on the city's finances.
      */
-    void assessEconomicImpact();
+    void assessEconomicImpact(); // this needs to return something e.g BOOL= is the economy good or not 
 
+    bool checkMoney(bool ourMoney);
 
-    
+    void collectTaxes();
 };
 
 #endif // DEPTOFFINANCE_H

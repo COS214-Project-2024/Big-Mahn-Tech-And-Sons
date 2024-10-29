@@ -15,6 +15,8 @@
  *
  * This class provides a base for different types of resources used in the simulation.
  */
+class TaxManager;
+
 class Resource: public TaxManager {
 protected:
     std::string name; ///< The name of the resource.
