@@ -14,7 +14,7 @@
 #include "ModeOfTrans.h"
 #include "cStates.h"
 #include "GoToCommand.h"
-#include "DeptPR.h"
+#include "DeptOfPR.h"
 
 class Building;
 class RoadNetWork;

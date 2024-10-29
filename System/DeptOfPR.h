@@ -1,12 +1,5 @@
-/**
- * @file DeptPR.h
- * 
- * 
- * Observor: is the 
- */
-
-#ifndef DEPTPR_H
-#define DEPTPR_H
+#ifndef DEPTOFPR_H
+#define DEPTOFPR_H
 
 #include <vector>
 #include <iostream>
@@ -15,9 +8,9 @@ using namespace std;
 
 class Building;
 class Citizen;
-class HousingDept;
-class DepartmentUtilities;
-class FinanceDept;
+class DeptOfHousing;
+class DeptOfUtilities;
+class DeptOfFinance;
 
 /**
  * @class DepartmentOfPR
@@ -36,8 +29,8 @@ class FinanceDept;
 class DepartmentOfPR
 {
 private:
-    HousingDept *housing;                  ///< Reference to the Housing Department.
-    DepartmentUtilities *utilities;        ///< Reference to the Utilities Department.
+    DeptOfHousing *housing;                  ///< Reference to the Housing Department.
+    DeptOfUtilities *utilities;        ///< Reference to the Utilities Department.
     DeptOfFinance *finance;                  ///< Reference to the Finance Department.
 
 public:
@@ -48,7 +41,7 @@ public:
      * @param utilitiesDept Pointer to the Utilities Department.
      * @param financeDept Pointer to the Finance Department.
      */
-    DepartmentOfPR(HousingDept *housingDept, DepartmentUtilities *utilitiesDept, DeptOfFinance *financeDept);
+    DepartmentOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, DeptOfFinance *financeDept);
 
     /**
      * @brief Updates the state by checking both buildings and citizens.
