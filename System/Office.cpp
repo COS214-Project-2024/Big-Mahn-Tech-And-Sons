@@ -18,6 +18,7 @@ Office::Office(const std::string& name, int maxCapacity)
     waterUsage = 0.0;
     waste = 0.0;
     priceTag = 200000.0; // Setting price tag for Office
+    netWorth = 500000.0;
 }
 
 /**

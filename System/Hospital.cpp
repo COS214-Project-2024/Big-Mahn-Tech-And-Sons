@@ -18,6 +18,7 @@ Hospital::Hospital(const std::string& name, int maxCapacity)
     waterUsage = 0.0;
     waste = 0.0;
     priceTag = 400000.0; // Setting price tag for Hospital
+    netWorth = 3000000.0;
 }
 
 /**

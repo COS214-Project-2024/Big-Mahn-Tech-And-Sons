@@ -1,3 +1,6 @@
+// Class defintion of Factory Method - Client
+// Class defintion of Facade - Subsystem Class
+
 #ifndef DEPTOFHOUSING_H
 #define DEPTOFHOUSING_H
 
@@ -6,6 +9,7 @@
 #include "CommercialBuildingCreator.h"
 #include "IndustrialBuildingCreator.h"
 #include "LandmarkBuildingCreator.h"
+#include "DeptOfPR.h"
 #include <vector>
 #include <memory>
 
@@ -21,6 +25,7 @@ private:
     LandmarkBuildingCreator landmarkCreator;
 
     double budget;  // Total budget allocated to the department
+    DeptOfPR& deptOfPR;  // Reference to the DeptOfPR
 
 public:
     /**
@@ -84,6 +89,8 @@ public:
     int findBuildingIndex(const std::string& name) const; // New method
     void removeBuildingByName(const std::string& name);   // New method
     void listBuildings() const; // New method to list buildings
+
+    bool requestFunding(double amount);  // Modified to request via DeptOfPR
 };
 
 #endif // DEPTOFHOUSING_H

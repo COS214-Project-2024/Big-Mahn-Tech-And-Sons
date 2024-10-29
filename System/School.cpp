@@ -18,6 +18,7 @@ School::School(const std::string& name, int maxCapacity)
     waterUsage = 0.0;
     waste = 0.0;
     priceTag = 300000.0; // Setting price tag for School
+    netWorth = 1200000.0;
 }
 
 /**

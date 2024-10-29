@@ -5,7 +5,8 @@
  * @brief Constructor for DeptOfHousing.
  * @param initialBudget The initial budget allocated to the department.
  */
-DeptOfHousing::DeptOfHousing(double initialBudget) : budget(initialBudget) {}
+DeptOfHousing::DeptOfHousing(double initialBudget, DeptOfPR& pr) 
+    : budget(initialBudget), deptOfPR(pr) {}
 
 /**
  * @brief Helper function to handle building creation with budget validation.
@@ -161,5 +162,17 @@ double DeptOfHousing::getRemainingBudget() const {
 void DeptOfHousing::listBuildings() const {
     for (size_t i = 0; i < buildings.size(); ++i) {
         std::cout << i << ": " << buildings[i]->getName() << std::endl; // Assume getName() returns the building name
+    }
+}
+
+bool DeptOfHousing::requestFunding(double amount) {
+    std::cout << "Requesting additional funds from the DeptOfPR...\n";
+    if (deptOfPR.processFundingRequest(amount)) {
+        budget += amount;
+        std::cout << "Funding request approved. New budget: " << budget << "\n";
+        return true;
+    } else {
+        std::cerr << "Funding request denied.\n";
+        return false;
     }
 }

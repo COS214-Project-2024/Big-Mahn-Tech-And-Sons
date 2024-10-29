@@ -12,6 +12,7 @@
 #include <vector>
 #include <memory>
 #include <iostream> // For std::cout
+#include <utility>   // For std::pair
 
 #include "Element.h"
 #include "TaxManager.h"
@@ -23,21 +24,28 @@ class Citizen; ///< Forward declaration of Citizen class
  * @brief Base class for all types of buildings.
  *
  * This class provides the common attributes and functionalities for all building types,
- * including managing tenants, utilities, basic building operations, and grid placement.
+ * including managing tenants, utilities, and grid placement.
  */
+
 class Building {
 protected:
-    std::string name;                ///< Name of the building
-    int maxCapacity;                 ///< Maximum capacity of people in the building
-    double electricityMeterBox;      ///< Electric meter reading
-    double waterMeterBox;            ///< Water meter reading
-    double electricityUsage;         ///< Total electricity usage
-    double waterUsage;               ///< Total water usage
-    double waste;                    ///< Total waste produced
-    std::vector<Citizen*> tenants;   ///< Vector to store tenants or workers
-    int width;                       ///< Width of the building for grid placement
-    int length;                      ///< Length of the building for grid placement
-    double priceTag;                 ///< Price tag of the building
+    std::string name;                  ///< Name of the building
+    int maxCapacity;                   ///< Maximum capacity of people in the building
+    double electricityMeterBox;        ///< Electric meter reading
+    double waterMeterBox;              ///< Water meter reading
+    double electricityUsage;           ///< Total electricity usage
+    double waterUsage;                 ///< Total water usage
+    double wasteProduction;            ///< Total waste produced
+    std::vector<Citizen*> tenants;     ///< Vector to store tenants or workers
+    int width;                         ///< Width of the building for grid placement
+    int length;                        ///< Length of the building for grid placement
+    double priceTag;                   ///< Price tag of the building
+    double netWorth;                   ///< Net worth of the building
+    bool waterSupply;                  ///< Water supply status
+    bool powerSupply;                  ///< Power supply status
+
+    // Grid coordinates: four (x, y) points representing corners of the building
+    std::vector<std::pair<int, int>> gridCoordinates;
 
 public:
     /**
@@ -46,9 +54,13 @@ public:
      * @param maxCapacity Maximum capacity of the building.
      */
     Building(const std::string& name, int maxCapacity)
-        : name(name), maxCapacity(maxCapacity), electricityMeterBox(0.0), 
-          waterMeterBox(0.0), electricityUsage(0.0), waterUsage(0.0), 
-          waste(0.0), width(1), length(1), priceTag(0.0) {} 
+        : name(name), maxCapacity(maxCapacity), electricityMeterBox(0.0),
+          waterMeterBox(0.0), electricityUsage(0.0), waterUsage(0.0),
+          wasteProduction(0.0), width(1), length(1), priceTag(0.0),
+          netWorth(0.0), waterSupply(true), powerSupply(true) {}
+
+    // Virtual destructor to allow polymorphism
+    virtual ~Building() = default;
 
     /**
      * @brief Adds a tenant to the building.
@@ -85,6 +97,14 @@ public:
     }
 
     /**
+     * @brief Gets the grid coordinates of the building's corners.
+     * @return Vector of 4 (x, y) coordinate pairs.
+     */
+    std::vector<std::pair<int, int>> getGridCoordinates() const;
+
+    void setCoordinates(const std::vector<std::pair<int, int>>& coords);
+
+    /**
      * @brief Accepts visitors for the visitor pattern.
      * @param visitor A pointer to the visitor that will interact with the building.
      */
@@ -102,7 +122,7 @@ public:
         std::cout << "Water Meter: " << waterMeterBox << " L" << std::endl;
         std::cout << "Electricity Usage: " << electricityUsage << " kWh" << std::endl;
         std::cout << "Water Usage: " << waterUsage << " L" << std::endl;
-        std::cout << "Waste Produced: " << waste << " kg" << std::endl;
+        std::cout << "Waste Produced: " << wasteProduction << " kg" << std::endl;
         std::cout << "Dimensions (WxL): " << width << " x " << length << " units" << std::endl;
         std::cout << "Total Resource Usage: " << calculateResourceUsage() << " units" << std::endl;
         std::cout << "Tenants: ";
@@ -119,11 +139,18 @@ public:
     double getWaterMeterBox() const;
     double getElectricityUsage() const;
     double getWaterUsage() const;
-    double getWaste() const;
+    double getWasteProduction() const;
     const std::vector<Citizen*>& getTenants() const;
     int getWidth() const;
     int getLength() const;
     double getPriceTag() const;
+
+    int getCurrentOccupants() const {
+        return tenants.size();
+    }
+
+    double getNetWorth() const;
+
 
     // Setters
     void setName(const std::string& name);
@@ -135,6 +162,36 @@ public:
     void setWaste(double waste);
     void setWidth(int width);
     void setLength(int length);
+
+    // New method to subtract tax from net worth
+    void subtractTax(double amount) {
+        netWorth -= amount;
+    }
+
+    // Getter for net worth
+    double getNetWorth() const {
+        return netWorth;
+    }
+
+    virtual void consumeWater();
+    virtual void consumeElectricity();
+
+    virtual void waterCut() {
+        waterSupply = false;
+        waterMeterBox = 0.0;
+        std::cout << "Water supply cut at " << name << ".\n";
+    }
+
+    virtual void powerCut() {
+        powerSupply = false;
+        electricityMeterBox = 0.0;
+        std::cout << "Power supply cut at " << name << ".\n";
+    }
+
+    virtual void clearWaste() {
+        std::cout << name << " cleared " << wasteProduction << " kg of waste.\n";
+        wasteProduction = 0;
+    }
 };
 
 #endif // BUILDING_H
