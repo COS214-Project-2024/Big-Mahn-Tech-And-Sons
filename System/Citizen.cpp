@@ -5,6 +5,14 @@
 #include "SatisfactionState.h"
 #include "NeutralState.h"
 
+//
+#include "AirTrans.h"
+#include "Train.h"
+#include "Walk.h"
+#include "PublicTrans.h"
+
+
+
 #include <random>
 
 Citizen::Citizen(const std::string &nam, double happiness,int x , int y, DepartmentOfPR *PR)
@@ -128,7 +136,7 @@ void Citizen::becomeUnemployed()
 
 void Citizen::getNewJob()
 {
-   ///< @todo search through grid and find space in relevant node and set that as job
+   ///< @todo search through grid and find space in relevant Building and set that as job
 }
 
 void Citizen::setThreshhold(int age)
