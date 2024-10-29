@@ -7,47 +7,39 @@
 #define NATURAL_DISASTER_COMMAND_H
 
 #include "EventsCommand.h"
+#include "DeptOfHousing.h"
+#include "DeptOfTransport.h"
 
 /**
  * @class NaturalDisasterCommand
- * @brief Concrete command class for handling natural disaster events such as earthquakes, floods, and fires.
+ * @brief Command class for handling building damage, route blocking, and infrastructure repair during a natural disaster.
  */
 class NaturalDisasterCommand : public EventsCommand {
 public:
     /**
-     * @brief Damages buildings in the city.
+     * @brief Damages a percentage of buildings in the DeptOfHousing.
+     * @param deptOfHousing Reference to DeptOfHousing object managing the city's buildings.
      */
-    void damageBuildings();
+    void damageBuildings(DeptOfHousing& deptOfHousing);
 
     /**
-     * @brief Evacuates citizens from affected areas.
+     * @brief Blocks affected transport routes in the DeptOfTransport.
+     * @param deptOfTransport Reference to DeptOfTransport for route management.
      */
-    void evacuateCitizens();
+    void blockTransportRoutes(DeptOfTransport& deptOfTransport);
 
     /**
-     * @brief Repairs the damaged infrastructure.
+     * @brief Repairs damaged infrastructure within the DeptOfHousing.
+     * @param deptOfHousing Reference to DeptOfHousing for managing repairs.
      */
-    void repairInfrastructure();
+    void repairInfrastructure(DeptOfHousing& deptOfHousing);
 
     /**
-     * @brief Blocks transport routes that are affected by the disaster.
+     * @brief Executes the natural disaster response sequence.
+     * @param deptOfHousing Reference to DeptOfHousing for building management.
+     * @param deptOfTransport Reference to DeptOfTransport for transport route management.
      */
-    void blockTransportRoutes();
-
-    /**
-     * @brief Provides emergency services to affected citizens.
-     */
-    void provideEmergencyServices();
-
-    /**
-     * @brief Manages the aftermath and reconstruction efforts.
-     */
-    void manageAftermathReconstruction();
-
-       /**
-     * @brief starts/ends the command
-     */
-    void execute();
+    void execute(DeptOfHousing& deptOfHousing, DeptOfTransport& deptOfTransport);
 };
 
 #endif // NATURAL_DISASTER_COMMAND_H

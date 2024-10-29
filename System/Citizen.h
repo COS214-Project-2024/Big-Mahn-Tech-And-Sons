@@ -228,6 +228,11 @@ public:
      * @param roadNetwork Pointer to the road network.
      */
     void travelWithStrategy(RoadNetWork* roadNetwork);
+    
+    /**
+     * @brief This function return the health value or status of a certain citizens 
+     */
+    double getHealth() const;
 };
 
 #endif

@@ -38,7 +38,7 @@ class DepartmentOfPR
 private:
     HousingDept *housing;                  ///< Reference to the Housing Department.
     DepartmentUtilities *utilities;        ///< Reference to the Utilities Department.
-    DeptOfFinance *finance;                  ///< Reference to the Finance Department.
+                   ///< Reference to the Finance Department.
 
 public:
     /**
@@ -48,7 +48,7 @@ public:
      * @param utilitiesDept Pointer to the Utilities Department.
      * @param financeDept Pointer to the Finance Department.
      */
-    DepartmentOfPR(HousingDept *housingDept, DepartmentUtilities *utilitiesDept, DeptOfFinance *financeDept);
+    DepartmentOfPR(HousingDept *housingDept, DepartmentUtilities *utilitiesDept);
 
     /**
      * @brief Updates the state by checking both buildings and citizens.
