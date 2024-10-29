@@ -173,54 +173,86 @@ public:
         return netWorth;
     }
 
-    virtual void consumeWater(double amount)
-    {
-        if (amount >= waterUsage) {
-        // Enough water received to meet the full requirement
-        waterUsage = 0; // Reset as all needs are met
+    /**
+ * @brief Consumes water based on the specified amount and updates the building's water usage accordingly.
+ * 
+ * If the supplied amount is greater than or equal to the water requirement, the water usage is fully satisfied.
+ * Otherwise, only part of the requirement is met, and the remaining water need is updated.
+ * 
+ * @param amount The amount of water received by the building.
+ */
+virtual void consumeWater(double amount)
+{
+    if (amount >= waterUsage) {
+        waterUsage = 0; 
         std::cout << "Building: " << name << " has received enough water." << std::endl;
-        } else {
-        // Only part of the water requirement is met
-        waterUsage -= amount; // Decrease the unmet requirement
+    } else {
+        waterUsage -= amount;
         std::cout << "Building: " << name << " received partial water. Remaining need: " << waterUsage << " units." << std::endl;
     }
-    }
+}
 
-    virtual void consumeElectricity(double amount)
-    {
-        if (amount >= electricityUsage) 
-        {
-        // Enough electricity received to meet the full requirement
-        electricityUsage = 0; // Reset as all needs are met
+/**
+ * @brief Consumes electricity based on the specified amount and updates the building's electricity usage accordingly.
+ * 
+ * If the supplied amount is greater than or equal to the electricity requirement, the electricity usage is fully satisfied.
+ * Otherwise, only part of the requirement is met, and the remaining electricity need is updated.
+ * 
+ * @param amount The amount of electricity received by the building.
+ */
+virtual void consumeElectricity(double amount)
+{
+    if (amount >= electricityUsage) {
+        electricityUsage = 0;
         std::cout << "Building " << name << " has received enough electricity." << std::endl;
-        } else {
-        // Only part of the electricity requirement is met
-        electricityUsage -= amount; // Decrease the unmet requirement
+    } else {
+        electricityUsage -= amount;
         std::cout << "Building " << name << " received partial electricity. Remaining need: " << electricityUsage << " units." << std::endl;
     }
-    }
+}
 
-    virtual void waterCut() {
-        waterSupply = false;
-        waterMeterBox = 0.0;
-        std::cout << "Water supply cut at " << name << ".\n";
-    }
+/**
+ * @brief Cuts off the water supply to the building.
+ * 
+ * Disables the building's water supply and sets the water meter to zero.
+ */
+virtual void waterCut() {
+    waterSupply = false;
+    waterMeterBox = 0.0;
+    std::cout << "Water supply cut at " << name << ".\n";
+}
 
-    virtual void powerCut() {
-        powerSupply = false;
-        electricityMeterBox = 0.0;
-        std::cout << "Power supply cut at " << name << ".\n";
-    }
+/**
+ * @brief Cuts off the power supply to the building.
+ * 
+ * Disables the building's power supply and sets the electricity meter to zero.
+ */
+virtual void powerCut() {
+    powerSupply = false;
+    electricityMeterBox = 0.0;
+    std::cout << "Power supply cut at " << name << ".\n";
+}
 
-    virtual void clearWaste() {
-        std::cout << name << " cleared " << wasteProduction << " kg of waste.\n";
-        wasteProduction = 0;
-    }
+/**
+ * @brief Clears the waste produced by the building.
+ * 
+ * Resets the building's waste production to zero and outputs the amount cleared.
+ */
+virtual void clearWaste() {
+    std::cout << name << " cleared " << wasteProduction << " kg of waste.\n";
+    wasteProduction = 0;
+}
 
-    double getWasteAmount()
-    {
-        return wasteProduction;
-    }
+/**
+ * @brief Retrieves the current amount of waste produced by the building.
+ * 
+ * @return The amount of waste in tons.
+ */
+double getWasteAmount()
+{
+    return wasteProduction;
+}
+
 };
 
 #endif // BUILDING_H

@@ -18,8 +18,12 @@ void DeptOfUtilities::displayDepartmentInfo() {
     cout << "Resource Usage: " << resourceUsage << endl;
 }
 
+/**
+ * @brief Requests additional budget allocation from the government.
+ */
 void DeptOfUtilities::requestBudget()
 {
+
 }
 
 /**
