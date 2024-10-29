@@ -32,7 +32,7 @@ public:
      * @brief Constructor for DeptOfHousing.
      * @param initialBudget The initial budget allocated to the department.
      */
-    DeptOfHousing(double initialBudget);
+    DeptOfHousing(double initialBudget, DeptOfPR& pr);
 
     /**
      * @brief Creates a residential building if within budget.
