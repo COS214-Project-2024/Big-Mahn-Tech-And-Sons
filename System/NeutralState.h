@@ -1,5 +1,5 @@
-#ifndef SADSTATE_H
-#define SADSTATE_H
+#ifndef NEUTRALSTATE_H
+#define NEUTRALSTATE_H
 
 #include "SatisfactionState.h"
 #include <string>
@@ -7,9 +7,9 @@
 using namespace std;
 
 
-class SadState: public SatisfactionState {
+class NeutralState: public SatisfactionState {
    public:
-      // satisafcation < 45
+     // 45 <= satisfaction < 65
       void handle(Citizen* citizen) override;
       string getStateName() const override;
 };

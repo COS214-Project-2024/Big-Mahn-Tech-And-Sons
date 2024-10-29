@@ -1,3 +1,5 @@
+// Class defintion and implementation of Factory Method - ConcreteProduct (classification)
+
 /**
  * @file CommercialBuilding.h
  * @brief Declaration of the CommercialBuilding class.
@@ -11,23 +13,63 @@
 
 /**
  * @class CommercialBuilding
- * @brief Abstract base class for commercial buildings.
+ * @brief Abstract class representing commercial buildings.
+ *
+ * This class provides the shared attributes and operations for all commercial buildings,
+ * such as available jobs for shops and offices, available kid spaces at schools,
+ * and available beds in hospitals, while leaving implementation details to the subtypes.
  */
 class CommercialBuilding : public Building {
+protected:
+    int availableJobs;      ///< Number of available jobs (for shops and offices).
+    int availableKidsSpaces; ///< Number of available kids' spaces (for schools).
+    int availableBeds;      ///< Number of available beds (for hospitals).
+
 public:
-    using Building::Building; ///< Inherit constructors.
+    /**
+     * @brief Constructor for CommercialBuilding.
+     * @param name Name of the building.
+     * @param maxCapacity Maximum capacity of the building.
+     */
+    CommercialBuilding(const std::string& name, int maxCapacity)
+        : Building(name, maxCapacity),
+          availableJobs(maxCapacity),          // Initialize available jobs to max capacity
+          availableKidsSpaces(maxCapacity),    // Initialize available kids' spaces to max capacity
+          availableBeds(maxCapacity) {          // Initialize available beds to max capacity
+    }
 
     /**
-     * @brief Reports the resource usage for commercial buildings.
+     * @brief Displays the stats specific to commercial buildings.
      */
-    void reportResourceUsage() const override;
+    void displayStats() const override {
+        Building::displayStats();  // Call base class method
+        std::cout << "Available Jobs: " << availableJobs << std::endl;
+        std::cout << "Available Kids' Spaces: " << availableKidsSpaces << std::endl;
+        std::cout << "Available Beds: " << availableBeds << std::endl;
+    }
+
+    // Getters and Setters
+    int getAvailableJobs() const { return availableJobs; }
+    void setAvailableJobs(int jobs) { availableJobs = jobs; }
+
+    int getAvailableKidsSpaces() const { return availableKidsSpaces; }
+    void setAvailableKidsSpaces(int kidsSpaces) { availableKidsSpaces = kidsSpaces; }
+
+    int getAvailableBeds() const { return availableBeds; }
+    void setAvailableBeds(int beds) { availableBeds = beds; }
 
     /**
-     * @brief Accepts a visitor (TaxManager) to collect taxes from businesses.
-     * @param visitor The TaxManager visitor object.
+     * @brief Checks the availability of resources depending on the subtype.
+     * @return True if resources are available, otherwise false.
      */
-    void accept(TaxManager* visitor) override;
+    virtual bool checkAvailability() const = 0;
 
+    /**
+     * @brief Accepts visitors for the visitor pattern.
+     * This method remains virtual, to be overridden in the final building types.
+     * @param visitor A pointer to the visitor object.
+     */
+    virtual void accept(TaxManager* visitor) override = 0;
 };
 
 #endif // COMMERCIALBUILDING_H
