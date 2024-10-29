@@ -9,7 +9,7 @@
 #include "Resource.h"
 
 /**
- * @class Electricity
+ * @class Electricity 
  * @brief Represents electricity resource in the simulation.
  */
 class Electricity : public Resource {
@@ -23,3 +23,4 @@ public:
 };
 
 #endif // ELECTRICITY_H
+
