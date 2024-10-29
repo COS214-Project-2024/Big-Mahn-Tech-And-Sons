@@ -1,6 +1,6 @@
 /**
  * @file PowerSupply.h
- * @author Aundrea
+ * @author MissNcube
  * @brief Header file for the PowerSupply class, responsible for managing electricity generation and distribution in the city.
  *  
  *  Design Pattern used : Chain of responsibility
@@ -14,6 +14,9 @@
 #define POWERSUPPLY_H
 
 #include "DepartmentUtilities.h"
+#include "Building.h" // Make sure to include the Building class header
+#include "Electricity.h"
+#include "Request.h"
 
 /**
  * @class PowerSupply
@@ -23,6 +26,8 @@
 class PowerSupply : public DepartmentUtilities {
 private:
     double powerCapacity; /**< Total electricity capacity available for distribution. */
+    vector<Building*> buildings;  /**vector to store building  */
+    Electricity* powerResource;   /**< pointer to  the power resource. */
 
 public:
     /**
@@ -31,12 +36,7 @@ public:
      * @param budget The budget allocated to the power supply department.
      * @param capacity The initial power capacity available for the department.
      */
-    PowerSupply(string name, double budget, double capacity);
-
-    /**
-     * @brief Generates electricity to meet the city's demand.
-     */
-    void generatePower();
+    PowerSupply(string name, double budget, double capacity,  Electricity* powerResource);
 
     /**
      * @brief Distributes electricity across various sectors in the city.
@@ -59,10 +59,6 @@ public:
      */
     void increasePowerCapacity();
 
-    /**
-     * @brief Repairs power infrastructure such as power lines and transformers.
-     */
-    void repairPowerInfrastructure();
 
     /**
      * @brief Gets the current total power generation capacity.
@@ -76,7 +72,13 @@ public:
      *          checks if it can handle the request, if not, PowerSupply will pass it on
      *          to the next concreteHandler.
      */
-    void handleRequest();
+    void handleRequest(Request& req);
+
+    /**
+    * @brief Adds a building to the water supply system.
+    * @param b Pointer to the building to be added.
+    */
+    void addBuilding(Building * building);
 };
 
 #endif  // POWERSUPPLY_H

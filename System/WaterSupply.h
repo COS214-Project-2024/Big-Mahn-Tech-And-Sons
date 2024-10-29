@@ -1,6 +1,6 @@
 /**
  * @file WaterSupply.h
- * @author Aundrea
+ * @author MissNcube
  * @brief Header file for the WaterSupply class, responsible for managing water distribution and supply in the city.
  *  
  *  Design Pattern used : Chain of responsibility
@@ -14,6 +14,9 @@
 #define WATERSUPPLY_H
 
 #include "DepartmentUtilities.h"
+#include "Building.h"
+#include "Water.h"
+#include "Request.h"
 
 /**
  * @class WaterSupply
@@ -23,6 +26,8 @@
 class WaterSupply : public DepartmentUtilities {
 private:
     double waterCapacity; /**< Total water capacity available for distribution. */
+    vector<Building*> buildings;    /**< Vector to store buildings to be sourced  for water supply. */
+    Water* waterResource;   /**< pointer to  the water resource. */
 
 public:
     /**
@@ -31,7 +36,7 @@ public:
      * @param budget The budget allocated to the water supply department.
      * @param capacity The initial water capacity available for the department.
      */
-    WaterSupply(string name, double budget, double capacity);
+    WaterSupply(string name, double budget, double capacity, Water* waterResource);
 
     /**
      * @brief Distributes water to various sectors of the city based on demand.
@@ -49,20 +54,11 @@ public:
      */
     void waterShutDown();
 
-    /**
-     * @brief Refills the water supply to maintain adequate levels for the city.
-     */
-    void refillWater();
-
-    /**
-     * @brief Repairs damaged water infrastructure such as pipes or reservoirs.
-     */
-    void repairWaterInfrastructure();
 
     /**
      * @brief Increases the water storage capacity of the system.
      */
-    void increaseStorage();
+    void increaseWaterCapacity();
 
     /**
      * @brief Gets the current total water capacity.
@@ -76,7 +72,13 @@ public:
      *          checks if it can handle the request, if not, WaterSupply will pass it on
      *          to the next concreteHandler.
      */
-    void handleRequest();
+    void handleRequest(Request &req);
+
+    /**
+    * @brief Adds a building to the water supply system.
+    * @param b Pointer to the building to be added.
+    */
+    void addBuilding(Building *b);
 };
 
 #endif  // WATERSUPPLY_H

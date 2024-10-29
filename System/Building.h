@@ -11,6 +11,8 @@
 #include "Element.h"
 #include "TaxManager.h"
 
+class Request;
+
 class Node; ///< Forward declaration of Node class
 class Citizen; ///< Forward declaration of Citizen class
 

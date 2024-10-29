@@ -13,13 +13,32 @@
  * @brief Represents water resource in the simulation.
  */
 class Water : public Resource {
-public:
-    using Resource::Resource; ///< Inherit constructors.
+    private:
 
-    /**
-     * @brief Reports the current status of the water resource.
-     */
-    void reportStatus() const override;
-};
+        string name;
+        double amount;
+
+    public:
+
+        Water(){}
+        
+        Water(string  name, double amount);
+        /**
+         * @brief Gets the current amount of water.
+         * @return double Current water amount.
+         */
+        double getAmount() const;
+
+        /**
+         * @brief Deducts a specified amount from the available water.
+         * @param used Amount to be deducted.
+         */
+        void use(double used);
+
+        /**
+         * @brief Reports the current status of the water resource.
+         */
+        void reportStatus() const override;
+    };
 
 #endif // WATER_H

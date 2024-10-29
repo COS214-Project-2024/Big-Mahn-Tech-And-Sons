@@ -1,6 +1,6 @@
 /**
  * @file DepartmentUtilities.h
- * @author Aundrea
+ * @author MissNcube
  * @brief Header file for the DepartmentUtilities class that manages city utility 
  * departments like power, water, and waste management.
  * 
@@ -17,6 +17,11 @@
 #include <iostream>
 using namespace std;
 
+#include "DeptPR.h"
+#include  "Government.h"
+
+
+
 /**
  * @class DepartmentUtilities
  * @brief Base class for managing various city utility departments like power, water, and waste management.
@@ -26,6 +31,9 @@ private:
     string departmentName; /**< Name of the department (e.g., Power, Water, Waste Management). */
     double resourceUsage;  /**< The amount of resources used by the department. */
     double budget;         /**< The budget allocated to the department. */
+    DepartmentOfPR* PR;
+
+protected:
     DepartmentUtilities* successor;
 
 public:
@@ -61,7 +69,14 @@ public:
      *          the request or passing it along the chain to the next handler. It is in the
      *          inherited classes
      */
-    virtual void handleRequest() = 0;
+    virtual void handleRequest(Request &req) = 0;
+
+    /**
+     * @brief if DepartmentUtilities needs to talk to another department for whatever reason
+     */
+    void requestPR();
+
+    void setSuccessor(DepartmentUtilities *nextDepartment);
 
     //+++++++++++++++++========== FOR THE EVENT COMMAND +++++++++++++++++++++++++++++++
 
@@ -84,11 +99,6 @@ public:
      * @brief Reduces the resource usage of the department.
      */
     void reduceUsage();
-
-    /**
-     * @brief Repairs infrastructure related to the department.
-     */
-    void repairInfrastructure();
 
 };
 

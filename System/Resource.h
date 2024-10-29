@@ -21,13 +21,16 @@ protected:
     double amount; ///< The amount of the resource available.
 
 public:
+
+    Resource(){}
+
     /**
      * @brief Constructs a new Resource object.
      * 
      * @param name Name of the resource.
      * @param amount Initial amount of the resource.
      */
-    Resource(const std::string& name, double amount);
+    Resource( std::string& name, double amount);
 
     /**
      * @brief Destroys the Resource object.
