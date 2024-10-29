@@ -3,14 +3,15 @@
  * @brief Declaration of the DepartmentOfTransportation class.
  */
 
-#ifndef DEPARTMENTOFTRANSPORTATION_H
-#define DEPARTMENTOFTRANSPORTATION_H
+#ifndef DEPTTRANSPORTATION_H
+#define DEPTTRANSPORTATION_H
  
 #include <string>
 #include "RoadNetWork.h"
 #include "BuildingIterator.h"
 
 class Citizen;
+class RoadNetwork;
 
 /**
  * @class DepartmentOfTransportation
@@ -28,7 +29,7 @@ public:
      * 
      * @param roadNetwork Pointer to the road network.
      */
-    DepartmentOfTransportation(RoadNetwork* roadNetwork);
+    DepartmentOfTransportation();
 
     /**
      * @brief Destroys the DepartmentOfTransportation object.
@@ -40,7 +41,7 @@ public:
      * 
      * @return RoadNetwork* Pointer to the road network.
      */
-    RoadNetwork* getRoadNetwork() const;
+    const RoadNetwork* getRoadNetwork();
 
     /**
      * @brief Notifies the department of a transportation problem.
@@ -84,7 +85,6 @@ public:
      * @brief Gets an iterator for traversing buildings in the road network.
      * @return BuildingIterator object for building traversal.
      */
-    BuildingIterator getBuildingIterator() const;
 };
 
-#endif 
+#endif /* DeptTransportation_h */
