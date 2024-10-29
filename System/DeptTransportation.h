@@ -15,6 +15,8 @@ public:
     void printRoadGrid();   //prints the road grid, roads only
     const vector<vector<Cell>> getRoadGrid();   //returns a constant road grid vector , roads
     const vector<vector<Cell>> getCityGrid();   //returns a constant city grid vector , roads and buildings
+    int grid_num_rows();
+    int grid_num_cols();
 };
 
 #endif /* DeptTransportation_h */

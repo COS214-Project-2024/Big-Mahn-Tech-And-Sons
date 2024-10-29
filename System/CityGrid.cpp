@@ -1,5 +1,7 @@
 #include "CityGrid.h"
 
+
+
 Cell::Cell(int row_value, int col_value, string cardinal_point)
 {
     this->cell_row_value = row_value;
@@ -33,6 +35,16 @@ void Cell::updateStreetName(string streetName)
 {
     if(street_name!=streetName)
     street_name = streetName;
+}
+
+int Cell::getRow() const
+{
+return cell_row_value;
+}
+
+int Cell::getCols() const
+{
+    return cell_col_value;
 }
 
 const string Cell::getStreetName()
@@ -244,6 +256,131 @@ bool CityGrid::addRoad(int start_row, int start_col, int length, string directio
 
 }
 
+bool CityGrid::addBuilding(Building * building, int row, int col, int width, int height)
+{
+         // Ensure building fits within grid bounds
+    if (row + height > grid_num_rows || col + width > grid_num_cols) return false;
+
+    // Check for overlap with other buildings
+    for (int r = row; r < row + height; ++r) {
+        for (int c = col; c < col + width; ++c) {
+            if ((*citygrid)[r][c].getAttribute() == 'B') return false;
+
+        }
+    }
+
+     // Check if the area is clear
+     for (int i = row; i < row + height && i < grid_num_rows; i++) {
+        for (int j = col; j < col + width && j < grid_num_cols; j++) {
+            if ((*citygrid)[i][j].getAttribute() != '.') {
+                return false; // Space is occupied
+            }
+        }
+    }
+
+    // Place building in the specified area
+    for (int r = row; r < row + height; ++r) {
+        for (int c = col; c < col + width; ++c) {
+            (*citygrid)[r][c].changeAttribute('B'); // Mark cells as building
+        }
+    }
+    
+   
+
+      // Update building position
+    building->setPosition(row, col);
+    buildings.push_back(building);
+    buildingMap[building->getName()] = building;
+    
+    return true;
+}
+
+
+
+bool CityGrid::removeBuilding( int row, int col, int width, int height)
+{
+
+}
+
+Cell * CityGrid::findCell(Building * building)
+{
+      // Assuming each building has a specific row/col it starts at:
+    int row = building->getRow();  // Hypothetical getter function in Building
+    int col = building->getCol();  // Hypothetical getter function in Building
+    
+    if (row >= 0 && row < grid_num_rows && col >= 0 && col < grid_num_cols) {
+        return &(*citygrid)[row][col];
+    }
+    return nullptr;
+}
+
+
+
+
+
+ std::vector<Cell> CityGrid::travel(const Cell& start, const Cell& destination)
+ {
+    std::vector<std::vector<bool>> visited(grid_num_rows, std::vector<bool>(grid_num_cols, false));
+    std::queue<std::pair<Cell, std::vector<Cell>>> q;
+    
+    q.push({start, {start}});
+    visited[start.getRow()][start.getCols()] = true;
+
+    while (!q.empty()) {
+        Cell current = q.front().first;
+        std::vector<Cell> currentPath = q.front().second;
+        q.pop();
+
+        if (current.getRow() == destination.getRow() && 
+            current.getCols() == destination.getCols()) {
+            return currentPath;
+        }
+
+        for (const Cell& neighbor : getNeighbors(current)) {
+            if (!visited[neighbor.getRow()][neighbor.getCols()]) {
+                visited[neighbor.getRow()][neighbor.getCols()] = true;
+                std::vector<Cell> newPath = currentPath;
+                newPath.push_back(neighbor);
+                q.push({neighbor, newPath});
+            }
+        }
+    }
+    return {};
+ }
+
+
+bool CityGrid::isValidRoad(int row, int col) {
+  if (row < 0 || row >= grid_num_rows || col < 0 || col >= grid_num_cols) {
+        return false;
+    }
+    return (*citygrid)[row][col].getAttribute() == 'R';
+}
+
+
+
+std::vector<Cell> CityGrid::getNeighbors(const Cell& cell)
+{
+     std::vector<Cell> neighbors;
+    int row = cell.getRow();
+    int col = cell.getCols();
+    
+    // Define possible moves (up, down, left, right)
+    const int dr[] = {-1, 1, 0, 0};
+    const int dc[] = {0, 0, -1, 1};
+    
+    for (int i = 0; i < 4; i++) {
+        int newRow = row + dr[i];
+        int newCol = col + dc[i];
+        
+        if (isValidRoad(newRow, newCol)) {
+            neighbors.push_back((*citygrid)[newRow][newCol]);
+        }
+    }
+    
+    return neighbors;   
+}
+
+
 bool CityGrid::removeRoad(int start_row, int start_col, int length, string direction)
 {
     if(start_row<0 || start_col<0 || length<0){return false;}
@@ -425,3 +562,12 @@ void CityGrid::printCityRoads()
     }
 }
 
+int CityGrid::getNumRows()
+{
+    return this->grid_num_rows;
+}
+
+int CityGrid::getNumCols()
+{
+    return this->grid_num_cols;
+}
