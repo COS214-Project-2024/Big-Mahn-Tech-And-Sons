@@ -8,6 +8,14 @@
 
 #include <string>
 #include <vector>
+#include "Dept.Transportation.h"
+#include "DeptOfFinance.h"
+#include "DeptPR.h"
+#include "DepartmentUtilities.h"
+#include "HousingDept.h"
+#include "Citizen.h"
+#include "EventsCommand.h"
+
 
 
 
@@ -29,8 +37,33 @@ public:
     /**
      * @brief Destroys the Government object.
      */
-    ~Government();
+    //~Government();
+    
+    /**
+     * @brief Main simulation loop
+     * 
+     *  */ 
+    void runSim();
 
+private:
+    ///< @brief Departments managed by the Government facade
+
+    DepartmentOfPR PR;
+   // DepartmentUtilities utilities;
+    DeptOfFinance finance;
+    HousingDept housing;
+
+    // Simulation status
+    bool simulationIsActive;
+
+    // Handles random events affecting the city
+    EventsCommand eventsCommand;
+
+    // Simulation methods
+    void handleCitizenNeeds();
+    void manageResources();
+    void evaluatePolicies();
+    void triggerRandomEvents();
 
 };
 

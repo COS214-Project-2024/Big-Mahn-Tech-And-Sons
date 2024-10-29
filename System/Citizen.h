@@ -14,7 +14,7 @@
 #include "ModeOfTrans.h"
 #include "cStates.h"
 #include "GoToCommand.h"
-#include "DeptPR.h"
+#include "DeptOfPR.h"
 
 class Building;
 class RoadNetWork;
@@ -30,20 +30,20 @@ class SatisfactionState;
  */
 class Citizen {
 private:
-    std::string name; ///< Name of the citizen */
-    ModeOfTrans* modeOfTransport; ///< Current mode of transport */
-    // Node* currentLocation; /< Current building location */
-    // Node* workLocation; /<Citizen's work location */
-    // Node* homeLocation; /<Citizen's home location */
-    DepartmentOfPR*  PR; //<Reference to government's PPR */
+    std::string name; /**< Name of the citizen */
+    ModeOfTrans* modeOfTransport; /**< Current mode of transport */
+    // Node* currentLocation; /**< Current building location */
+    // Node* workLocation; /**<Citizen's work location */
+    // Node* homeLocation; /**<Citizen's home location */
+    DepartmentOfPR*  PR; /**<Reference to government's PPR */
     GoToCommand* go;
-    CitizenState* state; ///< Current state of the citizen */
-    SatisfactionState* satisState; ///< Current satisfaction state of citizen */
-    int age; ///< Age of the citizen */
-    int ageThreshhold = 0; ///Maximum age the citizen will get before death/
-    double budget; ///< Budget of the citizen */
-    double health;///<Health of the citizen */
-    double satisfaction; ///< Happiness of the citizen */
+    CitizenState* state; /**< Current state of the citizen */
+    SatisfactionState* satisState; /**< Current satisfaction state of citizen */
+    int age; /**< Age of the citizen */
+    int ageThreshhold = 0; /*Maximum age the citizen will get before death*/
+    double budget; /**< Budget of the citizen */
+    double health;/**<Health of the citizen */
+    double satisfaction; /**< Happiness of the citizen */
 
 public:
     /**

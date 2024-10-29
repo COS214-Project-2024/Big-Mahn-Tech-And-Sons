@@ -59,11 +59,9 @@ void Citizen::getOlder()
 
 void Citizen::notifyPR()
 {
-   if(true) { // problem with finances
-      this->PR->notifyTaxman();
-   } else if(true) { // problem with utility
-      this->PR->notifyUtilities();
-   }
+   if((getSatisfactionLevelName() == "Neutral" || getSatisfactionLevelName() == "Sad") && getBudget()/100000 * 100 < 0.6 ) { // problem with finances
+      this->PR->update(this);
+   } 
 }
 
 int Citizen::getAge()
@@ -203,4 +201,4 @@ void Citizen::setModeOfTransport(ModeOfTrans *mode)
 // void Citizen::travelWithStrategy(RoadNetWork *roadNetwork)
 // {
 //    //this->modeOfTransport->
-}
+// }

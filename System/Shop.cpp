@@ -18,6 +18,7 @@ Shop::Shop(const std::string& name, int maxCapacity)
     waterUsage = 0.0;
     waste = 0.0;
     priceTag = 100000.0; // Setting price tag for Shop
+    netWorth = 80000.0;
 }
 
 /**

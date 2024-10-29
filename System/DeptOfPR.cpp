@@ -1,4 +1,4 @@
-#include "DeptPR.h"
+#include "DeptOfPR.h"
 #include "DeptOfFinance.h"
 #include "DepartmentUtilities.h"
 #include "HousingDept.h"
@@ -37,9 +37,18 @@ void DepartmentOfPR::notifyUtilities()
 
 void DepartmentOfPR::notifyTaxman()
 {
-   if(true) { /*condition to check if economy can afford to lower taxes */
-      this->finance->decreaseTaxes();
-   } else {
-      return;
-   }
+ // Economic conditions
+    bool healthyEconomy = this->finance->checkMoney(); // e.g., >2.5% GDP growth
+
+    // Decision making to decrease taxes
+    if (healthyEconomy) {
+        this->finance->decreaseTaxes();
+        std::cout << "Taxes have been lowered based on economic conditions and citizen feedback." << std::endl;
+
+    // Decision making to increase taxes
+    } else  {
+        this->finance->increaseTaxes(10);
+        std::cout << "Taxes have been increased to support government funding needs." << std::endl;
+
+    }
 }
