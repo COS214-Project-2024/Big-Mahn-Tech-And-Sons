@@ -1,3 +1,5 @@
+// Class definition of Factory Method - ConcreteProduct (subtype)
+
 /**
  * @file Estate.h
  * @brief Declaration of the Estate class.
@@ -10,13 +12,37 @@
 
 /**
  * @class Estate
- * @brief Represents an estate in the simulation.
+ * @brief Represents a residential estate with luxury features.
  */
 class Estate : public ResidentialBuilding {
-public:
-    using ResidentialBuilding::ResidentialBuilding; ///< Inherit constructors.
+private:
+    int numFloors;          ///< Number of floors in the estate.
+    bool hasSwimmingPool;   ///< Indicates if the estate has a swimming pool.
 
-    void reportResourceUsage() const override;
+public:
+    /**
+     * @brief Default constructor for Estate.
+     * Initializes with unique default values.
+     */
+    Estate();
+
+    /**
+     * @brief Displays the stats specific to the estate.
+     */
+    void displayStats() const override;
+
+    /**
+     * @brief Accepts a visitor for the visitor pattern.
+     * @param visitor A pointer to the TaxManager visitor.
+     */
+    void accept(TaxManager* visitor) override;
+
+    // Getters and Setters
+    int getNumFloors() const;
+    void setNumFloors(int floors);
+
+    bool getHasSwimmingPool() const;
+    void setHasSwimmingPool(bool pool);
 };
 
 #endif // ESTATE_H

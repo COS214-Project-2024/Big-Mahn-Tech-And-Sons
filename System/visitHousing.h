@@ -11,6 +11,7 @@
  * @class visitHousing
  * @brief ConcreteVisitor class for housing taxation.
  */
+class TaxManager;
 class visitHousing : public TaxManager {
 public:
     void visitBuilding(Building* building) override;
