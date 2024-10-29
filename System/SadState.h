@@ -9,6 +9,7 @@ using namespace std;
 
 class SadState: public SatisfactionState {
    public:
+      // satisafcation < 45
       void handle(Citizen* citizen) override;
       string getStateName() const override;
 };

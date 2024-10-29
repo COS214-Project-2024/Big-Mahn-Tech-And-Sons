@@ -35,10 +35,12 @@ class Water : public Resource {
          */
         void use(double used);
 
-        /**
-         * @brief Reports the current status of the water resource.
-         */
-        void reportStatus() const override;
-    };
+    /**
+     * @brief Reports the current status of the water resource.
+     */
+    void reportStatus() const override;
+
+    //have a function that produces more water fpr a specific building 
+};
 
 #endif // WATER_H

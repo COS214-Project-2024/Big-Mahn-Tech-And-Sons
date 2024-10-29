@@ -127,6 +127,11 @@ public:
      * @param budget Pointer to the budget resource to visit.
      */
     void visitBudget(Budget* budget);
+
+
+    void collect(CommercialBuilding* building);
+
+    void collect(ResidentialBuilding* building);
 };
 
 #endif // TAXMANAGER_H

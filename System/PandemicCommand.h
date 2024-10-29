@@ -7,13 +7,18 @@
 #define PANDEMIC_COMMAND_H
 
 #include "EventsCommand.h"
+#include "Citizen.h" 
 
 /**
  * @class PandemicCommand
  * @brief Concrete command class that handles pandemic-related events.
  */
 class PandemicCommand : public EventsCommand {
+  private:
+    std::vector<Citizen*> citizens; // List of citizens affected by the pandemic
+
 public:
+    PandemicCommand(const std::vector<Citizen*>& citizens);
     /**
      * @brief Imposes a lockdown in the city.
      */

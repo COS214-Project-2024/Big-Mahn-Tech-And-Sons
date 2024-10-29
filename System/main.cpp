@@ -1,34 +1,30 @@
-#include "PowerSupply.h"
-#include "WaterSupply.h"
-#include "WasteManagement.h"
-#include "Request.h"
-#include "Building.h"
-#include "Electricity.h"
-#include "Water.h"
+#include <iostream>
+#include "Citizen.h"
+#include "ResidentialBuildingCreator.h"
+#include "CommercialBuildingCreator.h"
+#include "visitHousing.h"
+#include "Budget.h"
 
 int main() {
-    // Create resources and buildings
-    Electricity *powerResource;
-    Water *waterResource;
-    Building *buildingA;
-    Building *buildingB;
+    // Create a budget
+    Budget cityBudget(10000);
+    cityBudget.reportStatus();
 
-    // Create departments
-    PowerSupply powerDept("Power Department", 10000, 5000, powerResource);
-    WaterSupply waterDept("Water Department", 8000, 3000, waterResource);
-    WasteManagement wasteDept("Waste Management", 5000, 200);
+    // Create a residential building and citizen
+    ResidentialBuildingCreator resCreator;
+    auto house = resCreator.createBuilding("House");
+    Citizen john("John Doe", 75, 0, 0, nullptr);
+    
+    // Add citizen to residential building (mocking some functionality)
+    house->addResident(&john);
 
-    // Set up the chain of responsibility
-    powerDept.setSuccessor(&waterDept);
-    waterDept.setSuccessor(&wasteDept);
+    // Create tax manager and collect taxes
+    visitHousing taxManager;
+    house->accept(&taxManager);
+    cityBudget.accept(&taxManager);
 
-    // Create requests
-    Request powerRequest(Request::Type::POWER, buildingA, 200);
-    Request waterRequest(Request::Type::WATER, buildingB, 150);
-
-    // Process requests
-    powerDept.handleRequest(powerRequest);
-    powerDept.handleRequest(waterRequest);
+    // Report budget status after tax collection
+    cityBudget.reportStatus();
 
     return 0;
 }
