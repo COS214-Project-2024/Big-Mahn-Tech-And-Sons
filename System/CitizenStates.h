@@ -25,7 +25,7 @@ public:
     /**
      * @brief Virtual destructor.
      */
-    virtual ~CitizenState() {}
+    //virtual ~CitizenState() {}
 
     virtual void handle(Citizen* citizen) = 0;
     /**

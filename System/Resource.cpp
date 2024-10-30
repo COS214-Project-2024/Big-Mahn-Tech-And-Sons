@@ -2,8 +2,8 @@
 #include "Budget.h"
 #include <iostream>
 
-Resource::Resource(const std::string& resourceName, double resourceAmount)
-    : name(resourceName), amount(resourceAmount) {}
+Resource::Resource(const std::string& name, double amount) 
+    : name(name), amount(amount) {} 
 
 std::string Resource::getName() const {
     return name;
@@ -26,8 +26,6 @@ void Resource::removeAmount(double removalAmount) {
 }
 
 void Resource::visitBudget(Budget* budget) {
-    // Transfer a portion of the resource amount to the budget
-    double transferAmount = amount * 0.1; // Example: transfer 10%
-    budget->setTotalBudget(budget->getTotalBudget() + transferAmount);
-    std::cout << "Transferred " << transferAmount << " from " << name << " to budget." << std::endl;
+    // Default implementation - can be overridden by derived classes
+    budget->setTotalBudget(budget->getTotalBudget() + getCollectedTaxes());
 }

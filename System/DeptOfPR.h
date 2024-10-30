@@ -32,7 +32,9 @@ private:
     DeptOfHousing *housing;                  ///< Reference to the Housing Department.
     DeptOfUtilities *utilities;        ///< Reference to the Utilities Department.
     DeptOfFinance *finance;                  ///< Reference to the Finance Department.
+    std::vector<Citizen*> citizens; ///< List of citizens to notify.
 
+    
 public:
     /**
      * @brief Constructs the Department of PR with references to other departments.
@@ -102,6 +104,12 @@ public:
      * @note Taxman is either notified to try to lower taxes or improve economic health
      */
     void notifyTaxman();
+
+
+    /**
+     * 
+     */
+   void promoteFestival();
 };
 
 #endif // DEPTOFPR_H

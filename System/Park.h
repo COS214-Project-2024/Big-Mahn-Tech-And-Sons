@@ -65,6 +65,8 @@ public:
      * @return The number of playgrounds.
      */
     int getPlaygroundCount() const;
+
+    std::shared_ptr<Building> clone() const override;
 };
 
 #endif // PARK_H

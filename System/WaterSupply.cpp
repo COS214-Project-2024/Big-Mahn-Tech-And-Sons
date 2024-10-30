@@ -18,22 +18,22 @@ void WaterSupply::addBuilding(Building *building)
  */
 WaterSupply::~WaterSupply()
 {
-    // Delete the water resource if it was dynamically allocated
-    if (waterResource)
-    {
-        delete waterResource;
-    }
+    // // Delete the water resource if it was dynamically allocated
+    // if (waterResource)
+    // {
+    //     delete waterResource;
+    // }
 
-    // Iterate through the vector of buildings and delete each one if it was dynamically allocated
-    for (Building *building : buildings)
-    {
-        if (building)
-        {
-            delete building;
-        }
-    }
-    // Clear the vector to ensure it does not hold dangling pointers
-    buildings.clear();
+    // // Iterate through the vector of buildings and delete each one if it was dynamically allocated
+    // for (Building *building : buildings)
+    // {
+    //     if (building)
+    //     {
+    //         delete building;
+    //     }
+    // }
+    // // Clear the vector to ensure it does not hold dangling pointers
+    // buildings.clear();
 }
 
 /**

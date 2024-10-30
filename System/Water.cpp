@@ -1,6 +1,6 @@
 #include "Water.h"
 
-Water::Water(string name, double amount) : name(name), amount(amount) {}
+Water::Water(std::string name, double amount) : name(name), amount(amount) {}
 
 double Water::getAmount() const
 {
@@ -17,9 +17,4 @@ void Water::use(double used)
     {
         amount = 0; // Set amount to 0 if not enough is available
     }
-}
-
-void Water::reportStatus() const
-{
-    std::cout << "Water: " << amount << " kiloliters" << std::endl;
 }

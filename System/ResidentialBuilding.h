@@ -51,6 +51,25 @@ public:
      * @param visitor A pointer to the visitor object.
      */
     virtual void accept(TaxManager* visitor) = 0;
+
+
+    /**
+ * @brief Clones the ResidentialBuilding to create a new instance with identical properties.
+ * 
+ * This implementation supports the Prototype pattern by creating a copy of the building.
+ * 
+ * @return A shared pointer to the cloned ResidentialBuilding instance.
+ */
+ std::shared_ptr<Building> clone() const;
+
+/**
+ * @brief Repairs the residential building.
+ * 
+ * This method provides specific repair actions for a ResidentialBuilding instance.
+ */
+void ResidentialBuilding::repair() {
+    std::cout << "Repairing residential building: " << getName() << "\n";
+}
 };
 
 #endif // RESIDENTIALBUILDING_H

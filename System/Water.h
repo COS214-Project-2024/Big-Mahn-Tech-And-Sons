@@ -12,7 +12,7 @@
  * @class Water
  * @brief Represents water resource in the simulation.
  */
-class Water : public Resource {
+class Water {
     private:
 
         std::string name;
@@ -34,11 +34,6 @@ class Water : public Resource {
          * @param used Amount to be deducted.
          */
         void use(double used);
-
-    /**
-     * @brief Reports the current status of the water resource.
-     */
-    void reportStatus() const override;
 
     //have a function that produces more water fpr a specific building 
 };

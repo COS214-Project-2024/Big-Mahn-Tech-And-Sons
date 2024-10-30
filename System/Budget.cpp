@@ -1,9 +1,11 @@
 #include "Budget.h"
+#include "Element.h"
+#include "TaxManager.h"
 #include <iostream>
 
 Budget::Budget(float initialBudget) : totalBudget(initialBudget) {}
 
-Budget::~Budget() {}
+// Budget::~Budget() {}
 
 void Budget::reportStatus() const {
     std::cout << "Current budget: " << totalBudget << std::endl;
