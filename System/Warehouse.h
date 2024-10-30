@@ -35,6 +35,7 @@ public:
      * @return True if space is available, otherwise false.
      */
     bool hasStorageSpace() const;
+    bool checkProductionCapacity() const;
 
     /**
      * @brief Accepts visitors for the visitor pattern.

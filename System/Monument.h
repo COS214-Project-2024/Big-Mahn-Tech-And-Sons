@@ -19,10 +19,10 @@ public:
      * @brief Constructor for Monument.
      * @param name Name of the monument.
      * @param maxCapacity Maximum visitor capacity.
-     * @param significance Historical significance of the monument.
      * @param yearEstablished Year the monument was established.
      * @param heritageStatus Whether the monument is a heritage site.
      */
+    Monument(const std::string& name, int maxCapacity, int yearEstablished, 
     Monument(const std::string& name, int maxCapacity, int yearEstablished, 
              bool heritageStatus);
 
@@ -40,6 +40,8 @@ public:
 
     int getYearEstablished() const;
     void setYearEstablished(int year);
+
+    std::shared_ptr<Building>clone() const override;
 };
 
 #endif // MONUMENT_H

@@ -82,3 +82,9 @@ void Museum::setEntryFee(double fee) {
         std::cerr << "Error: Entry fee cannot be negative." << std::endl;
     }
 }
+
+
+
+std::shared_ptr<Building>Museum:: clone() const  {
+        return std::make_shared<Museum>(*this);  // Clone this School
+    }

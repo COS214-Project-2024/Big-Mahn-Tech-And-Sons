@@ -24,6 +24,8 @@ protected:
     int availableJobs;      ///< Number of available jobs (for shops and offices).
     int availableKidsSpaces; ///< Number of available kids' spaces (for schools).
     int availableBeds;      ///< Number of available beds (for hospitals).
+    bool closed;  // Indicates whether the building is closed due to recession
+
 
 public:
     /**
@@ -73,6 +75,43 @@ public:
      * @param visitor A pointer to the Taxmanager object.
      */
     virtual void accept(TaxManager* visitor) = 0;
+
+    /**
+     * @brief jecks if the buildings are closed due to recession 
+     * It just sets the closed variables to true and sets the availavble jobs and beds to zero 
+     */
+    void closeBuilding() {
+        if (!closed) {
+            closed = true;
+            availableJobs = 0;
+            availableKidsSpaces = 0;
+            availableBeds = 0;
+            std::cout << "CommercialBuilding: " << getName() << " has been closed due to recession." << std::endl;
+            // GUI: Mark the building as closed (e.g., gray out the building icon)
+            // GUI: Add "Closed" label to indicate status
+        } else {
+            std::cout << "CommercialBuilding: " << getName() << " is already closed." << std::endl;
+        }
+    }
+
+    void reopenBuilding() {
+        if (closed) {
+            closed = false;
+            availableJobs = maxCapacity;
+            availableKidsSpaces = maxCapacity;
+            availableBeds = maxCapacity;
+            std::cout << "CommercialBuilding: " << getName() << " has been reopened." << std::endl;
+            // GUI: Remove "Closed" label and restore normal icon colors
+        } else {
+            std::cout << "CommercialBuilding: " << getName() << " is already open." << std::endl;
+        }
+    }
+
+    bool isClosed() const {
+        return closed;
+    }
+
+    std::shared_ptr<Building>clone() const;
 };
 
 #endif // COMMERCIALBUILDING_H

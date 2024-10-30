@@ -44,7 +44,7 @@ public:
     /**
      * @brief Virtual destructor for LandmarkBuilding.
      */
-    virtual ~LandmarkBuilding() = default;
+    // virtual ~LandmarkBuilding() = default;
 
     /**
      * @brief Displays the stats specific to a landmark building.

@@ -7,6 +7,7 @@
 #include <vector>
 #include "Element.h"
 #include "TaxManager.h"
+#include "Building.h"
 
 /**
  * @class DeptOfFinance

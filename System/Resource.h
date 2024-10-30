@@ -3,11 +3,9 @@
  * @brief Declaration of the Resource class.
  */
 
-#ifndef RESOURCE_H
-#define RESOURCE_H
-
-#include <string>
+#pragma once
 #include "TaxManager.h"
+#include "Budget.h"
 
 /**
  * @class Resource
@@ -17,7 +15,7 @@
  */
 
 
-class Resource: public TaxManager {
+class Resource : public TaxManager {
 protected:
     std::string name; ///< The name of the resource.
     double amount; ///< The amount of the resource available.
@@ -40,7 +38,7 @@ public:
     /**
      * @brief Destroys the Resource object.
      */
-    virtual ~Resource() {}
+    // virtual ~Resource() {}
 
     /**
      * @brief Gets the name of the resource.
@@ -80,5 +78,3 @@ public:
     void visitBudget(Budget* budget);
 
 };
-
-#endif // RESOURCE_H

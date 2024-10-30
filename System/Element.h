@@ -9,12 +9,12 @@
 class TaxManager;
 
 /**
- * @class Element
+ * @class Element 
  * @brief Base class for elements that accept a visitor.
  */
 class Element {
 public:
-    virtual ~Element() {}
+    // virtual ~Element() {}
     
     /**
      * @brief Accepts a visitor.
@@ -23,5 +23,3 @@ public:
      */
     virtual void accept(TaxManager* visitor) = 0;
 };
-
-#endif // ELEMENT_H

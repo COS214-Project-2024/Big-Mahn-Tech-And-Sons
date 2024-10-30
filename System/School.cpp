@@ -44,3 +44,7 @@ bool School::checkAvailability() const {
 void School::accept(TaxManager* visitor) {
     visitor->visitCommercialBuilding(this);
 }
+
+std::shared_ptr<Building> School::clone() const  {
+        return std::make_shared<School>(*this);  // Clone this School
+    }

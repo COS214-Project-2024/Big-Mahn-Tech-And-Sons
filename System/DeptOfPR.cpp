@@ -92,3 +92,24 @@ void DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure 
       std::cout << "Taxes have been increased to support government funding needs." << std::endl;
    }
 }
+
+
+/**
+     * @brief Promotes the city-wide festival to citizens and other departments.
+     */
+    void DeptOfPR :: promoteFestival() {
+        std::cout << "🎉 The city is excited to announce an upcoming festival! 🎉" << std::endl;
+        
+        // Notify each citizen about the festival
+        for (Citizen* citizen : citizens) {
+            citizen->increaseSatisfaction(10);  // Increase satisfaction for attending the festival
+            std::cout << "Notifying " << citizen->getName() << " about the festival!" << std::endl;
+        }
+
+        // Optionally notify other departments about the festival
+        notifyUtilities(); // Ensure utilities are prepared for increased demand
+      //   notifyHousingToRemove(nullptr); // You can specify logic if needed, not sure if this is needed 
+        
+        // Print an overall summary of the festival promotion
+        std::cout << "Festival promotion completed successfully!" << std::endl;
+    }

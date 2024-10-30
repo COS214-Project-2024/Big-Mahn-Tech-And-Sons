@@ -24,7 +24,7 @@
 class EventsCommand {
 public:
 
-    virtual ~EventsCommand() = default;
+    // virtual ~EventsCommand() = default;
 
     /**
      * @brief will execute/start relevant command

@@ -77,3 +77,7 @@ void Park::setPlaygroundCount(int count) {
 int Park::getPlaygroundCount() const {
     return playgroundCount;
 }
+
+std::shared_ptr<Building>Park ::clone() const  {
+        return std::make_shared<Park>(*this);  // Clone this School
+    }

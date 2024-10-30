@@ -1,3 +1,4 @@
+// Request.h
 #ifndef REQUEST_H
 #define REQUEST_H
 
@@ -17,6 +18,18 @@ public:
 
     string getType();
     Building* getBuilding();
+
+    /**
+     * @brief Get the amount of the requested resource.
+     * @return The amount of resource requested.
+     */
     double getAmount();
+
+    // ~Request();
+
+private:
+    std::string type;       /**< The type of request (e.g., "WATER", "POWER", "WASTE"). */
+    Building* building;     /**< Pointer to the building instance making the request. */
+    double amount;          /**< The amount of the resource requested. */
 };
 #endif // REQUEST_H

@@ -84,7 +84,7 @@ public:
     /**
      * @brief Destructor to clean up resources.
      */
-    ~DeptOfHousing() = default;
+    // ~DeptOfHousing() = default;
 
     int findBuildingIndex(const std::string& name) const; // New method
     std::string findBuildingIndex(int i) const;
@@ -92,6 +92,9 @@ public:
     void listBuildings() const; // New method to list buildings
 
     bool requestFunding(double amount);  // Modified to request via DeptOfPR
+
+    std::string DeptOfHousing::getBuildingName(int index) const;  //This  will be used for the natural Disster Command 
+    void DeptOfHousing::repairBuilding(const std::string& type);  //This willbe used to repair the building after a natural disaster
 };
 
 #endif // DEPTOFHOUSING_H

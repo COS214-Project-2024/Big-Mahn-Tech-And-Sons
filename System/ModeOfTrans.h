@@ -22,7 +22,7 @@ public:
     /**
      * @brief Virtual destructor.
      */
-    virtual ~ModeOfTrans() {}
+    // virtual ~ModeOfTrans() {}
     
     /**
      * @brief Gets the name of the transport mode.

@@ -72,7 +72,7 @@ public:
     /**
      * @brief Destroys the Citizen object.
      */
-    ~Citizen(); 
+    // ~Citizen(); 
 
     /**
      * @brief Citizen gets older by one year

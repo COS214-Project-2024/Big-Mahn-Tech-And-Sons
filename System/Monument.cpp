@@ -63,3 +63,8 @@ void Monument::setYearEstablished(int year) {
         std::cerr << "Error: Invalid year." << std::endl;
     }
 }
+
+
+std::shared_ptr<Building>Monument:: clone() const  {
+        return std::make_shared<Monument>(*this);  // Clone this School
+    }

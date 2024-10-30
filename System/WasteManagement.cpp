@@ -7,21 +7,27 @@ WasteManagement::WasteManagement(string name, double budget, double capacity)
  * @brief Adds a building to the waste management system.
  * @param building Pointer to the building to add.
  */
-void WasteManagement::addBuilding(Building* building) {
+void WasteManagement::addBuilding(Building *building)
+{
     buildings.push_back(building);
 }
 
 /**
  * @brief Collects waste from various parts of the city.
  */
-void WasteManagement::collectWaste() {
-    for (Building* building : buildings) {
+void WasteManagement::collectWaste()
+{
+    for (Building *building : buildings)
+    {
         double wasteAmount = building->getWasteAmount(); // Assuming Building has this method
-        if (wasteCapacity >= wasteAmount) {
+        if (wasteCapacity >= wasteAmount)
+        {
             building->clearWaste(); // Assuming Building has this method
             wasteCapacity -= wasteAmount;
             cout << "Collected " << wasteAmount << " units of waste from " << building->getName() << endl;
-        } else {
+        }
+        else
+        {
             cout << "Not enough waste capacity to collect waste from " << building->getName() << endl;
         }
     }
@@ -30,19 +36,21 @@ void WasteManagement::collectWaste() {
 /**
  * @brief Disposes of waste in landfills or dump locations.
  */
-void WasteManagement::disposeWaste() {
+void WasteManagement::disposeWaste()
+{
     // Logic for disposing of waste
     cout << "Waste has been disposed of in designated landfill sites." << endl;
 }
-
 
 /**
  * @brief Calculates the current amount of waste being processed.
  * @return The amount of waste being processed.
  */
-double WasteManagement::calculateWasteProcessing() {
+double WasteManagement::calculateWasteProcessing()
+{
     double totalWaste = 0.0;
-    for (Building* building : buildings) {
+    for (Building *building : buildings)
+    {
         totalWaste += building->getWasteAmount(); // Assuming Building has this method
     }
     return totalWaste;
@@ -51,7 +59,8 @@ double WasteManagement::calculateWasteProcessing() {
 /**
  * @brief Expands the waste handling capacity to accommodate city growth.
  */
-void WasteManagement::expandWasteCapacity() {
+void WasteManagement::expandWasteCapacity()
+{
     wasteCapacity += 500; // Example: Increase waste capacity by 500 units
     cout << "Expanded waste capacity. New capacity: " << wasteCapacity << " units." << endl;
 }
@@ -60,13 +69,14 @@ void WasteManagement::expandWasteCapacity() {
  * @brief Gets the current total waste handling capacity.
  * @return The current waste handling capacity available.
  */
-double WasteManagement::getWasteCapacity() {
+double WasteManagement::getWasteCapacity()
+{
     return wasteCapacity;
 }
 
 /**
- * @brief The handleRequest() function is the core method responsible for either processing 
- *          the request or passing it along the chain to the next handler. WasteManagement 
+ * @brief The handleRequest() function is the core method responsible for either processing
+ *          the request or passing it along the chain to the next handler. WasteManagement
  *          checks if it can handle the request, if not, WasteManagement will pass it on
  *          to the next concreteHandler.
  */

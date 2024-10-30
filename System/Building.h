@@ -14,9 +14,11 @@
 #include <iostream> // For std::cout
 #include <utility>   // For std::pair
 #include <algorithm> // For std::find
+#include <algorithm> // For std::find
 
 #include "Element.h"
 #include "TaxManager.h"
+using namespace std;
 using namespace std;
 class Citizen; ///< Forward declaration of Citizen class
 
@@ -27,6 +29,8 @@ class Citizen; ///< Forward declaration of Citizen class
  * This class provides the common attributes and functionalities for all building types,
  * including managing tenants, utilities, and grid placement.
  */
+
+//test
 
 //test
 
@@ -47,6 +51,7 @@ protected:
     bool waterSupply;                  ///< Water supply status
     bool powerSupply;                  ///< Power supply status
     string type;
+    string type;
 
     // Grid coordinates: four (x, y) points representing corners of the building
     std::vector<std::pair<int, int>> gridCoordinates;
@@ -57,6 +62,7 @@ public:
      * @param name Name of the building.
      * @param maxCapacity Maximum capacity of the building.
      */
+    Building(const std::string& name, int maxCapacity);
     Building(const std::string& name, int maxCapacity);
 
     // Virtual destructor to allow polymorphism
@@ -109,6 +115,7 @@ public:
      * This method prints all the relevant statistics of the building to the console.
      */
     virtual void displayStats() const;
+    virtual void displayStats() const;
 
     // Getters
     std::string getName() const;
@@ -122,6 +129,7 @@ public:
     int getWidth() const;
     int getLength() const;
     double getPriceTag() const;
+    string getType() const;
 
      /**
      * @brief Gets the type of the building (e.g., Residential, Commercial).
@@ -146,6 +154,7 @@ public:
 
     // Getter for net worth
     double getNetWorth() const;
+    double getNetWorth() const;
 
     /**
  * @brief Consumes water based on the specified amount and updates the building's water usage accordingly.
@@ -155,6 +164,7 @@ public:
  * 
  * @param amount The amount of water received by the building.
  */
+virtual void consumeWater(double amount);
 virtual void consumeWater(double amount);
 
 /**
@@ -166,6 +176,7 @@ virtual void consumeWater(double amount);
  * @param amount The amount of electricity received by the building.
  */
 virtual void consumeElectricity(double amount);
+virtual void consumeElectricity(double amount);
 
 /**
  * @brief Cuts off the water supply to the building.
@@ -173,11 +184,13 @@ virtual void consumeElectricity(double amount);
  * Disables the building's water supply and sets the water meter to zero.
  */
 virtual void waterCut();
+virtual void waterCut();
 /**
  * @brief Cuts off the power supply to the building.
  * 
  * Disables the building's power supply and sets the electricity meter to zero.
  */
+virtual void powerCut();
 virtual void powerCut();
 
 /**
@@ -185,6 +198,7 @@ virtual void powerCut();
  * 
  * Resets the building's waste production to zero and outputs the amount cleared.
  */
+virtual void clearWaste();
 virtual void clearWaste();
 
 /**
