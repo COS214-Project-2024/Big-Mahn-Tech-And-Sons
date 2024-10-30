@@ -38,6 +38,8 @@ public:
      */
     PowerSupply(string name, double budget, double capacity,  Power* powerResource);
 
+    ~PowerSupply();
+
     /**
      * @brief Distributes electricity across various sectors in the city.
      */

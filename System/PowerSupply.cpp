@@ -3,6 +3,27 @@
 PowerSupply::PowerSupply(string name, double budget, double capacity, Power* powerResource)
     : DeptOfUtilities(name, budget), powerCapacity(capacity),  powerResource(powerResource) {}
 
+
+/**
+ * @brief Destructor for PowerSupply.
+ * This destructor releases any dynamically allocated resources.
+ */
+PowerSupply::~PowerSupply() {
+    // Delete the power resource if it was dynamically allocated
+    if (powerResource) {
+        delete powerResource;
+    }
+
+    // Iterate through the vector of buildings and delete each one if it was dynamically allocated
+    for (Building* building : buildings) {
+        if (building) {
+            delete building;
+        }
+    }
+    // Clear the vector to ensure it does not hold dangling pointers
+    buildings.clear();
+}
+
 /**
  * @brief Adds a building to the power supply system.
  * @param building Pointer to the building to add.
@@ -17,12 +38,12 @@ void PowerSupply::addBuilding(Building* building) {
  */
 void PowerSupply::distributePower() {
     for (auto& building : buildings) {
-        double usage = building->getPowerUsage(); // Assume this method exists in Building
+        double usage = building->getElectricityUsage(); // Assume this method exists in Building
         if (powerCapacity >= usage) {
-            building->consumePower(usage); // Assume this method exists in Building
+            building->consumeElectricity(usage); // Assume this method exists in Building
             powerCapacity -= usage; // Decrease available power
         } else {
-            building->consumePower(powerCapacity); // Consume remaining power
+            building->consumeElectricity(powerCapacity); // Consume remaining power
             powerCapacity = 0; // All power is consumed
             break; // Exit after distributing available power
         }
@@ -36,7 +57,7 @@ void PowerSupply::distributePower() {
 double PowerSupply::calculatePowerUsage() {
     double totalUsage = 0.0;
     for (Building* building : buildings) {
-        totalUsage += building->getPowerUsage(); // Assume this method exists
+        totalUsage += building->getElectricityUsage(); // Assume this method exists
     }
     return totalUsage;
 }
@@ -75,22 +96,28 @@ double PowerSupply::getPowerCapacity() {
  *          to the next concreteHandler.
  */
 void PowerSupply::handleRequest(Request& req) {
-    if (req.getType() == Request::Type::POWER) 
+    if (req.getTypeAsString() == "POWER")
     {
-        double demand = req.getAmount();
-        if (powerCapacity >= demand) {
-            distributePower();
-            std::cout << "PowerSupply: Distributed " << demand << " units of electricity.\n";
-        } else {
-            std::cout << "PowerSupply: Insufficient power capacity.\n";
+        // Check if PowerSupply can fulfill the power request
+        if (req.getAmount() <= powerCapacity)
+        {
+            std::cout << "PowerSupply handling request for " << req.getAmount()
+                      << " units of power for " << req.getBuilding()->getName() << std::endl;
+            powerCapacity -= req.getAmount();
         }
-    } 
-    else if (successor) 
+        else
+        {
+            std::cout << "Insufficient power capacity. Forwarding request to successor." << std::endl;
+            if (successor)
+                successor->handleRequest(req);
+        }
+    }
+    else
     {
-        successor->handleRequest(req);
-    } 
-    else 
-    {
-        std::cout << "PowerSupply: Request could not be handled.\n";
+        // Forward request if type is not handled by PowerSupply
+        if (successor)
+        {
+            successor->handleRequest(req);
+        }
     }
 }

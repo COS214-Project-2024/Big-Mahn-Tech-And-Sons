@@ -15,14 +15,14 @@
 class Water : public Resource {
     private:
 
-        string name;
+        std::string name;
         double amount;
 
     public:
 
         Water(){}
         
-        Water(string  name, double amount);
+        Water(std::string  name, double amount);
         /**
          * @brief Gets the current amount of water.
          * @return double Current water amount.

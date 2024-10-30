@@ -54,24 +54,28 @@ public:
     void requestBudget();
 
     /**
-     * @brief Tracks the department's resource usage across various sectors or functions.
-     */
-    void trackUsage();
-
-    /**
      * @brief the handleRequest() function is the core method responsible for either processing 
      *          the request or passing it along the chain to the next handler. It is in the
      *          inherited classes
      */
-    virtual void handleRequest(Request &req) = 0;
+    virtual void handleRequest(Request &req);
 
     /**
      * @brief if DeptOfUtilities needs to talk to another department for whatever reason
      */
     void requestPR();
 
+    /**
+     * @brief Sets the next department in the chain of responsibility.
+     * This method allows the current department to set its successor,enabling the chain of responsibility
+     * pattern. When a request cannot be handled by the current department, it will pass the request to
+     * the successor department.
+     * 
+     * @param nextDepartment A pointer to the next department that will handle requests if the current department cannot.                      .
+     */
     void setSuccessor(DeptOfUtilities* nextDepartment);
 
+    
     //+++++++++++++++++========== FOR THE EVENT COMMAND +++++++++++++++++++++++++++++++
 
     /**
@@ -93,6 +97,11 @@ public:
      * @brief Reduces the resource usage of the department.
      */
     void reduceUsage();
+
+    /**
+     * @brief Tracks the department's resource usage across various sectors or functions.
+     */
+    void trackUsage();
 
 };
 

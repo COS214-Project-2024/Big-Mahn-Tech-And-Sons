@@ -37,9 +37,14 @@ void DeptOfUtilities::requestPR() {
 }
 
 /**
- * @brief Sets the successor in the chain.
- * @param nextDepartment Pointer to the next department in the chain.
+ * @brief Base handleRequest function, to be overridden by each department.
+ *        If not handled, passes the request to the successor in the chain.
+ * @param req The request to be handled.
  */
-void DeptOfUtilities::setSuccessor(DeptOfUtilities* nextDepartment) {
-    successor = nextDepartment;
+void DeptOfUtilities::handleRequest(Request& req) {
+    if (successor) {
+        successor->handleRequest(req);
+    } else {
+        std::cout << "Request for " << req.getTypeAsString() << " could not be handled." << std::endl;
+    }
 }

@@ -4,8 +4,20 @@
 #include "CommercialBuildingCreator.h"
 #include "visitHousing.h"
 #include "Budget.h"
+#include "DeptOfUtilities.h"
+#include "PowerSupply.h"
+#include "WaterSupply.h"
+#include "WasteManagement.h"
+#include "Power.h"
+#include "Water.h"
+#include "Request.h"
+#include "Building.h"
+
+#include <iostream>
+using namespace std;
 
 int main() {
+    
     // Create a budget
     Budget cityBudget(10000);
     cityBudget.reportStatus();
@@ -25,6 +37,7 @@ int main() {
 
     // Report budget status after tax collection
     cityBudget.reportStatus();
+    
 
     return 0;
 }

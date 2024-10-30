@@ -199,12 +199,13 @@ virtual void consumeWater(double amount)
  */
 virtual void consumeElectricity(double amount)
 {
-    if (amount >= electricityUsage) {
-        electricityUsage = 0;
-        std::cout << "Building " << name << " has received enough electricity." << std::endl;
+    electricityUsage += amount;
+    if (electricityUsage >= electricityMeterBox) {
+        electricityMeterBox = 0;
+        std::cout << "The electricity unit for Building: " << name << " are finished. Please reload NOW! " << std::endl;
     } else {
-        electricityUsage -= amount;
-        std::cout << "Building " << name << " received partial electricity. Remaining need: " << electricityUsage << " units." << std::endl;
+        electricityMeterBox -= electricityUsage;
+        std::cout << "Building " << name << " has consumed : " << electricityUsage << " units.  Remaining power units : " << electricityMeterBox << " units." << std::endl;
     }
 }
 
