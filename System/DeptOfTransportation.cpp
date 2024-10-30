@@ -1,23 +1,32 @@
 #include "DeptOfTransportation.h"
 
+DeptOfTransportation* DeptOfTransportation::instance = nullptr;
+
 DeptOfTransportation::DeptOfTransportation()
 {
-    
+    cityGrid = new CityGrid(10,10);
 }
 
 DeptOfTransportation::~DeptOfTransportation()
 {
-
+    delete cityGrid;
 }
 
-int DeptOfTransportation::grid_num_rows()
+DeptOfTransportation* DeptOfTransportation::getInstance()
 {
-    return this->cityGrid->getNumRows();
+    if (!instance)
+    {
+        instance = new DeptOfTransportation();
+    }
+    return instance;
 }
 
-int DeptOfTransportation::grid_num_cols()
+bool DeptOfTransportation::addRoad(int start_row, int start_col, int street_Length, string direction, string street_name)
 {
-    return this->cityGrid->getNumCols();
+    if(cityGrid->addRoad(start_row,start_col,street_Length,direction,street_name))
+    {
+        return true;
+    }
+    cout<<"Road not added ~ DeptTrans";
+    return false;
 }
-
-// add the other ones in the header file

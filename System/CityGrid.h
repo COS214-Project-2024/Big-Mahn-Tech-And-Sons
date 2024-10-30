@@ -43,6 +43,9 @@ public:
     bool addRoad(int,int,int,string,string); // adds a road with a streetname
     bool removeRoad(int,int,int,string);  //standard remove road
     bool removeRoad(string);  //removes a road by streetName
+    bool placeBuilding(int,int,int,int,string);
+    const char getAttribute_from_DetailedAttribute(string);
+    bool isNextToRoad(int,int,int,int);
     void printCityGrid();  //prints all buildings and roads
     void printCityCardinal(); //prints the cardinal points of each cell.
     void printCityStreets(); //prints the street names.

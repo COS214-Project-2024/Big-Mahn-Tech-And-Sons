@@ -128,7 +128,10 @@ void CityGrid::printCityCardinal()
 
 bool CityGrid::addRoad(int start_row, int start_col, int length, string direction, string strname)
 {
-    if(start_row<0 || start_col<0 || length<0){return false;}
+    if(start_row<0 || start_col<0 || length<0)
+    {
+        cout<<"Invalid dimensions";
+        return false;}
 
     int end_row, end_col;
 
@@ -166,6 +169,7 @@ bool CityGrid::addRoad(int start_row, int start_col, int length, string directio
             break;
 
         default:
+            cout<<"No direction specified";
             return false;   // no direction specified
             break;
     }
@@ -261,7 +265,10 @@ bool CityGrid::addRoad(int start_row, int start_col, int length, string directio
 
 bool CityGrid::removeRoad(int start_row, int start_col, int length, string direction)
 {
-    if(start_row<0 || start_col<0 || length<0){return false;}
+    if(start_row<0 || start_col<0 || length<0)
+    {
+        cout<<"Invalid dimensions";
+        return false;}
 
     int end_row, end_col;
 
@@ -299,6 +306,7 @@ bool CityGrid::removeRoad(int start_row, int start_col, int length, string direc
             break;
 
         default:
+            cout<<"No direction specified.";
             return false;   // no direction specified
             break;
     }
@@ -478,53 +486,128 @@ vector<pair<int,int>> CityGrid::errorPair()
     return errorVector;
 }
 
-bool CityGrid::isEmptySpace(int uplr, int uplc, int uprc, int dlr)
-{
-    for(int i=uplr; i<=dlr; i++)
+bool CityGrid::isEmptySpace(int uplr, int uplc, int uprc, int dlr) {
+    // Ensure bounds are within grid limits
+    if (uplr < 0 || uplc < 0 || dlr >= grid_num_rows || uprc >= grid_num_cols)
     {
-        for(int j=uplc ; j<uprc; j++)
-        {
+        cout<<"invalid dimensions.";
+        return false; // Out of bounds, not valid space
+    }
 
+    // Check each cell within the specified rectangle
+    for (int i = uplr; i <= dlr; i++) {
+        for (int j = uplc; j <= uprc; j++) {  // <= uprc to include the last column
+            if ((*citygrid)[i][j].getAttribute() != '.')
+            {
+                cout<<"No space to add building";
+                return false; // Cell is not empty
+            }
         }
     }
+    return true; // All cells in the area are empty
 }
 
-vector<pair<int,int>> CityGrid::addBuilding(int length, int width, string detailed_Attribute)  //width horizontal, length vertical have if not space then call add building in add building just swap the length and width
+const char CityGrid::getAttribute_from_DetailedAttribute(string detailed_Attribute)
 {
-    if(length<0 || width<0 || width>grid_num_cols || length>grid_num_rows){return errorPair();}
-
-    int up_left_row= 0, up_left_col= 0;
-    int up_right_row, up_right_col;
-    int down_left_row, down_left_col;
-    int down_right_row, down_right_col;
-
-    vector<pair<int,int>> available_space;
-    
-    for(int i=up_left_row; i<grid_num_rows-1; i++)
+    if(detailed_Attribute=="SCHOOL" || detailed_Attribute=="OFFICE" || detailed_Attribute=="HOSPITAL" || detailed_Attribute=="SHOP")
     {
-        for(int j=up_left_col; j<grid_num_cols-1; j++)
-        {
-            up_right_row= up_left_row, up_right_col= up_left_col+width-1;
-            down_left_row= up_left_row+length-1, down_left_col= up_left_col;
-            down_right_row= up_left_row+length-1, down_right_col= up_left_col+width-1;
+        return 'C';
+    }
+    if(detailed_Attribute=="ESTATE" || detailed_Attribute=="APARTMENT" || detailed_Attribute=="HOUSE")
+    {
+        return 'H';
+    }
+    if(detailed_Attribute=="MUSEUM" || detailed_Attribute=="MONUMENT" || detailed_Attribute=="PARK")
+    {
+        return 'L';
+    }
+    if(detailed_Attribute=="FACTORY" || detailed_Attribute=="AIRPORT" || detailed_Attribute=="WAREHOUSE" || detailed_Attribute=="TRAINSTATION")
+    {
+        return 'I';
+    }
+    if(detailed_Attribute=="ROADS")
+    {
+        return 'R';
+    }
+    if(detailed_Attribute=="USED")
+    {
+        return '#';
+    }
+    return '.';
+}
 
-            if(isEmptySpace(up_left_row,up_left_col,up_right_col,down_left_row))
-            {
-                if(isNextToRoad())
-                {
-                    available_space={{up_left_row,up_left_col},
-                                     {up_right_row,up_right_col},
-                                     {down_left_row,down_left_col},
-                                     {down_right_row,down_right_col}};
+bool CityGrid::placeBuilding(int uplr, int uplc, int uprc, int dlr, std::string detailed_attr) {
+    // Boundary checks to ensure valid coordinates within the grid
+    if (uplr < 0 || uplc < 0 || dlr >= grid_num_rows || uprc >= grid_num_cols) {
+        cout<< "Error: Building placement is out of grid bounds.\n";
+        return false;
+    }
 
-                    return available_space;
-                }
-            }
-            
+    // Place the building within the specified rectangular area
+    for (int i = uplr; i <= dlr; i++) {
+        for (int j = uplc; j <= uprc; j++) {
+            (*citygrid)[i][j].updateDetailed_Attribute(detailed_attr);
+            (*citygrid)[i][j].changeAttribute(getAttribute_from_DetailedAttribute(detailed_attr));
         }
     }
-    return errorPair();
+    return true;
+}
 
+// Function to check if any cell surrounding the building area is a road
+bool CityGrid::isNextToRoad(int uplr, int uplc, int uprc, int dlr) {
+    // Check each cell around the perimeter of the building area
+    for (int i = uplr; i <= dlr; ++i) {
+        // Check left and right edges
+        if (uplc > 0 && (*citygrid)[i][uplc - 1].getAttribute() == 'R') return true;  // Left edge
+        if (uprc < grid_num_cols - 1 && (*citygrid)[i][uprc + 1].getAttribute() == 'R') return true;  // Right edge
+    }
+    for (int j = uplc; j <= uprc; ++j) {
+        // Check top and bottom edges
+        if (uplr > 0 && (*citygrid)[uplr - 1][j].getAttribute() == 'R') return true;  // Top edge
+        if (dlr < grid_num_rows - 1 && (*citygrid)[dlr + 1][j].getAttribute() == 'R') return true;  // Bottom edge
+    }
+    return false;  // No road found adjacent to the building area
+}
+
+// Modified addBuilding function to include road check
+std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, std::string detailed_Attribute) {
+    if (length < 0 || width < 0 || width > grid_num_cols || length > grid_num_rows)
+    {
+        cout<<"invalid dimensions";
+        return errorPair();
+    }
+
+    for (int i = 0; i <= grid_num_rows - length; ++i) {
+        for (int j = 0; j <= grid_num_cols - width; ++j) {
+            int up_left_row = i;
+            int up_left_col = j;
+            int up_right_row = i;
+            int up_right_col = j + width - 1;
+            int down_left_row = i + length - 1;
+            int down_left_col = j;
+            int down_right_row = i + length - 1;
+            int down_right_col = j + width - 1;
+
+            // Check if the space is empty and adjacent to a road
+            if (isEmptySpace(up_left_row, up_left_col, up_right_col, down_left_row) &&
+                isNextToRoad(up_left_row, up_left_col, up_right_col, down_left_row))
+                {
+                
+                // Place the building if it meets both conditions
+                if(placeBuilding(up_left_row, up_left_col, up_right_col, down_left_row, detailed_Attribute))
+                {
+                    // Return the corner positions
+                    return{
+                    {up_left_row, up_left_col},
+                    {up_right_row, up_right_col},
+                    {down_left_row, down_left_col},
+                    {down_right_row, down_right_col}};
+                }
+            }
+        }
+    }
+    cout<<"Could not add buillding";
+    return errorPair();  // No suitable location found
 }
 
 //get distance from building a to building b
