@@ -27,6 +27,8 @@ class Citizen; ///< Forward declaration of Citizen class
  * including managing tenants, utilities, and grid placement.
  */
 
+//test
+
 class Building {
 protected:
     std::string name;                  ///< Name of the building
