@@ -18,3 +18,19 @@
 //     budget->setTotalBudget(budget->getTotalBudget() + 500); // Example addition
 //     std::cout << "Added taxes to budget." << std::endl;
 // }
+
+visitHousing::visitHousing()
+{
+}
+
+void visitHousing::visitResidentialBuilding(ResidentialBuilding *building)
+{
+}
+
+void visitHousing::visitCommercialBuilding(CommercialBuilding *building)
+{
+}
+
+void visitHousing::visitBudget(Budget *budget)
+{
+}
