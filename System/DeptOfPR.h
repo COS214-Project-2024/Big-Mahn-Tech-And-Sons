@@ -104,6 +104,7 @@ public:
      * @note Taxman is either notified to try to lower taxes or improve economic health
      */
     void notifyTaxman(string deptName);
+    void promoteFestival();
 };
 
 #endif // DEPTOFPR_H

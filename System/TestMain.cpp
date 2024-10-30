@@ -1,4 +1,4 @@
-<<<<<<<< HEAD:System/TestMain.cpp
+
 #include <iostream>
 #include <memory>
 #include "Citizen.h"
@@ -37,5 +37,3 @@ int main() {
 
     return 0;
  }
-========
->>>>>>>> d9b9a4c0f8d9018a1a9923209ed2644ceca78b5e:System/main.cpp

@@ -43,7 +43,6 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
-    bool checkProductionCapacity() const override;
 };
 
 #endif // WAREHOUSE_H

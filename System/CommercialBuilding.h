@@ -90,7 +90,7 @@ public:
             // GUI: Mark the building as closed (e.g., gray out the building icon)
             // GUI: Add "Closed" label to indicate status
         } else {
-            std::cout << "CommercialBuilding: " << getName() << " is already closed." << std::endl;
+            std::cout << "CommercialBuilding: " <<  getName() << " is already closed." << std::endl;
         }
     }
 
@@ -111,7 +111,6 @@ public:
         return closed;
     }
 
-    std::shared_ptr<Building>clone() const;
 };
 
 #endif // COMMERCIALBUILDING_H

@@ -39,7 +39,6 @@ public:
      */
     bool canHandleMorePassengers() const;
 
-    bool checkProductionCapacity() const;
 
     /**
      * @brief Accepts visitors for the visitor pattern.

@@ -3,7 +3,8 @@
  * @brief Declaration of the Resource class.
  */
 
-#pragma once
+#ifndef RESOURCE_H
+#define RESOURCE_H
 #include "TaxManager.h"
 #include "Budget.h"
 
@@ -78,3 +79,4 @@ public:
     void visitBudget(Budget* budget);
 
 };
+#endif // RESOURCE_H

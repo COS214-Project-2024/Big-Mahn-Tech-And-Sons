@@ -46,7 +46,7 @@ bool Warehouse::checkProductionCapacity() const
     return false;
 }
 
-}
+
 /**
  * @brief Accepts visitors for the visitor pattern.
  * @param visitor A pointer to the visitor object.

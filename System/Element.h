@@ -23,3 +23,5 @@ public:
      */
     virtual void accept(TaxManager* visitor) = 0;
 };
+
+#endif

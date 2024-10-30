@@ -46,13 +46,7 @@ public:
     bool getHasBackyard() const { return hasBackyard; }
     void setHasBackyard(bool backyard) { hasBackyard = backyard; }
 
-    virtual void repair() override {
-        
-     }
-
-    virtual std::shared_ptr<Building> clone() const override {
-        
-    };
+   
     /**
      * @brief Accepts visitors for the visitor pattern.
      * This method remains virtual, to be overridden in the final building types.
@@ -68,16 +62,17 @@ public:
  * 
  * @return A shared pointer to the cloned ResidentialBuilding instance.
  */
- std::shared_ptr<Building> clone() const;
-
+ virtual std::shared_ptr<Building> clone() const override {
+        
+    };
 /**
  * @brief Repairs the residential building.
  * 
  * This method provides specific repair actions for a ResidentialBuilding instance.
  */
-void ResidentialBuilding::repair() {
+void repair() override {
     std::cout << "Repairing residential building: " << getName() << "\n";
 }
 };
-
+ 
 #endif // RESIDENTIALBUILDING_H

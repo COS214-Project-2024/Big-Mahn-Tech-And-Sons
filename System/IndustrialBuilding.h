@@ -72,7 +72,6 @@ public:
     double getProductionRate() const { return productionRate; }
     void setProductionRate(double rate) { productionRate = rate; }
 
-    std::shared_ptr<Building> clone() const;  //This will be used for the natural disaster
 };
 
 #endif // INDUSTRIALBUILDING_H

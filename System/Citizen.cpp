@@ -36,7 +36,6 @@ Citizen::Citizen(const std::string &nam, double happiness,int x , int y, DeptOfP
    this->satisState =  new NeutralState();
    this->modeOfTransport = NULL;
   // this->go =  NULL;
-  // this->go =  NULL;
    this->ageThreshhold = 0;
 }
 
@@ -85,6 +84,11 @@ int Citizen::getAge()
    return this->age;
 }
 
+std::string Citizen::getName() const
+{
+   return this->name;
+}
+
 double Citizen::getHealth()
 {
     return this->health;
@@ -108,6 +112,7 @@ void Citizen::work(double amount)
 bool Citizen::Spend(double amount)
 {
    this->budget -= amount;
+   return true;
 }
 
 void Citizen::decreaseHealth(double percentage)

@@ -39,13 +39,10 @@ void PowerSupply::addBuilding(Building* building) {
 void PowerSupply::distributePower() {
     for (auto& building : buildings) {
         double usage = building->getElectricityUsage(); // Assume this method exists in Building
-        double usage = building->getElectricityUsage(); // Assume this method exists in Building
         if (powerCapacity >= usage) {
-            building->consumeElectricity(usage); // Assume this method exists in Building
             building->consumeElectricity(usage); // Assume this method exists in Building
             powerCapacity -= usage; // Decrease available power
         } else {
-            building->consumeElectricity(powerCapacity); // Consume remaining power
             building->consumeElectricity(powerCapacity); // Consume remaining power
             powerCapacity = 0; // All power is consumed
             break; // Exit after distributing available power
@@ -60,7 +57,6 @@ void PowerSupply::distributePower() {
 double PowerSupply::calculatePowerUsage() {
     double totalUsage = 0.0;
     for (Building* building : buildings) {
-        totalUsage += building->getElectricityUsage(); // Assume this method exists
         totalUsage += building->getElectricityUsage(); // Assume this method exists
     }
     return totalUsage;

@@ -25,6 +25,10 @@ void DeptOfUtilities::requestBudget()
 
 }
 
+void DeptOfUtilities::trackUsage()
+{
+}
+
 /**
  * @brief Requests PR department assistance.
  */
@@ -43,4 +47,20 @@ void DeptOfUtilities::requestPR() {
  */
 void DeptOfUtilities::setSuccessor(DeptOfUtilities* nextDepartment) {
     successor = nextDepartment;
+}
+
+void DeptOfUtilities::initiateLoadshedding()
+{
+}
+
+void DeptOfUtilities::restorePower()
+{
+}
+
+void DeptOfUtilities::increaseUsage()
+{
+}
+
+void DeptOfUtilities::reduceUsage()
+{
 }

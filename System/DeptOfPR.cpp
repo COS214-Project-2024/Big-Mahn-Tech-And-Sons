@@ -97,7 +97,7 @@ void DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure 
 /**
      * @brief Promotes the city-wide festival to citizens and other departments.
      */
-    void DeptOfPR :: promoteFestival() {
+    void DeptOfPR::promoteFestival() {
         std::cout << "🎉 The city is excited to announce an upcoming festival! 🎉" << std::endl;
         
         // Notify each citizen about the festival

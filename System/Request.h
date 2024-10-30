@@ -27,9 +27,5 @@ public:
 
     // ~Request();
 
-private:
-    std::string type;       /**< The type of request (e.g., "WATER", "POWER", "WASTE"). */
-    Building* building;     /**< Pointer to the building instance making the request. */
-    double amount;          /**< The amount of the resource requested. */
 };
 #endif // REQUEST_H

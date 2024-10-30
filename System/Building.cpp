@@ -1,7 +1,6 @@
 #include "Building.h"
 #include "Citizen.h"
-#include <algorithm>  // For std::find
-#include <iostream>   // For std::cout
+#include "TaxManager.h"
 
 /**
  * @brief Construct a new Building object.
@@ -14,7 +13,6 @@ Building::Building(const std::string& name, int maxCapacity)
       waterMeterBox(0.0), electricityUsage(0.0), waterUsage(0.0),
       wasteProduction(0.0), width(1), length(1), priceTag(0.0),
       netWorth(0.0), waterSupply(true), powerSupply(true) {}
-
 /**
  * @brief Adds a tenant to the building.
  * 

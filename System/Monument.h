@@ -23,7 +23,6 @@ public:
      * @param heritageStatus Whether the monument is a heritage site.
      */
     Monument(const std::string& name, int maxCapacity, int yearEstablished, 
-    Monument(const std::string& name, int maxCapacity, int yearEstablished, 
              bool heritageStatus);
 
     /**
