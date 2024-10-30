@@ -16,8 +16,6 @@ public:
     ~DeptOfTransportation();  //destructs the department object
     void printCityGrid();   //prints the city grid, roads and buildings included
     void printRoadGrid();   //prints the road grid, roads only
-    const vector<vector<Cell>> getRoadGrid();   //returns a constant road grid vector , roads
-    const vector<vector<Cell>> getCityGrid();   //returns a constant city grid vector , roads and buildings
     bool addRoad(int,int,int,string,string);
     
 };

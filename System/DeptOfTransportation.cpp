@@ -30,3 +30,14 @@ bool DeptOfTransportation::addRoad(int start_row, int start_col, int street_Leng
     cout<<"Road not added ~ DeptTrans";
     return false;
 }
+
+void DeptOfTransportation::printCityGrid()
+{
+
+}
+
+void DeptOfTransportation::printRoadGrid()
+{
+
+}
+
