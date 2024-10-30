@@ -43,6 +43,8 @@ public:
 
     bool getHasSwimmingPool() const;
     void setHasSwimmingPool(bool pool);
+
+    std::shared_ptr<Building> clone() const override;
 };
 
 #endif // ESTATE_H

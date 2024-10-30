@@ -40,7 +40,7 @@ public:
      * 
      * Ensures proper cleanup of derived classes when deleting via a pointer to the base class.
      */
-    virtual ~BuildingCreator() = default;
+    // virtual ~BuildingCreator() = default;
 };
 
 #endif // BUILDINGCREATOR_H

@@ -39,6 +39,12 @@ public:
     WaterSupply(string name, double budget, double capacity, Water* waterResource);
 
     /**
+     * @brief Destructor for WaterSupply.
+     * This destructor releases any dynamically allocated resources.
+     */
+    ~WaterSupply();
+
+    /**
      * @brief Distributes water to various sectors of the city based on demand.
      */
     void distributeWater();

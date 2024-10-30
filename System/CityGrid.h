@@ -11,7 +11,7 @@ class Cell
 {
     public:
         Cell(int, int, string);  //creates a cell in the grid
-        ~Cell();
+        //~Cell();
         const char getAttribute(); //returns character whether its a road or building
         const string getDetailed_Atttribute();
         void  updateDetailed_Attribute(string);
@@ -38,7 +38,7 @@ private:
 
 public:
     CityGrid(int,int); //only use even positive integers , so cardinal_points works as intended
-    ~CityGrid(); // deletes the memory allocated for the grid
+    //~CityGrid(); // deletes the memory allocated for the grid
     bool addRoad(int,int,int,string,string); // adds a road with a streetname
     bool removeRoad(int,int,int,string);  //standard remove road
     bool removeRoad(string);  //removes a road by streetName
@@ -55,7 +55,9 @@ public:
     vector<pair<int,int>> addBuilding(int,int,string);  //returns vector of locations , length & width
     
     int getDistance(int,int,string);   //returns distance as int, x,y co-ord of citizen & string of detailed attribute.
-
+    bool isNextToRoad();
+    int getNumRows();
+    int getNumCols();
 
     // function to get shortest path from point a to point b
 };

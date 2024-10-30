@@ -1,4 +1,5 @@
 #include "DeptOfTransportation.h"
+#include "CityGrid.h"
 
 DeptOfTransportation* DeptOfTransportation::instance = nullptr;
 
@@ -6,6 +7,7 @@ DeptOfTransportation::DeptOfTransportation()
 {
     cityGrid = new CityGrid(10,10);
 }
+
 
 DeptOfTransportation::~DeptOfTransportation()
 {

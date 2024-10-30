@@ -10,10 +10,10 @@ Cell::Cell(int row_value, int col_value, string cardinal_point)
     /*6*/ this->street_name = "-";
 }
 
-Cell::~Cell()
-{
-    //no memory management required here.
-}
+// Cell::~Cell()
+// {
+//     //no memory management required here.
+// }
 
 const char Cell::getAttribute()
 {
@@ -82,11 +82,11 @@ CityGrid::CityGrid(int row_dimension, int col_dimension)
     }
 }
 
-CityGrid::~CityGrid()
-{
-    if(citygrid!=nullptr)
-    delete citygrid;
-}
+// CityGrid::~CityGrid()
+// {
+//     if(citygrid!=nullptr)
+//     delete citygrid;
+// }
 
 void CityGrid::printCityGrid()
 {
@@ -593,7 +593,7 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, st
         cout<<"invalid dimensions";
         return errorPair();
     }
-
+  
     for (int i = 0; i <= grid_num_rows - length; ++i) {
         for (int j = 0; j <= grid_num_cols - width; ++j) {
             int up_left_row = i;
@@ -626,6 +626,7 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, st
     cout<<"Could not add buillding";
     return errorPair();  // No suitable location found
 }
+
 
 
 int CityGrid::getDistance(int,int,string)
