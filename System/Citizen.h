@@ -17,6 +17,8 @@
 #include "DeptOfPR.h"
 #include "DeptOfTransportation.h"
 
+using namespace std;
+
 class Building;
 class SatisfactionState;
 class CityGrid;
@@ -31,7 +33,7 @@ class CitizenState;
  */
 class Citizen {
 private:
-    std::string name; /**< Name of the citizen */
+    string name; /**< Name of the citizen */
     ModeOfTrans* modeOfTransport; /**< Current mode of transport */
     DeptOfPR*  PR; /**<Reference to government's PPR */
     Building* currentLocation; /**< Current building location */

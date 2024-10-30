@@ -10,10 +10,9 @@
 #include "Train.h"
 #include "Walk.h"
 #include "PublicTrans.h"
-
+#include "Building.h"
 #include "CityGrid.h"
-
-
+ 
 
 #include <random>
 
@@ -47,6 +46,10 @@ Citizen::~Citizen()
       delete state;
    }
 
+   if(satisState) {
+      delete satisState;
+   }
+
    if(modeOfTransport) {
       delete modeOfTransport;
    }
@@ -62,9 +65,8 @@ void Citizen::getOlder()
    if(this->getStateName() == "Pensioner" && age >= ageThreshhold) {
       // kill TODO
       this->PR->update(this);
-      
+      return;
    }
-   ///< @todo update state
    updateState();
 }
 
@@ -72,7 +74,9 @@ void Citizen::notifyPR()
 {
    if((getSatisfactionLevelName() == "Neutral" || getSatisfactionLevelName() == "Sad") && getBudget()/100000 * 100 < 0.6 ) { // problem with finances
       this->PR->update(this);
-   } else if(this)
+   } else if(this) {
+
+   }
 }
 
 int Citizen::getAge()
@@ -183,6 +187,11 @@ void Citizen::setModeOfTransport(ModeOfTrans *mode)
    if(mode) {
       this->modeOfTransport =  mode;
    }
+}
+
+Building *Citizen::getCurrentLocation() const
+{
+   return nullptr;
 }
 
 void Citizen::travelTo(Building *destination, CityGrid *citi, int x, int y, const std::string &Building)

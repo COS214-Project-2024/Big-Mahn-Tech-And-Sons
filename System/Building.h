@@ -110,6 +110,9 @@ public:
      */
     virtual void accept(TaxManager* visitor) = 0;
 
+    string getType() {
+        return "test";
+    }
     /**
      * @brief Displays the statistics of the building.
      *

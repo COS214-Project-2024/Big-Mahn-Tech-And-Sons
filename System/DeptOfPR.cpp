@@ -7,7 +7,7 @@ DeptOfPR::DeptOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, D
 {
    this->housing = housingDept;     ///< access to the housing department/
    this->utilities = utilitiesDept; ///< access to the utilities department
-   this->finance = financeDept;     ///< access to the finance departt
+   this->finance = financeDept;     ///< access to the finance depart
 }
 
 void DeptOfPR::update(Building *building)
@@ -16,7 +16,7 @@ void DeptOfPR::update(Building *building)
       notifyHousingToBuild(building->getType());
    } else if (true)
    {
-      notifyUtilities(building->getUtility());
+      notifyUtilities();// check with drey
    }
 }
 
@@ -25,11 +25,15 @@ void DeptOfPR::update(Citizen *citizen)
    if(citizen->getStateName() == "Pensioner" && citizen->getAge() >= citizen->getThreshold()) {
       // remove citizen from all records
 
-      citizen->getCurrentLocation()->removeTenant(citizen);
+      if(citizen->getCurrentLocation()->removeTenant(citizen) == false) {
+         // citizen was not found, thus hunt him down, trying to cheat death
+      }
 
       return;
+   } else if((citizen->getSatisfactionLevelName() == "Neutral" || citizen->getSatisfactionLevelName() == "Sad") && citizen->getBudget()/100000 * 100 < 0.6 ) {
+      notifyTaxman("Citizen");
    }
-   notifyTaxman("Citizen");
+   
    
 }
 
@@ -58,7 +62,7 @@ void DeptOfPR::notifyHousingToRemove(string type)
 
 void DeptOfPR::notifyUtilities()
 {
-   this->utilities->handleRequest();
+   this->utilities->handleRequest(); //check with drey
 }
 
 void DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure only departments are passed in

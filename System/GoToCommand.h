@@ -7,6 +7,7 @@
 using namespace std;
 
 /**
+ * 
  * @class GoToCommand
  * @brief Command class for handling a citizen's movement to a specified destination using a transport strategy.
  * @author LeboGang
@@ -33,6 +34,7 @@ public:
      */
     void execute()
     {
+        
         /*
         /** @bug Citizen must keep track of its current position .
         Node *startNode = citizen->getCurrentLocation(); 
