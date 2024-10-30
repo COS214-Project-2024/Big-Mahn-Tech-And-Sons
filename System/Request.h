@@ -4,6 +4,7 @@
 #include <string>
 #include "Building.h"  // Ensure this header is included
 
+class Building;
 class Request 
 {
 public:
