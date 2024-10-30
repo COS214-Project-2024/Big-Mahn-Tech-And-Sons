@@ -40,7 +40,7 @@ public:
     int getNumFloors() const;
     void setNumFloors(int floors);
 
-    std::shared_ptr<Building>House::clone() const override;
+    std::shared_ptr<Building>clone() const override;
 };
 
 #endif // HOUSE_H

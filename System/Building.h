@@ -216,12 +216,7 @@ double getWasteAmount();
      */
     virtual void repair() = 0;
 
-    /**
-     * @brief Gets the type of the building (e.g., Residential, Commercial).
-     * 
-     * @return A string representing the type of the building.
-     */
-    virtual std::string getType() const = 0;
+   
 
 };
 

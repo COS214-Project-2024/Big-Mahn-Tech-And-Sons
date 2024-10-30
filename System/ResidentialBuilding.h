@@ -67,9 +67,9 @@ public:
  * 
  * This method provides specific repair actions for a ResidentialBuilding instance.
  */
-void ResidentialBuilding::repair() {
-    std::cout << "Repairing residential building: " << getName() << "\n";
-}
+// void ResidentialBuilding::repair() {
+//     std::cout << "Repairing residential building: " << getName() << "\n";
+// }
 };
 
 #endif // RESIDENTIALBUILDING_H
