@@ -71,7 +71,7 @@ double WasteManagement::getWasteCapacity() {
  *          to the next concreteHandler.
  */
 void WasteManagement::handleRequest(Request &req) {
-    if (req.getType() == Request::Type::WASTE) {
+    if (req.getType() == "Waste") {
     double wasteAmount = req.getAmount();
     if (wasteCapacity >= wasteAmount) {
         collectWaste();

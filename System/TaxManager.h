@@ -9,11 +9,11 @@
 #include <vector>
 #include <string>
 #include "Citizen.h"
-#include "visitHousing.h"
-#include "Resource.h"
-#include "CommercialBuilding.h"
-#include "ResidentialBuilding.h"
-#include "Budget.h"
+class visitHousing;
+class Budget;
+
+class CommercialBuilding;
+class ResidentialBuilding;
 
 /**
  * @class TaxManager

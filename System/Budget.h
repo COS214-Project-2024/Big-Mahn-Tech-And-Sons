@@ -6,9 +6,11 @@
 #ifndef BUDGET_H
 #define BUDGET_H
 
+
 #include "Resource.h"
 #include "Element.h"
-#include "TaxManager.h"
+
+class TaxManager;
 
 /**
  * @class Budget
@@ -23,7 +25,7 @@ public:
     /**
      * @brief Reports the current status of the budget resource.
      */
-    void reportStatus() const override;
+    void reportStatus() const ;
 
     // a few functions needed by the department of finance and the Tax Mananger 
     Budget(float initialBudget);
@@ -37,7 +39,7 @@ public:
      * @brief Accepts a visitor (TaxManager).
      * @param visitor The visitor object.
      */
-    void accept(TaxManager* visitor) override;
+    void accept(TaxManager* visitor);
 };
 
 #endif // BUDGET_H

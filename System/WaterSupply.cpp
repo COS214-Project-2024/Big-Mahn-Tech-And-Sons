@@ -75,7 +75,7 @@ double WaterSupply::getWaterCapacity() {
  *          to the next concreteHandler.
  */
 void WaterSupply::handleRequest(Request &req) {
-    if (req.getType() == Request::Type::WATER) {
+    if (req.getType() == "Water") {
         double demand = req.getAmount();
         if (waterCapacity >= demand) {
             distributeWater();

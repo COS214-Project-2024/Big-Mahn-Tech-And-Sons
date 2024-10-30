@@ -40,7 +40,9 @@ void Warehouse::displayStats() const {
 bool Warehouse::hasStorageSpace() const {
     return currentStorage < storageCapacity;
 }
+bool Warehouse::checkProductionCapacity() const {
 
+}
 /**
  * @brief Accepts visitors for the visitor pattern.
  * @param visitor A pointer to the visitor object.

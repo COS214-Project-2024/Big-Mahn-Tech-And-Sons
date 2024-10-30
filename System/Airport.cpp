@@ -44,6 +44,9 @@ bool Airport::canHandleMorePassengers() const {
     return currentPassengers < passengerCapacity;
 }
 
+bool Airport::checkProductionCapacity() const {
+
+}
 /**
  * @brief Accepts visitors for the visitor pattern.
  * @param visitor A pointer to the visitor object.

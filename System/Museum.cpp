@@ -38,6 +38,11 @@ void Museum::accept(TaxManager* visitor) { // Malaika STUB!!!
     // visitor->visit(this);  // Visitor pattern implementation
 }
 
+std::shared_ptr<Building> Museum::clone() const
+{
+  // return std::shared_ptr<Building>("Building",  );
+}
+
 /**
  * @brief Gets the number of exhibits.
  * @return The number of exhibits.

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 #include "Citizen.h"
 #include "ResidentialBuildingCreator.h"
 #include "CommercialBuildingCreator.h"
@@ -13,10 +14,15 @@ int main() {
     // Create a residential building and citizen
     ResidentialBuildingCreator resCreator;
     auto house = resCreator.createBuilding("House");
-    Citizen john("John Doe", 75, 0, 0, nullptr);
+    auto housePtr = std::dynamic_pointer_cast<House>(house);
     
-    // Add citizen to residential building (mocking some functionality)
-    house->addResident(&john);
+    // Create citizen
+    Citizen john("John Doe", 75.0, 0, 0, nullptr);
+    
+    // Add citizen to residential building
+    if (housePtr) {
+        housePtr->addTenant(&john);
+    }
 
     // Create tax manager and collect taxes
     visitHousing taxManager;
@@ -26,5 +32,7 @@ int main() {
     // Report budget status after tax collection
     cityBudget.reportStatus();
 
+    std::cout << "Hello World" << std::endl;
+
     return 0;
-}
+ }

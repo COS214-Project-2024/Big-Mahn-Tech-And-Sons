@@ -2,25 +2,21 @@
 #define REQUEST_H
 
 #include <string>
-#include "Building.h"  // Ensure this header is included
+class Building;
 
-class Request 
-{
-public:
-    enum class Type { WATER, POWER, WASTE };
-
+using namespace std;
+class Request {
 private:
-    Type type;
-    Building* building;  // Pointer to Building instance
-    double amount;
 
+    double amount;
+    string type;
+    Building* building;
 public:
     // Constructor to initialize Request with a type, building, and amount
-    Request(Type type, Building* building, double amount);
+    Request(string type,Building* building, double amount);
 
-    Type getType();
+    string getType();
     Building* getBuilding();
     double getAmount();
 };
-
 #endif // REQUEST_H

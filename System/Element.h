@@ -5,7 +5,8 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-class TaxManager;  // Forward declaration
+#include "Element.h"
+class TaxManager;
 
 /**
  * @class Element

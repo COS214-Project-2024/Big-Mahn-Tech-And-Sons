@@ -11,6 +11,7 @@
 #include "Building.h"
 #include "TaxManager.h"
 
+
 /**
  * @class ResidentialBuilding
  * @brief Abstract class representing residential buildings.
@@ -37,7 +38,7 @@ public:
      * @brief Displays the stats specific to residential buildings.
      */
     void displayStats() const {
-        Building::displayStats();  // Call base class method
+        //Building::displayStats();  // Call base class method
         std::cout << "Has Backyard: " << (hasBackyard ? "Yes" : "No") << std::endl;
     }
 
@@ -45,6 +46,13 @@ public:
     bool getHasBackyard() const { return hasBackyard; }
     void setHasBackyard(bool backyard) { hasBackyard = backyard; }
 
+    virtual void repair() override {
+        
+     }
+
+    virtual std::shared_ptr<Building> clone() const override {
+        
+    };
     /**
      * @brief Accepts visitors for the visitor pattern.
      * This method remains virtual, to be overridden in the final building types.
