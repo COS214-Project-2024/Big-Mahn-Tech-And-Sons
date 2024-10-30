@@ -84,7 +84,7 @@ public:
     /**
      * @brief Destructor to clean up resources.
      */
-    ~DeptOfHousing() = default;
+    // ~DeptOfHousing() = default;
 
     int findBuildingIndex(const std::string& name) const; // New method
     std::string findBuildingIndex(int i) const;

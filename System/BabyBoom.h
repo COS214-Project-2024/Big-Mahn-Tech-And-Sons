@@ -45,7 +45,7 @@ public:
      * 
      * Cleans up any resources used by the BabyBoom event when it is no longer needed.
      */
-    ~BabyBoom();
+    // ~BabyBoom();
 
     /**
      * @brief Executes the BabyBoom event, simulating an increase in the population.

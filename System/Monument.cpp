@@ -12,10 +12,9 @@
  * @param heritageStatus Whether the monument is a heritage site.
  */
 Monument::Monument(const std::string& name, int maxCapacity, 
-                   const std::string& significance, int yearEstablished, 
+                   int yearEstablished, 
                    bool heritageStatus)
     : LandmarkBuilding(name, maxCapacity, "Monument", heritageStatus),
-      historicalSignificance(significance), 
       yearEstablished(yearEstablished) 
 {
     width = 20;            // Default monument width
@@ -44,17 +43,17 @@ void Monument::accept(TaxManager* visitor) { // Malaika STUB!!!
  * @brief Gets the historical significance of the monument.
  * @return The historical significance as a string.
  */
-std::string Monument::getHistoricalSignificance() const {
-    return historicalSignificance;
-}
+// std::string Monument::getHistoricalSignificance() const {
+//     return historicalSignificance;
+// }
 
-/**
- * @brief Sets the historical significance of the monument.
- * @param significance New historical significance.
- */
-void Monument::setHistoricalSignificance(const std::string& significance) {
-    historicalSignificance = significance;
-}
+// /**
+//  * @brief Sets the historical significance of the monument.
+//  * @param significance New historical significance.
+//  */
+// void Monument::setHistoricalSignificance(const std::string& significance) {
+//     historicalSignificance = significance;
+// }
 
 /**
  * @brief Gets the year the monument was established.

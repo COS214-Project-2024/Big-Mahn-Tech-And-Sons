@@ -13,10 +13,11 @@
 #include <memory>
 #include <iostream> // For std::cout
 #include <utility>   // For std::pair
+#include <algorithm> // For std::find
 
 #include "Element.h"
 #include "TaxManager.h"
-
+using namespace std;
 class Citizen; ///< Forward declaration of Citizen class
 
 /**
@@ -45,6 +46,7 @@ protected:
     double netWorth;                   ///< Net worth of the building
     bool waterSupply;                  ///< Water supply status
     bool powerSupply;                  ///< Power supply status
+    string type;
 
     // Grid coordinates: four (x, y) points representing corners of the building
     std::vector<std::pair<int, int>> gridCoordinates;
@@ -55,11 +57,7 @@ public:
      * @param name Name of the building.
      * @param maxCapacity Maximum capacity of the building.
      */
-    Building(const std::string& name, int maxCapacity)
-        : name(name), maxCapacity(maxCapacity), electricityMeterBox(0.0),
-          waterMeterBox(0.0), electricityUsage(0.0), waterUsage(0.0),
-          wasteProduction(0.0), width(1), length(1), priceTag(0.0),
-          netWorth(0.0), waterSupply(true), powerSupply(true) {}
+    Building(const std::string& name, int maxCapacity);
 
     // Virtual destructor to allow polymorphism
     virtual ~Building() = default;
@@ -90,13 +88,6 @@ public:
      */
     void requestWater(double usage);
 
-    /**
-     * @brief Calculates the total resource usage (electricity + water).
-     * @return Total resource usage.
-     */
-    double calculateResourceUsage() const {
-        return electricityUsage + waterUsage;
-    }
 
     /**
      * @brief Gets the grid coordinates of the building's corners.
@@ -117,22 +108,7 @@ public:
      *
      * This method prints all the relevant statistics of the building to the console.
      */
-    virtual void displayStats() const {
-        std::cout << "Building Name: " << name << std::endl;
-        std::cout << "Max Capacity: " << maxCapacity << std::endl;
-        std::cout << "Electricity Meter: " << electricityMeterBox << " kWh" << std::endl;
-        std::cout << "Water Meter: " << waterMeterBox << " L" << std::endl;
-        std::cout << "Electricity Usage: " << electricityUsage << " kWh" << std::endl;
-        std::cout << "Water Usage: " << waterUsage << " L" << std::endl;
-        std::cout << "Waste Produced: " << wasteProduction << " kg" << std::endl;
-        std::cout << "Dimensions (WxL): " << width << " x " << length << " units" << std::endl;
-        std::cout << "Total Resource Usage: " << calculateResourceUsage() << " units" << std::endl;
-        std::cout << "Tenants: ";
-        for (const auto& tenant : tenants) {
-            std::cout << tenant << " ";
-        }
-        std::cout << std::endl;
-    }
+    virtual void displayStats() const;
 
     // Getters
     std::string getName() const;
@@ -146,10 +122,9 @@ public:
     int getWidth() const;
     int getLength() const;
     double getPriceTag() const;
+    string getType() const;
 
-    int getCurrentOccupants() const {
-        return tenants.size();
-    }
+    int getCurrentOccupants() const;
 
     // Setters
     void setName(const std::string& name);
@@ -162,15 +137,9 @@ public:
     void setWidth(int width);
     void setLength(int length);
 
-    // New method to subtract tax from net worth
-    void subtractTax(double amount) {
-        netWorth -= amount;
-    }
 
     // Getter for net worth
-    double getNetWorth() const {
-        return netWorth;
-    }
+    double getNetWorth() const;
 
     /**
  * @brief Consumes water based on the specified amount and updates the building's water usage accordingly.
@@ -180,16 +149,7 @@ public:
  * 
  * @param amount The amount of water received by the building.
  */
-virtual void consumeWater(double amount)
-{
-    if (amount >= waterUsage) {
-        waterUsage = 0; 
-        std::cout << "Building: " << name << " has received enough water." << std::endl;
-    } else {
-        waterUsage -= amount;
-        std::cout << "Building: " << name << " received partial water. Remaining need: " << waterUsage << " units." << std::endl;
-    }
-}
+virtual void consumeWater(double amount);
 
 /**
  * @brief Consumes electricity based on the specified amount and updates the building's electricity usage accordingly.
@@ -199,58 +159,34 @@ virtual void consumeWater(double amount)
  * 
  * @param amount The amount of electricity received by the building.
  */
-virtual void consumeElectricity(double amount)
-{
-    if (amount >= electricityUsage) {
-        electricityUsage = 0;
-        std::cout << "Building " << name << " has received enough electricity." << std::endl;
-    } else {
-        electricityUsage -= amount;
-        std::cout << "Building " << name << " received partial electricity. Remaining need: " << electricityUsage << " units." << std::endl;
-    }
-}
+virtual void consumeElectricity(double amount);
 
 /**
  * @brief Cuts off the water supply to the building.
  * 
  * Disables the building's water supply and sets the water meter to zero.
  */
-virtual void waterCut() {
-    waterSupply = false;
-    waterMeterBox = 0.0;
-    std::cout << "Water supply cut at " << name << ".\n";
-}
-
+virtual void waterCut();
 /**
  * @brief Cuts off the power supply to the building.
  * 
  * Disables the building's power supply and sets the electricity meter to zero.
  */
-virtual void powerCut() {
-    powerSupply = false;
-    electricityMeterBox = 0.0;
-    std::cout << "Power supply cut at " << name << ".\n";
-}
+virtual void powerCut();
 
 /**
  * @brief Clears the waste produced by the building.
  * 
  * Resets the building's waste production to zero and outputs the amount cleared.
  */
-virtual void clearWaste() {
-    std::cout << name << " cleared " << wasteProduction << " kg of waste.\n";
-    wasteProduction = 0;
-}
+virtual void clearWaste();
 
 /**
  * @brief Retrieves the current amount of waste produced by the building.
  * 
  * @return The amount of waste in tons.
  */
-double getWasteAmount()
-{
-    return wasteProduction;
-}
+double getWasteAmount();
 
 /**
      * @brief Creates a clone of the building.

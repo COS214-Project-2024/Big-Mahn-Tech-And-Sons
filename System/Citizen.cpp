@@ -34,25 +34,25 @@ Citizen::Citizen(const std::string &nam, double happiness,int x , int y, DeptOfP
    this->satisfaction = 50.0;
    this->satisState =  new NeutralState();
    this->modeOfTransport = NULL;
-   this->go =  NULL;
+  // this->go =  NULL;
    this->ageThreshhold = 0;
 }
 
 
-Citizen::~Citizen()
-{
-   if(state) {
-      delete state;
-   }
+// Citizen::~Citizen()
+// {
+//    // if(state) {
+//    //    delete state;
+//    // }
 
-   if(modeOfTransport) {
-      delete modeOfTransport;
-   }
+//    // if(modeOfTransport) {
+//    //    delete modeOfTransport;
+//    // }
 
-   if(go) {
-      delete go;
-   }
-}
+//    // // if(go) {
+//    // //    delete go;
+//    // // }
+// }
 
 void Citizen::getOlder()
 {
