@@ -92,6 +92,8 @@ public:
     void listBuildings() const; // New method to list buildings
 
     bool requestFunding(double amount);  // Modified to request via DeptOfPR
+    void addBudget(double); // Normal adding and subtracting. Set amount of R2 million
+
 };
 
 #endif // DEPTOFHOUSING_H

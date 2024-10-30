@@ -13,6 +13,7 @@
 #include <memory>
 #include <iostream> // For std::cout
 #include <utility>   // For std::pair
+#include <algorithm> // For std::find
 
 #include "Element.h"
 #include "TaxManager.h"
@@ -43,6 +44,7 @@ protected:
     double netWorth;                   ///< Net worth of the building
     bool waterSupply;                  ///< Water supply status
     bool powerSupply;                  ///< Power supply status
+    string type;
 
     // Grid coordinates: four (x, y) points representing corners of the building
     std::vector<std::pair<int, int>> gridCoordinates;
@@ -88,13 +90,6 @@ public:
      */
     void requestWater(double usage);
 
-    /**
-     * @brief Calculates the total resource usage (electricity + water).
-     * @return Total resource usage.
-     */
-    double calculateResourceUsage() const {
-        return electricityUsage + waterUsage;
-    }
 
     /**
      * @brief Gets the grid coordinates of the building's corners.
@@ -144,6 +139,7 @@ public:
     int getWidth() const;
     int getLength() const;
     double getPriceTag() const;
+    string getType() const;
 
     int getCurrentOccupants() const {
         return tenants.size();
@@ -160,10 +156,6 @@ public:
     void setWidth(int width);
     void setLength(int length);
 
-    // New method to subtract tax from net worth
-    void subtractTax(double amount) {
-        netWorth -= amount;
-    }
 
     // Getter for net worth
     double getNetWorth() const {

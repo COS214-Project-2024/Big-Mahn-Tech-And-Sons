@@ -181,5 +181,7 @@ bool DeptOfHousing::requestFunding(double amount) {
     //     return false;
     // }
 
+    // call DeptOfPR::notifyTaxman("Housing") to handle this situation
+
     return true; // Waiting for DeptOfFinance  to implement the funding request logic (Aundrea)
 }
