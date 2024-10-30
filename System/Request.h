@@ -7,7 +7,9 @@
 #include <iostream>
 using namespace std;
 
-class Request {
+class Building;
+class Request 
+{
 public:
     /**
      * @brief Constructor to initialize Request with a type, building, and amount.
