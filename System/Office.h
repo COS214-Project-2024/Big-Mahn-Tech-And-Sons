@@ -43,6 +43,8 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
+    std::shared_ptr<Building>Office::clone() const override;
+
 private:
     int availableJobs;  ///< Number of available jobs in the office.
 };

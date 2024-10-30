@@ -44,3 +44,8 @@ bool Office::checkAvailability() const {
 void Office::accept(TaxManager* visitor) { // Yohali stub
    // visitor->visit(this);
 }
+
+
+std::shared_ptr<Building>Office::clone() const  {
+        return std::make_shared<Office>(*this);  // Clone this School
+    }

@@ -45,6 +45,8 @@ public:
 
     int getYearEstablished() const;
     void setYearEstablished(int year);
+
+    std::shared_ptr<Building>clone() const override;
 };
 
 #endif // MONUMENT_H

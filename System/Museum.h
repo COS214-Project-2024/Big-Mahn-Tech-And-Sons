@@ -44,6 +44,8 @@ public:
 
     double getEntryFee() const;
     void setEntryFee(double fee);
+
+    std::shared_ptr<Building>clone() const override;
 };
 
 #endif // MUSEUM_H

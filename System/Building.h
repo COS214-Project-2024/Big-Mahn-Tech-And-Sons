@@ -250,6 +250,31 @@ double getWasteAmount()
     return wasteProduction;
 }
 
+/**
+     * @brief Creates a clone of the building.
+     * 
+     * This method supports the Prototype pattern, creating a new instance of the building
+     * with the same properties as the original.
+     * 
+     * @return A shared pointer to the cloned building instance.
+     */
+    virtual std::shared_ptr<Building> clone() const = 0;
+
+
+    /**
+     * @brief Repairs the building by restoring its condition.
+     * 
+     * Each specific building type will implement its own repair logic.
+     */
+    virtual void repair() = 0;
+
+    /**
+     * @brief Gets the type of the building (e.g., Residential, Commercial).
+     * 
+     * @return A string representing the type of the building.
+     */
+    virtual std::string getType() const = 0;
+
 };
 
 #endif // BUILDING_H

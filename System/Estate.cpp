@@ -67,3 +67,8 @@ bool Estate::getHasSwimmingPool() const {
 void Estate::setHasSwimmingPool(bool pool) {
     hasSwimmingPool = pool;
 }
+
+
+ std::shared_ptr<Building>Estate::clone() const  {
+        return std::make_shared<Estate>(*this);  // Clone this estate
+    }
