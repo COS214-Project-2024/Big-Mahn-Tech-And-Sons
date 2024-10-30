@@ -610,5 +610,10 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, st
     return errorPair();  // No suitable location found
 }
 
+
+int CityGrid::getDistance(int,int,string)
+{
+    return -1;
+}
 //get distance from building a to building b
 //add building
