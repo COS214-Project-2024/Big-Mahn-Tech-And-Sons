@@ -33,7 +33,6 @@ class CityGrid
 {
 private:
     static vector<vector<Cell>>* citygrid;  //a pointer to a 2D dynamic grid of cells
-    // add vector of builings. pointer to vector of buildings.
     int grid_num_rows; //city rows
     int grid_num_cols; //city columns
 
@@ -50,9 +49,11 @@ public:
     void printCityCardinal(); //prints the cardinal points of each cell.
     void printCityStreets(); //prints the street names.
     void printCityRoadNetwork(); //prints all roads on the grid. "." available, "#" used space
+    void printAll_DetailedAttributes();
     vector<pair<int,int>> errorPair(); //used in addBuilding
     bool isEmptySpace(int,int,int,int);
     vector<pair<int,int>> addBuilding(int,int,string);  //returns vector of locations , length & width
+    
     int getDistance(int,int,string);   //returns distance as int, x,y co-ord of citizen & string of detailed attribute.
 
 

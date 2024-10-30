@@ -189,11 +189,13 @@ bool CityGrid::addRoad(int start_row, int start_col, int length, string directio
                 {
                     if((*citygrid)[i][start_col].getAttribute()=='R')
                     {
+                        (*citygrid)[i][start_col].updateDetailed_Attribute("ROAD");
                         (*citygrid)[i][start_col].updateStreetName(strname); //check string comparisons.
                         continue;
                     }
                     else
                     {
+                        (*citygrid)[i][start_col].updateDetailed_Attribute("ROAD");
                         (*citygrid)[i][start_col].changeAttribute('R');
                         (*citygrid)[i][start_col].updateStreetName(strname);
                     }
@@ -208,11 +210,13 @@ bool CityGrid::addRoad(int start_row, int start_col, int length, string directio
                 {
                     if((*citygrid)[i][start_col].getAttribute()=='R')
                     {
+                        (*citygrid)[i][start_col].updateDetailed_Attribute("ROAD");
                         (*citygrid)[i][start_col].updateStreetName(strname);
                         continue;
                     }
                     else
                     {
+                        (*citygrid)[i][start_col].updateDetailed_Attribute("ROAD");
                         (*citygrid)[i][start_col].changeAttribute('R');
                         (*citygrid)[i][start_col].updateStreetName(strname);
                     }
@@ -227,11 +231,13 @@ bool CityGrid::addRoad(int start_row, int start_col, int length, string directio
                 {
                     if((*citygrid)[start_row][i].getAttribute()=='R')
                     {
+                        (*citygrid)[i][start_col].updateDetailed_Attribute("ROAD");
                         (*citygrid)[i][start_col].updateStreetName(strname);
                         continue;
                     }
                     else
                     {
+                        (*citygrid)[i][start_col].updateDetailed_Attribute("ROAD");
                         (*citygrid)[start_row][i].changeAttribute('R');
                         (*citygrid)[start_row][i].updateStreetName(strname);
                     }
@@ -246,11 +252,13 @@ bool CityGrid::addRoad(int start_row, int start_col, int length, string directio
                 {
                     if((*citygrid)[start_row][i].getAttribute()=='R')
                     {
+                        (*citygrid)[i][start_col].updateDetailed_Attribute("ROAD");
                         (*citygrid)[i][start_col].updateStreetName(strname);
                         continue;
                     }
                     else
                     {
+                        (*citygrid)[i][start_col].updateDetailed_Attribute("ROAD");
                         (*citygrid)[start_row][i].changeAttribute('R');
                         (*citygrid)[start_row][i].updateStreetName(strname);
                     }
@@ -425,18 +433,27 @@ void CityGrid::printCityStreets()
         cout<<i<<" ";
         for (int j = 0; j < grid_num_cols; j++)
         {
-            if((*citygrid)[i][j].getDetailed_Atttribute()=="ROAD")
+            if((*citygrid)[i][j].getAttribute()=='R')
             {
                 cout<<(*citygrid)[i][j].getStreetName()<<" "; //prints streetName
             }
-            if((*citygrid)[i][j].getDetailed_Atttribute()=="BLANK")
+            else
             {
-                cout <<(*citygrid)[i][j].getAttribute()<<" "; //prints  available space
-            }
-            if((*citygrid)[i][j].getDetailed_Atttribute()=="USED")
-            {
-                cout <<(*citygrid)[i][j].getAttribute()<<" "; //prints  available space
+                cout<<(*citygrid)[i][j].getAttribute()<<" ";
             } 
+        } 
+        cout << endl;
+    }
+}
+
+void CityGrid::printAll_DetailedAttributes()
+{
+    for (int i = 0; i < grid_num_rows ;i++)
+    {
+        cout<<i<<" ";
+        for (int j = 0; j < grid_num_cols; j++)
+        {
+            cout<<(*citygrid)[i][j].getDetailed_Atttribute()<<" ";
         } 
         cout << endl;
     }
