@@ -38,7 +38,7 @@ private:
     // Node* homeLocation; /**<Citizen's home location */
     DeptOfPR*  PR; /**<Reference to government's PPR */
     DeptOfTransportation* DT;
-    GoToCommand* go;
+   // GoToCommand* go;
     CitizenState* state; /**< Current state of the citizen */
     SatisfactionState* satisState; /**< Current satisfaction state of citizen */
     int age; /**< Age of the citizen */
@@ -70,7 +70,7 @@ public:
     /**
      * @brief Destroys the Citizen object.
      */
-    ~Citizen(); 
+    // ~Citizen(); 
 
     /**
      * @brief Citizen gets older by one year

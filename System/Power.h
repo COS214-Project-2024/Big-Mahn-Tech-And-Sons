@@ -12,7 +12,7 @@
  * @class Power
  * @brief Represents power resource in the simulation.
  */
-class Power : public Resource {
+class Power{
 
 private:
     std::string name; ///< The name of the resource.
@@ -39,7 +39,7 @@ public:
     /**
      * @brief Reports the current status of the power resource.
      */
-    void reportStatus() const override;
+    void reportStatus() const;
 };
 
 #endif // POWER_H

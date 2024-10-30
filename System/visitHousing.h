@@ -1,21 +1,15 @@
-/** 
- * * @author u21824241_(add yours guys)
- */
-
+// visitHousing.h
 #ifndef VISITHOUSING_H
 #define VISITHOUSING_H
 
 #include "TaxManager.h"
-class Budget;
-/**
- * @class visitHousing
- * @brief ConcreteVisitor class for housing taxation.
- */
-class TaxManager;
+
 class visitHousing : public TaxManager {
 public:
-    void visitBuilding(Building* building);
-    void visitBudget(Budget* budget);
+    visitHousing();
+    void visitResidentialBuilding(ResidentialBuilding* building) override;
+    void visitCommercialBuilding(CommercialBuilding* building) override;
+    void visitBudget(Budget* budget) override;
 };
 
 #endif // VISITHOUSING_H

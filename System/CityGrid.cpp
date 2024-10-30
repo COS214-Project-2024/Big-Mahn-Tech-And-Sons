@@ -10,10 +10,10 @@ Cell::Cell(int row_value, int col_value, string cardinal_point)
     /*6*/ this->street_name = "-";
 }
 
-Cell::~Cell()
-{
-    //no memory management required here.
-}
+// Cell::~Cell()
+// {
+//     //no memory management required here.
+// }
 
 const char Cell::getAttribute()
 {
@@ -82,11 +82,11 @@ CityGrid::CityGrid(int row_dimension, int col_dimension)
     }
 }
 
-CityGrid::~CityGrid()
-{
-    if(citygrid!=nullptr)
-    delete citygrid;
-}
+// CityGrid::~CityGrid()
+// {
+//     if(citygrid!=nullptr)
+//     delete citygrid;
+// }
 
 void CityGrid::printCityGrid()
 {
@@ -510,6 +510,7 @@ vector<pair<int,int>> CityGrid::addBuilding(int length, int width, string detail
 
             if(isEmptySpace(up_left_row,up_left_col,up_right_col,down_left_row))
             {
+                // 
                 if(isNextToRoad())
                 {
                     available_space={{up_left_row,up_left_col},
@@ -525,6 +526,20 @@ vector<pair<int,int>> CityGrid::addBuilding(int length, int width, string detail
     }
     return errorPair();
 
+}
+
+bool CityGrid::isNextToRoad() {
+    return true;
+}
+
+int CityGrid::getNumRows()
+{
+        return 0;
+}
+
+int CityGrid::getNumCols()
+{
+    return 0;
 }
 
 //get distance from building a to building b

@@ -1,5 +1,5 @@
 #include "LoadsheddingCommand.h"
-#include "DepartmentUtilities.h"
+#include "DeptOfUtilities.h"
 #include <iostream>
 #include <vector>
 #include <string>

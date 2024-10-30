@@ -1,14 +1,15 @@
 #include "DeptOfTransportation.h"
+#include "CityGrid.h"
 
 DeptOfTransportation::DeptOfTransportation()
 {
     
 }
 
-DeptOfTransportation::~DeptOfTransportation()
-{
+// DeptOfTransportation::~DeptOfTransportation()
+// {
 
-}
+// }
 
 int DeptOfTransportation::grid_num_rows()
 {

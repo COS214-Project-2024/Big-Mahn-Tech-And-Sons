@@ -60,7 +60,7 @@ public:
           netWorth(0.0), waterSupply(true), powerSupply(true) {}
 
     // Virtual destructor to allow polymorphism
-    virtual ~Building() = default;
+    // virtual ~Building() = default;
 
     /**
      * @brief Adds a tenant to the building.
@@ -144,6 +144,9 @@ public:
     int getWidth() const;
     int getLength() const;
     double getPriceTag() const;
+    std::string getType(){
+        return "test";
+    }
 
     int getCurrentOccupants() const {
         return tenants.size();
