@@ -11,6 +11,7 @@
 #include "Building.h"
 #include "TaxManager.h"
 
+
 /**
  * @class ResidentialBuilding
  * @brief Abstract class representing residential buildings.
@@ -37,7 +38,7 @@ public:
      * @brief Displays the stats specific to residential buildings.
      */
     void displayStats() const {
-        Building::displayStats();  // Call base class method
+        //Building::displayStats();  // Call base class method
         std::cout << "Has Backyard: " << (hasBackyard ? "Yes" : "No") << std::endl;
     }
 
@@ -45,12 +46,33 @@ public:
     bool getHasBackyard() const { return hasBackyard; }
     void setHasBackyard(bool backyard) { hasBackyard = backyard; }
 
+   
     /**
      * @brief Accepts visitors for the visitor pattern.
      * This method remains virtual, to be overridden in the final building types.
      * @param visitor A pointer to the visitor object.
      */
     virtual void accept(TaxManager* visitor) = 0;
-};
 
+
+    /**
+ * @brief Clones the ResidentialBuilding to create a new instance with identical properties.
+ * 
+ * This implementation supports the Prototype pattern by creating a copy of the building.
+ * 
+ * @return A shared pointer to the cloned ResidentialBuilding instance.
+ */
+ virtual Building* clone() const override {
+        
+    };
+/**
+ * @brief Repairs the residential building.
+ * 
+ * This method provides specific repair actions for a ResidentialBuilding instance.
+ */
+void repair() override {
+    std::cout << "Repairing residential building: " << getName() << "\n";
+}
+};
+ 
 #endif // RESIDENTIALBUILDING_H

@@ -35,8 +35,11 @@ Citizen::Citizen(const std::string &nam, double happiness,int x , int y, DeptOfP
    this->satisfaction = 50.0;
    this->satisState =  new NeutralState();
    this->modeOfTransport = NULL;
-   this->go =  NULL;
+  // this->go =  NULL;
    this->ageThreshhold = 0;
+
+
+   // Set Home and work location IN
 }
 
 
@@ -50,13 +53,13 @@ Citizen::~Citizen()
       delete satisState;
    }
 
-   if(modeOfTransport) {
-      delete modeOfTransport;
-   }
+//    // if(modeOfTransport) {
+//    //    delete modeOfTransport;
+//    // }
 
-   if(go) {
-      delete go;
-   }
+   // if(go) {
+   //    delete go;
+   // }
 }
 
 void Citizen::getOlder()
@@ -84,6 +87,11 @@ int Citizen::getAge()
    return this->age;
 }
 
+std::string Citizen::getName() const
+{
+   return this->name;
+}
+
 double Citizen::getHealth()
 {
     return this->health;
@@ -107,6 +115,7 @@ void Citizen::work(double amount)
 bool Citizen::Spend(double amount)
 {
    this->budget -= amount;
+   return true;
 }
 
 void Citizen::decreaseHealth(double percentage)
@@ -191,7 +200,17 @@ void Citizen::setModeOfTransport(ModeOfTrans *mode)
 
 Building *Citizen::getCurrentLocation() const
 {
-   return nullptr;
+   return currentLocation;
+}
+
+Building *Citizen::getHomeLocation() const
+{
+   return homeLocation;
+}
+
+Building *Citizen::getWorkLocation() const
+{
+   return workLocation;
 }
 
 void Citizen::travelTo(Building *destination, CityGrid *citi, int x, int y, const std::string &Building)

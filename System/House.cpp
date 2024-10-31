@@ -52,3 +52,8 @@ int House::getNumFloors() const {
 void House::setNumFloors(int floors) {
     numFloors = floors;
 }
+
+
+Building* House::clone() const  {
+    return new House(*this);  // Clone this estate
+}

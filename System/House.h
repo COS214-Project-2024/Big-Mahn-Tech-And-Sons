@@ -39,6 +39,8 @@ public:
     // Getters and Setters
     int getNumFloors() const;
     void setNumFloors(int floors);
+
+    Building* clone() const override;
 };
 
 #endif // HOUSE_H

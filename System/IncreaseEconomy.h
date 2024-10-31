@@ -40,7 +40,7 @@ public:
      * 
      * Cleans up any resources used by the IncreaseEconomy event when it is no longer needed.
      */
-    ~IncreaseEconomy();
+    // ~IncreaseEconomy();
 
     /**
      * @brief Executes the IncreaseEconomy event, simulating an economic boom.

@@ -43,6 +43,8 @@ public:
 
     bool getHasSwimmingPool() const;
     void setHasSwimmingPool(bool pool);
+
+    Building* clone() const override;
 };
 
 #endif // ESTATE_H

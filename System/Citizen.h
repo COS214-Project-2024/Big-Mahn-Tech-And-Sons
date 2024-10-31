@@ -40,7 +40,7 @@ private:
     Building* workLocation; /**<Citizen's work location */
     Building* homeLocation; /**<Citizen's home location */
     DeptOfTransportation* DT;
-    GoToCommand* go;
+    // GoToCommand* go;
     CitizenState* state; /**< Current state of the citizen */
     SatisfactionState* satisState; /**< Current satisfaction state of citizen */
     int age; /**< Age of the citizen */
@@ -87,6 +87,7 @@ public:
     void notifyPR();
 
     int getAge();
+
 
     /**
      * @brief Gets the name of the citizen.
@@ -200,6 +201,10 @@ public:
      */
     Building* getCurrentLocation() const;
 
+
+    Building* getHomeLocation() const;
+
+    Building* getWorkLocation() const;
     /**
      * @brief Travels to another building.
      * 
@@ -211,5 +216,4 @@ public:
 
 
 };
-
-#endif
+#endif // CITIZEN_H

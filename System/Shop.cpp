@@ -44,3 +44,8 @@ bool Shop::checkAvailability() const {
 void Shop::accept(TaxManager* visitor) {
     visitor->visitCommercialBuilding(this);
 }
+
+
+Building* Shop::clone() const  {
+    return new Shop(*this);  // Clone this School
+}

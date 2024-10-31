@@ -38,12 +38,15 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
+    Building* clone() const override;
+
     // Getters and Setters
     int getExhibitCount() const;
     void setExhibitCount(int count);
 
     double getEntryFee() const;
     void setEntryFee(double fee);
+
 };
 
 #endif // MUSEUM_H

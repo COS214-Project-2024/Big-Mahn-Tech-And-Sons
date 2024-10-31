@@ -38,6 +38,11 @@ void Museum::accept(TaxManager* visitor) { // Malaika STUB!!!
     // visitor->visit(this);  // Visitor pattern implementation
 }
 
+Building* Museum::clone() const
+{
+   return new Museum(*this);
+}
+
 /**
  * @brief Gets the number of exhibits.
  * @return The number of exhibits.

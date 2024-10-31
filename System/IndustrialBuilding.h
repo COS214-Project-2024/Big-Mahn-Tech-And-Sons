@@ -51,16 +51,27 @@ public:
      */
     virtual bool checkProductionCapacity() const = 0;
 
+    virtual Building* clone() const override {
+
+    };
+
     /**
      * @brief Accepts visitors for the visitor pattern.
      * This method remains virtual, to be overridden in the final building types.
      * @param visitor A pointer to the visitor object.
      */
-    virtual void accept(TaxManager* visitor);
+    virtual void accept(TaxManager* visitor) {
+       // visitor->visit(this);
+    };
+
+     virtual void repair() override {
+
+     };
 
     // Getter and Setter for production rate
     double getProductionRate() const { return productionRate; }
     void setProductionRate(double rate) { productionRate = rate; }
+
 };
 
 #endif // INDUSTRIALBUILDING_H

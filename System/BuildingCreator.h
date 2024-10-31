@@ -33,14 +33,14 @@ public:
      * @return std::shared_ptr<Building> A shared pointer to the created building object.
      * @throws std::invalid_argument If the provided building type is not recognized.
      */
-    virtual std::shared_ptr<Building> createBuilding(const std::string& type) const = 0;
+    virtual Building* createBuilding(const std::string& type) const = 0;
 
     /**
      * @brief Virtual destructor for the BuildingCreator interface.
      * 
      * Ensures proper cleanup of derived classes when deleting via a pointer to the base class.
      */
-    virtual ~BuildingCreator() = default;
+    // virtual ~BuildingCreator() = default;
 };
 
 #endif // BUILDINGCREATOR_H

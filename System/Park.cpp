@@ -77,3 +77,7 @@ void Park::setPlaygroundCount(int count) {
 int Park::getPlaygroundCount() const {
     return playgroundCount;
 }
+
+Building* Park::clone() const  {
+        return new Park(*this);  // Clone this School
+}

@@ -5,9 +5,8 @@
 
 #ifndef RESOURCE_H
 #define RESOURCE_H
-
-#include <string>
 #include "TaxManager.h"
+#include "Budget.h"
 
 /**
  * @class Resource
@@ -15,29 +14,32 @@
  *
  * This class provides a base for different types of resources used in the simulation.
  */
-class TaxManager;
 
-class Resource: public TaxManager {
+
+class Resource : public TaxManager {
 protected:
     std::string name; ///< The name of the resource.
     double amount; ///< The amount of the resource available.
 
 public:
 
-    Resource(){}
-
+   
+    Resource() {
+        name = "";
+        amount = 0;
+    }
     /**
      * @brief Constructs a new Resource object.
      * 
      * @param name Name of the resource.
      * @param amount Initial amount of the resource.
      */
-    Resource( std::string& name, double amount);
+    Resource(const std::string& name, double amount);
 
     /**
      * @brief Destroys the Resource object.
      */
-    virtual ~Resource() {}
+    // virtual ~Resource() {}
 
     /**
      * @brief Gets the name of the resource.
@@ -77,5 +79,4 @@ public:
     void visitBudget(Budget* budget);
 
 };
-
 #endif // RESOURCE_H
