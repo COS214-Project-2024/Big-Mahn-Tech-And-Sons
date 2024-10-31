@@ -44,3 +44,7 @@ bool School::checkAvailability() const {
 void School::accept(TaxManager* visitor) {
     visitor->visitCommercialBuilding(this);
 }
+
+Building* School::clone() const  {
+    return new School(*this);  // Clone this School
+}

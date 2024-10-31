@@ -44,3 +44,7 @@ bool Hospital::checkAvailability() const {
 void Hospital::accept(TaxManager* visitor) {
     visitor->visitCommercialBuilding(this);
 }
+
+Building* Hospital::clone() const  {
+    return new Hospital(*this);  // Clone this School
+}

@@ -67,3 +67,8 @@ bool Estate::getHasSwimmingPool() const {
 void Estate::setHasSwimmingPool(bool pool) {
     hasSwimmingPool = pool;
 }
+
+
+Building* Estate::clone() const  {
+    return new Estate(*this);  // Clone this estate
+}

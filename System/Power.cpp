@@ -6,7 +6,7 @@
 #include "Power.h"
 #include <iostream>
 
-Power::Power(std::string& name, double amount) 
+Power::Power(std::string name, double amount) 
     : name(name), amount(amount) {}
 
 /**

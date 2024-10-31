@@ -69,3 +69,12 @@ bool Apartment::getHasElevator() const {
 void Apartment::setHasElevator(bool elevator) {
     hasElevator = elevator;
 }
+
+/**
+ * @brief This function is used ro clone a function after a certain buikding has be destroyed due a natural
+ * disaster. 
+ */
+Building* Apartment::clone() const {
+    return new Apartment(*this);  // This is fine
+}
+

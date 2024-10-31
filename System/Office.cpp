@@ -44,3 +44,8 @@ bool Office::checkAvailability() const {
 void Office::accept(TaxManager* visitor) { // Yohali stub
    // visitor->visit(this);
 }
+
+
+Building* Office::clone() const  {
+        return new Office(*this);  // Clone this School
+}

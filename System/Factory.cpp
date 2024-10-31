@@ -40,6 +40,11 @@ bool Factory::checkProductionCapacity() const {
     return productionRate < maxProductionCapacity;
 }
 
+Building *Factory::clone() const
+{
+   return new Factory(*this);
+}
+
 /**
  * @brief Accepts visitors for the visitor pattern.
  * @param visitor A pointer to the visitor object.

@@ -38,13 +38,13 @@ public:
     {
         width = 10;    // Default width for landmarks
         length = 15;   // Default length for landmarks
-        priceTag = 1'000'000.0;  // Default price tag for a landmark
+        priceTag = 1000000.0;  // Default price tag for a landmark
     }
 
     /**
      * @brief Virtual destructor for LandmarkBuilding.
      */
-    virtual ~LandmarkBuilding() = default;
+    // virtual ~LandmarkBuilding() = default;
 
     /**
      * @brief Displays the stats specific to a landmark building.
@@ -78,6 +78,14 @@ public:
      * @param visitor A pointer to the visitor object.
      */
     virtual void accept(TaxManager* visitor) = 0;
+
+    virtual void repair() override {
+        
+    };
+
+    virtual Building* clone() const override {
+
+    }
 };
 
 #endif // LANDMARKBUILDING_H

@@ -43,6 +43,8 @@ public:
 
     bool getHasElevator() const;
     void setHasElevator(bool elevator);
+
+    Building* clone() const override;
 };
 
 #endif // APARTMENT_H

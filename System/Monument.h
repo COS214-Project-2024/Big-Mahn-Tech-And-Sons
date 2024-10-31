@@ -12,7 +12,6 @@
  */
 class Monument : public LandmarkBuilding {
 private:
-    std::string historicalSignificance;  // The historical significance of the monument
     int yearEstablished;                 // The year the monument was established
 
 public:
@@ -20,12 +19,10 @@ public:
      * @brief Constructor for Monument.
      * @param name Name of the monument.
      * @param maxCapacity Maximum visitor capacity.
-     * @param significance Historical significance of the monument.
      * @param yearEstablished Year the monument was established.
      * @param heritageStatus Whether the monument is a heritage site.
      */
-    Monument(const std::string& name, int maxCapacity, 
-             const std::string& significance, int yearEstablished, 
+    Monument(const std::string& name, int maxCapacity, int yearEstablished, 
              bool heritageStatus);
 
     /**
@@ -39,12 +36,11 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
-    // Getters and Setters
-    std::string getHistoricalSignificance() const;
-    void setHistoricalSignificance(const std::string& significance);
 
     int getYearEstablished() const;
     void setYearEstablished(int year);
+
+    Building* clone() const override;
 };
 
 #endif // MONUMENT_H

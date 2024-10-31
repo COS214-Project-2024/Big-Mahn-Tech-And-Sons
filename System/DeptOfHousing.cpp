@@ -5,8 +5,15 @@
  * @brief Constructor for DeptOfHousing.
  * @param initialBudget The initial budget allocated to the department.
  */
-DeptOfHousing::DeptOfHousing(double initialBudget, DeptOfPR& pr) 
-    : budget(initialBudget), deptOfPR(pr) {}
+DeptOfHousing::DeptOfHousing(double initialBudget) 
+    : budget(initialBudget) {
+        this->deptOfPR = nullptr;
+    }
+
+void DeptOfHousing::setPR(DeptOfPR *PR)
+{
+    this->deptOfPR = PR;
+}
 
 /**
  * @brief Helper function to handle building creation with budget validation.
@@ -171,17 +178,60 @@ void DeptOfHousing::listBuildings() const {
 }
 
 bool DeptOfHousing::requestFunding(double amount) {
-    // std::cout << "Requesting additional funds from the DeptOfPR...\n";
-    // if (deptOfPR.processFundingRequest(amount)) {
-    //     budget += amount;
-    //     std::cout << "Funding request approved. New budget: " << budget << "\n";
-    //     return true;
-    // } else {
-    //     std::cerr << "Funding request denied.\n";
-    //     return false;
-    // }
+    std::cout << "Requesting additional funds from the DeptOfPR...\n";
+    if (deptOfPR->notifyTaxman("Housing")) {
+        budget += amount;
+        std::cout << "Funding request approved. New budget: " << budget << "\n";
+        return true;
+    } else {
+        std::cerr << "Funding request denied.\n";
+        return false;
+    }
 
     // call DeptOfPR::notifyTaxman("Housing") to handle this situation
 
     return true; // Waiting for DeptOfFinance  to implement the funding request logic (Aundrea)
 }
+
+
+/**
+ * @brief Retrieves the name of the building at the specified index.
+ * 
+ * This function allows access to the name of a building by index, which is
+ * particularly useful for operations that need to manipulate or display
+ * buildings by their position within the vector of managed buildings.
+ * 
+ * @param index The index of the building in the `buildings` vector.
+ * @return The name of the building if the index is valid; otherwise, an empty string.
+ */
+std::string DeptOfHousing::getBuildingName(int index) const {
+    if (index >= 0 && index < buildings.size()) {
+        return buildings[index]->getName();  ///< Assumes Building has a getName() method.
+    }
+    return "";
+
+}
+
+/**
+ * @brief Repairs buildings of a specified type by cloning and replacing them.
+ * 
+ * This function iterates through the list of buildings, identifies those that match
+ * the specified type, and repairs them by creating a clone of the building and replacing 
+ * the original with the repaired clone. This allows a fresh, "repaired" instance to take 
+ * the place of the damaged building.
+ * 
+ * @param type The type of building to repair (e.g., "Residential", "Commercial", "Industrial").
+ */
+void DeptOfHousing::repairBuilding(const std::string& type) 
+{
+    for (auto& building : buildings) {
+        if (building->getType() == type) {
+            Building* repairedBuilding = building->clone();  // Clone the building to "repair" it
+            repairedBuilding->repair();  // Perform any additional repair logic if needed
+
+            building = repairedBuilding;  // Replace the old building with the repaired clone
+            std::cout << type << " building '" << building->getName() << "' has been repaired via cloning.\n";
+        }
+    }
+}
+

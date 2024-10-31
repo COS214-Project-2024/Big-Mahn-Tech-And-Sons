@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 class Building;
@@ -32,7 +32,9 @@ private:
     DeptOfHousing *housing;                  ///< Reference to the Housing Department.
     DeptOfUtilities *utilities;        ///< Reference to the Utilities Department.
     DeptOfFinance *finance;                  ///< Reference to the Finance Department.
+    std::vector<Citizen*> citizens; ///< List of citizens to notify.
 
+    
 public:
     /**
      * @brief Constructs the Department of PR with references to other departments.
@@ -52,24 +54,6 @@ public:
      */
     void update(Building* building); // call check buildings and citizens
     void update(Citizen* citizen);
-    /**
-     * @brief Checks the state of all observed buildings.
-     * 
-     * This function inspects buildings to determine if there are issues such as
-     * overcrowding, lack of maintenance, or resource shortages. If problems are identified,
-     * it triggers appropriate responses via mediator functions.
-     */
-    //void checkBuildings();
-
-    /**
-     * @brief Checks the state of all observed citizens.
-     * 
-     * This function inspects citizens to monitor their health and satisfaction levels.
-     * Based on the findings, it may notify relevant departments to take action, such as improving
-     * services or infrastructure.
-     */
-   // void checkCitizens();
-
     // Mediator Functions
     /**
      * @brief Notifies the Housing Department to consider building more residential structures.
@@ -77,13 +61,13 @@ public:
      * This function is used when overcrowding or high demand for housing is detected.
      * It acts as a mediator, relaying the information to the Housing Department for further action.
      */
-    void notifyHousingToBuild();
+    void notifyHousingToBuild(string type);
 
 
     /**
      * @brief if building waste is at a certain level, remove it
      */
-    void notifyHousingToRemove(Building* building);
+    void notifyHousingToRemove(string type);
 
     /**
      * @brief Notifies the Utilities Department to address issues or prepare for increased demand.
@@ -101,7 +85,8 @@ public:
      * The PR Department mediates communication, ensuring efficient inter-departmental collaboration.
      * @note Taxman is either notified to try to lower taxes or improve economic health
      */
-    void notifyTaxman();
+    bool notifyTaxman(string deptName);
+    void promoteFestival();
 };
 
 #endif // DEPTOFPR_H

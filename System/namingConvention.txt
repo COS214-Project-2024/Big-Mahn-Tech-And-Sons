@@ -1,0 +1,31 @@
+......... COMMERCIAL BUILDING ..........
+SCHOOL
+OFFICE
+HOSPITAL             C
+SHOP
+
+......... RESIDENTIAL BUILDING ..........
+ESTATE
+APARTMENT           H
+HOUSE
+
+......... LANDMARK BUILDING ..........
+MUSEUM
+MONUMENT           L
+PARK
+
+......... INDUSTRIAL BUILDING ..........
+FACTORY
+AIRPORT
+WAREHOUSE          I
+TRAINSTATION
+
+...................ROADS ...............
+
+ROADS              R
+
+
+.................OTHERS................
+
+BLANK             .
+USED              #
