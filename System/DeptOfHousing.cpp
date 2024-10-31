@@ -5,8 +5,15 @@
  * @brief Constructor for DeptOfHousing.
  * @param initialBudget The initial budget allocated to the department.
  */
-DeptOfHousing::DeptOfHousing(double initialBudget, DeptOfPR& pr) 
-    : budget(initialBudget), deptOfPR(pr) {}
+DeptOfHousing::DeptOfHousing(double initialBudget) 
+    : budget(initialBudget) {
+        this->deptOfPR = nullptr;
+    }
+
+void DeptOfHousing::setPR(DeptOfPR *PR)
+{
+    this->deptOfPR = PR;
+}
 
 /**
  * @brief Helper function to handle building creation with budget validation.
@@ -171,15 +178,15 @@ void DeptOfHousing::listBuildings() const {
 }
 
 bool DeptOfHousing::requestFunding(double amount) {
-    // std::cout << "Requesting additional funds from the DeptOfPR...\n";
-    // if (deptOfPR.processFundingRequest(amount)) {
-    //     budget += amount;
-    //     std::cout << "Funding request approved. New budget: " << budget << "\n";
-    //     return true;
-    // } else {
-    //     std::cerr << "Funding request denied.\n";
-    //     return false;
-    // }
+    std::cout << "Requesting additional funds from the DeptOfPR...\n";
+    if (deptOfPR->notifyTaxman("Housing")) {
+        budget += amount;
+        std::cout << "Funding request approved. New budget: " << budget << "\n";
+        return true;
+    } else {
+        std::cerr << "Funding request denied.\n";
+        return false;
+    }
 
     return true; // Waiting for DeptOfFinance  to implement the funding request logic (Aundrea)
 }
@@ -217,7 +224,7 @@ void DeptOfHousing::repairBuilding(const std::string& type)
 {
     for (auto& building : buildings) {
         if (building->getType() == type) {
-            std::shared_ptr<Building> repairedBuilding = building->clone();  // Clone the building to "repair" it
+            Building* repairedBuilding = building->clone();  // Clone the building to "repair" it
             repairedBuilding->repair();  // Perform any additional repair logic if needed
 
             building = repairedBuilding;  // Replace the old building with the repaired clone

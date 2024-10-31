@@ -52,3 +52,8 @@ bool TrainStation::canHandleMorePassengers() const {
 void TrainStation::accept(TaxManager* visitor) { // Yohali Stub!!!!!!!
     //visitor->visit(this);
 }
+
+bool TrainStation::checkProductionCapacity() const
+{
+   return false;
+}

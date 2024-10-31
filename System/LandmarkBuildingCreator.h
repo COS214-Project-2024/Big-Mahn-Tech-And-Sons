@@ -36,7 +36,8 @@ public:
      * @return std::shared_ptr<Building> A shared pointer to the created landmark building.
      * @throws std::invalid_argument If the provided type is not recognized.
      */
-    std::shared_ptr<Building> createBuilding(const std::string& type) const override;
+    Building* createBuilding(const std::string& type) const override;
+
 };
 
 #endif // LANDMARKBUILDINGCREATOR_H

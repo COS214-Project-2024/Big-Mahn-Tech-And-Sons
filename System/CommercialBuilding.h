@@ -43,8 +43,8 @@ public:
     /**
      * @brief Displays the stats specific to commercial buildings.
      */
-    void displayStats() const {
-        Building::displayStats();  // Call base class method
+    virtual void displayStats() const {
+       // Building::displayStats();  // Call base class method
         std::cout << "Available Jobs: " << availableJobs << std::endl;
         std::cout << "Available Kids' Spaces: " << availableKidsSpaces << std::endl;
         std::cout << "Available Beds: " << availableBeds << std::endl;
@@ -60,6 +60,9 @@ public:
     int getAvailableBeds() const { return availableBeds; }
     void setAvailableBeds(int beds) { availableBeds = beds; }
 
+    virtual Building* clone() const override;
+
+     virtual void repair() override;
     /**
      * @brief Checks the availability of resources depending on the subtype.
      * @return True if resources are available, otherwise false.
@@ -69,7 +72,7 @@ public:
     /**
      * @brief Accepts visitors for the visitor pattern.
      * This method remains virtual, to be overridden in the final building types.
-     * @param visitor A pointer to the visitor object.
+     * @param visitor A pointer to the Taxmanager object.
      */
     virtual void accept(TaxManager* visitor) = 0;
 
@@ -87,7 +90,7 @@ public:
             // GUI: Mark the building as closed (e.g., gray out the building icon)
             // GUI: Add "Closed" label to indicate status
         } else {
-            std::cout << "CommercialBuilding: " << getName() << " is already closed." << std::endl;
+            std::cout << "CommercialBuilding: " <<  getName() << " is already closed." << std::endl;
         }
     }
 
@@ -108,7 +111,6 @@ public:
         return closed;
     }
 
-    std::shared_ptr<Building>clone() const;
 };
 
 #endif // COMMERCIALBUILDING_H

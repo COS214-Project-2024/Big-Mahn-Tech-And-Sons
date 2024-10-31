@@ -93,6 +93,8 @@ public:
      */
     void reduceUsage();
 
+    void setPR(DeptOfPR* pr);
+
 };
 
 #endif // DEPTOFUTILITIES_H

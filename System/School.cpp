@@ -45,6 +45,6 @@ void School::accept(TaxManager* visitor) {
     visitor->visitCommercialBuilding(this);
 }
 
-std::shared_ptr<Building> School::clone() const  {
-        return std::make_shared<School>(*this);  // Clone this School
-    }
+Building* School::clone() const  {
+    return new School(*this);  // Clone this School
+}

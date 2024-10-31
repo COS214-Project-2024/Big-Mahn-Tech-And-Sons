@@ -7,14 +7,15 @@
 
 #include "LandmarkBuildingCreator.h"
 
-std::shared_ptr<Building> LandmarkBuildingCreator::createBuilding(const std::string& type) const {
+Building* LandmarkBuildingCreator::createBuilding(const std::string& type) const {
     if (type == "Park") {
-        return std::make_shared<Park>();
+       return new Park(type, 40, 30, 20, true);
     } else if (type == "Monument") {
-        return std::make_shared<Monument>();
+        return new Monument(type, 30, 2004,true);
     } else if (type == "Museum") {
-        return std::make_shared<Museum>();
+       return new Museum(type, 20, 40,13, true);
     } else {
         throw std::invalid_argument("Unknown landmark building type: " + type);
     }
 }
+
