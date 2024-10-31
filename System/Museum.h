@@ -11,9 +11,6 @@
  * @brief The Museum class, a specific type of LandmarkBuilding.
  */
 class Museum : public LandmarkBuilding {
-private:
-    int exhibitCount;      // Number of exhibits in the museum
-    double entryFee;       // Entry fee for the museum
 
 public:
     /**
@@ -24,8 +21,7 @@ public:
      * @param entryFee Entry fee in local currency.
      * @param heritageStatus Whether the museum is a heritage site.
      */
-    Museum(const std::string& name, int maxCapacity, int exhibitCount, 
-           double entryFee, bool heritageStatus);
+    Museum();
 
     /**
      * @brief Displays the stats specific to the museum.
@@ -38,14 +34,8 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
-    Building* clone() const override;
+    Building* repairClone() const override;
 
-    // Getters and Setters
-    int getExhibitCount() const;
-    void setExhibitCount(int count);
-
-    double getEntryFee() const;
-    void setEntryFee(double fee);
 
 };
 

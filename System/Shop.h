@@ -24,7 +24,7 @@ public:
      * @param name Name of the shop.
      * @param maxCapacity Maximum capacity of the shop.
      */
-    Shop(const std::string& name, int maxCapacity);
+    Shop();
 
     /**
      * @brief Displays the stats specific to the shop.
@@ -43,7 +43,7 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
-    Building* clone() const override;
+    Building* repairClone() const override;
 
 private:
     int availableJobs;  ///< Number of available jobs in the shop.

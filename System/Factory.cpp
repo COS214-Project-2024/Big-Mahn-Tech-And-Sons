@@ -5,15 +5,11 @@
 
 /**
  * @brief Constructor for Factory.
- * @param name Name of the factory.
- * @param maxCapacity Maximum capacity of the factory.
- * @param maxProductionCapacity Maximum production capacity of the factory.
- * @param operationalHours Operational hours per day.
  */
-Factory::Factory(const std::string& name, int maxCapacity, int maxProductionCapacity, double operationalHours)
-    : IndustrialBuilding(name, maxCapacity, maxProductionCapacity),
-      operationalHours(operationalHours) {
-    
+Factory::Factory()
+    : IndustrialBuilding() {
+    name = "BMW Car Factory";
+    maxCapacity = 1000;
     width = 20;                  
     length = 40;                 
     electricityMeterBox = 150.0; 
@@ -22,6 +18,7 @@ Factory::Factory(const std::string& name, int maxCapacity, int maxProductionCapa
     waterUsage = 0.0;            // Initial water usage
     wasteProduction = 0.0;                 // Initial waste production
     priceTag = 500000.0;         // Default price tag for a factory
+    type = "Factory";
 }
 
 /**
@@ -29,18 +26,11 @@ Factory::Factory(const std::string& name, int maxCapacity, int maxProductionCapa
  */
 void Factory::displayStats() const {
     IndustrialBuilding::displayStats();  // Call base class method
-    std::cout << "Operational Hours: " << operationalHours << " hours/day" << std::endl;
 }
 
-/**
- * @brief Checks if the factory has available production capacity.
- * @return True if there is available capacity, otherwise false.
- */
-bool Factory::checkProductionCapacity() const {
-    return productionRate < maxProductionCapacity;
-}
 
-Building *Factory::clone() const
+
+Building *Factory::repairClone() const
 {
    return new Factory(*this);
 }

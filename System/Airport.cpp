@@ -11,11 +11,10 @@
  * @param runwayCount Number of runways.
  * @param passengerCapacity Maximum passenger capacity per day.
  */
-Airport::Airport(const std::string& name, int maxCapacity, int maxProductionCapacity, 
-                 int runwayCount, double passengerCapacity)
-    : IndustrialBuilding(name, maxCapacity, maxProductionCapacity),
-      runwayCount(runwayCount), passengerCapacity(passengerCapacity), currentPassengers(0.0) {
-
+Airport::Airport()
+    : IndustrialBuilding(){
+    name = "OR Tambo Airport";
+    maxCapacity = 1000;
     width = 100;                 ///< Example width of the airport.
     length = 300;                ///< Example length of the airport.
     electricityMeterBox = 1000.0; ///< Initial electricity meter reading.
@@ -24,6 +23,7 @@ Airport::Airport(const std::string& name, int maxCapacity, int maxProductionCapa
     waterUsage = 0.0;            ///< Initial water usage.
     wasteProduction = 0.0;                 ///< Initial waste production.
     priceTag = 1000000.0;        ///< Default price tag for an airport.
+    type = "Airport";
 }
 
 /**
@@ -31,23 +31,8 @@ Airport::Airport(const std::string& name, int maxCapacity, int maxProductionCapa
  */
 void Airport::displayStats() const {
     IndustrialBuilding::displayStats();  // Call base class method.
-    std::cout << "Runway Count: " << runwayCount << std::endl;
-    std::cout << "Passenger Capacity: " << passengerCapacity << " per day" << std::endl;
-    std::cout << "Current Passengers: " << currentPassengers << std::endl;
 }
 
-/**
- * @brief Checks if the airport can handle more passengers.
- * @return True if there is capacity for more passengers, otherwise false.
- */
-bool Airport::canHandleMorePassengers() const {
-    return currentPassengers < passengerCapacity;
-}
-
-bool Airport::checkProductionCapacity() const
-{
-    return false;
-}
 
 /**
  * @brief Accepts visitors for the visitor pattern.

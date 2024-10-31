@@ -9,7 +9,8 @@
  * @param maxCapacity Maximum capacity of the shop.
  */
 Shop::Shop()
-    : CommercialBuilding(name, maxCapacity), availableJobs(maxCapacity) {
+    : CommercialBuilding() {
+    availableJobs = maxCapacity;
     name = "Checkers";
     maxCapacity = 100;
     availableJobs = 
@@ -22,6 +23,7 @@ Shop::Shop()
     wasteProduction = 0.0;
     priceTag = 100000.0; // Setting price tag for Shop
     netWorth = 80000.0;
+    type = "Shop";
 }
 
 /**
@@ -49,6 +51,6 @@ void Shop::accept(TaxManager* visitor) {
 }
 
 
-Building* Shop::clone() const  {
+Building* Shop::repairClone() const  {
     return new Shop(*this);  // Clone this School
 }

@@ -11,31 +11,17 @@
  * @brief Represents a warehouse, a type of industrial building.
  */
 class Warehouse : public IndustrialBuilding {
-private:
-    double storageCapacity; ///< Maximum storage capacity in tons.
-    double currentStorage;  ///< Current storage level in tons.
 
 public:
     /**
      * @brief Constructor for Warehouse.
-     * @param name Name of the warehouse.
-     * @param maxCapacity Maximum capacity of people the warehouse can accommodate.
-     * @param maxProductionCapacity Maximum production capacity of the warehouse.
-     * @param storageCapacity Total storage capacity in tons.
      */
-    Warehouse(const std::string& name, int maxCapacity, int maxProductionCapacity, double storageCapacity);
+    Warehouse();
 
     /**
      * @brief Displays the stats specific to the warehouse.
      */
     void displayStats() const override;
-
-    /**
-     * @brief Checks if there is available storage space in the warehouse.
-     * @return True if space is available, otherwise false.
-     */
-    bool hasStorageSpace() const;
-    bool checkProductionCapacity() const;
 
     /**
      * @brief Accepts visitors for the visitor pattern.

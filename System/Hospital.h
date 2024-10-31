@@ -24,7 +24,7 @@ public:
      * @param name Name of the hospital.
      * @param maxCapacity Maximum capacity of the hospital.
      */
-    Hospital(const std::string& name, int maxCapacity);
+    Hospital();
 
     /**
      * @brief Displays the stats specific to the hospital.
@@ -43,7 +43,7 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
-   Building* clone() const override;
+   Building* repairClone() const override;
 
 private:
     int availableBeds;  ///< Number of available beds in the hospital.

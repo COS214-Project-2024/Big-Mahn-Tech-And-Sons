@@ -12,6 +12,7 @@
 //
 
 void buildingsTest();
+void testResidentialBuildings();
 
 int main()
 {
