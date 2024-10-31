@@ -8,8 +8,11 @@
  * @param name Name of the shop.
  * @param maxCapacity Maximum capacity of the shop.
  */
-Shop::Shop(const std::string& name, int maxCapacity)
+Shop::Shop()
     : CommercialBuilding(name, maxCapacity), availableJobs(maxCapacity) {
+    name = "Checkers";
+    maxCapacity = 100;
+    availableJobs = 
     width = 10;
     length = 15; 
     electricityMeterBox = 100.0;

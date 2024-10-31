@@ -11,19 +11,19 @@ Building *IndustrialBuildingCreator::createBuilding(const std::string &type) con
 {
     if (type == "Factory")
     {
-        return new Factory(type, 100, 100, 30);
+        return new Factory();
     }
     else if (type == "Warehouse")
     {
-        return new Warehouse(type , 90 , 90 , 90);
+        return new Warehouse();
     }
     else if (type == "Airport")
     {
-        return new Airport(type, 20, 20, 100, 90);
+        return new Airport();
     }
     else if (type == "TrainStation")
     {
-        return new TrainStation(type, 40, 30, 50, 90);
+        return new TrainStation();
     }
     else
     {

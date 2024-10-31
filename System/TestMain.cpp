@@ -17,7 +17,9 @@ int main()
 {
 
     std::cout << "Hello World" << std::endl;
-    buildingsTest();
+    // buildingsTest();
+    testResidentialBuildings();
+    std::cout << "End" << std::endl;
 
     return 0;
 }
@@ -34,8 +36,8 @@ void buildingsTest()
 
     Building *esate = 
      resi1->createBuilding("Estate");
-    // Building*  aprty = resi2->createBuilding("Apartment");
-    // Building*  house  = resi3->createBuilding("House");
+    Building*  aprty = resi2->createBuilding("Apartment");
+    Building*  house  = resi3->createBuilding("House");
     // Building*  errorH = resi4->createBuilding("Lol");
 
     std::cout << "\t =============Testing Functionality of  Residential Buildings :==========\n";
@@ -51,3 +53,38 @@ void buildingsTest()
               << "\t networth of :  " << esate->getNetWorth()
               << " \t has a priceTag of:  " << esate->getPriceTag() << "\n";
 }
+
+
+void testResidentialBuildings() {
+    ResidentialBuildingCreator creator;
+    TaxManager taxManager;  // Create a TaxManager instance
+
+    // Define an array of building types to test
+    std::string buildingTypes[] = {"House", "Apartment", "Estate"};
+
+    for (const std::string& type : buildingTypes) {
+        // Create a building using the factory
+        Building* building = creator.createBuilding(type);
+        if (building) {
+            // Display stats
+            building->displayStats();
+
+            // Set a new name
+            building->setName("Name 2.0");
+
+            // Test repairClone
+            Building* clonedBuilding = building->repairClone();
+            std::cout << "Cloned Building Name: " << clonedBuilding->getName() << std::endl;
+
+            // Test the accept function
+            building->accept(&taxManager);  // Pass the tax manager to the accept function
+
+            // Clean up
+            delete building;
+            delete clonedBuilding;
+        } else {
+            std::cerr << "Failed to create building of type: " << type << std::endl;
+        }
+    }
+}
+

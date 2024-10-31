@@ -9,11 +9,11 @@
 
 Building* LandmarkBuildingCreator::createBuilding(const std::string& type) const {
     if (type == "Park") {
-       return new Park(type, 40, 30, 20, true);
+       return new Park();
     } else if (type == "Monument") {
-        return new Monument(type, 30, 2004,true);
+        return new Monument();
     } else if (type == "Museum") {
-       return new Museum(type, 20, 40,13, true);
+       return new Museum();
     } else {
         throw std::invalid_argument("Unknown landmark building type: " + type);
     }

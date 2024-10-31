@@ -226,11 +226,9 @@ void DeptOfHousing::repairBuilding(const std::string& type)
 {
     for (auto& building : buildings) {
         if (building->getType() == type) {
-            Building* repairedBuilding = building->clone();  // Clone the building to "repair" it
-            repairedBuilding->repair();  // Perform any additional repair logic if needed
-
-            building = repairedBuilding;  // Replace the old building with the repaired clone
-            std::cout << type << " building '" << building->getName() << "' has been repaired via cloning.\n";
+            Building* repairedBuilding = building->repairClone();  // Clone the building to "repair" it
+            building = repairedBuilding;
+            std::cout << type << " building '" <<  building->getName() << "' has been repaired via cloning.\n";
         }
     }
 }

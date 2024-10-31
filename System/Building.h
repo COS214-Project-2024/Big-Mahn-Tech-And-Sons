@@ -60,7 +60,7 @@ public:
      * @param name Name of the building.
      * @param maxCapacity Maximum capacity of the building.
      */
-    Building(const std::string &name, int maxCapacity);
+    Building();
 
     // Virtual destructor to allow polymorphism
     virtual ~Building() = default;
@@ -203,14 +203,7 @@ public:
      *
      * @return A shared pointer to the cloned building instance.
      */
-    virtual Building* clone() const = 0;
-
-    /**
-     * @brief Repairs the building by restoring its condition.
-     *
-     * Each specific building type will implement its own repair logic.
-     */
-    virtual void repair() = 0;
+    virtual Building* repairClone() const = 0;
 };
 
 #endif // BUILDING_H

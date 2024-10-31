@@ -9,11 +9,11 @@
  * @param name Name of the building.
  * @param maxCapacity Maximum number of tenants the building can accommodate.
  */
-Building::Building(const std::string& name, int maxCapacity)
-    : name(name), maxCapacity(maxCapacity), electricityMeterBox(0.0),
+Building::Building()
+    : name("Building Name"), maxCapacity(100), electricityMeterBox(0.0),
       waterMeterBox(0.0), electricityUsage(0.0), waterUsage(0.0),
       wasteProduction(0.0), width(1), length(1), priceTag(0.0),
-      netWorth(0.0), waterSupply(true), powerSupply(true) {}
+      netWorth(0.0), waterSupply(true), powerSupply(true), type("Building") {}
 
 /**
  * @brief Adds a tenant to the building.
