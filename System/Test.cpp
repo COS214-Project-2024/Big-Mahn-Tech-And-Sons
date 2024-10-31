@@ -318,10 +318,8 @@ TEST_CASE("DeptOfUtility chain")
     powerDept.handleRequest(req8); // Should go through the chain but remain unhandled
 }
 
-
-
 TEST_CASE("PandemicCommand functionality") {
-      DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
     Water *water = new Water("Sparkling", 10000);
     DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
     TaxManager *taxMan = new TaxManager();

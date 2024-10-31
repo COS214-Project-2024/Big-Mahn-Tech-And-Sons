@@ -9,10 +9,15 @@ DeptOfFinance::DeptOfFinance(TaxManager* taxManager) : taxManager(taxManager) {}
 
 void DeptOfFinance::collectTaxes(Building* building) {
     std::string buildingType = building->getType();
-
-    if (buildingType == "Residential" || buildingType == "Commercial") {
-        building->accept(taxManager);  // Visitor visiting the building
-    } else {
+    if (buildingType == "Estate" || buildingType == "Apartment" || buildingType == "House") {
+        std::cout << "Collecting taxes from residential building: " << buildingType << std::endl;
+        building->accept(taxManager); // Collect tax for Residential buildings
+    } 
+    else if (buildingType == "Shop" || buildingType == "Hospital" || buildingType == "Office" || buildingType == "School") {
+        std::cout << "Collecting taxes from commercial building: " << buildingType << std::endl;
+        building->accept(taxManager); // Collect tax for Commercial buildings
+    } 
+    else {
         std::cout << "Skipping non-taxable building type: " << buildingType << std::endl;
     }
 }

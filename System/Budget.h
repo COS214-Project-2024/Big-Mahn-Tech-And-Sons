@@ -13,7 +13,7 @@ private:
 
 public:
     Budget(float initialBudget);
-    // ~Budget();
+    ~Budget();
     void reportStatus() const;
     float getTotalBudget() const;
     void setTotalBudget(float budget);
