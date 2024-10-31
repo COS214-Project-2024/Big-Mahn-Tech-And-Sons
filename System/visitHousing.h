@@ -2,6 +2,7 @@
 #ifndef VISITHOUSING_H
 #define VISITHOUSING_H
 
+
 #include "TaxManager.h"
 
 class visitHousing : public TaxManager {

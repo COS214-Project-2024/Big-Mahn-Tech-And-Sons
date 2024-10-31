@@ -38,6 +38,11 @@ void Museum::accept(TaxManager* visitor) { // Malaika STUB!!!
     // visitor->visit(this);  // Visitor pattern implementation
 }
 
+Building* Museum::clone() const
+{
+   return new Museum(*this);
+}
+
 /**
  * @brief Gets the number of exhibits.
  * @return The number of exhibits.
@@ -77,9 +82,3 @@ void Museum::setEntryFee(double fee) {
         std::cerr << "Error: Entry fee cannot be negative." << std::endl;
     }
 }
-
-
-
-std::shared_ptr<Building>Museum:: clone() const  {
-        return std::make_shared<Museum>(*this);  // Clone this School
-    }

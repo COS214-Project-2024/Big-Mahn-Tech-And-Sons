@@ -1,7 +1,11 @@
-// Element.h
-#pragma once
+/** 
+ * * @author u21824241_(add yours guys)
+ */
 
-//#include "TaxManager.h"
+#ifndef ELEMENT_H
+#define ELEMENT_H
+
+#include "Element.h"
 class TaxManager;
 
 /**
@@ -19,3 +23,5 @@ public:
      */
     virtual void accept(TaxManager* visitor) = 0;
 };
+
+#endif

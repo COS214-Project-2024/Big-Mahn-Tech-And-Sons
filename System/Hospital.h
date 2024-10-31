@@ -39,11 +39,11 @@ public:
 
     /**
      * @brief Accepts visitors for the visitor pattern.
-     * @param visitor A pointer to the visitor object.
+     * @param visitor A pointer to the TaxManger object.
      */
     void accept(TaxManager* visitor) override;
 
-    std::shared_ptr<Building> clone() const override;
+   Building* clone() const override;
 
 private:
     int availableBeds;  ///< Number of available beds in the hospital.

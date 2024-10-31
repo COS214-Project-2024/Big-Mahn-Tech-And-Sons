@@ -1,12 +1,15 @@
+
 #include "DeptOfTransportation.h"
 #include "CityGrid.h"
 
 DeptOfTransportation* DeptOfTransportation::instance = nullptr;
 
+
 DeptOfTransportation::DeptOfTransportation()
 {
     cityGrid = new CityGrid(10,10);
 }
+
 
 
 DeptOfTransportation::~DeptOfTransportation()
@@ -42,6 +45,7 @@ void DeptOfTransportation::printCityGrid()
 void DeptOfTransportation::printRoadNetwork()
 {
     cityGrid->printCityRoadNetwork();
+
 }
 
 void DeptOfTransportation::printCityCardinalPoints()
@@ -76,7 +80,10 @@ bool DeptOfTransportation::remove_Road(int start_row, int start_col, int road_le
     
     cout<<"\nRoad not removed ~ DeptTrans\n";
     return false;
+
 }
+
+
 
 const vector<pair<int,int>> DeptOfTransportation::add_Building(int length, int width, string building_type)
 {

@@ -3,7 +3,8 @@
  * @brief Declaration of the Resource class.
  */
 
-#pragma once
+#ifndef RESOURCE_H
+#define RESOURCE_H
 #include "TaxManager.h"
 #include "Budget.h"
 
@@ -14,12 +15,19 @@
  * This class provides a base for different types of resources used in the simulation.
  */
 
+
 class Resource : public TaxManager {
 protected:
     std::string name; ///< The name of the resource.
     double amount; ///< The amount of the resource available.
 
 public:
+
+   
+    Resource() {
+        name = "";
+        amount = 0;
+    }
     /**
      * @brief Constructs a new Resource object.
      * 
@@ -71,3 +79,4 @@ public:
     void visitBudget(Budget* budget);
 
 };
+#endif // RESOURCE_H

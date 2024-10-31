@@ -46,6 +46,6 @@ void Office::accept(TaxManager* visitor) { // Yohali stub
 }
 
 
-std::shared_ptr<Building>Office::clone() const  {
-        return std::make_shared<Office>(*this);  // Clone this School
-    }
+Building* Office::clone() const  {
+        return new Office(*this);  // Clone this School
+}

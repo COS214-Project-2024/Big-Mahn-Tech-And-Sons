@@ -10,7 +10,7 @@
 
 /**
  * @class Power
- * @brief Represents power resource in the simulation.
+ * @brief Represents power resource in  the simulation.
  */
 class Power{
 

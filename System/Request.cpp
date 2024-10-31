@@ -1,21 +1,17 @@
 // Request.cpp
 #include "Request.h"
+#include "Building.h"
 
-/**
- * @brief Constructor to initialize Request with a type, building, and amount.
- * @param type The type of request (e.g., "WATER", "POWER", "WASTE").
- * @param building Pointer to the building requesting the resource.
- * @param amount Amount of the requested resource.
- */
-Request::Request(std::string type, Building* building, double amount) 
-    : type(type), building(building), amount(amount) {}
+Request::Request(string type, Building *building, double amount) 
+{
+    this->type = type;
+    this->building = building;
+    this->amount = amount;
+}
 
-/**
- * @brief Get the type of the request as a string.
- * @return The request type.
- */
-std::string Request::getTypeAsString() {
-    return type;
+string Request::getType()
+{
+    return this->type;
 }
 
 /**

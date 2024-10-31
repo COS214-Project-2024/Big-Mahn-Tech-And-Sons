@@ -45,7 +45,7 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
-    bool checkProductionCapacity() const;
+    bool checkProductionCapacity() const override;
 };
 
 #endif // TRAINSTATION_H

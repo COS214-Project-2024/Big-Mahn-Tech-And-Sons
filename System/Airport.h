@@ -39,13 +39,14 @@ public:
      */
     bool canHandleMorePassengers() const;
 
-    bool checkProductionCapacity() const;
 
     /**
      * @brief Accepts visitors for the visitor pattern.
      * @param visitor A pointer to the visitor object.
      */
     void accept(TaxManager* visitor) override;
+
+    bool checkProductionCapacity() const override;
 };
 
 #endif // AIRPORT_H

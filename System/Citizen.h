@@ -17,6 +17,8 @@
 #include "DeptOfPR.h"
 #include "DeptOfTransportation.h"
 
+using namespace std;
+
 class Building;
 class SatisfactionState;
 class CityGrid;
@@ -31,14 +33,14 @@ class CitizenState;
  */
 class Citizen {
 private:
-    std::string name; /**< Name of the citizen */
+    string name; /**< Name of the citizen */
     ModeOfTrans* modeOfTransport; /**< Current mode of transport */
-    // Node* currentLocation; /**< Current building location */
-    // Node* workLocation; /**<Citizen's work location */
-    // Node* homeLocation; /**<Citizen's home location */
     DeptOfPR*  PR; /**<Reference to government's PPR */
+    Building* currentLocation; /**< Current building location */
+    Building* workLocation; /**<Citizen's work location */
+    Building* homeLocation; /**<Citizen's home location */
     DeptOfTransportation* DT;
-   // GoToCommand* go;
+    // GoToCommand* go;
     CitizenState* state; /**< Current state of the citizen */
     SatisfactionState* satisState; /**< Current satisfaction state of citizen */
     int age; /**< Age of the citizen */
@@ -56,7 +58,7 @@ public:
      * @param health  Health of the citizen
      * @param mode Pointer to the current mode of transport.
      * @param location Pointer to the current building location.
-     *  @param work Pointer to the work location.
+     * @param work Pointer to the work location.
      * @param home Pointer to home location
      * 
      * @note Randomize the intial budget 
@@ -70,7 +72,7 @@ public:
     /**
      * @brief Destroys the Citizen object.
      */
-    // ~Citizen(); 
+    ~Citizen(); 
 
     /**
      * @brief Citizen gets older by one year
@@ -85,6 +87,7 @@ public:
     void notifyPR();
 
     int getAge();
+
     /**
      * @brief Gets the name of the citizen.
      * 
@@ -144,32 +147,8 @@ public:
      */
     void increaseSatisfaction(double amount);
 
-    /**
-     * @brief Simulates the evacuation of citizens during a natural disaster or emergency.
-     */
-    void evacuate();
-
-    /**
-     * @brief Simulates the return of citizens to the city after an event.
-     * 
-     * huh
-     */
-    void returnToCity();
-
-    /**
-     * @brief Simulates citizens becoming unemployed during an economic recession.
-     */
-    void becomeUnemployed();
-
-    /**
-     * @brief Simulates citizens finding new jobs after a recession or job creation event.
-     */
-    void getNewJob();
-
-
     void setThreshhold(int age);
-
-
+    int getThreshold();
     /**
      * @brief Gets the name of the citizen's current state.
      * 
@@ -221,13 +200,10 @@ public:
      */
     Building* getCurrentLocation() const;
 
-    /**
-     * @brief Sets the citizen's current building location.
-     * 
-     * @param location Pointer to the new building.
-     */
-  //  void setCurrentLocation(Node* location);
 
+    Building* getHomeLocation() const;
+
+    Building* getWorkLocation() const;
     /**
      * @brief Travels to another building.
      * 
@@ -239,5 +215,4 @@ public:
 
 
 };
-
-#endif
+#endif // CITIZEN_H

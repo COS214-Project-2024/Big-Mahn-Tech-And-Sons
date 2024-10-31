@@ -7,14 +7,14 @@
  * @brief Constructor for Monument.
  * @param name Name of the monument.
  * @param maxCapacity Maximum visitor capacity.
- * @param significance Historical significance of the monument.
  * @param yearEstablished Year the monument was established.
  * @param heritageStatus Whether the monument is a heritage site.
  */
 Monument::Monument(const std::string& name, int maxCapacity, 
-                   int yearEstablished, 
+                  int yearEstablished, 
                    bool heritageStatus)
     : LandmarkBuilding(name, maxCapacity, "Monument", heritageStatus),
+    
       yearEstablished(yearEstablished) 
 {
     width = 20;            // Default monument width
@@ -27,7 +27,6 @@ Monument::Monument(const std::string& name, int maxCapacity,
  */
 void Monument::displayStats() const {
     LandmarkBuilding::displayStats();  // Call base class method
-    std::cout << "Historical Significance: " << historicalSignificance << std::endl;
     std::cout << "Year Established: " << yearEstablished << std::endl;
 }
 
@@ -43,17 +42,7 @@ void Monument::accept(TaxManager* visitor) { // Malaika STUB!!!
  * @brief Gets the historical significance of the monument.
  * @return The historical significance as a string.
  */
-// std::string Monument::getHistoricalSignificance() const {
-//     return historicalSignificance;
-// }
 
-// /**
-//  * @brief Sets the historical significance of the monument.
-//  * @param significance New historical significance.
-//  */
-// void Monument::setHistoricalSignificance(const std::string& significance) {
-//     historicalSignificance = significance;
-// }
 
 /**
  * @brief Gets the year the monument was established.
@@ -76,6 +65,6 @@ void Monument::setYearEstablished(int year) {
 }
 
 
-std::shared_ptr<Building>Monument:: clone() const  {
-        return std::make_shared<Monument>(*this);  // Clone this School
-    }
+Building* Monument::clone() const  {
+        return new Monument(*this);  // Clone this School
+}

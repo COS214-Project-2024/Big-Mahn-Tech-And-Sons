@@ -12,7 +12,6 @@
  */
 class Monument : public LandmarkBuilding {
 private:
-    std::string historicalSignificance;  // The historical significance of the monument
     int yearEstablished;                 // The year the monument was established
 
 public:
@@ -37,14 +36,11 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
-    // Getters and Setters
-    // std::string getHistoricalSignificance() const;
-    // void setHistoricalSignificance(const std::string& significance);
 
     int getYearEstablished() const;
     void setYearEstablished(int year);
 
-    std::shared_ptr<Building>clone() const override;
+    Building* clone() const override;
 };
 
 #endif // MONUMENT_H

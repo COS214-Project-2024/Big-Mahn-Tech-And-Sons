@@ -29,6 +29,14 @@ float TaxManager::calculateBusinessTax(CommercialBuilding* building) {
     return building->getNetWorth() * taxRates["PropertyTax"];
 }
 
+void TaxManager::collectTaxes()
+{
+}
+
+void TaxManager::distributeBudget(const std::string &department, float allocation)
+{
+}
+
 void TaxManager::visitResidentialBuilding(ResidentialBuilding* building) {
     collect(building);
 }

@@ -54,6 +54,6 @@ void House::setNumFloors(int floors) {
 }
 
 
-std::shared_ptr<Building>House::clone() const  {
-        return std::make_shared<House>(*this);  // Clone this estate
-    }
+Building* House::clone() const  {
+    return new House(*this);  // Clone this estate
+}

@@ -78,6 +78,14 @@ public:
      * @param visitor A pointer to the visitor object.
      */
     virtual void accept(TaxManager* visitor) = 0;
+
+    virtual void repair() override {
+        
+    };
+
+    virtual Building* clone() const override {
+
+    }
 };
 
 #endif // LANDMARKBUILDING_H

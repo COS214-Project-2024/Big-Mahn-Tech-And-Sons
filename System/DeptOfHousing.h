@@ -18,21 +18,24 @@
  */
 class DeptOfHousing {
 private:
-    std::vector<std::shared_ptr<Building>> buildings;  // List of managed buildings
+    std::vector<Building*> buildings;  // List of managed buildings
     ResidentialBuildingCreator residentialCreator;
     CommercialBuildingCreator commercialCreator;
     IndustrialBuildingCreator industrialCreator;
     LandmarkBuildingCreator landmarkCreator;
 
     double budget;  // Total budget allocated to the department
-    DeptOfPR& deptOfPR;  // Reference to the DeptOfPR
+    DeptOfPR* deptOfPR;  // Reference to the DeptOfPR
 
 public:
     /**
      * @brief Constructor for DeptOfHousing.
      * @param initialBudget The initial budget allocated to the department.
      */
-    DeptOfHousing(double initialBudget, DeptOfPR& pr);
+    DeptOfHousing(double initialBudget);
+
+
+    void setPR(DeptOfPR *PR);
 
     /**
      * @brief Creates a residential building if within budget.
@@ -93,8 +96,8 @@ public:
 
     bool requestFunding(double amount);  // Modified to request via DeptOfPR
 
-    std::string DeptOfHousing::getBuildingName(int index) const;  //This  will be used for the natural Disster Command 
-    void DeptOfHousing::repairBuilding(const std::string& type);  //This willbe used to repair the building after a natural disaster
+    std::string getBuildingName(int index) const;  //This  will be used for the natural Disster Command 
+    void repairBuilding(const std::string& type);  //This willbe used to repair the building after a natural disaster
 };
 
 #endif // DEPTOFHOUSING_H

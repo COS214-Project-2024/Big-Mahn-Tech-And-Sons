@@ -3,32 +3,20 @@
 #define REQUEST_H
 
 #include <string>
-#include "Building.h"
-#include <iostream>
-using namespace std;
-
 class Building;
-class Request 
-{
+
+using namespace std;
+class Request {
+private:
+
+    double amount;
+    string type;
+    Building* building;
 public:
-    /**
-     * @brief Constructor to initialize Request with a type, building, and amount.
-     * @param type The type of request (e.g., "WATER", "POWER", "WASTE").
-     * @param building Pointer to the building requesting the resource.
-     * @param amount Amount of the requested resource.
-     */
-    Request(std::string type, Building* building, double amount);
+    // Constructor to initialize Request with a type, building, and amount
+    Request(string type,Building* building, double amount);
 
-    /**
-     * @brief Get the type of the request as a string.
-     * @return The request type.
-     */
-    std::string getTypeAsString();
-
-    /**
-     * @brief Get the building associated with the request.
-     * @return Pointer to the building.
-     */
+    string getType();
     Building* getBuilding();
 
     /**
@@ -39,10 +27,5 @@ public:
 
     // ~Request();
 
-private:
-    std::string type;       /**< The type of request (e.g., "WATER", "POWER", "WASTE"). */
-    Building* building;     /**< Pointer to the building instance making the request. */
-    double amount;          /**< The amount of the resource requested. */
 };
-
 #endif // REQUEST_H

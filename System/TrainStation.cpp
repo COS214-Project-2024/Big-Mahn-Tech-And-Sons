@@ -55,5 +55,5 @@ void TrainStation::accept(TaxManager* visitor) { // Yohali Stub!!!!!!!
 
 bool TrainStation::checkProductionCapacity() const
 {
-    return false;
+   return false;
 }

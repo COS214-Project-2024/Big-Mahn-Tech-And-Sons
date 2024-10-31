@@ -44,7 +44,7 @@ public:
     bool getHasElevator() const;
     void setHasElevator(bool elevator);
 
-    std::shared_ptr<Building> clone() const override;
+    Building* clone() const override;
 };
 
 #endif // APARTMENT_H

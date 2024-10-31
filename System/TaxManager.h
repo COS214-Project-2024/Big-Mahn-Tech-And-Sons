@@ -5,13 +5,21 @@
 #include <map>
 #include <vector>
 #include <string>
-
-// Forward declarations
-class Citizen;
-class CommercialBuilding;
-class ResidentialBuilding;
+#include "Citizen.h"
+class visitHousing;
 class Budget;
 
+class CommercialBuilding;
+class ResidentialBuilding;
+
+/**
+ * @class TaxManager
+ * @brief Manages taxation policies and visits buildings and resources in the city.
+ * 
+ * The TaxManager is responsible for managing the taxation system in the city.
+ * It collects taxes from citizens and businesses and distributes the city's budget to different departments.
+ * The TaxManager also applies tax policies and interacts with buildings and resources using the Visitor pattern.
+ */
 class TaxManager {
 private:
     std::map<std::string, float> taxRates;

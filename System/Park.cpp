@@ -78,6 +78,6 @@ int Park::getPlaygroundCount() const {
     return playgroundCount;
 }
 
-std::shared_ptr<Building>Park ::clone() const  {
-        return std::make_shared<Park>(*this);  // Clone this School
-    }
+Building* Park::clone() const  {
+        return new Park(*this);  // Clone this School
+}

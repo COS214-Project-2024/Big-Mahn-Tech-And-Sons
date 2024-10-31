@@ -98,6 +98,8 @@ public:
      */
     void reduceUsage();
 
+    void setPR(DeptOfPR* pr);
+
     /**
      * @brief Tracks the department's resource usage across various sectors or functions.
      */

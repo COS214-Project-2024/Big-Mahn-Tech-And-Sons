@@ -109,28 +109,21 @@ double WaterSupply::getWaterCapacity()
  *          checks if it can handle the request, if not, WaterSupply will pass it on
  *          to the next concreteHandler.
  */
-void WaterSupply::handleRequest(Request &req)
-{
-    if (req.getTypeAsString() == "WATER")
-    {
-        // Check if WaterSupply can fulfill the water request
-        if (req.getAmount() <= waterCapacity)
-        {
-            std::cout << "WaterSupply handling request for " << req.getAmount()
-                      << " units of water for " << req.getBuilding()->getName() << std::endl;
-            waterCapacity -= req.getAmount();
+void WaterSupply::handleRequest(Request &req) {
+    if (req.getType() == "Water") {
+        double demand = req.getAmount();
+        if (waterCapacity >= demand) {
+            distributeWater();
+            std::cout << "WaterSupply: Distributed " << demand << " units of water.\n";
+        } else {
+            std::cout << "WaterSupply: Insufficient water capacity.\n";
         }
-        else
-        {
-            std::cout << "Insufficient water capacity. Forwarding request to successor." << std::endl;
-            if (successor)
-                successor->handleRequest(req);
-        }
-    }
-    else
+    } 
+    else if (successor) 
     {
-        // Forward request if type is not handled by WaterSupply
-        if (successor)
-            successor->handleRequest(req);
+        successor->handleRequest(req);
+    } else 
+    {
+        std::cout << "WaterSupply: Request could not be handled.\n";
     }
 }
