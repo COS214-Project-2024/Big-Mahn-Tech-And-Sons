@@ -8,6 +8,11 @@ DeptOfPR::DeptOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, D
    this->housing = housingDept;     ///< access to the housing department/
    this->utilities = utilitiesDept; ///< access to the utilities department
    this->finance = financeDept;     ///< access to the finance depart
+
+
+   housingDept->setPR(this);
+   utilitiesDept->setPR(this);
+   financeDept->setPR(this);
 }
 
 void DeptOfPR::update(Building *building)
@@ -37,10 +42,10 @@ void DeptOfPR::update(Citizen *citizen)
    
 }
 
-void DeptOfPR::notifyHousingToBuild(string type)
+void DeptOfPR::notifyHousingToBuild(string type) // change to BOOL
 {
    if (type == "House" || type == "Apartment" || type == "Estate") {
-      this->housing->createResidentialBuilding(type);
+      this->housing->createResidentialBuilding(type); 
    } else if (type == "Shop" || type == "Office" || type == "Hospital" || type == "School")
    {
       this->housing->createCommercialBuilding(type);
@@ -55,7 +60,7 @@ void DeptOfPR::notifyHousingToBuild(string type)
    }
 }
 
-void DeptOfPR::notifyHousingToRemove(string type)
+void DeptOfPR::notifyHousingToRemove(string type) // CHANGE TO BOOL
 {
    this->housing->removeBuildingByName(type);
 }
@@ -65,19 +70,20 @@ void DeptOfPR::notifyUtilities()
    //this->utilities->handleRequest(); //check with drey
 }
 
-void DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure only departments are passed in
+bool DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure only departments are passed in, CHANGE TO BOOL
 {
    // Economic conditions
    bool healthyEconomy = this->finance->checkMoney(); // e.g., >2.5% GDP growth
 
    if(deptName != "Housing" || deptName != "Citizen" || deptName != "Finance" || deptName != "Utility" || deptName != "Building" ) {
-      return;
+      return false;
    }
 
    // Decision making to decrease taxes
    if (deptName == "Citizen" && healthyEconomy) {
       this->finance->decreaseTaxes();
       std::cout << "Taxes have been lowered based on economic conditions and citizen feedback." << std::endl;
+      return true;
       // Decision making to increase taxes
    } else if(deptName == "Housing") { // check dept housing request funding function
       this->finance->increaseTaxes(10);
@@ -90,7 +96,10 @@ void DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure 
       }
       */
       std::cout << "Taxes have been increased to support government funding needs." << std::endl;
+      return true;
    }
+
+   return false;
 }
 
 

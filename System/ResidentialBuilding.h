@@ -62,7 +62,7 @@ public:
  * 
  * @return A shared pointer to the cloned ResidentialBuilding instance.
  */
- virtual std::shared_ptr<Building> clone() const override {
+ virtual Building* clone() const override {
         
     };
 /**

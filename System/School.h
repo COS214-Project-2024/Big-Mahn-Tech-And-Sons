@@ -43,7 +43,7 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
-    std::shared_ptr<Building> clone() const override;
+    Building* clone() const override;
 
 private:
     int availableKidsSpaces;  ///< Number of available kids' spaces in the school.

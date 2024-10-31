@@ -60,7 +60,7 @@ public:
     int getAvailableBeds() const { return availableBeds; }
     void setAvailableBeds(int beds) { availableBeds = beds; }
 
-    virtual std::shared_ptr<Building> clone() const override;
+    virtual Building* clone() const override;
 
      virtual void repair() override;
     /**

@@ -82,13 +82,13 @@ public:
      * @brief Requests electricity usage.
      * @param usage Amount of electricity requested.
      */
-    void requestElectricity(double usage);
+    void requestElectricity(double requestedElectricity);
 
     /**
      * @brief Requests water usage.
      * @param usage Amount of water requested.
      */
-    void requestWater(double usage);
+    void requestWater(double requestedWater);
 
     /**
      * @brief Gets the grid coordinates of the building's corners.
@@ -201,7 +201,7 @@ public:
      *
      * @return A shared pointer to the cloned building instance.
      */
-    virtual std::shared_ptr<Building> clone() const = 0;
+    virtual Building* clone() const = 0;
 
     /**
      * @brief Repairs the building by restoring its condition.

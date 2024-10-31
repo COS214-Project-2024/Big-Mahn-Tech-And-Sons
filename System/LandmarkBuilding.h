@@ -83,8 +83,8 @@ public:
         
     };
 
-    virtual std::shared_ptr<Building> clone() const override {
-       // return std::make_shared<LandmarkBuilding>(*this);
+    virtual Building* clone() const override {
+
     }
 };
 

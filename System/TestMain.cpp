@@ -1,39 +1,53 @@
-
 #include <iostream>
-#include <memory>
+//
 #include "Citizen.h"
-#include "ResidentialBuildingCreator.h"
-#include "CommercialBuildingCreator.h"
+//
 #include "visitHousing.h"
 #include "Budget.h"
+//
+#include "LandmarkBuildingCreator.h"
+#include "IndustrialBuildingCreator.h"
+#include "ResidentialBuildingCreator.h"
+#include "CommercialBuildingCreator.h"
+//
 
-int main() {
-    // Create a budget
-    Budget cityBudget(10000);
-    cityBudget.reportStatus();
+void buildingsTest();
 
-    // Create a residential building and citizen
-    ResidentialBuildingCreator resCreator;
-    auto house = resCreator.createBuilding("House");
-    auto housePtr = std::dynamic_pointer_cast<House>(house);
-    
-    // Create citizen
-    Citizen john("John Doe", 75.0, 0, 0, nullptr);
-    
-    // Add citizen to residential building
-    if (housePtr) {
-        housePtr->addTenant(&john);
-    }
-
-    // Create tax manager and collect taxes
-    visitHousing taxManager;
-    house->accept(&taxManager);
-    cityBudget.accept(&taxManager);
-
-    // Report budget status after tax collection
-    cityBudget.reportStatus();
+int main()
+{
 
     std::cout << "Hello World" << std::endl;
+    buildingsTest();
 
     return 0;
- }
+}
+
+void buildingsTest()
+{
+
+    std::cout << "Testing Residential Buildings :_________________ \n";
+    // 1. RESIDENTIAL SITUATION
+    ResidentialBuildingCreator *resi1 = new ResidentialBuildingCreator();
+    ResidentialBuildingCreator *resi2 = new ResidentialBuildingCreator();
+    ResidentialBuildingCreator *resi3 = new ResidentialBuildingCreator();
+    ResidentialBuildingCreator *resi4 = new ResidentialBuildingCreator();
+
+    Building *esate = 
+     resi1->createBuilding("Estate");
+    // Building*  aprty = resi2->createBuilding("Apartment");
+    // Building*  house  = resi3->createBuilding("House");
+    // Building*  errorH = resi4->createBuilding("Lol");
+
+    std::cout << "\t =============Testing Functionality of  Residential Buildings :==========\n";
+    std::cout << "\t \t _~_~_~_Estate_~_~_~_~ \t \n";
+    /*std::cout << */
+    esate->displayStats();
+    // some functions dont output and some need jus to be made to make sense
+    std::cout << "Occupants: " << esate->getCurrentOccupants() << " \t MeterBox for Electricity :  " << esate->getElectricityMeterBox()
+              << " \t MeterBox for Water: " << esate->getWaterMeterBox()
+              << " \t their usages:  " << esate->getElectricityUsage() << " , " << esate->getWaterUsage()
+              << " \t Name of building:  " << esate->getName()
+              << "\n \t building of type: " << esate->getType()
+              << "\t networth of :  " << esate->getNetWorth()
+              << " \t has a priceTag of:  " << esate->getPriceTag() << "\n";
+}

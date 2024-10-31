@@ -47,8 +47,12 @@ bool Building::removeTenant(Citizen* tenant) {
  * 
  * @param usage Amount of electricity requested (in kWh).
  */
-void Building::requestElectricity(double usage) {
+void Building::requestElectricity(double requestedElectricity) {
     // electricityUsage += usage;
+      powerSupply = true;
+   double got = electricityMeterBox + requestedElectricity;
+    setWaterMeterBox(got);
+
 }
 
 /**
@@ -56,8 +60,10 @@ void Building::requestElectricity(double usage) {
  * 
  * @param usage Amount of water requested (in liters).
  */
-void Building::requestWater(double usage) {
-    // waterUsage += usage;
+void Building::requestWater(double requestedWater) {
+    waterSupply = true;
+    double got = waterMeterBox + requestedWater;
+    setWaterMeterBox(got);
 }
 
 /**
@@ -134,13 +140,26 @@ void Building::setLength(int newLength) { length = newLength; }
  * @param amount Amount of water consumed (in liters).
  */
 void Building::consumeWater(double amount) {
-    if (amount >= waterUsage) {
-        waterUsage = 0;
-        std::cout << "Building: " << name << " has received enough water." << std::endl;
-    } else {
-        waterUsage -= amount;
-        std::cout << "Building: " << name << " received partial water. Remaining need: " 
-                  << waterUsage << " units." << std::endl;
+    double newA = waterUsage + amount  ;
+    double meterA = waterMeterBox - newA;
+
+  if (newA > waterMeterBox) {
+        std::cout << "Building " << name << " does not have enough electricity that is requested , try buying units or using less water , current meter box amount:  "<<waterMeterBox<<" attempted to use" <<newA  << std::endl;
+        waterSupply = true;
+    } 
+    else if ( meterA <= 0 && meterA >=-10 )
+    {
+        setWaterUsage(newA);
+        setWaterMeterBox(meterA);
+        std::cout<<"Building: "<<name<<" water usage is now went is very low! , please buy more units the current units is : "<<waterMeterBox <<"will not be able to comsume more water! , you recently just used: "<<waterUsage <<"\n";
+          waterSupply = true;
+    }
+    else
+    {
+        setWaterUsage(newA);
+        setWaterMeterBox(meterA);
+        std::cout << "Building: " << name << "has used: "<<newA<<" and is now left with: "<<meterA<<std::endl;
+          waterSupply = true;
     }
 }
 
@@ -150,14 +169,30 @@ void Building::consumeWater(double amount) {
  * @param amount Amount of electricity consumed (in kWh).
  */
 void Building::consumeElectricity(double amount) {
-    if (amount >= electricityUsage) {
-        electricityUsage = 0;
-        std::cout << "Building " << name << " has received enough electricity." << std::endl;
-    } else {
-        electricityUsage -= amount;
-        std::cout << "Building " << name << " received partial electricity. Remaining need: " 
-                  << electricityUsage << " units." << std::endl;
+    double newA = electricityUsage + amount;
+    double meterA = electricityMeterBox - newA;
+
+   if (newA  > electricityUsage) 
+     {
+        std::cout << "Building " << name << " does not have enough electricity that is requested , try buying units or using less electricity , current meter box amount:  "<<electricityMeterBox<<" attempted to use" <<newA  << std::endl;
+        powerSupply = true;
+    } 
+    else if( meterA <= 0  && meterA >= -10)
+    {
+        std::cout<<"Building: "<<name<<" now has Low Credits! , please buy more units the current units is : ";
+         setElectricityMeterBox( meterA );
+         setElectricityUsage(newA);
+         std::cout<< electricityMeterBox <<" however , will not be able to comsume more electricity! current units is : "<<electricityMeterBox <<"will not be able to comsume more electricity! , you recently just used: "<<electricityUsage <<"\n";
+          powerSupply = true;
+    }  else
+    {
+       setElectricityUsage(newA);
+       setElectricityMeterBox(meterA);
+
+        std::cout << "Building: " << name << "has used: "<<electricityUsage<<" and is now left with: "<<electricityMeterBox<<std::endl;
+        powerSupply = true;
     }
+
 }
 
 /**

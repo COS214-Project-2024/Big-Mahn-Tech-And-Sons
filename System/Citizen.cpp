@@ -37,6 +37,9 @@ Citizen::Citizen(const std::string &nam, double happiness,int x , int y, DeptOfP
    this->modeOfTransport = NULL;
   // this->go =  NULL;
    this->ageThreshhold = 0;
+
+
+   // Set Home and work location IN
 }
 
 
@@ -197,7 +200,17 @@ void Citizen::setModeOfTransport(ModeOfTrans *mode)
 
 Building *Citizen::getCurrentLocation() const
 {
-   return nullptr;
+   return currentLocation;
+}
+
+Building *Citizen::getHomeLocation() const
+{
+   return homeLocation;
+}
+
+Building *Citizen::getWorkLocation() const
+{
+   return workLocation;
 }
 
 void Citizen::travelTo(Building *destination, CityGrid *citi, int x, int y, const std::string &Building)

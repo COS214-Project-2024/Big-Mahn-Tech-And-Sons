@@ -9,6 +9,7 @@
 #include "TaxManager.h"
 #include "Building.h"
 
+class DeptOfPR;
 /**
  * @class DeptOfFinance
  * @brief Client class that interacts with different tax policies.
@@ -17,6 +18,7 @@ class DeptOfFinance {
 private:
     std::vector<Element*> elements; /**< List of elements in the city */
     TaxManager* taxManager;
+    DeptOfPR* PR;
 public:
     DeptOfFinance(TaxManager* taxManager);
 
@@ -67,9 +69,11 @@ public:
      */
     void assessEconomicImpact(); // this needs to return something e.g BOOL= is the economy good or not 
 
-    bool checkMoney();
+    bool checkMoney(); // check if in good financial position
 
     void collectTaxes();
+
+    void setPR(DeptOfPR* PR);
 };
 
 #endif // DEPTOFFINANCE_H

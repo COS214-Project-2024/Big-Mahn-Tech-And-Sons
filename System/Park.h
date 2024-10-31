@@ -66,7 +66,7 @@ public:
      */
     int getPlaygroundCount() const;
 
-    std::shared_ptr<Building> clone() const override;
+    Building* clone() const override;
 };
 
 #endif // PARK_H

@@ -8,21 +8,21 @@ PowerSupply::PowerSupply(string name, double budget, double capacity, Power* pow
  * @brief Destructor for PowerSupply.
  * This destructor releases any dynamically allocated resources.
  */
-// PowerSupply::~PowerSupply() {
-//     // // Delete the power resource if it was dynamically allocated
-//     // if (powerResource) {
-//     //     delete powerResource;
-//     // }
+PowerSupply::~PowerSupply() {
+    // // Delete the power resource if it was dynamically allocated
+    // if (powerResource) {
+    //     delete powerResource;
+    // }
 
-//     // // Iterate through the vector of buildings and delete each one if it was dynamically allocated
-//     // for (Building* building : buildings) {
-//     //     if (building) {
-//     //         delete building;
-//     //     }
-//     // }
-//     // // Clear the vector to ensure it does not hold dangling pointers
-//     // buildings.clear();
-// }
+    // // Iterate through the vector of buildings and delete each one if it was dynamically allocated
+    // for (Building* building : buildings) {
+    //     if (building) {
+    //         delete building;
+    //     }
+    // }
+    // // Clear the vector to ensure it does not hold dangling pointers
+    // buildings.clear();
+}
 
 /**
  * @brief Adds a building to the power supply system.

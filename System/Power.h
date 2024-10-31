@@ -10,7 +10,7 @@
 
 /**
  * @class Power
- * @brief Represents power resource in the simulation.
+ * @brief Represents power resource in  the simulation.
  */
 class Power{
 
@@ -22,7 +22,7 @@ public:
 
     Power() {}
 
-    Power(std::string& name, double amount); ///< Constructor.
+    Power(std::string name, double amount); ///< Constructor.
 
     /**
      * @brief Gets the current amount of power.

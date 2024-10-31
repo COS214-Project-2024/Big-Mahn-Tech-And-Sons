@@ -22,6 +22,7 @@ void DeptOfUtilities::displayDepartmentInfo() {
  */
 void DeptOfUtilities::requestBudget()
 {
+    
 
 }
 
@@ -51,6 +52,10 @@ void DeptOfUtilities::setSuccessor(DeptOfUtilities* nextDepartment) {
 
 void DeptOfUtilities::initiateLoadshedding()
 {
+    if(this->departmentName == "Power") {
+        cout << "Initiating loadshedding for " << departmentName << endl;
+        
+    }
 }
 
 void DeptOfUtilities::restorePower()
@@ -63,4 +68,9 @@ void DeptOfUtilities::increaseUsage()
 
 void DeptOfUtilities::reduceUsage()
 {
+}
+
+void DeptOfUtilities::setPR(DeptOfPR* pr)
+{
+    this->PR = pr;
 }

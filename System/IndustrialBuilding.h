@@ -51,7 +51,7 @@ public:
      */
     virtual bool checkProductionCapacity() const = 0;
 
-    virtual std::shared_ptr<Building> clone() const override {
+    virtual Building* clone() const override {
 
     };
 

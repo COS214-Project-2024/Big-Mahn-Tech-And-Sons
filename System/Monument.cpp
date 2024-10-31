@@ -65,6 +65,6 @@ void Monument::setYearEstablished(int year) {
 }
 
 
-std::shared_ptr<Building>Monument:: clone() const  {
-        return std::make_shared<Monument>(*this);  // Clone this School
-    }
+Building* Monument::clone() const  {
+        return new Monument(*this);  // Clone this School
+}

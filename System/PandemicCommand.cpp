@@ -25,6 +25,8 @@ void PandemicCommand::imposeLockdown() {
         citizen->decreaseSatisfaction(10); // Lockdowns can be frustrating
         citizen->notifyPR(); // Notify the PR department about the dissatisfaction
     }
+
+    // SET ALL CURRENT LOCATIONS TO HOWE, update gotO
 }
 
 /**
@@ -48,7 +50,7 @@ void PandemicCommand::distributeVaccines() {
     std::cout << "Vaccine Distribution: Administering vaccines to citizens.\n";
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> distribution(5.0, 20.0);
+    std::uniform_real_distribution<> distribution(5.0, 15.0);
 
     for (auto& citizen : citizens) {
         double healthBoost = distribution(gen); // Randomize vaccine effect
@@ -65,7 +67,7 @@ void PandemicCommand::distributeVaccines() {
 void PandemicCommand::quarantineCitizens() {
     std::cout << "Quarantine Enforced: Citizens are quarantined to prevent infection spread.\n";
     for (auto& citizen : citizens) {
-        citizen->decreaseHealth(5); // Small negative health impact due to isolation
+        citizen->decreaseHealth(40); // Small negative health impact due to isolation
         citizen->decreaseSatisfaction(20); // Reduced satisfaction due to restricted freedom
         citizen->notifyPR();
     }

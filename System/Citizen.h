@@ -200,6 +200,10 @@ public:
      */
     Building* getCurrentLocation() const;
 
+
+    Building* getHomeLocation() const;
+
+    Building* getWorkLocation() const;
     /**
      * @brief Travels to another building.
      * 
@@ -211,5 +215,4 @@ public:
 
 
 };
-
-#endif
+#endif // CITIZEN_H
