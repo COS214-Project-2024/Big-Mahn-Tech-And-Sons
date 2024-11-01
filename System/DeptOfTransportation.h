@@ -8,7 +8,9 @@
 #include "LandmarkBuildingCreator.h"
 
 #include <vector>
-
+#include <cctype>
+#include <string>
+#include <algorithm>
  
 class DeptOfTransportation
 {

@@ -102,6 +102,13 @@ const vector<pair<int, int>> DeptOfTransportation::add_Building(int length, int 
     vector<pair<int, int>> error = {{-1, -1}, {-1, -1}, {-1, -1}, {-1, -1}};
     Building *building = nullptr;
 
+    string building_type_lower = building_type;
+    building_type_lower[0] = toupper(building_type_lower[0]);
+    for (int i = 1; i < building_type_lower.length(); i++)
+    {
+        building_type_lower[i] = tolower(building_type_lower[i]);
+    }
+    
     try
     {
        
