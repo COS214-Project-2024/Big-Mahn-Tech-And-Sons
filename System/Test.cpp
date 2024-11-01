@@ -163,7 +163,6 @@ TEST_CASE("DeptOfPR initializes and interacts with Departments")
     DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil); // Setting up the Chain of Responsibility
-
     TaxManager *taxMan = new TaxManager();
     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
 
@@ -380,4 +379,10 @@ TEST_CASE("PandemicCommand functionality") {
     delete citizen1;
     delete citizen2;
     delete citizen3;
+}
+
+
+TEST_CASE("Government test") {
+    
+
 }

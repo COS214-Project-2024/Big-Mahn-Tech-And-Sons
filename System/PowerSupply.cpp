@@ -95,8 +95,8 @@ double PowerSupply::getPowerCapacity() {
  *          checks if it can handle the request, if not, PowerSupply will pass it on
  *          to the next concreteHandler.
  */
-void PowerSupply::handleRequest(Request& req) {
-    if (req.getType() == "Electricity") 
+bool PowerSupply::handleRequest(Request& req) {
+    if (req.getType() == "Power" && this->budget >= 10000  ) 
     {
         // Check if PowerSupply can fulfill the power request
         if (req.getAmount() <= powerCapacity)
@@ -104,12 +104,12 @@ void PowerSupply::handleRequest(Request& req) {
             std::cout << "PowerSupply handling request for " << req.getAmount()
                       << " units of power for " << req.getBuilding()->getName() << std::endl;
             powerCapacity -= req.getAmount();
+            this->budget -= 10000;
+            return true;
         }
         else
         {
-            std::cout << "Insufficient power capacity. Forwarding request to successor." << std::endl;
-            if (successor)
-                successor->handleRequest(req);
+            return false;
         }
     }
     else
@@ -118,6 +118,9 @@ void PowerSupply::handleRequest(Request& req) {
         if (successor)
         {
             successor->handleRequest(req);
+        } else {
+            std::cout << "No handler found for request type: " << req.getType() << std::endl;
+            return false;
         }
     }
 }

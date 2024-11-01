@@ -69,7 +69,7 @@ public:
      * checks if it can handle the request, if not, WasteManagement will pass it on
      * to the next concreteHandler.
      */
-    void handleRequest(Request &req);
+    bool handleRequest(Request &req);
 
     /**
      * @brief this function adds a building to the vector to  be handled by the waste management

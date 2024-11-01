@@ -36,7 +36,7 @@ void DeptOfUtilities::trackUsage()
 void DeptOfUtilities::requestPR() {
     if (PR) {
         cout << "Requesting assistance from PR department for " << departmentName << endl;
-        PR->notifyUtilities();
+        PR->notifyTaxman("Water");
     } else {
         cout << "No PR department available." << endl;
     }
