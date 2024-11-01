@@ -1,7 +1,10 @@
 #include "PowerSupply.h"
 
 PowerSupply::PowerSupply(string name, double budget, double capacity, Power* powerResource)
-    : DeptOfUtilities(name, budget), powerCapacity(capacity),  powerResource(powerResource) {}
+    : DeptOfUtilities(name, budget), powerCapacity(capacity),  powerResource(powerResource) {
+        cout<< "Power Supply Department : " << name << " created  with capacity : " << capacity << endl << endl;
+
+    }
 
 
 /**
@@ -29,7 +32,12 @@ PowerSupply::~PowerSupply() {
  * @param building Pointer to the building to add.
  */
 void PowerSupply::addBuilding(Building* building) {
-    buildings.push_back(building);
+    if(building)
+    { 
+        buildings.push_back(building);
+        cout << "Building has been added, it will receive power supply"<< endl << endl;
+    }
+    
 }
 
 
@@ -59,7 +67,9 @@ double PowerSupply::calculatePowerUsage() {
     for (Building* building : buildings) {
         totalUsage += building->getElectricityUsage(); // Assume this method exists
     }
+    cout << "Calculated the power usage : " ;
     return totalUsage;
+    cout << endl;
 }
 
 /**
@@ -89,6 +99,11 @@ double PowerSupply::getPowerCapacity() {
     return powerCapacity;
 }
 
+string PowerSupply::finalCapacity()
+{
+    cout << "final capacity : " << getPowerCapacity() << endl;
+}
+
 /**
  * @brief The handleRequest() function is the core method responsible for either processing 
  *          the request or passing it along the chain to the next handler. PowerSupply 
@@ -96,7 +111,7 @@ double PowerSupply::getPowerCapacity() {
  *          to the next concreteHandler.
  */
 void PowerSupply::handleRequest(Request& req) {
-    if (req.getType() == "Electricity") 
+    if (req.getType() == "power" || req.getType() == "POWER" || req.getType() == "P" || req.getType() == "p") 
     {
         // Check if PowerSupply can fulfill the power request
         if (req.getAmount() <= powerCapacity)

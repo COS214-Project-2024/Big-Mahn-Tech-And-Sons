@@ -1,7 +1,10 @@
 #include "WasteManagement.h"
 
 WasteManagement::WasteManagement(string name, double budget, double capacity)
-    : DeptOfUtilities(name, budget), wasteCapacity(capacity) {}
+    : DeptOfUtilities(name, budget), wasteCapacity(capacity) {
+        cout<< "Waste Management Department : " << name << " created  with capacity : " << capacity << endl << endl;
+
+    }
 
 /**
  * @brief Adds a building to the waste management system.
@@ -9,7 +12,11 @@ WasteManagement::WasteManagement(string name, double budget, double capacity)
  */
 void WasteManagement::addBuilding(Building *building)
 {
-    buildings.push_back(building);
+    if(building)
+    { 
+        buildings.push_back(building);
+        cout << "Building has been added, waste management will be handled "<< endl << endl;
+    }
 }
 
 /**
@@ -81,7 +88,7 @@ double WasteManagement::getWasteCapacity()
  *          to the next concreteHandler.
  */
 void WasteManagement::handleRequest(Request &req) {
-    if (req.getType() == "Waste") {
+    if (req.getType() == "waste" || req.getType() == "WASTE" || req.getType() == "W" || req.getType() == "w") {
     double wasteAmount = req.getAmount();
     if (wasteCapacity >= wasteAmount) {
         collectWaste();

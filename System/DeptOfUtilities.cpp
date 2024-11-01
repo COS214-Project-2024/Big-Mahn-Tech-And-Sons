@@ -51,8 +51,13 @@ void DeptOfUtilities::handleRequest(Request& req) {
     if (successor) {
         successor->handleRequest(req);
     } else {
-        std::cout << "Request for " << req.getTypeAsString() << " could not be handled." << std::endl;
+        std::cout << "Request for " << req.getType()<< " could not be handled." << std::endl;
     }
+}
+
+void DeptOfUtilities::setSuccessor(DeptOfUtilities *nextDepartment)
+{
+    successor = nextDepartment;
 }
 
 void DeptOfUtilities::initiateLoadshedding()

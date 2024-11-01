@@ -1,7 +1,10 @@
 #include "WaterSupply.h"
 
 WaterSupply::WaterSupply(string name, double budget, double capacity, Water *waterResource)
-    : DeptOfUtilities(name, budget), waterCapacity(capacity), waterResource(waterResource) {}
+    : DeptOfUtilities(name, budget), waterCapacity(capacity), waterResource(waterResource) {
+    cout<< "Water Supply Department : " << name << " created  with capacity : " << capacity << endl << endl;
+
+    }
 
 /**
  * @brief Adds a building to the water supply system.
@@ -9,7 +12,11 @@ WaterSupply::WaterSupply(string name, double budget, double capacity, Water *wat
  */
 void WaterSupply::addBuilding(Building *building)
 {
-    buildings.push_back(building);
+    if(building)
+    { 
+        buildings.push_back(building);
+        cout << "Building has been added, it will receive water supply"<< endl << endl;
+    }
 }
 
 /**
@@ -41,17 +48,17 @@ WaterSupply::~WaterSupply()
  */
 void WaterSupply::distributeWater()
 {
-    for (auto &building : buildings)
+    for (Building *it : buildings)
     {
-        double usage = building->getWaterUsage();
+        double usage = it->getWaterUsage();
         if (waterResource->getAmount() >= usage)
         {
-            building->consumeWater(usage);
+            it->consumeWater(usage);
             waterResource->use(usage);
         }
         else
         {
-            building->consumeWater(waterResource->getAmount());
+            it->consumeWater(waterResource->getAmount());
             waterResource->use(waterResource->getAmount());
             break;
         }
@@ -91,7 +98,7 @@ void WaterSupply::increaseWaterCapacity()
 {
     waterCapacity *= 1.5; // Increase capacity by 50%, might change as citizens  demand more
     // TODO : Implement logic to increase storage capacity
-    cout << "Increased water storage capacity. New capacity: " << waterCapacity << " liters." << endl;
+    cout << "Increased water storage capacity. New capacity: " << waterCapacity << " 000 liters." << endl;
 }
 
 /**
@@ -103,6 +110,11 @@ double WaterSupply::getWaterCapacity()
     return waterCapacity;
 }
 
+string WaterSupply::finalCapacity()
+{
+    cout << "The current water capacity is " << getWaterCapacity() << " 000 liters " << endl << endl;
+}
+
 /**
  * @brief The handleRequest() function is the core method responsible for either processing
  *          the request or passing it along the chain to the next handler. WaterSupply
@@ -110,7 +122,7 @@ double WaterSupply::getWaterCapacity()
  *          to the next concreteHandler.
  */
 void WaterSupply::handleRequest(Request &req) {
-    if (req.getType() == "Water") {
+    if (req.getType() == "WATER" || req.getType() == "water" || req.getType() == "w" || req.getType() == "W") {
         double demand = req.getAmount();
         if (waterCapacity >= demand) {
             distributeWater();

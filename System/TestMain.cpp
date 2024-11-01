@@ -15,11 +15,13 @@
 #include "Water.h"
 #include "WaterSupply.h"
 #include "PowerSupply.h"
+#include "WasteManagement.h"
 
 void TestingDptUtilities();
 
 int main() {
     // Create a budget
+    /*
     Budget cityBudget(10000);
     cityBudget.reportStatus();
 
@@ -46,6 +48,8 @@ int main() {
 
     std::cout << "Hello World" << std::endl;
     buildingsTest();
+*/
+TestingDptUtilities();
 
     return 0;
 }
@@ -60,8 +64,7 @@ void buildingsTest()
     ResidentialBuildingCreator *resi3 = new ResidentialBuildingCreator();
     ResidentialBuildingCreator *resi4 = new ResidentialBuildingCreator();
 
-    Building *esate = 
-     resi1->createBuilding("Estate");
+    Building *esate = resi1->createBuilding("Estate");
     // Building*  aprty = resi2->createBuilding("Apartment");
     // Building*  house  = resi3->createBuilding("House");
     // Building*  errorH = resi4->createBuilding("Lol");
@@ -79,76 +82,62 @@ void buildingsTest()
               << "\t networth of :  " << esate->getNetWorth()
               << " \t has a priceTag of:  " << esate->getPriceTag() << "\n";
 }
- }
+ 
 
  void TestingDptUtilities() {
-    // Initialize Power and Water resources with specific capacities
-    Power* powerResource = new Power("City Power", 500);  // 500 units of power available
-    Water* waterResource = new Water("City Water", 1000);  // 1000 units of water available
 
-    // Initialize departments with budget and capacity
-    PowerSupply powerSupply("Power Department", 20000, 500, powerResource);
-    WaterSupply waterSupply("Water Department", 15000, 1000, waterResource);
-    WasteManagement wasteManagement("Waste Department", 10000, 300); // Waste capacity in kg
+    std::cout <<  "\n\n\n\n" << endl;
 
-    // Chain setup: set the successor for each department
-    powerSupply.setSuccessor(&waterSupply);
-    waterSupply.setSuccessor(&wasteManagement);
+    Water *water = new Water("CityWater", 10000);
+    Power *power = new Power("CityPower", 1456.3);
 
-    // Create buildings with specific utility needs
-    Building buildingA("Building A", 50); // Max capacity of 50
-    buildingA.setElectricityUsage(50);    // 50 units of power requested
-    buildingA.setWaterUsage(100);          // 100 units of water requested
-    buildingA.setWaste(20);                // 20 kg of waste produced
+    PowerSupply powerDept("PowerManics", 5000, 400, power);
+    WaterSupply waterDept("AguaCity", 2000, 500, water);
+    WasteManagement wasteDept("WasteMgt", 150, 600);
 
-    Building buildingB("Building B", 30); // Max capacity of 30
-    buildingB.setElectricityUsage(30);    // 30 units of power requested
-    buildingB.setWaterUsage(60);           // 60 units of water requested
-    buildingB.setWaste(10);                // 10 kg of waste produced
+    Building *b1 = new House();
+    Building *b2 = new Apartment();
 
-    // Add buildings to each department for management
-    powerSupply.addBuilding(&buildingA);
-    powerSupply.addBuilding(&buildingB);
-    waterSupply.addBuilding(&buildingA);
-    waterSupply.addBuilding(&buildingB);
-    wasteManagement.addBuilding(&buildingA);
-    wasteManagement.addBuilding(&buildingB);
+    powerDept.addBuilding(b1);
+    powerDept.distributePower();
+    powerDept.calculatePowerUsage();
+    powerDept.increasePowerCapacity();
+    powerDept.powerShutDown();
+    powerDept.finalCapacity();
 
-    // Create requests for resources using strings instead of enum
-    Request powerRequest("POWER", &buildingA, 80); // Requesting 80 units of power for buildingA
-    Request waterRequest("WATER", &buildingB, 150); // Requesting 150 units of water for buildingB
-    Request wasteRequest("WASTE", &buildingA, 25);  // Requesting waste processing for 25 kg for buildingA
+    waterDept.addBuilding(b2);
+    waterDept.distributeWater();
+    cout << "Total usage is at " << waterDept.calculateWaterUsage() << " 000 liters" << endl;
+    waterDept.increaseWaterCapacity();
+    waterDept.waterShutDown();
+    waterDept.finalCapacity();
 
-    std::cout << "Testing power request handling for Building A:" << std::endl;
-    powerSupply.handleRequest(powerRequest);
+    wasteDept.addBuilding(b1);
+    wasteDept.collectWaste();
+    cout << wasteDept.calculateWasteProcessing() << "units of waste  processed" << endl;
+    wasteDept.expandWasteCapacity();
+    cout << wasteDept.getWasteCapacity() << " is the current waste capacity" << endl;
 
-    std::cout << "\nTesting water request handling for Building B:" << std::endl;
-    waterSupply.handleRequest(waterRequest);
+    waterDept.setSuccessor(&wasteDept);
+    wasteDept.setSuccessor(NULL);
 
-    std::cout << "\nTesting waste request handling for Building A:" << std::endl;
-    wasteManagement.handleRequest(wasteRequest);
+    // Example request for power within capacity
+    Request req1("P", b1, 100);
+    powerDept.handleRequest(req1); // Should be handled by PowerSupply
 
-    // Demonstrate distribution of resources
-    std::cout << "\nDistributing Power:" << std::endl;
-    powerSupply.distributePower();
+    // Example request for water within capacity
+    Request req2("water", b2, 80);
+    powerDept.handleRequest(req2); // Passed from PowerSupply to WaterSupply
 
-    std::cout << "\nDistributing Water:" << std::endl;
-    waterSupply.distributeWater();
+    // Example request for power that exceeds capacity of PowerSupply, should be passed along
+    Request req3("p", b2, 450);
+    powerDept.handleRequest(req3); // PowerSupply can't handle, passed to WaterSupply if applicable
 
-    std::cout << "\nWaste Collection:" << std::endl;
-    wasteManagement.collectWaste();
+    // Example request for waste within capacity of WasteManagement
+    Request req4("WASTE", b1, 100);
+    powerDept.handleRequest(req4); // Passed from PowerSupply and WaterSupply to WasteManagement
 
-    // Testing shutdown and increase functions
-    std::cout << "\nTesting power and water shutdown:" << std::endl;
-    powerSupply.powerShutDown();
-    waterSupply.waterShutDown();
+    cout << " " << endl;
 
-    std::cout << "\nIncreasing resource capacities:" << std::endl;
-    powerSupply.increasePowerCapacity();
-    waterSupply.increaseWaterCapacity();
-    wasteManagement.expandWasteCapacity();
-
-    // Cleanup
-    delete powerResource;
-    delete waterResource;
+    std::cout << endl << endl << endl;
 } 

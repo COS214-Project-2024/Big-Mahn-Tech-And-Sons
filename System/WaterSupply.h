@@ -72,6 +72,8 @@ public:
      */
     double getWaterCapacity();
 
+    string finalCapacity();
+
     /**
      * @brief the handleRequest() function is the core method responsible for either processing 
      *          the request or passing it along the chain to the next handler. WaterSupply 
