@@ -1,3 +1,5 @@
+// Class implementation of Factory Method - Product participant
+
 #include "Building.h"
 #include "Citizen.h"
 #include <algorithm>  // For std::find

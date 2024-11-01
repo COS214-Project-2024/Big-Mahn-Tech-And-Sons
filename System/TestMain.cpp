@@ -1,6 +1,14 @@
 #include <iostream>
+#include <iomanip>
 //
 #include "Citizen.h"
+#include "DeptOfPR.h"
+#include "DeptOfHousing.h"
+#include "DeptOfUtilities.h"
+#include "DeptOfFinance.h"
+#include "Water.h"
+#include "WaterSupply.h"
+
 //
 #include "visitHousing.h"
 #include "Budget.h"
@@ -17,6 +25,7 @@ void testCommercialBuildingFunctions();
 void testLandmarkBuildings();
 void testIndustrialBuildings();
 void testHouse();
+int testDepartment();
 
 int main()
 {
@@ -28,8 +37,8 @@ int main()
     // testCommercialBuildingFunctions();
     // testLandmarkBuildings();
     // testIndustrialBuildings();
-    testHouse();
-
+    //testHouse();
+    testDepartment();
 
     std::cout << "End" << std::endl;
 
@@ -315,7 +324,63 @@ void testHouse() {
     delete house;   // Clean up house
 }
 
+int testDepartment() {
+    DeptOfHousing *housingDept = new DeptOfHousing(1000000);
+    Water *water = new Water("Sparkling", 10000);
+    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+    DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
+    // Testing building creation
+    std::cout << "=== Testing Building Creation ===" << std::endl;
+    housingDept->createResidentialBuilding("House");
+    housingDept->createResidentialBuilding("Apartment");
+    housingDept->createCommercialBuilding("Shop");
+    housingDept->createIndustrialBuilding("Factory");
+    housingDept->createLandmarkBuilding("Park");
+
+    // Display all created buildings
+    housingDept->displayAllBuildings();
+
+    // Check the total buildings and budget status
+    std::cout << "Total Buildings: " << housingDept->getTotalBuildings() << std::endl;
+    std::cout << "Total Price of Buildings: " << housingDept->getTotalPrice() << std::endl;
+    std::cout << "Remaining Budget: " << housingDept->getRemainingBudget() << std::endl;
+
+    // Testing building removal
+    std::cout << "\n=== Testing Building Removal ===" << std::endl;
+    housingDept->removeBuildingByName("Family House");
+    housingDept->displayAllBuildings();
+
+    // Attempt to remove a non-existing building
+    std::cout << "\nAttempting to remove a non-existing building:" << std::endl;
+    housingDept->removeBuildingByName("NonExistentBuilding");
+
+    // Testing funding request
+    std::cout << "\n=== Testing Funding Request ===" << std::endl;
+    double fundingAmount = 200000;  // Example funding request
+    if (housingDept->requestFunding(fundingAmount)) {
+        std::cout << "Funding request successful. New budget: " << housingDept->getRemainingBudget() << std::endl;
+    } else {
+        std::cout << "Funding request failed." << std::endl;
+    }
+
+    // Listing buildings
+    std::cout << "\n=== Listing Buildings ===" << std::endl;
+    housingDept->listBuildings();
+
+    // Testing building repairs
+    std::cout << "\n=== Testing Building Repairs ===" << std::endl;
+    housingDept->repairBuilding("Residential");
+    housingDept->displayAllBuildings();
+
+    // Final state
+    std::cout << "\n=== Final State of Buildings ===" << std::endl;
+    housingDept->displayAllBuildings();
+
+    return 0;
+}
 
 // ------------------------------------------------------------------------------------------------------- //
 

@@ -1,3 +1,5 @@
+// Class defintion of Factory Method - Product participant
+
 /**
  * @file Building.h
  * @brief Declaration of the Building class.
