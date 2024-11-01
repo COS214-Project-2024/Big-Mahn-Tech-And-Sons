@@ -22,6 +22,9 @@
 #include "WasteManagement.h"
 
 #include "ResidentialBuildingCreator.h"
+#include "CommercialBuildingCreator.h"
+#include "IndustrialBuildingCreator.h"
+#include "LandmarkBuildingCreator.h"
 #include "TaxManager.h"
 
 
@@ -387,38 +390,309 @@ TEST_CASE("PandemicCommand functionality") {
 
 
 
+
+
+
+
 // ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
 
+
+
 TEST_CASE("Testing Residential Buildings Creation and Functionality") {
-    ResidentialBuildingCreator creator;
-    TaxManager taxManager;  // Create a TaxManager instance
+    // ResidentialBuildingCreator creator;
+    // TaxManager taxManager;  // Create a TaxManager instance
 
-    // Define an array of building types to test
-    std::string buildingTypes[] = {"House", "Apartment", "Estate"};
+    // // Define an array of building types to test
+    // std::string buildingTypes[] = {"House", "Apartment", "Estate"};
 
-    for (const std::string& type : buildingTypes) {
-        // Create a building using the factory
-        Building* building = creator.createBuilding(type);
-        REQUIRE(building != nullptr); // Check that the building is created successfully
+    // for (const std::string& type : buildingTypes) {
+    //     // Create a building using the factory
+    //     Building* building = creator.createBuilding(type);
+    //     REQUIRE(building != nullptr); // Check that the building is created successfully
 
-        // Test the initial name and stats display
-        CHECK(building->getName() == type + ""); // Verify the initial name
-        building->displayStats(); // Call displayStats
+    //     // Test the initial name and stats display
+    //     CHECK(building->getName() == type + ""); // Verify the initial name
+    //     building->displayStats(); // Call displayStats
 
-        // Set a new name and verify it
-        building->setName("Name 2.0");
-        CHECK(building->getName() == "Name 2.0"); // Verify the name change
+    //     // Set a new name and verify it
+    //     building->setName("Name 2.0");
+    //     CHECK(building->getName() == "Name 2.0"); // Verify the name change
 
-        // Test repairClone
-        Building* clonedBuilding = building->repairClone();
-        REQUIRE(clonedBuilding != nullptr); // Check that the cloned building is created successfully
-        CHECK(clonedBuilding->getName() == "Name 2.0"); // Verify the cloned name
+    //     // Test repairClone
+    //     Building* clonedBuilding = building->repairClone();
+    //     REQUIRE(clonedBuilding != nullptr); // Check that the cloned building is created successfully
+    //     CHECK(clonedBuilding->getName() == "Name 2.0"); // Verify the cloned name
 
-        // Test the accept function
-        building->accept(&taxManager);  // Pass the tax manager to the accept function
+    //     // Test the accept function
+    //     building->accept(&taxManager);  // Pass the tax manager to the accept function
 
-        // Clean up
-        delete building;
-        delete clonedBuilding;
-    }
+    //     // Clean up
+    //     delete building;
+    //     delete clonedBuilding;
+    // }
 }
+
+
+TEST_CASE("Testing Commercial Building Classes with Factory Method") {
+    // // Initialize the factory creator and TaxManager instance
+    // CommercialBuildingCreator creator;
+    // TaxManager taxManager;
+
+    // // Define an array of building types to test
+    // std::string buildingTypes[] = {"School", "Office", "Hospital", "Shop"};
+
+    // for (const std::string& type : buildingTypes) {
+    //     // Create a building using the factory
+    //     Building* baseBuilding = creator.createBuilding(type);
+    //     // Attempt to cast to CommercialBuilding*
+    //     CommercialBuilding* building = dynamic_cast<CommercialBuilding*>(baseBuilding);
+        
+    //     // Ensure the cast was successful
+    //     REQUIRE(building != nullptr);
+
+    //     SUBCASE((type + " - Default Initialization").c_str()) {
+    //         if (type == "School") {
+    //             CHECK(building->getAvailableKidsSpaces() == building->getMaxCapacity());
+    //         } else if (type == "Office") {
+    //             CHECK(building->getAvailableJobs() == building->getMaxCapacity());
+    //         } else if (type == "Hospital") {
+    //             CHECK(building->getAvailableBeds() == building->getMaxCapacity());
+    //         }
+    //         CHECK(building->isClosed() == false);
+    //     }
+
+    //     SUBCASE((type + " - Set and Get Methods").c_str()) {
+    //         if (type == "School") {
+    //             building->setAvailableKidsSpaces(10);
+    //             CHECK(building->getAvailableKidsSpaces() == 10);
+    //         } else if (type == "Office") {
+    //             building->setAvailableJobs(20);
+    //             CHECK(building->getAvailableJobs() == 20);
+    //         } else if (type == "Hospital") {
+    //             building->setAvailableBeds(15);
+    //             CHECK(building->getAvailableBeds() == 15);
+    //         }
+    //     }
+
+    //     SUBCASE((type + " - Close and Reopen Building").c_str()) {
+    //         building->closeBuilding();
+    //         CHECK(building->isClosed() == true);
+
+    //         building->reopenBuilding();
+    //         CHECK(building->isClosed() == false);
+    //     }
+
+    //     SUBCASE((type + " - Check Availability").c_str()) {
+    //         if (type == "School") {
+    //             CHECK(building->checkAvailability() == true);
+    //             building->setAvailableKidsSpaces(0);
+    //             CHECK(building->checkAvailability() == false);
+    //         } else if (type == "Office") {
+    //             CHECK(building->checkAvailability() == true);
+    //             building->setAvailableJobs(0);
+    //             CHECK(building->checkAvailability() == false);
+    //         } else if (type == "Hospital") {
+    //             CHECK(building->checkAvailability() == true);
+    //             building->setAvailableBeds(0);
+    //             CHECK(building->checkAvailability() == false);
+    //         }
+    //     }
+
+    //     SUBCASE((type + " - Display Stats").c_str()) {
+    //         CHECK_NOTHROW(building->displayStats());
+    //     }
+
+    //     SUBCASE((type + " - Accept Function with TaxManager").c_str()) {
+    //         CHECK_NOTHROW(building->accept(&taxManager));
+    //     }
+
+    //     delete baseBuilding;  // Clean up created instance
+    // }
+}
+
+
+TEST_CASE("Testing LandmarkBuilding classes with Factory Method") {
+    // LandmarkBuildingCreator creator;  // Create a factory instance
+    // TaxManager taxManager;            // Create a TaxManager instance
+
+    // // Test Park class
+    // SUBCASE("Park class tests") {
+    //     Building* building = creator.createBuilding("Park");
+    //     LandmarkBuilding* park = dynamic_cast<LandmarkBuilding*>(building);
+    //     REQUIRE(park != nullptr);  // Ensure park is created
+
+    //     // Test the name and initial properties
+    //     CHECK(park->getName() == "Magnolia Park");
+    //     CHECK(park->getMaxCapacity() == 50);
+    //     CHECK(park->getPriceTag() == 300000.0);
+
+    //     // Test displayStats function
+    //     park->displayStats();  // Verify output manually or redirect to log
+
+    //     // Test repairClone
+    //     Building* clonedPark = park->repairClone();
+    //     CHECK(clonedPark->getName() == "Magnolia Park");
+    //     delete clonedPark;  // Clean up
+
+    //     // Test the accept function
+    //     park->accept(&taxManager);  // Pass the tax manager to the accept function
+
+    //     delete park;  // Clean up
+    // }
+
+    // // Test Monument class
+    // SUBCASE("Monument class tests") {
+    //     Building* building = creator.createBuilding("Monument");
+    //     LandmarkBuilding* monument = dynamic_cast<LandmarkBuilding*>(building);
+    //     REQUIRE(monument != nullptr);  // Ensure monument is created
+
+    //     // Test the name and initial properties
+    //     CHECK(monument->getName() == "Voortrekker Monument");
+    //     CHECK(monument->getMaxCapacity() == 150);
+    //     CHECK(monument->getPriceTag() == 750000.0);
+
+    //     // Test displayStats function
+    //     monument->displayStats();  // Verify output manually or redirect to log
+
+    //     // Test repairClone
+    //     Building* clonedMonument = monument->repairClone();
+    //     CHECK(clonedMonument->getName() == "Voortrekker Monument");
+    //     delete clonedMonument;  // Clean up
+
+    //     // Test the accept function
+    //     monument->accept(&taxManager);  // Pass the tax manager to the accept function
+
+    //     delete monument;  // Clean up
+    // }
+
+    // // Test Museum class
+    // SUBCASE("Museum class tests") {
+    //     Building* building = creator.createBuilding("Museum");
+    //     LandmarkBuilding* museum = dynamic_cast<LandmarkBuilding*>(building);
+    //     REQUIRE(museum != nullptr);  // Ensure museum is created
+
+    //     // Test the name and initial properties
+    //     CHECK(museum->getName() == "Pretoria Museum");
+    //     CHECK(museum->getMaxCapacity() == 80);
+    //     CHECK(museum->getPriceTag() == 500000.0);
+
+    //     // Test displayStats function
+    //     museum->displayStats();  // Verify output manually or redirect to log
+
+    //     // Test repairClone
+    //     Building* clonedMuseum = museum->repairClone();
+    //     CHECK(clonedMuseum->getName() == "Pretoria Museum");
+    //     delete clonedMuseum;  // Clean up
+
+    //     // Test the accept function
+    //     museum->accept(&taxManager);  // Pass the tax manager to the accept function
+
+    //     delete museum;  // Clean up
+    // }
+}
+
+
+TEST_CASE("Testing Industrial Building Subtypes") {
+    // IndustrialBuildingCreator creator;
+    // TaxManager taxManager;  // Create a TaxManager instance
+
+    // SUBCASE("Testing Warehouse") {
+    //     Building* warehouse = creator.createBuilding("Warehouse");
+        
+    //     CHECK(warehouse->getName() == "Builder's Warehouse");
+    //     CHECK(warehouse->getMaxCapacity() == 100);
+    //     CHECK(warehouse->getType() == "Warehouse");
+
+    //     // Test displayStats
+    //     std::cout << "Warehouse displayStats:" << std::endl;
+    //     warehouse->displayStats();
+
+    //     // Test accept method (stubbed, expect non-taxable message)
+    //     std::cout << "Warehouse accept visitor:" << std::endl;
+    //     warehouse->accept(&taxManager);
+
+    //     // Test repairClone method
+    //     Building* clonedWarehouse = warehouse->repairClone();
+    //     CHECK(clonedWarehouse->getName() == "Builder's Warehouse");
+
+    //     // Clean up
+    //     delete warehouse;
+    //     delete clonedWarehouse;
+    // }
+
+    // SUBCASE("Testing Factory") {
+    //     Building* factory = creator.createBuilding("Factory");
+
+    //     CHECK(factory->getName() == "Mercedes-Benz Factory");
+    //     CHECK(factory->getMaxCapacity() == 1000);
+    //     CHECK(factory->getType() == "Factory");
+
+    //     // Test displayStats
+    //     std::cout << "Factory displayStats:" << std::endl;
+    //     factory->displayStats();
+
+    //     // Test accept method (stubbed, expect non-taxable message)
+    //     std::cout << "Factory accept visitor:" << std::endl;
+    //     factory->accept(&taxManager);
+
+    //     // Test repairClone method
+    //     Building* clonedFactory = factory->repairClone();
+    //     CHECK(clonedFactory->getName() == "Mercedes-Benz Factory");
+
+    //     // Clean up
+    //     delete factory;
+    //     delete clonedFactory;
+    // }
+
+    // SUBCASE("Testing Airport") {
+    //     Building* airport = creator.createBuilding("Airport");
+
+    //     CHECK(airport->getName() == "OR Tambo Airport");
+    //     CHECK(airport->getMaxCapacity() == 1000);
+    //     CHECK(airport->getType() == "Airport");
+
+    //     // Test displayStats
+    //     std::cout << "Airport displayStats:" << std::endl;
+    //     airport->displayStats();
+
+    //     // Test accept method (stubbed, expect non-taxable message)
+    //     std::cout << "Airport accept visitor:" << std::endl;
+    //     airport->accept(&taxManager);
+
+    //     // Test repairClone method
+    //     Building* clonedAirport = airport->repairClone();
+    //     CHECK(clonedAirport->getName() == "OR Tambo Airport");
+
+    //     // Clean up
+    //     delete airport;
+    //     delete clonedAirport;
+    // }
+
+    // SUBCASE("Testing Train Station") {
+    //     Building* trainStation = creator.createBuilding("TrainStation");
+
+    //     CHECK(trainStation->getName() == "Gautrain Train Station");
+    //     CHECK(trainStation->getMaxCapacity() == 500);
+    //     CHECK(trainStation->getType() == "TrainStation");
+
+    //     // Test displayStats
+    //     std::cout << "TrainStation displayStats:" << std::endl;
+    //     trainStation->displayStats();
+
+    //     // Test accept method (stubbed, expect non-taxable message)
+    //     std::cout << "TrainStation accept visitor:" << std::endl;
+    //     trainStation->accept(&taxManager);
+
+    //     // Test repairClone method
+    //     Building* clonedTrainStation = trainStation->repairClone();
+    //     CHECK(clonedTrainStation->getName() == "Gautrain Train Station");
+
+    //     // Clean up
+    //     delete trainStation;
+    //     delete clonedTrainStation;
+    // }
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------- //

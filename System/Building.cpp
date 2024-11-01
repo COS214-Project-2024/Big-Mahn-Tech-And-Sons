@@ -1,14 +1,9 @@
+// Class implementation of Factory Method - Product participant
+
 #include "Building.h"
 #include "Citizen.h"
 #include <algorithm>  // For std::find
-#include <iostream>   // For std::cout
 
-/**
- * @brief Construct a new Building object.
- * 
- * @param name Name of the building.
- * @param maxCapacity Maximum number of tenants the building can accommodate.
- */
 Building::Building()
     : name("Building Name"), maxCapacity(100), electricityMeterBox(0.0),
       waterMeterBox(0.0), electricityUsage(0.0), waterUsage(0.0),
@@ -19,7 +14,7 @@ Building::Building()
  * @brief Adds a tenant to the building.
  * 
  * @param tenant Pointer to the Citizen to be added.
- * @return true if the tenant was successfully added, false otherwise.
+ * @return true if the tenant was successfully added, false if capacity is reached.
  */
 bool Building::addTenant(Citizen* tenant) {
     if (tenants.size() < maxCapacity) {
@@ -33,7 +28,7 @@ bool Building::addTenant(Citizen* tenant) {
  * @brief Removes a tenant from the building.
  * 
  * @param tenant Pointer to the Citizen to be removed.
- * @return true if the tenant was successfully removed, false otherwise.
+ * @return true if the tenant was successfully removed, false if the tenant was not found.
  */
 bool Building::removeTenant(Citizen* tenant) {
     auto it = std::find(tenants.begin(), tenants.end(), tenant);
@@ -42,24 +37,6 @@ bool Building::removeTenant(Citizen* tenant) {
         return true;
     }
     return false;
-}
-
-/**
- * @brief Requests electricity for the building.
- * 
- * @param usage Amount of electricity requested (in kWh).
- */
-void Building::requestElectricity(double usage) {
-    // electricityUsage += usage;
-}
-
-/**
- * @brief Requests water for the building.
- * 
- * @param usage Amount of water requested (in liters).
- */
-void Building::requestWater(double usage) {
-    // waterUsage += usage;
 }
 
 /**
@@ -95,13 +72,12 @@ void Building::displayStats() const {
 
     std::cout << "Tenants: ";
     for (const auto& tenant : tenants) {
-        std::cout << tenant << " ";  // Displays tenant pointers
+        std::cout << tenant->getName() << ". ";  // Displays tenant pointers
     }
     std::cout << std::endl;
 }
 
 // Getters
-
 std::string Building::getName() const { return name; }
 int Building::getMaxCapacity() const { return maxCapacity; }
 double Building::getElectricityMeterBox() const { return electricityMeterBox; }
@@ -116,10 +92,9 @@ double Building::getPriceTag() const { return priceTag; }
 double Building::getNetWorth() const { return netWorth; }
 int Building::getCurrentOccupants() const { return tenants.size(); }
 std::string Building::getType() const { return type; }
-double Building::getWasteAmount() { return wasteProduction; }
+double Building::getWasteAmount() const { return wasteProduction; }
 
 // Setters
-
 void Building::setName(const std::string& newName) { name = newName; }
 void Building::setMaxCapacity(int capacity) { maxCapacity = capacity; }
 void Building::setElectricityMeterBox(double reading) { electricityMeterBox = reading; }
@@ -136,14 +111,12 @@ void Building::setLength(int newLength) { length = newLength; }
  * @param amount Amount of water consumed (in liters).
  */
 void Building::consumeWater(double amount) {
-    if (amount >= waterUsage) {
-        waterUsage = 0;
-        std::cout << "Building: " << name << " has received enough water." << std::endl;
-    } else {
-        waterUsage -= amount;
-        std::cout << "Building: " << name << " received partial water. Remaining need: " 
-                  << waterUsage << " units." << std::endl;
+    if (amount <= 0 || waterUsage < amount) {
+        std::cout << "Water supply cut off due to zero or negative usage." << std::endl;
+        return; // Cannot consume negative or more than available
     }
+    waterUsage -= amount; // Decrease usage
+    std::cout << "Consumed " << amount << " liters of water." << std::endl;
 }
 
 /**
@@ -152,38 +125,64 @@ void Building::consumeWater(double amount) {
  * @param amount Amount of electricity consumed (in kWh).
  */
 void Building::consumeElectricity(double amount) {
-    if (amount >= electricityUsage) {
-        electricityUsage = 0;
-        std::cout << "Building " << name << " has received enough electricity." << std::endl;
-    } else {
-        electricityUsage -= amount;
-        std::cout << "Building " << name << " received partial electricity. Remaining need: " 
-                  << electricityUsage << " units." << std::endl;
+    if (amount <= 0 || electricityUsage < amount) {
+        std::cout << "Power supply cut off due to zero or negative usage." << std::endl;
+        return; // Cannot consume negative or more than available
     }
+    electricityUsage -= amount; // Decrease usage
+    std::cout << "Consumed " << amount << " kWh of electricity." << std::endl;
 }
 
 /**
- * @brief Cuts off the building's water supply.
+ * @brief Requests electricity usage.
+ * 
+ * @param requestedElectricity Amount of electricity requested (in kWh).
+ */
+void Building::requestElectricity(double requestedElectricity) {
+    std::cout << "Requesting " << requestedElectricity << " kWh of electricity." << std::endl;
+    if (requestedElectricity <= 0) {
+        std::cout << "Power supply cut off due to zero or negative usage." << std::endl;
+        return; // Return early if the request is invalid
+    }
+    electricityUsage += requestedElectricity; // Update electricity usage
+    electricityMeterBox += requestedElectricity; // Update meter box reading
+}
+
+/**
+ * @brief Requests water usage.
+ * 
+ * @param requestedWater Amount of water requested (in liters).
+ */
+void Building::requestWater(double requestedWater) {
+    std::cout << "Requesting " << requestedWater << " liters of water." << std::endl;
+    if (requestedWater <= 0) {
+        std::cout << "Water supply cut off due to zero or negative usage." << std::endl;
+        return; // Return early if the request is invalid
+    }
+    waterUsage += requestedWater; // Update water usage
+    waterMeterBox += requestedWater; // Update meter box reading
+}
+
+/**
+ * @brief Cuts off the water supply to the building.
  */
 void Building::waterCut() {
     waterSupply = false;
-    waterMeterBox = 0.0;
-    std::cout << "Water supply cut at " << name << ".\n";
+    std::cout << "Water supply cut off." << std::endl;
 }
 
 /**
- * @brief Cuts off the building's power supply.
+ * @brief Cuts off the power supply to the building.
  */
 void Building::powerCut() {
     powerSupply = false;
-    electricityMeterBox = 0.0;
-    std::cout << "Power supply cut at " << name << ".\n";
+    std::cout << "Power supply cut off." << std::endl;
 }
 
 /**
- * @brief Clears the building's waste production.
+ * @brief Clears the waste produced by the building.
  */
 void Building::clearWaste() {
-    std::cout << name << " cleared " << wasteProduction << " kg of waste.\n";
-    wasteProduction = 0;
+    wasteProduction = 0.0; // Reset waste production
+    std::cout << "Waste cleared from the building." << std::endl;
 }

@@ -1,4 +1,9 @@
-// Class defintion and implementation of Factory Method - ConcreteProduct (classification)
+// Class definition of Factory Method - ConcreteProduct participant (classification)
+
+/**
+ * @file LandmarkBuilding.h
+ * @brief Declaration of the LandmarkBuilding class representing landmark buildings.
+ */
 
 #ifndef LANDMARKBUILDING_H
 #define LANDMARKBUILDING_H
@@ -17,39 +22,28 @@
  */
 class LandmarkBuilding : public Building {
 
-public:
-    /**
-     * @brief Constructor for LandmarkBuilding.
-     */
-    LandmarkBuilding()
-        : Building() {
-        width = 10;    // Default width for landmarks
-        length = 15;   // Default length for landmarks
-        priceTag = 1000000.0;  // Default price tag for a landmark
-    }
+    public:
+        /**
+         * @brief Constructor for LandmarkBuilding.
+         */
+        LandmarkBuilding();
 
-    /**
-     * @brief Virtual destructor for LandmarkBuilding.
-     */
-    // virtual ~LandmarkBuilding() = default;
+        /**
+         * @brief Displays the stats specific to a landmark building.
+         */
+        void displayStats() const;
 
-    /**
-     * @brief Displays the stats specific to a landmark building.
-     */
-    void displayStats() const override {
-        Building::displayStats();  // Call the base class method
-    }
+        /**
+         * @brief Abstract method to accept a visitor for the visitor pattern.
+         * @param visitor A pointer to the visitor object.
+         */
+        virtual void accept(TaxManager* visitor) = 0;
 
-
-    /**
-     * @brief Abstract method to accept a visitor for the visitor pattern.
-     * @param visitor A pointer to the visitor object.
-     */
-    virtual void accept(TaxManager* visitor) = 0;
-
-    virtual Building* repairClone() const override {
-
-    }
+        /**
+         * @brief Abstract method to create a clone of the landmark building for repair purposes.
+         * @return Building* A pointer to the cloned building.
+         */
+        virtual Building* repairClone() const = 0;
 };
 
 #endif // LANDMARKBUILDING_H

@@ -1,35 +1,43 @@
-// Class defintion of Factory Method - ConcreteProduct (subtype)
+// Class implementation of Factory Method - ConcreteProduct (subtype)
 
-#ifndef MONUMENT_H
-#define MONUMENT_H
-
-#include "LandmarkBuilding.h"
-#include "TaxManager.h"
-#include <string>
+#include "Museum.h"
+#include <iostream>
 
 /**
- * @brief The Monument class, a specific type of LandmarkBuilding.
+ * @brief Constructor for Museum.
  */
-class Monument : public LandmarkBuilding {
+Museum::Museum() : LandmarkBuilding() {
+    name = "Pretoria Museum";    // Name of the museum
+    maxCapacity = 80;            // Maximum visitor capacity
+    width = 30;                  // Museum size width
+    length = 50;                 // Museum size length
+    priceTag = 500000.0;         // Default price tag for a museum
+    type = "Museum";             // Type of building
+}
 
-public:
-    /**
-     * @brief Constructor for Monument.
-     */
-    Monument();
+/**
+ * @brief Displays the stats specific to the museum.
+ */
+void Museum::displayStats() const {
+    LandmarkBuilding::displayStats();  // Call base class method
+}
 
-    /**
-     * @brief Displays the stats specific to the monument.
-     */
-    void displayStats() const override;
+/**
+ * @brief Accepts visitors using the visitor pattern.
+ * @param visitor A pointer to the visitor object.
+ * 
+ * The function is stubbed, as no tax is applied to museums.
+ */
+void Museum::accept(TaxManager* visitor) {
+    std::cout << "No tax applied to museum: " << getName() 
+              << ". Museums are non-taxable." << std::endl;
+}
 
-    /**
-     * @brief Accepts visitors using the visitor pattern.
-     * @param visitor A pointer to the visitor object.
-     */
-    void accept(TaxManager* visitor) override;
-
-    Building* repairClone() const override;
-};
-
-#endif // MONUMENT_H
+/**
+ * @brief Clones the museum object for repair purposes.
+ * @return A pointer to the cloned Museum object.
+ */
+Building* Museum::repairClone() const {
+    std::cout << "Repairing landmark building (Museum): " << getName() << "\n";
+    return new Museum(*this);  // Clone this Museum
+}

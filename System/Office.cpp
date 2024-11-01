@@ -1,26 +1,29 @@
-// Class implementation of Factory Method - ConcreteProduct (subtype)
+// Class implementation of Factory Method - ConcreteProduct participant (subtype)
+
+/**
+ * @file Office.cpp
+ * @brief Implements the Office class.
+ */
 
 #include "Office.h"
 #include <iostream>
 
 /**
- * @brief Constructor for Office.
- * @param name Name of the office.
- * @param maxCapacity Maximum capacity of the office.
+ * @brief Default constructor for Office.
  */
 Office::Office()
     : CommercialBuilding() {
-    availableJobs = maxCapacity;
-    name = "Big Mahn Tech & Sons Admin Office";
-    maxCapacity = 50;
-    width = 12;
-    length = 20; 
+    name = "Downtown Office Hub";      // Default name for the office
+    maxCapacity = 50;                  // Set max capacity for office
+    availableJobs = maxCapacity;       // Initialize available jobs to max capacity
+    width = 12;                        // Default width for offices
+    length = 20;                       // Default length for offices
     electricityMeterBox = 150.0;
-    waterMeterBox = 250.0;     
+    waterMeterBox = 250.0;
     electricityUsage = 0.0;
     waterUsage = 0.0;
     wasteProduction = 0.0;
-    priceTag = 200000.0; // Setting price tag for Office
+    priceTag = 200000.0;               // Default price tag for Office
     netWorth = 500000.0;
     type = "Office";
 }
@@ -30,7 +33,6 @@ Office::Office()
  */
 void Office::displayStats() const {
     CommercialBuilding::displayStats();  // Call base class method
-    std::cout << "Available Jobs: " << availableJobs << std::endl;
 }
 
 /**
@@ -45,11 +47,15 @@ bool Office::checkAvailability() const {
  * @brief Accepts visitors for the visitor pattern.
  * @param visitor A pointer to the visitor object.
  */
-void Office::accept(TaxManager* visitor) { // Yohali stub
-   // visitor->visit(this);
+void Office::accept(TaxManager* visitor) {
+    visitor->visitCommercialBuilding(this);
 }
 
-
-Building* Office::repairClone() const  {
-        return new Office(*this);  // Clone this School
+/**
+ * @brief Clones the office for repair purposes.
+ * @return Pointer to the cloned office object.
+ */
+Building* Office::repairClone() const {
+    std::cout << "Repairing commercial building (Office): " << getName() << "\n";
+    return new Office(*this);  // Return a new cloned instance of Office
 }

@@ -1,4 +1,4 @@
-// Class defintion of Factory Method - ConcreteProduct (subtype)
+// Class definition of Factory Method - ConcreteProduct (subtype)
 
 #ifndef MUSEUM_H
 #define MUSEUM_H
@@ -12,31 +12,28 @@
  */
 class Museum : public LandmarkBuilding {
 
-public:
-    /**
-     * @brief Constructor for Museum.
-     * @param name Name of the museum.
-     * @param maxCapacity Maximum visitor capacity.
-     * @param exhibitCount Number of exhibits in the museum.
-     * @param entryFee Entry fee in local currency.
-     * @param heritageStatus Whether the museum is a heritage site.
-     */
-    Museum();
+    public:
+        /**
+         * @brief Constructor for Museum.
+         */
+        Museum();
 
-    /**
-     * @brief Displays the stats specific to the museum.
-     */
-    void displayStats() const override;
+        /**
+         * @brief Displays the stats specific to the museum.
+         */
+        void displayStats() const override;
 
-    /**
-     * @brief Accepts visitors using the visitor pattern.
-     * @param visitor A pointer to the visitor object.
-     */
-    void accept(TaxManager* visitor) override;
+        /**
+         * @brief Accepts visitors using the visitor pattern.
+         * @param visitor A pointer to the visitor object.
+         */
+        void accept(TaxManager* visitor) override;
 
-    Building* repairClone() const override;
-
-
+        /**
+         * @brief Clones the museum object for repair purposes.
+         * @return A pointer to the cloned Museum object.
+         */
+        Building* repairClone() const override;
 };
 
 #endif // MUSEUM_H
