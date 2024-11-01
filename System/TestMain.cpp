@@ -14,6 +14,7 @@
 void buildingsTest();
 void testResidentialBuildings();
 void testCommercialBuildingFunctions();
+void testLandmarkBuildings();
 
 int main()
 {
@@ -22,7 +23,9 @@ int main()
 
     // buildingsTest();
     // testResidentialBuildings();
-    testCommercialBuildingFunctions();
+    // testCommercialBuildingFunctions();
+    testLandmarkBuildings();
+
 
     std::cout << "End" << std::endl;
 
@@ -144,3 +147,46 @@ void testCommercialBuildingFunctions() {
         std::cout << "\n";
     }
 }
+
+void testLandmarkBuildings() {
+    LandmarkBuildingCreator creator;  // Create a factory instance
+    TaxManager taxManager;  // Create a TaxManager instance
+
+    // Define an array of building types to test
+    std::string buildingTypes[] = {
+        "Park",
+        "Monument",
+        "Museum"
+    };
+
+    for (const std::string& type : buildingTypes) {
+        // Create a building using the factory
+        Building* building = creator.createBuilding(type);
+        // Attempt to cast to LandmarkBuilding*
+        LandmarkBuilding* landmarkBuilding = dynamic_cast<LandmarkBuilding*>(building);
+        
+        if (landmarkBuilding) {
+            // Display stats
+            landmarkBuilding->displayStats();
+
+            // Set a new name
+            landmarkBuilding->setName("New Landmark Name");
+
+            // Test repairClone
+            Building* clonedBuilding = landmarkBuilding->repairClone();
+            std::cout << "Cloned Building Name: " << clonedBuilding->getName() << std::endl;
+
+            // Test the accept function
+            landmarkBuilding->accept(&taxManager);  // Pass the tax manager to the accept function
+
+            // Clean up
+            delete landmarkBuilding;
+            delete clonedBuilding;
+        } else {
+            std::cerr << "Failed to create building of type: " << type << std::endl;
+            delete building;  // Clean up in case of failed cast
+        }
+    }
+}
+
+

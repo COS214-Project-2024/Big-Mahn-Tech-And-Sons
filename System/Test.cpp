@@ -23,6 +23,8 @@
 
 #include "ResidentialBuildingCreator.h"
 #include "CommercialBuildingCreator.h"
+#include "IndustrialBuildingCreator.h"
+#include "LandmarkBuildingCreator.h"
 #include "TaxManager.h"
 
 
@@ -388,7 +390,13 @@ TEST_CASE("PandemicCommand functionality") {
 
 
 
+
+
+
+
 // ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
+
+
 
 TEST_CASE("Testing Residential Buildings Creation and Functionality") {
     // ResidentialBuildingCreator creator;
@@ -501,4 +509,87 @@ TEST_CASE("Testing Commercial Building Classes with Factory Method") {
     //     delete baseBuilding;  // Clean up created instance
     // }
 }
+
+
+TEST_CASE("Testing LandmarkBuilding classes with Factory Method") {
+    // LandmarkBuildingCreator creator;  // Create a factory instance
+    // TaxManager taxManager;            // Create a TaxManager instance
+
+    // // Test Park class
+    // SUBCASE("Park class tests") {
+    //     Building* building = creator.createBuilding("Park");
+    //     LandmarkBuilding* park = dynamic_cast<LandmarkBuilding*>(building);
+    //     REQUIRE(park != nullptr);  // Ensure park is created
+
+    //     // Test the name and initial properties
+    //     CHECK(park->getName() == "Magnolia Park");
+    //     CHECK(park->getMaxCapacity() == 50);
+    //     CHECK(park->getPriceTag() == 300000.0);
+
+    //     // Test displayStats function
+    //     park->displayStats();  // Verify output manually or redirect to log
+
+    //     // Test repairClone
+    //     Building* clonedPark = park->repairClone();
+    //     CHECK(clonedPark->getName() == "Magnolia Park");
+    //     delete clonedPark;  // Clean up
+
+    //     // Test the accept function
+    //     park->accept(&taxManager);  // Pass the tax manager to the accept function
+
+    //     delete park;  // Clean up
+    // }
+
+    // // Test Monument class
+    // SUBCASE("Monument class tests") {
+    //     Building* building = creator.createBuilding("Monument");
+    //     LandmarkBuilding* monument = dynamic_cast<LandmarkBuilding*>(building);
+    //     REQUIRE(monument != nullptr);  // Ensure monument is created
+
+    //     // Test the name and initial properties
+    //     CHECK(monument->getName() == "Voortrekker Monument");
+    //     CHECK(monument->getMaxCapacity() == 150);
+    //     CHECK(monument->getPriceTag() == 750000.0);
+
+    //     // Test displayStats function
+    //     monument->displayStats();  // Verify output manually or redirect to log
+
+    //     // Test repairClone
+    //     Building* clonedMonument = monument->repairClone();
+    //     CHECK(clonedMonument->getName() == "Voortrekker Monument");
+    //     delete clonedMonument;  // Clean up
+
+    //     // Test the accept function
+    //     monument->accept(&taxManager);  // Pass the tax manager to the accept function
+
+    //     delete monument;  // Clean up
+    // }
+
+    // // Test Museum class
+    // SUBCASE("Museum class tests") {
+    //     Building* building = creator.createBuilding("Museum");
+    //     LandmarkBuilding* museum = dynamic_cast<LandmarkBuilding*>(building);
+    //     REQUIRE(museum != nullptr);  // Ensure museum is created
+
+    //     // Test the name and initial properties
+    //     CHECK(museum->getName() == "Pretoria Museum");
+    //     CHECK(museum->getMaxCapacity() == 80);
+    //     CHECK(museum->getPriceTag() == 500000.0);
+
+    //     // Test displayStats function
+    //     museum->displayStats();  // Verify output manually or redirect to log
+
+    //     // Test repairClone
+    //     Building* clonedMuseum = museum->repairClone();
+    //     CHECK(clonedMuseum->getName() == "Pretoria Museum");
+    //     delete clonedMuseum;  // Clean up
+
+    //     // Test the accept function
+    //     museum->accept(&taxManager);  // Pass the tax manager to the accept function
+
+    //     delete museum;  // Clean up
+    // }
+}
+
+
 
