@@ -1,4 +1,4 @@
-// Class defintion of Factory Method - ConcreteProduct (classification)
+// Class definition of Factory Method - ConcreteProduct (classification)
 
 /**
  * @file Factory.h
@@ -21,23 +21,28 @@
  */
 class Factory : public IndustrialBuilding {
 
-public:
-    /**
-     * @brief Constructor for Factory.
-     */
-    Factory();
+    public:
+        /**
+         * @brief Constructor for Factory.
+         */
+        Factory();
 
-    /**
-     * @brief Displays the stats specific to the factory.
-     */
-    void displayStats() const override;
-    
-    Building* repairClone() const override;
-    /**
-     * @brief Accepts visitors for the visitor pattern.
-     * @param visitor A pointer to the visitor object.
-     */
-    void accept(TaxManager* visitor) override;
+        /**
+         * @brief Displays the stats specific to the factory.
+         */
+        void displayStats() const override;
+        
+        /**
+         * @brief Clones the factory for repair purposes.
+         * @return A pointer to the cloned Factory object.
+         */
+        Building* repairClone() const override;
+
+        /**
+         * @brief Accepts visitors for the visitor pattern.
+         * @param visitor A pointer to the visitor object.
+         */
+        void accept(TaxManager* visitor) override;
 };
 
 #endif // FACTORY_H

@@ -5,21 +5,14 @@
 
 /**
  * @brief Constructor for Park.
- * @param name Name of the park.
- * @param maxCapacity Maximum visitor capacity.
- * @param greenSpaceArea Total area of green space in square meters.
- * @param playgroundCount Number of playgrounds within the park.
- * @param heritageStatus Whether the park is a heritage site.
  */
-Park::Park()
-    : LandmarkBuilding()
-{
+Park::Park() : LandmarkBuilding() {
     name = "Magnolia Park";
-    maxCapacity = 50;
-    width = 50;             // Wider park area
-    length = 70;            // Longer park area
-    priceTag = 300000.0;    // Default price tag for a park
-    type = "Park";
+    maxCapacity = 50;           // Maximum capacity of the park
+    width = 50;                 // Wider park area
+    length = 70;                // Longer park area
+    priceTag = 300000.0;        // Default price tag for a park
+    type = "Park";              // Type of building
 }
 
 /**
@@ -32,12 +25,19 @@ void Park::displayStats() const {
 /**
  * @brief Accepts visitors using the visitor pattern.
  * @param visitor A pointer to the visitor object.
+ * 
+ * The function is stubbed, as no tax is applied to parks.
  */
-void Park::accept(TaxManager* visitor) { // Malaika STUB!!!
-    // visitor->visit(this);  // Visitor pattern implementation
+void Park::accept(TaxManager* visitor) {
+    std::cout << "No tax applied to park: " << getName() 
+              << ". Parks are non-taxable." << std::endl;
 }
 
-
-Building* Park::repairClone() const  {
-        return new Park(*this);  // Clone this School
+/**
+ * @brief Clones the park object for repair purposes.
+ * @return A pointer to the cloned Park object.
+ */
+Building* Park::repairClone() const {
+    std::cout << "Repairing landmark building (Park): " << getName() << "\n";
+    return new Park(*this);  // Clone this Park
 }
