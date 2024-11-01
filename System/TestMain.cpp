@@ -15,6 +15,8 @@ void buildingsTest();
 void testResidentialBuildings();
 void testCommercialBuildingFunctions();
 void testLandmarkBuildings();
+void testIndustrialBuildings();
+void testHouse();
 
 int main()
 {
@@ -24,13 +26,24 @@ int main()
     // buildingsTest();
     // testResidentialBuildings();
     // testCommercialBuildingFunctions();
-    testLandmarkBuildings();
+    // testLandmarkBuildings();
+    // testIndustrialBuildings();
+    testHouse();
 
 
     std::cout << "End" << std::endl;
 
     return 0;
 }
+
+
+
+
+
+
+
+// ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
+
 
 void buildingsTest()
 {
@@ -189,4 +202,120 @@ void testLandmarkBuildings() {
     }
 }
 
+void testIndustrialBuildings() {
+    IndustrialBuildingCreator creator;
+    TaxManager taxManager;  // Create a TaxManager instance
+
+    // Create buildings using the factory method
+    Building* warehouse = creator.createBuilding("Warehouse");
+    Building* factoryBuilding = creator.createBuilding("Factory");
+    Building* airport = creator.createBuilding("Airport");
+    Building* trainStation = creator.createBuilding("TrainStation");
+
+    // Display stats for each building
+    std::cout << "\nTesting Warehouse:\n";
+    warehouse->displayStats();
+    
+    std::cout << "\nTesting Factory:\n";
+    factoryBuilding->displayStats();
+    
+    std::cout << "\nTesting Airport:\n";
+    airport->displayStats();
+    
+    std::cout << "\nTesting Train Station:\n";
+    trainStation->displayStats();
+
+    // Test the repairClone() method
+    std::cout << "\nTesting Repair Clone for Warehouse:\n";
+    Building* warehouseClone = warehouse->repairClone();
+    warehouseClone->displayStats();
+
+    std::cout << "\nTesting Repair Clone for Factory:\n";
+    Building* factoryClone = factoryBuilding->repairClone();
+    factoryClone->displayStats();
+
+    // Test accept() method, assuming TaxManager is not implemented yet
+    std::cout << "\nTesting Accept Method (stubbed) for each building:\n";
+    warehouse->accept(&taxManager);
+    factoryBuilding->accept(&taxManager);
+    airport->accept(&taxManager);
+    trainStation->accept(&taxManager);
+
+    // Clean up
+    delete warehouse;
+    delete factoryBuilding;
+    delete airport;
+    delete trainStation;
+    delete warehouseClone;
+    delete factoryClone;
+}
+
+void testHouse() {
+    ResidentialBuildingCreator creator; // Create a ResidentialBuildingCreator instance
+    TaxManager taxManager;              // Create a TaxManager instance
+
+    // Create a House using the factory
+    Building* house = creator.createBuilding("House");
+
+    // Test initial state
+    std::cout << "Testing House Stats:" << std::endl;
+    house->displayStats();
+
+    // Create tenants and test adding them
+    Citizen* tenant1 = new Citizen("Jane", 50, 10, 10, NULL);
+    Citizen* tenant2 = new Citizen("Peter", 30, 20, 20, NULL);
+    std::cout << "\nAdding tenants:" << std::endl;
+    house->addTenant(tenant1);
+    house->addTenant(tenant2);
+    house->displayStats();
+
+    // Test removing a tenant
+    std::cout << "\nRemoving a tenant:" << std::endl;
+    house->removeTenant(tenant1);
+    house->displayStats();
+
+    // Test requesting water and electricity
+    std::cout << "\nRequesting water:" << std::endl;
+    house->requestWater(50.0);
+    house->displayStats();
+
+    std::cout << "\nConsuming water:" << std::endl;
+    house->consumeWater(30.0);
+    house->displayStats();
+
+    std::cout << "\nRequesting electricity:" << std::endl;
+    house->requestElectricity(20.0);
+    house->displayStats();
+
+    std::cout << "\nConsuming electricity:" << std::endl;
+    house->consumeElectricity(10.0);
+    house->displayStats();
+
+    // Test cutting water and power supply
+    std::cout << "\nCutting water supply:" << std::endl;
+    house->waterCut();
+    house->consumeWater(20.0); // Attempt to consume after cut
+    house->displayStats();
+
+    std::cout << "\nCutting power supply:" << std::endl;
+    house->powerCut();
+    house->consumeElectricity(10.0); // Attempt to consume after cut
+    house->displayStats();
+
+    // Test clearing waste
+    std::cout << "\nSetting waste production and clearing waste:" << std::endl;
+    house->setWaste(100.0); // Set some waste production
+    house->displayStats();
+    house->clearWaste();
+    house->displayStats();
+
+    // Clean up
+    delete tenant1; // Clean up tenant
+    delete tenant2; // Clean up tenant
+    delete house;   // Clean up house
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------- //
 

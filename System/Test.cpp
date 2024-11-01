@@ -592,4 +592,107 @@ TEST_CASE("Testing LandmarkBuilding classes with Factory Method") {
 }
 
 
+TEST_CASE("Testing Industrial Building Subtypes") {
+    // IndustrialBuildingCreator creator;
+    // TaxManager taxManager;  // Create a TaxManager instance
 
+    // SUBCASE("Testing Warehouse") {
+    //     Building* warehouse = creator.createBuilding("Warehouse");
+        
+    //     CHECK(warehouse->getName() == "Builder's Warehouse");
+    //     CHECK(warehouse->getMaxCapacity() == 100);
+    //     CHECK(warehouse->getType() == "Warehouse");
+
+    //     // Test displayStats
+    //     std::cout << "Warehouse displayStats:" << std::endl;
+    //     warehouse->displayStats();
+
+    //     // Test accept method (stubbed, expect non-taxable message)
+    //     std::cout << "Warehouse accept visitor:" << std::endl;
+    //     warehouse->accept(&taxManager);
+
+    //     // Test repairClone method
+    //     Building* clonedWarehouse = warehouse->repairClone();
+    //     CHECK(clonedWarehouse->getName() == "Builder's Warehouse");
+
+    //     // Clean up
+    //     delete warehouse;
+    //     delete clonedWarehouse;
+    // }
+
+    // SUBCASE("Testing Factory") {
+    //     Building* factory = creator.createBuilding("Factory");
+
+    //     CHECK(factory->getName() == "Mercedes-Benz Factory");
+    //     CHECK(factory->getMaxCapacity() == 1000);
+    //     CHECK(factory->getType() == "Factory");
+
+    //     // Test displayStats
+    //     std::cout << "Factory displayStats:" << std::endl;
+    //     factory->displayStats();
+
+    //     // Test accept method (stubbed, expect non-taxable message)
+    //     std::cout << "Factory accept visitor:" << std::endl;
+    //     factory->accept(&taxManager);
+
+    //     // Test repairClone method
+    //     Building* clonedFactory = factory->repairClone();
+    //     CHECK(clonedFactory->getName() == "Mercedes-Benz Factory");
+
+    //     // Clean up
+    //     delete factory;
+    //     delete clonedFactory;
+    // }
+
+    // SUBCASE("Testing Airport") {
+    //     Building* airport = creator.createBuilding("Airport");
+
+    //     CHECK(airport->getName() == "OR Tambo Airport");
+    //     CHECK(airport->getMaxCapacity() == 1000);
+    //     CHECK(airport->getType() == "Airport");
+
+    //     // Test displayStats
+    //     std::cout << "Airport displayStats:" << std::endl;
+    //     airport->displayStats();
+
+    //     // Test accept method (stubbed, expect non-taxable message)
+    //     std::cout << "Airport accept visitor:" << std::endl;
+    //     airport->accept(&taxManager);
+
+    //     // Test repairClone method
+    //     Building* clonedAirport = airport->repairClone();
+    //     CHECK(clonedAirport->getName() == "OR Tambo Airport");
+
+    //     // Clean up
+    //     delete airport;
+    //     delete clonedAirport;
+    // }
+
+    // SUBCASE("Testing Train Station") {
+    //     Building* trainStation = creator.createBuilding("TrainStation");
+
+    //     CHECK(trainStation->getName() == "Gautrain Train Station");
+    //     CHECK(trainStation->getMaxCapacity() == 500);
+    //     CHECK(trainStation->getType() == "TrainStation");
+
+    //     // Test displayStats
+    //     std::cout << "TrainStation displayStats:" << std::endl;
+    //     trainStation->displayStats();
+
+    //     // Test accept method (stubbed, expect non-taxable message)
+    //     std::cout << "TrainStation accept visitor:" << std::endl;
+    //     trainStation->accept(&taxManager);
+
+    //     // Test repairClone method
+    //     Building* clonedTrainStation = trainStation->repairClone();
+    //     CHECK(clonedTrainStation->getName() == "Gautrain Train Station");
+
+    //     // Clean up
+    //     delete trainStation;
+    //     delete clonedTrainStation;
+    // }
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------- //
