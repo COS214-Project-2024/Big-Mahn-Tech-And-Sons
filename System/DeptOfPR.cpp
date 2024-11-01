@@ -87,6 +87,7 @@ bool DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure 
       // Decision making to increase taxes
    } else if(deptName == "Housing") { // check dept housing request funding function
       this->finance->increaseTaxes(10);
+      this->finance->allocateBudget("Housing", 100000);
       /*
       bool request = finance->allocateBudget(deptName, 2000000); //<< allocate budget to change to budget
       if(request) {
@@ -96,6 +97,11 @@ bool DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure 
       }
       */
       std::cout << "Taxes have been increased to support government funding needs." << std::endl;
+      return true;
+   } else if(deptName == "Utility") {
+      this->finance->allocateBudget("Utility", 10000);
+      std::cout << "Budget allocated to Utility department." << std::endl;
+
       return true;
    }
 

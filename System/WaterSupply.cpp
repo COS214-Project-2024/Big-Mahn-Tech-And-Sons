@@ -112,14 +112,17 @@ string WaterSupply::finalCapacity()
  *          checks if it can handle the request, if not, WaterSupply will pass it on
  *          to the next concreteHandler.
  */
-void WaterSupply::handleRequest(Request &req) {
-    if (req.getType() == "WATER" || req.getType() == "water" || req.getType() == "w" || req.getType() == "W") {
+bool WaterSupply::handleRequest(Request &req) {
+    if ((req.getType() == "WATER" || req.getType() == "water" || req.getType() == "w" || req.getType() == "W") && this->budget >= 10000) {
         double demand = req.getAmount();
-        if (waterCapacity >= demand) {
+        if (waterCapacity >= demand ) {
             distributeWater();
             std::cout << "WaterSupply: Distributed " << demand << " units of water.\n";
+            this->budget -= 10000;
+            return true;
         } else {
             std::cout << "WaterSupply: Insufficient water capacity.\n";
+            return false;
         }
     } 
     else if (successor) 
@@ -128,5 +131,6 @@ void WaterSupply::handleRequest(Request &req) {
     } else 
     {
         std::cout << "WaterSupply: Request could not be handled.\n";
+        return false;
     }
 }

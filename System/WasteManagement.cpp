@@ -96,18 +96,31 @@ double WasteManagement::getWasteCapacity()
  *          checks if it can handle the request, if not, WasteManagement will pass it on
  *          to the next concreteHandler.
  */
-void WasteManagement::handleRequest(Request &req) {
-    if (req.getType() == "waste" || req.getType() == "WASTE" || req.getType() == "W" || req.getType() == "w") {
-    double wasteAmount = req.getAmount();
-    if (wasteCapacity >= wasteAmount) {
-        collectWaste();
-        std::cout << "WasteManagement: Collected and processed " << wasteAmount << " units of waste.\n";
-    } else {
-        std::cout << "WasteManagement: Insufficient waste handling capacity.\n";
+bool WasteManagement::handleRequest(Request &req)
+{
+    if ((req.getType() == "waste" || req.getType() == "WASTE" || req.getType() == "W" || req.getType() == "w") && this->budget >= 10000)
+    {
+        double wasteAmount = req.getAmount();
+        if (wasteCapacity >= wasteAmount )
+        {
+            collectWaste();
+            std::cout << "WasteManagement: Collected and processed " << wasteAmount << " units of waste.\n";
+            this->budget -= 10000;
+            return true;
+        }
+        else
+        {
+            std::cout << "WasteManagement: Insufficient waste handling capacity.\n";
+            return false;
+        }
     }
-    } else if (successor) {
+    else if (successor)
+    {
         successor->handleRequest(req);
-    } else {
+    }
+    else
+    {
         std::cout << "WasteManagement: Request could not be handled.\n";
+        return false;
     }
 }

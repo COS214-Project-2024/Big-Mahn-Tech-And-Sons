@@ -8,14 +8,12 @@
 
 #include <string>
 #include <vector>
-#include "DeptOfTransportation.h"
-#include "DeptOfFinance.h"
-#include "DeptOfPR.h"
-#include "DeptOfUtilities.h"
-#include "DeptOfHousing.h"
 #include "Citizen.h"
 #include "EventsCommand.h"
 
+class DeptOfFinance;
+class DeptOfHousing;
+class DeptOfPR;
 
 
 
@@ -26,13 +24,13 @@
  * Currently focuses on the Department of Transportation.
  */
 class Government {
-private:
-
 public:
     /**
      * @brief Constructs a new Government object.
      */
     Government();
+
+
 
     /**
      * @brief Destroys the Government object.
@@ -48,10 +46,20 @@ public:
 private:
     ///< @brief Departments managed by the Government facade
 
-    DeptOfPR PR;
-   // DepartmentUtilities utilities;
-    DeptOfFinance finance;
-    DeptOfHousing housing;
+    // DeptOfPR* PR;
+    // WaterSupply* waterSupply;
+    // PowerSupply* powerSupply;
+    // WasteManagement* wasteSupply;
+    // DeptOfFinance* finance;
+    // DeptOfHousing* housing;
+
+    // EventsCommand* pandemic;
+    // EventsCommand* economicDownturn;
+    // EventsCommand* naturalDisaster;
+    // EventsCommand* loadshedding;
+    // EventsCommand* festive;
+    // EventsCommand* babyBoom;
+    // EventsCommand* increaseEconomy;
 
     // Simulation status
     bool simulationIsActive;
@@ -64,6 +72,8 @@ private:
     void manageResources();
     void evaluatePolicies();
     void triggerRandomEvents();
+
+    void stopSim();
 
 };
 

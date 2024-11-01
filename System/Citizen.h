@@ -88,6 +88,7 @@ public:
 
     int getAge();
 
+
     /**
      * @brief Gets the name of the citizen.
      * 
