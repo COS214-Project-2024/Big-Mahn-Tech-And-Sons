@@ -14,6 +14,7 @@
 #include <iostream>  // For std::cout
 #include <utility>   // For std::pair
 #include <algorithm> // For std::find
+#include <algorithm> // For std::find
 
 #include "Element.h"
 using namespace std;
@@ -59,7 +60,7 @@ public:
      * @param name Name of the building.
      * @param maxCapacity Maximum capacity of the building.
      */
-    Building(const std::string &name, int maxCapacity);
+    Building();
 
     // Virtual destructor to allow polymorphism
     virtual ~Building() = default;
@@ -143,6 +144,7 @@ public:
     void setWidth(int width);
     void setLength(int length);
 
+
     // Getter for net worth
     double getNetWorth() const;
 
@@ -201,14 +203,7 @@ public:
      *
      * @return A shared pointer to the cloned building instance.
      */
-    virtual Building* clone() const = 0;
-
-    /**
-     * @brief Repairs the building by restoring its condition.
-     *
-     * Each specific building type will implement its own repair logic.
-     */
-    virtual void repair() = 0;
+    virtual Building* repairClone() const = 0;
 };
 
 #endif // BUILDING_H

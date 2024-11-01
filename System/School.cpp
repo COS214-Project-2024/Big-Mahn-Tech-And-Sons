@@ -8,8 +8,11 @@
  * @param name Name of the school.
  * @param maxCapacity Maximum capacity of the school.
  */
-School::School(const std::string& name, int maxCapacity)
-    : CommercialBuilding(name, maxCapacity), availableKidsSpaces(maxCapacity) {
+School::School()
+    : CommercialBuilding() {
+        availableKidsSpaces = maxCapacity;
+    name = "Saint Mary's School";
+    maxCapacity = 100;
     width = 15;  // Set a unique width for school
     length = 30; // Set a unique length for school
     electricityMeterBox = 200.0; // Initial electricity meter reading
@@ -19,6 +22,7 @@ School::School(const std::string& name, int maxCapacity)
     wasteProduction = 0.0;
     priceTag = 300000.0; // Setting price tag for School
     netWorth = 1200000.0;
+    type = "School";
 }
 
 /**
@@ -45,6 +49,6 @@ void School::accept(TaxManager* visitor) {
     visitor->visitCommercialBuilding(this);
 }
 
-Building* School::clone() const  {
+Building* School::repairClone() const  {
     return new School(*this);  // Clone this School
 }

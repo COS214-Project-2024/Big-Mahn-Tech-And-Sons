@@ -24,7 +24,7 @@ public:
      * @param name Name of the school.
      * @param maxCapacity Maximum capacity of the school.
      */
-    School(const std::string& name, int maxCapacity);
+    School();
 
     /**
      * @brief Displays the stats specific to the school.
@@ -43,7 +43,7 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
-    Building* clone() const override;
+    Building* repairClone() const override;
 
 private:
     int availableKidsSpaces;  ///< Number of available kids' spaces in the school.

@@ -1,8 +1,8 @@
-// Class definition of Factory Method - ConcreteProduct (subtype)
+// Class definition of Factory Method - ConcreteProduct participant (subtype)
 
 /**
  * @file Estate.h
- * @brief Declaration of the Estate class.
+ * @brief Declaration of the Estate class, representing a luxury residential estate.
  */
 
 #ifndef ESTATE_H
@@ -15,36 +15,29 @@
  * @brief Represents a residential estate with luxury features.
  */
 class Estate : public ResidentialBuilding {
-private:
-    int numFloors;          ///< Number of floors in the estate.
-    bool hasSwimmingPool;   ///< Indicates if the estate has a swimming pool.
+    
+    public:
+        /**
+         * @brief Default constructor for Estate, initializing luxury-specific attributes.
+         */
+        Estate();
 
-public:
-    /**
-     * @brief Default constructor for Estate.
-     * Initializes with unique default values.
-     */
-    Estate();
+        /**
+         * @brief Displays the estate's statistics, including specific and inherited details.
+         */
+        void displayStats() const override;
 
-    /**
-     * @brief Displays the stats specific to the estate.
-     */
-    void displayStats() const override;
+        /**
+         * @brief Accepts a visitor for tax and management operations.
+         * @param visitor A pointer to the TaxManager visitor.
+         */
+        void accept(TaxManager* visitor) override;
 
-    /**
-     * @brief Accepts a visitor for the visitor pattern.
-     * @param visitor A pointer to the TaxManager visitor.
-     */
-    void accept(TaxManager* visitor) override;
-
-    // Getters and Setters
-    int getNumFloors() const;
-    void setNumFloors(int floors);
-
-    bool getHasSwimmingPool() const;
-    void setHasSwimmingPool(bool pool);
-
-    Building* clone() const override;
+        /**
+         * @brief Creates a clone of the estate for restoration purposes.
+         * @return Building* A pointer to the cloned Estate instance.
+         */
+        Building* repairClone() const override;
 };
 
 #endif // ESTATE_H

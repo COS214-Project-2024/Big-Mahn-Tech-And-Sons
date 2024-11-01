@@ -1,35 +1,40 @@
+// Class implementation of Factory Method - ConcreteProduct participant (subtype)
+
+/**
+ * @file Estate.cpp
+ * @brief Implementation of the Estate class.
+ */
+
 #include "Estate.h"
 #include <iostream>
 
 /**
- * @brief Default constructor for Estate.
- * Initializes the estate with unique default values.
+ * @brief Constructs an Estate with default values for a luxury residential setting.
  */
 Estate::Estate()
-    : ResidentialBuilding("Luxury Estate", 10, true),  // Default: Luxury Estate with backyard
-      numFloors(2), hasSwimmingPool(true) {  // Defaults: 2 floors, with swimming pool
-    width = 40;  // Custom width for estate
-    length = 60; // Custom length for estate
-    electricityMeterBox = 300.0;  // Default electricity meter reading
-    waterMeterBox = 800.0;        // Default water meter reading
-    electricityUsage = 0.0;       // Start with no electricity usage
-    waterUsage = 0.0;             // Start with no water usage
-    wasteProduction = 0.0;                  // Start with no waste production
-    priceTag = 500000.0; // Setting price tag for Estate
+    : ResidentialBuilding() {
+    name = "Luxury Estate";
+    maxCapacity = 10;
+    width = 40;
+    length = 60;
+    electricityMeterBox = 300.0;
+    waterMeterBox = 800.0;
+    electricityUsage = 0.0;
+    waterUsage = 0.0;
+    wasteProduction = 0.0;
+    priceTag = 500000.0;
+    type = "Estate";
 }
 
 /**
- * @brief Displays the stats specific to the estate.
+ * @brief Displays the estate's statistics, including inherited attributes.
  */
 void Estate::displayStats() const {
-    // Call the parent class's displayStats() to print shared details.
-    ResidentialBuilding::displayStats();
-    std::cout << "Number of Floors: " << numFloors << std::endl;
-    std::cout << "Has Swimming Pool: " << (hasSwimmingPool ? "Yes" : "No") << std::endl;
+    ResidentialBuilding::displayStats();  // Display general stats for residential buildings
 }
 
 /**
- * @brief Accepts a visitor for the visitor pattern.
+ * @brief Accepts a TaxManager visitor for processing estate-specific operations.
  * @param visitor A pointer to the TaxManager visitor.
  */
 void Estate::accept(TaxManager* visitor) {
@@ -37,38 +42,10 @@ void Estate::accept(TaxManager* visitor) {
 }
 
 /**
- * @brief Getter for the number of floors.
- * @return The number of floors in the estate.
+ * @brief Clones the Estate for restoration, supporting repair after damage.
+ * @return Building* A pointer to the newly cloned Estate instance.
  */
-int Estate::getNumFloors() const {
-    return numFloors;
-}
-
-/**
- * @brief Setter for the number of floors.
- * @param floors The new number of floors for the estate.
- */
-void Estate::setNumFloors(int floors) {
-    numFloors = floors;
-}
-
-/**
- * @brief Getter for swimming pool availability.
- * @return True if the estate has a swimming pool, otherwise false.
- */
-bool Estate::getHasSwimmingPool() const {
-    return hasSwimmingPool;
-}
-
-/**
- * @brief Setter for swimming pool availability.
- * @param pool The new swimming pool status for the estate.
- */
-void Estate::setHasSwimmingPool(bool pool) {
-    hasSwimmingPool = pool;
-}
-
-
-Building* Estate::clone() const  {
-    return new Estate(*this);  // Clone this estate
+Building* Estate::repairClone() const {
+    std::cout << "Repairing residential building (Estate): " << getName() << "\n";
+    return new Estate(*this);
 }

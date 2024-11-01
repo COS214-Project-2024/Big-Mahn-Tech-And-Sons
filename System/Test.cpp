@@ -21,6 +21,9 @@
 #include "WaterSupply.h"
 #include "WasteManagement.h"
 
+#include "ResidentialBuildingCreator.h"
+#include "TaxManager.h"
+
 
 #include "PandemicCommand.h"
 
@@ -321,7 +324,7 @@ TEST_CASE("DeptOfUtility chain")
 
 
 TEST_CASE("PandemicCommand functionality") {
-      DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
     Water *water = new Water("Sparkling", 10000);
     DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
     TaxManager *taxMan = new TaxManager();
@@ -380,4 +383,42 @@ TEST_CASE("PandemicCommand functionality") {
     delete citizen1;
     delete citizen2;
     delete citizen3;
+}
+
+
+
+// ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
+
+TEST_CASE("Testing Residential Buildings Creation and Functionality") {
+    // ResidentialBuildingCreator creator;
+    // TaxManager taxManager;  // Create a TaxManager instance
+
+    // // Define an array of building types to test
+    // std::string buildingTypes[] = {"House", "Apartment", "Estate"};
+
+    // for (const std::string& type : buildingTypes) {
+    //     // Create a building using the factory
+    //     Building* building = creator.createBuilding(type);
+    //     REQUIRE(building != nullptr); // Check that the building is created successfully
+
+    //     // Test the initial name and stats display
+    //     CHECK(building->getName() == type + ""); // Verify the initial name
+    //     building->displayStats(); // Call displayStats
+
+    //     // Set a new name and verify it
+    //     building->setName("Name 2.0");
+    //     CHECK(building->getName() == "Name 2.0"); // Verify the name change
+
+    //     // Test repairClone
+    //     Building* clonedBuilding = building->repairClone();
+    //     REQUIRE(clonedBuilding != nullptr); // Check that the cloned building is created successfully
+    //     CHECK(clonedBuilding->getName() == "Name 2.0"); // Verify the cloned name
+
+    //     // Test the accept function
+    //     building->accept(&taxManager);  // Pass the tax manager to the accept function
+
+    //     // Clean up
+    //     delete building;
+    //     delete clonedBuilding;
+    // }
 }
