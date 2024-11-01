@@ -11,19 +11,19 @@ Building *CommercialBuildingCreator::createBuilding(const std::string &type) con
 {
     if (type == "Shop")
     {
-        return new Shop(type, 100);
+        return new Shop();
     }
     else if (type == "Office")
     {
-        return new Office(type, 100);
+        return new Office();
     }
     else if (type == "School")
     {
-        return new School(type, 100);
+        return new School();
     }
     else if (type == "Hospital")
     {
-        return new Hospital(type, 100);
+        return new Hospital();
     }
     else
     {

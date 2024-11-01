@@ -8,8 +8,12 @@
  * @param name Name of the shop.
  * @param maxCapacity Maximum capacity of the shop.
  */
-Shop::Shop(const std::string& name, int maxCapacity)
-    : CommercialBuilding(name, maxCapacity), availableJobs(maxCapacity) {
+Shop::Shop()
+    : CommercialBuilding() {
+    availableJobs = maxCapacity;
+    name = "Checkers";
+    maxCapacity = 100;
+    availableJobs = 
     width = 10;
     length = 15; 
     electricityMeterBox = 100.0;
@@ -19,6 +23,7 @@ Shop::Shop(const std::string& name, int maxCapacity)
     wasteProduction = 0.0;
     priceTag = 100000.0; // Setting price tag for Shop
     netWorth = 80000.0;
+    type = "Shop";
 }
 
 /**
@@ -46,6 +51,6 @@ void Shop::accept(TaxManager* visitor) {
 }
 
 
-Building* Shop::clone() const  {
+Building* Shop::repairClone() const  {
     return new Shop(*this);  // Clone this School
 }

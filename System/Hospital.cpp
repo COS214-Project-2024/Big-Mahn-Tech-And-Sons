@@ -8,8 +8,11 @@
  * @param name Name of the hospital.
  * @param maxCapacity Maximum capacity of the hospital.
  */
-Hospital::Hospital(const std::string& name, int maxCapacity)
-    : CommercialBuilding(name, maxCapacity), availableBeds(maxCapacity) {
+Hospital::Hospital()
+    : CommercialBuilding() {
+        availableBeds = maxCapacity;
+    name = "Steve Biko Hospital";
+    maxCapacity = 200;
     width = 20;  // Set a unique width for hospital
     length = 40; // Set a unique length for hospital
     electricityMeterBox = 250.0; // Initial electricity meter reading
@@ -19,6 +22,7 @@ Hospital::Hospital(const std::string& name, int maxCapacity)
     wasteProduction = 0.0;
     priceTag = 400000.0; // Setting price tag for Hospital
     netWorth = 3000000.0;
+    type = "Hospital";
 }
 
 /**
@@ -45,6 +49,6 @@ void Hospital::accept(TaxManager* visitor) {
     visitor->visitCommercialBuilding(this);
 }
 
-Building* Hospital::clone() const  {
+Building* Hospital::repairClone() const  {
     return new Hospital(*this);  // Clone this School
 }

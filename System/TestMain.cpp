@@ -10,11 +10,13 @@
 
 void buildingsTest();
 void taxManTest();
+void testResidentialBuildings();
 
 int main()
 {
     std::cout << "------------------------- Starting basic testing -------------------------" << std::endl;
     buildingsTest();
+    testResidentialBuildings();
     taxManTest();
 
     return 0;
@@ -71,7 +73,7 @@ void taxManTest()
     std:: cout << "Collecting taxes from commercials" << std::endl;
     // Should collect from commercial
     financeDept.collectTaxes(shop);
-    financeDept.collectTaxes(hospital);   
+    financeDept.collectTaxes(hospital);    
     std:: cout << "Done collecting taxes from commercials" << std::endl;
 
     // 5. BUDGET UPDATE AFTER TAX COLLECTION
@@ -80,3 +82,36 @@ void taxManTest()
     cityBudget.reportStatus();  // Report budget status after tax collection
 }
 
+void testResidentialBuildings() {
+     std::cout << "\t ============= Testing Functionality of Residential Buildings 2: ==========\n";
+    ResidentialBuildingCreator creator;
+    TaxManager taxManager;  // Create a TaxManager instance
+
+    // Define an array of building types to test
+    std::string buildingTypes[] = {"House", "Apartment", "Estate"};
+
+    for (const std::string& type : buildingTypes) {
+        // Create a building using the factory
+        Building* building = creator.createBuilding(type);
+        if (building) {
+            // Display stats
+            building->displayStats();
+
+            // Set a new name
+            building->setName("Name 2.0");
+
+            // Test repairClone
+            Building* clonedBuilding = building->repairClone();
+            std::cout << "Cloned Building Name: " << clonedBuilding->getName() << std::endl;
+
+            // Test the accept function
+            building->accept(&taxManager);  // Pass the tax manager to the accept function
+
+            // Clean up
+            delete building;
+            delete clonedBuilding;
+        } else {
+            std::cerr << "Failed to create building of type: " << type << std::endl;
+        }
+    }
+}

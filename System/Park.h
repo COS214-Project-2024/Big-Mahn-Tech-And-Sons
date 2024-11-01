@@ -15,21 +15,12 @@
  * often containing gardens, playgrounds, or walking paths.
  */
 class Park : public LandmarkBuilding {
-private:
-    double greenSpaceArea;    ///< Area of green space (in square meters).
-    int playgroundCount;      ///< Number of playgrounds within the park.
 
 public:
     /**
      * @brief Constructor for Park.
-     * @param name Name of the park.
-     * @param maxCapacity Maximum visitor capacity.
-     * @param greenSpaceArea Total area of green space in square meters.
-     * @param playgroundCount Number of playgrounds within the park.
-     * @param heritageStatus Whether the park is a heritage site.
      */
-    Park(const std::string& name, int maxCapacity, double greenSpaceArea,
-         int playgroundCount, bool heritageStatus);
+    Park();
 
     /**
      * @brief Displays the stats specific to the park.
@@ -66,7 +57,7 @@ public:
      */
     int getPlaygroundCount() const;
 
-    Building* clone() const override;
+    Building* repairClone() const override;
 };
 
 #endif // PARK_H

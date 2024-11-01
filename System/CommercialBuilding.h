@@ -33,8 +33,9 @@ public:
      * @param name Name of the building.
      * @param maxCapacity Maximum capacity of the building.
      */
-    CommercialBuilding(const std::string& name, int maxCapacity)
-        : Building(name, maxCapacity),
+    CommercialBuilding()
+        : Building(),
+
           availableJobs(maxCapacity),          // Initialize available jobs to max capacity
           availableKidsSpaces(maxCapacity),    // Initialize available kids' spaces to max capacity
           availableBeds(maxCapacity) {          // Initialize available beds to max capacity
@@ -60,9 +61,8 @@ public:
     int getAvailableBeds() const { return availableBeds; }
     void setAvailableBeds(int beds) { availableBeds = beds; }
 
-    virtual Building* clone() const override;
+    virtual Building* repairClone() const override;
 
-     virtual void repair() override;
     /**
      * @brief Checks the availability of resources depending on the subtype.
      * @return True if resources are available, otherwise false.

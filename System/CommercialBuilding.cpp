@@ -1,11 +1,6 @@
 #include "CommercialBuilding.h"
 
-Building* CommercialBuilding::clone() const
+Building* CommercialBuilding::repairClone() const
 {
    //return std::shared_ptr<Building>();
-}
-
-void CommercialBuilding::repair()
-{
-   
 }

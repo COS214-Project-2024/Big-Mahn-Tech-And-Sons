@@ -1,16 +1,15 @@
-// Class defintion of Factory Method - ConcreteCreator participant
+// Class definition of Factory Method - ConcreteCreator participant 
 
 /**
  * @file ResidentialBuildingCreator.h
- * @brief Declaration of the ResidentialBuildingCreator class for residential building creation.
+ * @brief Defines the ResidentialBuildingCreator class for creating residential buildings.
  */
 
 #ifndef RESIDENTIALBUILDINGCREATOR_H
 #define RESIDENTIALBUILDINGCREATOR_H
 
-#include <memory>      // For std::shared_ptr
-#include <stdexcept>   // For std::invalid_argument
-#include <string>      // For std::string
+#include <string>  // For std::string
+#include <iostream> // For error handling output
 
 #include "BuildingCreator.h"
 #include "House.h"
@@ -19,24 +18,24 @@
 
 /**
  * @class ResidentialBuildingCreator
- * @brief Concrete creator for residential buildings.
+ * @brief Concrete creator for generating residential buildings.
  * 
- * This class implements the factory method to create residential buildings
+ * Implements the factory method to create various types of residential buildings 
  * such as estates, apartments, and houses.
  */
 class ResidentialBuildingCreator : public BuildingCreator {
-public:
-    /**
-     * @brief Creates a residential building of a specific type.
-     * 
-     * Depending on the provided type string, this method creates and returns
-     * a shared pointer to the corresponding residential building.
-     * 
-     * @param type Type of the residential building to create (e.g., "Estate", "Apartment").
-     * @return std::shared_ptr<Building> A shared pointer to the created residential building.
-     * @throws std::invalid_argument If the provided type is not recognized.
-     */
-    Building* createBuilding(const std::string& type) const override;
+    
+    public:
+        /**
+         * @brief Creates a residential building of the specified type.
+         * 
+         * Based on the provided type string, this function returns a pointer 
+         * to the corresponding residential building.
+         * 
+         * @param type Type of the residential building to create (e.g., "Estate", "Apartment", "House").
+         * @return Building* Pointer to the created residential building or `nullptr` if the type is unknown.
+         */
+        Building* createBuilding(const std::string& type) const override;
 };
 
 #endif // RESIDENTIALBUILDINGCREATOR_H
