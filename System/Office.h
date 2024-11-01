@@ -1,4 +1,4 @@
-// Class definition of Factory Method - COncreteProduct (subtype)
+// Class definition of Factory Method - ConcreteProduct participant (subtype)
 
 /**
  * @file Office.h
@@ -14,39 +14,39 @@
  * @class Office
  * @brief Class representing an office as a subtype of CommercialBuilding.
  *
- * This class implements the specific attributes and operations for an office,
+ * Implements specific attributes and operations for an office,
  * such as managing available jobs.
  */
 class Office : public CommercialBuilding {
-public:
-    /**
-     * @brief Constructor for Office.
-     * @param name Name of the office.
-     * @param maxCapacity Maximum capacity of the office.
-     */
-    Office();
+    
+    public:
+        /**
+         * @brief Default constructor for Office.
+         */
+        Office();
 
-    /**
-     * @brief Displays the stats specific to the office.
-     */
-    void displayStats() const override;
+        /**
+         * @brief Displays the stats specific to the office.
+         */
+        void displayStats() const override;
 
-    /**
-     * @brief Checks the availability of jobs in the office.
-     * @return True if jobs are available, otherwise false.
-     */
-    bool checkAvailability() const override;
+        /**
+         * @brief Checks the availability of jobs in the office.
+         * @return True if jobs are available, otherwise false.
+         */
+        bool checkAvailability() const override;
 
-    /**
-     * @brief Accepts visitors for the visitor pattern.
-     * @param visitor A pointer to the visitor object.
-     */
-    void accept(TaxManager* visitor) override;
+        /**
+         * @brief Accepts visitors for the visitor pattern.
+         * @param visitor A pointer to the visitor object.
+         */
+        void accept(TaxManager* visitor) override;
 
-    Building* repairClone() const override;
-
-private:
-    int availableJobs;  ///< Number of available jobs in the office.
-};
+        /**
+         * @brief Clones the office for repair purposes.
+         * @return Pointer to the cloned office object.
+         */
+        Building* repairClone() const override;
+    };
 
 #endif // OFFICE_H
