@@ -33,7 +33,6 @@ Office::Office()
  */
 void Office::displayStats() const {
     CommercialBuilding::displayStats();  // Call base class method
-    std::cout << "Available Jobs: " << availableJobs << std::endl;
 }
 
 /**

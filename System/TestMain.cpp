@@ -13,6 +13,7 @@
 
 void buildingsTest();
 void testResidentialBuildings();
+void testCommercialBuildingFunctions();
 
 int main()
 {
@@ -21,7 +22,8 @@ int main()
 
     // buildingsTest();
     // testResidentialBuildings();
-    
+    testCommercialBuildingFunctions();
+
     std::cout << "End" << std::endl;
 
     return 0;
@@ -91,3 +93,54 @@ void testResidentialBuildings() {
     }
 }
 
+void testCommercialBuildingFunctions() {
+    CommercialBuildingCreator creator;
+    TaxManager taxManager; // Create a TaxManager instance for visitor testing
+
+    // Array of commercial building types to test
+    std::string buildingTypes[] = {"Office", "School", "Hospital", "Shop"};
+
+    for (const std::string& type : buildingTypes) {
+        // Create a commercial building using the factory
+        Building* building = creator.createBuilding(type);
+        CommercialBuilding* commercialBuilding = dynamic_cast<CommercialBuilding*>(building);
+
+        if (commercialBuilding) {
+            std::cout << "Testing " << type << ":\n";
+
+            // Display initial stats
+            commercialBuilding->displayStats();
+
+            // Test availability setters and getters
+            commercialBuilding->setAvailableJobs(10);
+            commercialBuilding->setAvailableKidsSpaces(20);
+            commercialBuilding->setAvailableBeds(30);
+
+            std::cout << "Updated Stats:\n";
+            std::cout << "Available Jobs: " << commercialBuilding->getAvailableJobs() << std::endl;
+            std::cout << "Available Kids' Spaces: " << commercialBuilding->getAvailableKidsSpaces() << std::endl;
+            std::cout << "Available Beds: " << commercialBuilding->getAvailableBeds() << std::endl;
+
+            // Test closeBuilding and isClosed functions
+            commercialBuilding->closeBuilding();
+            std::cout << "Building closed? " << (commercialBuilding->isClosed() ? "Yes" : "No") << std::endl;
+
+            // Test reopenBuilding and recheck isClosed
+            commercialBuilding->reopenBuilding();
+            std::cout << "Building reopened? " << (!commercialBuilding->isClosed() ? "Yes" : "No") << std::endl;
+
+            // Display stats again after reopening
+            commercialBuilding->displayStats();
+
+            // Test the accept function (Visitor Pattern)
+            commercialBuilding->accept(&taxManager);
+
+            // Clean up
+            delete commercialBuilding;
+        } else {
+            std::cerr << "Failed to create commercial building of type: " << type << std::endl;
+        }
+
+        std::cout << "\n";
+    }
+}
