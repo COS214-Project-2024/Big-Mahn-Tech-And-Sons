@@ -22,6 +22,7 @@
 #include "WasteManagement.h"
 
 #include "ResidentialBuildingCreator.h"
+#include "CommercialBuildingCreator.h"
 #include "TaxManager.h"
 
 
@@ -422,3 +423,82 @@ TEST_CASE("Testing Residential Buildings Creation and Functionality") {
     //     delete clonedBuilding;
     // }
 }
+
+
+TEST_CASE("Testing Commercial Building Classes with Factory Method") {
+    // // Initialize the factory creator and TaxManager instance
+    // CommercialBuildingCreator creator;
+    // TaxManager taxManager;
+
+    // // Define an array of building types to test
+    // std::string buildingTypes[] = {"School", "Office", "Hospital", "Shop"};
+
+    // for (const std::string& type : buildingTypes) {
+    //     // Create a building using the factory
+    //     Building* baseBuilding = creator.createBuilding(type);
+    //     // Attempt to cast to CommercialBuilding*
+    //     CommercialBuilding* building = dynamic_cast<CommercialBuilding*>(baseBuilding);
+        
+    //     // Ensure the cast was successful
+    //     REQUIRE(building != nullptr);
+
+    //     SUBCASE((type + " - Default Initialization").c_str()) {
+    //         if (type == "School") {
+    //             CHECK(building->getAvailableKidsSpaces() == building->getMaxCapacity());
+    //         } else if (type == "Office") {
+    //             CHECK(building->getAvailableJobs() == building->getMaxCapacity());
+    //         } else if (type == "Hospital") {
+    //             CHECK(building->getAvailableBeds() == building->getMaxCapacity());
+    //         }
+    //         CHECK(building->isClosed() == false);
+    //     }
+
+    //     SUBCASE((type + " - Set and Get Methods").c_str()) {
+    //         if (type == "School") {
+    //             building->setAvailableKidsSpaces(10);
+    //             CHECK(building->getAvailableKidsSpaces() == 10);
+    //         } else if (type == "Office") {
+    //             building->setAvailableJobs(20);
+    //             CHECK(building->getAvailableJobs() == 20);
+    //         } else if (type == "Hospital") {
+    //             building->setAvailableBeds(15);
+    //             CHECK(building->getAvailableBeds() == 15);
+    //         }
+    //     }
+
+    //     SUBCASE((type + " - Close and Reopen Building").c_str()) {
+    //         building->closeBuilding();
+    //         CHECK(building->isClosed() == true);
+
+    //         building->reopenBuilding();
+    //         CHECK(building->isClosed() == false);
+    //     }
+
+    //     SUBCASE((type + " - Check Availability").c_str()) {
+    //         if (type == "School") {
+    //             CHECK(building->checkAvailability() == true);
+    //             building->setAvailableKidsSpaces(0);
+    //             CHECK(building->checkAvailability() == false);
+    //         } else if (type == "Office") {
+    //             CHECK(building->checkAvailability() == true);
+    //             building->setAvailableJobs(0);
+    //             CHECK(building->checkAvailability() == false);
+    //         } else if (type == "Hospital") {
+    //             CHECK(building->checkAvailability() == true);
+    //             building->setAvailableBeds(0);
+    //             CHECK(building->checkAvailability() == false);
+    //         }
+    //     }
+
+    //     SUBCASE((type + " - Display Stats").c_str()) {
+    //         CHECK_NOTHROW(building->displayStats());
+    //     }
+
+    //     SUBCASE((type + " - Accept Function with TaxManager").c_str()) {
+    //         CHECK_NOTHROW(building->accept(&taxManager));
+    //     }
+
+    //     delete baseBuilding;  // Clean up created instance
+    // }
+}
+
