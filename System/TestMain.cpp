@@ -98,8 +98,14 @@ void buildingsTest()
     Building *b1 = new House();
     Building *b2 = new Apartment();
 
+    //b2->consumeElectricity(20);
+    b2->consumeWater(30);
+    b1->clearWaste();
+    b1->powerCut();
+    b1->waterCut();
+
     powerDept.addBuilding(b1);
-    powerDept.distributePower();
+    //powerDept.distributePower();
     powerDept.calculatePowerUsage();
     powerDept.increasePowerCapacity();
     powerDept.powerShutDown();
@@ -140,4 +146,5 @@ void buildingsTest()
     cout << " " << endl;
 
     std::cout << endl << endl << endl;
+
 } 

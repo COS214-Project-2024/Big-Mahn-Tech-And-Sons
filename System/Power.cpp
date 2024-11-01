@@ -29,9 +29,3 @@ void Power::use(double used) {
     }
 }
 
-/**
- * @brief Reports the current status of the power resource.
- */
-void Power::reportStatus() const {
-    std::cout << "Power Resource: " << name << ", Available Amount: " << amount << std::endl;
-}

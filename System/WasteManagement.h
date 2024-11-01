@@ -37,6 +37,12 @@ public:
     WasteManagement(string name, double budget, double capacity);
 
     /**
+     * @brief Destructor for WasteManagement.
+     * Cleans up the buildings vector if the WasteManagement class owns the Building instances.
+     */
+    ~WasteManagement(); // Destructor declaration
+
+    /**
      * @brief Collects waste from various parts of the city.
      */
     void collectWaste();

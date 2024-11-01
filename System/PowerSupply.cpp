@@ -12,19 +12,12 @@ PowerSupply::PowerSupply(string name, double budget, double capacity, Power* pow
  * This destructor releases any dynamically allocated resources.
  */
 PowerSupply::~PowerSupply() {
-    // // Delete the power resource if it was dynamically allocated
-    // if (powerResource) {
-    //     delete powerResource;
-    // }
-
-    // // Iterate through the vector of buildings and delete each one if it was dynamically allocated
-    // for (Building* building : buildings) {
-    //     if (building) {
-    //         delete building;
-    //     }
-    // }
-    // // Clear the vector to ensure it does not hold dangling pointers
-    // buildings.clear();
+    // Delete the power resource if it was dynamically allocated
+    if (powerResource) {
+        delete powerResource;
+    }
+    // Clear the vector to ensure it does not hold dangling pointers
+    buildings.clear();
 }
 
 /**

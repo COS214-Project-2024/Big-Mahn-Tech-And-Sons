@@ -20,6 +20,15 @@ void WasteManagement::addBuilding(Building *building)
 }
 
 /**
+ * @brief Destructor for WasteManagement.
+ * Cleans up the buildings vector if the WasteManagement class owns the Building instances.
+ */
+WasteManagement::~WasteManagement() 
+{
+    buildings.clear(); // Clear the vector
+}
+
+/**
  * @brief Collects waste from various parts of the city.
  */
 void WasteManagement::collectWaste()

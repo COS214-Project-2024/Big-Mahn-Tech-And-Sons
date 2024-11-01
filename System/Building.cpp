@@ -174,7 +174,7 @@ void Building::consumeElectricity(double amount) {
 
    if (newA  > electricityUsage) 
      {
-        std::cout << "Building " << name << " does not have enough electricity that is requested , try buying units or using less electricity , current meter box amount:  "<<electricityMeterBox<<" attempted to use" <<newA  << std::endl;
+        std::cout << "Building " << name << " does not have enough electricity that is requested , try buying units or using less electricity , current meter box amount:  "<<electricityMeterBox<<" attempted to use " <<newA  << std::endl;
         powerSupply = true;
     } 
     else if( meterA <= 0  && meterA >= -10)
@@ -189,7 +189,7 @@ void Building::consumeElectricity(double amount) {
        setElectricityUsage(newA);
        setElectricityMeterBox(meterA);
 
-        std::cout << "Building: " << name << "has used: "<<electricityUsage<<" and is now left with: "<<electricityMeterBox<<std::endl;
+        std::cout << "Building: " << name << " has used: "<<electricityUsage<<" and is now left with: "<<electricityMeterBox<<std::endl;
         powerSupply = true;
     }
 
@@ -217,6 +217,6 @@ void Building::powerCut() {
  * @brief Clears the building's waste production.
  */
 void Building::clearWaste() {
-    std::cout << name << " cleared " << wasteProduction << " kg of waste.\n";
+    std::cout << name << " cleared " << wasteProduction << " units of waste.\n";
     wasteProduction = 0;
 }
