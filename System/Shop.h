@@ -1,4 +1,4 @@
-// Class defintion of Factory Method - COncreteProduct (subtype)
+// Class definition of Factory Method - ConcreteProduct participant (subtype)
 
 /**
  * @file Shop.h
@@ -14,39 +14,39 @@
  * @class Shop
  * @brief Class representing a shop as a subtype of CommercialBuilding.
  *
- * This class implements the specific attributes and operations for a shop,
+ * Implements specific attributes and operations for a shop,
  * such as managing available jobs.
  */
 class Shop : public CommercialBuilding {
-public:
-    /**
-     * @brief Constructor for Shop.
-     * @param name Name of the shop.
-     * @param maxCapacity Maximum capacity of the shop.
-     */
-    Shop();
+    
+    public:
+        /**
+         * @brief Default constructor for Shop.
+         */
+        Shop();
 
-    /**
-     * @brief Displays the stats specific to the shop.
-     */
-    void displayStats() const override;
+        /**
+         * @brief Displays the stats specific to the shop.
+         */
+        void displayStats() const override;
 
-    /**
-     * @brief Checks the availability of jobs in the shop.
-     * @return True if jobs are available, otherwise false.
-     */
-    bool checkAvailability() const override;
+        /**
+         * @brief Checks the availability of jobs in the shop.
+         * @return True if jobs are available, otherwise false.
+         */
+        bool checkAvailability() const override;
 
-    /**
-     * @brief Accepts visitors for the visitor pattern.
-     * @param visitor A pointer to the visitor object.
-     */
-    void accept(TaxManager* visitor) override;
+        /**
+         * @brief Accepts visitors for the visitor pattern.
+         * @param visitor A pointer to the visitor object.
+         */
+        void accept(TaxManager* visitor) override;
 
-    Building* repairClone() const override;
-
-private:
-    int availableJobs;  ///< Number of available jobs in the shop.
+        /**
+         * @brief Clones the shop for repair purposes.
+         * @return Pointer to the cloned shop object.
+         */
+        Building* repairClone() const override;
 };
 
 #endif // SHOP_H

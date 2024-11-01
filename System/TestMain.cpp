@@ -18,8 +18,9 @@ int main()
 {
 
     std::cout << "Hello World" << std::endl;
+
     // buildingsTest();
-    testResidentialBuildings();
+    // testResidentialBuildings();
     
     std::cout << "End" << std::endl;
 

@@ -1,4 +1,4 @@
-// Class defintion and implementation of Factory Method - ConcreteProduct (classification)
+// Class definition of Factory Method - ConcreteProduct participant (classification)
 
 /**
  * @file CommercialBuilding.h
@@ -10,107 +10,77 @@
 
 #include "Building.h"
 #include "TaxManager.h"
+#include <iostream>
 
 /**
  * @class CommercialBuilding
  * @brief Abstract class representing commercial buildings.
  *
- * This class provides the shared attributes and operations for all commercial buildings,
- * such as available jobs for shops and offices, available kid spaces at schools,
- * and available beds in hospitals, while leaving implementation details to the subtypes.
+ * Provides shared attributes and operations for all commercial buildings,
+ * such as available jobs, kid spaces, and beds. Subtypes handle specific implementations.
  */
 class CommercialBuilding : public Building {
-protected:
-    int availableJobs;      ///< Number of available jobs (for shops and offices).
-    int availableKidsSpaces; ///< Number of available kids' spaces (for schools).
-    int availableBeds;      ///< Number of available beds (for hospitals).
-    bool closed;  // Indicates whether the building is closed due to recession
 
+    protected:
+        int availableJobs;       ///< Available jobs (for shops and offices).
+        int availableKidsSpaces; ///< Available kid spaces (for schools).
+        int availableBeds;       ///< Available beds (for hospitals).
+        bool closed;             ///< Indicates if the building is closed due to recession.
 
-public:
-    /**
-     * @brief Constructor for CommercialBuilding.
-     * @param name Name of the building.
-     * @param maxCapacity Maximum capacity of the building.
-     */
-    CommercialBuilding()
-        : Building(),
+    public:
+        /**
+         * @brief Constructor for CommercialBuilding.
+         */
+        CommercialBuilding();
 
-          availableJobs(maxCapacity),          // Initialize available jobs to max capacity
-          availableKidsSpaces(maxCapacity),    // Initialize available kids' spaces to max capacity
-          availableBeds(maxCapacity) {          // Initialize available beds to max capacity
-    }
+        /**
+         * @brief Displays the stats specific to commercial buildings.
+         */
+        void displayStats() const;
 
-    /**
-     * @brief Displays the stats specific to commercial buildings.
-     */
-    virtual void displayStats() const {
-       // Building::displayStats();  // Call base class method
-        std::cout << "Available Jobs: " << availableJobs << std::endl;
-        std::cout << "Available Kids' Spaces: " << availableKidsSpaces << std::endl;
-        std::cout << "Available Beds: " << availableBeds << std::endl;
-    }
+        // Getters and Setters
+        int getAvailableJobs() const;
+        void setAvailableJobs(int jobs);
 
-    // Getters and Setters
-    int getAvailableJobs() const { return availableJobs; }
-    void setAvailableJobs(int jobs) { availableJobs = jobs; }
+        int getAvailableKidsSpaces() const;
+        void setAvailableKidsSpaces(int kidsSpaces);
 
-    int getAvailableKidsSpaces() const { return availableKidsSpaces; }
-    void setAvailableKidsSpaces(int kidsSpaces) { availableKidsSpaces = kidsSpaces; }
+        int getAvailableBeds() const;
+        void setAvailableBeds(int beds);
 
-    int getAvailableBeds() const { return availableBeds; }
-    void setAvailableBeds(int beds) { availableBeds = beds; }
+        /**
+         * @brief Checks the availability of resources depending on the subtype.
+         * Pure virtual function to be defined in derived classes.
+         */
+        virtual bool checkAvailability() const = 0;
 
-    virtual Building* repairClone() const override;
+        /**
+         * @brief Accepts visitors for the visitor pattern.
+         * @param visitor Pointer to a TaxManager object.
+         */
+        virtual void accept(TaxManager* visitor) = 0;
 
-    /**
-     * @brief Checks the availability of resources depending on the subtype.
-     * @return True if resources are available, otherwise false.
-     */
-    virtual bool checkAvailability() const = 0;
+        /**
+         * @brief Closes the building due to recession.
+         */
+        void closeBuilding();
 
-    /**
-     * @brief Accepts visitors for the visitor pattern.
-     * This method remains virtual, to be overridden in the final building types.
-     * @param visitor A pointer to the Taxmanager object.
-     */
-    virtual void accept(TaxManager* visitor) = 0;
+        /**
+         * @brief Reopens the building and restores resources to maximum capacity.
+         */
+        void reopenBuilding();
 
-    /**
-     * @brief jecks if the buildings are closed due to recession 
-     * It just sets the closed variables to true and sets the availavble jobs and beds to zero 
-     */
-    void closeBuilding() {
-        if (!closed) {
-            closed = true;
-            availableJobs = 0;
-            availableKidsSpaces = 0;
-            availableBeds = 0;
-            std::cout << "CommercialBuilding: " << getName() << " has been closed due to recession." << std::endl;
-            // GUI: Mark the building as closed (e.g., gray out the building icon)
-            // GUI: Add "Closed" label to indicate status
-        } else {
-            std::cout << "CommercialBuilding: " <<  getName() << " is already closed." << std::endl;
-        }
-    }
+        /**
+         * @brief Checks if the building is closed.
+         * @return True if the building is closed, otherwise false.
+         */
+        bool isClosed() const;
 
-    void reopenBuilding() {
-        if (closed) {
-            closed = false;
-            availableJobs = maxCapacity;
-            availableKidsSpaces = maxCapacity;
-            availableBeds = maxCapacity;
-            std::cout << "CommercialBuilding: " << getName() << " has been reopened." << std::endl;
-            // GUI: Remove "Closed" label and restore normal icon colors
-        } else {
-            std::cout << "CommercialBuilding: " << getName() << " is already open." << std::endl;
-        }
-    }
-
-    bool isClosed() const {
-        return closed;
-    }
-
+        /**
+         * @brief Clones the commercial building for repairs.
+         * Pure virtual method to be defined in derived classes.
+         */
+        virtual Building* repairClone() const = 0;
 };
 
 #endif // COMMERCIALBUILDING_H
