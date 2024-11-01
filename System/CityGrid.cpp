@@ -553,18 +553,42 @@ const char CityGrid::getAttribute_from_DetailedAttribute(string detailed_Attribu
     return '.';
 }
 
-bool CityGrid::placeBuilding(int uplr, int uplc, int uprc, int dlr, std::string detailed_attr) {
-    // Boundary checks to ensure valid coordinates within the grid
+bool CityGrid::placeBuilding(int uplr, int uplc, int uprc, int dlr, string building_type) {
+    // Boundary checks
     if (uplr < 0 || uplc < 0 || dlr >= grid_num_rows || uprc >= grid_num_cols) {
-        cout<< "Error: Building placement is out of grid bounds.\n";
+        cout << "Error: Building placement is out of grid bounds.\n";
         return false;
     }
 
-    // Place the building within the specified rectangular area
+    char buildingSymbol;
+    string detailed_attr = building_type;
+
+    // Determine building symbol based on type
+    if (building_type == "Estate" || building_type == "Apartment" || building_type == "House") {
+        buildingSymbol = 'H'; // Residential
+    }
+    else if (building_type == "Shop" || building_type == "Office" || 
+             building_type == "School" || building_type == "Hospital") {
+        buildingSymbol = 'C'; // Commercial
+    }
+    else if (building_type == "Factory" || building_type == "Warehouse" || 
+             building_type == "Airport" || building_type == "TrainStation") {
+        buildingSymbol = 'I'; // Industrial
+    }
+    else if (building_type == "Park" || building_type == "Monument" || 
+             building_type == "Museum") {
+        buildingSymbol = 'L'; // Landmark
+    }
+    else {
+        cout << "Error: Invalid building type.\n";
+        return false;
+    }
+
+    // Place the building
     for (int i = uplr; i <= dlr; i++) {
         for (int j = uplc; j <= uprc; j++) {
             (*citygrid)[i][j].updateDetailed_Attribute(detailed_attr);
-            (*citygrid)[i][j].changeAttribute(getAttribute_from_DetailedAttribute(detailed_attr));
+            (*citygrid)[i][j].changeAttribute(buildingSymbol);
         }
     }
     return true;
@@ -625,6 +649,31 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, st
     }
     cout<<"Could not add buillding";
     return errorPair();  // No suitable location found
+}
+
+char CityGrid::getBuildingSymbol(const string& building_type)
+{
+   
+    if (building_type == "Estate" || building_type == "Apartment" || building_type == "House") {
+        return 'H';
+    }
+    
+    else if (building_type == "Shop" || building_type == "Office" || 
+             building_type == "School" || building_type == "Hospital") {
+        return 'C';
+    }
+    
+    else if (building_type == "Factory" || building_type == "Warehouse" || 
+             building_type == "Airport" || building_type == "TrainStation") {
+        return 'I';
+    }
+   
+    else if (building_type == "Park" || building_type == "Monument" || 
+             building_type == "Museum") {
+        return 'L';
+    }
+    
+    return '.';
 }
 
 

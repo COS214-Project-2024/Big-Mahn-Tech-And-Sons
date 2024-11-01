@@ -53,7 +53,7 @@ public:
     vector<pair<int,int>> errorPair(); //used in addBuilding
     bool isEmptySpace(int,int,int,int);
     vector<pair<int,int>> addBuilding(int,int,string);  //returns vector of locations , length & width
-    
+    char getBuildingSymbol(const string& building_type);
     int getDistance(int,int,string);   //returns distance as int, x,y co-ord of citizen & string of detailed attribute.
     bool isNextToRoad();
     int getNumRows();

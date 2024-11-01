@@ -166,13 +166,13 @@ void clearTerminal() {
 
 void deptTransportation()
 {
-    DeptOfTransportation* grid = DeptOfTransportation::getInstance();
+   DeptOfTransportation* grid = DeptOfTransportation::getInstance();
 
     int w,x,y,z;
     string a,b;
     vector<pair<int,int>> pair;
     w=1;
-    while (w==1 || w==2 || w==3 || w==4 || w==5 || w==6)
+    while (w>=1 && w<=8) // Modified to include new option
     {
         cout<<UNDERLINE<<".............. MENU ................\n\n\n"<<RESET;
         cout<<"1)  "<< BRIGHT_GREEN<<"ADD "<<YELLOW<<"ROAD\n"<<RESET
@@ -181,7 +181,8 @@ void deptTransportation()
             <<"4)  PRINT ROADNETWORK\n"<<RESET
             <<"5)  PRINT STREETS\n"<<RESET
             <<"6)  "<< BRIGHT_GREEN<<"ADD "<<CYAN<<"BUILDING\n"<<RESET
-            <<"7)  EXIT PROGRAM\n\n"<<RESET
+            <<"7)  "<<BLUE<<"VIEW ALL BUILDINGS\n"<<RESET  // New option
+            <<"8)  EXIT PROGRAM\n\n"<<RESET
             <<"option: ";
         cin>>w;
         cout<<"\n";
@@ -268,20 +269,31 @@ void deptTransportation()
                 break;
 
             case 6:
-        cout<<UNDERLINE<<".............. CITY GRID ...........\n\n\n"<<RESET;
+        clearTerminal();
+                cout<<UNDERLINE<<".............. CITY GRID ...........\n\n\n"<<RESET;
                 grid->printCityGrid();
 
-                cout<<"length:";
+                cout<<"length: ";
                 cin>>x;
-                cout<<"width:";
+                cout<<"width: ";
                 cin>>y;
-                cout<<"type of building:";
+                cout<<"\nAvailable Building Types:\n"
+                    <<CYAN<<"Residential: "<<RESET<<"Estate, Apartment, House\n"
+                    <<YELLOW<<"Commercial: "<<RESET<<"Shop, Office, School, Hospital\n"
+                    <<RED<<"Industrial: "<<RESET<<"Factory, Warehouse, Airport, TrainStation\n"
+                    <<GREEN<<"Landmark: "<<RESET<<"Park, Monument, Museum\n\n"
+                    <<"Enter building type: ";
                 cin>>a;
-                pair=(grid->add_Building(x,y,a));
-                cout<<pair[0].first<<"\t"<<pair[0].second<<endl;
-                cout<<pair[1].first<<"\t"<<pair[1].second<<endl;
-                cout<<pair[2].first<<"\t"<<pair[2].second<<endl;
-                cout<<pair[3].first<<"\t"<<pair[3].second<<endl;
+                
+                pair = grid->add_Building(x,y,a);
+                
+                if(pair[0].first != -1) {
+                    cout<<"\nBuilding added at coordinates:\n";
+                    cout<<"Upper Left:    ("<<pair[0].first<<","<<pair[0].second<<")\n";
+                    cout<<"Upper Right:   ("<<pair[1].first<<","<<pair[1].second<<")\n";
+                    cout<<"Lower Left:    ("<<pair[2].first<<","<<pair[2].second<<")\n";
+                    cout<<"Lower Right:   ("<<pair[3].first<<","<<pair[3].second<<")\n";
+                }
 
                 clearTerminal();
                 grid->printCityGrid();
@@ -292,6 +304,18 @@ void deptTransportation()
                 break;
 
             case 7:
+                clearTerminal();
+                cout<<UNDERLINE<<"........... BUILDING LIST ...........\n\n"<<RESET;
+                grid->printCityBuildings();
+                
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout<<"\nPress any key to continue";
+                cin.get();
+                clearTerminal();
+                break;
+
+            case 8:
+                cout<<"Exiting program...\n";
                 break;
             }
     }

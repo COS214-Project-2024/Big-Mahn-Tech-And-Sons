@@ -2,18 +2,28 @@
 #define DEPTOFTRANSPORTATION_H
 
 #include "CityGrid.h"
- 
+#include  "ResidentialBuildingCreator.h"
+#include "CommercialBuildingCreator.h"
+#include "IndustrialBuildingCreator.h"
+#include "LandmarkBuildingCreator.h"
 
+#include <vector>
+
+ 
 class DeptOfTransportation
 {
 private:
     CityGrid* cityGrid;     // pointer to the city grid object
     static DeptOfTransportation* instance;  // Singleton instance
     DeptOfTransportation();
-    
+    vector<Building*> buildings;
+ 
 public:
     static DeptOfTransportation* getInstance();
     ~DeptOfTransportation();  //destructs the department object
+
+    //.......Getter for Building......//
+    const vector<Building*> & getAllBuildings() const;
 
 
     //....... PRINT FUNCTIONS ........//
@@ -22,6 +32,7 @@ public:
     void printRoadNetwork();   //prints the road grid, roads only
     void printCityCardinalPoints();
     void printCityStreets();
+    void printCityBuildings() const ;
 
     // ......... ROAD AND BUILDING FUNCTIONS .......... //
 
