@@ -20,6 +20,7 @@ int main()
     std::cout << "Hello World" << std::endl;
     // buildingsTest();
     testResidentialBuildings();
+    
     std::cout << "End" << std::endl;
 
     return 0;
