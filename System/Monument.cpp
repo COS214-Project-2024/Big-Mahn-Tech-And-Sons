@@ -10,16 +10,16 @@
  * @param yearEstablished Year the monument was established.
  * @param heritageStatus Whether the monument is a heritage site.
  */
-Monument::Monument(const std::string& name, int maxCapacity, 
-                  int yearEstablished, 
-                   bool heritageStatus)
-    : LandmarkBuilding(name, maxCapacity, "Monument", heritageStatus),
-    
-      yearEstablished(yearEstablished) 
+Monument::Monument()
+    : LandmarkBuilding()
+
 {
+    name = "Voortrekker Monument";
+    maxCapacity = 150;
     width = 20;            // Default monument width
     length = 20;           // Default monument length
     priceTag = 750000.0;   // Default price tag for a monument
+    type = "Monument";
 }
 
 /**
@@ -27,7 +27,6 @@ Monument::Monument(const std::string& name, int maxCapacity,
  */
 void Monument::displayStats() const {
     LandmarkBuilding::displayStats();  // Call base class method
-    std::cout << "Year Established: " << yearEstablished << std::endl;
 }
 
 /**
@@ -38,33 +37,7 @@ void Monument::accept(TaxManager* visitor) { // Malaika STUB!!!
     // visitor->visit(this);  // Visitor pattern implementation
 }
 
-/**
- * @brief Gets the historical significance of the monument.
- * @return The historical significance as a string.
- */
 
-
-/**
- * @brief Gets the year the monument was established.
- * @return The year the monument was established.
- */
-int Monument::getYearEstablished() const {
-    return yearEstablished;
-}
-
-/**
- * @brief Sets the year the monument was established.
- * @param year New establishment year.
- */
-void Monument::setYearEstablished(int year) {
-    if (year > 0) {
-        yearEstablished = year;
-    } else {
-        std::cerr << "Error: Invalid year." << std::endl;
-    }
-}
-
-
-Building* Monument::clone() const  {
+Building* Monument::repairClone() const  {
         return new Monument(*this);  // Clone this School
 }

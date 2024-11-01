@@ -8,8 +8,11 @@
  * @param name Name of the office.
  * @param maxCapacity Maximum capacity of the office.
  */
-Office::Office(const std::string& name, int maxCapacity)
-    : CommercialBuilding(name, maxCapacity), availableJobs(maxCapacity) {
+Office::Office()
+    : CommercialBuilding() {
+    availableJobs = maxCapacity;
+    name = "Big Mahn Tech & Sons Admin Office";
+    maxCapacity = 50;
     width = 12;
     length = 20; 
     electricityMeterBox = 150.0;
@@ -19,6 +22,7 @@ Office::Office(const std::string& name, int maxCapacity)
     wasteProduction = 0.0;
     priceTag = 200000.0; // Setting price tag for Office
     netWorth = 500000.0;
+    type = "Office";
 }
 
 /**
@@ -46,6 +50,6 @@ void Office::accept(TaxManager* visitor) { // Yohali stub
 }
 
 
-Building* Office::clone() const  {
+Building* Office::repairClone() const  {
         return new Office(*this);  // Clone this School
 }

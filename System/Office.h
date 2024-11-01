@@ -24,7 +24,7 @@ public:
      * @param name Name of the office.
      * @param maxCapacity Maximum capacity of the office.
      */
-    Office(const std::string& name, int maxCapacity);
+    Office();
 
     /**
      * @brief Displays the stats specific to the office.
@@ -43,7 +43,7 @@ public:
      */
     void accept(TaxManager* visitor) override;
 
-    Building* clone() const override;
+    Building* repairClone() const override;
 
 private:
     int availableJobs;  ///< Number of available jobs in the office.

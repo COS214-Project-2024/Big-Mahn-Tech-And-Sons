@@ -20,32 +20,19 @@
  * such as managing production capacity and operational hours.
  */
 class Factory : public IndustrialBuilding {
-private:
-    double operationalHours; ///< Operational hours per day.
 
 public:
     /**
      * @brief Constructor for Factory.
-     * @param name Name of the factory.
-     * @param maxCapacity Maximum capacity of the factory.
-     * @param maxProductionCapacity Maximum production capacity.
-     * @param operationalHours Operational hours per day.
      */
-    Factory(const std::string& name, int maxCapacity, int maxProductionCapacity, double operationalHours);
+    Factory();
 
     /**
      * @brief Displays the stats specific to the factory.
      */
     void displayStats() const override;
-
-    /**
-     * @brief Checks if the factory has available production capacity.
-     * @return True if there is available capacity, otherwise false.
-     */
-    bool checkProductionCapacity() const;
-
     
-    Building* clone() const override;
+    Building* repairClone() const override;
     /**
      * @brief Accepts visitors for the visitor pattern.
      * @param visitor A pointer to the visitor object.
