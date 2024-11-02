@@ -37,7 +37,7 @@ int main()
     // testCommercialBuildingFunctions();
     // testLandmarkBuildings();
     // testIndustrialBuildings();
-    //testHouse();
+    // testHouse();
     testDepartment();
 
     std::cout << "End" << std::endl;
