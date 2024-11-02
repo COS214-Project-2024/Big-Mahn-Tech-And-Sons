@@ -147,6 +147,10 @@ void DeptOfHousing::listBuildings() const {
     }
 }
 
+std::vector<Building *> DeptOfHousing::getBuildings()
+{
+   return this->buildings;
+}
 bool DeptOfHousing::requestFunding(double amount) {
     std::cout << "Requesting additional funds from the DeptOfPR...\n";
     if (deptOfPR->notifyTaxman("Housing")) {

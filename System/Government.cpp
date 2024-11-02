@@ -29,16 +29,16 @@ Government::Government()
    housing = new DeptOfHousing(2000000);
    Water *water = new Water("Sparkling", 10000);
    Power *power = new Power("Power", 100000);
-   this->waterSupply = new WaterSupply("Water", 5000.02, 100000, water);
-   this->powerSupply = new PowerSupply("Eskom", 1539, 1335984, power);
-   this->wasteSupply = new WasteManagement("Waste", 1432, 3544.02);
+   DeptOfUtilities*  waterSup = new WaterSupply("Water", 5000.02, 100000, water);
+   DeptOfUtilities* powerSup = new PowerSupply("Eskom", 1539, 1335984, power);
+  DeptOfUtilities* wasteSup = new WasteManagement("Waste", 1432, 3544.02);
 
-   waterSupply->setSuccessor(powerSupply);
-   powerSupply->setSuccessor(wasteSupply);
+   waterSup->setSuccessor(powerSup);
+   powerSup->setSuccessor(wasteSup);
 
    TaxManager *taxMan = new TaxManager();
    finance = new DeptOfFinance(taxMan);
-   PR = new DeptOfPR(housing, waterSupply, finance);
+   PR = new DeptOfPR(housing, NULL, finance);
 
    string commercialTypes[] = {"Shop", "Office", "School", "Hospital"};
    string residentialTypes[] = {"House", "Apartment", "Estate"};
@@ -78,6 +78,7 @@ Government::Government()
 
 void Government::addNewCitizens()
 {
+   
    int newCitizensCount = rand() % 5 + 1; // Random number of new citizens per year
    for (int i = 0; i < newCitizensCount; i++)
    {
@@ -90,10 +91,12 @@ void Government::addNewCitizens()
          housing->getBuildings().at(rand() % housing->getBuildings().size())->addTenant(newCitizen);
       }
    }
+   
 }
 
 void Government::runSim()
 {
+   
    while (simulationIsActive)
    {
       // Trigger a random event from the available commands

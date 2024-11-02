@@ -46,9 +46,9 @@ private:
     ///< @brief Departments managed by the Government facade
 
     DeptOfPR* PR;
-    WaterSupply* waterSupply;
-    PowerSupply* powerSupply;
-    WasteManagement* wasteSupply;
+    // WaterSupply* waterS;
+    // PowerSupply* powerS;
+    // WasteManagement* wasteS;
     DeptOfFinance* finance;
     DeptOfHousing* housing;
     DeptOfTransportation* transport;

@@ -271,8 +271,8 @@ void testHouse() {
     house->displayStats();
 
     // Create tenants and test adding them
-    Citizen* tenant1 = new Citizen("Jane", 50, 10, 10, NULL);
-    Citizen* tenant2 = new Citizen("Peter", 30, 20, 20, NULL);
+    Citizen* tenant1 = new Citizen("Jane", 10, 10, NULL);
+    Citizen* tenant2 = new Citizen("Peter", 20, 20, NULL);
     std::cout << "\nAdding tenants:" << std::endl;
     house->addTenant(tenant1);
     house->addTenant(tenant2);
