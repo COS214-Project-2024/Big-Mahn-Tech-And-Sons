@@ -25,6 +25,7 @@
  */
 class WaterSupply : public DeptOfUtilities {
 private:
+    double budget;
     double waterCapacity; /**< Total water capacity available for distribution. */
     vector<Building*> buildings;    /**< Vector to store buildings to be sourced  for water supply. */
     Water* waterResource;   /**< pointer to  the water resource. */
@@ -32,11 +33,10 @@ private:
 public:
     /**
      * @brief Constructor for WaterSupply.
-     * @param name The name of the department.
      * @param budget The budget allocated to the water supply department.
      * @param capacity The initial water capacity available for the department.
      */
-    WaterSupply(string name, double budget, double capacity, Water* waterResource);
+    WaterSupply(double budget, double capacity, Water* waterResource);
 
     /**
      * @brief Destructor for WaterSupply.
@@ -72,7 +72,11 @@ public:
      */
     double getWaterCapacity();
 
-    string finalCapacity();
+    /**
+     * @brief Gets the current total budget.
+     * @return The current budget available.
+     */
+    double getBudget();
 
     /**
      * @brief the handleRequest() function is the core method responsible for either processing 

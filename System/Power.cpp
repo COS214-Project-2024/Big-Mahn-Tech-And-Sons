@@ -4,16 +4,14 @@
  */
 
 #include "Power.h"
-#include <iostream>
 
-Power::Power(std::string name, double amount) 
-    : name(name), amount(amount) {}
+Power::Power(double amount) : amount(amount) {}
 
 /**
  * @brief Gets the current amount of power.
  * @return double Current power amount.
  */
-double Power::getAmount() const {
+double Power::getPowerAmount() const {
     return amount;
 }
 
@@ -21,7 +19,7 @@ double Power::getAmount() const {
  * @brief Deducts a specified amount from the available power.
  * @param used Amount to be deducted.
  */
-void Power::use(double used) {
+void Power::usePower(double used) {
     if (used <= amount) {
         amount -= used;
     } else {

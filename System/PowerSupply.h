@@ -32,11 +32,10 @@ private:
 public:
     /**
      * @brief Constructor for PowerSupply.
-     * @param name The name of the department.
      * @param budget The budget allocated to the power supply department.
      * @param capacity The initial power capacity available for the department.
      */
-    PowerSupply(string name, double budget, double capacity,  Power* powerResource);
+    PowerSupply(double budget, double capacity,  Power* powerResource);
 
     ~PowerSupply();
 
@@ -67,8 +66,6 @@ public:
      * @return The current power generation capacity available.
      */
     double getPowerCapacity();
-
-    string finalCapacity();
 
     /**
      * @brief the handleRequest() function is the core method responsible for either processing 

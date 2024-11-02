@@ -2,7 +2,7 @@
  * @file WasteManagement.h
  * @author MissNcube
  * @brief Header file for the WasteManagement class, responsible for handling waste collection, disposal, and recycling in the city.
- *  
+ *
  *  Design Pattern used : Chain of responsibility
  *  Handler : DepartmentUtilities
  *  ConcreteHandler1 : PowerSupply
@@ -22,10 +22,11 @@
  * @brief Manages the waste collection, disposal, and recycling systems for the city.
  * Inherits from the DepartmentUtilities class.
  */
-class WasteManagement : public DeptOfUtilities {
+class WasteManagement : public DeptOfUtilities
+{
 private:
     double wasteCapacity; /**< Total capacity for handling waste in the city. */
-    vector<Building*> buildings;
+    vector<Building *> buildings;
 
 public:
     /**
@@ -34,7 +35,7 @@ public:
      * @param budget The budget allocated to the waste management department.
      * @param capacity The initial waste handling capacity available for the department.
      */
-    WasteManagement(string name, double budget, double capacity);
+    WasteManagement(double budget, double capacity);
 
     /**
      * @brief Destructor for WasteManagement.
@@ -64,14 +65,20 @@ public:
     void expandWasteCapacity();
 
     /**
-     * @brief Gets the current total waste handling capacity.
-     * @return The current waste handling capacity available.
+     * @brief Fetch the current capacity of the waste management class.
+     * @return current capacity of the waste management , how much it can handle and proccess at a time.
      */
     double getWasteCapacity();
 
     /**
-     * @brief the handleRequest() function is the core method responsible for either processing 
-     * the request or passing it along the chain to the next handler. WasteManagement 
+     * @brief Fetch the current budget of the waste management class.
+     * @return The budget  allocated to the waste management department.
+     */
+    double getWasteManagementBudget();
+
+    /**
+     * @brief the handleRequest() function is the core method responsible for either processing
+     * the request or passing it along the chain to the next handler. WasteManagement
      * checks if it can handle the request, if not, WasteManagement will pass it on
      * to the next concreteHandler.
      */
@@ -80,8 +87,7 @@ public:
     /**
      * @brief this function adds a building to the vector to  be handled by the waste management
      */
-    void addBuilding(Building* building);
-
+    void addBuilding(Building *building);
 };
 
-#endif  // WASTEMANAGEMENT_H
+#endif // WASTEMANAGEMENT_H

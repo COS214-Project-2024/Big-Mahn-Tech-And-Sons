@@ -1,58 +1,51 @@
 #include "DeptOfUtilities.h"
 #include "Building.h"
-/**
- * @brief Constructor for DeptOfUtilities.
- * @param name The name of the department.
- * @param budget The initial budget allocated to the department.
- */
-DeptOfUtilities::DeptOfUtilities(string name, double budget) 
-    : departmentName(name), budget(budget), resourceUsage(0), successor(nullptr), PR(nullptr) {}
+
+DeptOfUtilities::DeptOfUtilities(double budget)
+    : budget(budget), resourceUsage(0), successor(nullptr), PR(nullptr) {}
 
 /**
  * @brief Displays the information about the department.
  */
-void DeptOfUtilities::displayDepartmentInfo() {
-    cout << "Department: " << departmentName << endl;
+void DeptOfUtilities::displayDepartmentInfo()
+{
     cout << "Budget: ZAR" << budget << endl;
     cout << "Resource Usage: " << resourceUsage << endl;
 }
 
-/**
- * @brief Requests additional budget allocation from the government.
- */
-void DeptOfUtilities::requestBudget()
+void DeptOfUtilities::requestBudget() // Requests additional budget allocation from the government.
 {
-    
-
 }
 
 void DeptOfUtilities::trackUsage()
 {
 }
 
-/**
- * @brief Requests PR department assistance.
- */
-void DeptOfUtilities::requestPR() {
-    if (PR) {
-        cout << "Requesting assistance from PR department for " << departmentName << endl;
+void DeptOfUtilities::requestPR() // Requests PR department assistance.
+{
+    if (PR)
+    {
+        cout << "Requesting assistance from PR department for department utilities" << endl;
         PR->notifyTaxman("Water");
-    } else {
+    }
+    else
+    {
         cout << "No PR department available." << endl;
     }
 }
 
-/**
- * @brief Base handleRequest function, to be overridden by each department.
- *        If not handled, passes the request to the successor in the chain.
- * @param req The request to be handled.
- */
-void DeptOfUtilities::handleRequest(Request& req) {
-    if (successor) {
+bool DeptOfUtilities::handleRequest(Request &req) // If not handled, passes the request to the successor in the chain.
+{
+    if (successor)
+    {
         successor->handleRequest(req);
-    } else {
-        std::cout << "Request for " << req.getType()<< " could not be handled." << std::endl;
+        return true;
     }
+    else
+    {
+        std::cout << "Request for " << req.getType() << " could not be handled." << std::endl;
+    }
+    return false;
 }
 
 void DeptOfUtilities::setSuccessor(DeptOfUtilities *nextDepartment)
@@ -62,10 +55,7 @@ void DeptOfUtilities::setSuccessor(DeptOfUtilities *nextDepartment)
 
 void DeptOfUtilities::initiateLoadshedding()
 {
-    if(this->departmentName == "Power") {
-        cout << "Initiating loadshedding for " << departmentName << endl;
-        
-    }
+    cout << "Initiating loadshedding  " << endl;
 }
 
 void DeptOfUtilities::restorePower()
@@ -80,7 +70,7 @@ void DeptOfUtilities::reduceUsage()
 {
 }
 
-void DeptOfUtilities::setPR(DeptOfPR* pr)
+void DeptOfUtilities::setPR(DeptOfPR *pr)
 {
     this->PR = pr;
 }
