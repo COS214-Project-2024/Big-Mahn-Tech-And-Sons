@@ -50,4 +50,4 @@ public:
     void collect(CommercialBuilding* building);
 };
 
-#endif // TAXMANAGER_H
+#endif // TAXMANAGER_H+

@@ -1,4 +1,3 @@
-
 #include "DeptOfFinance.h"
 #include "TaxManager.h"
 #include "Building.h"
@@ -71,5 +70,3 @@ void DeptOfFinance::setPR(DeptOfPR *PR)
 {
     this->PR = PR;
 }
-
-// this is a function to check the state

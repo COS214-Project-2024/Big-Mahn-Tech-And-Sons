@@ -24,11 +24,11 @@ void testCommercialBuildingFunctions();
 void testLandmarkBuildings();
 void testIndustrialBuildings();
 void testHouse();
+void taxManTest();
 int testDepartment();
 
 int main()
 {
-
     std::cout << "Hello World" << std::endl;
 
     // buildingsTest();
@@ -36,23 +36,16 @@ int main()
     // testCommercialBuildingFunctions();
     // testLandmarkBuildings();
     // testIndustrialBuildings();
-    //testHouse();
-    testDepartment();
+    // testHouse();
+    // testDepartment();
+    taxManTest();
 
     std::cout << "End" << std::endl;
 
     return 0;
 }
 
-
-
-
-
-
-
 // ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
-
-
 void buildingsTest()
 {
     std::cout << "Testing Residential Buildings :_________________ \n";
@@ -62,10 +55,10 @@ void buildingsTest()
     ResidentialBuildingCreator *resi3 = new ResidentialBuildingCreator();
     ResidentialBuildingCreator *resi4 = new ResidentialBuildingCreator();
 
-    Building *esate = 
-     resi1->createBuilding("Estate");
-    Building*  aprty = resi2->createBuilding("Apartment");
-    Building*  house  = resi3->createBuilding("House");
+    Building *esate =
+        resi1->createBuilding("Estate");
+    Building *aprty = resi2->createBuilding("Apartment");
+    Building *house = resi3->createBuilding("House");
     // Building*  errorH = resi4->createBuilding("Lol");
 
     std::cout << "\t =============Testing Functionality of  Residential Buildings :==========\n";
@@ -82,18 +75,20 @@ void buildingsTest()
               << " \t has a priceTag of:  " << esate->getPriceTag() << "\n";
 }
 
-
-void testResidentialBuildings() {
+void testResidentialBuildings()
+{
     ResidentialBuildingCreator creator;
-    TaxManager taxManager;  // Create a TaxManager instance
+    TaxManager taxManager; // Create a TaxManager instance
 
     // Define an array of building types to test
     std::string buildingTypes[] = {"House", "Apartment", "Estate"};
 
-    for (const std::string& type : buildingTypes) {
+    for (const std::string &type : buildingTypes)
+    {
         // Create a building using the factory
-        Building* building = creator.createBuilding(type);
-        if (building) {
+        Building *building = creator.createBuilding(type);
+        if (building)
+        {
             // Display stats
             building->displayStats();
 
@@ -101,34 +96,39 @@ void testResidentialBuildings() {
             building->setName("Name 2.0");
 
             // Test repairClone
-            Building* clonedBuilding = building->repairClone();
+            Building *clonedBuilding = building->repairClone();
             std::cout << "Cloned Building Name: " << clonedBuilding->getName() << std::endl;
 
             // Test the accept function
-            building->accept(&taxManager);  // Pass the tax manager to the accept function
+            building->accept(&taxManager); // Pass the tax manager to the accept function
 
             // Clean up
             delete building;
             delete clonedBuilding;
-        } else {
+        }
+        else
+        {
             std::cerr << "Failed to create building of type: " << type << std::endl;
         }
     }
 }
 
-void testCommercialBuildingFunctions() {
+void testCommercialBuildingFunctions()
+{
     CommercialBuildingCreator creator;
     TaxManager taxManager; // Create a TaxManager instance for visitor testing
 
     // Array of commercial building types to test
     std::string buildingTypes[] = {"Office", "School", "Hospital", "Shop"};
 
-    for (const std::string& type : buildingTypes) {
+    for (const std::string &type : buildingTypes)
+    {
         // Create a commercial building using the factory
-        Building* building = creator.createBuilding(type);
-        CommercialBuilding* commercialBuilding = dynamic_cast<CommercialBuilding*>(building);
+        Building *building = creator.createBuilding(type);
+        CommercialBuilding *commercialBuilding = dynamic_cast<CommercialBuilding *>(building);
 
-        if (commercialBuilding) {
+        if (commercialBuilding)
+        {
             std::cout << "Testing " << type << ":\n";
 
             // Display initial stats
@@ -160,7 +160,9 @@ void testCommercialBuildingFunctions() {
 
             // Clean up
             delete commercialBuilding;
-        } else {
+        }
+        else
+        {
             std::cerr << "Failed to create commercial building of type: " << type << std::endl;
         }
 
@@ -168,24 +170,26 @@ void testCommercialBuildingFunctions() {
     }
 }
 
-void testLandmarkBuildings() {
-    LandmarkBuildingCreator creator;  // Create a factory instance
-    TaxManager taxManager;  // Create a TaxManager instance
+void testLandmarkBuildings()
+{
+    LandmarkBuildingCreator creator; // Create a factory instance
+    TaxManager taxManager;           // Create a TaxManager instance
 
     // Define an array of building types to test
     std::string buildingTypes[] = {
         "Park",
         "Monument",
-        "Museum"
-    };
+        "Museum"};
 
-    for (const std::string& type : buildingTypes) {
+    for (const std::string &type : buildingTypes)
+    {
         // Create a building using the factory
-        Building* building = creator.createBuilding(type);
+        Building *building = creator.createBuilding(type);
         // Attempt to cast to LandmarkBuilding*
-        LandmarkBuilding* landmarkBuilding = dynamic_cast<LandmarkBuilding*>(building);
-        
-        if (landmarkBuilding) {
+        LandmarkBuilding *landmarkBuilding = dynamic_cast<LandmarkBuilding *>(building);
+
+        if (landmarkBuilding)
+        {
             // Display stats
             landmarkBuilding->displayStats();
 
@@ -193,52 +197,55 @@ void testLandmarkBuildings() {
             landmarkBuilding->setName("New Landmark Name");
 
             // Test repairClone
-            Building* clonedBuilding = landmarkBuilding->repairClone();
+            Building *clonedBuilding = landmarkBuilding->repairClone();
             std::cout << "Cloned Building Name: " << clonedBuilding->getName() << std::endl;
 
             // Test the accept function
-            landmarkBuilding->accept(&taxManager);  // Pass the tax manager to the accept function
+            landmarkBuilding->accept(&taxManager); // Pass the tax manager to the accept function
 
             // Clean up
             delete landmarkBuilding;
             delete clonedBuilding;
-        } else {
+        }
+        else
+        {
             std::cerr << "Failed to create building of type: " << type << std::endl;
-            delete building;  // Clean up in case of failed cast
+            delete building; // Clean up in case of failed cast
         }
     }
 }
 
-void testIndustrialBuildings() {
+void testIndustrialBuildings()
+{
     IndustrialBuildingCreator creator;
-    TaxManager taxManager;  // Create a TaxManager instance
+    TaxManager taxManager; // Create a TaxManager instance
 
     // Create buildings using the factory method
-    Building* warehouse = creator.createBuilding("Warehouse");
-    Building* factoryBuilding = creator.createBuilding("Factory");
-    Building* airport = creator.createBuilding("Airport");
-    Building* trainStation = creator.createBuilding("TrainStation");
+    Building *warehouse = creator.createBuilding("Warehouse");
+    Building *factoryBuilding = creator.createBuilding("Factory");
+    Building *airport = creator.createBuilding("Airport");
+    Building *trainStation = creator.createBuilding("TrainStation");
 
     // Display stats for each building
     std::cout << "\nTesting Warehouse:\n";
     warehouse->displayStats();
-    
+
     std::cout << "\nTesting Factory:\n";
     factoryBuilding->displayStats();
-    
+
     std::cout << "\nTesting Airport:\n";
     airport->displayStats();
-    
+
     std::cout << "\nTesting Train Station:\n";
     trainStation->displayStats();
 
     // Test the repairClone() method
     std::cout << "\nTesting Repair Clone for Warehouse:\n";
-    Building* warehouseClone = warehouse->repairClone();
+    Building *warehouseClone = warehouse->repairClone();
     warehouseClone->displayStats();
 
     std::cout << "\nTesting Repair Clone for Factory:\n";
-    Building* factoryClone = factoryBuilding->repairClone();
+    Building *factoryClone = factoryBuilding->repairClone();
     factoryClone->displayStats();
 
     // Test accept() method, assuming TaxManager is not implemented yet
@@ -257,20 +264,21 @@ void testIndustrialBuildings() {
     delete factoryClone;
 }
 
-void testHouse() {
+void testHouse()
+{
     ResidentialBuildingCreator creator; // Create a ResidentialBuildingCreator instance
     TaxManager taxManager;              // Create a TaxManager instance
 
     // Create a House using the factory
-    Building* house = creator.createBuilding("House");
+    Building *house = creator.createBuilding("House");
 
     // Test initial state
     std::cout << "Testing House Stats:" << std::endl;
     house->displayStats();
 
     // Create tenants and test adding them
-    Citizen* tenant1 = new Citizen("Jane", 50, 10, 10, NULL);
-    Citizen* tenant2 = new Citizen("Peter", 30, 20, 20, NULL);
+    Citizen *tenant1 = new Citizen("Jane", 50, 10, 10, NULL);
+    Citizen *tenant2 = new Citizen("Peter", 30, 20, 20, NULL);
     std::cout << "\nAdding tenants:" << std::endl;
     house->addTenant(tenant1);
     house->addTenant(tenant2);
@@ -322,7 +330,8 @@ void testHouse() {
     delete house;   // Clean up house
 }
 
-int testDepartment() {
+int testDepartment()
+{
     DeptOfHousing *housingDept = new DeptOfHousing(1000000);
     Water *water = new Water("Sparkling", 10000);
     DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
@@ -357,10 +366,13 @@ int testDepartment() {
 
     // Testing funding request
     std::cout << "\n=== Testing Funding Request ===" << std::endl;
-    double fundingAmount = 200000;  // Example funding request
-    if (housingDept->requestFunding(fundingAmount)) {
+    double fundingAmount = 200000; // Example funding request
+    if (housingDept->requestFunding(fundingAmount))
+    {
         std::cout << "Funding request successful. New budget: " << housingDept->getRemainingBudget() << std::endl;
-    } else {
+    }
+    else
+    {
         std::cout << "Funding request failed." << std::endl;
     }
 
@@ -381,4 +393,58 @@ int testDepartment() {
 }
 
 // ------------------------------------------------------------------------------------------------------- //
+// ---------------------------------- TAXES SECTION TESTS --------------------------------------------- //
+void taxManTest() {
+    std::cout << "\t ============= Testing Functionality of Tax Manager: ==========\n";
+    
+    // 1. BUDGET SITUATION
+    ResidentialBuildingCreator creator;
+    TaxManager taxManager;
+    
+    // Create a House and test initial state
+    Building *house = creator.createBuilding("House");
+    std::cout << "Testing House Stats:\n";
+    house->displayStats();
 
+    // Adding tenants and testing updated stats
+    Citizen *tenant1 = new Citizen("Jane", 50, 10, 10, NULL);
+    Citizen *tenant2 = new Citizen("Peter", 30, 20, 20, NULL);
+    std::cout << "\nAdding tenants:\n";
+    house->addTenant(tenant1);
+    house->addTenant(tenant2);
+    house->displayStats();
+
+    std::cout << "Setting the Overall City Budget\n";
+    Budget cityBudget(10000);  // Initialize budget
+    cityBudget.reportStatus();
+
+    // 2. BUILDINGS SETUP
+    // Create specific building types
+    Building *estate = creator.createBuilding("Estate");
+    Building *apartment = creator.createBuilding("Apartment");
+    
+    CommercialBuildingCreator commercialCreator;
+    Building *shop = commercialCreator.createBuilding("Shop");
+    Building *hospital = commercialCreator.createBuilding("Hospital");
+
+    // 3. TAX MANAGER AND FINANCE DEPARTMENT
+    DeptOfFinance financeDept(&taxManager);
+
+    // 4. TAXES COLLECTION
+    std::cout << "Collecting taxes from citizens\n";
+    // Collect taxes from residential buildings
+    financeDept.collectTaxes(estate);
+    financeDept.collectTaxes(apartment);
+    std::cout << "Done collecting taxes from citizens\n";
+    
+    std::cout << "Collecting taxes from commercials\n";
+    // Collect taxes from commercial buildings
+    financeDept.collectTaxes(shop);
+    financeDept.collectTaxes(hospital);
+    std::cout << "Done collecting taxes from commercials\n";
+
+    // 5. BUDGET UPDATE AFTER TAX COLLECTION
+    std::cout << "Updating the Overall City Budget\n";
+    cityBudget.accept(&taxManager);  // Update budget with collected taxes
+    cityBudget.reportStatus();       // Report updated budget status
+}

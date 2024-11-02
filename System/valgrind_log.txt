@@ -1,0 +1,104 @@
+==1002== Memcheck, a memory error detector
+==1002== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==1002== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==1002== Command: ./test
+==1002== 
+==1002== error calling PR_SET_PTRACER, vgdb might block
+==1002== 
+==1002== HEAP SUMMARY:
+==1002==     in use at exit: 1,367 bytes in 13 blocks
+==1002==   total heap usage: 19 allocs, 6 frees, 77,255 bytes allocated
+==1002== 
+==1002== 8 bytes in 1 blocks are indirectly lost in loss record 1 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x117C3B: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double, int, int, DeptOfPR*) (Citizen.cpp:26)
+==1002==    by 0x110819: taxManTest() (TestMain.cpp:410)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 8 bytes in 1 blocks are indirectly lost in loss record 2 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x117D0C: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double, int, int, DeptOfPR*) (Citizen.cpp:36)
+==1002==    by 0x110819: taxManTest() (TestMain.cpp:410)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 8 bytes in 1 blocks are indirectly lost in loss record 3 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x117C3B: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double, int, int, DeptOfPR*) (Citizen.cpp:26)
+==1002==    by 0x11089F: taxManTest() (TestMain.cpp:411)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 8 bytes in 1 blocks are indirectly lost in loss record 4 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x117D0C: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, double, int, int, DeptOfPR*) (Citizen.cpp:36)
+==1002==    by 0x11089F: taxManTest() (TestMain.cpp:411)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 16 bytes in 1 blocks are indirectly lost in loss record 5 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x11417D: __gnu_cxx::new_allocator<Citizen*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==1002==    by 0x113FCE: std::allocator_traits<std::allocator<Citizen*> >::allocate(std::allocator<Citizen*>&, unsigned long) (alloc_traits.h:464)
+==1002==    by 0x113E49: std::_Vector_base<Citizen*, std::allocator<Citizen*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==1002==    by 0x11615C: void std::vector<Citizen*, std::allocator<Citizen*> >::_M_realloc_insert<Citizen* const&>(__gnu_cxx::__normal_iterator<Citizen**, std::vector<Citizen*, std::allocator<Citizen*> > >, Citizen* const&) (vector.tcc:440)
+==1002==    by 0x115A73: std::vector<Citizen*, std::allocator<Citizen*> >::push_back(Citizen* const&) (stl_vector.h:1198)
+==1002==    by 0x114C32: Building::addTenant(Citizen*) (Building.cpp:21)
+==1002==    by 0x11090C: taxManTest() (TestMain.cpp:414)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 31 bytes in 1 blocks are indirectly lost in loss record 6 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x49AD0BD: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==1002==    by 0x49AE25D: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==1002==    by 0x126920: Hospital::Hospital() (Hospital.cpp:16)
+==1002==    by 0x120AE8: CommercialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (CommercialBuildingCreator.cpp:28)
+==1002==    by 0x110AE6: taxManTest() (TestMain.cpp:428)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 128 bytes in 1 blocks are indirectly lost in loss record 7 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x1107EF: taxManTest() (TestMain.cpp:410)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 128 bytes in 1 blocks are indirectly lost in loss record 8 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x110875: taxManTest() (TestMain.cpp:411)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 200 bytes in 1 blocks are definitely lost in loss record 9 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x12EA68: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:22)
+==1002==    by 0x1109AC: taxManTest() (TestMain.cpp:423)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 200 bytes in 1 blocks are definitely lost in loss record 10 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x12EA9C: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:24)
+==1002==    by 0x110A10: taxManTest() (TestMain.cpp:424)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 216 bytes in 1 blocks are definitely lost in loss record 11 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x120A44: CommercialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (CommercialBuildingCreator.cpp:22)
+==1002==    by 0x110A82: taxManTest() (TestMain.cpp:427)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 247 (216 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 12 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x120ADD: CommercialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (CommercialBuildingCreator.cpp:28)
+==1002==    by 0x110AE6: taxManTest() (TestMain.cpp:428)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== 504 (200 direct, 304 indirect) bytes in 1 blocks are definitely lost in loss record 13 of 13
+==1002==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1002==    by 0x12EACD: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:26)
+==1002==    by 0x11075D: taxManTest() (TestMain.cpp:405)
+==1002==    by 0x10D8E0: main (TestMain.cpp:41)
+==1002== 
+==1002== LEAK SUMMARY:
+==1002==    definitely lost: 1,032 bytes in 5 blocks
+==1002==    indirectly lost: 335 bytes in 8 blocks
+==1002==      possibly lost: 0 bytes in 0 blocks
+==1002==    still reachable: 0 bytes in 0 blocks
+==1002==         suppressed: 0 bytes in 0 blocks
+==1002== 
+==1002== For lists of detected and suppressed errors, rerun with: -s
+==1002== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
