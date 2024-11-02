@@ -28,7 +28,15 @@ bool DeptOfHousing::canAfford(double price) const {
 void DeptOfHousing::createBuilding(const std::string& type, const std::string& category) {
     try {
         Building* building = nullptr;
-        
+
+        if (canAfford(building->getPriceTag())) {
+            buildings.push_back(building);
+            budget -= building->getPriceTag();
+            std::cout << category << " building (" << type << ") created successfully." << std::endl;
+        } else {
+            std::cerr << "Insufficient budget to create a " << type << " " << category << " building." << std::endl;
+        }
+
         if (category == "Residential") {
             building = residentialCreator.createBuilding(type);
         } else if (category == "Commercial") {
@@ -37,15 +45,6 @@ void DeptOfHousing::createBuilding(const std::string& type, const std::string& c
             building = industrialCreator.createBuilding(type);
         } else if (category == "Landmark") {
             building = landmarkCreator.createBuilding(type);
-        }
-        
-        if (canAfford(building->getPriceTag())) {
-            buildings.push_back(building);
-            budget -= building->getPriceTag();
-            std::cout << category << " building (" << type << ") created successfully." << std::endl;
-        } else {
-            std::cerr << "Insufficient budget to create a " << type << " " << category << " building." << std::endl;
-            delete building; // Clean up if not added
         }
     } catch (const std::invalid_argument& e) {
         std::cerr << "Error: " << e.what() << std::endl;
