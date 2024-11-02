@@ -16,7 +16,18 @@ public:
     // Constructor to initialize Request with a type, building, and amount
     Request(string type,Building* building, double amount);
 
+    
+    /**
+     * @brief Get the type of the requested resource.
+     * @return The type of resource requested.
+     */
     string getType();
+
+    
+    /**
+     * @brief Get the building of the requested resource.
+     * @return The building receiving the resource requested.
+     */
     Building* getBuilding();
 
     /**
