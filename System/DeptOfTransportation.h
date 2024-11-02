@@ -43,6 +43,7 @@ public:
     bool remove_Road(int,int,int,string);
     bool remove_Road(string);
     const vector<pair<int,int>> add_Building(int,int,string);
+    bool remove_Building(vector<pair<int,int>>&);
     
 };
 

@@ -6,7 +6,7 @@ DeptOfTransportation *DeptOfTransportation::instance = nullptr;
 
 DeptOfTransportation::DeptOfTransportation()
 {
-    cityGrid = new CityGrid(10, 10);
+    cityGrid = new CityGrid(20, 20);
 }
 
 DeptOfTransportation::~DeptOfTransportation()
@@ -165,4 +165,19 @@ const vector<pair<int, int>> DeptOfTransportation::add_Building(int length, int 
         delete building;
         return error;
     }
+}
+
+
+
+
+bool DeptOfTransportation::remove_Building(vector<pair<int,int>>& buidling)
+{
+    if(cityGrid->removeBuilding(buidling))
+    {
+        cout<<"\nBuilding removed from grid ~DeptTrans.\n";
+        return true;
+    }
+
+    cout<<"\nBuilding not removed from grid ~DeptTrans.\n";
+        return true;
 }

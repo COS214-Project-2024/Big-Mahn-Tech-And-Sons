@@ -204,14 +204,18 @@ public:
     Building* getHomeLocation() const;
 
     Building* getWorkLocation() const;
+    
+    
+    
+    
     /**
      * @brief Travels to another building.
-     * 
+     *
      * @param destination Pointer to the destination building.
-     * 
+     *
      * If @param destination is (work, home, school etc) execute the relevant command
      */
-     void travelTo(Building *destination , CityGrid *citi, int x, int y, const std::string &Building);
+    void travelTo(std::vector<std::pair<int, int>> gridCoordinates , const std::string& buildType );
 
 
 };
