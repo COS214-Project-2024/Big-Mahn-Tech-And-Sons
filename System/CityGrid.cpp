@@ -1,4 +1,5 @@
 #include "CityGrid.h"
+#include "Building.h"
 
 Cell::Cell(int row_value, int col_value, string cardinal_point)
 {
@@ -10,10 +11,10 @@ Cell::Cell(int row_value, int col_value, string cardinal_point)
     /*6*/ this->street_name = "-";
 }
 
-// Cell::~Cell()
-// {
-//     //no memory management required here.
-// }
+Cell::~Cell()
+{
+    //no memory management required here.
+}
 
 const char Cell::getAttribute()
 {
@@ -82,26 +83,29 @@ CityGrid::CityGrid(int row_dimension, int col_dimension)
     }
 }
 
-// CityGrid::~CityGrid()
-// {
-//     if(citygrid!=nullptr)
-//     delete citygrid;
-// }
+CityGrid::~CityGrid()
+{
+    if(citygrid!=nullptr)
+    delete citygrid;
+}
 
 void CityGrid::printCityGrid()
 {
     for(int i =0; i < grid_num_cols ;i++)
     {
         if(i==0)
-        cout<<"  ";
-        cout<<i<<" ";
+        cout<<setw(3.5)<<" ";
+        if(i<10){cout<<"0"<<i<<" ";}
+        else{cout<<i<<" ";}
         if(i==(grid_num_cols-1))
         cout<<endl;
     }
     for (int i = 0; i < grid_num_rows ;i++) {
-        cout<<i<<" ";
+        if(i<10)
+        {cout<<"0"<<i<<" ";}
+        else{cout<<i<<" ";}
         for (int j = 0; j < grid_num_cols; j++) {
-            cout <<(*citygrid)[i][j].getAttribute()<<" ";
+            cout <<setw(2)<<(*citygrid)[i][j].getAttribute()<<" ";
         } 
         cout << endl;
     }
@@ -128,6 +132,9 @@ void CityGrid::printCityCardinal()
 
 bool CityGrid::addRoad(int start_row, int start_col, int length, string direction, string strname)
 {
+    direction = toLower(direction);
+    strname = toLower(strname);
+
     if(start_row<0 || start_col<0 || length<0)
     {
         cout<<"Invalid dimensions";
@@ -430,7 +437,8 @@ void CityGrid::printCityStreets()
 {
     for (int i = 0; i < grid_num_rows ;i++)
     {
-        cout<<i<<" ";
+        if(i<10){cout<<"0"<<i<<" ";}
+        else{cout<<i<<" ";}
         for (int j = 0; j < grid_num_cols; j++)
         {
             if((*citygrid)[i][j].getAttribute()=='R')
@@ -439,11 +447,29 @@ void CityGrid::printCityStreets()
             }
             else
             {
-                cout<<(*citygrid)[i][j].getAttribute()<<" ";
+
+                cout<<setw(get_Longest_street_length())<<(*citygrid)[i][j].getAttribute()<<" ";
             } 
         } 
         cout << endl;
     }
+}
+
+int CityGrid::get_Longest_street_length()
+{
+    int longest_length=0;
+
+    for(int i=0; i<grid_num_rows; i++)
+    {
+        for(int j=0; j<grid_num_cols; j++)
+        {
+            if((*citygrid)[i][j].getStreetName().length()>longest_length)
+            {
+                longest_length = (*citygrid)[i][j].getStreetName().length();
+            }
+        }
+    }
+    return longest_length;
 }
 
 void CityGrid::printAll_DetailedAttributes()
@@ -516,7 +542,7 @@ bool CityGrid::isEmptySpace(int uplr, int uplc, int uprc, int dlr) {
         for (int j = uplc; j <= uprc; j++) {  // <= uprc to include the last column
             if ((*citygrid)[i][j].getAttribute() != '.')
             {
-                cout<<"No space to add building";
+               // cout<<"No space to add building";
                 return false; // Cell is not empty
             }
         }
@@ -569,7 +595,6 @@ bool CityGrid::placeBuilding(int uplr, int uplc, int uprc, int dlr, std::string 
     }
     return true;
 }
-
 // Function to check if any cell surrounding the building area is a road
 bool CityGrid::isNextToRoad(int uplr, int uplc, int uprc, int dlr) {
     // Check each cell around the perimeter of the building area
@@ -586,14 +611,15 @@ bool CityGrid::isNextToRoad(int uplr, int uplc, int uprc, int dlr) {
     return false;  // No road found adjacent to the building area
 }
 
-// Modified addBuilding function to include road check
-std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, std::string detailed_Attribute) {
+std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, Building* building){
+
+    string detailed_Attribute = toUpper(building->getType());
     if (length < 0 || width < 0 || width > grid_num_cols || length > grid_num_rows)
     {
         cout<<"invalid dimensions";
         return errorPair();
     }
-  
+
     for (int i = 0; i <= grid_num_rows - length; ++i) {
         for (int j = 0; j <= grid_num_cols - width; ++j) {
             int up_left_row = i;
@@ -614,24 +640,72 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, st
                 if(placeBuilding(up_left_row, up_left_col, up_right_col, down_left_row, detailed_Attribute))
                 {
                     // Return the corner positions
-                    return{
-                    {up_left_row, up_left_col},
-                    {up_right_row, up_right_col},
-                    {down_left_row, down_left_col},
-                    {down_right_row, down_right_col}};
+                    cout<<"is it adding correct co-ords";
+                    cout<<"("<<up_left_row<<","<<up_left_col<<")\n";
+                    cout<<"("<<up_right_row<<","<<up_right_col<<")\n";
+                    cout<<"("<<down_left_row<<","<<down_left_col<<")\n";
+                    cout<<"("<<down_right_row<<","<<down_right_col<<")\n";
+                    std::vector<std::pair<int, int>> coord = {
+                    {up_left_row, up_left_col},         //up left corner
+                    {up_right_row, up_right_col},       //up right corner
+                    {down_left_row, down_left_col},     //down left corner
+                    {down_right_row, down_right_col}};  //down right corner
+                    building->setCoordinates(coord);
+                    return coord;
                 }
             }
         }
     }
-    cout<<"Could not add buillding";
+    cout<<"Could not add buillding" << building->getName() << " " << building->getType() << endl; 
     return errorPair();  // No suitable location found
 }
 
+bool CityGrid::removeBuilding(vector<pair<int,int>> &buildiing)
+{
+    cout<<"("<<buildiing[0].first<<","<<buildiing[0].second<<")\n";
+    cout<<"("<<buildiing[1].first<<","<<buildiing[1].second<<")\n";
+    cout<<"("<<buildiing[2].first<<","<<buildiing[2].second<<")\n";
+    cout<<"("<<buildiing[3].first<<","<<buildiing[3].second<<")\n";
+    if(buildiing!=errorPair())
+    {
+        int uplr = buildiing[0].first;
+        int dlr = buildiing[2].first;
+        int uplc = buildiing[0].second;
+        int uprc = buildiing[1].second;
 
+        for (int i = uplr; i <= dlr; i++)
+        {
+            for (int j = uplc; j<= uprc; j++)
+            {
+                (*citygrid)[i][j].changeAttribute('.');
+                (*citygrid)[i][j].updateDetailed_Attribute("BLANK");
+            }
+        }
+        return true;
+    }
+    return false;
+}
 
-int CityGrid::getDistance(int,int,string)
+string CityGrid::toUpper(string word)
+{
+    for(int i=0; i<word.length(); i++)
+    {
+        word[i]=toupper(word[i]);
+    }
+    return word;
+}
+
+string CityGrid::toLower(string word)
+{
+    for(int i=0; i<word.length(); i++)
+    {
+        word[i]=tolower(word[i]);
+    }
+    return word;
+}
+
+int CityGrid::getDistance(vector<pair<int,int>> citizen_current_building, string citizen_destination)
 {
     return -1;
 }
 //get distance from building a to building b
-//add building

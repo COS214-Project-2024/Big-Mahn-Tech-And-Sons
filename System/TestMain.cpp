@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 //
+#include "Government.h"
 #include "Citizen.h"
 #include "DeptOfPR.h"
 #include "DeptOfHousing.h"
@@ -38,15 +39,24 @@ int main()
     // testLandmarkBuildings();
     // testIndustrialBuildings();
     //testHouse();
-    testDepartment();
+    //testDepartment();
 
+    Government* gov = new Government();
     std::cout << "End" << std::endl;
 
     return 0;
 }
 
 
+void testGovernment() {
 
+
+
+
+
+    // gov.runSim();
+    // gov.stopSim()
+}
 
 
 
@@ -71,7 +81,7 @@ void buildingsTest()
     // Building*  errorH = resi4->createBuilding("Lol");
 
     std::cout << "\t =============Testing Functionality of  Residential Buildings :==========\n";
-    std::cout << "\t \t _~_~_~_Estate_~_~_~_~ \t \n";
+    std::cout << "\t \t ~_~_~_Estate~_~_~_~ \t \n";
     /*std::cout << */
     esate->displayStats();
     // some functions dont output and some need jus to be made to make sense
@@ -383,4 +393,3 @@ int testDepartment() {
 }
 
 // ------------------------------------------------------------------------------------------------------- //
-

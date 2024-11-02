@@ -38,7 +38,7 @@ Government::Government()
 
    TaxManager *taxMan = new TaxManager();
    finance = new DeptOfFinance(taxMan);
-   PR = new DeptOfPR(housing, NULL, finance);
+   PR = new DeptOfPR(housing, waterSup, finance);
 
    string commercialTypes[] = {"Shop", "Office", "School", "Hospital"};
    string residentialTypes[] = {"House", "Apartment", "Estate"};
@@ -48,21 +48,44 @@ Government::Government()
    // Seed the random number generator
    srand(time(0));
 
+   // set width and height of building
+   int w  = 2;
+   int h = 2;
+
    housing->createCommercialBuilding(commercialTypes[rand() % 4]);
    housing->createResidentialBuilding(residentialTypes[rand() % 3]);
    housing->createLandmarkBuilding(landmarkTypes[rand() % 3]);
    housing->createIndustrialBuilding(industrialTypes[rand() % 4]);
    // initialize starting citizens
-   for (int i = 0; i < 10; i++)
+
+      transport->add_Road(0,0,10,"right","R1");
+      transport->add_Road(4,0,10,"right","R2");
+      transport->add_Road(9,0,10,"right","R3");
+      transport->add_Road(0,19,10,"down","R4");
+      transport->add_Road(19,0,20,"right","R5");
+
+
+   transport->printCityGrid();
+   for (int i = 0; i < 5; i++)
    {
       string name = "ID: " + to_string(i) + " ";
       Citizen *c1 = new Citizen(name, 1, 1, PR);
 
       housing->getBuildings().at(i % 4)->addTenant(PR->getCitizen(i));
       // transport->add_Building()
-   }
 
-   // ADD BUILDINGS TO CITY GRID
+         // ADD BUILDINGS TO CITY GRID
+      transport->add_Building(w,h,housing->getBuildings().at(i % 4));
+      cout << "added building" <<housing->getBuildings().at(i % 4)->getType() << endl;
+
+   }
+  
+   auto gridCoordinates =   transport->add_Building(w,h,housing->getBuildings().at(1));
+ transport->printCityGrid();
+   cout << "Removing " << housing->getBuildings().at(2 % 4)->getType() << endl;
+   transport->remove_Building(gridCoordinates);
+      transport->printCityGrid();
+
 
    /*
       pandemic = new PandemicCommand(citizens);
@@ -96,8 +119,8 @@ void Government::addNewCitizens()
 
 void Government::runSim()
 {
-   
-   while (simulationIsActive)
+   int i = 0;
+   while (i < 10)
    {
       // Trigger a random event from the available commands
       int eventIndex = rand() % 6; // Adjust based on the number of commands
@@ -117,6 +140,7 @@ void Government::runSim()
       {
          PR->getCitizen(i)->getOlder();
       }
+      
 
       addNewCitizens();
 
@@ -124,6 +148,8 @@ void Government::runSim()
       if (/* some condition to end the simulation */ true) {
          stopSim();
       }
+
+      i++;
 
    }
 }
@@ -135,4 +161,4 @@ void Government::handleCitizenNeeds()
 void Government::stopSim()
 {
    simulationIsActive = false;
-}
+}  

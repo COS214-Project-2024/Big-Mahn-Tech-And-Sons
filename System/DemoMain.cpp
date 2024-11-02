@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstdlib>
 #include <vector>
@@ -33,6 +32,7 @@ int main()
 
 void testFunction()
 {
+    /*
     CityGrid grid(10,10);
     int w,x,y,z;
     string a,b;
@@ -136,6 +136,7 @@ void testFunction()
                 cin>>y;
                 cout<<"type of building:";
                 cin>>a;
+                //Building* b = housn
                 pair=(grid.addBuilding(x,y,a));
                 cout<<pair[0].first<<"\t"<<pair[0].second<<endl;
                 cout<<pair[1].first<<"\t"<<pair[1].second<<endl;
@@ -153,7 +154,10 @@ void testFunction()
             case 7:
                 break;
             }
+
+            
     }
+    */
 }
 
 void clearTerminal() {
@@ -166,6 +170,7 @@ void clearTerminal() {
 
 void deptTransportation()
 {
+    /*
     DeptOfTransportation* grid = DeptOfTransportation::getInstance();
 
     int w,x,y,z;
@@ -295,5 +300,6 @@ void deptTransportation()
                 break;
             }
     }
+    */
 
 }

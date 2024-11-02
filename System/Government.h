@@ -41,6 +41,7 @@ public:
      * 
      *  */ 
     void runSim();
+    void stopSim();
 
 private:
     ///< @brief Departments managed by the Government facade
@@ -74,8 +75,7 @@ private:
     void evaluatePolicies();
     void triggerRandomEvents();
 
-    void stopSim();
 
 };
 
-#endif 
+#endif
