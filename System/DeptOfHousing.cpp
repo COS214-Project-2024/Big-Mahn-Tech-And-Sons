@@ -191,6 +191,10 @@ bool DeptOfHousing::requestFunding(double amount) {
     return true; // Waiting for DeptOfFinance  to implement the funding request logic (Aundrea)
 }
 
+std::vector<Building *> DeptOfHousing::getBuildings()
+{
+   return this->buildings;
+}
 
 /**
  * @brief Retrieves the name of the building at the specified index.

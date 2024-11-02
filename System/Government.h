@@ -15,7 +15,7 @@ class DeptOfFinance;
 class DeptOfHousing;
 class DeptOfPR;
 
-
+using namespace std;
 
 /**
  * @class Government
@@ -29,7 +29,6 @@ public:
      * @brief Constructs a new Government object.
      */
     Government();
-
 
 
     /**
@@ -46,20 +45,21 @@ public:
 private:
     ///< @brief Departments managed by the Government facade
 
-    // DeptOfPR* PR;
-    // WaterSupply* waterSupply;
-    // PowerSupply* powerSupply;
-    // WasteManagement* wasteSupply;
-    // DeptOfFinance* finance;
-    // DeptOfHousing* housing;
+    DeptOfPR* PR;
+    WaterSupply* waterSupply;
+    PowerSupply* powerSupply;
+    WasteManagement* wasteSupply;
+    DeptOfFinance* finance;
+    DeptOfHousing* housing;
+    DeptOfTransportation* transport;
 
-    // EventsCommand* pandemic;
-    // EventsCommand* economicDownturn;
-    // EventsCommand* naturalDisaster;
-    // EventsCommand* loadshedding;
-    // EventsCommand* festive;
-    // EventsCommand* babyBoom;
-    // EventsCommand* increaseEconomy;
+    EventsCommand* pandemic;
+    EventsCommand* economicDownturn;
+    EventsCommand* naturalDisaster;
+    EventsCommand* loadsheding;
+    EventsCommand* festive;
+    EventsCommand* babyBoom;
+    EventsCommand* increaseEconomy;
 
     // Simulation status
     bool simulationIsActive;
@@ -69,6 +69,7 @@ private:
 
     // Simulation methods
     void handleCitizenNeeds();
+    void addNewCitizens();
     void manageResources();
     void evaluatePolicies();
     void triggerRandomEvents();

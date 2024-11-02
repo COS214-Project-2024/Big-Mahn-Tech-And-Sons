@@ -29,9 +29,11 @@ void DeptOfPR::update(Citizen *citizen)
 {
    if(citizen->getStateName() == "Pensioner" && citizen->getAge() >= citizen->getThreshold()) {
       // remove citizen from all records
-
       if(citizen->getCurrentLocation()->removeTenant(citizen) == false) {
          // citizen was not found, thus hunt him down, trying to cheat death
+      }  else {
+         // citizen was found, thus remove him from all records
+         this->killCitizen(citizen);
       }
 
       return;
@@ -58,6 +60,26 @@ void DeptOfPR::notifyHousingToBuild(string type) // change to BOOL
    } else {
       cout << "Building not added\n";
    }
+}
+
+void DeptOfPR::addCitizen(Citizen *citizen)
+{
+   this->citizens.push_back(citizen);
+}
+
+Citizen *DeptOfPR::getCitizen(int i)
+{
+   return this->citizens.at(i);
+}
+
+int DeptOfPR::numCitizens()
+{
+   return this->citizens.size();
+}
+
+void DeptOfPR::killCitizen(Citizen *citizen)
+{
+   this->citizens.erase(std::remove(this->citizens.begin(), this->citizens.end(), citizen), this->citizens.end());
 }
 
 void DeptOfPR::notifyHousingToRemove(string type) // CHANGE TO BOOL

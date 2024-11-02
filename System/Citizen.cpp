@@ -16,12 +16,12 @@
 
 #include <random>
 
-Citizen::Citizen(const std::string &nam, double happiness,int x , int y, DeptOfPR *PR)
+Citizen::Citizen(const std::string &nam, int x , int y, DeptOfPR *PR)
 {
    name = nam;
-   satisfaction = happiness;
+   satisfaction = 50;
    this->PR = PR;
-
+   this->PR->addCitizen(this);
    age = 1;
    this->state = new ChildState();
 

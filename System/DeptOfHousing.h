@@ -95,7 +95,7 @@ public:
     void listBuildings() const; // New method to list buildings
 
     bool requestFunding(double amount);  // Modified to request via DeptOfPR
-
+    std::vector<Building*> getBuildings();
     std::string getBuildingName(int index) const;  //This  will be used for the natural Disster Command 
     void repairBuilding(const std::string& type);  //This willbe used to repair the building after a natural disaster
 };
