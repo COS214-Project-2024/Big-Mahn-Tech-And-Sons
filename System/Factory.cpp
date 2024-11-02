@@ -4,24 +4,22 @@
 #include <iostream>
 
 /**
- * @brief Constructor for Factory.
- * @param name Name of the factory.
- * @param maxCapacity Maximum capacity of the factory.
- * @param maxProductionCapacity Maximum production capacity of the factory.
- * @param operationalHours Operational hours per day.
+ * @brief Default Constructor for Factory.
+ * Initializes the factory with default attributes.
  */
-Factory::Factory(const std::string& name, int maxCapacity, int maxProductionCapacity, double operationalHours)
-    : IndustrialBuilding(name, maxCapacity, maxProductionCapacity),
-      operationalHours(operationalHours) {
-    
-    width = 20;                  
-    length = 40;                 
-    electricityMeterBox = 150.0; 
-    waterMeterBox = 250.0;       // Initial water meter reading
-    electricityUsage = 0.0;      // Initial electricity usage
-    waterUsage = 0.0;            // Initial water usage
-    wasteProduction = 0.0;                 // Initial waste production
-    priceTag = 500000.0;         // Default price tag for a factory
+Factory::Factory()
+    : IndustrialBuilding() {
+    name = "Evergreen Supply Depot";
+    maxCapacity = 1000;
+    width = 20;
+    length = 40;
+    electricityMeterBox = 150.0;  // Initial electricity meter reading
+    waterMeterBox = 250.0;        // Initial water meter reading
+    electricityUsage = 0.0;       // Initial electricity usage
+    waterUsage = 0.0;             // Initial water usage
+    wasteProduction = 0.0;        // Initial waste production
+    priceTag = 500000.0;          // Default price tag for a factory
+    type = "Factory";
 }
 
 /**
@@ -29,26 +27,23 @@ Factory::Factory(const std::string& name, int maxCapacity, int maxProductionCapa
  */
 void Factory::displayStats() const {
     IndustrialBuilding::displayStats();  // Call base class method
-    std::cout << "Operational Hours: " << operationalHours << " hours/day" << std::endl;
 }
 
 /**
- * @brief Checks if the factory has available production capacity.
- * @return True if there is available capacity, otherwise false.
+ * @brief Clones the factory for repair purposes.
+ * @return A pointer to the cloned Factory object.
  */
-bool Factory::checkProductionCapacity() const {
-    return productionRate < maxProductionCapacity;
-}
-
-Building *Factory::clone() const
-{
-   return new Factory(*this);
+Building* Factory::repairClone() const {
+    std::cout << "Repairing industrial building (Factory): " << getName() << "\n";
+    return new Factory(*this);
 }
 
 /**
- * @brief Accepts visitors for the visitor pattern.
+ * @brief Accepts a visitor for the Visitor pattern.
+ * This function is currently stubbed for factories, which are non-taxable.
  * @param visitor A pointer to the visitor object.
  */
-void Factory::accept(TaxManager* visitor) { // Yohali Stub!!!!!!!
-    //visitor->visit(this);
+void Factory::accept(TaxManager* visitor) {
+    std::cout << "No tax applied to factory: " << getName() 
+              << ". Factories are non-taxable." << std::endl;
 }

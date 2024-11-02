@@ -1,24 +1,31 @@
-// Class implementation of Factory Method - ConcreteProduct (subtype)
+// Class implementation of Factory Method - ConcreteProduct participant (subtype)
+
+/**
+ * @file Hospital.cpp
+ * @brief Implements the Hospital class.
+ */
 
 #include "Hospital.h"
 #include <iostream>
 
 /**
- * @brief Constructor for Hospital.
- * @param name Name of the hospital.
- * @param maxCapacity Maximum capacity of the hospital.
+ * @brief Default constructor for Hospital.
  */
-Hospital::Hospital(const std::string& name, int maxCapacity)
-    : CommercialBuilding(name, maxCapacity), availableBeds(maxCapacity) {
-    width = 20;  // Set a unique width for hospital
-    length = 40; // Set a unique length for hospital
-    electricityMeterBox = 250.0; // Initial electricity meter reading
-    waterMeterBox = 350.0;       // Initial water meter reading
+Hospital::Hospital()
+    : CommercialBuilding() {
+    name = "Community Health Center";  // Default name for the hospital
+    maxCapacity = 200;                  // Set maximum capacity for the hospital
+    availableBeds = maxCapacity;        // Initialize available beds to max capacity
+    width = 20;                         // Default width for hospitals
+    length = 40;                        // Default length for hospitals
+    electricityMeterBox = 250.0;       // Initial electricity meter reading
+    waterMeterBox = 350.0;             // Initial water meter reading
     electricityUsage = 0.0;
     waterUsage = 0.0;
     wasteProduction = 0.0;
-    priceTag = 400000.0; // Setting price tag for Hospital
+    priceTag = 400000.0;                // Default price tag for Hospital
     netWorth = 3000000.0;
+    type = "Hospital";
 }
 
 /**
@@ -45,6 +52,11 @@ void Hospital::accept(TaxManager* visitor) {
     visitor->visitCommercialBuilding(this);
 }
 
-Building* Hospital::clone() const  {
-    return new Hospital(*this);  // Clone this School
+/**
+ * @brief Clones the hospital for repair purposes.
+ * @return Pointer to the cloned hospital object.
+ */
+Building* Hospital::repairClone() const {
+    std::cout << "Repairing commercial building (Hospital): " << getName() << "\n";
+    return new Hospital(*this);  // Return a new cloned instance of Hospital
 }
