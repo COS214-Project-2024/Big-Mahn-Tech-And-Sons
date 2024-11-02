@@ -6,6 +6,8 @@
 #include <string>
 #include <cctype>
 #include <iomanip>
+#include <queue>
+#include <unordered_map>
 #include <utility>
 class Building;
 using namespace std;
@@ -41,6 +43,8 @@ private:
     string toUpper(string);
     string toLower(string);
     int get_Longest_street_length();
+    string isNextToRoad_string(int, int, int, int);
+    vector<pair<int,int>> getAdjacentRoadCells(int, int, int, int);
 
 public:
     CityGrid(int,int); //only use even positive integers , so cardinal_points works as intended
@@ -60,7 +64,7 @@ public:
     bool isEmptySpace(int,int,int,int);
     vector<pair<int,int>> addBuilding(int,int,Building*);  //returns vector of locations , length & width
     bool removeBuilding(vector<pair<int,int>>&);
-    int getDistance(vector<pair<int,int>>,string);   //returns distance as int, x,y co-ord of citizen & string of detailed attribute.
+    int getDistance(Building*,Building*);   //returns distance as int, x,y co-ord of citizen & string of detailed attribute.
     
     // function to get shortest path from point a to point b
 };

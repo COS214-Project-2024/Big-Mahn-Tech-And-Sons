@@ -31,6 +31,8 @@ public:
     bool remove_Road(string);
     const vector<pair<int,int>> add_Building(int,int,Building*);
     bool remove_Building(vector<pair<int,int>>&);
+
+    int get_distance(Building*,Building*);
     
 };
 

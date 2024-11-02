@@ -74,7 +74,7 @@ public:
      * 
      * This method should be overridden by derived classes to provide specific information.
      */
-    virtual void reportStatus() const = 0;
+     void reportStatus() const ;
 
     void visitBudget(Budget* budget);
 

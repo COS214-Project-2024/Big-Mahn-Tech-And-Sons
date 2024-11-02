@@ -215,12 +215,11 @@ Building *Citizen::getWorkLocation() const
 
 void Citizen::travelTo(Building *destination, CityGrid *citi, int x, int y, const std::string &Building)
 {
-   // int distance = citi->getDistance(x,y,Building);
-    // Determine available transport modes based on distance
-    int distance = 0;
-    //will come back ....
-
-
+   DeptOfTransportation *dept = DeptOfTransportation::getInstance(); 
+   int distance = dept->get_distance(currentLocation,destination);
+   //
+   //come operate here.
+   //
 
     
     std::vector<ModeOfTrans*> availableModes;

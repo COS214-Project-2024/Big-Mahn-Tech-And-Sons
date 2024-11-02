@@ -102,3 +102,8 @@ bool DeptOfTransportation::remove_Building(vector<pair<int,int>>& buidling)
     cout<<"\nBuilding not removed from grid ~DeptTrans.\n";
         return true;
 }
+
+int DeptOfTransportation::get_distance(Building* citizen_current_building, Building* citizen_destination_building)
+{
+    return cityGrid->getDistance(citizen_current_building,citizen_destination_building);
+}

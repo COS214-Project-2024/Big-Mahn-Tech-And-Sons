@@ -662,10 +662,6 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, Bu
 
 bool CityGrid::removeBuilding(vector<pair<int,int>> &buildiing)
 {
-    cout<<"("<<buildiing[0].first<<","<<buildiing[0].second<<")\n";
-    cout<<"("<<buildiing[1].first<<","<<buildiing[1].second<<")\n";
-    cout<<"("<<buildiing[2].first<<","<<buildiing[2].second<<")\n";
-    cout<<"("<<buildiing[3].first<<","<<buildiing[3].second<<")\n";
     if(buildiing!=errorPair())
     {
         int uplr = buildiing[0].first;
@@ -704,8 +700,98 @@ string CityGrid::toLower(string word)
     return word;
 }
 
-int CityGrid::getDistance(vector<pair<int,int>> citizen_current_building, string citizen_destination)
+vector<std::pair<int, int>> CityGrid::getAdjacentRoadCells(int uplr, int uplc, int uprc, int dlr) {
+    
+    vector<pair<int, int>> roadCells;
+
+    // Check each cell around the perimeter of the building area for a road
+    for (int i = uplr; i <= dlr; ++i) {
+        // Check left and right edges
+        if (uplc > 0 && (*citygrid)[i][uplc - 1].getAttribute() == 'R') 
+            roadCells.push_back({i, uplc - 1});  // Left edge
+        if (uprc < grid_num_cols - 1 && (*citygrid)[i][uprc + 1].getAttribute() == 'R') 
+            roadCells.push_back({i, uprc + 1});  // Right edge
+    }
+    for (int j = uplc; j <= uprc; ++j) {
+        // Check top and bottom edges
+        if (uplr > 0 && (*citygrid)[uplr - 1][j].getAttribute() == 'R') 
+            roadCells.push_back({uplr - 1, j});  // Top edge
+        if (dlr < grid_num_rows - 1 && (*citygrid)[dlr + 1][j].getAttribute() == 'R') 
+            roadCells.push_back({dlr + 1, j});  // Bottom edge
+    }
+    return roadCells;  // Returns coordinates of all adjacent road cells
+}
+
+int CityGrid::getDistance(Building* citizen_current_building, Building* citizen_destination_building)
 {
+    vector<pair<int,int>> curr_building = citizen_current_building->getGridCoordinates();
+    vector<pair<int,int>> dest_building = citizen_destination_building->getGridCoordinates();
+    if(isNextToRoad(curr_building[0].first,curr_building[0].second,curr_building[1].second,curr_building[2].first)&&
+       isNextToRoad(dest_building[0].first,dest_building[0].second,dest_building[1].second,dest_building[2].first))
+       {
+            // Get road-adjacent cells for each building
+    std::vector<std::pair<int, int>> currRoadCells = getAdjacentRoadCells(
+        citizen_current_building->getGridCoordinates()[0].first, 
+        citizen_current_building->getGridCoordinates()[0].second, 
+        citizen_current_building->getGridCoordinates()[1].second, 
+        citizen_current_building->getGridCoordinates()[2].first);
+
+    std::vector<std::pair<int, int>> destRoadCells = getAdjacentRoadCells(
+        citizen_destination_building->getGridCoordinates()[0].first, 
+        citizen_destination_building->getGridCoordinates()[0].second, 
+        citizen_destination_building->getGridCoordinates()[1].second, 
+        citizen_destination_building->getGridCoordinates()[2].first);
+
+    // Early exit if no road cells adjacent to either building
+    if (currRoadCells.empty() || destRoadCells.empty()) {
+        return -1;
+    }
+
+    // Breadth-First Search (BFS) to find the shortest path between road cells
+    std::queue<std::pair<int, int>> q;
+    std::unordered_map<int, int> distances;  // flattened key -> distance
+
+    // Helper function to flatten the coordinates
+    auto flatten = [this](int x, int y) {
+        return x * grid_num_cols + y;
+    };
+
+    // Initialize BFS with the current building’s road-adjacent cells
+    for (const auto& cell : currRoadCells) {
+        q.push(cell);
+        distances[flatten(cell.first, cell.second)] = 0;
+    }
+
+    // Perform BFS to find the shortest path to any destination road cell
+    while (!q.empty()) {
+        auto [x, y] = q.front();
+        q.pop();
+
+        // Check if we reached a road cell adjacent to the destination building
+        int flattened_dest_key;
+        for (const auto& destCell : destRoadCells) {
+            flattened_dest_key = flatten(destCell.first, destCell.second);
+            if (flatten(x, y) == flattened_dest_key) {
+                return distances[flatten(x, y)];  // Return the distance to the destination
+            }
+        }
+
+        // Explore neighbors on the road grid
+        for (const auto& [dx, dy] : std::vector<std::pair<int, int>>{{1, 0}, {-1, 0}, {0, 1}, {0, -1}}) {
+            int nx = x + dx, ny = y + dy;
+            int flattened_key = flatten(nx, ny);
+
+            if (nx >= 0 && nx < grid_num_rows && ny >= 0 && ny < grid_num_cols && 
+                (*citygrid)[nx][ny].getAttribute() == 'R' && distances.find(flattened_key) == distances.end()) {
+                
+                q.push({nx, ny});
+                distances[flattened_key] = distances[flatten(x, y)] + 1;
+            }
+        }
+    }
+
+    // If no path found, return -1
     return -1;
+       }
 }
 //get distance from building a to building b
