@@ -1,4 +1,4 @@
-// Class defintion of Factory Method - ConcreteProduct (subtype)
+// Class definition of Factory Method - ConcreteProduct participant (subtype)
 
 /**
  * @file Hospital.h
@@ -14,39 +14,39 @@
  * @class Hospital
  * @brief Class representing a hospital as a subtype of CommercialBuilding.
  *
- * This class implements the specific attributes and operations for a hospital,
+ * Implements specific attributes and operations for a hospital,
  * such as managing available beds.
  */
 class Hospital : public CommercialBuilding {
-public:
-    /**
-     * @brief Constructor for Hospital.
-     * @param name Name of the hospital.
-     * @param maxCapacity Maximum capacity of the hospital.
-     */
-    Hospital(const std::string& name, int maxCapacity);
 
-    /**
-     * @brief Displays the stats specific to the hospital.
-     */
-    void displayStats() const override;
+    public:
+        /**
+         * @brief Default constructor for Hospital.
+         */
+        Hospital();
 
-    /**
-     * @brief Checks the availability of beds in the hospital.
-     * @return True if beds are available, otherwise false.
-     */
-    bool checkAvailability() const override;
+        /**
+         * @brief Displays the stats specific to the hospital.
+         */
+        void displayStats() const override;
 
-    /**
-     * @brief Accepts visitors for the visitor pattern.
-     * @param visitor A pointer to the TaxManger object.
-     */
-    void accept(TaxManager* visitor) override;
+        /**
+         * @brief Checks the availability of beds in the hospital.
+         * @return True if beds are available, otherwise false.
+         */
+        bool checkAvailability() const override;
 
-   Building* clone() const override;
+        /**
+         * @brief Accepts visitors for the visitor pattern.
+         * @param visitor A pointer to the TaxManager object.
+         */
+        void accept(TaxManager* visitor) override;
 
-private:
-    int availableBeds;  ///< Number of available beds in the hospital.
+        /**
+         * @brief Clones the hospital for repair purposes.
+         * @return Pointer to the cloned hospital object.
+         */
+        Building* repairClone() const override;
 };
 
 #endif // HOSPITAL_H

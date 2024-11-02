@@ -1,4 +1,4 @@
-// Class defintion of Factory Method - ConcreteProduct (classification)
+// Class definition of Factory Method - ConcreteProduct (classification)
 
 /**
  * @file Factory.h
@@ -20,37 +20,29 @@
  * such as managing production capacity and operational hours.
  */
 class Factory : public IndustrialBuilding {
-private:
-    double operationalHours; ///< Operational hours per day.
 
-public:
-    /**
-     * @brief Constructor for Factory.
-     * @param name Name of the factory.
-     * @param maxCapacity Maximum capacity of the factory.
-     * @param maxProductionCapacity Maximum production capacity.
-     * @param operationalHours Operational hours per day.
-     */
-    Factory(const std::string& name, int maxCapacity, int maxProductionCapacity, double operationalHours);
+    public:
+        /**
+         * @brief Constructor for Factory.
+         */
+        Factory();
 
-    /**
-     * @brief Displays the stats specific to the factory.
-     */
-    void displayStats() const override;
+        /**
+         * @brief Displays the stats specific to the factory.
+         */
+        void displayStats() const override;
+        
+        /**
+         * @brief Clones the factory for repair purposes.
+         * @return A pointer to the cloned Factory object.
+         */
+        Building* repairClone() const override;
 
-    /**
-     * @brief Checks if the factory has available production capacity.
-     * @return True if there is available capacity, otherwise false.
-     */
-    bool checkProductionCapacity() const;
-
-    
-    Building* clone() const override;
-    /**
-     * @brief Accepts visitors for the visitor pattern.
-     * @param visitor A pointer to the visitor object.
-     */
-    void accept(TaxManager* visitor) override;
+        /**
+         * @brief Accepts visitors for the visitor pattern.
+         * @param visitor A pointer to the visitor object.
+         */
+        void accept(TaxManager* visitor) override;
 };
 
 #endif // FACTORY_H

@@ -1,24 +1,31 @@
-// Class implementation of Factory Method - ConcreteProduct (subtype)
+// Class implementation of Factory Method - ConcreteProduct participant (subtype)
+
+/**
+ * @file School.cpp
+ * @brief Implements the School class.
+ */
 
 #include "School.h"
 #include <iostream>
 
 /**
- * @brief Constructor for School.
- * @param name Name of the school.
- * @param maxCapacity Maximum capacity of the school.
+ * @brief Default constructor for School.
  */
-School::School(const std::string& name, int maxCapacity)
-    : CommercialBuilding(name, maxCapacity), availableKidsSpaces(maxCapacity) {
-    width = 15;  // Set a unique width for school
-    length = 30; // Set a unique length for school
-    electricityMeterBox = 200.0; // Initial electricity meter reading
-    waterMeterBox = 300.0;       // Initial water meter reading
+School::School()
+    : CommercialBuilding() {
+    name = "Bright Future Academy";  // Default name for the school
+    maxCapacity = 100;               // Set maximum capacity for the school
+    availableKidsSpaces = maxCapacity; // Initialize available kids' spaces to max capacity
+    width = 15;                      // Default width for schools
+    length = 30;                     // Default length for schools
+    electricityMeterBox = 200.0;    // Initial electricity meter reading
+    waterMeterBox = 300.0;          // Initial water meter reading
     electricityUsage = 0.0;
     waterUsage = 0.0;
     wasteProduction = 0.0;
-    priceTag = 300000.0; // Setting price tag for School
+    priceTag = 300000.0;             // Default price tag for School
     netWorth = 1200000.0;
+    type = "School";
 }
 
 /**
@@ -45,6 +52,11 @@ void School::accept(TaxManager* visitor) {
     visitor->visitCommercialBuilding(this);
 }
 
-Building* School::clone() const  {
-    return new School(*this);  // Clone this School
+/**
+ * @brief Clones the school for repair purposes.
+ * @return Pointer to the cloned school object.
+ */
+Building* School::repairClone() const {
+    std::cout << "Repairing commercial building (School): " << getName() << "\n";
+    return new School(*this);  // Return a new cloned instance of School
 }

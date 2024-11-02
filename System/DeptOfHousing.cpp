@@ -1,116 +1,71 @@
 #include "DeptOfHousing.h"
 #include <iostream>
 
+#include "DeptOfHousing.h"
+#include <iostream>
+
 /**
  * @brief Constructor for DeptOfHousing.
  * @param initialBudget The initial budget allocated to the department.
  */
 DeptOfHousing::DeptOfHousing(double initialBudget) 
-    : budget(initialBudget) {
-        this->deptOfPR = nullptr;
-    }
+    : budget(initialBudget), deptOfPR(nullptr) {}
 
-void DeptOfHousing::setPR(DeptOfPR *PR)
-{
+void DeptOfHousing::setPR(DeptOfPR *PR) {
     this->deptOfPR = PR;
 }
 
 /**
- * @brief Helper function to handle building creation with budget validation.
+ * @brief Helper function to check if the price can be afforded.
  */
-bool canAfford(double price, double budget) {
+bool DeptOfHousing::canAfford(double price) const {
     return price <= budget;
 }
 
 /**
- * @brief Creates a residential building if within budget.
+ * @brief Generalized building creation method.
  */
+void DeptOfHousing::createBuilding(const std::string& type, const std::string& category) {
+    try {
+        Building* building = nullptr;
+        
+        if (category == "Residential") {
+            building = residentialCreator.createBuilding(type);
+        } else if (category == "Commercial") {
+            building = commercialCreator.createBuilding(type);
+        } else if (category == "Industrial") {
+            building = industrialCreator.createBuilding(type);
+        } else if (category == "Landmark") {
+            building = landmarkCreator.createBuilding(type);
+        }
+        
+        if (canAfford(building->getPriceTag())) {
+            buildings.push_back(building);
+            budget -= building->getPriceTag();
+            std::cout << category << " building (" << type << ") created successfully." << std::endl;
+        } else {
+            std::cerr << "Insufficient budget to create a " << type << " " << category << " building." << std::endl;
+            delete building; // Clean up if not added
+        }
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+}
+
 void DeptOfHousing::createResidentialBuilding(const std::string& type) {
-    try {
-        auto building = residentialCreator.createBuilding(type);
-        if (canAfford(building->getPriceTag(), budget)) {
-            buildings.push_back(building);
-            budget -= building->getPriceTag();
-            std::cout << "Residential building (" << type << ") created successfully." << std::endl;
-        } else {
-            std::cerr << "Insufficient budget to create a " << type << "." << std::endl;
-        }
-    } catch (const std::invalid_argument& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+    createBuilding(type, "Residential");
 }
 
-/**
- * @brief Creates a commercial building if within budget.
- */
 void DeptOfHousing::createCommercialBuilding(const std::string& type) {
-    try {
-        auto building = commercialCreator.createBuilding(type);
-        if (canAfford(building->getPriceTag(), budget)) {
-            buildings.push_back(building);
-            budget -= building->getPriceTag();
-            std::cout << "Commercial building (" << type << ") created successfully." << std::endl;
-        } else {
-            std::cerr << "Insufficient budget to create a " << type << "." << std::endl;
-        }
-    } catch (const std::invalid_argument& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+    createBuilding(type, "Commercial");
 }
 
-/**
- * @brief Creates an industrial building if within budget.
- */
 void DeptOfHousing::createIndustrialBuilding(const std::string& type) {
-    try {
-        auto building = industrialCreator.createBuilding(type);
-        if (canAfford(building->getPriceTag(), budget)) {
-            buildings.push_back(building);
-            budget -= building->getPriceTag();
-            std::cout << "Industrial building (" << type << ") created successfully." << std::endl;
-        } else {
-            std::cerr << "Insufficient budget to create a " << type << "." << std::endl;
-        }
-    } catch (const std::invalid_argument& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+    createBuilding(type, "Industrial");
 }
 
-/**
- * @brief Creates a landmark building if within budget.
- */
 void DeptOfHousing::createLandmarkBuilding(const std::string& type) {
-    try {
-        auto building = landmarkCreator.createBuilding(type);
-        if (canAfford(building->getPriceTag(), budget)) {
-            buildings.push_back(building);
-            budget -= building->getPriceTag();
-            std::cout << "Landmark building (" << type << ") created successfully." << std::endl;
-        } else {
-            std::cerr << "Insufficient budget to create a " << type << "." << std::endl;
-        }
-    } catch (const std::invalid_argument& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-}
-
-/**
- * @brief Finds the index of a building by its name.
- * @param name The name of the building.
- * @return The index of the building or -1 if not found.
- */
-int DeptOfHousing::findBuildingIndex(const std::string& name) const {
-    for (size_t i = 0; i < buildings.size(); ++i) {
-        if (buildings[i]->getName() == name) { // Assume getName() returns the building name
-            return i;
-        }
-    }
-    return -1; // Not found
-}
-
-std::string  DeptOfHousing::findBuildingIndex(int i) const {
-        // Assume getName() returns the building name
-    return buildings[i]->getName();
+    createBuilding(type, "Landmark");
 }
 
 /**
@@ -120,6 +75,7 @@ std::string  DeptOfHousing::findBuildingIndex(int i) const {
 void DeptOfHousing::removeBuildingByName(const std::string& name) {
     int index = findBuildingIndex(name);
     if (index != -1) {
+        delete buildings[index]; // Clean up memory before removal
         buildings.erase(buildings.begin() + index);
         std::cout << "Building '" << name << "' removed successfully." << std::endl;
     } else {
@@ -169,11 +125,25 @@ double DeptOfHousing::getRemainingBudget() const {
 }
 
 /**
+ * @brief Finds the index of a building by its name.
+ * @param name The name of the building.
+ * @return The index of the building or -1 if not found.
+ */
+int DeptOfHousing::findBuildingIndex(const std::string& name) const {
+    for (size_t i = 0; i < buildings.size(); ++i) {
+        if (buildings[i]->getName() == name) {
+            return i;
+        }
+    }
+    return -1; // Not found
+}
+
+/**
  * @brief Lists all buildings with their indices.
  */
 void DeptOfHousing::listBuildings() const {
     for (size_t i = 0; i < buildings.size(); ++i) {
-        std::cout << i << ": " << buildings[i]->getName() << std::endl; // Assume getName() returns the building name
+        std::cout << i << ": " << buildings[i]->getName() << std::endl;
     }
 }
 
@@ -187,49 +157,30 @@ bool DeptOfHousing::requestFunding(double amount) {
         std::cerr << "Funding request denied.\n";
         return false;
     }
-
-    return true; // Waiting for DeptOfFinance  to implement the funding request logic (Aundrea)
 }
 
-
-/**
- * @brief Retrieves the name of the building at the specified index.
- * 
- * This function allows access to the name of a building by index, which is
- * particularly useful for operations that need to manipulate or display
- * buildings by their position within the vector of managed buildings.
- * 
- * @param index The index of the building in the `buildings` vector.
- * @return The name of the building if the index is valid; otherwise, an empty string.
- */
 std::string DeptOfHousing::getBuildingName(int index) const {
     if (index >= 0 && index < buildings.size()) {
-        return buildings[index]->getName();  ///< Assumes Building has a getName() method.
+        return buildings[index]->getName();
     }
     return "";
-
 }
 
 /**
  * @brief Repairs buildings of a specified type by cloning and replacing them.
- * 
- * This function iterates through the list of buildings, identifies those that match
- * the specified type, and repairs them by creating a clone of the building and replacing 
- * the original with the repaired clone. This allows a fresh, "repaired" instance to take 
- * the place of the damaged building.
- * 
- * @param type The type of building to repair (e.g., "Residential", "Commercial", "Industrial").
  */
-void DeptOfHousing::repairBuilding(const std::string& type) 
-{
-    for (auto& building : buildings) {
-        if (building->getType() == type) {
-            Building* repairedBuilding = building->clone();  // Clone the building to "repair" it
-            repairedBuilding->repair();  // Perform any additional repair logic if needed
-
-            building = repairedBuilding;  // Replace the old building with the repaired clone
-            std::cout << type << " building '" << building->getName() << "' has been repaired via cloning.\n";
+void DeptOfHousing::repairBuilding(const std::string& type) {
+    for (size_t i = 0; i < buildings.size(); ++i) {
+        if (buildings[i]->getType() == type) {
+            Building* repairedBuilding = buildings[i]->repairClone();
+            delete buildings[i]; // Clean up the old building
+            buildings[i] = repairedBuilding;
+            std::cout << type << " building '" << repairedBuilding->getName() << "' has been repaired via cloning.\n";
         }
     }
 }
 
+void DeptOfHousing::addBudget(double amount) {
+    budget += amount;
+    std::cout << "Budget updated. New budget: " << budget << "\n";
+}
