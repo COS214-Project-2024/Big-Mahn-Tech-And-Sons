@@ -16,30 +16,20 @@
  */
 class NaturalDisasterCommand : public EventsCommand {
 public:
-    /**
-     * @brief Damages a percentage of buildings in the DeptOfHousing.
-     * @param deptOfHousing Reference to DeptOfHousing object managing the city's buildings.
-     */
-    void damageBuildings(DeptOfHousing& deptOfHousing);
+    DeptOfHousing* deptOfHousing;       // Pointer to DeptOfHousing
+    DeptOfTransportation* deptOfTransport;  // Pointer to DeptOfTransportation
 
-    /**
-     * @brief Blocks affected transport routes in the DeptOfTransport.
-     * @param deptOfTransport Reference to DeptOfTransport for route management.
-     */
-    void blockTransportRoutes(DeptOfTransportation& deptOfTransport);
+    // Constructor to initialize the departments
+   NaturalDisasterCommand(DeptOfHousing* housing, DeptOfTransportation* transport);
 
-    /**
-     * @brief Repairs damaged infrastructure within the DeptOfHousing.
-     * @param deptOfHousing Reference to DeptOfHousing for managing repairs.
-     */
-    void repairInfrastructure(DeptOfHousing& deptOfHousing);
+  NaturalDisasterCommand()= default;
+  void execute();
 
-    /**
-     * @brief Executes the natural disaster response sequence.
-     * @param deptOfHousing Reference to DeptOfHousing for building management.
-     * @param deptOfTransport Reference to DeptOfTransport for transport route management.
-     */
-    void execute(DeptOfHousing& deptOfHousing, DeptOfTransportation& deptOfTransport);
+private:
+    void damageBuildings();
+    void repairInfrastructure();
+    void blockTransportRoutes();
+
 };
 
 #endif // NATURAL_DISASTER_COMMAND_H

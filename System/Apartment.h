@@ -33,6 +33,8 @@ class Apartment : public ResidentialBuilding {
          */
         void accept(TaxManager* visitor) override;
 
+      Building* repairClone() const;
+      
     // Getters and Setters
     int getNumUnits() const;
     void setNumUnits(int units);

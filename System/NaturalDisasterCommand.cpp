@@ -4,15 +4,15 @@
 #include <iostream>
 #include <random>
 
+ NaturalDisasterCommand::NaturalDisasterCommand(DeptOfHousing* housing, DeptOfTransportation* transport): deptOfHousing(housing), deptOfTransport(transport) {};
 
-/**
- * @brief Damages a percentage of buildings within the housing department.
- * @param deptOfHousing Reference to the DeptOfHousing object to manage buildings.
- */
-void NaturalDisasterCommand::damageBuildings(DeptOfHousing& deptOfHousing) {
+void NaturalDisasterCommand::damageBuildings() {
     std::cout << "Natural Disaster: Damaging 50% of buildings.\n";
 
-    int totalBuildings = deptOfHousing.getTotalBuildings();
+   if (!deptOfHousing) return;
+
+    std::cout << "Natural Disaster: Damaging 50% of buildings.\n";
+    int totalBuildings = deptOfHousing->getTotalBuildings();
     int buildingsToDamage = totalBuildings / 2;
     
     std::random_device rd;
@@ -21,53 +21,39 @@ void NaturalDisasterCommand::damageBuildings(DeptOfHousing& deptOfHousing) {
 
     for (int i = 0; i < buildingsToDamage; ++i) {
         int index = dist(gen);
-        std::string buildingName = deptOfHousing.getBuildingName(index);  // Get name of building at index
-        if (!buildingName.empty()) {  // Check if the building name is valid
-            deptOfHousing.removeBuildingByName(buildingName);  // Remove by name
+        std::string buildingName = deptOfHousing->getBuildingName(index);
+        if (!buildingName.empty()) {
+            deptOfHousing->removeBuildingByName(buildingName);
         }
     }
     // Hypothetically update GUI to reflect damaged buildings.
 }
 
-/**
- * @brief Blocks transport routes affected by the natural disaster.
- * @param deptOfTransport Reference to DeptOfTransport for managing routes.
- */
-void NaturalDisasterCommand::blockTransportRoutes(DeptOfTransportation& deptOfTransport) {
-    std::cout << "Natural Disaster: Blocking affected transport routes.\n";
-    // Logic for determining affected routes could be added here.
-    //deptOfTransport.removeroads (); // Ask David if he has the following function has 3 parameters 
-}
 
-
-/**
- * @brief Repairs infrastructure by allocating resources from the housing department.
- * @param deptOfHousing Reference to DeptOfHousing for managing repairs.
- */
-void NaturalDisasterCommand::repairInfrastructure(DeptOfHousing& deptOfHousing) {
+void NaturalDisasterCommand::repairInfrastructure() {
     std::cout << "Natural Disaster: Starting infrastructure repair.\n";
     
     //Sample repair logic, assuming types of buildings are known:
    // this one usues tjhe cloning(Prototype)
    // Send malaika the implementation to see what is going on here 
-    deptOfHousing.repairBuilding("Residential");
-    deptOfHousing.repairBuilding("Commercial");
-    deptOfHousing.repairBuilding("Industrial");
+    deptOfHousing->repairBuilding("Residential");
+    deptOfHousing->repairBuilding("Commercial");
+    deptOfHousing->repairBuilding("Industrial");
 
     std::cout << "Infrastructure repair completed.\n";
 }
 
 
-/**
- * @brief Executes the natural disaster response sequence by calling each stage.
- * @param deptOfHousing Reference to DeptOfHousing for building management.
- * @param deptOfTransport Reference to DeptOfTransport for transport route management.
- */
-void NaturalDisasterCommand::execute(DeptOfHousing& deptOfHousing, DeptOfTransportation& deptOfTransport) {
+void NaturalDisasterCommand::blockTransportRoutes()
+{
+    
+}
+
+
+void NaturalDisasterCommand::execute() {
     std::cout << "Natural Disaster: Initiating disaster response sequence.\n";
-    damageBuildings(deptOfHousing);
-    blockTransportRoutes(deptOfTransport);
-    repairInfrastructure(deptOfHousing);
+    damageBuildings();
+    repairInfrastructure();
 }
 
 

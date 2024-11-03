@@ -50,11 +50,3 @@ Building* Apartment::repairClone() const {
     return new Apartment(*this);
 }
 
-/**
- * @brief This function is used ro clone a function after a certain buikding has be destroyed due a natural
- * disaster. 
- */
-std::shared_ptr<Building> Apartment::clone() const {
-    return std::make_shared<Apartment>(*this);  // This is fine
-}
-
