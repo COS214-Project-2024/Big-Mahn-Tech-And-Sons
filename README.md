@@ -1,5 +1,9 @@
 # 🌆 Big Mahn Tech & Sons: City Builder Simulation
 
+![City Simulation Concept](assets/images/City%20Simulation%20Concept.png.gif)
+
+---
+
 ## 🏙️ Overview
 The **City Builder Simulation** is a C++ project designed to simulate the growth and management of a city. Players can construct buildings, manage resources, set taxes, and monitor citizen well-being. This project integrates several design patterns to ensure scalability, maintainability, and extensibility as the city evolves. It simulates complex interactions between buildings, citizens, utilities, transportation systems, and government departments.
 
@@ -194,3 +198,4 @@ bash
 2. Build and run the project using the Makefile:
 bash
 make run
+
