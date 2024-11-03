@@ -19,6 +19,8 @@ using namespace std;
 #include "DeptOfPR.h"
 #include "Request.h"
 #include "DeptOfPR.h"
+#include "Building.h"
+#include  "PowerSupply.h"
 
 /**
  * @class DeptOfUtilities
@@ -29,12 +31,15 @@ private:
     string departmentName; /**< Name of the department (e.g., Power, Water, Waste Management). */
     double resourceUsage;  /**< The amount of resources used by the department. */
     DeptOfPR* PR;
+    private:
+    vector<Building*> cityBuildings;
 
 protected:
     DeptOfUtilities* successor;
     double budget;         /**< The budget allocated to the department. */
 
 public:
+     PowerSupply * powerSupply; 
     /**
      * @brief Constructor for DeptOfUtilities.
      * @param name The name of the department.

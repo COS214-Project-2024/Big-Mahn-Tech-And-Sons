@@ -17,18 +17,6 @@ void DeptOfUtilities::displayDepartmentInfo() {
     cout << "Resource Usage: " << resourceUsage << endl;
 }
 
-/**
- * @brief Requests additional budget allocation from the government.
- */
-void DeptOfUtilities::requestBudget()
-{
-    
-
-}
-
-void DeptOfUtilities::trackUsage()
-{
-}
 
 /**
  * @brief Requests PR department assistance.
@@ -52,23 +40,11 @@ void DeptOfUtilities::setSuccessor(DeptOfUtilities* nextDepartment) {
 
 void DeptOfUtilities::initiateLoadshedding()
 {
-    if(this->departmentName == "Power") {
-        cout << "Initiating loadshedding for " << departmentName << endl;
-        
-    }
+    cout <<"Intiating  loadshedding " <<endl; 
+    powerSupply->powerShutDown();    
+    
 }
 
-void DeptOfUtilities::restorePower()
-{
-}
-
-void DeptOfUtilities::increaseUsage()
-{
-}
-
-void DeptOfUtilities::reduceUsage()
-{
-}
 
 void DeptOfUtilities::setPR(DeptOfPR* pr)
 {
