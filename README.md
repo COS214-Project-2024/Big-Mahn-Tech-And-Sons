@@ -1,6 +1,6 @@
 # 🌆 Big Mahn Tech & Sons: City Builder Simulation
 
-![City Simulation Concept](assets/images/City%20Simulation%20Concept.png.gif)
+![City Simulation Concept](assests/images/City%20Simulation%20Concept.png)
 
 ---
 
