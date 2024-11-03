@@ -60,7 +60,7 @@ int main()
     // testNaturalDisaster();
     //testPandemic();
     //testLoadShedding();
-    testRecession();
+   // testRecession();
     Government* gov = new Government();
     std::cout << "End" << std::endl;
 
@@ -408,6 +408,7 @@ int testDepartment() {
 // ------------------------------------------------------------------------------------------------------- //
 
 // ------------------------------------------------------------------------------------------------------- //
+/*
 void testNaturalDisaster()
 {
     // Step 1: Initialize the DeptOfHousing and DeptOfTransportation
@@ -438,6 +439,8 @@ void testNaturalDisaster()
     delete deptOfTransport; 
     delete  naturalDisasterCommand;
 }
+
+/*
 
 void testPandemic()
 {
@@ -582,3 +585,4 @@ void testRecession()
     delete financeDept;
 }
 
+*/
