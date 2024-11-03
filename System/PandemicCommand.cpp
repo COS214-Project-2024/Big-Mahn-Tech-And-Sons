@@ -11,6 +11,7 @@ PandemicCommand::PandemicCommand(const std::vector<Citizen*>& citizens)
 void PandemicCommand::imposeLockdown() {
     std::cout << "City Lockdown: Restricting all movement and gatherings.\n";
     for (auto& citizen : citizens) {
+        citizen->decreaseHealth(10);
         citizen->decreaseSatisfaction(10); // Lockdowns can be frustrating
         citizen->notifyPR(); // Notify the PR department about the dissatisfaction
     }

@@ -31,6 +31,7 @@ private:
     double resourceUsage;  /**< The amount of resources used by the department. */
     DeptOfPR* PR;
     vector<Building*> cityBuildings;
+    PowerSupply* powerSupply;
 
 protected:
     DeptOfUtilities* successor;

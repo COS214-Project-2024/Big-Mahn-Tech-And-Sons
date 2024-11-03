@@ -8,7 +8,7 @@
 
 #include <ctime>
 
-class DeptOfUtilities;
+class PowerSupply;
 
 /**
  * @class LoadsheddingCommand
@@ -20,7 +20,7 @@ public:
      * @brief Constructs a LoadsheddingCommand with the utilities department.
      * @param utilitiesDept Pointer to the DeptOfUtilities handling power resources.
      */
-    LoadsheddingCommand(DeptOfUtilities* utilitiesDept);
+    LoadsheddingCommand(PowerSupply* powerSupply);
 
     /**
      * @brief Schedules load-shedding to occur after a specified delay.
@@ -34,7 +34,7 @@ public:
     void execute();
 
 private:
-    DeptOfUtilities* utilitiesDept;          ///< Manages energy allocation and power resources.
+    PowerSupply* powerSupply;      ///< Manages energy allocation and power resources.
     std::time_t scheduleTime;                ///< Time the load-shedding is scheduled to start.
 };
 

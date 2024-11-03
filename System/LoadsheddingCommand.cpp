@@ -1,10 +1,10 @@
 #include "LoadsheddingCommand.h"
-#include "DeptOfUtilities.h"
+#include "PowerSupply.h"
 #include <iostream>
 #include <ctime>
 
-LoadsheddingCommand::LoadsheddingCommand(DeptOfUtilities* utilitiesDept)
-    : utilitiesDept(utilitiesDept), scheduleTime(0) {}
+LoadsheddingCommand::LoadsheddingCommand(PowerSupply* powerSupply)
+    : powerSupply(powerSupply), scheduleTime(0) {}
 
 void LoadsheddingCommand::scheduleLoadshedding(int delayInSeconds) {
     scheduleTime = std::time(0) + delayInSeconds;
@@ -12,9 +12,9 @@ void LoadsheddingCommand::scheduleLoadshedding(int delayInSeconds) {
 }
 
 void LoadsheddingCommand::execute() {
-    if (std::time(0) >= scheduleTime) {
+    if (scheduleTime) {
         std::cout << "Executing load-shedding event..." << std::endl;
-        utilitiesDept->initiateLoadshedding();
+        powerSupply->powerShutDown();
     } else {
         std::cout << "Load-shedding event not yet scheduled to execute." << std::endl;
     }
