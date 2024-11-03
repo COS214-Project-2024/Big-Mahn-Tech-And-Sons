@@ -157,7 +157,7 @@ void CityGrid::printCityGrid()
         {cout<<"0"<<i<<" ";}
         else{cout<<i<<" ";}
         for (int j = 0; j < grid_num_cols; j++) {
-            cout <<setw(2)<<(*citygrid)[i][j].getAttribute()<<" ";
+            cout<<setw(2)<<(*citygrid)[i][j].getAttribute()<<" ";
         } 
         cout << endl;
     }
@@ -500,38 +500,8 @@ void CityGrid::printCityStreets()
             else
             {
 
-                cout<<setw(get_Longest_street_length())<<(*citygrid)[i][j].getAttribute()<<" ";
+                cout<<setw(2)<<(*citygrid)[i][j].getAttribute()<<" ";
             } 
-        } 
-        cout << endl;
-    }
-}
-
-int CityGrid::get_Longest_street_length()
-{
-    int longest_length=0;
-
-    for(int i=0; i<grid_num_rows; i++)
-    {
-        for(int j=0; j<grid_num_cols; j++)
-        {
-            if((*citygrid)[i][j].getStreetName().length()>longest_length)
-            {
-                longest_length = (*citygrid)[i][j].getStreetName().length();
-            }
-        }
-    }
-    return longest_length;
-}
-
-void CityGrid::printAll_DetailedAttributes()
-{
-    for (int i = 0; i < grid_num_rows ;i++)
-    {
-        cout<<i<<" ";
-        for (int j = 0; j < grid_num_cols; j++)
-        {
-            cout<<(*citygrid)[i][j].getDetailed_Atttribute()<<" ";
         } 
         cout << endl;
     }
@@ -542,29 +512,32 @@ void CityGrid::printCityRoadNetwork()
     for(int i =0; i < grid_num_cols ;i++)
     {
         if(i==0)
-        cout<<"  ";
-        cout<<i<<" ";
+        cout<<setw(3.5)<<" ";
+        if(i<10){cout<<"0"<<i<<" ";}
+        else{cout<<i<<" ";}
         if(i==(grid_num_cols-1))
         cout<<endl;
     }
 
     for (int i = 0; i < grid_num_rows ;i++)
     {
-        cout<<i<<" ";
+        if(i<10)
+        {cout<<"0"<<i<<" ";}
+        else{cout<<i<<" ";}
         for (int j = 0; j < grid_num_cols; j++)
         {
             
             if((*citygrid)[i][j].getDetailed_Atttribute()=="ROAD")
             {
-                cout<<(*citygrid)[i][j].getAttribute()<<" "; //prints roads
+                cout<<setw(2)<<(*citygrid)[i][j].getAttribute()<<" "; //prints roads
             }
-            if((*citygrid)[i][j].getDetailed_Atttribute()=="BLANK")
+            else if((*citygrid)[i][j].getDetailed_Atttribute()=="BLANK")
             {
-                cout <<(*citygrid)[i][j].getAttribute()<<" "; //prints  available space
+                cout<<setw(2)<<(*citygrid)[i][j].getAttribute()<<" "; //prints  available space
             }
-            if((*citygrid)[i][j].getDetailed_Atttribute()=="USED")
+            else
             {
-                cout <<(*citygrid)[i][j].getAttribute()<<" "; //prints  available space
+                cout<<setw(2)<<"#"<<" "; //prints  available space
             }
         } 
         cout << endl;
