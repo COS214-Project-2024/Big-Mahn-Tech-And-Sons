@@ -158,20 +158,29 @@ This pattern adds flexibility by allowing dynamic switching between transportati
 
 ---
 
-### 10. 🔍 Iterator
-**Use Case:** Traversing the City Graph  
+### 10. 🔍 Prototype 
+**Use Case:** To repair a destroyed building during a natural disaster.
 **Participants:**
-- **Client:** DepartmentOfTransportation
-- **Iterator:** BuildingIterator 
-- **Concrete Iterator:** BuildingIterator 
-- **Aggregate:** RoadNetwork
-- **Concrete Aggregate:** RoadNetwork
+- **Prototype:** Building
+- **Concrete Prototype:** last layer of building 
+- **Client:** DeptOfHosuing 
   
 **How it Works:**  
-The city is modeled as a graph of buildings connected by roads. The Iterator pattern enables traversal through this graph.
+After a natural disaster occurs, the repair function will look for damaged buildings and replace them with  coned version of the damaged building. 
 
 **Why it’s Used:**  
-This pattern simplifies traversal through complex networks, ensuring smooth travel within the city.
+The use of a prototype allows for the removal of unnecessary initial creation of existing objects but instead allows us to clone the objects for later use.  
+
+### 10. 🔍 Singleton
+**Use Case:** Used to create one instance of the grid of the city plan.
+**Participants:**
+- **Singleton:** DeptOfTransportation 
+  
+**How it Works:**  
+When program runs it the department of transportation makes an instance of the grid. This grid of the city layout is then used by the rest of the simulation.
+
+**Why it’s Used:**  
+This was done to avoid multiple instances of the rid beng created for the various instances of other objects created in the simulation. This allows for all the different objects to work on one grid and together.
 
 ---
 
@@ -190,12 +199,10 @@ This pattern simplifies traversal through complex networks, ensuring smooth trav
 
 ## 🔧 How to Build and Run
 1. Clone the repository:
-   
-bash
+   ```bash
    git clone <repository_url>
    cd CityBuilderSimulation
    
 2. Build and run the project using the Makefile:
-bash
+ ```bash
 make run
-
