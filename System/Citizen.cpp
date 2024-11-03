@@ -16,12 +16,12 @@
 
 #include <random>
 
-Citizen::Citizen(const std::string &nam, double happiness,int x , int y, DeptOfPR *PR)
+Citizen::Citizen(const std::string &nam, int x , int y, DeptOfPR *PR)
 {
    name = nam;
-   satisfaction = happiness;
+   satisfaction = 50;
    this->PR = PR;
-
+   this->PR->addCitizen(this);
    age = 1;
    this->state = new ChildState();
 
@@ -116,6 +116,16 @@ bool Citizen::Spend(double amount)
 {
    this->budget -= amount;
    return true;
+}
+
+void Citizen::display() {
+   std::cout << "====                ====" <<  std::endl;
+   std::cout << "Name: " << this->name << std::endl;
+   std::cout << "Age: " << this->age << std::endl;
+   std::cout << "Health: " << this->health << std::endl;
+   std::cout << "Satisfaction: " << this->getSatisfactionLevelName() << std::endl;
+   std::cout << "Budget: " << this->budget << std::endl;
+   std::cout << "====                ====" <<  std::endl;
 }
 
 void Citizen::decreaseHealth(double percentage)
@@ -215,8 +225,13 @@ Building *Citizen::getWorkLocation() const
 
 void Citizen::travelTo(Building *destination, CityGrid *citi, int x, int y, const std::string &Building)
 {
-   int distance = citi->getDistance(x,y,Building);
-    // Determine available transport modes based on distance
+   DeptOfTransportation *dept = DeptOfTransportation::getInstance(); 
+   int distance = dept->get_distance(currentLocation,destination);
+   //
+   //come operate here.
+   //
+
+    
     std::vector<ModeOfTrans*> availableModes;
     Walk* walk = new Walk();
     availableModes.push_back(walk); // Always available

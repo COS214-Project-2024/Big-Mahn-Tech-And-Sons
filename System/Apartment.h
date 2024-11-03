@@ -33,11 +33,14 @@ class Apartment : public ResidentialBuilding {
          */
         void accept(TaxManager* visitor) override;
 
-        /**
-         * @brief Creates a clone of the apartment, used to restore a building after damage.
-         * @return Building* A pointer to the cloned apartment instance.
-         */
-        Building* repairClone() const override;
+      Building* repairClone() const;
+      
+    // Getters and Setters
+    int getNumUnits() const;
+    void setNumUnits(int units);
+
+    bool getHasElevator() const;
+    void setHasElevator(bool elevator);
 };
 
 #endif // APARTMENT_H

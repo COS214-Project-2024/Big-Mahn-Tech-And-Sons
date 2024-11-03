@@ -1,5 +1,8 @@
 #include "DeptOfUtilities.h"
-
+#include "DeptOfPR.h"
+#include "Request.h"
+#include "Building.h"
+#include "PowerSupply.h"
 /**
  * @brief Constructor for DeptOfUtilities.
  * @param name The name of the department.
@@ -17,18 +20,6 @@ void DeptOfUtilities::displayDepartmentInfo() {
     cout << "Resource Usage: " << resourceUsage << endl;
 }
 
-/**
- * @brief Requests additional budget allocation from the government.
- */
-void DeptOfUtilities::requestBudget()
-{
-    
-
-}
-
-void DeptOfUtilities::trackUsage()
-{
-}
 
 /**
  * @brief Requests PR department assistance.
@@ -36,7 +27,7 @@ void DeptOfUtilities::trackUsage()
 void DeptOfUtilities::requestPR() {
     if (PR) {
         cout << "Requesting assistance from PR department for " << departmentName << endl;
-        PR->notifyUtilities();
+        PR->notifyTaxman("Water");
     } else {
         cout << "No PR department available." << endl;
     }
@@ -52,10 +43,9 @@ void DeptOfUtilities::setSuccessor(DeptOfUtilities* nextDepartment) {
 
 void DeptOfUtilities::initiateLoadshedding()
 {
-    if(this->departmentName == "Power") {
-        cout << "Initiating loadshedding for " << departmentName << endl;
-        
-    }
+    cout <<"Intiating  loadshedding " <<endl; 
+    
+    
 }
 
 void DeptOfUtilities::restorePower()
@@ -70,7 +60,14 @@ void DeptOfUtilities::reduceUsage()
 {
 }
 
-void DeptOfUtilities::setPR(DeptOfPR* pr)
+void DeptOfUtilities::setPR(DeptOfPR *pr)
 {
     this->PR = pr;
+}
+
+void DeptOfUtilities::requestBudget()
+{
+}
+void DeptOfUtilities::trackUsage()
+{
 }

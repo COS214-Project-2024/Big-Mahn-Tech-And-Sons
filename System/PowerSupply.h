@@ -74,7 +74,7 @@ public:
      *          checks if it can handle the request, if not, PowerSupply will pass it on
      *          to the next concreteHandler.
      */
-    void handleRequest(Request& req);
+    bool handleRequest(Request& req) override;
 
     /**
     * @brief Adds a building to the water supply system.

@@ -1,10 +1,10 @@
-
 #include <iostream>
 #include <cstdlib>
 #include <vector>
 #include <limits>
 #include <string>
 #include "CityGrid.h"
+#include "Government.h"
 #include "DeptOfTransportation.h"
 
 #define RESET "\033[0m"
@@ -19,7 +19,7 @@
 
 using namespace std;
 
-void clearTerminal();
+//void clearTerminal();
 void testFunction();
 void deptTransportation();
 
@@ -28,11 +28,15 @@ int main()
     //testFunction();         //the one for city grid
     deptTransportation();
     
+
+    Government gov;
+    gov.runSim();
     return 0;
 }
 
 void testFunction()
 {
+    /*
     CityGrid grid(10,10);
     int w,x,y,z;
     string a,b;
@@ -136,6 +140,7 @@ void testFunction()
                 cin>>y;
                 cout<<"type of building:";
                 cin>>a;
+                //Building* b = housn
                 pair=(grid.addBuilding(x,y,a));
                 cout<<pair[0].first<<"\t"<<pair[0].second<<endl;
                 cout<<pair[1].first<<"\t"<<pair[1].second<<endl;
@@ -153,19 +158,23 @@ void testFunction()
             case 7:
                 break;
             }
+
+            
     }
+    */
 }
 
-void clearTerminal() {
-#ifdef _WIN32
-    system("cls");  // Clear the screen on Windows
-#else
-    system("clear");  // Clear the screen on Unix/Linux/macOS
-#endif
-}
+// void clearTerminal() {
+// #ifdef _WIN32
+//     system("cls");  // Clear the screen on Windows
+// #else
+//     system("clear");  // Clear the screen on Unix/Linux/macOS
+// #endif
+// }
 
 void deptTransportation()
 {
+    /*
     DeptOfTransportation* grid = DeptOfTransportation::getInstance();
 
     int w,x,y,z;
@@ -295,5 +304,6 @@ void deptTransportation()
                 break;
             }
     }
+    */
 
 }
