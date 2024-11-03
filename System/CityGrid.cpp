@@ -1,19 +1,63 @@
 #include "CityGrid.h"
 #include "Building.h"
 
+
+
+// .......................... CELL ...............................//
+
 Cell::Cell(int row_value, int col_value, string cardinal_point)
 {
-    /*1*/ this->cell_col_value = col_value;
-    /*2*/ this->cell_row_value = row_value;
-    /*3*/ this->cardinal_direction = cardinal_point;
-    /*4*/ this->detailed_attribute = "BLANK";
-    /*5*/ this->attribute = '.';
-    /*6*/ this->street_name = "-";
+     this->cell_col_value = col_value;
+     this->cell_row_value = row_value;
+     this->cardinal_direction = cardinal_point;
+     set_Detailed_Attribute("BLANK");
+     set_Attribute('.');
+     this->street_name = "-";
 }
 
 Cell::~Cell()
 {
     //no memory management required here.
+}
+
+bool Cell::set_Attribute(char attri)
+{
+    if(attri=='C'){ this->attribute = 'C'; return true;}    // Commercial building
+    if(attri=='H'){ this->attribute = 'H'; return true;}    // Residential building
+    if(attri=='L'){ this->attribute = 'L'; return true;}    // Landmark building
+    if(attri=='I'){ this->attribute = 'I'; return true;}    // Industrial buidling
+    if(attri=='R'){ this->attribute = 'R'; return true;}    // Road
+    if(attri=='.'){ this->attribute = '.'; return true;}    // Blank
+    if(attri=='#'){ this->attribute = '#'; return true;}    // Used
+
+    return false;
+}
+
+bool Cell::set_Detailed_Attribute(string detailed_Attri)
+{
+    if(detailed_Attri=="SCHOOL"){ this->detailed_attribute = "SCHOOL"; return true;}
+    if(detailed_Attri=="OFFICE"){ this->detailed_attribute = "OFFICE"; return true;}
+    if(detailed_Attri=="HOSPITAL"){ this->detailed_attribute = "HOSPITAL"; return true;}
+    if(detailed_Attri=="SHOP"){ this->detailed_attribute = "SHOP"; return true;}
+    
+    if(detailed_Attri=="ESTATE"){ this->detailed_attribute = "ESTATE"; return true;}
+    if(detailed_Attri=="APARTMENT"){ this->detailed_attribute = "APARTMENT"; return true;}
+    if(detailed_Attri=="HOUSE"){ this->detailed_attribute = "HOUSE"; return true;}
+
+    if(detailed_Attri=="MUSEUM"){ this->detailed_attribute = "MUSEUM"; return true;}
+    if(detailed_Attri=="MONUMENT"){ this->detailed_attribute = "MONUMENT"; return true;}
+    if(detailed_Attri=="PARK"){ this->detailed_attribute = "PARK"; return true;}
+
+    if(detailed_Attri=="FACTORY"){ this->detailed_attribute = "FACTORY"; return true;}
+    if(detailed_Attri=="AIRPORT"){ this->detailed_attribute = "AIRPORT"; return true;}
+    if(detailed_Attri=="WAREHOUSE"){ this->detailed_attribute = "WAREHOUSE"; return true;}
+    if(detailed_Attri=="TRAINSTATION"){ this->detailed_attribute = "TRAINSTATION"; return true;}
+
+    if(detailed_Attri=="ROAD"){ this->detailed_attribute = "ROAD"; return true;}
+    if(detailed_Attri=="BLANK"){ this->detailed_attribute = "BLANK"; return true;}
+    if(detailed_Attri=="USED"){ this->detailed_attribute = "USED"; return true;}
+
+    return false;
 }
 
 const char Cell::getAttribute()
@@ -25,7 +69,7 @@ void Cell::updateDetailed_Attribute(string newDetailedAttribute)
 {
     if(newDetailedAttribute!=detailed_attribute)
     {
-        detailed_attribute = newDetailedAttribute;
+        set_Detailed_Attribute(newDetailedAttribute);
     }
 }
 
@@ -37,7 +81,9 @@ const string Cell::getDetailed_Atttribute()
 void Cell::changeAttribute(char newAttribute)
 {
     if(newAttribute!=attribute)
-    attribute = newAttribute;
+    {
+        set_Attribute(newAttribute);
+    }
 }
 
 const string Cell::getCardinal_direction()
@@ -59,6 +105,12 @@ const string Cell::getStreetName()
     }
     return "-";
 }
+//................................................................//
+
+
+
+
+//........................... CITYGRID ...........................//
 
 vector<vector<Cell>>* CityGrid::citygrid = nullptr;
 
@@ -616,7 +668,6 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, Bu
     string detailed_Attribute = toUpper(building->getType());
     if (length < 0 || width < 0 || width > grid_num_cols || length > grid_num_rows)
     {
-        cout<<"invalid dimensions";
         return errorPair();
     }
 
@@ -794,4 +845,5 @@ int CityGrid::getDistance(Building* citizen_current_building, Building* citizen_
     return -1;
        }
 }
+
 //get distance from building a to building b

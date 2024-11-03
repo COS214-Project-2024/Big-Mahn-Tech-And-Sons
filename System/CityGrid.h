@@ -18,6 +18,8 @@ class Cell
         Cell(int, int, string);  //creates a cell in the grid
         ~Cell();
         const char getAttribute(); //returns character whether its a road or building
+        bool set_Attribute(char);
+        bool set_Detailed_Attribute(string);
         const string getDetailed_Atttribute();
         void  updateDetailed_Attribute(string);
         const string getCardinal_direction();
