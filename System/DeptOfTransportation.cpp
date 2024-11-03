@@ -1,16 +1,11 @@
-
 #include "DeptOfTransportation.h"
-#include "CityGrid.h"
-
+#include "Building.h"
 DeptOfTransportation* DeptOfTransportation::instance = nullptr;
-
 
 DeptOfTransportation::DeptOfTransportation()
 {
-    cityGrid = new CityGrid(10,10);
+    cityGrid = new CityGrid(20,20);
 }
-
-
 
 DeptOfTransportation::~DeptOfTransportation()
 {
@@ -30,10 +25,8 @@ bool DeptOfTransportation::add_Road(int start_row, int start_col, int street_Len
 {
     if(cityGrid->addRoad(start_row,start_col,street_Length,direction,street_name))
     {
-        cout<<"\nRoad added ~ DeptTrans\n";
         return true;
     }
-    cout<<"\nRoad not added ~ DeptTrans\n";
     return false;
 }
 
@@ -45,7 +38,6 @@ void DeptOfTransportation::printCityGrid()
 void DeptOfTransportation::printRoadNetwork()
 {
     cityGrid->printCityRoadNetwork();
-
 }
 
 void DeptOfTransportation::printCityCardinalPoints()
@@ -62,11 +54,10 @@ bool DeptOfTransportation::remove_Road(string streetName)
 {
     if(cityGrid->removeRoad(streetName))
     {
-        cout<<"\nRoad removed ~ DeptTrans\n";
+       
         return true;
     }
 
-    cout<<"\nRoad not removed ~ DeptTrans\n";
     return false;
 }
 
@@ -74,27 +65,39 @@ bool DeptOfTransportation::remove_Road(int start_row, int start_col, int road_le
 {
     if(cityGrid->removeRoad(start_row,start_col,road_length,direction))
     {
-        cout<<"\nRoad removed ~ DeptTrans\n";
+       
         return true;
     }
     
-    cout<<"\nRoad not removed ~ DeptTrans\n";
     return false;
-
 }
 
-
-
-const vector<pair<int,int>> DeptOfTransportation::add_Building(int length, int width, string building_type)
+const vector<pair<int,int>> DeptOfTransportation::add_Building(int length, int width, Building* building)
 {
-    vector<pair<int,int>> error = {{-1,-1},{-1,-1},{-1,-1},{-1,-1}};
-    vector<pair<int,int>> result = cityGrid->addBuilding(length,width,building_type);
+    vector<pair<int,int>> error = {{-1,-1},{-1,-1},{-1,-1},{-1,-1}};    
+    vector<pair<int,int>> result = cityGrid->addBuilding(length,width,building);
     if(result==error)
     {
-        cout<<"\nBuilding not added to grid ~DeptTrans.\n";
+      
+        building->setCoordinates(result);
         return result;
     }
 
-    cout<<"\nBuilding added to grid ~ DeptTrans.\n";
     return result;
+}
+
+bool DeptOfTransportation::remove_Building(vector<pair<int,int>>& buidling)
+{
+    if(cityGrid->removeBuilding(buidling))
+    {
+        
+        return true;
+    }
+
+       return true;
+}
+
+int DeptOfTransportation::get_distance(Building* citizen_current_building, Building* citizen_destination_building)
+{
+    return cityGrid->getDistance(citizen_current_building,citizen_destination_building);
 }

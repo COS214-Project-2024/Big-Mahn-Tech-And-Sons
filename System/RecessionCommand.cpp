@@ -25,7 +25,7 @@ void RecessionCommand::raiseTaxes() {
     if (finDept) {
         finDept->increaseTaxes(5.0);
     } else {
-        std::cerr << "Error: PR Department not initialized.\n";
+        std::cout << "Error: PR Department not initialized.\n";
     }
 }
 
@@ -36,7 +36,7 @@ void RecessionCommand::manageCitizenDissatisfaction() {
     if (citizens) {
         citizens->decreaseSatisfaction(7);
     } else {
-        std::cerr << "Error: Citizens data not initialized.\n";
+        std::cout  << "Error: Citizens data not initialized.\n";
     }
 }
 

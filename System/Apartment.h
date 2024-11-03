@@ -1,8 +1,8 @@
-// Class defintion of Factory Method - ConcreteProduct (subtype)
+// Class defintion of Factory Method - ConcreteProduct participant (subtype)
 
 /**
  * @file Apartment.h
- * @brief Declaration of the Apartment class.
+ * @brief Declaration of the Apartment class, representing a multi-unit residential building.
  */
 
 #ifndef APARTMENT_H
@@ -12,39 +12,35 @@
 
 /**
  * @class Apartment
- * @brief Represents an apartment building with multiple units.
+ * @brief Represents an apartment building with multiple residential units.
  */
 class Apartment : public ResidentialBuilding {
-private:
-    int numUnits;      ///< Number of units in the apartment building.
-    bool hasElevator;  ///< Indicates if the apartment building has an elevator.
 
-public:
-    /**
-     * @brief Default constructor for Apartment.
-     * Initializes with unique default values.
-     */
-    Apartment();
+    public:
+        /**
+         * @brief Default constructor for Apartment, initializing unique apartment attributes.
+         */
+        Apartment();
 
-    /**
-     * @brief Displays the stats specific to the apartment.
-     */
-    void displayStats() const override;
+        /**
+         * @brief Displays the statistics of the apartment, including specific and inherited details.
+         */
+        void displayStats() const override;
 
-    /**
-     * @brief Accepts a visitor for the visitor pattern.
-     * @param visitor A pointer to the TaxManager visitor.
-     */
-    void accept(TaxManager* visitor) override;
+        /**
+         * @brief Accepts a visitor for tax management or other visitor pattern operations.
+         * @param visitor A pointer to the TaxManager visitor.
+         */
+        void accept(TaxManager* visitor) override;
 
+      Building* repairClone() const;
+      
     // Getters and Setters
     int getNumUnits() const;
     void setNumUnits(int units);
 
     bool getHasElevator() const;
     void setHasElevator(bool elevator);
-
-    Building* clone() const override;
 };
 
 #endif // APARTMENT_H

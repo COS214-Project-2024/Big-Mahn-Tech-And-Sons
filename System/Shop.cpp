@@ -1,24 +1,31 @@
-// Class implementation of Factory Method - COncreteProduct (subtype)
+// Class implementation of Factory Method - ConcreteProduct participant (subtype)
+
+/**
+ * @file Shop.cpp
+ * @brief Implements the Shop class.
+ */
 
 #include "Shop.h"
 #include <iostream>
 
 /**
- * @brief Constructor for Shop.
- * @param name Name of the shop.
- * @param maxCapacity Maximum capacity of the shop.
+ * @brief Default constructor for Shop.
  */
-Shop::Shop(const std::string& name, int maxCapacity)
-    : CommercialBuilding(name, maxCapacity), availableJobs(maxCapacity) {
-    width = 10;
-    length = 15; 
+Shop::Shop()
+    : CommercialBuilding() {
+    name = "SuperMart";        // Default name for the shop
+    maxCapacity = 50;          // Set max capacity for shop
+    availableJobs = maxCapacity;  // Initialize available jobs to max capacity
+    width = 10;                // Default width for shops
+    length = 15;               // Default length for shops
     electricityMeterBox = 100.0;
     waterMeterBox = 200.0;
     electricityUsage = 0.0;
     waterUsage = 0.0;
     wasteProduction = 0.0;
-    priceTag = 100000.0; // Setting price tag for Shop
+    priceTag = 100000.0;       // Default price tag for Shop
     netWorth = 80000.0;
+    type = "Shop";
 }
 
 /**
@@ -45,7 +52,11 @@ void Shop::accept(TaxManager* visitor) {
     visitor->visitCommercialBuilding(this);
 }
 
-
-Building* Shop::clone() const  {
-    return new Shop(*this);  // Clone this School
+/**
+ * @brief Clones the shop for repair purposes.
+ * @return Pointer to the cloned shop object.
+ */
+Building* Shop::repairClone() const {
+    std::cout << "Repairing commercial building (Shop): " << getName() << "\n";
+    return new Shop(*this);  // Return a new cloned instance of Shop
 }

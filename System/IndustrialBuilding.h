@@ -20,38 +20,22 @@
  * such as production capacity, while leaving implementation details to the subtypes.
  */
 class IndustrialBuilding : public Building {
-protected:
-    int maxProductionCapacity; ///< Maximum production capacity of the building.
-    double productionRate;     ///< Current production rate of the building.
 
 public:
     /**
      * @brief Constructor for IndustrialBuilding.
-     * @param name Name of the building.
-     * @param maxCapacity Maximum capacity of the building.
-     * @param maxProductionCapacity Maximum production capacity of the building.
      */
-    IndustrialBuilding(const std::string& name, int maxCapacity, int maxProductionCapacity)
-        : Building(name, maxCapacity), 
-          maxProductionCapacity(maxProductionCapacity), 
-          productionRate(0.0) {}
+    IndustrialBuilding()
+        : Building() {}
 
     /**
      * @brief Displays the stats specific to industrial buildings.
      */
     void displayStats() const {
         Building::displayStats();  // Call base class method
-        std::cout << "Max Production Capacity: " << maxProductionCapacity << std::endl;
-        std::cout << "Current Production Rate: " << productionRate << std::endl;
     }
 
-    /**
-     * @brief Checks if the building can accommodate additional production.
-     * @return True if production capacity is available, otherwise false.
-     */
-    virtual bool checkProductionCapacity() const = 0;
-
-    virtual Building* clone() const override {
+    virtual Building* repairClone() const override {
 
     };
 
@@ -63,15 +47,6 @@ public:
     virtual void accept(TaxManager* visitor) {
        // visitor->visit(this);
     };
-
-     virtual void repair() override {
-
-     };
-
-    // Getter and Setter for production rate
-    double getProductionRate() const { return productionRate; }
-    void setProductionRate(double rate) { productionRate = rate; }
-
 };
 
 #endif // INDUSTRIALBUILDING_H

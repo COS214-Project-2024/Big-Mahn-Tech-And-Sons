@@ -5,21 +5,14 @@
 
 /**
  * @brief Constructor for Monument.
- * @param name Name of the monument.
- * @param maxCapacity Maximum visitor capacity.
- * @param yearEstablished Year the monument was established.
- * @param heritageStatus Whether the monument is a heritage site.
  */
-Monument::Monument(const std::string& name, int maxCapacity, 
-                  int yearEstablished, 
-                   bool heritageStatus)
-    : LandmarkBuilding(name, maxCapacity, "Monument", heritageStatus),
-    
-      yearEstablished(yearEstablished) 
-{
-    width = 20;            // Default monument width
-    length = 20;           // Default monument length
-    priceTag = 750000.0;   // Default price tag for a monument
+Monument::Monument() : LandmarkBuilding() {
+    name = "Voortrekker Monument";  // Name of the monument
+    maxCapacity = 150;              // Maximum visitor capacity
+    width = 20;                     // Default monument width
+    length = 20;                    // Default monument length
+    priceTag = 750000.0;            // Default price tag for a monument
+    type = "Monument";              // Type of building
 }
 
 /**
@@ -27,44 +20,24 @@ Monument::Monument(const std::string& name, int maxCapacity,
  */
 void Monument::displayStats() const {
     LandmarkBuilding::displayStats();  // Call base class method
-    std::cout << "Year Established: " << yearEstablished << std::endl;
 }
 
 /**
  * @brief Accepts visitors using the visitor pattern.
  * @param visitor A pointer to the visitor object.
+ * 
+ * The function is stubbed, as no tax is applied to monuments.
  */
-void Monument::accept(TaxManager* visitor) { // Malaika STUB!!!
-    // visitor->visit(this);  // Visitor pattern implementation
+void Monument::accept(TaxManager* visitor) {
+    std::cout << "No tax applied to monument: " << getName() 
+              << ". Monuments are non-taxable." << std::endl;
 }
 
 /**
- * @brief Gets the historical significance of the monument.
- * @return The historical significance as a string.
+ * @brief Clones the monument object for repair purposes.
+ * @return A pointer to the cloned Monument object.
  */
-
-
-/**
- * @brief Gets the year the monument was established.
- * @return The year the monument was established.
- */
-int Monument::getYearEstablished() const {
-    return yearEstablished;
-}
-
-/**
- * @brief Sets the year the monument was established.
- * @param year New establishment year.
- */
-void Monument::setYearEstablished(int year) {
-    if (year > 0) {
-        yearEstablished = year;
-    } else {
-        std::cerr << "Error: Invalid year." << std::endl;
-    }
-}
-
-
-Building* Monument::clone() const  {
-        return new Monument(*this);  // Clone this School
+Building* Monument::repairClone() const {
+    std::cout << "Repairing landmark building (Monument): " << getName() << "\n";
+    return new Monument(*this);  // Clone this Monument
 }

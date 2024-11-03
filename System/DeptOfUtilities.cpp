@@ -1,8 +1,15 @@
 #include "DeptOfUtilities.h"
+#include "DeptOfPR.h"
+#include "Request.h"
 #include "Building.h"
-
-DeptOfUtilities::DeptOfUtilities(double budget)
-    : budget(budget), resourceUsage(0), successor(nullptr), PR(nullptr) {}
+#include "PowerSupply.h"
+/**
+ * @brief Constructor for DeptOfUtilities.
+ * @param name The name of the department.
+ * @param budget The initial budget allocated to the department.
+ */
+DeptOfUtilities::DeptOfUtilities(string name, double budget) 
+    : departmentName(name), budget(budget), resourceUsage(0), successor(nullptr), PR(nullptr) {}
 
 /**
  * @brief Displays the information about the department.
@@ -55,7 +62,9 @@ void DeptOfUtilities::setSuccessor(DeptOfUtilities *nextDepartment)
 
 void DeptOfUtilities::initiateLoadshedding()
 {
-    cout << "Initiating loadshedding  " << endl;
+    cout <<"Intiating  loadshedding " <<endl; 
+    
+    
 }
 
 void DeptOfUtilities::restorePower()
@@ -73,4 +82,11 @@ void DeptOfUtilities::reduceUsage()
 void DeptOfUtilities::setPR(DeptOfPR *pr)
 {
     this->PR = pr;
+}
+
+void DeptOfUtilities::requestBudget()
+{
+}
+void DeptOfUtilities::trackUsage()
+{
 }

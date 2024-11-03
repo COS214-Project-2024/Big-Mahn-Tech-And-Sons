@@ -1,4 +1,4 @@
-// Class defintion of Factory Method - ConcreteProduct (subtype)
+// Class definition of Factory Method - ConcreteProduct participant (subtype)
 
 /**
  * @file School.h
@@ -14,39 +14,39 @@
  * @class School
  * @brief Class representing a school as a subtype of CommercialBuilding.
  *
- * This class implements the specific attributes and operations for a school,
+ * Implements specific attributes and operations for a school,
  * such as managing available kids' spaces.
  */
 class School : public CommercialBuilding {
-public:
-    /**
-     * @brief Constructor for School.
-     * @param name Name of the school.
-     * @param maxCapacity Maximum capacity of the school.
-     */
-    School(const std::string& name, int maxCapacity);
+    
+    public:
+        /**
+         * @brief Default constructor for School.
+         */
+        School();
 
-    /**
-     * @brief Displays the stats specific to the school.
-     */
-    void displayStats() const override;
+        /**
+         * @brief Displays the stats specific to the school.
+         */
+        void displayStats() const override;
 
-    /**
-     * @brief Checks the availability of kids' spaces in the school.
-     * @return True if kids' spaces are available, otherwise false.
-     */
-    bool checkAvailability() const override;
+        /**
+         * @brief Checks the availability of kids' spaces in the school.
+         * @return True if kids' spaces are available, otherwise false.
+         */
+        bool checkAvailability() const override;
 
-    /**
-     * @brief Accepts visitors for the visitor pattern.
-     * @param visitor A pointer to the visitor object.
-     */
-    void accept(TaxManager* visitor) override;
+        /**
+         * @brief Accepts visitors for the visitor pattern.
+         * @param visitor A pointer to the visitor object.
+         */
+        void accept(TaxManager* visitor) override;
 
-    Building* clone() const override;
-
-private:
-    int availableKidsSpaces;  ///< Number of available kids' spaces in the school.
+        /**
+         * @brief Clones the school for repair purposes.
+         * @return Pointer to the cloned school object.
+         */
+        Building* repairClone() const override;
 };
 
 #endif // SCHOOL_H

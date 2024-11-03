@@ -1,4 +1,4 @@
-// Class defintion of Factory Method - ConcreteProduct (subtype)
+// Class definition of Factory Method - ConcreteProduct (subtype)
 
 #ifndef WAREHOUSE_H
 #define WAREHOUSE_H
@@ -11,38 +11,30 @@
  * @brief Represents a warehouse, a type of industrial building.
  */
 class Warehouse : public IndustrialBuilding {
-private:
-    double storageCapacity; ///< Maximum storage capacity in tons.
-    double currentStorage;  ///< Current storage level in tons.
 
-public:
-    /**
-     * @brief Constructor for Warehouse.
-     * @param name Name of the warehouse.
-     * @param maxCapacity Maximum capacity of people the warehouse can accommodate.
-     * @param maxProductionCapacity Maximum production capacity of the warehouse.
-     * @param storageCapacity Total storage capacity in tons.
-     */
-    Warehouse(const std::string& name, int maxCapacity, int maxProductionCapacity, double storageCapacity);
+    public:
+        /**
+         * @brief Default Constructor for Warehouse.
+         * Initializes the warehouse with default values.
+         */
+        Warehouse();
 
-    /**
-     * @brief Displays the stats specific to the warehouse.
-     */
-    void displayStats() const override;
+        /**
+         * @brief Displays the stats specific to the warehouse.
+         */
+        void displayStats() const override;
 
-    /**
-     * @brief Checks if there is available storage space in the warehouse.
-     * @return True if space is available, otherwise false.
-     */
-    bool hasStorageSpace() const;
-    bool checkProductionCapacity() const;
+        /**
+         * @brief Accepts a visitor for applying the Visitor pattern.
+         * @param visitor A pointer to the TaxManager object.
+         */
+        void accept(TaxManager* visitor) override;
 
-    /**
-     * @brief Accepts visitors for the visitor pattern.
-     * @param visitor A pointer to the visitor object.
-     */
-    void accept(TaxManager* visitor) override;
-
+        /**
+         * @brief Clones the warehouse for repair purposes.
+         * @return A pointer to the cloned Warehouse object.
+         */
+        Building* repairClone() const override;
 };
 
 #endif // WAREHOUSE_H

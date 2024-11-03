@@ -14,8 +14,10 @@
 class DeptOfFinance;
 class DeptOfHousing;
 class DeptOfPR;
+#include <iostream>
 
 
+using namespace std;
 
 /**
  * @class Government
@@ -31,7 +33,6 @@ public:
     Government();
 
 
-
     /**
      * @brief Destroys the Government object.
      */
@@ -42,24 +43,33 @@ public:
      * 
      *  */ 
     void runSim();
+    void stopSim();
 
-private:
+
+
+ private:
     ///< @brief Departments managed by the Government facade
 
-    // DeptOfPR* PR;
-    // WaterSupply* waterSupply;
-    // PowerSupply* powerSupply;
-    // WasteManagement* wasteSupply;
-    // DeptOfFinance* finance;
-    // DeptOfHousing* housing;
+    DeptOfPR* PR;
+    // WaterSupply* waterS;
+    // PowerSupply* powerS;
+    // WasteManagement* wasteS;
+    DeptOfFinance* finance;
+    DeptOfHousing* housing;
+    string commercialTypes[4] = {"Shop", "Office", "School", "Hospital"};
+   string residentialTypes[3] = {"House", "Apartment", "Estate"};
+   string industrialTypes[4] = {"Warehouse", "Factory", "Airport", "TrainStation"};
+   string landmarkTypes[3] = {"Park", "Monument", "Museum"};
 
-    // EventsCommand* pandemic;
-    // EventsCommand* economicDownturn;
-    // EventsCommand* naturalDisaster;
-    // EventsCommand* loadshedding;
-    // EventsCommand* festive;
-    // EventsCommand* babyBoom;
-    // EventsCommand* increaseEconomy;
+    DeptOfTransportation* transport;
+
+    EventsCommand* pandemic;
+    EventsCommand* economicDownturn;
+    EventsCommand* naturalDisaster;
+    EventsCommand* loadsheding;
+    EventsCommand* festive;
+    EventsCommand* babyBoom;
+    EventsCommand* increaseEconomy;
 
     // Simulation status
     bool simulationIsActive;
@@ -67,14 +77,19 @@ private:
     // Handles random events affecting the city
     //EventsCommand eventsCommand;
 
+    void simulateYear();
+
     // Simulation methods
     void handleCitizenNeeds();
+    void addNewCitizens();
+    void displayCity();
+    void addRoad();
+    void addBuilding();
     void manageResources();
     void evaluatePolicies();
     void triggerRandomEvents();
 
-    void stopSim();
 
 };
 
-#endif 
+#endif

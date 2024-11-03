@@ -14,13 +14,13 @@
 #define DEPTOFUTILITIES_H
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
-#include "DeptOfPR.h"
-#include "Request.h"
-#include "DeptOfPR.h"
-#include "Request.h"
-
+class DeptOfPR;
+class Request;
+class Building;
+class PowerSupply;
 /**
  * @class DeptOfUtilities
  * @brief Base class for managing various city utility departments like power, water, and waste management.
@@ -28,14 +28,18 @@ using namespace std;
 class DeptOfUtilities
 {
 private:
-    double resourceUsage; /**< The amount of resources used by the department. */
-    DeptOfPR *PR;
+    string departmentName; /**< Name of the department (e.g., Power, Water, Waste Management). */
+    double resourceUsage;  /**< The amount of resources used by the department. */
+    DeptOfPR* PR;
+    vector<Building*> cityBuildings;
+    PowerSupply* powerSupply;
 
 protected:
     DeptOfUtilities *successor;
     double budget; /**< The budget allocated to the department. */
 
 public:
+     //PowerSupply * powerSupply; 
     /**
      * @brief Constructor for DeptOfUtilities.
      * @param name The name of the department.

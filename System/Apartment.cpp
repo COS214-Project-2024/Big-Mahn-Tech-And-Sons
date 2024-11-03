@@ -1,37 +1,40 @@
-// Class implementation of Factory Method - ConcreteProduct (subtype)
+// Class implementation of Factory Method - ConcreteProduct participant (subtype)
+
+/**
+ * @file Apartment.cpp
+ * @brief Implementation of the Apartment class.
+ */
 
 #include "Apartment.h"
 #include <iostream>
 
 /**
- * @brief Default constructor for Apartment.
- * Initializes the apartment with unique default values.
+ * @brief Constructs an Apartment with default values specific to urban apartments.
  */
 Apartment::Apartment()
-    : ResidentialBuilding("Urban Apartment", 50, false),  // Default: Urban Apartment without backyard
-      numUnits(25), hasElevator(true) {  // Defaults: 25 units, with elevator
-    width = 30;  // Custom width for apartment
-    length = 50; // Custom length for apartment
-    electricityMeterBox = 200.0;  // Default electricity meter reading
-    waterMeterBox = 500.0;        // Default water meter reading
-    electricityUsage = 0.0;       // Start with no electricity usage
-    waterUsage = 0.0;             // Start with no water usage
-    wasteProduction = 0.0;                  // Start with no waste production
-    priceTag = 150000.0; // Setting price tag for Apartment
+    : ResidentialBuilding() {
+    name = "Urban Apartment";
+    maxCapacity = 50;
+    width = 30;
+    length = 50;
+    electricityMeterBox = 200.0;
+    waterMeterBox = 500.0;
+    electricityUsage = 0.0;
+    waterUsage = 0.0;
+    wasteProduction = 0.0;
+    priceTag = 150000.0;
+    type = "Apartment";
 }
 
 /**
- * @brief Displays the stats specific to the apartment.
+ * @brief Displays the statistics of the apartment, including inherited and specific attributes.
  */
 void Apartment::displayStats() const {
-    // Call the parent class's displayStats() to print shared details.
-    ResidentialBuilding::displayStats();
-    std::cout << "Number of Units: " << numUnits << std::endl;
-    std::cout << "Has Elevator: " << (hasElevator ? "Yes" : "No") << std::endl;
+    ResidentialBuilding::displayStats();  // Display general stats for residential buildings
 }
 
 /**
- * @brief Accepts a visitor for the visitor pattern.
+ * @brief Accepts a TaxManager visitor for performing tax-related operations.
  * @param visitor A pointer to the TaxManager visitor.
  */
 void Apartment::accept(TaxManager* visitor) {
@@ -39,42 +42,11 @@ void Apartment::accept(TaxManager* visitor) {
 }
 
 /**
- * @brief Getter for the number of units.
- * @return The number of units in the apartment.
+ * @brief Clones the Apartment for repair, supporting restoration after damage.
+ * @return Building* A pointer to the newly cloned Apartment instance.
  */
-int Apartment::getNumUnits() const {
-    return numUnits;
-}
-
-/**
- * @brief Setter for the number of units.
- * @param units The new number of units for the apartment.
- */
-void Apartment::setNumUnits(int units) {
-    numUnits = units;
-}
-
-/**
- * @brief Getter for elevator availability.
- * @return True if the apartment has an elevator, otherwise false.
- */
-bool Apartment::getHasElevator() const {
-    return hasElevator;
-}
-
-/**
- * @brief Setter for elevator availability.
- * @param elevator The new elevator status for the apartment.
- */
-void Apartment::setHasElevator(bool elevator) {
-    hasElevator = elevator;
-}
-
-/**
- * @brief This function is used ro clone a function after a certain buikding has be destroyed due a natural
- * disaster. 
- */
-Building* Apartment::clone() const {
-    return new Apartment(*this);  // This is fine
+Building* Apartment::repairClone() const {
+    std::cout << "Repairing residential building (Apartment): " << getName() << "\n";
+    return new Apartment(*this);
 }
 

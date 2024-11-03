@@ -35,6 +35,7 @@ void DeptOfFinance::applyTaxes(TaxManager *visitor)
 
 void DeptOfFinance::increaseTaxes(double percentage)
 {
+    
 }
 
 void DeptOfFinance::decreaseTaxes()
