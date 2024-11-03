@@ -48,6 +48,26 @@ void WaterSupply::distributeWater()
     }
 }
 
+void WaterSupply::distributeWaterToBuilding(Building *b)
+{
+    double usage = b->getWaterUsage(); // this method exists in Building
+    cout << "Water usage so far is : " << usage << endl;
+    if (waterResource->getWaterAmount() >= usage)
+    {
+        cout << "bah bah "<<endl;
+        b->consumeWater(usage); // this method exists in Building
+        waterResource->useWater(usage);              // Decrease available water
+        std::cout << "Distributed water : " << usage << " to " << b->getName() << std::endl;
+    }
+    else
+    {
+        b->consumeWater(waterResource->getWaterAmount()); // Provide remaining water to the building
+        waterResource->useWater(waterResource->getWaterAmount()); // Decrease available water
+        std::cout << "Only distributed water : " << waterCapacity << " to " << b->getName() << std::endl;
+        waterCapacity = 0;                           // All water is consumed
+    }
+}
+
 double WaterSupply::calculateWaterUsage()
 {
     double totalUsage = 0.0;
@@ -70,7 +90,7 @@ void WaterSupply::waterShutDown()
 void WaterSupply::increaseWaterCapacity()
 {
     waterCapacity *= 1.5; // Increase capacity by 50%, might change as citizens  demand more
-    cout << "Increased water storage capacity. New capacity: " << waterCapacity << " 000 liters." << endl;
+    cout << "Increased water storage capacity. New capacity: " << waterCapacity << " thousand liters." << endl;
 }
 
 double WaterSupply::getWaterCapacity()

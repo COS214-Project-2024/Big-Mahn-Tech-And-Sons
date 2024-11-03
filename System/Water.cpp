@@ -4,6 +4,7 @@ Water::Water(double amount) : amount(amount) {}
 
 double Water::getWaterAmount()
 {
+    cout << "Water Amount is: " << amount << endl;
     return amount;
 }
 

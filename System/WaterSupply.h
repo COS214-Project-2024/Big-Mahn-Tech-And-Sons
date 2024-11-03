@@ -50,6 +50,12 @@ public:
     void distributeWater();
 
     /**
+     * @brief Distributes water to specific building in the vector
+     */
+    void distributeWaterToBuilding(Building* b);
+
+
+    /**
      * @brief Calculates the current water usage based on consumption rates.
      * @return The amount of water used.
      */

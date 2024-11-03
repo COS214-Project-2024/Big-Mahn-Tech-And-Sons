@@ -127,7 +127,7 @@ double Building::getWasteAmount() { return wasteProduction; }
 void Building::setName(const std::string& newName) { name = newName; }
 void Building::setMaxCapacity(int capacity) { maxCapacity = capacity; }
 void Building::setElectricityMeterBox(double reading) { electricityMeterBox = reading; }
-void Building::setWaterMeterBox(double reading) { waterMeterBox = reading; }
+void Building::setWaterMeterBox(double reading) { waterMeterBox = reading; cout << "WaterMeterBox is now : "<<waterMeterBox<<endl; }
 void Building::setElectricityUsage(double usage) { electricityUsage = usage; }
 void Building::setWaterUsage(double usage) { waterUsage = usage; }
 void Building::setWaste(double waste) { wasteProduction = waste; }
@@ -151,16 +151,17 @@ void Building::consumeWater(double amount) {
     {
         setWaterUsage(newA);
         setWaterMeterBox(meterA);
-        std::cout<<"Building: "<<name<<" water usage is now went is very low! , please buy more units the current units is : "<<waterMeterBox <<"will not be able to comsume more water! , you recently just used: "<<waterUsage <<"\n";
+        std::cout<<"Building: "<<name<<" water usage is now went is very low! , please buy more units the current units is : "<<waterMeterBox <<" will not be able to comsume more water! , you recently just used: "<<waterUsage <<"\n";
           waterSupply = true;
     }
     else
     {
         setWaterUsage(newA);
         setWaterMeterBox(meterA);
-        std::cout << "Building: " << name << "has used: "<<newA<<" and is now left with: "<<meterA<<std::endl;
-          waterSupply = true;
+        std::cout << "Building: " << name << " has used: "<<newA<<" and is now left with: "<<meterA<<std::endl;
+        waterSupply = true;
     }
+
 }
 
 /**
@@ -179,7 +180,7 @@ void Building::consumeElectricity(double amount) {
     } 
     else if( meterA <= 0  && meterA >= -10)
     {
-        std::cout<<"Building: "<<name<<" now has Low Credits! , please buy more units the current units is : ";
+        std::cout<<"Building: "<<name<<" now has Low Credits! Please buy more units the current units is : ";
          setElectricityMeterBox( meterA );
          setElectricityUsage(newA);
          std::cout<< electricityMeterBox <<" however , will not be able to comsume more electricity! current units is : "<<electricityMeterBox <<"will not be able to comsume more electricity! , you recently just used: "<<electricityUsage <<"\n";

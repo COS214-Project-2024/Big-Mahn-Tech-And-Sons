@@ -30,7 +30,7 @@ void PowerSupply::addBuilding(Building *building)
 
 void PowerSupply::distributePower() // Distributes electricity across various sectors in the city.
 {
-    for (auto &building : buildings)
+    for (Building *building : buildings)
     {
         double usage = building->getElectricityUsage(); // Assume this method exists in Building
         if (powerCapacity >= usage)
@@ -45,6 +45,25 @@ void PowerSupply::distributePower() // Distributes electricity across various se
             break;                                       // Exit after distributing available power
         }
     }
+}
+
+void PowerSupply::distributePowerToBuilding(Building *b)
+{
+    double usage = b->getElectricityUsage(); // Assume this method exists in Building
+        if (powerResource->getPowerAmount() >= usage)
+        {
+            b->consumeElectricity(usage); // Assume this method exists in Building
+            powerResource->usePower(usage);              // Decrease available power
+            cout << "Distributed power : " << usage << " to " << b->getName() << std::endl;
+        }
+        else
+        {
+            b->consumeElectricity(powerResource->getPowerAmount()); // Consume remaining power
+            powerResource->usePower(powerResource->getPowerAmount()); // All power is consumed
+            cout << "Only " << powerCapacity << " units of power could be distributed to " << b->getName() << std::endl;
+            powerCapacity = 0;                           // All power is consumed
+            return;                                       // Exit after distributing available power
+        }
 }
 
 double PowerSupply::calculatePowerUsage() // calculates the current power usage based on consumption rates.

@@ -45,6 +45,11 @@ public:
     void distributePower();
 
     /**
+     * @brief Distributes electricity to a specific building.
+     */
+    void distributePowerToBuilding(Building *b);
+
+    /**
      * @brief Calculates the current power usage based on consumption rates.
      * @return The amount of electricity consumed.
      */
