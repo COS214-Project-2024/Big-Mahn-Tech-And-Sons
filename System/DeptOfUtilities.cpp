@@ -44,7 +44,7 @@ void DeptOfUtilities::setSuccessor(DeptOfUtilities* nextDepartment) {
 void DeptOfUtilities::initiateLoadshedding()
 {
     cout <<"Intiating  loadshedding " <<endl; 
-  //  powerSupply->powerShutDown();    
+    
     
 }
 

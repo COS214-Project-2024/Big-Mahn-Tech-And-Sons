@@ -57,11 +57,13 @@ int main()
     //testDepartment();
 
     // testHouse();
-    // testNaturalDisaster();
+    //testNaturalDisaster();
     //testPandemic();
     //testLoadShedding();
-   // testRecession();
-    Government* gov = new Government();
+    //testRecession();
+    //testFestival();
+    testRecession();
+  //  Government* gov = new Government();
     std::cout << "End" << std::endl;
 
     return 0;
@@ -408,7 +410,7 @@ int testDepartment() {
 // ------------------------------------------------------------------------------------------------------- //
 
 // ------------------------------------------------------------------------------------------------------- //
-/*
+
 void testNaturalDisaster()
 {
     // Step 1: Initialize the DeptOfHousing and DeptOfTransportation
@@ -440,17 +442,27 @@ void testNaturalDisaster()
     delete  naturalDisasterCommand;
 }
 
-/*
-
 void testPandemic()
 {
-   DeptOfPR* prDepartment;
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
+
+    Water *water = new Water("Sparkling", 10000);
+    Power *power = new Power("Power", 1456.3);
+
+    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+
+    utilitiesDept->setSuccessor(powerUtil);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+
+    DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
     // Create a vector of citizens for testing
     std::vector<Citizen*> citizens = {
-        new Citizen("Alice", 80.0, 10, 20, prDepartment),
-        new Citizen("Bob", 70.0, 12, 22, prDepartment),
-        new Citizen("Charlie", 60.0, 14, 24, prDepartment)
+        new Citizen("Alice",10, 20, prDept),
+        new Citizen("Bob", 12, 22, prDept),
+        new Citizen("Charlie", 14, 24, prDept)
     };
 
     // Display initial state of each citizen
@@ -496,44 +508,59 @@ void testPandemic()
 
 void testLoadShedding()
 {
-    //  // Setup for the test
-    //     std::cout << "Setting up LoadShedding test..." << std::endl;
+        ResidentialBuildingCreator *resi1 = new ResidentialBuildingCreator();
+        ResidentialBuildingCreator *resi2 = new ResidentialBuildingCreator();
+        ResidentialBuildingCreator *resi3 = new ResidentialBuildingCreator();
+        ResidentialBuildingCreator *resi4 = new ResidentialBuildingCreator();
 
-    //     // Create a power resource (mock object for testing purposes)
-    //     Power mockPowerResource("MockPowerResource", 1000); // Assume Power class exists
-    //     PowerSupply powerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
-    //  DeptOfUtilities* utilitiesDept = new PowerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
+        Building *esate = resi1->createBuilding("Estate");
+        Building*  aprty = resi2->createBuilding("Apartment");
+        Building*  house  = resi3->createBuilding("House");
+     // Setup for the test
+        std::cout << "Setting up LoadShedding test..." << std::endl;
+
+        // Create a power resource (mock object for testing purposes)
+        Power mockPowerResource("MockPowerResource", 1000); // Assume Power class exists
+        PowerSupply powerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
+        // DeptOfUtilities* utilitiesDept = new PowerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
         
-    //    // powerSupply->distributePower();
-    //    // Assuming a method to set power supply exists
-    //     // Create LoadSheddingCommand with utilities department
-    //     LoadsheddingCommand* loadSheddingCommand = new LoadsheddingCommand(utilitiesDept);
+       
+        // Create LoadSheddingCommand with utilities department
+        LoadsheddingCommand* loadSheddingCommand = new LoadsheddingCommand(&powerSupply);
 
-    //     // Schedule load shedding
-    //     int delay = 5; // Delay of 5 seconds for testing
-    //     loadSheddingCommand->scheduleLoadshedding(delay);
+        // Schedule load shedding
+        int delay = 5; // Delay of 5 seconds for testing
+        loadSheddingCommand->scheduleLoadshedding(delay);
 
         
-    //     loadSheddingCommand->execute();
+        loadSheddingCommand->execute();
 
-    //     // Clean up
-    //     //delete mockPowerResource; // Clean up mock power resource
-    //    // delete powerSupply; // Clean up power supply
-    //     delete utilitiesDept; // Clean up utilities department
-
-    //     std::cout << "LoadShedding test completed." << std::endl;
+        std::cout << "LoadShedding test completed." << std::endl;
 }
-
 
 void testFestival()
 {
-    Power mockPowerResource("MockPowerResource", 1000);
-    DeptOfUtilities* utilitiesDept = new PowerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
-      DeptOfPR* deptOfPR;
+     DeptOfHousing *housingDept = new DeptOfHousing(100000);
+
+    Water *water = new Water("Sparkling", 10000);
+    Power *power = new Power("Power", 1456.3);
+
+    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+
+    utilitiesDept->setSuccessor(powerUtil);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+
+    DeptOfPR *deptOfPR = new DeptOfPR(housingDept, utilitiesDept, financeDept);
+
+   Power mockPowerResource("MockPowerResource", 1000); // Assume Power class exists
+   PowerSupply powerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
+
  std::vector<Citizen*> citizens = {
-        new Citizen("Alice", 80.0, 10, 20, deptOfPR),
-        new Citizen("Bob", 70.0, 12, 22, deptOfPR),
-        new Citizen("Charlie", 60.0, 14, 24, deptOfPR)
+        new Citizen("Alice", 10, 20, deptOfPR),
+        new Citizen("Bob", 12, 22, deptOfPR),
+        new Citizen("Charlie", 14, 24, deptOfPR)
     };
   
     // Create a FestivalCommand instance
@@ -550,39 +577,83 @@ void testFestival()
    
 }
 
-void testRecession()
-{
-   // Create mock finance department
-    DeptOfFinance* financeDept;
-    DeptOfPR* prDepartment;
+void testRecession() {
+    
+    // Create instances of CommercialBuilding using the specified method
+    CommercialBuildingCreator* resi1 = new CommercialBuildingCreator(); 
+    CommercialBuildingCreator* resi2 = new CommercialBuildingCreator();  
+    CommercialBuildingCreator* resi3 = new CommercialBuildingCreator(); 
 
-    // Create citizens
-    std::vector<Citizen*> citizens = {
-        new Citizen("Alice", 80.0, 10, 20, prDepartment),
-        new Citizen("Bob", 70.0, 12, 22, prDepartment),
-        new Citizen("Charlie", 60.0, 14, 24, prDepartment)
-    };
+    Building* shop = resi1->createBuilding("Shop"); 
+    Building* office = resi2->createBuilding("Office"); 
+    Building* school = resi3->createBuilding("School");
 
-     DeptOfHousing *housingDept = new DeptOfHousing(1000000);
-    // Create commercial buildings
-   housingDept->createCommercialBuilding("Office");
-    housingDept->createCommercialBuilding("School");
-    housingDept->createCommercialBuilding("Hospital");
+    // Cast buildings to CommercialBuilding pointers if necessary
+    CommercialBuilding* shopBuilding = dynamic_cast<CommercialBuilding*>(shop);
+    CommercialBuilding* officeBuilding = dynamic_cast<CommercialBuilding*>(office);
+    CommercialBuilding* schoolBuilding = dynamic_cast<CommercialBuilding*>(school);
 
-    // Create the recession command
-    RecessionCommand* recessionCommand;
+    // Store commercial buildings in a vector for the RecessionCommand
+    std::vector<CommercialBuilding*> commercialBuildings = {shopBuilding, officeBuilding, schoolBuilding};
 
-    // Execute the recession command
-    std::cout << "Executing Recession Command...\n";
+
+    // Create instances of the required departments and utilities
+    DeptOfHousing* housingDept = new DeptOfHousing(100000);
+    Water* water = new Water("Sparkling", 10000);
+    Power* power = new Power("Power", 1456.3);
+
+    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfUtilities* powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+
+    utilitiesDept->setSuccessor(powerUtil);
+
+    TaxManager* taxMan = new TaxManager();
+    DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
+    DeptOfPR *deptOfPR = new DeptOfPR(housingDept, utilitiesDept, financeDept);
+
+    // Create a Citizen instance
+    
+
+       Citizen* Alice =  new Citizen("Alice", 10, 20, deptOfPR);
+       
+
+    // Instantiate the RecessionCommand with the created objects
+    RecessionCommand* recessionCommand = new RecessionCommand(financeDept, Alice, commercialBuildings);
+
+    // Test the execute method which triggers all recession actions
+    std::cout << "=== Recession Response Test ===" << std::endl;
     recessionCommand->execute();
 
-    // Cleanup
-    for(auto& citizens : citizens)
-    {
-         delete citizens;
+    // Output the results to verify if the command executed as expected
+    std::cout << "\n=== Results after Recession Command Execution ===" << std::endl;
+
+    // Check the finance department's tax adjustment (needs manual verification)
+    std::cout << "Taxes should be raised by 5% (verify manually in DeptOfFinance implementation)" << std::endl;
+
+    // Check citizen dissatisfaction level
+    std::cout << "Citizen's Satisfaction Level (Expected: <initial satisfaction> - 7): " 
+              << Alice->getSatisfactionLevel() << std::endl;
+
+    // Check that commercial buildings are closed
+    for (size_t i = 0; i < commercialBuildings.size(); ++i) {
+        std::cout << "Commercial Building " << i + 1 
+                  << " Status (Expected: Closed): " 
+                  << (commercialBuildings[i]->isClosed() ? "Closed" : "Open") << std::endl;
     }
-   
+
+    // Clean up dynamically allocated objects
+    delete resi1;
+    delete resi2;
+    delete resi3;
+    delete housingDept;
+    delete water;
+    delete power;
+    delete utilitiesDept;
+    delete powerUtil;
+    delete taxMan;
     delete financeDept;
+    delete Alice;
 }
 
-*/
+
+
