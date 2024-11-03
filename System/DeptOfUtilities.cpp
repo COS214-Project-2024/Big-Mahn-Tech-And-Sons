@@ -1,5 +1,8 @@
 #include "DeptOfUtilities.h"
-
+#include "DeptOfPR.h"
+#include "Request.h"
+#include "Building.h"
+#include "PowerSupply.h"
 /**
  * @brief Constructor for DeptOfUtilities.
  * @param name The name of the department.
@@ -41,12 +44,30 @@ void DeptOfUtilities::setSuccessor(DeptOfUtilities* nextDepartment) {
 void DeptOfUtilities::initiateLoadshedding()
 {
     cout <<"Intiating  loadshedding " <<endl; 
-    powerSupply->powerShutDown();    
+  //  powerSupply->powerShutDown();    
     
 }
 
+void DeptOfUtilities::restorePower()
+{
+}
 
-void DeptOfUtilities::setPR(DeptOfPR* pr)
+void DeptOfUtilities::increaseUsage()
+{
+}
+
+void DeptOfUtilities::reduceUsage()
+{
+}
+
+void DeptOfUtilities::setPR(DeptOfPR *pr)
 {
     this->PR = pr;
+}
+
+void DeptOfUtilities::requestBudget()
+{
+}
+void DeptOfUtilities::trackUsage()
+{
 }

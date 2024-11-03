@@ -10,7 +10,7 @@ void BabyBoomingEvent::execute() {
 
     for (int i = 0; i < addedChildren; ++i) {
         // Create a new child citizen
-        Citizen* newChild = new Citizen("Child_" + std::to_string(i + 1), 50.0, 0, 0, nullptr);
+        Citizen* newChild = new Citizen("Child_" + std::to_string(i + 1),  0, 0, nullptr);
         building->addTenant(newChild);  // Add to the building
         citizensList->push_back(newChild);  // Add to the city's citizens list
         std::cout << "Added new child: " << newChild->getName() << " to " << building->getName() << "\n";
