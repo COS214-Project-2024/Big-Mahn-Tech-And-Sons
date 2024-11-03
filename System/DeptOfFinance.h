@@ -8,6 +8,7 @@
 #include "Element.h"
 #include "TaxManager.h"
 #include "Building.h"
+#include "Budget.h"
 
 class DeptOfPR;
 /**
@@ -19,12 +20,15 @@ private:
     std::vector<Element*> elements; /**< List of elements in the city */
     TaxManager* taxManager;
     DeptOfPR* PR;
+    Budget* budget;
 public:
     DeptOfFinance(TaxManager* taxManager);
 
     void collectTaxes(Building *building);
 
-    void allocateBudget();
+    //void allocateBudget();
+
+    DeptOfFinance(TaxManager*, Budget*);
 
     /**
      * @brief Adds an element to the list.
@@ -49,7 +53,7 @@ public:
     /**
      * @brief Decreases taxes to alleviate financial pressure.
      */
-    void decreaseTaxes();
+    void decreaseTaxes(double percentage);
 
     /**
      * @brief Allocates budget to a specific department.
@@ -59,15 +63,9 @@ public:
     void allocateBudget(const std::string& department, double amount);
 
     /**
-     * @brief Cuts funding for a specific department.
-     * @param department The name of the department.
-     */
-    void cutFunding(const std::string& department);
-
-    /**
      * @brief Assesses the economic impact of an event on the city's finances.
      */
-    void assessEconomicImpact(); // this needs to return something e.g BOOL= is the economy good or not 
+    bool assessEconomicImpact(); // this needs to return something e.g BOOL= is the economy good or not 
 
     bool checkMoney(); // check if in good financial position
 

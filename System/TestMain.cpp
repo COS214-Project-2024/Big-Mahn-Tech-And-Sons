@@ -407,8 +407,8 @@ void taxManTest() {
     house->displayStats();
 
     // Adding tenants and testing updated stats
-    Citizen *tenant1 = new Citizen("Jane", 50, 10, 10, NULL);
-    Citizen *tenant2 = new Citizen("Peter", 30, 20, 20, NULL);
+    Citizen *tenant1 = new Citizen("Jane", 50, 10, 10, nullptr);
+    Citizen *tenant2 = new Citizen("Peter", 30, 20, 20, nullptr);
     std::cout << "\nAdding tenants:\n";
     house->addTenant(tenant1);
     house->addTenant(tenant2);
@@ -447,4 +447,13 @@ void taxManTest() {
     std::cout << "Updating the Overall City Budget\n";
     cityBudget.accept(&taxManager);  // Update budget with collected taxes
     cityBudget.reportStatus();       // Report updated budget status
+
+    // Cleanup dynamically allocated memory
+    delete tenant1;
+    delete tenant2;
+    delete house;
+    delete estate;
+    delete apartment;
+    delete shop;
+    delete hospital;
 }

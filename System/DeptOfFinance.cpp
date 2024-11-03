@@ -21,8 +21,14 @@ void DeptOfFinance::collectTaxes(Building* building) {
     }
 }
 
-void DeptOfFinance::allocateBudget() {
+void DeptOfFinance::allocateBudget(const std::string& department, double amount) {
    // budget->accept(taxManager); // Visitor visiting the budget
+    if (budget->getTotalBudget() >= amount) {
+        std::cout << "Allocating " << amount << " to " << department << std::endl;
+        budget->setTotalBudget(budget->getTotalBudget() - amount);
+    } else {
+        std::cerr << "Insufficient funds to allocate to " << department << std::endl;
+    }
 }
 
 void DeptOfFinance::addElement(Element *element)
@@ -39,22 +45,32 @@ void DeptOfFinance::applyTaxes(TaxManager *visitor)
 
 void DeptOfFinance::increaseTaxes(double percentage)
 {
+    // Convert percentage to a decimal for calculation
+    double factor = 1 + (percentage / 100.0);
+
+    taxManager->setTaxRate(taxManager->getTaxRate() * factor);
 }
 
-void DeptOfFinance::decreaseTaxes()
+void DeptOfFinance::decreaseTaxes(double percentage)
 {
+    // TODO: need to add some logic here later
+    // Check for valid percentage
+    if (percentage < 0 || percentage > 100) {
+        
+        std:: cout << "Percentage must be between 0 and 100." << std::endl;
+    }
+
+    // Convert percentage to a decimal for calculation
+    double factor = 1 - (percentage / 100.0);
+
+    // Decrease each tax rate: remember this is now a variable 
+    taxManager->setTaxRate(taxManager->getTaxRate() * factor);
 }
 
-void DeptOfFinance::allocateBudget(const std::string &department, double amount)
+bool DeptOfFinance::assessEconomicImpact()
 {
-}
-
-void DeptOfFinance::cutFunding(const std::string &department)
-{
-}
-
-void DeptOfFinance::assessEconomicImpact()
-{
+    // Return true if the economy is in a healthy state
+    return budget->getTotalBudget() > 100000; //can adjust later
 }
 
 bool DeptOfFinance::checkMoney()

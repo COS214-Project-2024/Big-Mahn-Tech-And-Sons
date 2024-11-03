@@ -24,6 +24,8 @@ class TaxManager {
 private:
     std::map<std::string, float> taxRates;
     float collectedTaxes;
+    double taxRate; 
+    std::vector<double> incomes;
     std::vector<Citizen*> citizenList;
     std::vector<CommercialBuilding*> commercialBuildings;
     std::vector<ResidentialBuilding*> residentialBuildings;
@@ -33,10 +35,12 @@ public:
     TaxManager();
     // virtual ~TaxManager() = default;
 
-    void setTaxRate(const std::string& type, float rate);
+    void setTaxRate(double rate); // Method to set the tax rate
+    double getTaxRate() const;    // Method to get the tax rate
     float calculateCitizenTax(Citizen* citizen);
     float calculateBusinessTax(CommercialBuilding* building);
     void collectTaxes();
+    bool checkMoney();            // Function to check financial stability
     void distributeBudget(const std::string& department, float allocation);
     float getCollectedTaxes() const;
     float getGovernmentBudget() const;

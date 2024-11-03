@@ -81,7 +81,7 @@ bool DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure 
 
    // Decision making to decrease taxes
    if (deptName == "Citizen" && healthyEconomy) {
-      this->finance->decreaseTaxes();
+      this->finance->decreaseTaxes(10);
       std::cout << "Taxes have been lowered based on economic conditions and citizen feedback." << std::endl;
       return true;
       // Decision making to increase taxes
