@@ -124,6 +124,10 @@ public:
     bool Spend(double amount);
 
 
+
+
+    void display() ;
+
     /**
      * @brief Decreases the health of citizens by a certain percentage.
      * @param percentage The percentage by which the health is decreased.

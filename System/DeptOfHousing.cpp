@@ -143,10 +143,10 @@ int DeptOfHousing::findBuildingIndex(const std::string& name) const {
  */
 void DeptOfHousing::listBuildings() const {
     for (size_t i = 0; i < buildings.size(); ++i) {
-        std::cout << i << ": " << buildings[i]->getName() << std::endl;
+        std::cout << "============== BUILDINGS ================\n";
+        buildings[i]->displayStats();
     }
 }
-
 std::vector<Building *> DeptOfHousing::getBuildings()
 {
    return this->buildings;

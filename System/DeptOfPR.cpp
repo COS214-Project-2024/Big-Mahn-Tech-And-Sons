@@ -25,12 +25,15 @@ void DeptOfPR::update(Building *building)
    }
 }
 
+   
+   
 void DeptOfPR::update(Citizen *citizen)
 {
    if(citizen->getStateName() == "Pensioner" && citizen->getAge() >= citizen->getThreshold()) {
       // remove citizen from all records
       if(citizen->getCurrentLocation()->removeTenant(citizen) == false) {
          // citizen was not found, thus hunt him down, trying to cheat death
+         cout << "Citizen not found, on the run :(\n";
       }  else {
          // citizen was found, thus remove him from all records
          this->killCitizen(citizen);
@@ -39,10 +42,12 @@ void DeptOfPR::update(Citizen *citizen)
       return;
    } else if((citizen->getSatisfactionLevelName() == "Neutral" || citizen->getSatisfactionLevelName() == "Sad") && citizen->getBudget()/100000 * 100 < 0.6 ) {
       notifyTaxman("Citizen");
+   } else if(citizen->getBudget() > 100000) { // citizen is rich
+      notifyHousingToBuild("Park");
    }
-   
-   
 }
+
+
 
 void DeptOfPR::notifyHousingToBuild(string type) // change to BOOL
 {

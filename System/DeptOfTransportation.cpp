@@ -25,10 +25,8 @@ bool DeptOfTransportation::add_Road(int start_row, int start_col, int street_Len
 {
     if(cityGrid->addRoad(start_row,start_col,street_Length,direction,street_name))
     {
-        cout<<"\nRoad added ~ DeptTrans\n";
         return true;
     }
-    cout<<"\nRoad not added ~ DeptTrans\n";
     return false;
 }
 
@@ -56,11 +54,10 @@ bool DeptOfTransportation::remove_Road(string streetName)
 {
     if(cityGrid->removeRoad(streetName))
     {
-        cout<<"\nRoad removed ~ DeptTrans\n";
+       
         return true;
     }
 
-    cout<<"\nRoad not removed ~ DeptTrans\n";
     return false;
 }
 
@@ -68,11 +65,10 @@ bool DeptOfTransportation::remove_Road(int start_row, int start_col, int road_le
 {
     if(cityGrid->removeRoad(start_row,start_col,road_length,direction))
     {
-        cout<<"\nRoad removed ~ DeptTrans\n";
+       
         return true;
     }
     
-    cout<<"\nRoad not removed ~ DeptTrans\n";
     return false;
 }
 
@@ -82,12 +78,11 @@ const vector<pair<int,int>> DeptOfTransportation::add_Building(int length, int w
     vector<pair<int,int>> result = cityGrid->addBuilding(length,width,building);
     if(result==error)
     {
-        cout<<"\nBuilding not added to grid ~DeptTrans.\n";
+      
         building->setCoordinates(result);
         return result;
     }
 
-    cout<<"\nBuilding added to grid ~ DeptTrans.\n";
     return result;
 }
 
@@ -95,12 +90,11 @@ bool DeptOfTransportation::remove_Building(vector<pair<int,int>>& buidling)
 {
     if(cityGrid->removeBuilding(buidling))
     {
-        cout<<"\nBuilding removed from grid ~DeptTrans.\n";
+        
         return true;
     }
 
-    cout<<"\nBuilding not removed from grid ~DeptTrans.\n";
-        return true;
+       return true;
 }
 
 int DeptOfTransportation::get_distance(Building* citizen_current_building, Building* citizen_destination_building)

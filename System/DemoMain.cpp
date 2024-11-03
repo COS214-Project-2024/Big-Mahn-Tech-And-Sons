@@ -4,6 +4,7 @@
 #include <limits>
 #include <string>
 #include "CityGrid.h"
+#include "Government.h"
 #include "DeptOfTransportation.h"
 
 #define RESET "\033[0m"
@@ -18,7 +19,7 @@
 
 using namespace std;
 
-void clearTerminal();
+//void clearTerminal();
 void testFunction();
 void deptTransportation();
 
@@ -27,6 +28,9 @@ int main()
     //testFunction();         //the one for city grid
     deptTransportation();
     
+
+    Government gov;
+    gov.runSim();
     return 0;
 }
 
@@ -160,13 +164,13 @@ void testFunction()
     */
 }
 
-void clearTerminal() {
-#ifdef _WIN32
-    system("cls");  // Clear the screen on Windows
-#else
-    system("clear");  // Clear the screen on Unix/Linux/macOS
-#endif
-}
+// void clearTerminal() {
+// #ifdef _WIN32
+//     system("cls");  // Clear the screen on Windows
+// #else
+//     system("clear");  // Clear the screen on Unix/Linux/macOS
+// #endif
+// }
 
 void deptTransportation()
 {

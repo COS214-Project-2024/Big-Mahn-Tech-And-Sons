@@ -14,6 +14,8 @@
 class DeptOfFinance;
 class DeptOfHousing;
 class DeptOfPR;
+#include <iostream>
+
 
 using namespace std;
 
@@ -43,7 +45,9 @@ public:
     void runSim();
     void stopSim();
 
-private:
+
+
+ private:
     ///< @brief Departments managed by the Government facade
 
     DeptOfPR* PR;
@@ -52,6 +56,11 @@ private:
     // WasteManagement* wasteS;
     DeptOfFinance* finance;
     DeptOfHousing* housing;
+    string commercialTypes[4] = {"Shop", "Office", "School", "Hospital"};
+   string residentialTypes[3] = {"House", "Apartment", "Estate"};
+   string industrialTypes[4] = {"Warehouse", "Factory", "Airport", "TrainStation"};
+   string landmarkTypes[3] = {"Park", "Monument", "Museum"};
+
     DeptOfTransportation* transport;
 
     EventsCommand* pandemic;
@@ -68,9 +77,14 @@ private:
     // Handles random events affecting the city
     //EventsCommand eventsCommand;
 
+    void simulateYear();
+
     // Simulation methods
     void handleCitizenNeeds();
     void addNewCitizens();
+    void displayCity();
+    void addRoad();
+    void addBuilding();
     void manageResources();
     void evaluatePolicies();
     void triggerRandomEvents();

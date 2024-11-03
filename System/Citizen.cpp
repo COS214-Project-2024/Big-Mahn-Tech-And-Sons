@@ -118,6 +118,16 @@ bool Citizen::Spend(double amount)
    return true;
 }
 
+void Citizen::display() {
+   std::cout << "====                ====" <<  std::endl;
+   std::cout << "Name: " << this->name << std::endl;
+   std::cout << "Age: " << this->age << std::endl;
+   std::cout << "Health: " << this->health << std::endl;
+   std::cout << "Satisfaction: " << this->getSatisfactionLevelName() << std::endl;
+   std::cout << "Budget: " << this->budget << std::endl;
+   std::cout << "====                ====" <<  std::endl;
+}
+
 void Citizen::decreaseHealth(double percentage)
 {
    this->health -= percentage;
