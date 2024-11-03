@@ -32,7 +32,6 @@ class DeptOfHousing {
         DeptOfHousing(double initialBudget);
         
         void setPR(DeptOfPR *PR);
-        
         void createResidentialBuilding(const std::string& type);
         void createCommercialBuilding(const std::string& type);
         void createIndustrialBuilding(const std::string& type);
@@ -44,9 +43,10 @@ class DeptOfHousing {
         double getRemainingBudget() const;
 
         void removeBuildingByName(const std::string &name);
-        void listBuildings() const; 
+        void listBuildings() const;
+        std::vector<Building *> getBuildings();
         bool requestFunding(double amount);
-        
+
         std::string getBuildingName(int index) const;
         void repairBuilding(const std::string& type);
         void addBudget(double amount);

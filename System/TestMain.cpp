@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 //
+#include "Government.h"
 #include "Citizen.h"
 #include "DeptOfPR.h"
 #include "DeptOfHousing.h"
@@ -51,16 +52,26 @@ int main()
     // testCommercialBuildingFunctions();
     // testLandmarkBuildings();
     // testIndustrialBuildings();
+
+    //testHouse();
+    //testDepartment();
+
     // testHouse();
     // testNaturalDisaster();
     //testPandemic();
     //testLoadShedding();
     testRecession();
-
+    Government* gov = new Government();
     std::cout << "End" << std::endl;
 
     return 0;
 }
+
+
+
+
+
+
 
 
 // ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
@@ -83,7 +94,7 @@ void buildingsTest()
     // Building*  errorH = resi4->createBuilding("Lol");
 
     std::cout << "\t =============Testing Functionality of  Residential Buildings :==========\n";
-    std::cout << "\t \t _~_~_~_Estate_~_~_~_~ \t \n";
+    std::cout << "\t \t ~_~_~_Estate~_~_~_~ \t \n";
     /*std::cout << */
     esate->displayStats();
     // some functions dont output and some need jus to be made to make sense
@@ -282,8 +293,8 @@ void testHouse() {
     house->displayStats();
 
     // Create tenants and test adding them
-    Citizen* tenant1 = new Citizen("Jane", 50, 10, 10, NULL);
-    Citizen* tenant2 = new Citizen("Peter", 30, 20, 20, NULL);
+    Citizen* tenant1 = new Citizen("Jane", 10, 10, NULL);
+    Citizen* tenant2 = new Citizen("Peter", 20, 20, NULL);
     std::cout << "\nAdding tenants:" << std::endl;
     house->addTenant(tenant1);
     house->addTenant(tenant2);
@@ -392,6 +403,9 @@ int testDepartment() {
 
     return 0;
 }
+
+
+// ------------------------------------------------------------------------------------------------------- //
 
 // ------------------------------------------------------------------------------------------------------- //
 void testNaturalDisaster()

@@ -33,6 +33,7 @@ private:
     DeptOfUtilities *utilities;        ///< Reference to the Utilities Department.
     DeptOfFinance *finance;                  ///< Reference to the Finance Department.
     std::vector<Citizen*> citizens; ///< List of citizens to notify.
+    void killCitizen(Citizen* citizen);
 
     
 public:
@@ -63,7 +64,12 @@ public:
      */
     void notifyHousingToBuild(string type);
 
+    void addCitizen(Citizen* citizen);
 
+
+    Citizen* getCitizen(int i);
+
+    int numCitizens();
     /**
      * @brief if building waste is at a certain level, remove it
      */

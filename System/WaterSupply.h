@@ -78,7 +78,7 @@ public:
      *          checks if it can handle the request, if not, WaterSupply will pass it on
      *          to the next concreteHandler.
      */
-    void handleRequest(Request &req);
+    bool handleRequest(Request &req);
 
     /**
     * @brief Adds a building to the water supply system.

@@ -70,12 +70,13 @@ void Building::displayStats() const {
     std::cout << "Waste Produced: " << wasteProduction << " kg" << std::endl;
     std::cout << "Dimensions (WxL): " << width << " x " << length << " units" << std::endl;
 
-    std::cout << "Tenants: ";
-    for (const auto& tenant : tenants) {
-        std::cout << tenant->getName() << ". ";  // Displays tenant pointers
-    }
     std::cout << std::endl;
+    std::cout << "Tenants: \n";
+    for (const auto& tenant : tenants) {
+         tenant->display();  // Displays tenant pointers
+    }
 }
+
 
 // Getters
 std::string Building::getName() const { return name; }

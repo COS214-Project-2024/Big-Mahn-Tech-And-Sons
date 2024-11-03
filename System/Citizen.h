@@ -67,7 +67,7 @@ public:
      * @note initialize health to 100
      * @note intilize statifaction level at 50
      */
-    Citizen(const std::string& nam,double happiness , int x, int y, DeptOfPR* PR);
+    Citizen(const std::string& nam, int x, int y, DeptOfPR* PR);
 
     /**
      * @brief Destroys the Citizen object.
@@ -87,6 +87,7 @@ public:
     void notifyPR();
 
     int getAge();
+
 
     /**
      * @brief Gets the name of the citizen.
@@ -122,6 +123,10 @@ public:
      */
     bool Spend(double amount);
 
+
+
+
+    void display() ;
 
     /**
      * @brief Decreases the health of citizens by a certain percentage.

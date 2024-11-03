@@ -33,7 +33,7 @@
 TEST_CASE("Citizen initialisation")
 {
     // DepartmentOfPR*  pr = new DepartmentOfPR(NULL,NULL, NULL,NULL);
-    Citizen *person = new Citizen("one", 50, 10, 10, NULL);
+    Citizen *person = new Citizen("one",  10, 10, NULL);
 
     CHECK(person->getAge() == 1);
     for (int i = 0; i < 20; i++)
@@ -67,7 +67,7 @@ TEST_CASE("Citizen Initialization")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen citizen("John Doe", 50.0, 10, 20, prDept);
+    Citizen citizen("John Doe", 10, 20, prDept);
 
     CHECK(citizen.getName() == "John Doe");
     CHECK(citizen.getAge() == 1);                  // Starts at age 1 by specification
@@ -97,7 +97,7 @@ TEST_CASE("Citizen Age Increment")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen citizen("Alice Smith", 50.0, 15, 25, prDept);
+    Citizen citizen("Alice Smith", 15, 25, prDept);
 
     int initialAge = citizen.getAge();
     citizen.getOlder();
@@ -128,7 +128,7 @@ TEST_CASE("Citizen Work and Spend")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen citizen("Bob Brown", 50.0, 10, 20, prDept);
+    Citizen citizen("Bob Brown",  10, 20, prDept);
     double initialBudget = citizen.getBudget();
 
     SUBCASE("Earning Income")
@@ -169,7 +169,6 @@ TEST_CASE("DeptOfPR initializes and interacts with Departments")
     DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil); // Setting up the Chain of Responsibility
-
     TaxManager *taxMan = new TaxManager();
     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
 
@@ -334,9 +333,9 @@ TEST_CASE("PandemicCommand functionality") {
     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
     // Create mock citizens
-    Citizen* citizen1 = new Citizen("Alice",50, 2, 4,&prDept);
-    Citizen* citizen2 = new Citizen("Bob", 45, 2, 4,&prDept);
-    Citizen* citizen3 = new Citizen("Charlie", 25, 2, 4,&prDept);
+    Citizen* citizen1 = new Citizen("Alice", 2, 4,&prDept);
+    Citizen* citizen2 = new Citizen("Bob",  2, 4,&prDept);
+    Citizen* citizen3 = new Citizen("Charlie", 2, 4,&prDept);
 
 
     for (int i = 0; i < 20; i++)

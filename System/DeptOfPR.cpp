@@ -25,22 +25,29 @@ void DeptOfPR::update(Building *building)
    }
 }
 
+   
+   
 void DeptOfPR::update(Citizen *citizen)
 {
    if(citizen->getStateName() == "Pensioner" && citizen->getAge() >= citizen->getThreshold()) {
       // remove citizen from all records
-
       if(citizen->getCurrentLocation()->removeTenant(citizen) == false) {
          // citizen was not found, thus hunt him down, trying to cheat death
+         cout << "Citizen not found, on the run :(\n";
+      }  else {
+         // citizen was found, thus remove him from all records
+         this->killCitizen(citizen);
       }
 
       return;
    } else if((citizen->getSatisfactionLevelName() == "Neutral" || citizen->getSatisfactionLevelName() == "Sad") && citizen->getBudget()/100000 * 100 < 0.6 ) {
       notifyTaxman("Citizen");
+   } else if(citizen->getBudget() > 100000) { // citizen is rich
+      notifyHousingToBuild("Park");
    }
-   
-   
 }
+
+
 
 void DeptOfPR::notifyHousingToBuild(string type) // change to BOOL
 {
@@ -58,6 +65,26 @@ void DeptOfPR::notifyHousingToBuild(string type) // change to BOOL
    } else {
       cout << "Building not added\n";
    }
+}
+
+void DeptOfPR::addCitizen(Citizen *citizen)
+{
+   this->citizens.push_back(citizen);
+}
+
+Citizen *DeptOfPR::getCitizen(int i)
+{
+   return this->citizens.at(i);
+}
+
+int DeptOfPR::numCitizens()
+{
+   return this->citizens.size();
+}
+
+void DeptOfPR::killCitizen(Citizen *citizen)
+{
+   this->citizens.erase(std::remove(this->citizens.begin(), this->citizens.end(), citizen), this->citizens.end());
 }
 
 void DeptOfPR::notifyHousingToRemove(string type) // CHANGE TO BOOL
@@ -87,6 +114,7 @@ bool DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure 
       // Decision making to increase taxes
    } else if(deptName == "Housing") { // check dept housing request funding function
       this->finance->increaseTaxes(10);
+      this->finance->allocateBudget("Housing", 100000);
       /*
       bool request = finance->allocateBudget(deptName, 2000000); //<< allocate budget to change to budget
       if(request) {
@@ -96,6 +124,11 @@ bool DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure 
       }
       */
       std::cout << "Taxes have been increased to support government funding needs." << std::endl;
+      return true;
+   } else if(deptName == "Utility") {
+      this->finance->allocateBudget("Utility", 10000);
+      std::cout << "Budget allocated to Utility department." << std::endl;
+
       return true;
    }
 
