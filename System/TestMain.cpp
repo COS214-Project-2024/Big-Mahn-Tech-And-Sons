@@ -8,6 +8,7 @@
 #include "DeptOfFinance.h"
 #include "Water.h"
 #include "WaterSupply.h"
+#include "PowerSupply.h"
 
 //
 #include "visitHousing.h"
@@ -19,6 +20,12 @@
 #include "CommercialBuildingCreator.h"
 //
 
+#include "NaturalDisasterCommand.h"
+#include "LoadsheddingCommand.h"
+#include "PandemicCommand.h"
+#include "FestivalCommand.h"
+#include "RecessionCommand.h"
+
 void buildingsTest();
 void testResidentialBuildings();
 void testCommercialBuildingFunctions();
@@ -26,6 +33,13 @@ void testLandmarkBuildings();
 void testIndustrialBuildings();
 void testHouse();
 int testDepartment();
+
+
+void testNaturalDisaster();
+void testPandemic();
+void testLoadShedding();
+void testFestival();
+void testRecession();
 
 int main()
 {
@@ -37,18 +51,16 @@ int main()
     // testCommercialBuildingFunctions();
     // testLandmarkBuildings();
     // testIndustrialBuildings();
-    //testHouse();
-    testDepartment();
+    // testHouse();
+    // testNaturalDisaster();
+    //testPandemic();
+    //testLoadShedding();
+    testRecession();
 
     std::cout << "End" << std::endl;
 
     return 0;
 }
-
-
-
-
-
 
 
 // ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
@@ -83,7 +95,6 @@ void buildingsTest()
               << "\t networth of :  " << esate->getNetWorth()
               << " \t has a priceTag of:  " << esate->getPriceTag() << "\n";
 }
-
 
 void testResidentialBuildings() {
     ResidentialBuildingCreator creator;
@@ -383,4 +394,177 @@ int testDepartment() {
 }
 
 // ------------------------------------------------------------------------------------------------------- //
+void testNaturalDisaster()
+{
+    // Step 1: Initialize the DeptOfHousing and DeptOfTransportation
+    DeptOfHousing *deptOfHousing = new DeptOfHousing(100000000);  // Initial budget for testing
+    DeptOfTransportation* deptOfTransport = DeptOfTransportation::getInstance();
+
+    // Step 2: Add some buildings to the DeptOfHousing for testing
+    std::cout << "Adding buildings to DeptOfHousing...\n";
+    deptOfHousing->createResidentialBuilding("Apartment");
+    deptOfHousing->createCommercialBuilding("Shop");
+    deptOfHousing->createIndustrialBuilding("Factory");
+    deptOfHousing->createLandmarkBuilding("Museum");
+
+    // Display all buildings before natural disaster
+    std::cout << "\nBuildings before Natural Disaster:\n";
+    deptOfHousing->listBuildings();
+
+    // Step 3: Create and execute the NaturalDisasterCommand
+    NaturalDisasterCommand* naturalDisasterCommand = new NaturalDisasterCommand(deptOfHousing, deptOfTransport);
+    std::cout << "\nExecuting Natural Disaster Command...\n";
+    naturalDisasterCommand->execute();
+
+    // Display all buildings after natural disaster to see effects of damage and repair
+    std::cout << "\nBuildings after Natural Disaster Command:\n";
+    deptOfHousing->listBuildings();
+
+    // Step 4: Clean up singleton
+    delete deptOfTransport; 
+    delete  naturalDisasterCommand;
+}
+
+void testPandemic()
+{
+   DeptOfPR* prDepartment;
+
+    // Create a vector of citizens for testing
+    std::vector<Citizen*> citizens = {
+        new Citizen("Alice", 80.0, 10, 20, prDepartment),
+        new Citizen("Bob", 70.0, 12, 22, prDepartment),
+        new Citizen("Charlie", 60.0, 14, 24, prDepartment)
+    };
+
+    // Display initial state of each citizen
+    std::cout << "Initial citizen states:\n";
+    for (const auto& citizen : citizens) {
+        std::cout << "Citizen: " << citizen->getName() 
+                  << ", Health: " << citizen->getHealth()
+                  << ", Satisfaction: " << citizen->getSatisfactionLevel() << "\n";
+    }
+
+    // Create a PandemicCommand instance
+    PandemicCommand* pandemicCommand =  new PandemicCommand(citizens);
+
+    // Execute each pandemic command individually for testing
+    std::cout << "\n--- Imposing Lockdown ---\n";
+    pandemicCommand->imposeLockdown();
+    
+
+    std::cout << "\n--- Distributing Vaccines ---\n";
+    pandemicCommand->distributeVaccines();
+    for (const auto& citizen : citizens) {
+        std::cout << "Citizen: " << citizen->getName() 
+                  << ", Health: " << citizen->getHealth()
+                  << ", Satisfaction: " << citizen->getSatisfactionLevel() << "\n";
+    }
+
+
+    std::cout << "\n--- Managing Citizen Satisfaction ---\n";
+    pandemicCommand->manageCitizenSatisfaction();
+    for (const auto& citizen : citizens) {
+        std::cout << "Citizens, Satisfaction: " << citizen->getSatisfactionLevel() << "\n";
+    }
+
+    std::cout << "\n--- Tracking Infection Rates ---\n";
+    pandemicCommand->trackInfectionRates();
+
+    // Clean up dynamically allocated citizens
+    for (auto& citizen : citizens) {
+        delete citizen;
+    }
+ 
+}
+
+void testLoadShedding()
+{
+    //  // Setup for the test
+    //     std::cout << "Setting up LoadShedding test..." << std::endl;
+
+    //     // Create a power resource (mock object for testing purposes)
+    //     Power mockPowerResource("MockPowerResource", 1000); // Assume Power class exists
+    //     PowerSupply powerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
+    //  DeptOfUtilities* utilitiesDept = new PowerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
+        
+    //    // powerSupply->distributePower();
+    //    // Assuming a method to set power supply exists
+    //     // Create LoadSheddingCommand with utilities department
+    //     LoadsheddingCommand* loadSheddingCommand = new LoadsheddingCommand(utilitiesDept);
+
+    //     // Schedule load shedding
+    //     int delay = 5; // Delay of 5 seconds for testing
+    //     loadSheddingCommand->scheduleLoadshedding(delay);
+
+        
+    //     loadSheddingCommand->execute();
+
+    //     // Clean up
+    //     //delete mockPowerResource; // Clean up mock power resource
+    //    // delete powerSupply; // Clean up power supply
+    //     delete utilitiesDept; // Clean up utilities department
+
+    //     std::cout << "LoadShedding test completed." << std::endl;
+}
+
+
+void testFestival()
+{
+    Power mockPowerResource("MockPowerResource", 1000);
+    DeptOfUtilities* utilitiesDept = new PowerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
+      DeptOfPR* deptOfPR;
+ std::vector<Citizen*> citizens = {
+        new Citizen("Alice", 80.0, 10, 20, deptOfPR),
+        new Citizen("Bob", 70.0, 12, 22, deptOfPR),
+        new Citizen("Charlie", 60.0, 14, 24, deptOfPR)
+    };
+  
+    // Create a FestivalCommand instance
+    FestivalCommand* festivalCommand = new FestivalCommand(utilitiesDept, citizens[0], deptOfPR);
+
+    // Execute the festival command, triggering all festival actions
+    std::cout << "Executing Festival Command..." << std::endl;
+    festivalCommand->execute();
+
+    // Check the results of the command execution
+    std::cout << "\n--- Festival Command Results ---" << std::endl;
+    std::cout << "Citizen 1 Happiness Level: " << citizens[0]->getSatisfactionLevel() << std::endl;
+    std::cout << "Citizen 2 Happiness Level: " << citizens[1]->getSatisfactionLevel() << std::endl;
+   
+}
+
+void testRecession()
+{
+   // Create mock finance department
+    DeptOfFinance* financeDept;
+    DeptOfPR* prDepartment;
+
+    // Create citizens
+    std::vector<Citizen*> citizens = {
+        new Citizen("Alice", 80.0, 10, 20, prDepartment),
+        new Citizen("Bob", 70.0, 12, 22, prDepartment),
+        new Citizen("Charlie", 60.0, 14, 24, prDepartment)
+    };
+
+     DeptOfHousing *housingDept = new DeptOfHousing(1000000);
+    // Create commercial buildings
+   housingDept->createCommercialBuilding("Office");
+    housingDept->createCommercialBuilding("School");
+    housingDept->createCommercialBuilding("Hospital");
+
+    // Create the recession command
+    RecessionCommand* recessionCommand;
+
+    // Execute the recession command
+    std::cout << "Executing Recession Command...\n";
+    recessionCommand->execute();
+
+    // Cleanup
+    for(auto& citizens : citizens)
+    {
+         delete citizens;
+    }
+   
+    delete financeDept;
+}
 

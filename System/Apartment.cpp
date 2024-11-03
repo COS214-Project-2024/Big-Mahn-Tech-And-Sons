@@ -49,3 +49,4 @@ Building* Apartment::repairClone() const {
     std::cout << "Repairing residential building (Apartment): " << getName() << "\n";
     return new Apartment(*this);
 }
+
