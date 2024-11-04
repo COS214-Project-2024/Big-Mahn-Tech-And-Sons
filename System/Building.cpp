@@ -63,10 +63,10 @@ void Building::setCoordinates(const std::vector<std::pair<int, int>>& coords) {
 void Building::displayStats() const {
     std::cout << "Building Name: " << name << std::endl;
     std::cout << "Max Capacity: " << maxCapacity << std::endl;
-    std::cout << "Electricity Meter: " << electricityMeterBox << " kWh" << std::endl;
+    std::cout << "Electricity Meter: " << electricityMeterBox << " units" << std::endl;
     std::cout << "Water Meter: " << waterMeterBox << " L" << std::endl;
-    std::cout << "Electricity Usage: " << electricityUsage << " kWh" << std::endl;
-    std::cout << "Water Usage: " << waterUsage << " L" << std::endl;
+    std::cout << "Electricity Usage: " << electricityUsage << " units" << std::endl;
+    std::cout << "Water Usage: " << waterUsage << " kL" << std::endl;
     std::cout << "Waste Produced: " << wasteProduction << " kg" << std::endl;
     std::cout << "Dimensions (WxL): " << width << " x " << length << " units" << std::endl;
 
@@ -98,9 +98,9 @@ double Building::getWasteAmount() const { return wasteProduction; }
 // Setters
 void Building::setName(const std::string& newName) { name = newName; }
 void Building::setMaxCapacity(int capacity) { maxCapacity = capacity; }
-void Building::setElectricityMeterBox(double reading) { electricityMeterBox = reading; }
-void Building::setWaterMeterBox(double reading) { waterMeterBox = reading; }
-void Building::setElectricityUsage(double usage) { electricityUsage = usage; }
+void Building::setElectricityMeterBox(double reading) { electricityMeterBox = reading;  cout << "ElectricityMeterBox is now: " <<electricityMeterBox<<endl; }
+void Building::setWaterMeterBox(double reading) { waterMeterBox = reading; cout << "WaterMeterBox is now: "<<waterMeterBox<<endl; }
+void Building::setElectricityUsage(double usage) { electricityUsage = usage;}
 void Building::setWaterUsage(double usage) { waterUsage = usage; }
 void Building::setWaste(double waste) { wasteProduction = waste; }
 void Building::setWidth(int newWidth) { width = newWidth; }
@@ -112,12 +112,15 @@ void Building::setLength(int newLength) { length = newLength; }
  * @param amount Amount of water consumed (in liters).
  */
 void Building::consumeWater(double amount) {
-    if (amount <= 0 || waterUsage < amount) {
+    if (amount <= 0 || waterMeterBox <= amount) {
         std::cout << "Water supply cut off due to zero or negative usage." << std::endl;
         return; // Cannot consume negative or more than available
     }
-    waterUsage -= amount; // Decrease usage
+    setWaterUsage(amount);
+    waterMeterBox -= amount; // Decrease usage
     std::cout << "Consumed " << amount << " liters of water." << std::endl;
+    setWaterMeterBox(waterMeterBox);
+
 }
 
 /**
@@ -126,12 +129,14 @@ void Building::consumeWater(double amount) {
  * @param amount Amount of electricity consumed (in kWh).
  */
 void Building::consumeElectricity(double amount) {
-    if (amount <= 0 || electricityUsage < amount) {
+    if (amount <= 0 || electricityMeterBox <= amount) {
         std::cout << "Power supply cut off due to zero or negative usage." << std::endl;
         return; // Cannot consume negative or more than available
     }
-    electricityUsage -= amount; // Decrease usage
-    std::cout << "Consumed " << amount << " kWh of electricity." << std::endl;
+    setElectricityUsage(amount);
+    electricityMeterBox -= amount; // Decrease usage
+    std::cout << "Consumed " << amount << " units of electricity." << std::endl;
+    setElectricityMeterBox(electricityMeterBox);
 }
 
 /**

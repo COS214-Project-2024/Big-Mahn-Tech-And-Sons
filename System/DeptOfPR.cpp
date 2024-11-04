@@ -12,6 +12,14 @@ DeptOfPR::DeptOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, D
 
    housingDept->setPR(this);
    utilitiesDept->setPR(this);
+   
+   if(utilities->getSuccessor()) {
+      utilities->getSuccessor()->setPR(this);
+
+      if(utilities->getSuccessor()->getSuccessor()) {
+         utilities->getSuccessor()->getSuccessor()->setPR(this);
+      }
+   }
    financeDept->setPR(this);
 }
 
@@ -80,6 +88,12 @@ Citizen *DeptOfPR::getCitizen(int i)
 int DeptOfPR::numCitizens()
 {
    return this->citizens.size();
+}
+
+vector<Building*> DeptOfPR::getBuildings()
+{
+   
+   return this->housing->getBuildings();
 }
 
 void DeptOfPR::killCitizen(Citizen *citizen)

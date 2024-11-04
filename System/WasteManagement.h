@@ -2,7 +2,7 @@
  * @file WasteManagement.h
  * @author MissNcube
  * @brief Header file for the WasteManagement class, responsible for handling waste collection, disposal, and recycling in the city.
- *  
+ *
  *  Design Pattern used : Chain of responsibility
  *  Handler : DepartmentUtilities
  *  ConcreteHandler1 : PowerSupply
@@ -22,10 +22,11 @@
  * @brief Manages the waste collection, disposal, and recycling systems for the city.
  * Inherits from the DepartmentUtilities class.
  */
-class WasteManagement : public DeptOfUtilities {
+class WasteManagement : public DeptOfUtilities
+{
 private:
-    double wasteCapacity; /**< Total capacity for handling waste in the city. */
-    vector<Building*> buildings;
+    double wasteCapacity;       /**< Total capacity for handling waste in the city. */
+    double replenishedCapacity; /**< Total capacity for replenishing waste in the city after disposal. */
 
 public:
     /**
@@ -34,12 +35,28 @@ public:
      * @param budget The budget allocated to the waste management department.
      * @param capacity The initial waste handling capacity available for the department.
      */
-    WasteManagement(string name, double budget, double capacity);
+    WasteManagement(double budget, double capacity);
+
+    /**
+     * @brief Destructor for WasteManagement.
+     * Cleans up the buildings vector if the WasteManagement class owns the Building instances.
+     */
+    ~WasteManagement(); // Destructor declaration
 
     /**
      * @brief Collects waste from various parts of the city.
      */
     void collectWaste();
+
+    /**
+     * @brief Collects waste from a specific building.
+     */
+    void collectWasteFromBuilding(Building *building);
+
+    /**
+     * @brief Collects waste from a specific building and its amount.
+     */
+    void CollectWasteFromBuilding(Building *building, double incomingAmt);
 
     /**
      * @brief Disposes of waste in landfills or dump locations.
@@ -58,24 +75,29 @@ public:
     void expandWasteCapacity();
 
     /**
-     * @brief Gets the current total waste handling capacity.
-     * @return The current waste handling capacity available.
+     * @brief Fetch the current capacity of the waste management class.
+     * @return current capacity of the waste management , how much it can handle and proccess at a time.
      */
     double getWasteCapacity();
 
     /**
-     * @brief the handleRequest() function is the core method responsible for either processing 
-     * the request or passing it along the chain to the next handler. WasteManagement 
+     * @brief Fetch the current budget of the waste management class.
+     * @return The budget  allocated to the waste management department.
+     */
+    double getWasteManagementBudget();
+
+    /**
+     * @brief set the current budget of the waste management class.
+     */
+    void setWasteCapacity(double amt);
+
+    /**
+     * @brief the handleRequest() function is the core method responsible for either processing
+     * the request or passing it along the chain to the next handler. WasteManagement
      * checks if it can handle the request, if not, WasteManagement will pass it on
      * to the next concreteHandler.
      */
-    bool handleRequest(Request &req);
-
-    /**
-     * @brief this function adds a building to the vector to  be handled by the waste management
-     */
-    void addBuilding(Building* building);
-
+    bool handleRequest(Request &req) override;
 };
 
-#endif  // WASTEMANAGEMENT_H
+#endif // WASTEMANAGEMENT_H

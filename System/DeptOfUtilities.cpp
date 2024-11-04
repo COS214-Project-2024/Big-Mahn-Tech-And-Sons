@@ -1,73 +1,65 @@
 #include "DeptOfUtilities.h"
-#include "DeptOfPR.h"
-#include "Request.h"
 #include "Building.h"
+#include "DeptOfPR.h"
 #include "PowerSupply.h"
-/**
- * @brief Constructor for DeptOfUtilities.
- * @param name The name of the department.
- * @param budget The initial budget allocated to the department.
- */
-DeptOfUtilities::DeptOfUtilities(string name, double budget) 
-    : departmentName(name), budget(budget), resourceUsage(0), successor(nullptr), PR(nullptr) {}
+#include "WaterSupply.h"
+#include "WasteManagement.h"
+#include "Request.h"
+
+DeptOfUtilities::DeptOfUtilities(double budget)
+    : budget(budget), resourceUsage(0), successor(nullptr), PR(nullptr) {}
 
 /**
  * @brief Displays the information about the department.
  */
-void DeptOfUtilities::displayDepartmentInfo() {
-    cout << "Department: " << departmentName << endl;
+void DeptOfUtilities::displayDepartmentInfo()
+{
     cout << "Budget: ZAR" << budget << endl;
     cout << "Resource Usage: " << resourceUsage << endl;
 }
 
-
-/**
- * @brief Requests PR department assistance.
- */
-void DeptOfUtilities::requestPR() {
-    if (PR) {
-        cout << "Requesting assistance from PR department for " << departmentName << endl;
-        PR->notifyTaxman("Water");
-    } else {
+void DeptOfUtilities::requestPR(string request) // Requests PR department assistance.
+{
+    if (request == "water") {
+        if (PR) {  // Check if PR is not nullptr
+            cout << "Requesting assistance from PR department for department utilities" << endl;
+            PR->notifyTaxman("Water");
+        } else {
+            cout << "PR department is not available" << endl;
+        }
+    }
+    else if (request == "building") {
+        if (PR) {  // Check if PR is not nullptr before accessing buildings
+            this->buildings = PR->getBuildings();
+        } else {
+            cout << "PR department is not available" << endl;
+        }
+    }
+    else {
         cout << "No PR department available." << endl;
     }
 }
 
-/**
- * @brief Sets the successor in the chain.
- * @param nextDepartment Pointer to the next department in the chain.
- */
-void DeptOfUtilities::setSuccessor(DeptOfUtilities* nextDepartment) {
+void DeptOfUtilities::increaseUsage()
+{
+    resourceUsage += 0;
+}
+
+void DeptOfUtilities::setSuccessor(DeptOfUtilities *nextDepartment)
+{
     successor = nextDepartment;
 }
 
-void DeptOfUtilities::initiateLoadshedding()
+DeptOfUtilities *DeptOfUtilities::getSuccessor()
 {
-    cout <<"Intiating  loadshedding " <<endl; 
-    
-    
-}
+    if(successor != NULL) {
+        return successor;
+    }
 
-void DeptOfUtilities::restorePower()
-{
-}
-
-void DeptOfUtilities::increaseUsage()
-{
-}
-
-void DeptOfUtilities::reduceUsage()
-{
+    return NULL;
 }
 
 void DeptOfUtilities::setPR(DeptOfPR *pr)
 {
     this->PR = pr;
-}
-
-void DeptOfUtilities::requestBudget()
-{
-}
-void DeptOfUtilities::trackUsage()
-{
 }

@@ -6,18 +6,28 @@
 class Building;
 
 using namespace std;
-class Request {
+class Request
+{
 private:
-
     double amount;
     string type;
-    Building* building;
+    Building *building;
+
 public:
     // Constructor to initialize Request with a type, building, and amount
-    Request(string type,Building* building, double amount);
+    Request(string type, Building *building, double amount);
 
+    /**
+     * @brief Get the type of the requested resource.
+     * @return The type of resource requested.
+     */
     string getType();
-    Building* getBuilding();
+
+    /**
+     * @brief Get the building of the requested resource.
+     * @return The building receiving the resource requested.
+     */
+    Building *getBuilding();
 
     /**
      * @brief Get the amount of the requested resource.
@@ -26,6 +36,5 @@ public:
     double getAmount();
 
     // ~Request();
-
 };
 #endif // REQUEST_H
