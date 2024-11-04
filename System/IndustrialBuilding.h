@@ -9,9 +9,8 @@
 #define INDUSTRIALBUILDING_H
 
 #include "Building.h"
-#include "TaxManager.h"
 
-/**
+/**...............................................................................................................................................................................................................................................
  * @class IndustrialBuilding
  * @brief Abstract base class for industrial buildings.
  *
@@ -33,7 +32,7 @@ class IndustrialBuilding : public Building {
          * Provides information about the building’s usage, capacity, and
          * other industrial-specific attributes.
          */
-        void displayStats() const;
+        void displayStats() const override;
 
         /**
          * @brief Accepts a visitor to perform operations based on building type.
@@ -43,7 +42,7 @@ class IndustrialBuilding : public Building {
          * 
          * @param visitor A pointer to a TaxManager visitor.
          */
-        virtual void accept(TaxManager* visitor) = 0;
+        virtual void accept(TaxManager* visitor) override ;
 
         /**
          * @brief Creates a copy of the IndustrialBuilding instance.
@@ -53,7 +52,7 @@ class IndustrialBuilding : public Building {
          * 
          * @return A pointer to a cloned IndustrialBuilding instance.
          */
-        virtual Building* repairClone() const = 0;
+        virtual Building* repairClone() const override;
     
         /**
          * @brief Calculates tax for a landmark.
@@ -61,7 +60,7 @@ class IndustrialBuilding : public Building {
          * 
          * @return Tax amount (always 0.0 for landmarks).
          */
-        double calculateTax() const override;
+        virtual double calculateTax() const override;
 };
 
 #endif // INDUSTRIALBUILDING_H

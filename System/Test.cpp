@@ -1,5 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
+#include <thread>   // For std::this_thread
+#include <chrono>   // For std::chrono::seconds
+
 
 #include "Adult.h"
 #include "Child.h"
@@ -27,18 +30,21 @@
 #include "LandmarkBuildingCreator.h"
 #include "TaxManager.h"
 
-
+#include "NaturalDisasterCommand.h"
+#include "LoadsheddingCommand.h"
 #include "PandemicCommand.h"
+#include "FestivalCommand.h"
+#include "RecessionCommand.h"
 
 TEST_CASE("Citizen initialisation")
 {
     DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil);
     TaxManager *taxMan = new TaxManager();
@@ -46,7 +52,7 @@ TEST_CASE("Citizen initialisation")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen person("John Doe", 10, 20, prDept);
+    Citizen person("John Doe", prDept);
 
     CHECK(person.getAge() == 1);
     for (int i = 0; i < 20; i++)
@@ -66,11 +72,11 @@ TEST_CASE("Citizen Initialization")
 {
     DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil);
     TaxManager *taxMan = new TaxManager();
@@ -78,7 +84,7 @@ TEST_CASE("Citizen Initialization")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen citizen("John Doe", 10, 20, prDept);
+    Citizen citizen("John Doe", prDept);
 
     CHECK(citizen.getName() == "John Doe");
     CHECK(citizen.getAge() == 1);                  // Starts at age 1 by specification
@@ -96,11 +102,11 @@ TEST_CASE("Citizen Age Increment")
 
     DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil);
     TaxManager *taxMan = new TaxManager();
@@ -108,7 +114,7 @@ TEST_CASE("Citizen Age Increment")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen citizen("Alice Smith", 15, 25, prDept);
+    Citizen citizen("Alice Smith",prDept);
 
     int initialAge = citizen.getAge();
     citizen.getOlder();
@@ -127,11 +133,11 @@ TEST_CASE("Citizen Work and Spend")
 {
     DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power( 1456.3);
 
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil);
     TaxManager *taxMan = new TaxManager();
@@ -139,7 +145,7 @@ TEST_CASE("Citizen Work and Spend")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen citizen("Bob Brown",  10, 20, prDept);
+    Citizen citizen("Bob Brown", prDept);
     double initialBudget = citizen.getBudget();
 
     SUBCASE("Earning Income")
@@ -158,7 +164,8 @@ TEST_CASE("Citizen Work and Spend")
 
     SUBCASE("Unsuccessful Spending - Insufficient Budget")
     {
-        bool spendResult = citizen.Spend(1000.0);
+        citizen.display();
+        bool spendResult = citizen.Spend(1000000.0);
         CHECK(spendResult == false); // Should return false as spending is unsuccessful
     }
 
@@ -173,95 +180,109 @@ TEST_CASE("DeptOfPR initializes and interacts with Departments")
     // Initialize the departments and resources
     DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil); // Setting up the Chain of Responsibility
     TaxManager *taxMan = new TaxManager();
     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
 
-    // Initialize DeptOfPR and link to other departments
+    // // Initialize DeptOfPR and link to other departments
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    // Test that PR Department was successfully initialized
+    // // Test that PR Department was successfully initialized
     CHECK(prDept != nullptr);
 }
 
 TEST_CASE("DeptOfPR notifies Housing Department to build")
 {
-    DeptOfHousing *housingDept = new DeptOfHousing(100000);
-    Water *water = new Water("Sparkling", 10000);
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfHousing *housingDept = new DeptOfHousing(1000000);
+    Water *water = new Water( 10000);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
     TaxManager *taxMan = new TaxManager();
     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
     int prev = housingDept->getTotalBuildings();
-    prDept.notifyHousingToBuild("Residential");
+    prDept.notifyHousingToBuild("Apartment");
     CHECK(housingDept->getTotalBuildings() == prev + 1); // Assuming `isBuildNotified` method tracks this state
 }
 
 TEST_CASE("DeptOfPR notifies Utilities Department")
 {
-    /*
-    DeptOfHousing* housingDept = new DeptOfHousing(100000);
-    Water* water = new Water("Sparkling", 10000);
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfHousing* housingDept = new DeptOfHousing(100000000);
+     Water *water = new Water(10000);
+    Power *power = new Power( 1000000);
+    
+    DeptOfUtilities* utilitiesDept = new WaterSupply( 500000.02, 100000, water);
+    DeptOfUtilities* powerUtil = new PowerSupply( 500000000.02, 100000, power);
+
+    utilitiesDept->setSuccessor(powerUtil);
     TaxManager* taxMan = new TaxManager();
     DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
 
-    prDept.notifyUtilities();
-    CHECK(utilitiesDept->isNotified() == true);  // Assuming `isNotified` method tracks this state
-    */
+    housingDept->createResidentialBuilding("House");
+    housingDept->displayAllBuildings();
+    
+    for(Building* b : housingDept->getBuildings()) {
+        prDept.notifyUtilities("power", b);
+    }
+    housingDept->displayAllBuildings();
+
+ housingDept->getBuildings().at(0);
+
+   // prDept.notifyUtilities();
+   // CHECK(utilitiesDept->isNotified() == true);  // Assuming `isNotified` method tracks this state
+    
 }
 
 TEST_CASE("DeptOfPR notifies Taxman in Finance Department")
 {
-    /*
+    
     DeptOfHousing* housingDept = new DeptOfHousing(100000);
-    Water* water = new Water("Sparkling", 10000);
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    Water* water = new Water(10000);
+    DeptOfUtilities* utilitiesDept = new WaterSupply(5000.02, 100000, water);
     TaxManager* taxMan = new TaxManager();
     DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
 
     prDept.notifyTaxman("Citizen");
-    CHECK(financeDept-> == true);  // Assuming `isTaxmanNotified` method tracks this state'
-    */
+    //CHECK(financeDept-> == true);  // Assuming `isTaxmanNotified` method tracks this state'
+    
 }
 
 TEST_CASE("DeptOfPR updates Building and Citizen states")
 {
-    /*
+    
     DeptOfHousing* housingDept = new DeptOfHousing(100000);
-    Water* water = new Water("Sparkling", 10000);
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    Water* water = new Water(10000);
+    DeptOfUtilities* utilitiesDept = new WaterSupply( 5000.02, 100000, water);
     TaxManager* taxMan = new TaxManager();
     DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
-    Building building;
-    Citizen citizen("John Doe", 50.0, 10, 20, &prDept);
+   //
+    Citizen citizen("John Doe",  &prDept);
 
-    prDept.update(&building);
-    prDept.update(&citizen);
+    // prDept.update(&building);
+    // prDept.update(&citizen);
 
     // Check for state changes if there are observable effects on building or citizen
-    */
+    
 }
 
 TEST_CASE("DeptOfPR Funding Request")
 {
-    /*
+    
     DeptOfHousing* housingDept = new DeptOfHousing(100000);
-    Water* water = new Water("Sparkling", 10000);
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    Water* water = new Water(10000);
+    DeptOfUtilities* utilitiesDept = new WaterSupply( 5000.02, 100000, water);
     TaxManager* taxMan = new TaxManager();
     DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
@@ -269,73 +290,80 @@ TEST_CASE("DeptOfPR Funding Request")
     double requestAmount = 5000.0;
     prDept.notifyTaxman("Housing");
 
-    CHECK(fundingGranted);
-    CHECK(finance.getRemainingBudget() >= requestAmount);
+    //CHECK(financeDept->checkMoney());
 
-    */
 }
 
 TEST_CASE("DeptOfUtility chain")
 {
+    TaxManager *taxMan = new TaxManager();
 
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Electricity", 1456.3);
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
 
-    PowerSupply powerDept("Power", 5000, 400, power);
-    WaterSupply waterDept("Water", 2000, 500, water);
-    WasteManagement wasteDept("Waste", 150, 600);
+    DeptOfHousing *housingDept = new DeptOfHousing(10000000000);
 
-    // Set up chain of responsibility
-    powerDept.setSuccessor(&waterDept);
-    waterDept.setSuccessor(&wasteDept);
+    Water *water = new Water(108000);
+    Power *power = new Power(170004);
 
-    Building *b1 = new House();
-    Building *b2 = new Apartment();
+    DeptOfUtilities *powerDept = new PowerSupply(50000, 40000, power);
+    DeptOfUtilities *waterDept = new WaterSupply(20000, 500000, water);
+    DeptOfUtilities *wasteDept = new WasteManagement(10000, 6000);
 
-    double initialPowerLevel = powerDept.getPowerCapacity();
-    double initialWaterLevel = waterDept.getWaterCapacity();
-    double initialWasteCapacity = wasteDept.getWasteCapacity();
+    wasteDept->setSuccessor(powerDept);
+    powerDept->setSuccessor(waterDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
 
-    // Example request for power within capacity
-    Request req1("Power", b1, 100);
-    powerDept.handleRequest(req1); // Should be handled by PowerSupply
+    housingDept->createResidentialBuilding("House");
+    housingDept->createResidentialBuilding("Apartment");
 
-    // Example request for water within capacity
-    Request req2("Water", b2, 80);
-    powerDept.handleRequest(req2); // Passed from PowerSupply to WaterSupply
+    SUBCASE("Water Supply Tests")
+    {
+        dynamic_cast<WaterSupply *>(waterDept)->distributeWater();
+        CHECK(dynamic_cast<WaterSupply *>(waterDept)->calculateWaterUsage() >= 0);
+        int initialWaterCapacity = dynamic_cast<WaterSupply *>(waterDept)->getWaterCapacity();
+        dynamic_cast<WaterSupply *>(waterDept)->increaseWaterCapacity();
+        CHECK(dynamic_cast<WaterSupply *>(waterDept)->getWaterCapacity() > initialWaterCapacity);
+    }
 
-    // Example request for power that exceeds capacity of PowerSupply, should be passed along
-    Request req3("Power", b2, 450);
-    powerDept.handleRequest(req3); // PowerSupply can't handle, passed to WaterSupply if applicable
+    SUBCASE("Power Supply Tests")
+    {
+        dynamic_cast<PowerSupply *>(powerDept)->distributePowerToBuilding(housingDept->getBuildings().at(0));
+        CHECK(dynamic_cast<PowerSupply *>(powerDept)->calculatePowerUsage() >= 0);
+        int initialPowerCapacity = dynamic_cast<PowerSupply *>(powerDept)->getPowerCapacity();
+        dynamic_cast<PowerSupply *>(powerDept)->increasePowerCapacity();
+        CHECK(dynamic_cast<PowerSupply *>(powerDept)->getPowerCapacity() > initialPowerCapacity);
+    }
 
-    // Example request for waste within capacity of WasteManagement
-    Request req4("Waste", b1, 100);
-    powerDept.handleRequest(req4); // Passed from PowerSupply and WaterSupply to WasteManagement
+    SUBCASE("Waste Management Tests")
+    {
+        dynamic_cast<WasteManagement *>(wasteDept)->collectWaste();
+        CHECK(dynamic_cast<WasteManagement *>(wasteDept)->calculateWasteProcessing() >= 0);
+        int initialWasteCapacity = dynamic_cast<WasteManagement *>(wasteDept)->getWasteCapacity();
+        dynamic_cast<WasteManagement *>(wasteDept)->expandWasteCapacity();
+        CHECK(dynamic_cast<WasteManagement *>(wasteDept)->getWasteCapacity() > initialWasteCapacity);
+    }
 
-    // Example request for waste that exceeds WasteManagement capacity, should return unfulfilled
-    Request req5("Waste", b2, 700);
-    powerDept.handleRequest(req5); // No handler should be able to fulfill this request
+    SUBCASE("Request Handling Tests")
+    {
+        Building *b1 = housingDept->getBuildings().at(0);
+        Request req1("water", b1, 10);
+        wasteDept->handleRequest(req1);
 
-    // Example of high demand water request that exceeds all capacities
-    Request req6("Water", b2, 2000);
-    powerDept.handleRequest(req6); // No handler should be able to fulfill this request
+        Request req2("waste", b1, 80);
+        wasteDept->handleRequest(req2);
 
-    CHECK(powerDept.getPowerCapacity() == initialPowerLevel);
-    CHECK(waterDept.getWaterCapacity() == initialWaterLevel);
-    CHECK(wasteDept.getWasteCapacity() == initialWasteCapacity);
+        Request req3("power", b1, 10);
+        wasteDept->handleRequest(req3);
 
-    // Edge cases:
-    // Large water request that exceeds water capacity but should not affect other departments
-    Request req7("Water", b1, 1200);
-    powerDept.handleRequest(req7); // Exceeds water capacity, should fail gracefully
+    }
 
-    // Unrecognized resource request type, should pass through all departments and remain unhandled
-    Request req8("Gas", b1, 50);
-    powerDept.handleRequest(req8); // Should go through the chain but remain unhandled
-    
+    delete water;
+    delete power;
+    delete wasteDept;
+    delete powerDept;
+    delete waterDept;
+    delete housingDept;
 }
-
-
 
 TEST_CASE("PandemicCommand functionality") {
     /*
@@ -343,56 +371,128 @@ TEST_CASE("PandemicCommand functionality") {
     Water *water = new Water("Sparkling", 10000);
     DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
     TaxManager *taxMan = new TaxManager();
+
     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
-    DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
-    // Create mock citizens
-    Citizen* citizen1 = new Citizen("Alice", 2, 4,&prDept);
-    Citizen* citizen2 = new Citizen("Bob",  2, 4,&prDept);
-    Citizen* citizen3 = new Citizen("Charlie", 2, 4,&prDept);
 
+    DeptOfHousing *housingDept = new DeptOfHousing(10000000000);
 
-    for (int i = 0; i < 20; i++)
+    Water *water = new Water(108000);
+    Power *power = new Power(170004);
+
+    DeptOfUtilities *powerDept = new PowerSupply(50000, 40000, power);
+    DeptOfUtilities *waterDept = new WaterSupply(20000, 500000, water);
+    DeptOfUtilities *wasteDept = new WasteManagement(10000, 6000);
+
+    wasteDept->setSuccessor(powerDept);
+    powerDept->setSuccessor(waterDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
+
+    housingDept->createResidentialBuilding("House");
+    housingDept->createResidentialBuilding("Apartment");
+
+    SUBCASE("Water Supply Tests")
     {
-        citizen1->getOlder();
-        citizen2->getOlder();
-        citizen3->getOlder();
+        dynamic_cast<WaterSupply *>(waterDept)->distributeWater();
+        CHECK(dynamic_cast<WaterSupply *>(waterDept)->calculateWaterUsage() >= 0);
+        int initialWaterCapacity = dynamic_cast<WaterSupply *>(waterDept)->getWaterCapacity();
+        dynamic_cast<WaterSupply *>(waterDept)->increaseWaterCapacity();
+        CHECK(dynamic_cast<WaterSupply *>(waterDept)->getWaterCapacity() > initialWaterCapacity);
     }
 
-    // Vector of citizens affected by the pandemic
-    std::vector<Citizen*> citizens = {citizen1, citizen2, citizen3};
-    
-    // Create a PandemicCommand instance
-    PandemicCommand pandemicCommand(citizens);
-    
-    // Test imposing lockdown
-    pandemicCommand.imposeLockdown();
-    // Check if lockdown was imposed (replace with actual state check)
-    CHECK(citizen1->getCurrentLocation() == citizen1->getHomeLocation());
+    SUBCASE("Power Supply Tests")
+    {
+        dynamic_cast<PowerSupply *>(powerDept)->distributePowerToBuilding(housingDept->getBuildings().at(0));
+        CHECK(dynamic_cast<PowerSupply *>(powerDept)->calculatePowerUsage() >= 0);
+        int initialPowerCapacity = dynamic_cast<PowerSupply *>(powerDept)->getPowerCapacity();
+        dynamic_cast<PowerSupply *>(powerDept)->increasePowerCapacity();
+        CHECK(dynamic_cast<PowerSupply *>(powerDept)->getPowerCapacity() > initialPowerCapacity);
+    }
 
-    // Test increasing healthcare funding
-    pandemicCommand.increaseHealthcareFunding();
-   // CHECK(pandemicCommand.getHealthcareFunding() > previousFunding); // not 
+    SUBCASE("Waste Management Tests")
+    {
+        dynamic_cast<WasteManagement *>(wasteDept)->collectWaste();
+        CHECK(dynamic_cast<WasteManagement *>(wasteDept)->calculateWasteProcessing() >= 0);
+        int initialWasteCapacity = dynamic_cast<WasteManagement *>(wasteDept)->getWasteCapacity();
+        dynamic_cast<WasteManagement *>(wasteDept)->expandWasteCapacity();
+        CHECK(dynamic_cast<WasteManagement *>(wasteDept)->getWasteCapacity() > initialWasteCapacity);
+    }
 
+    SUBCASE("Request Handling Tests")
+    {
+        Building *b1 = housingDept->getBuildings().at(0);
+        Request req1("water", b1, 10);
+        wasteDept->handleRequest(req1);
 
-    // Test distributing vaccines
-    pandemicCommand.distributeVaccines();
-    // CHECK(citizen1->hasVaccine() == true);
-    // CHECK(citizen2->hasVaccine() == true);
-    // CHECK(citizen3->hasVaccine() == true);
+        Request req2("waste", b1, 80);
+        wasteDept->handleRequest(req2);
 
-    // Test quarantining citizens
-    double prevHealth = citizen3->getHealth();
-    double prevSatisfaction = citizen3->getSatisfactionLevel();
-    pandemicCommand.quarantineCitizens();
-    CHECK(citizen3->getHealth() < prevHealth);
-    CHECK(citizen3->getSatisfactionLevel() < prevSatisfaction);
+        Request req3("power", b1, 10);
+        wasteDept->handleRequest(req3);
 
-    // Test tracking infection rates
-    pandemicCommand.trackInfectionRates();
+    }
 
-    // Test command execution
-   // pandemicCommand.execute();
-    // CHECK(pandemicCommand.isExecuted() == true);
+    delete water;
+    delete power;
+    delete wasteDept;
+    delete powerDept;
+    delete waterDept;
+    delete housingDept;
+}
+
+TEST_CASE("PandemicCommand functionality")
+{
+    //       DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    //     Water *water = new Water(10000);
+    //     DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    //     TaxManager *taxMan = new TaxManager();
+    //     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+    //     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
+    //     // Create mock citizens
+    //     Citizen* citizen1 = new Citizen("Alice",50, 2, 4,&prDept);
+    //     Citizen* citizen2 = new Citizen("Bob", 45, 2, 4,&prDept);
+    //     Citizen* citizen3 = new Citizen("Charlie", 25, 2, 4,&prDept);
+
+    //     for (int i = 0; i < 20; i++)
+    //     {
+    //         citizen1->getOlder();
+    //         citizen2->getOlder();
+    //         citizen3->getOlder();
+    //     }
+
+    //     // Vector of citizens affected by the pandemic
+    //     std::vector<Citizen*> citizens = {citizen1, citizen2, citizen3};
+
+    //     // Create a PandemicCommand instance
+    //     PandemicCommand pandemicCommand(citizens);
+
+    //     // Test imposing lockdown
+    //     pandemicCommand.imposeLockdown();
+    //     // Check if lockdown was imposed (replace with actual state check)
+    //     CHECK(citizen1->getCurrentLocation() == citizen1->getHomeLocation());
+
+    //     // Test increasing healthcare funding
+    //     pandemicCommand.increaseHealthcareFunding();
+    //    // CHECK(pandemicCommand.getHealthcareFunding() > previousFunding); // not
+
+    //     // Test distributing vaccines
+    //     pandemicCommand.distributeVaccines();
+    //     // CHECK(citizen1->hasVaccine() == true);
+    //     // CHECK(citizen2->hasVaccine() == true);
+    //     // CHECK(citizen3->hasVaccine() == true);
+
+    //     // Test quarantining citizens
+    //     double prevHealth = citizen3->getHealth();
+    //     double prevSatisfaction = citizen3->getSatisfactionLevel();
+    //     pandemicCommand.quarantineCitizens();
+    //     CHECK(citizen3->getHealth() < prevHealth);
+    //     CHECK(citizen3->getSatisfactionLevel() < prevSatisfaction);
+
+    //     // Test tracking infection rates
+    //     pandemicCommand.trackInfectionRates();
+
+    //     // Test command execution
+    //    // pandemicCommand.execute();
+    //     // CHECK(pandemicCommand.isExecuted() == true);
 
     // Clean up
     delete citizen1;
@@ -401,6 +501,313 @@ TEST_CASE("PandemicCommand functionality") {
 
     */
 }
+
+
+// ------------------------------------------------------------------------------------------------------- //
+
+// ----------------------------- CITY GROWTH SECTION TESTS ----------------------------------------------- //
+
+
+
+TEST_CASE("Test DeptOfHousing initialization and building creation") {
+    DeptOfHousing deptOfHousing(100000000);  // Initialize with a large budget
+
+    SUBCASE("Add Residential Building - Apartment") {
+        deptOfHousing.createResidentialBuilding("Apartment");
+        CHECK(deptOfHousing.getTotalBuildings() == 1);
+    }
+
+    SUBCASE("Add Multiple Building Types") {
+        deptOfHousing.createResidentialBuilding("Apartment");
+        deptOfHousing.createCommercialBuilding("Shop");
+        deptOfHousing.createIndustrialBuilding("Factory");
+        deptOfHousing.createLandmarkBuilding("Museum");
+        CHECK(deptOfHousing.getTotalBuildings() == 4);
+    }
+}
+
+TEST_CASE("Test NaturalDisasterCommand damage buildings") {
+    DeptOfHousing deptOfHousing(100000000); 
+    DeptOfTransportation* deptOfTransport = DeptOfTransportation::getInstance();
+    deptOfHousing.createResidentialBuilding("Apartment");
+    deptOfHousing.createCommercialBuilding("Shop");
+    deptOfHousing.createIndustrialBuilding("Factory");
+    deptOfHousing.createLandmarkBuilding("Museum");
+
+    NaturalDisasterCommand naturalDisaster(&deptOfHousing, deptOfTransport);
+    int initialCount = deptOfHousing.getTotalBuildings();
+    
+    naturalDisaster.execute();  // Use execute() instead of damageBuildings()
+
+    // Ensure around half of the buildings are damaged
+    CHECK(deptOfHousing.getTotalBuildings() == initialCount / 2);
+}
+
+TEST_CASE("Test NaturalDisasterCommand repair buildings") {
+    DeptOfHousing deptOfHousing(100000000); 
+    DeptOfTransportation* deptOfTransport = DeptOfTransportation::getInstance();
+    deptOfHousing.createResidentialBuilding("Apartment");
+    deptOfHousing.createCommercialBuilding("Shop");
+    deptOfHousing.createIndustrialBuilding("Factory");
+
+    NaturalDisasterCommand naturalDisaster(&deptOfHousing, deptOfTransport);
+    naturalDisaster.execute();  // Simulate the natural disaster
+
+    // Verify that building types are present after repair
+    CHECK(deptOfHousing.getTotalBuildings() > 0);  // Check total buildings count
+}
+
+TEST_CASE("Clean up singleton") {
+    delete DeptOfTransportation::getInstance();
+}
+
+
+TEST_CASE("Test Pandemic Command") {
+    // Set up the environment
+ TaxManager *taxMan = new TaxManager();
+
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+
+    DeptOfHousing *housingDept = new DeptOfHousing(10000000000);
+
+    Water *water = new Water(108000);
+    Power *power = new Power(170004);
+
+    DeptOfUtilities *powerDept = new PowerSupply(50000, 40000, power);
+    DeptOfUtilities *waterDept = new WaterSupply(20000, 500000, water);
+    DeptOfUtilities *wasteDept = new WasteManagement(10000, 6000);
+
+    wasteDept->setSuccessor(powerDept);
+    powerDept->setSuccessor(waterDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
+
+    // Create citizens for testing
+    std::vector<Citizen*> citizens = {
+        new Citizen("Alice", prDept),
+        new Citizen("Bob",prDept),
+        new Citizen("Charlie", prDept)
+    };
+    PandemicCommand* pandemicCommand = new PandemicCommand(citizens);
+
+    SUBCASE("Initial Citizen States") {
+        for (const auto& citizen : citizens) {
+            CHECK(citizen->getHealth() == 100.0);
+            CHECK(citizen->getSatisfactionLevel() == 50.0);
+        }
+    }
+
+    SUBCASE("Impose Lockdown") {
+        pandemicCommand->imposeLockdown();
+        for (const auto& citizen : citizens) {
+            CHECK(citizen->getHealth() == doctest::Approx(90.0)); // Health decreases by 10
+            CHECK(citizen->getSatisfactionLevel() == doctest::Approx(40.0)); // Satisfaction decreases by 10
+        }
+    }
+
+    SUBCASE("Distribute Vaccines") {
+        // Apply lockdown first to lower health, then distribute vaccines
+        pandemicCommand->imposeLockdown();
+        pandemicCommand->distributeVaccines();
+        for (const auto& citizen : citizens) {
+            CHECK(citizen->getHealth() > 90.0); // Health increases, should be > 90.0
+        }
+    }
+
+    SUBCASE("Manage Citizen Satisfaction") {
+        pandemicCommand->manageCitizenSatisfaction();
+        for (const auto& citizen : citizens) {
+            CHECK(citizen->getSatisfactionLevel() == doctest::Approx(65.0)); // Satisfaction increases by 15
+        }
+    }
+
+    SUBCASE("Track Infection Rates") {
+        pandemicCommand->imposeLockdown(); // Lower health
+        pandemicCommand->trackInfectionRates();
+        
+        int infectedCount = 0;
+        for (const auto& citizen : citizens) {
+            if (citizen->getHealth() < 50.0) {
+                infectedCount++;
+            }
+        }
+        double infectionRate = (static_cast<double>(infectedCount) / citizens.size()) * 100;
+        CHECK(infectionRate >= 0.0); // Infection rate should be calculated, even if zero
+    }
+
+    SUBCASE("Execute Pandemic Command Sequence") {
+        pandemicCommand->execute();
+        for (const auto& citizen : citizens) {
+            CHECK(citizen->getHealth() >= 50.0); // Health should have increased due to vaccines
+            CHECK(citizen->getSatisfactionLevel() >= 40.0); // Satisfaction should be managed
+        }
+    }
+
+    // Clean up dynamically allocated resources
+    for (auto& citizen : citizens) {
+        delete citizen;
+    }
+    delete housingDept;
+    delete powerDept;
+    delete waterDept;
+    delete taxMan;
+    delete financeDept;
+    delete prDept;
+    delete pandemicCommand;
+}
+
+
+TEST_CASE("LoadsheddingCommand functionality test") {
+    // Creating instances of ResidentialBuildingCreator
+    ResidentialBuildingCreator *resi1 = new ResidentialBuildingCreator();
+    ResidentialBuildingCreator *resi2 = new ResidentialBuildingCreator();
+    ResidentialBuildingCreator *resi3 = new ResidentialBuildingCreator();
+
+    // Create buildings
+    Building *estate = resi1->createBuilding("Estate");
+    Building *apartment = resi2->createBuilding("Apartment");
+    Building *house = resi3->createBuilding("House");
+
+    // Setup for the test
+    std::cout << "Setting up LoadShedding test..." << std::endl;
+
+    // Create a mock Power resource
+    Power mockPowerResource( 1000); // Initial amount of power
+    PowerSupply powerSupply(100000, 10000, &mockPowerResource);
+
+    // Create LoadsheddingCommand with power supply
+    LoadsheddingCommand loadSheddingCommand(&powerSupply);
+
+    // Schedule load shedding
+    int delay = 5; // Delay of 5 seconds for testing
+    loadSheddingCommand.scheduleLoadshedding(delay);
+
+    // Execute the load shedding command
+    std::this_thread::sleep_for(std::chrono::seconds(delay));
+    loadSheddingCommand.execute();
+
+    // Verify that the expected changes occurred
+    // Assuming you have a method in PowerSupply to check power status
+    // This might need to be implemented if it doesn't exist
+    double powerAfterLoadShedding = powerSupply.calculatePowerUsage(); // or a suitable method
+    CHECK(powerAfterLoadShedding < 1000); // Check if power usage has decreased after load shedding
+
+    std::cout << "LoadShedding test completed." << std::endl;
+
+    // Cleanup
+    delete estate;
+    delete apartment;
+    delete house;
+    delete resi1;
+    delete resi2;
+    delete resi3;
+}
+
+
+TEST_CASE("FestivalCommand execution test") {
+ TaxManager *taxMan = new TaxManager();
+
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+
+    DeptOfHousing *housingDept = new DeptOfHousing(10000000000);
+
+    Water *water = new Water(108000);
+    Power *power = new Power(170004);
+
+    DeptOfUtilities *powerDept = new PowerSupply(50000, 40000, power);
+    DeptOfUtilities *waterDept = new WaterSupply(20000, 500000, water);
+    DeptOfUtilities *wasteDept = new WasteManagement(10000, 6000);
+
+    wasteDept->setSuccessor(powerDept);
+    powerDept->setSuccessor(waterDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
+
+    std::vector<Citizen*> citizens = {
+        new Citizen("Alice",  prDept),
+        new Citizen("Bob", prDept),
+        new Citizen("Charlie", prDept)
+    };
+
+    FestivalCommand festivalCommand(powerDept, citizens[0], prDept);
+    double initialSatisfaction = citizens[0]->getSatisfactionLevel();
+
+    festivalCommand.execute();
+
+    // Check if the citizen's happiness increased
+    CHECK(citizens[0]->getSatisfactionLevel() > initialSatisfaction);
+
+    // Clean up
+    delete powerDept;
+    delete waterDept;
+    delete wasteDept;
+    for (auto citizen : citizens) {
+        delete citizen;
+    }
+}
+
+
+TEST_CASE("RecessionCommand execution test") {
+    // Setup departments and resources
+ TaxManager *taxMan = new TaxManager();
+
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+
+    DeptOfHousing *housingDept = new DeptOfHousing(10000000000);
+
+    Water *water = new Water(108000);
+    Power *power = new Power(170004);
+
+    DeptOfUtilities *powerDept = new PowerSupply(50000, 40000, power);
+    DeptOfUtilities *waterDept = new WaterSupply(20000, 500000, water);
+    DeptOfUtilities *wasteDept = new WasteManagement(10000, 6000);
+
+    wasteDept->setSuccessor(powerDept);
+    powerDept->setSuccessor(waterDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
+
+    // Create commercial buildings
+    CommercialBuildingCreator resi1, resi2, resi3;
+    Building* shop = resi1.createBuilding("Shop");
+    Building* office = resi2.createBuilding("Office");
+    Building* school = resi3.createBuilding("School");
+
+    CommercialBuilding* shopBuilding = dynamic_cast<CommercialBuilding*>(shop);
+    CommercialBuilding* officeBuilding = dynamic_cast<CommercialBuilding*>(office);
+    CommercialBuilding* schoolBuilding = dynamic_cast<CommercialBuilding*>(school);
+
+    std::vector<CommercialBuilding*> commercialBuildings = {shopBuilding, officeBuilding, schoolBuilding};
+
+    // Create citizen and recession command
+    Citizen* alice = new Citizen("Alice",prDept);
+    RecessionCommand recessionCommand(financeDept, alice, commercialBuildings);
+
+    // Capture initial satisfaction level
+    double initialSatisfaction = alice->getSatisfactionLevel();
+
+    recessionCommand.execute();
+
+    // Verify that taxes have been raised - manually verify this within financeDept
+
+    // Check if the citizen's satisfaction has decreased
+    CHECK(alice->getSatisfactionLevel() < initialSatisfaction);
+
+    // Check that each commercial building is closed
+    for (auto* building : commercialBuildings) {
+        CHECK(building->isClosed());
+    }
+
+    // Clean up
+    delete financeDept;
+    delete wasteDept;
+    delete wasteDept;
+    delete alice;
+    delete shop;
+    delete office;
+    delete school;
+}
+
+
+
+// --------------------------------------------------------------------------------------------------------- //
 
 
 
@@ -703,7 +1110,5 @@ TEST_CASE("Testing Industrial Building Subtypes") {
         delete clonedTrainStation;
     }
 }
-
-
 
 // ------------------------------------------------------------------------------------------------------- //

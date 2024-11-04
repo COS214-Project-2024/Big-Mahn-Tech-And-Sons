@@ -44,7 +44,7 @@ class DeptOfHousing {
 
         void removeBuildingByName(const std::string &name);
         void listBuildings() const;
-        std::vector<Building *> getBuildings();
+        std::vector<Building*> getBuildings();
         bool requestFunding(double amount);
 
         std::string getBuildingName(int index) const;

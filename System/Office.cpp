@@ -1,16 +1,9 @@
 // Class implementation of Factory Method - ConcreteProduct participant (subtype)
 
-/**
- * @file Office.cpp
- * @brief Implements the Office class.
- */
-
 #include "Office.h"
 #include <iostream>
 
-/**
- * @brief Default constructor for Office.
- */
+
 Office::Office()
     : CommercialBuilding() {
     name = "Downtown Office Hub";      // Default name for the office
@@ -29,34 +22,23 @@ Office::Office()
     annualRevenue = 100000.0;          // Default annual revenue for Office
 }
 
-/**
- * @brief Displays the stats specific to the office.
- */
+
 void Office::displayStats() const {
     CommercialBuilding::displayStats();  // Call base class method
 }
 
-/**
- * @brief Checks the availability of jobs in the office.
- * @return True if jobs are available, otherwise false.
- */
+
 bool Office::checkAvailability() const {
     return availableJobs > 0;  // Jobs are available if any exist
 }
 
-/**
- * @brief Accepts visitors for the visitor pattern.
- * @param visitor A pointer to the visitor object.
- */
+
 void Office::accept(TaxManager* visitor) {
      visitor->visitBuildingForBuilding(this);
     visitor->visitBuildingForCitizen(this);
 }
 
-/**
- * @brief Clones the office for repair purposes.
- * @return Pointer to the cloned office object.
- */
+
 Building* Office::repairClone() const {
     std::cout << "Prototype: Cloning an Office building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing commercial building (Office): " << getName() << "\n";

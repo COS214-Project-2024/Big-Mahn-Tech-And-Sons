@@ -3,6 +3,7 @@
 
 #include "GoToCommand.h"
 #include "Citizen.h"
+#include "DeptOfHousing.h"
 
 #include <iostream>
 using namespace std;
@@ -17,8 +18,12 @@ class GoToEnt : public GoToCommand
 {
    private:
       Citizen* citizen;
+      DeptOfHousing* DOH;
+
    public:
-      GoToEnt(Citizen* citizen);
+     GoToEnt(Citizen* citizen , DeptOfHousing* housing);
+
+      bool execute() override;
 };
 
 

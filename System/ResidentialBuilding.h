@@ -9,8 +9,7 @@
 #define RESIDENTIALBUILDING_H
 
 #include "Building.h"
-#include "TaxManager.h"
-
+class TaxManager;
 /**
  * @class ResidentialBuilding
  * @brief Abstract base class for residential buildings.
@@ -63,7 +62,7 @@ class ResidentialBuilding : public Building {
          * 
          * @return The calculated tax amount for the building.
          */
-        double calculateTax() const override;
+         virtual double calculateTax() const override;
 
 
 };

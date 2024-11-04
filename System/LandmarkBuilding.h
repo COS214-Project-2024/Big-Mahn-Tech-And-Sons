@@ -9,7 +9,7 @@
 #define LANDMARKBUILDING_H
 
 #include "Building.h"
-#include "TaxManager.h"
+class TaxManager;
 #include <iostream>
 #include <string>
 
@@ -51,7 +51,7 @@ class LandmarkBuilding : public Building {
          * 
          * @return Tax amount (always 0.0 for landmarks).
          */
-        double calculateTax() const override;
+         virtual double calculateTax() const override;
 };
 
 #endif // LANDMARKBUILDING_H

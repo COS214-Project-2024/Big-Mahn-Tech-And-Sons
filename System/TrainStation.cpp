@@ -3,10 +3,7 @@
 #include "TrainStation.h"
 #include <iostream>
 
-/**
- * @brief Default Constructor for TrainStation.
- * Initializes the train station with specific default values.
- */
+
 TrainStation::TrainStation()
     : IndustrialBuilding() {
     name = "Gautrain Station";
@@ -22,29 +19,25 @@ TrainStation::TrainStation()
     type = "TrainStation";
 }
 
-/**
- * @brief Displays stats specific to the train station.
- */
+
 void TrainStation::displayStats() const {
     IndustrialBuilding::displayStats();  // Call base class method.
 }
 
-/**
- * @brief Accepts a visitor for applying the Visitor pattern.
- * @param visitor A pointer to the TaxManager object.
- * Displays that train stations are non-taxable.
- */
+
 void TrainStation::accept(TaxManager* visitor) {
     std::cout << "No tax applied to train station: " << getName() 
               << ". Train stations are non-taxable." << std::endl;
 }
 
-/**
- * @brief Clones the train station for repair purposes.
- * @return A pointer to the cloned TrainStation object.
- */
+
 Building* TrainStation::repairClone() const {
     std::cout << "Prototype: Cloning a Train Station building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing industrial building (Train Station): " << getName() << "\n";
     return new TrainStation(*this);
+}
+
+double TrainStation::calculateTax() const
+{
+   return 0.0;
 }

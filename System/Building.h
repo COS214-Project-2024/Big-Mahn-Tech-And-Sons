@@ -19,6 +19,7 @@
 
 class Citizen; ///< Forward declaration of Citizen class
 class TaxManager;
+class DeptOfPR;
 
 /**
  * @class Building
@@ -27,7 +28,7 @@ class TaxManager;
  * This class provides the common attributes and functionalities for all building types,
  * including managing tenants, utilities, and grid placement.
  */
-class Building : public Element {
+class Building : public Element: public Element {
 
     protected:
         std::string name;               ///< Name of the building
@@ -46,8 +47,11 @@ class Building : public Element {
         bool powerSupply;               ///< Power supply status
         std::vector<std::pair<int, int>> gridCoordinates; ///< Grid coordinates
         std::string type;               ///< Type of Building
+        DeptOfPR*  PR; /**<Reference to government's PPR */
         double citizenTax;              ///< Tax rate for citizens
         double businessTax;             ///< Tax rate for businesses
+
+        
 
     public:
         Building();  ///< Default constructor
@@ -63,7 +67,7 @@ class Building : public Element {
         virtual void accept(TaxManager *visitor) = 0;    ///< Accepts visitors for the visitor pattern
         virtual double calculateTax() const = 0;  ///< Pure virtual function for tax calculation
         virtual void displayStats() const;                 ///< Displays the statistics of the building
-
+        void notifyPR();
         // Getters
         std::string getName() const;
         int getMaxCapacity() const;
