@@ -1,23 +1,12 @@
 // Class implementation of Factory Method - ConcreteProduct participant (classification)
-
-/**
- * @file CommercialBuilding.cpp
- * @brief Implements the CommercialBuilding class.
- */
-
 #include "CommercialBuilding.h"
 
-/**
- * @brief Constructor for CommercialBuilding.
- * Initializes default values for job, kid space, and bed availability.
- */
+
 CommercialBuilding::CommercialBuilding() 
     : Building(), availableJobs(1), availableKidsSpaces(1), availableBeds(1), closed(false) {
 }
 
-/**
- * @brief Displays the stats specific to commercial buildings.
- */
+
 void CommercialBuilding::displayStats() const {
     Building::displayStats();  // Call base class method
     std::cout << "Available Jobs: " << availableJobs << std::endl;
@@ -25,57 +14,36 @@ void CommercialBuilding::displayStats() const {
     std::cout << "Available Beds: " << availableBeds << std::endl;
 }
 
-/**
- * @brief Gets the available jobs.
- * @return The number of available jobs.
- */
+
 int CommercialBuilding::getAvailableJobs() const {
     return availableJobs;
 }
 
-/**
- * @brief Sets the available jobs.
- * @param jobs Number of available jobs to set.
- */
 void CommercialBuilding::setAvailableJobs(int jobs) {
     availableJobs = jobs;
 }
 
-/**
- * @brief Gets the available kids' spaces.
- * @return The number of available kids' spaces.
- */
+
 int CommercialBuilding::getAvailableKidsSpaces() const {
     return availableKidsSpaces;
 }
 
-/**
- * @brief Sets the available kids' spaces.
- * @param kidsSpaces Number of available kids' spaces to set.
- */
+
 void CommercialBuilding::setAvailableKidsSpaces(int kidsSpaces) {
     availableKidsSpaces = kidsSpaces;
 }
 
-/**
- * @brief Gets the available beds.
- * @return The number of available beds.
- */
+
 int CommercialBuilding::getAvailableBeds() const {
     return availableBeds;
 }
 
-/**
- * @brief Sets the available beds.
- * @param beds Number of available beds to set.
- */
+
 void CommercialBuilding::setAvailableBeds(int beds) {
     availableBeds = beds;
 }
 
-/**
- * @brief Closes the building due to recession.
- */
+
 void CommercialBuilding::closeBuilding() {
     if (!closed) {
         closed = true;
@@ -90,9 +58,7 @@ void CommercialBuilding::closeBuilding() {
     }
 }
 
-/**
- * @brief Reopens the building and restores resources to maximum capacity.
- */
+
 void CommercialBuilding::reopenBuilding() {
     if (closed) {
         closed = false;
@@ -106,10 +72,7 @@ void CommercialBuilding::reopenBuilding() {
     }
 }
 
-/**
- * @brief Checks if the building is closed.
- * @return True if the building is closed, otherwise false.
- */
+
 bool CommercialBuilding::isClosed() const {
     return closed;
 }

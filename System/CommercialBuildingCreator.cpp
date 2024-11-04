@@ -1,22 +1,7 @@
 // Class implementation of Factory Method - ConcreteCreator participant
-
-/**
- * @file CommercialBuildingCreator.cpp
- * @brief Implements the CommercialBuildingCreator class.
- */
-
 #include "CommercialBuildingCreator.h"
 
-/**
- * @brief Creates a commercial building of the specified type.
- * 
- * Based on the type parameter, this method generates and returns a pointer 
- * to a new instance of the specified commercial building (Shop, Office, School, or Hospital).
- * If the type is unrecognized, it logs an error and returns `nullptr`.
- * 
- * @param type The type of commercial building to create (e.g., "Shop", "Office", "School", "Hospital").
- * @return Building* Pointer to the created building instance or `nullptr` if the type is invalid.
- */
+
 Building* CommercialBuildingCreator::createBuilding(const std::string &type) const {
     if (type == "Shop") {
         return new Shop();
