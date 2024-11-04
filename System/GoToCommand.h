@@ -12,9 +12,9 @@ using namespace std;
  * @brief Command class for handling a citizen's movement to a specified destination using a transport strategy.
  * @author LeboGang
  * 
- * The `GoToCommand` class encapsulates the behavior of a citizen traveling from their current position
- * to a designated destination node. It uses the transport strategy defined by the `Citizen` object and 
- * finds the appropriate path using the `RoadNetwork`.
+ * The GoToCommand class encapsulates the behavior of a citizen traveling from their current position
+ * to a designated destination node. It uses the transport strategy defined by the Citizen object and 
+ * finds the appropriate path using the RoadNetwork.
  */
 class GoToCommand
 {
@@ -40,4 +40,4 @@ public:
    virtual bool execute() =0 ;
 };
 
-#endif // GOTOCOMMAND_H
+#endif 
