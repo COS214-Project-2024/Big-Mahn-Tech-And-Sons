@@ -9,6 +9,7 @@
 #define APARTMENT_H
 
 #include "ResidentialBuilding.h"
+#include "TaxManager.h"
 
 /**
  * @class Apartment

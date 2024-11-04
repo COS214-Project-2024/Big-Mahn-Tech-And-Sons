@@ -1,5 +1,6 @@
 #include "School.h"
 #include <iostream>
+#include "TaxManager.h"
 
 
 School::School()

@@ -1,5 +1,5 @@
 // Class implementation of Factory Method - ConcreteProduct participant (subtype)
-
+#include "TaxManager.h"
 #include "Estate.h"
 #include <iostream>
 

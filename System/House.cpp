@@ -1,6 +1,7 @@
 // Class implementation of Factory Method - ConcreteProduct participant (subtype)
 
 #include "House.h"
+#include "visitHousing.h"
 #include <iostream>
 
 
