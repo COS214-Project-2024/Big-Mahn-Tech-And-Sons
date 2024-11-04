@@ -243,7 +243,7 @@ public:
      * @return vector<pair<int,int>> , returns the building co-ordiantes. All 4 corner
      */
 
-    bool removeBuilding(vector<pair<int,int>>&);
+    bool removeBuilding(vector<pair<int,int>>);
     /**
      * @brief removes a building from the city grid
      * 

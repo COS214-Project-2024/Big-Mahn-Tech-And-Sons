@@ -9,10 +9,12 @@
 #define INDUSTRIALBUILDING_H
 
 #include "Building.h"
-#include "TaxManager.h"
+#include "TaxManager.h".............................
+
+
 #include <iostream>
 
-/**
+/**...............................................................................................................................................................................................................................................
  * @class IndustrialBuilding
  * @brief Abstract class representing industrial buildings.
  *

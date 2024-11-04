@@ -31,7 +31,7 @@
 #include "GoTrain.h"
 #include "TrainStation.h"
 #include "DeptOfPR.h"
-
+#include "GoToEnt.h"
 
 
 void buildingsTest();
@@ -441,12 +441,18 @@ void testGoToTrainStation()
 
      housingDept->createIndustrialBuilding("TrainStation");
      housingDept->createResidentialBuilding("House");
+    housingDept->createLandmarkBuilding("Park");
+    housingDept->createLandmarkBuilding("Museum");
+    housingDept->createLandmarkBuilding("Monument");
 
 
      std::cout << "Total Buildings: " << housingDept->getTotalBuildings() << std::endl;
 
     IndustrialBuilding* TrainStation = NULL;
     ResidentialBuilding* houseC = NULL;
+    LandmarkBuilding* park = NULL;
+    LandmarkBuilding* museum = NULL;
+    LandmarkBuilding* monument = NULL;
 
 
     Citizen* citizen = new Citizen("Jane", 10, 10, prDept);
@@ -461,6 +467,8 @@ void testGoToTrainStation()
 
     IndustrialBuilding* TrainStationDest = dynamic_cast<IndustrialBuilding*>(building);
     ResidentialBuilding* House1 = dynamic_cast<ResidentialBuilding*>(building);
+    LandmarkBuilding* landmark = dynamic_cast<LandmarkBuilding*>(building);
+
 
     if (TrainStationDest != nullptr && TrainStationDest->getType() == "TrainStation")
     {
@@ -472,7 +480,6 @@ void testGoToTrainStation()
         std::cout << "Found the House: " << House1->getName() << "\n";
         houseC = House1;
     }
-
     if (TrainStation != nullptr && houseC != nullptr)
     {
         break;
@@ -486,6 +493,33 @@ void testGoToTrainStation()
     gotoTrainStasie->execute();
     std::cout<< "Num ppl at TrainStation : " << TrainStation->getCurrentOccupants() << '\n';
     std::cout << citizen->getBudget() << "\n";
+
+
+    std::cout << "Num ppl in trainStation : " << TrainStation->getCurrentOccupants() << '\n';  
+    std::cout << "Citizen's initial budget: " << citizen->getBudget() << "\n";
+    
+    // Test for GoToEnt
+    std::cout << "\nTesting GoToEnt:\n";
+    GoToEnt* goToEntertainment = new GoToEnt(citizen,housingDept);
+    goToEntertainment->execute();
+
+    // Check which landmark the citizen went to
+    LandmarkBuilding* currentLocation = dynamic_cast<LandmarkBuilding*>(citizen->getCurrentLocation());
+    if (currentLocation)
+    {
+        std::cout << "Citizen went to: " << currentLocation->getType() << "\n";
+        std::cout << "Number of people at " << currentLocation->getType() << ": " << currentLocation->getCurrentOccupants() << "\n";
+    }
+    else
+    {
+        std::cout << "Citizen did not go to a landmark building.\n";
+    }
+
+
+    
+
+
+
 
 }
 

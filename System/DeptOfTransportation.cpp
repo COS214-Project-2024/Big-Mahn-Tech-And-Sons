@@ -86,7 +86,7 @@ const vector<pair<int,int>> DeptOfTransportation::add_Building(int length, int w
     return result;
 }
 
-bool DeptOfTransportation::remove_Building(vector<pair<int,int>>& buidling)
+bool DeptOfTransportation::remove_Building(vector<pair<int,int>> buidling)
 {
     if(cityGrid->removeBuilding(buidling))
     {

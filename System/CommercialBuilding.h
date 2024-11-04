@@ -26,6 +26,7 @@ class CommercialBuilding : public Building {
         int availableKidsSpaces; ///< Available kid spaces (for schools).
         int availableBeds;       ///< Available beds (for hospitals).
         bool closed;             ///< Indicates if the building is closed due to recession.
+        double annualRevenue;
 
     public:
         /**

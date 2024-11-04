@@ -8,6 +8,8 @@
 
 #include "GoToCommand.h"
 #include "Citizen.h"
+#include "DeptOfHousing.h"
+
 #include <iostream>
 using namespace std;
 
@@ -19,8 +21,9 @@ using namespace std;
  */
 class GoAirport : public GoToCommand
 {
-private:
-    Citizen* citizen;           /**< Pointer to the citizen traveling to the airport */
+// private:
+//     Citizen* citizen;           /**< Pointer to the citizen traveling to the airport */
+//     DeptOfHousing* housing;      /**< Pointer to the department of housing */
 
 public:
     /**
@@ -31,7 +34,7 @@ public:
      * @param citizen A pointer to the Citizen object representing the person traveling to the airport.
      * @param roadNetwork A pointer to the RoadNetwork object used for navigating to the airport.
      */
-    GoAirport(Citizen* citizen);
+    bool execute() override;
 };
 
 #endif

@@ -45,7 +45,7 @@ public:
     GoTrain(Citizen* citizen , /**/ DeptOfHousing* deptH);
 
 
-    void execute() override ;
+    bool execute() override ;
 };
 
 #endif

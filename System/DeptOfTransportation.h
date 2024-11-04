@@ -7,7 +7,7 @@
 #define DEPTOFTRANSPORTATION_H
 
 #include "CityGrid.h"
- class Building;
+class Building;
 
 /**
  * @class DeptOfTransportation
@@ -18,19 +18,19 @@
 class DeptOfTransportation
 {
 private:
-    CityGrid* cityGrid;     // pointer to the city grid object
-    static DeptOfTransportation* instance;  // Singleton instance
+    CityGrid *cityGrid;                    // pointer to the city grid object
+    static DeptOfTransportation *instance; // Singleton instance
     DeptOfTransportation();
     /**
      * @brief the constructor of the Class object
      * private so that no class can create another instance of the class object
      */
-    
+
 public:
-    static DeptOfTransportation* getInstance();
+    static DeptOfTransportation *getInstance();
     /**
      * @brief gets the instance of the Transportation object
-     * 
+     *
      * @return DeptOfTransportation*, returns the single instance of the DeptOfTransportation via a pointer.
      */
 
@@ -52,7 +52,7 @@ public:
 
     void printCityCardinalPoints();
     /**
-     * @brief prints the city cardinal points 
+     * @brief prints the city cardinal points
      */
 
     void printCityStreets();
@@ -60,17 +60,17 @@ public:
      * @brief prints the city streets with the street name
      */
 
-    bool add_Road(int,int,int,string,string);
+    bool add_Road(int, int, int, string, string);
     /**
      * @brief adds a road to the city grid
-     * 
+     *
      * @return boolean, returns a true or false as to whether the road was added to the grid or not
      */
 
-    bool remove_Road(int,int,int,string);
+    bool remove_Road(int, int, int, string);
     /**
      * @brief removes a road from the city grid
-     * 
+     *
      * @return boolean, returns true or false as to whether the road was added to the grid or not
      */
 
@@ -81,27 +81,26 @@ public:
      * @return boolean, returns true or false as to whether the road was added to the grid or not
      */
 
-    const vector<pair<int,int>> add_Building(int,int,Building*);
+    const vector<pair<int, int>> add_Building(int, int, Building *);
     /**
      * @brief adds a building to the city grid
-     * 
+     *
      * @return const vector<pair<int,int>> , returns the building co-ordinates
      */
 
-    bool remove_Building(vector<pair<int,int>>&);
+    bool remove_Building(vector<pair<int, int>>);
     /**
      * @brief removes a building from the city grid
-     * 
+     *
      * @return boolean, returns true or false as to whether the building was added to the grid or not
      */
 
-    int get_distance(Building*,Building*);
+    int get_distance(Building *, Building *);
     /**
      * @brief gets the distance between 2 buildings.
      * used in travekl to function
      * @return int, returns the distance between the 2 buildings
      */
-    
 };
 
 #endif /* DeptOfTransportation_h */

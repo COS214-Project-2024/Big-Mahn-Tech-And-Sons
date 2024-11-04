@@ -24,19 +24,22 @@ using namespace std;
  */
 class GoHos : public GoToCommand
 {
-private:
-    Citizen* citizen;           /**< Pointer to the citizen who is going to the hospital */
+// private:
+//     Citizen* citizen;           /**< Pointer to the citizen who is going to the hospital */
 
 public:
-    /**
-     * @brief Constructor for the GoHos class.
-     * 
-     * Initializes a GoHos command for the specified citizen within the given road network.
-     * 
-     * @param citizen A pointer to the Citizen object representing the person going to the hospital.
-     * @param roadNetwork A pointer to the RoadNetwork object that the citizen will use to reach the destination.
-     */
-    GoHos(Citizen* citizen);
+    // /**
+    //  * @brief Constructor for the GoHos class.
+    //  * 
+    //  * Initializes a GoHos command for the specified citizen within the given road network.
+    //  * 
+    //  * @param citizen A pointer to the Citizen object representing the person going to the hospital.
+    //  * @param roadNetwork A pointer to the RoadNetwork object that the citizen will use to reach the destination.
+    //  */
+    // GoHos(Citizen* citizen);
+
+
+    bool execute() override;
 };
 
 #endif

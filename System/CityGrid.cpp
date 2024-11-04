@@ -684,7 +684,7 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, Bu
     return errorPair();  // No suitable location found
 }
 
-bool CityGrid::removeBuilding(vector<pair<int,int>> &buildiing)
+bool CityGrid::removeBuilding(vector<pair<int,int>> buildiing)
 {
     if(buildiing!=errorPair())
     {

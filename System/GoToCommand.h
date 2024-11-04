@@ -2,6 +2,7 @@
 #define GOTOCOMMAND_H
 
 #include "Citizen.h"
+#include "DeptOfHousing.h"
 
 #include <iostream>
 using namespace std;
@@ -18,10 +19,15 @@ using namespace std;
  */
 class GoToCommand
 {
-private:
+protected:
     Citizen *citizen;          ///< Pointer to the citizen who will execute the command.
+    DeptOfHousing* DOH;
+
 
 public:
+
+    GoToCommand(Citizen* citizen , DeptOfHousing* DOH );
+
     /**
      * @brief Executes the command to move the citizen to the specified destination.
      *
@@ -32,7 +38,7 @@ public:
      * @note destinationNode is set in the constructors of the relevant command.
      * @attention Citizens must have a catalog of addresses, such as Work, Home, and random Entertainment then findPath will do the rest.
      */
-   virtual void execute() =0 ;
+   virtual bool execute() =0 ;
 };
 
 #endif // GOTOCOMMAND_H

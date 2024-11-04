@@ -16,8 +16,9 @@ using namespace std;
 class GoHome : public GoToCommand
 {
    private:
-      Citizen* citizen;
-   public:
-      GoHome(Citizen* citizen);
+   Citizen* citizen;
+  public:
+  GoHome(Citizen* citizen);
+  bool execute() override;
 };
 #endif

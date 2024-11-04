@@ -1,13 +1,7 @@
 #include "GoTrain.h"
 
-GoTrain::GoTrain(Citizen *citizen, DeptOfHousing *deptH)
-{
-    this->citizen = citizen;
-    this->DOH = deptH;
-    // this->DOT = deptT;
-}
 
-void GoTrain::execute()
+bool GoTrain::execute()
 {
     cout << "Citizen " << citizen->getName() << "is going to the TrainStation \n";
     IndustrialBuilding* TrainStation = NULL;
@@ -26,11 +20,13 @@ void GoTrain::execute()
 
     if(TrainStation)
     {
-        citizen->travelTo(TrainStation);
+        citizen->travelTo(TrainStation);    
+        return true;
     }
     else
     {
         cout << "No TrainStation found \n";
+        return false;
     }
 
 }
