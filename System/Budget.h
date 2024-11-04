@@ -19,7 +19,7 @@ public:
     float getTotalBudget() const;
     void addFunds(double amount);
     void setTotalBudget(float budget);
-    void accept(TaxManager* visitor);
+    virtual void accept(TaxManager* visitor) override ;
 };
 
 #endif // BUDGET_H

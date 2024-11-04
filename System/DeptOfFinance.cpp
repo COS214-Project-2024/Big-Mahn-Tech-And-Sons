@@ -23,7 +23,6 @@ void DeptOfFinance::collectTaxes(Building* building) {
 }
 
 void DeptOfFinance::allocateBudget(const std::string& department, double amount) {
-   // budget->accept(taxManager); // Visitor visiting the budget
     if (budget->getTotalBudget() >= amount) {
         std::cout << "Allocating " << amount << " to " << department << std::endl;
         budget->setTotalBudget(budget->getTotalBudget() - amount);

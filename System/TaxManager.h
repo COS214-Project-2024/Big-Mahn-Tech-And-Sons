@@ -22,7 +22,7 @@ class ResidentialBuilding;
 class TaxManager {
 private:
     std::map<std::string, float> taxRates;
-    float collectedTaxes;
+    double collectedTaxes;
     double taxRate; 
     std::vector<double> incomes;
     std::vector<Citizen*> citizenList;
@@ -36,19 +36,22 @@ public:
 
     void setTaxRate(double rate); // Method to set the tax rate
     double getTaxRate() const;    // Method to get the tax rate
-    float calculateCitizenTax(Citizen* citizen);
-    float calculateBusinessTax(CommercialBuilding* building);
+    double calculateCitizenTax(Citizen* citizen);
+    double  calculateBusinessTax(CommercialBuilding* building);
     void collectTaxes();
     bool checkMoney();            // Function to check financial stability
     void distributeBudget(const std::string& department, float allocation);
-    float getCollectedTaxes() const;
+    double getCollectedTaxes() const;
     float getGovernmentBudget() const;
-    void applyCollectedTaxesToBudget(Budget& budget);
-    
+    //void applyCollectedTaxesToBudget(Budget& budget);
+
+    double setTaxCollected(double collectedTaxes);
+ 
     // Visitor methods
-    virtual void visitResidentialBuilding(ResidentialBuilding* building);
-    virtual void visitCommercialBuilding(CommercialBuilding* building);
+     void visitBuildingForCitizen(Building* building); // New method for citizens
+    void visitBuildingForBuilding(Building* building); // New method for buildings
     virtual void visitBudget(Budget* budget);
+    
     
     void collect(ResidentialBuilding* building);
     void collect(CommercialBuilding* building);

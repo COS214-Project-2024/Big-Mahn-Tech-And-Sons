@@ -38,7 +38,8 @@ void Estate::displayStats() const {
  * @param visitor A pointer to the TaxManager visitor.
  */
 void Estate::accept(TaxManager* visitor) {
-    visitor->visitResidentialBuilding(this);
+    visitor->visitBuildingForBuilding(this);
+    visitor->visitBuildingForCitizen(this);
 }
 
 /**

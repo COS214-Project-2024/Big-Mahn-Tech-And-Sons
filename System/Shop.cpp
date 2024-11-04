@@ -50,7 +50,8 @@ bool Shop::checkAvailability() const {
  * @param visitor A pointer to the visitor object.
  */
 void Shop::accept(TaxManager* visitor) {
-    visitor->visitCommercialBuilding(this);
+    visitor->visitBuildingForBuilding(this);
+    visitor->visitBuildingForCitizen(this);
 }
 
 /**

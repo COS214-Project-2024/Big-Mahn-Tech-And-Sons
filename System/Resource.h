@@ -8,6 +8,10 @@
 #include "TaxManager.h"
 #include "Budget.h"
 
+class Building;
+class CommercialBuilding;
+
+
 /**
  * @class Resource
  * @brief Abstract base class for all types of resources.
@@ -67,6 +71,10 @@ public:
      */
     void removeAmount(double amount);
 
+    void visitCommercialBuilding(CommercialBuilding *building);
+
+    void visitResidentialBuilding(Building *building);
+
     /**
      * @brief Reports the current status of the resource.
      * 
@@ -74,7 +82,7 @@ public:
      */
      void reportStatus() const ;
 
-    void visitBudget(Budget* budget);
+    void visitBudget(Budget* budget ,  double amount);
 
 };
 

@@ -50,7 +50,8 @@ bool School::checkAvailability() const {
  * @param visitor A pointer to the visitor object.
  */
 void School::accept(TaxManager* visitor) {
-    visitor->visitCommercialBuilding(this);
+     visitor->visitBuildingForBuilding(this);
+    visitor->visitBuildingForCitizen(this);
 }
 
 /**

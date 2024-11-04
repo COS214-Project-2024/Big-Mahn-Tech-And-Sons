@@ -54,6 +54,7 @@ class Building : public Element {
         virtual ~Building() = default;  ///< Virtual destructor to allow polymorphism
 
         bool addTenant(Citizen *tenant);            ///< Adds a tenant to the building
+        std::vector<Citizen*> getOccupants();
         bool removeTenant(Citizen *tenant);         ///< Removes a tenant from the building
         void requestElectricity(double requestedElectricity); ///< Requests electricity usage
         void requestWater(double requestedWater);               ///< Requests water usage

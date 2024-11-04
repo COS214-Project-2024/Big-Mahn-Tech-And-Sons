@@ -38,7 +38,8 @@ void House::displayStats() const {
  * @param visitor A pointer to the TaxManager visitor.
  */
 void House::accept(TaxManager* visitor) {
-    visitor->visitResidentialBuilding(this);
+    visitor->visitBuildingForBuilding(this);
+    visitor->visitBuildingForCitizen(this);
 }
 
 /**

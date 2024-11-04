@@ -37,14 +37,12 @@ void testHouse();
 void taxManTest();
 int testDepartment();
 
-
 void testNaturalDisaster();
 void testPandemic();
 void testLoadShedding();
 void testFestival();
 void testRecession();
 int testTaxing();
-
 
 int main()
 {
@@ -60,18 +58,17 @@ int main()
     taxManTest();
 
     // testHouse();
-    //testNaturalDisaster();
-    //testPandemic();
-    //testLoadShedding();
-    //testRecession();
-    //testFestival();
-    //testRecession();
-  //  Government* gov = new Government();
+    // testNaturalDisaster();
+    // testPandemic();
+    // testLoadShedding();
+    // testRecession();
+    // testFestival();
+    // testRecession();
+    //  Government* gov = new Government();
     std::cout << "End" << std::endl;
 
     return 0;
 }
-
 
 // ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
 // void buildingsTest()
@@ -420,17 +417,17 @@ int main()
 //     return 0;
 // }
 
-
 // ------------------------------------------------------------------------------------------------------- //
 
 // ------------------------------------------------------------------------------------------------------- //
 // ---------------------------------- TAXES SECTION TESTS --------------------------------------------- //
-void taxManTest() {
+
+void taxManTest()
+{
     std::cout << "\t ============= Testing Functionality of Tax Manager: ==========\n";
 
     // A. Department of PR Initialization
     DeptOfHousing *housingDept = new DeptOfHousing(100000);
-
     Water *water = new Water("Sparkling", 10000);
     Power *power = new Power("Power", 1456.3);
 
@@ -440,67 +437,66 @@ void taxManTest() {
     utilitiesDept->setSuccessor(powerUtil);
     TaxManager *taxMan = new TaxManager();
     DeptOfFinance financeDept(taxMan);
-
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, &financeDept);
-    
+
     // 1. BUDGET SITUATION
     ResidentialBuildingCreator creator;
-    
-    // Create a House and test initial state
     Building *house = creator.createBuilding("House");
     std::cout << "Testing House Stats:\n";
     house->displayStats();
 
-    // Adding tenants and testing updated stats
+    // Adding tenants
     Citizen *tenant1 = new Citizen("Jane", 30, 10, prDept);
     Citizen *tenant2 = new Citizen("Peter", 30, 20, prDept);
-    std::cout << "\nAdding tenants:\n";
     house->addTenant(tenant1);
     house->addTenant(tenant2);
-    house->displayStats();
-
-    std::cout << "Setting the Overall City Budget\n";
-    Budget cityBudget(10000);  // Initialize budget
-    cityBudget.reportStatus();
 
     // 2. BUILDINGS SETUP
-    // Create specific building types
-    Building *estate = creator.createBuilding("Estate");
-    Building *apartment = creator.createBuilding("Apartment");
-    
-    CommercialBuildingCreator commercialCreator;
-    Building *shop = commercialCreator.createBuilding("Shop");
-    Building *hospital = commercialCreator.createBuilding("Hospital");
+    visitHousing *TAXman = new visitHousing();
 
-    // 4. TAXES COLLECTION
     std::cout << "Collecting taxes from citizens\n";
     // Collect taxes from residential buildings
-    financeDept.collectTaxes(estate);
-    financeDept.collectTaxes(apartment);
+    std::cout << "Initial budget of tenant1: " << tenant1->getBudget() << "\n";
+    taxMan->visitBuildingForCitizen(house); // Use the new visitor method
+    std::cout << "Budget affected for tenant1: " << tenant1->getBudget() << "\n";
     std::cout << "Done collecting taxes from citizens\n";
-    
-    std::cout << "Collecting taxes from commercials\n";
+
     // Collect taxes from commercial buildings
-    financeDept.collectTaxes(shop);
-    financeDept.collectTaxes(hospital);
-    std::cout << "Done collecting taxes from commercials\n";
+    CommercialBuildingCreator comer;
+    Building *building = comer.createBuilding("Office");
+    CommercialBuilding *comH = dynamic_cast<CommercialBuilding *>(building);
 
-    // 5. BUDGET UPDATE AFTER TAX COLLECTION
-    std::cout << "Updating the Overall City Budget\n";
-    
-    // Assuming taxes are stored within TaxManager, update the budget accordingly
-    taxMan->applyCollectedTaxesToBudget(cityBudget);  // New line to apply collected taxes
+    if (comH)
+    {
+        comH->addTenant(tenant1); // Assuming tenant1 is a valid tenant for commercial
+        comH->addTenant(tenant2); // Assuming tenant2 is also valid for commercial
+        std::cout << "Initial revenue of commercial building: " << comH->getAnnualRevenue() << "\n";
+        taxMan->visitBuildingForBuilding(comH); // Use the new visitor method
+        std::cout << "Revenue affected for commercial building: " << comH->getAnnualRevenue() << "\n";
+    }
+    else
+    {
+        std::cerr << "Error: Building is not a CommercialBuilding.\n";
+    }
+    std::cout << "Done collecting taxes from commercial building\n";
 
-    cityBudget.reportStatus();  // Report updated budget status
+    // Budget update after tax collection
+    Budget cityBudget(10000); // Initialize budget
+    taxMan->visitBudget(&cityBudget); // Update the budget with collected taxes
+    cityBudget.reportStatus(); // Report updated budget status
 
-    // Cleanup dynamically allocated memory
-    //delete tenant1;
-    //delete tenant2;
-    ///delete house;
-    //delete estate;
-    //delete apartment;
-    //delete shop;
-    //delete hospital;
+    // // Cleanup dynamically allocated memory
+    // delete tenant1;
+    // delete tenant2;
+    // delete house;
+    // delete comH;
+    // delete taxMan;
+    // delete housingDept;
+    // delete utilitiesDept;
+    // delete powerUtil;
+    // delete prDept;
+    // delete water;
+    // delete power;
 }
 
 
@@ -531,7 +527,7 @@ void taxManTest() {
 //     deptOfHousing->listBuildings();
 
 //     // Step 4: Clean up singleton
-//     delete deptOfTransport; 
+//     delete deptOfTransport;
 //     delete  naturalDisasterCommand;
 // }
 
@@ -561,7 +557,7 @@ void taxManTest() {
 //     // Display initial state of each citizen
 //     std::cout << "Initial citizen states:\n";
 //     for (const auto& citizen : citizens) {
-//         std::cout << "Citizen: " << citizen->getName() 
+//         std::cout << "Citizen: " << citizen->getName()
 //                   << ", Health: " << citizen->getHealth()
 //                   << ", Satisfaction: " << citizen->getSatisfactionLevel() << "\n";
 //     }
@@ -572,16 +568,14 @@ void taxManTest() {
 //     // Execute each pandemic command individually for testing
 //     std::cout << "\n--- Imposing Lockdown ---\n";
 //     pandemicCommand->imposeLockdown();
-    
 
 //     std::cout << "\n--- Distributing Vaccines ---\n";
 //     pandemicCommand->distributeVaccines();
 //     for (const auto& citizen : citizens) {
-//         std::cout << "Citizen: " << citizen->getName() 
+//         std::cout << "Citizen: " << citizen->getName()
 //                   << ", Health: " << citizen->getHealth()
 //                   << ", Satisfaction: " << citizen->getSatisfactionLevel() << "\n";
 //     }
-
 
 //     std::cout << "\n--- Managing Citizen Satisfaction ---\n";
 //     pandemicCommand->manageCitizenSatisfaction();
@@ -596,7 +590,7 @@ void taxManTest() {
 //     for (auto& citizen : citizens) {
 //         delete citizen;
 //     }
- 
+
 // }
 
 // void testLoadShedding()
@@ -616,8 +610,7 @@ void taxManTest() {
 //         Power mockPowerResource("MockPowerResource", 1000); // Assume Power class exists
 //         PowerSupply powerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
 //         // DeptOfUtilities* utilitiesDept = new PowerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
-        
-       
+
 //         // Create LoadSheddingCommand with utilities department
 //         LoadsheddingCommand* loadSheddingCommand = new LoadsheddingCommand(&powerSupply);
 
@@ -625,7 +618,6 @@ void taxManTest() {
 //         int delay = 5; // Delay of 5 seconds for testing
 //         loadSheddingCommand->scheduleLoadshedding(delay);
 
-        
 //         loadSheddingCommand->execute();
 
 //         std::cout << "LoadShedding test completed." << std::endl;

@@ -3,12 +3,18 @@
 
 #include "TaxManager.h"
 #include "Building.h"
+#include "Citizen.h"
 
-class visitHousing : public TaxManager {
+class visitHousing : public TaxManager
+{
 public:
-    void visitResidentialBuilding(ResidentialBuilding* building);
-    void visitCommercialBuilding(CommercialBuilding* building);
-    void visitBudget(Budget* budget);
+    static double totalTax;
+    void visitResidentialBuilding(Building *building);
+    void visitCommercialBuilding(CommercialBuilding *building);
+
+    void visitBudget(Budget *budget);
+
+    // void visitBudget(Budget *budget, double);
 };
 
 #endif // VISITHOUSING_H

@@ -5,13 +5,15 @@
 #include "Budget.h"
 #include "Citizen.h"
 
-TaxManager::TaxManager() : collectedTaxes(0), governmentBudget(0),taxRate(0.0) {}
+TaxManager::TaxManager() : collectedTaxes(0), governmentBudget(0), taxRate(0.0) {}
 
-void TaxManager::setTaxRate(double rate) {
+void TaxManager::setTaxRate(double rate)
+{
     taxRate = rate;
 }
 
-double TaxManager::getTaxRate() const {
+double TaxManager::getTaxRate() const
+{
     return taxRate;
 }
 
@@ -28,34 +30,86 @@ void TaxManager::collect(CommercialBuilding *building)
     collectedTaxes += calculateBusinessTax(building);
 }
 
-float TaxManager::calculateCitizenTax(Citizen *citizen)
+double TaxManager::calculateCitizenTax(Citizen *citizen)
 {
-    return citizen->getBudget() * taxRates["IncomeTax"];
+    return citizen->getBudget() * 0.05;
 }
 
-float TaxManager::calculateBusinessTax(CommercialBuilding *building)
+double TaxManager::calculateBusinessTax(CommercialBuilding *building)
 {
-    return building->getNetWorth() * taxRates["PropertyTax"];
+    return building->getAnnualRevenue() * 0.10;
 }
 
-void TaxManager::visitResidentialBuilding(ResidentialBuilding *building)
+// void TaxManager::visitResidentialBuilding(ResidentialBuilding *building)
+// {
+//     collect(building);
+// }
+
+// void TaxManager::visitCommercialBuilding(CommercialBuilding *building)
+// {
+//     collect(building);
+// }
+
+void TaxManager::visitBuildingForCitizen(Building *building)
 {
-    collect(building);
+    
+    ResidentialBuilding *residentialBuilding = dynamic_cast<ResidentialBuilding *>(building);
+    if (residentialBuilding)
+    {
+        for (Citizen *citizen : residentialBuilding->getOccupants())
+        {
+            if (citizen)
+            {
+                double tax = calculateCitizenTax(citizen);
+                collectedTaxes += tax;
+                citizen->Spend(tax);
+            }
+        }
+    }
+    else
+    {
+        std::cerr << "Error: Building is not a residential building." << std::endl;
+    }
 }
 
-void TaxManager::visitCommercialBuilding(CommercialBuilding *building)
+void TaxManager::visitBuildingForBuilding(Building *building)
 {
-    collect(building);
+    
+    CommercialBuilding *commercialBuilding = dynamic_cast<CommercialBuilding *>(building);
+    if (commercialBuilding)
+    {
+        double tax = calculateBusinessTax(commercialBuilding);
+        collectedTaxes += tax;
+        commercialBuilding->setAnnualRevenue(commercialBuilding->getAnnualRevenue() - tax); // Deduct from revenue
+    }
+    else
+    {
+        std::cerr << "Error: Building is not a commercial building." << std::endl;
+    }
 }
 
-// Add tax collection to Budget and reset collectedTaxes for a fresh cycle
 void TaxManager::visitBudget(Budget *budget)
 {
-    budget->setTotalBudget(budget->getTotalBudget() + collectedTaxes);
-    collectedTaxes = 0; // Reset after updating the budget
+
+    budget->addFunds(collectedTaxes);
+    std::cout << "Added " << collectedTaxes << " to the budget." << std::endl;
+    collectedTaxes = 0;
 }
 
-float TaxManager::getCollectedTaxes() const
+// void TaxManager::applyCollectedTaxesToBudget(Budget &budget)
+// {
+//     budget.addFunds(collectedTaxes);
+//     collectedTaxes = 0; // Reset after applying
+// }
+
+// Add tax collection to Budget and reset collectedTaxes for a fresh cycle
+// void TaxManager::visitBudget(Budget *budget)
+// {
+//     budget->setTotalBudget(budget->getTotalBudget() + collectedTaxes);
+//     collectedTaxes = 0; // Reset after updating the budget
+// }
+
+double TaxManager::getCollectedTaxes() const
 {
     return collectedTaxes;
 }
@@ -68,7 +122,8 @@ float TaxManager::getGovernmentBudget() const
 void TaxManager::collectTaxes()
 {
     collectedTaxes = 0.0; // Reset before collection
-    for (double income : incomes){
+    for (double income : incomes)
+    {
         collectedTaxes += income * taxRate;
     }
     std::cout << "Total collected taxes: " << collectedTaxes << std::endl;
@@ -91,8 +146,16 @@ bool TaxManager::checkMoney()
     }
 }
 
-void TaxManager::applyCollectedTaxesToBudget(Budget& budget) {
-    double collectedTaxes = getCollectedTaxes(); // Assuming this method exists
-    // budget.addFunds(collectedTaxes);
-    // resetCollectedTaxes(); // Reset for the next tax cycle
+// void TaxManager::applyCollectedTaxesToBudget(Budget &budget)
+// {
+//     double collectedTaxes = getCollectedTaxes(); // Assuming this method exists
+//     // budget.addFunds(collectedTaxes);
+//     // resetCollectedTaxes(); // Reset for the next tax cycle
+// }
+
+double TaxManager::setTaxCollected(double collectedTaxes)
+{
+    collectedTaxes += collectedTaxes;
+
+    return collectedTaxes;
 }

@@ -24,6 +24,10 @@ bool Building::addTenant(Citizen* tenant) {
     return false;
 }
 
+std::vector<Citizen*> Building::getOccupants() {
+    return tenants; // Return the vector of tenant pointers
+}
+
 /**
  * @brief Removes a tenant from the building.
  * 

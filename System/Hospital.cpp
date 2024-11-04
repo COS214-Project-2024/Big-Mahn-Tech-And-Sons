@@ -50,7 +50,8 @@ bool Hospital::checkAvailability() const {
  * @param visitor A pointer to the visitor object.
  */
 void Hospital::accept(TaxManager* visitor) {
-    visitor->visitCommercialBuilding(this);
+     visitor->visitBuildingForBuilding(this);
+    visitor->visitBuildingForCitizen(this);
 }
 
 /**
