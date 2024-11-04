@@ -44,6 +44,14 @@ class LandmarkBuilding : public Building {
          * @return Building* A pointer to the cloned building.
          */
         virtual Building* repairClone() const = 0;
+
+        /**
+         * @brief Calculates tax for a landmark.
+         * Landmarks are exempt from tax, so this function returns 0.0.
+         * 
+         * @return Tax amount (always 0.0 for landmarks).
+         */
+        double calculateTax() const override;
 };
 
 #endif // LANDMARKBUILDING_H

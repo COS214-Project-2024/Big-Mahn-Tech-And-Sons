@@ -46,6 +46,7 @@ void House::accept(TaxManager* visitor) {
  * @return Building* A pointer to the newly cloned House instance.
  */
 Building* House::repairClone() const {
+    std::cout << "Prototype: Cloning a Shop building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing residential building (House): " << getName() << "\n";
     return new House(*this);
 }

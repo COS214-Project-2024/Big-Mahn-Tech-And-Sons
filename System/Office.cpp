@@ -26,6 +26,7 @@ Office::Office()
     priceTag = 200000.0;               // Default price tag for Office
     netWorth = 500000.0;
     type = "Office";
+    annualRevenue = 100000.0;          // Default annual revenue for Office
 }
 
 /**
@@ -56,6 +57,7 @@ void Office::accept(TaxManager* visitor) {
  * @return Pointer to the cloned office object.
  */
 Building* Office::repairClone() const {
+    std::cout << "Prototype: Cloning an Office building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing commercial building (Office): " << getName() << "\n";
     return new Office(*this);  // Return a new cloned instance of Office
 }

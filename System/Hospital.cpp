@@ -26,6 +26,7 @@ Hospital::Hospital()
     priceTag = 400000.0;                // Default price tag for Hospital
     netWorth = 3000000.0;
     type = "Hospital";
+    annualRevenue = 2000000.0;          // Default annual revenue for Hospital
 }
 
 /**
@@ -57,6 +58,7 @@ void Hospital::accept(TaxManager* visitor) {
  * @return Pointer to the cloned hospital object.
  */
 Building* Hospital::repairClone() const {
+    std::cout << "Prototype: Cloning a Hospital building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing commercial building (Hospital): " << getName() << "\n";
     return new Hospital(*this);  // Return a new cloned instance of Hospital
 }
