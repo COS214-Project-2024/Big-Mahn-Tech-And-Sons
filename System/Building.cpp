@@ -61,18 +61,11 @@ std::vector<std::pair<int, int>> Building::getGridCoordinates() const
    return gridCoordinates;
 }
 
-/**
- * @brief Sets the grid coordinates of the building.
- * 
- * @param coords Vector of coordinate pairs to set.
- */
+
 void Building::setCoordinates(const std::vector<std::pair<int, int>>& coords) {
     gridCoordinates = coords;
 }
 
-/**
- * @brief Displays the building's statistics.
- */
 void Building::displayStats() const {
     std::cout << "Building Name: " << name << std::endl;
     std::cout << "Max Capacity: " << maxCapacity << std::endl;
@@ -171,25 +164,19 @@ void Building::consumeElectricity(double amount) {
     setElectricityMeterBox(electricityMeterBox);
 }
 
-/**
- * @brief Cuts off the water supply to the building.
- */
+
 void Building::waterCut() {
     waterSupply = false;
     std::cout << "Water supply cut off." << std::endl;
 }
 
-/**
- * @brief Cuts off the power supply to the building.
- */
+
 void Building::powerCut() {
     powerSupply = false;
     std::cout << "Power supply cut off." << std::endl;
 }
 
-/**
- * @brief Clears the waste produced by the building.
- */
+
 void Building::clearWaste() {
     wasteProduction = 0.0; // Reset waste production
     std::cout << "Waste cleared from the building." << std::endl;

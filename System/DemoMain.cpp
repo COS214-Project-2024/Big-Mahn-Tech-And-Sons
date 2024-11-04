@@ -22,15 +22,16 @@ using namespace std;
 //void clearTerminal();
 void testFunction();
 void deptTransportation();
+void eventsCommand();
 
 int main()
 {
     //testFunction();         //the one for city grid
-   // deptTransportation();
-    
+    //deptTransportation();
+    eventsCommand();
 
-    Government gov;
-    gov.runSim();
+    //Government gov;
+    //gov.runSim();
     return 0;
 }
 
@@ -305,5 +306,10 @@ void deptTransportation()
             }
     }
     */
+
+}
+
+void eventsCommand()
+{
 
 }
