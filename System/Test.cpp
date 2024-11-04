@@ -27,7 +27,6 @@
 #include "LandmarkBuildingCreator.h"
 #include "TaxManager.h"
 
-
 #include "PandemicCommand.h"
 
 TEST_CASE("Citizen initialisation")
@@ -266,87 +265,65 @@ TEST_CASE("DeptOfPR Funding Request")
 
 TEST_CASE("DeptOfUtility chain")
 {
+    TaxManager *taxMan = new TaxManager();
 
- Water *water = new Water(10800);
-    Power *power = new Power(17456.3);
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+
+    DeptOfHousing *housingDept = new DeptOfHousing(10000000000);
+
+    Water *water = new Water(108000);
+    Power *power = new Power(170004);
 
     DeptOfUtilities *powerDept = new PowerSupply(50000, 40000, power);
     DeptOfUtilities *waterDept = new WaterSupply(20000, 500000, water);
     DeptOfUtilities *wasteDept = new WasteManagement(10000, 6000);
 
-    Building *b1 = new House();
-    Building *b2 = new Apartment();
+    wasteDept->setSuccessor(powerDept);
+    powerDept->setSuccessor(waterDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
 
-    dynamic_cast<WaterSupply*>(waterDept)->addBuilding(b1);
-    dynamic_cast<WaterSupply*>(waterDept)->addBuilding(b2);
-    dynamic_cast<PowerSupply*>(powerDept)->addBuilding(b1);
-    dynamic_cast<PowerSupply*>(powerDept)->addBuilding(b2);
-    dynamic_cast<WasteManagement*>(wasteDept)->addBuilding(b1);
-    dynamic_cast<WasteManagement*>(wasteDept)->addBuilding(b2);
+    housingDept->createResidentialBuilding("House");
+    housingDept->createResidentialBuilding("Apartment");
 
-    SUBCASE("Water Supply") {
-        b1->setWaterMeterBox(600);
-        b1->consumeWater(50);
-        b2->setWaterMeterBox(700);
-        b2->consumeWater(20);
-
-        dynamic_cast<WaterSupply*>(waterDept)->distributeWater();
-        dynamic_cast<WaterSupply*>(waterDept)->distributeWaterToBuilding(b1);
-        dynamic_cast<WaterSupply*>(waterDept)->distributeWaterToBuilding(b2);
-
-        CHECK(dynamic_cast<WaterSupply*>(waterDept)->calculateWaterUsage() > 0);
-        CHECK(dynamic_cast<WaterSupply*>(waterDept)->getWaterCapacity() > 0);
-        CHECK(dynamic_cast<WaterSupply*>(waterDept)->getBudget() > 0);
+    SUBCASE("Water Supply Tests")
+    {
+        dynamic_cast<WaterSupply *>(waterDept)->distributeWater();
+        CHECK(dynamic_cast<WaterSupply *>(waterDept)->calculateWaterUsage() >= 0);
+        int initialWaterCapacity = dynamic_cast<WaterSupply *>(waterDept)->getWaterCapacity();
+        dynamic_cast<WaterSupply *>(waterDept)->increaseWaterCapacity();
+        CHECK(dynamic_cast<WaterSupply *>(waterDept)->getWaterCapacity() > initialWaterCapacity);
     }
 
-    SUBCASE("Power Supply") {
-        b1->setElectricityMeterBox(1000);
-        b2->setElectricityMeterBox(500);
-        b1->consumeElectricity(120);
-        b2->consumeElectricity(150);
-
-        dynamic_cast<PowerSupply*>(powerDept)->distributePower();
-        dynamic_cast<PowerSupply*>(powerDept)->distributePowerToBuilding(b1);
-        dynamic_cast<PowerSupply*>(powerDept)->distributePowerToBuilding(b2);
-
-        CHECK(dynamic_cast<PowerSupply*>(powerDept)->calculatePowerUsage() > 0);
-        CHECK(dynamic_cast<PowerSupply*>(powerDept)->getPowerCapacity() > 0);
-        CHECK(dynamic_cast<PowerSupply*>(powerDept)->getBudget() > 0);
+    SUBCASE("Power Supply Tests")
+    {
+        dynamic_cast<PowerSupply *>(powerDept)->distributePowerToBuilding(housingDept->getBuildings().at(0));
+        CHECK(dynamic_cast<PowerSupply *>(powerDept)->calculatePowerUsage() >= 0);
+        int initialPowerCapacity = dynamic_cast<PowerSupply *>(powerDept)->getPowerCapacity();
+        dynamic_cast<PowerSupply *>(powerDept)->increasePowerCapacity();
+        CHECK(dynamic_cast<PowerSupply *>(powerDept)->getPowerCapacity() > initialPowerCapacity);
     }
 
-    SUBCASE("Waste Management") {
-        b1->setWaste(100);
-        b2->setWaste(50);
-
-        CHECK(dynamic_cast<WasteManagement*>(wasteDept)->calculateWasteProcessing() > 0);
-        dynamic_cast<WasteManagement*>(wasteDept)->collectWaste();
-        b1->setWaste(400);
-        b2->setWaste(390);
-        dynamic_cast<WasteManagement*>(wasteDept)->collectWasteFromBuilding(b1);
-        dynamic_cast<WasteManagement*>(wasteDept)->collectWasteFromBuilding(b2);
-
-        CHECK(dynamic_cast<WasteManagement*>(wasteDept)->getWasteCapacity() > 0);
-        dynamic_cast<WasteManagement*>(wasteDept)->disposeWaste();
-        dynamic_cast<WasteManagement*>(wasteDept)->expandWasteCapacity();
-        CHECK(dynamic_cast<WasteManagement*>(wasteDept)->getWasteManagementBudget() > 0);
+    SUBCASE("Waste Management Tests")
+    {
+        dynamic_cast<WasteManagement *>(wasteDept)->collectWaste();
+        CHECK(dynamic_cast<WasteManagement *>(wasteDept)->calculateWasteProcessing() >= 0);
+        int initialWasteCapacity = dynamic_cast<WasteManagement *>(wasteDept)->getWasteCapacity();
+        dynamic_cast<WasteManagement *>(wasteDept)->expandWasteCapacity();
+        CHECK(dynamic_cast<WasteManagement *>(wasteDept)->getWasteCapacity() > initialWasteCapacity);
     }
 
-    SUBCASE("Request Handling") {
-        dynamic_cast<WasteManagement*>(wasteDept)->setSuccessor(powerDept);
-        dynamic_cast<PowerSupply*>(powerDept)->setSuccessor(waterDept);
-
-        Request req1("water", b1, 100);
+    SUBCASE("Request Handling Tests")
+    {
+        Building *b1 = housingDept->getBuildings().at(0);
+        Request req1("water", b1, 10);
         wasteDept->handleRequest(req1);
+
         Request req2("waste", b1, 80);
         wasteDept->handleRequest(req2);
+
         Request req3("power", b1, 10);
         wasteDept->handleRequest(req3);
 
-        // Here we can check if the requests were handled correctly, using custom criteria or any flags.
-        // Example assertions for request handling, depending on your implementation details.
-        CHECK(req1.getType() == "water");
-        CHECK(req2.getType() == "waste");
-        CHECK(req3.getType() == "power");
     }
 
     delete water;
@@ -354,93 +331,78 @@ TEST_CASE("DeptOfUtility chain")
     delete wasteDept;
     delete powerDept;
     delete waterDept;
-    delete b2;
-    delete b1;    
+    delete housingDept;
 }
 
+TEST_CASE("PandemicCommand functionality")
+{
+    //       DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    //     Water *water = new Water(10000);
+    //     DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    //     TaxManager *taxMan = new TaxManager();
+    //     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+    //     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
+    //     // Create mock citizens
+    //     Citizen* citizen1 = new Citizen("Alice",50, 2, 4,&prDept);
+    //     Citizen* citizen2 = new Citizen("Bob", 45, 2, 4,&prDept);
+    //     Citizen* citizen3 = new Citizen("Charlie", 25, 2, 4,&prDept);
 
+    //     for (int i = 0; i < 20; i++)
+    //     {
+    //         citizen1->getOlder();
+    //         citizen2->getOlder();
+    //         citizen3->getOlder();
+    //     }
 
-TEST_CASE("PandemicCommand functionality") {
-//       DeptOfHousing *housingDept = new DeptOfHousing(100000);
-//     Water *water = new Water(10000);
-//     DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
-//     TaxManager *taxMan = new TaxManager();
-//     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
-//     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
-//     // Create mock citizens
-//     Citizen* citizen1 = new Citizen("Alice",50, 2, 4,&prDept);
-//     Citizen* citizen2 = new Citizen("Bob", 45, 2, 4,&prDept);
-//     Citizen* citizen3 = new Citizen("Charlie", 25, 2, 4,&prDept);
+    //     // Vector of citizens affected by the pandemic
+    //     std::vector<Citizen*> citizens = {citizen1, citizen2, citizen3};
 
+    //     // Create a PandemicCommand instance
+    //     PandemicCommand pandemicCommand(citizens);
 
-//     for (int i = 0; i < 20; i++)
-//     {
-//         citizen1->getOlder();
-//         citizen2->getOlder();
-//         citizen3->getOlder();
-//     }
+    //     // Test imposing lockdown
+    //     pandemicCommand.imposeLockdown();
+    //     // Check if lockdown was imposed (replace with actual state check)
+    //     CHECK(citizen1->getCurrentLocation() == citizen1->getHomeLocation());
 
-//     // Vector of citizens affected by the pandemic
-//     std::vector<Citizen*> citizens = {citizen1, citizen2, citizen3};
-    
-//     // Create a PandemicCommand instance
-//     PandemicCommand pandemicCommand(citizens);
-    
-//     // Test imposing lockdown
-//     pandemicCommand.imposeLockdown();
-//     // Check if lockdown was imposed (replace with actual state check)
-//     CHECK(citizen1->getCurrentLocation() == citizen1->getHomeLocation());
+    //     // Test increasing healthcare funding
+    //     pandemicCommand.increaseHealthcareFunding();
+    //    // CHECK(pandemicCommand.getHealthcareFunding() > previousFunding); // not
 
-//     // Test increasing healthcare funding
-//     pandemicCommand.increaseHealthcareFunding();
-//    // CHECK(pandemicCommand.getHealthcareFunding() > previousFunding); // not 
+    //     // Test distributing vaccines
+    //     pandemicCommand.distributeVaccines();
+    //     // CHECK(citizen1->hasVaccine() == true);
+    //     // CHECK(citizen2->hasVaccine() == true);
+    //     // CHECK(citizen3->hasVaccine() == true);
 
+    //     // Test quarantining citizens
+    //     double prevHealth = citizen3->getHealth();
+    //     double prevSatisfaction = citizen3->getSatisfactionLevel();
+    //     pandemicCommand.quarantineCitizens();
+    //     CHECK(citizen3->getHealth() < prevHealth);
+    //     CHECK(citizen3->getSatisfactionLevel() < prevSatisfaction);
 
-//     // Test distributing vaccines
-//     pandemicCommand.distributeVaccines();
-//     // CHECK(citizen1->hasVaccine() == true);
-//     // CHECK(citizen2->hasVaccine() == true);
-//     // CHECK(citizen3->hasVaccine() == true);
+    //     // Test tracking infection rates
+    //     pandemicCommand.trackInfectionRates();
 
-//     // Test quarantining citizens
-//     double prevHealth = citizen3->getHealth();
-//     double prevSatisfaction = citizen3->getSatisfactionLevel();
-//     pandemicCommand.quarantineCitizens();
-//     CHECK(citizen3->getHealth() < prevHealth);
-//     CHECK(citizen3->getSatisfactionLevel() < prevSatisfaction);
+    //     // Test command execution
+    //    // pandemicCommand.execute();
+    //     // CHECK(pandemicCommand.isExecuted() == true);
 
-//     // Test tracking infection rates
-//     pandemicCommand.trackInfectionRates();
-
-//     // Test command execution
-//    // pandemicCommand.execute();
-//     // CHECK(pandemicCommand.isExecuted() == true);
-
-//     // Clean up
-//     delete citizen1;
-//     delete citizen2;
-//     delete citizen3;
+    //     // Clean up
+    //     delete citizen1;
+    //     delete citizen2;
+    //     delete citizen3;
 }
 
-
-TEST_CASE("Government test") {
-    
-
-
-  
+TEST_CASE("Government test")
+{
 }
-
-
-
-
-
-
 
 // ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
 
-
-
-TEST_CASE("Testing Residential Buildings Creation and Functionality") {
+TEST_CASE("Testing Residential Buildings Creation and Functionality")
+{
     // ResidentialBuildingCreator creator;
     // TaxManager taxManager;  // Create a TaxManager instance
 
@@ -474,8 +436,8 @@ TEST_CASE("Testing Residential Buildings Creation and Functionality") {
     // }
 }
 
-
-TEST_CASE("Testing Commercial Building Classes with Factory Method") {
+TEST_CASE("Testing Commercial Building Classes with Factory Method")
+{
     // // Initialize the factory creator and TaxManager instance
     // CommercialBuildingCreator creator;
     // TaxManager taxManager;
@@ -488,7 +450,7 @@ TEST_CASE("Testing Commercial Building Classes with Factory Method") {
     //     Building* baseBuilding = creator.createBuilding(type);
     //     // Attempt to cast to CommercialBuilding*
     //     CommercialBuilding* building = dynamic_cast<CommercialBuilding*>(baseBuilding);
-        
+
     //     // Ensure the cast was successful
     //     REQUIRE(building != nullptr);
 
@@ -552,8 +514,8 @@ TEST_CASE("Testing Commercial Building Classes with Factory Method") {
     // }
 }
 
-
-TEST_CASE("Testing LandmarkBuilding classes with Factory Method") {
+TEST_CASE("Testing LandmarkBuilding classes with Factory Method")
+{
     // LandmarkBuildingCreator creator;  // Create a factory instance
     // TaxManager taxManager;            // Create a TaxManager instance
 
@@ -633,14 +595,14 @@ TEST_CASE("Testing LandmarkBuilding classes with Factory Method") {
     // }
 }
 
-
-TEST_CASE("Testing Industrial Building Subtypes") {
+TEST_CASE("Testing Industrial Building Subtypes")
+{
     // IndustrialBuildingCreator creator;
     // TaxManager taxManager;  // Create a TaxManager instance
 
     // SUBCASE("Testing Warehouse") {
     //     Building* warehouse = creator.createBuilding("Warehouse");
-        
+
     //     CHECK(warehouse->getName() == "Builder's Warehouse");
     //     CHECK(warehouse->getMaxCapacity() == 100);
     //     CHECK(warehouse->getType() == "Warehouse");
@@ -734,7 +696,5 @@ TEST_CASE("Testing Industrial Building Subtypes") {
     //     delete clonedTrainStation;
     // }
 }
-
-
 
 // ------------------------------------------------------------------------------------------------------- //

@@ -63,10 +63,10 @@ void Building::setCoordinates(const std::vector<std::pair<int, int>>& coords) {
 void Building::displayStats() const {
     std::cout << "Building Name: " << name << std::endl;
     std::cout << "Max Capacity: " << maxCapacity << std::endl;
-    std::cout << "Electricity Meter: " << electricityMeterBox << " kWh" << std::endl;
+    std::cout << "Electricity Meter: " << electricityMeterBox << " units" << std::endl;
     std::cout << "Water Meter: " << waterMeterBox << " L" << std::endl;
-    std::cout << "Electricity Usage: " << electricityUsage << " kWh" << std::endl;
-    std::cout << "Water Usage: " << waterUsage << " L" << std::endl;
+    std::cout << "Electricity Usage: " << electricityUsage << " units" << std::endl;
+    std::cout << "Water Usage: " << waterUsage << " kL" << std::endl;
     std::cout << "Waste Produced: " << wasteProduction << " kg" << std::endl;
     std::cout << "Dimensions (WxL): " << width << " x " << length << " units" << std::endl;
 
@@ -135,7 +135,7 @@ void Building::consumeElectricity(double amount) {
     }
     setElectricityUsage(amount);
     electricityMeterBox -= amount; // Decrease usage
-    std::cout << "Consumed " << amount << " kWh of electricity." << std::endl;
+    std::cout << "Consumed " << amount << " units of electricity." << std::endl;
     setElectricityMeterBox(electricityMeterBox);
 }
 

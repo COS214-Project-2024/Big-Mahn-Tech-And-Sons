@@ -25,9 +25,8 @@
 class WasteManagement : public DeptOfUtilities
 {
 private:
-    double wasteCapacity;         /**< Total capacity for handling waste in the city. */
-    double replenishedCapacity;   /**< Total capacity for replenishing waste in the city after disposal. */
-    vector<Building *> buildings; /**< Vector to store buildings for handling waste collection in the city. */
+    double wasteCapacity;       /**< Total capacity for handling waste in the city. */
+    double replenishedCapacity; /**< Total capacity for replenishing waste in the city after disposal. */
 
 public:
     /**
@@ -99,11 +98,6 @@ public:
      * to the next concreteHandler.
      */
     bool handleRequest(Request &req) override;
-
-    /**
-     * @brief this function adds a building to the vector to  be handled by the waste management
-     */
-    void addBuilding(Building *building);
 };
 
 #endif // WASTEMANAGEMENT_H

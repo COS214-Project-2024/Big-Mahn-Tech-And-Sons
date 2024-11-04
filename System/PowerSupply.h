@@ -26,9 +26,8 @@
 class PowerSupply : public DeptOfUtilities
 {
 private:
-    double powerCapacity;         /**< Total electricity capacity available for distribution. */
-    vector<Building *> buildings; /**vector to store building  */
-    Power *powerResource;         /**< pointer to  the power resource. */
+    double powerCapacity; /**< Total electricity capacity available for distribution. */
+    Power *powerResource; /**< pointer to  the power resource. */
 
 public:
     /**
@@ -102,12 +101,6 @@ public:
      *          to the next concreteHandler.
      */
     bool handleRequest(Request &req) override;
-
-    /**
-     * @brief Adds a building to the water supply system.
-     * @param b Pointer to the building to be added.
-     */
-    void addBuilding(Building *building);
 };
 
 #endif // POWERSUPPLY_H

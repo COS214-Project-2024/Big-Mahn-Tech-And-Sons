@@ -70,6 +70,12 @@ public:
     Citizen* getCitizen(int i);
 
     int numCitizens();
+
+    /**
+     * @brief return vector of buildings
+     */
+    vector<Building *> getBuildings();
+
     /**
      * @brief if building waste is at a certain level, remove it
      */

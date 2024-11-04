@@ -27,9 +27,9 @@ class WaterSupply : public DeptOfUtilities
 {
 private:
     double budget;
-    double waterCapacity;         /**< Total water capacity available for distribution. */
-    vector<Building *> buildings; /**< Vector to store buildings to be sourced  for water supply. */
-    Water *waterResource;         /**< pointer to  the water resource. */
+    double budg2;
+    double waterCapacity; /**< Total water capacity available for distribution. */
+    Water *waterResource; /**< pointer to  the water resource. */
 
 public:
     /**
@@ -95,12 +95,6 @@ public:
      *          to the next concreteHandler.
      */
     bool handleRequest(Request &req) override;
-
-    /**
-     * @brief Adds a building to the water supply system.
-     * @param b Pointer to the building to be added.
-     */
-    void addBuilding(Building *b);
 };
 
 #endif // WATERSUPPLY_H

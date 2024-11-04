@@ -3,18 +3,9 @@
 WasteManagement::WasteManagement(double budget, double capacity)
     : DeptOfUtilities(budget), wasteCapacity(capacity), replenishedCapacity(capacity)
 {
-    cout << "Waste Management Department created  with capacity : " << capacity << endl
+    cout << "Waste Management Department created  with capacity : "
+         << capacity << " kilograms and budget: ZAR" << this->budget << endl
          << endl;
-}
-
-void WasteManagement::addBuilding(Building *building)
-{
-    if (building) // building to add.
-    {
-        buildings.push_back(building); // Adds a building to the waste management system.
-        cout << "Building has been added, waste management will be handled " << endl
-             << endl;
-    }
 }
 
 WasteManagement::~WasteManagement()
@@ -24,6 +15,7 @@ WasteManagement::~WasteManagement()
 
 void WasteManagement::collectWaste()
 {
+    this->requestPR("building");
     for (Building *building : buildings)
     {
         cout << "----------- Next building: " << building->getName() << " gets waste removed ----------- " << endl;
@@ -33,7 +25,7 @@ void WasteManagement::collectWaste()
         {
             building->clearWaste(); // building has this method
             wasteCapacity -= wasteAmount;
-            cout << "Cleared " << wasteAmount << " units of waste from " << building->getName() << endl;
+            cout << "Cleared " << wasteAmount << " kilograms of waste from " << building->getName() << endl;
             this->budget -= 500;
         }
         else
@@ -51,7 +43,7 @@ void WasteManagement::collectWasteFromBuilding(Building *building)
     {
         building->clearWaste(); // building has this method
         wasteCapacity -= wasteAmount;
-        cout << "Cleared " << wasteAmount << " units of waste from: " << building->getName() << endl;
+        cout << "Cleared " << wasteAmount << " kilograms of waste from: " << building->getName() << endl;
         this->budget -= 250;
     }
     else
@@ -66,7 +58,7 @@ void WasteManagement::CollectWasteFromBuilding(Building *building, double incomi
     {
         building->clearWaste(); // building has this method
         wasteCapacity -= incomingAmt;
-        cout << "Cleared " << incomingAmt << " units of waste from: " << building->getName() << endl;
+        cout << "Cleared " << incomingAmt << " kilogrmas of waste from: " << building->getName() << endl;
         this->budget -= 250;
     }
     else
@@ -90,15 +82,19 @@ void WasteManagement::disposeWaste()
     cout << "Waste has been disposed of in designated landfill sites." << endl;
     this->budget -= 300;
     wasteCapacity = replenishedCapacity;
-    cout << "Waste capacity replenished back to: " << wasteCapacity << endl;
+    cout << "Waste capacity replenished back to: " << wasteCapacity << " kilograms" << endl;
 }
 
 double WasteManagement::calculateWasteProcessing() // Calculates the current amount of waste being processed.
 {
     double totalWaste = 0.0;
+    this->requestPR("building");
     for (Building *building : buildings)
     {
-        totalWaste += building->getWasteProduction(); // Assuming Building has this method
+        if (building != NULL)
+        {
+            totalWaste += building->getWasteProduction(); // Assuming Building has this method
+        }
     }
     return totalWaste; // The amount of waste being processed.
 }
@@ -106,7 +102,7 @@ double WasteManagement::calculateWasteProcessing() // Calculates the current amo
 void WasteManagement::expandWasteCapacity()
 {
     wasteCapacity *= 1.5; // Example: Increase waste capacity by 500 units to accommodate city growth.
-    cout << "Expanded waste capacity. New capacity: " << wasteCapacity << " units." << endl;
+    cout << "Expanded waste capacity. New capacity: " << wasteCapacity << " kilograms." << endl;
 }
 
 bool WasteManagement::handleRequest(Request &req)
@@ -117,7 +113,7 @@ bool WasteManagement::handleRequest(Request &req)
         if (wasteCapacity >= wasteAmount)
         {
             CollectWasteFromBuilding(req.getBuilding(), req.getAmount());
-            std::cout << "WasteManagement: Collected and processed " << wasteAmount << " units of waste.\n";
+            std::cout << "WasteManagement: Collected and processed " << wasteAmount << " kilograms of waste.\n";
             disposeWaste();
             this->budget -= 200;
             return true;
