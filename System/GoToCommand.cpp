@@ -1,4 +1,5 @@
 #include "GoToCommand.h"
+#include "DeptOfHousing.h"
 
 GoToCommand::GoToCommand(Citizen *citizen, DeptOfHousing *DOH)
 {

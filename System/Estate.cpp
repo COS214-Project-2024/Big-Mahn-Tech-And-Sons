@@ -26,7 +26,7 @@ void Estate::displayStats() const {
 
 
 void Estate::accept(TaxManager* visitor) {
-    visitor->visitResidentialBuilding(this);
+   // visitor->visitResidentialBuilding(this);
 }
 
 

@@ -42,7 +42,7 @@ public:
      * @param citizen A pointer to the Citizen object representing the person traveling to the train station.
      * @param roadNetwork A pointer to the RoadNetwork object used for navigating to the train station.
      */
-    GoTrain(Citizen* citizen , /**/ DeptOfHousing* deptH);
+    GoTrain(Citizen* citizen ,  DeptOfHousing* deptH);
 
 
     bool execute() override ;

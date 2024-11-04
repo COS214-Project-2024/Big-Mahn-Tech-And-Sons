@@ -47,3 +47,8 @@ Building* Warehouse::repairClone() const {
     std::cout << "Repairing industrial building (Warehouse): " << getName() << "\n";
     return new Warehouse(*this);
 }
+
+double Warehouse::calculateTax() const
+{
+   return 0.0;
+}

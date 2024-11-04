@@ -6,6 +6,7 @@
  */
 
 #include "CommercialBuilding.h"
+#include "TaxManager.h"
 
 /**
  * @brief Constructor for CommercialBuilding.

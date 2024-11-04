@@ -6,6 +6,7 @@
  */
 
 #include "LandmarkBuilding.h"
+#include "TaxManager.h"
 
 /**
  * @brief Constructor for LandmarkBuilding.

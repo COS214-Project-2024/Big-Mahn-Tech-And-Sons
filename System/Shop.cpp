@@ -35,7 +35,7 @@ bool Shop::checkAvailability() const {
 
 
 void Shop::accept(TaxManager* visitor) {
-    visitor->visitCommercialBuilding(this);
+  //  visitor->visitCommercialBuilding(this);
 }
 
 

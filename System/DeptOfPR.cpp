@@ -39,7 +39,7 @@ void DeptOfPR::update(Building *building)
 }
 void DeptOfPR::update(Citizen *citizen)
 {
-   if (citizen->getStateName() == "Pensioner" && citizen->getAge() >= citizen->getThreshold())
+   if ((citizen->getStateName() == "Pensioner" && citizen->getAge() >= citizen->getThreshold()) || citizen->getHealth() == 0)
    {
       // remove citizen from all records
       if (citizen->getCurrentLocation()->removeTenant(citizen) == false)
@@ -54,8 +54,7 @@ void DeptOfPR::update(Citizen *citizen)
       }
 
       return;
-   }
-   else if ((citizen->getSatisfactionLevelName() == "Neutral" || citizen->getSatisfactionLevelName() == "Sad") && citizen->getBudget() / 100000 * 100 < 0.6)
+   } else if ((citizen->getSatisfactionLevelName() == "Neutral" || citizen->getSatisfactionLevelName() == "Sad") && citizen->getBudget() / 100000 * 100 < 0.6)
    {
       notifyTaxman("Citizen");
    }

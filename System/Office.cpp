@@ -34,7 +34,7 @@ bool Office::checkAvailability() const {
 
 
 void Office::accept(TaxManager* visitor) {
-    visitor->visitCommercialBuilding(this);
+    //visitor->visitCommercialBuilding(this);
 }
 
 

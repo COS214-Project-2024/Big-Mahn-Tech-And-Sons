@@ -21,16 +21,10 @@ bool DeptOfHousing::canAfford(double price) const {
 
 void DeptOfHousing::createBuilding(const std::string& type, const std::string& category) {
     try {
-        Building* building = nullptr;
+        // Building* building = nullptr;
 
-        if (canAfford(building->getPriceTag())) {
-            buildings.push_back(building);
-            budget -= building->getPriceTag();
-            std::cout << category << " building (" << type << ") created successfully." << std::endl;
-        } else {
-            std::cerr << "Insufficient budget to create a " << type << " " << category << " building." << std::endl;
-        }
-
+      
+        Building* building = NULL;
         if (category == "Residential") {
             building = residentialCreator.createBuilding(type);
         } else if (category == "Commercial") {
@@ -40,8 +34,18 @@ void DeptOfHousing::createBuilding(const std::string& type, const std::string& c
         } else if (category == "Landmark") {
             building = landmarkCreator.createBuilding(type);
         }
+
+
+          if (building != NULL &&canAfford(building->getPriceTag())) {
+            buildings.push_back(building);
+            budget -= building->getPriceTag();
+            std::cout << category << " building (" << type << ") created successfully." << std::endl;
+        } else {
+            std::cout << "Insufficient budget to create a " << type << " " << category << " building." << std::endl;
+        }
+
     } catch (const std::invalid_argument& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cout << "Error: " << e.what() << std::endl;
     }
 }
 
@@ -73,7 +77,7 @@ void DeptOfHousing::removeBuildingByName(const std::string& name) {
         buildings.erase(buildings.begin() + index);
         std::cout << "Building '" << name << "' removed successfully." << std::endl;
     } else {
-        std::cerr << "Building with name '" << name << "' not found." << std::endl;
+        std::cout << "Building with name '" << name << "' not found." << std::endl;
     }
 }
 
@@ -127,6 +131,10 @@ void DeptOfHousing::listBuildings() const {
     }
 }
 
+std::vector<Building *> DeptOfHousing::getBuildings()
+{
+   return this->buildings;
+}
 
 bool DeptOfHousing::requestFunding(double amount) {
     std::cout << "Requesting additional funds from the DeptOfPR...\n";

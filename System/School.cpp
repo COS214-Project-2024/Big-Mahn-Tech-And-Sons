@@ -33,7 +33,7 @@ bool School::checkAvailability() const {
 
 
 void School::accept(TaxManager* visitor) {
-    visitor->visitCommercialBuilding(this);
+   // visitor->visitCommercialBuilding(this);
 }
 
 

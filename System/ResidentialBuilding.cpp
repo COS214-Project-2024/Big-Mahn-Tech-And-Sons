@@ -6,6 +6,7 @@
  */
 
 #include "ResidentialBuilding.h"
+#include "TaxManager.h"
 
 /**
  * @brief Default constructor for ResidentialBuilding.

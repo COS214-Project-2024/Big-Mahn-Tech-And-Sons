@@ -1,6 +1,7 @@
 // Class implementation of Factory Method - ConcreteProduct participant (subtype)
 
 #include "Hospital.h"
+#include "TaxManager.h"
 #include <iostream>
 
 

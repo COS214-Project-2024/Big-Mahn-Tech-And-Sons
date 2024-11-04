@@ -2,8 +2,7 @@
 #define GOTOCOMMAND_H
 
 #include "Citizen.h"
-#include "DeptOfHousing.h"
-
+class DeptOfHousing;
 #include <iostream>
 using namespace std;
 

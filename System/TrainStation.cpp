@@ -36,3 +36,8 @@ Building* TrainStation::repairClone() const {
     std::cout << "Repairing industrial building (Train Station): " << getName() << "\n";
     return new TrainStation(*this);
 }
+
+double TrainStation::calculateTax() const
+{
+   return 0.0;
+}

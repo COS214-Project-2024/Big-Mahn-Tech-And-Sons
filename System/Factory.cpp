@@ -36,3 +36,8 @@ void Factory::accept(TaxManager* visitor) {
     std::cout << "No tax applied to factory: " << getName() 
               << ". Factories are non-taxable." << std::endl;
 }
+
+double Factory::calculateTax() const
+{
+   return 0.0;
+}

@@ -9,7 +9,7 @@
 #define COMMERCIALBUILDING_H
 
 #include "Building.h"
-#include "TaxManager.h"
+class TaxManager;
 #include <iostream>
 
 /**

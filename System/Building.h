@@ -27,7 +27,7 @@ class DeptOfPR;
  * This class provides the common attributes and functionalities for all building types,
  * including managing tenants, utilities, and grid placement.
  */
-class Building {
+class Building : public Element{
 
     protected:
         std::string name;               ///< Name of the building

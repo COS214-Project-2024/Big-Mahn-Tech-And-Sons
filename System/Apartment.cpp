@@ -26,7 +26,7 @@ void Apartment::displayStats() const {
 
 
 void Apartment::accept(TaxManager* visitor) {
-    visitor->visitResidentialBuilding(this);
+  //  visitor->visitResidentialBuilding(this);
 }
 
 

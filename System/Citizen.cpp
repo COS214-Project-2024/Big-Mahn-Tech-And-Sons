@@ -68,7 +68,7 @@ Citizen::~Citizen()
 void Citizen::getOlder()
 {
    age++;
-   if (this->getStateName() == "Pensioner" && age >= ageThreshhold)
+   if ((this->getStateName() == "Pensioner" && age >= ageThreshhold) || this->getHealth() <= 0)
    {
       // kill TODO
       this->PR->update(this);
