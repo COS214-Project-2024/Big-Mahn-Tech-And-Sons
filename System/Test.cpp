@@ -33,11 +33,11 @@ TEST_CASE("Citizen initialisation")
 {
     DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil);
     TaxManager *taxMan = new TaxManager();
@@ -63,60 +63,60 @@ TEST_CASE("Citizen initialisation")
 
 TEST_CASE("Citizen Initialization")
 {
-    // DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    // Water *water = new Water(10000);
-    // Power *power = new Power(1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    // DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
-    // DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
-    // utilitiesDept->setSuccessor(powerUtil);
-    // TaxManager *taxMan = new TaxManager();
-    // DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+    utilitiesDept->setSuccessor(powerUtil);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
 
-    // DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
     Citizen citizen("John Doe", prDept);
 
-    // CHECK(citizen.getName() == "John Doe");
-    // CHECK(citizen.getAge() == 1);                  // Starts at age 1 by specification
-    // CHECK(citizen.getHealth() == 100.0);           // Health should initialize to 100
-    // CHECK(citizen.getSatisfactionLevel() == 50.0); // Initial satisfaction level
+    CHECK(citizen.getName() == "John Doe");
+    CHECK(citizen.getAge() == 1);                  // Starts at age 1 by specification
+    CHECK(citizen.getHealth() == 100.0);           // Health should initialize to 100
+    CHECK(citizen.getSatisfactionLevel() == 50.0); // Initial satisfaction level
 
-    // delete housingDept;
-    // delete utilitiesDept;
-    // delete financeDept;
-    // delete prDept;
+    delete housingDept;
+    delete utilitiesDept;
+    delete financeDept;
+    delete prDept;
 }
 
 TEST_CASE("Citizen Age Increment")
 {
 
-    // DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    // Water *water = new Water(10000);
-    // Power *power = new Power(1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    // DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
-    // DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
-    // utilitiesDept->setSuccessor(powerUtil);
-    // TaxManager *taxMan = new TaxManager();
-    // DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+    utilitiesDept->setSuccessor(powerUtil);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
 
-    // DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
     Citizen citizen("Alice Smith",prDept);
 
-    // int initialAge = citizen.getAge();
-    // citizen.getOlder();
-    // CHECK(citizen.getAge() == initialAge + 1);
+    int initialAge = citizen.getAge();
+    citizen.getOlder();
+    CHECK(citizen.getAge() == initialAge + 1);
 
-    // delete housingDept;
-    // delete utilitiesDept;
-    // delete financeDept;
-    // delete prDept;
+    delete housingDept;
+    delete utilitiesDept;
+    delete financeDept;
+    delete prDept;
 }
 
 // Additional test cases for other Citizen functionalities
@@ -124,36 +124,36 @@ TEST_CASE("Citizen Age Increment")
 
 TEST_CASE("Citizen Work and Spend")
 {
-    // DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    // Water *water = new Water(10000);
-    // Power *power = new Power( 1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power( 1456.3);
 
-    // DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
-    // DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
-    // utilitiesDept->setSuccessor(powerUtil);
-    // TaxManager *taxMan = new TaxManager();
-    // DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+    utilitiesDept->setSuccessor(powerUtil);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
 
-    // DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
     Citizen citizen("Bob Brown", prDept);
     double initialBudget = citizen.getBudget();
 
-    // SUBCASE("Earning Income")
-    // {
-    //     citizen.work(100.0);
-    //     CHECK(citizen.getBudget() == initialBudget + 100.0);
-    // }
+    SUBCASE("Earning Income")
+    {
+        citizen.work(100.0);
+        CHECK(citizen.getBudget() == initialBudget + 100.0);
+    }
 
-    // SUBCASE("Successful Spending")
-    // {
-    //     citizen.work(100.0); // Ensuring sufficient funds are available
-    //     bool spendResult = citizen.Spend(50.0);
-    //     CHECK(spendResult == true);
-    //     CHECK(citizen.getBudget() == initialBudget + 50.0); // Check remaining budget after spending
-    // }
+    SUBCASE("Successful Spending")
+    {
+        citizen.work(100.0); // Ensuring sufficient funds are available
+        bool spendResult = citizen.Spend(50.0);
+        CHECK(spendResult == true);
+        CHECK(citizen.getBudget() == initialBudget + 50.0); // Check remaining budget after spending
+    }
 
     SUBCASE("Unsuccessful Spending - Insufficient Budget")
     {
@@ -162,39 +162,39 @@ TEST_CASE("Citizen Work and Spend")
         CHECK(spendResult == false); // Should return false as spending is unsuccessful
     }
 
-    // delete housingDept;
-    // delete utilitiesDept;
-    // delete financeDept;
-    // delete prDept;
+    delete housingDept;
+    delete utilitiesDept;
+    delete financeDept;
+    delete prDept;
 }
 
 TEST_CASE("DeptOfPR initializes and interacts with Departments")
 {
     // Initialize the departments and resources
-    // DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    // Water *water = new Water(10000);
-    // Power *power = new Power(1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    // DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
-    // DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
-    // utilitiesDept->setSuccessor(powerUtil); // Setting up the Chain of Responsibility
-    // TaxManager *taxMan = new TaxManager();
-    // DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+    utilitiesDept->setSuccessor(powerUtil); // Setting up the Chain of Responsibility
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
 
     // // Initialize DeptOfPR and link to other departments
-    // DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
     // // Test that PR Department was successfully initialized
-    // CHECK(prDept != nullptr);
+    CHECK(prDept != nullptr);
 }
 
 TEST_CASE("DeptOfPR notifies Housing Department to build")
 {
     DeptOfHousing *housingDept = new DeptOfHousing(1000000);
-    Water *water = new Water("Sparkling", 10000);
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    Water *water = new Water( 10000);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
     TaxManager *taxMan = new TaxManager();
     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
@@ -207,11 +207,11 @@ TEST_CASE("DeptOfPR notifies Housing Department to build")
 TEST_CASE("DeptOfPR notifies Utilities Department")
 {
     DeptOfHousing* housingDept = new DeptOfHousing(100000000);
-     Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Electricity", 1000000);
+     Water *water = new Water(10000);
+    Power *power = new Power( 1000000);
     
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 500000.02, 100000, water);
-    DeptOfUtilities* powerUtil = new PowerSupply("Power", 500000000.02, 100000, power);
+    DeptOfUtilities* utilitiesDept = new WaterSupply( 500000.02, 100000, water);
+    DeptOfUtilities* powerUtil = new PowerSupply( 500000000.02, 100000, power);
 
     utilitiesDept->setSuccessor(powerUtil);
     TaxManager* taxMan = new TaxManager();
@@ -236,46 +236,46 @@ TEST_CASE("DeptOfPR notifies Utilities Department")
 
 TEST_CASE("DeptOfPR notifies Taxman in Finance Department")
 {
-    /*
+    
     DeptOfHousing* housingDept = new DeptOfHousing(100000);
     Water* water = new Water(10000);
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfUtilities* utilitiesDept = new WaterSupply(5000.02, 100000, water);
     TaxManager* taxMan = new TaxManager();
     DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
 
     prDept.notifyTaxman("Citizen");
-    CHECK(financeDept-> == true);  // Assuming `isTaxmanNotified` method tracks this state'
-    */
+    //CHECK(financeDept-> == true);  // Assuming `isTaxmanNotified` method tracks this state'
+    
 }
 
 TEST_CASE("DeptOfPR updates Building and Citizen states")
 {
-    /*
+    
     DeptOfHousing* housingDept = new DeptOfHousing(100000);
     Water* water = new Water(10000);
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfUtilities* utilitiesDept = new WaterSupply( 5000.02, 100000, water);
     TaxManager* taxMan = new TaxManager();
     DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
-    Building building;
-    Citizen citizen("John Doe", 50.0, 10, 20, &prDept);
+   //
+    Citizen citizen("John Doe",  &prDept);
 
-    prDept.update(&building);
-    prDept.update(&citizen);
+    // prDept.update(&building);
+    // prDept.update(&citizen);
 
     // Check for state changes if there are observable effects on building or citizen
-    */
+    
 }
 
 TEST_CASE("DeptOfPR Funding Request")
 {
-    /*
+    
     DeptOfHousing* housingDept = new DeptOfHousing(100000);
     Water* water = new Water(10000);
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfUtilities* utilitiesDept = new WaterSupply( 5000.02, 100000, water);
     TaxManager* taxMan = new TaxManager();
     DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
@@ -283,74 +283,80 @@ TEST_CASE("DeptOfPR Funding Request")
     double requestAmount = 5000.0;
     prDept.notifyTaxman("Housing");
 
-    CHECK(fundingGranted);
-    CHECK(finance.getRemainingBudget() >= requestAmount);
+    CHECK(financeDept->checkMoney());
 
-    */
 }
 
 TEST_CASE("DeptOfUtility chain")
 {
+    TaxManager *taxMan = new TaxManager();
 
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Electricity", 1456.3);
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
 
-    PowerSupply powerDept("Power", 5000, 400, power);
-    WaterSupply waterDept("Water", 2000, 500, water);
-    WasteManagement wasteDept("Waste", 150, 600);
+    DeptOfHousing *housingDept = new DeptOfHousing(10000000000);
 
-    // Set up chain of responsibility
-    powerDept.setSuccessor(&waterDept);
-    waterDept.setSuccessor(&wasteDept);
+    Water *water = new Water(108000);
+    Power *power = new Power(170004);
 
-    Building *b1 = new House();
-    Building *b2 = new Apartment();
-    
+    DeptOfUtilities *powerDept = new PowerSupply(50000, 40000, power);
+    DeptOfUtilities *waterDept = new WaterSupply(20000, 500000, water);
+    DeptOfUtilities *wasteDept = new WasteManagement(10000, 6000);
 
-    double initialPowerLevel = powerDept.getPowerCapacity();
-    double initialWaterLevel = waterDept.getWaterCapacity();
-    double initialWasteCapacity = wasteDept.getWasteCapacity();
+    wasteDept->setSuccessor(powerDept);
+    powerDept->setSuccessor(waterDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
 
-    // Example request for power within capacity
-    Request req1("Power", b1, 100);
-    powerDept.handleRequest(req1); // Should be handled by PowerSupply
+    housingDept->createResidentialBuilding("House");
+    housingDept->createResidentialBuilding("Apartment");
 
-    // Example request for water within capacity
-    Request req2("Water", b2, 80);
-    powerDept.handleRequest(req2); // Passed from PowerSupply to WaterSupply
+    SUBCASE("Water Supply Tests")
+    {
+        dynamic_cast<WaterSupply *>(waterDept)->distributeWater();
+        CHECK(dynamic_cast<WaterSupply *>(waterDept)->calculateWaterUsage() >= 0);
+        int initialWaterCapacity = dynamic_cast<WaterSupply *>(waterDept)->getWaterCapacity();
+        dynamic_cast<WaterSupply *>(waterDept)->increaseWaterCapacity();
+        CHECK(dynamic_cast<WaterSupply *>(waterDept)->getWaterCapacity() > initialWaterCapacity);
+    }
 
-    // Example request for power that exceeds capacity of PowerSupply, should be passed along
-    Request req3("Power", b2, 450);
-    powerDept.handleRequest(req3); // PowerSupply can't handle, passed to WaterSupply if applicable
+    SUBCASE("Power Supply Tests")
+    {
+        dynamic_cast<PowerSupply *>(powerDept)->distributePowerToBuilding(housingDept->getBuildings().at(0));
+        CHECK(dynamic_cast<PowerSupply *>(powerDept)->calculatePowerUsage() >= 0);
+        int initialPowerCapacity = dynamic_cast<PowerSupply *>(powerDept)->getPowerCapacity();
+        dynamic_cast<PowerSupply *>(powerDept)->increasePowerCapacity();
+        CHECK(dynamic_cast<PowerSupply *>(powerDept)->getPowerCapacity() > initialPowerCapacity);
+    }
 
-    // Example request for waste within capacity of WasteManagement
-    Request req4("Waste", b1, 100);
-    powerDept.handleRequest(req4); // Passed from PowerSupply and WaterSupply to WasteManagement
+    SUBCASE("Waste Management Tests")
+    {
+        dynamic_cast<WasteManagement *>(wasteDept)->collectWaste();
+        CHECK(dynamic_cast<WasteManagement *>(wasteDept)->calculateWasteProcessing() >= 0);
+        int initialWasteCapacity = dynamic_cast<WasteManagement *>(wasteDept)->getWasteCapacity();
+        dynamic_cast<WasteManagement *>(wasteDept)->expandWasteCapacity();
+        CHECK(dynamic_cast<WasteManagement *>(wasteDept)->getWasteCapacity() > initialWasteCapacity);
+    }
 
-    // Example request for waste that exceeds WasteManagement capacity, should return unfulfilled
-    Request req5("Waste", b2, 700);
-    powerDept.handleRequest(req5); // No handler should be able to fulfill this request
+    SUBCASE("Request Handling Tests")
+    {
+        Building *b1 = housingDept->getBuildings().at(0);
+        Request req1("water", b1, 10);
+        wasteDept->handleRequest(req1);
 
-    // Example of high demand water request that exceeds all capacities
-    Request req6("Water", b2, 2000);
-    powerDept.handleRequest(req6); // No handler should be able to fulfill this request
+        Request req2("waste", b1, 80);
+        wasteDept->handleRequest(req2);
 
-    CHECK(powerDept.getPowerCapacity() == initialPowerLevel);
-    CHECK(waterDept.getWaterCapacity() == initialWaterLevel);
-    CHECK(wasteDept.getWasteCapacity() == initialWasteCapacity);
+        Request req3("power", b1, 10);
+        wasteDept->handleRequest(req3);
 
-    // Edge cases:
-    // Large water request that exceeds water capacity but should not affect other departments
-    Request req7("Water", b1, 1200);
-    powerDept.handleRequest(req7); // Exceeds water capacity, should fail gracefully
+    }
 
-    // Unrecognized resource request type, should pass through all departments and remain unhandled
-    Request req8("Gas", b1, 50);
-    powerDept.handleRequest(req8); // Should go through the chain but remain unhandled
-    
+    delete water;
+    delete power;
+    delete wasteDept;
+    delete powerDept;
+    delete waterDept;
+    delete housingDept;
 }
-
-
 
 TEST_CASE("PandemicCommand functionality") {
     /*

@@ -107,8 +107,8 @@ int main()
     testGoToTrainStation();
     std::cout << "End" << std::endl;
 */
-    TestingDptUtilities();
-
+    // TestingDptUtilities();
+    testGoToTrainStation();
     return 0;
 }
 
@@ -116,11 +116,11 @@ void testGoToTrainStation()
 {
 
     DeptOfHousing *housingDept = new DeptOfHousing(100000000000);
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power( 1456.3);
 
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
     utilitiesDept->setSuccessor(powerUtil);
 
     TaxManager *taxMan = new TaxManager();
@@ -424,21 +424,23 @@ void testGoToTrainStation()
 
     void testHouse()
     {
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-        DeptOfHousing *housingDept = new DeptOfHousing(100000);
+        Water *water = new Water(10000);
+        Power *power = new Power(1456.3);
 
-        Water *water = new Water("Sparkling", 10000);
-        Power *power = new Power("Power", 1456.3);
-
-        DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-        DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+        DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+        DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
         utilitiesDept->setSuccessor(powerUtil);
         TaxManager *taxMan = new TaxManager();
         DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
 
         DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
-        ResidentialBuildingCreator creator; // Create a ResidentialBuildingCreator instance
+
+        Citizen person("John Doe", prDept);
+        
+            ResidentialBuildingCreator creator; // Create a ResidentialBuildingCreator instance
         IndustrialBuildingCreator indCreator;
 
         TaxManager taxManager; // Create a TaxManager instance
@@ -509,8 +511,8 @@ void testGoToTrainStation()
     int testDepartment()
     {
         DeptOfHousing *housingDept = new DeptOfHousing(1000000);
-        Water *water = new Water("Sparkling", 10000);
-        DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+        Water *water = new Water( 10000);
+        DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
         TaxManager *taxMan = new TaxManager();
         DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
         DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
@@ -750,3 +752,148 @@ void testGoToTrainStation()
     }
 
     */
+
+
+   void TestingDptUtilities()
+{
+
+    cout << endl
+            << "TESTING DEPARTMENT UTILITIES : " << endl;
+
+
+    std::cout << "\n"
+              << endl;
+
+    DeptOfHousing *housingDept = new DeptOfHousing(10000000000);
+
+    Water *water = new Water(108000);
+    Power *power = new Power(170004);
+
+    DeptOfUtilities *powerDept = new PowerSupply(50000, 40000, power);
+    DeptOfUtilities *waterDept = new WaterSupply(200000, 500000, water);
+    DeptOfUtilities *wasteDept = new WasteManagement(10000, 6000);
+
+    dynamic_cast<WasteManagement *>(wasteDept)->setSuccessor(powerDept);
+    dynamic_cast<PowerSupply *>(powerDept)->setSuccessor(waterDept);
+
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+    // DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
+
+    housingDept->createResidentialBuilding("House");
+    housingDept->createResidentialBuilding("Apartment");
+    housingDept->createResidentialBuilding("Estate");
+    housingDept->createCommercialBuilding("Office");
+    housingDept->createCommercialBuilding("Shop");
+
+    // housingDept->displayAllBuildings();
+    DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
+
+    cout << endl;
+    vector<Building *> buildings = housingDept->getBuildings();
+
+    for (Building *it : buildings)
+    {
+        dynamic_cast<WaterSupply *>(waterDept)->distributeWaterToBuilding(it);
+        cout << endl
+             << "NEW WATER READING : " << endl;
+        it->setWaterMeterBox(900);
+        it->consumeWater(30);
+        cout << endl;
+
+        dynamic_cast<PowerSupply *>(powerDept)->distributePowerToBuilding(it);
+        cout << endl
+             << "NEW ELECTRICITY READING : " << endl;
+        it->setElectricityMeterBox(800);
+        it->consumeElectricity(70);
+        cout << endl;
+
+        dynamic_cast<WasteManagement *>(wasteDept)->collectWasteFromBuilding(it);
+        it->setWaste(100);
+        cout << endl;
+    }
+
+    cout << endl
+         << endl
+         << "======= TESTING WATER SUPPLY =========== " << endl;
+
+    dynamic_cast<WaterSupply *>(waterDept)->distributeWater();
+    cout << "Total water usage in all buildings: " << dynamic_cast<WaterSupply *>(waterDept)->calculateWaterUsage() << endl;
+    cout << "Water capacity is currently at: " << dynamic_cast<WaterSupply *>(waterDept)->getWaterCapacity() << endl;
+    dynamic_cast<WaterSupply *>(waterDept)->increaseWaterCapacity();
+    cout << endl;
+    cout << "Water capacity is currently at: " << dynamic_cast<WaterSupply *>(waterDept)->getWaterCapacity() << endl;
+    cout << "Budget for water: " << dynamic_cast<WaterSupply *>(waterDept)->getBudget() << endl;
+
+    cout << endl;
+    buildings = housingDept->getBuildings();
+
+    cout << endl
+         << endl
+         << "======= TESTING POWER SUPPLY =========== " << endl;
+
+    cout << "Total power usage in all buildings: " << dynamic_cast<PowerSupply *>(powerDept)->calculatePowerUsage() << " units" << endl;
+
+    dynamic_cast<PowerSupply *>(powerDept)->increasePowerCapacity();
+    cout << endl;
+    cout << "Power capacity is currently at: " << dynamic_cast<PowerSupply *>(powerDept)->getPowerCapacity() << " MegaWatts" << endl;
+    cout << "Budget for power : ZAR" << dynamic_cast<PowerSupply *>(powerDept)->getBudget() << endl;
+
+    cout << endl;
+    buildings = housingDept->getBuildings();
+
+    cout << endl
+         << endl
+         << "======= TESTING WASTEMANAGEMENT =========== " << endl;
+
+    dynamic_cast<WasteManagement *>(wasteDept)->collectWaste();
+    cout << "Waste processing is : " << dynamic_cast<WasteManagement *>(wasteDept)->calculateWasteProcessing() << endl;
+    cout << "Waste capacity is : " << dynamic_cast<WasteManagement *>(wasteDept)->getWasteCapacity() << endl;
+    cout << endl;
+    dynamic_cast<WasteManagement *>(wasteDept)->disposeWaste();
+    cout << endl;
+    dynamic_cast<WasteManagement *>(wasteDept)->expandWasteCapacity();
+    cout << endl;
+    cout << "Waste budget is currently at: "
+         << dynamic_cast<WasteManagement *>(wasteDept)->getWasteManagementBudget() << endl;
+
+    Building *b1 = buildings.at(0);
+    cout << "Building 1 is : " << b1->getName() << endl;
+    Building *b2 = buildings.at(1);
+    cout << "Building 2 is : " << b2->getName() << endl;
+
+    cout << endl
+         << endl
+         << " ============== HANDLING REQUEST 1================" << endl
+         << endl;
+
+    Request req1("water", b1, 10);
+    wasteDept->handleRequest(req1);
+
+    cout << endl
+         << " ============== HANDLING REQUEST 2================" << endl
+         << endl;
+    Request req2("waste", b1, 80);
+    wasteDept->handleRequest(req2);
+
+    cout << endl
+         << " ============== HANDLING REQUEST 3================" << endl
+         << endl;
+    Request req3("power", b1, 10);
+    wasteDept->handleRequest(req3);
+
+    std::cout << endl
+              << endl
+              << endl;
+
+    delete wasteDept;
+    delete powerDept;
+    delete waterDept;
+    delete water;
+    delete power;
+    delete financeDept;
+    delete taxMan;
+    delete housingDept;
+    delete b2;
+    delete b1;
+}
