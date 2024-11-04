@@ -4,8 +4,7 @@
 #define WAREHOUSE_H
 
 #include "IndustrialBuilding.h"
-#include "TaxManager.h"
-
+class TaxManager;
 /**
  * @class Warehouse
  * @brief Represents a warehouse, a type of industrial building.
@@ -22,19 +21,21 @@ class Warehouse : public IndustrialBuilding {
         /**
          * @brief Displays the stats specific to the warehouse.
          */
-        void displayStats() const override;
+        void displayStats() const ;
 
         /**
          * @brief Accepts a visitor for applying the Visitor pattern.
          * @param visitor A pointer to the TaxManager object.
          */
-        void accept(TaxManager* visitor) override;
+        void accept(TaxManager* visitor) ;
 
         /**
          * @brief Clones the warehouse for repair purposes.
          * @return A pointer to the cloned Warehouse object.
          */
-        Building* repairClone() const override;
+        Building* repairClone() const ;
+
+         double calculateTax() const ;
 };
 
 #endif // WAREHOUSE_H

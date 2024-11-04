@@ -56,10 +56,11 @@ public:
     // WasteManagement* wasteS;
     DeptOfFinance* finance;
     DeptOfHousing* housing;
+    
     string commercialTypes[4] = {"Shop", "Office", "School", "Hospital"};
-   string residentialTypes[3] = {"House", "Apartment", "Estate"};
-   string industrialTypes[4] = {"Warehouse", "Factory", "Airport", "TrainStation"};
-   string landmarkTypes[3] = {"Park", "Monument", "Museum"};
+    string residentialTypes[3] = {"House", "Apartment", "Estate"};
+    string industrialTypes[4] = {"Warehouse", "Factory", "Airport", "TrainStation"};
+    string landmarkTypes[3] = {"Park", "Monument", "Museum"};
 
     DeptOfTransportation* transport;
 
@@ -81,6 +82,7 @@ public:
 
     // Simulation methods
     void handleCitizenNeeds();
+    void simulateDailyOperations();
     void addNewCitizens();
     void displayCity();
     void addRoad();

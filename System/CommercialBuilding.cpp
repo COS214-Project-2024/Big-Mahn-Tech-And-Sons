@@ -6,13 +6,14 @@
  */
 
 #include "CommercialBuilding.h"
+#include "TaxManager.h"
 
 /**
  * @brief Constructor for CommercialBuilding.
  * Initializes default values for job, kid space, and bed availability.
  */
 CommercialBuilding::CommercialBuilding() 
-    : Building(), availableJobs(1), availableKidsSpaces(1), availableBeds(1), closed(false) {
+    : Building(), availableJobs(1), availableKidsSpaces(1), availableBeds(1), closed(false), annualRevenue(0.0) {
 }
 
 /**
@@ -112,4 +113,18 @@ void CommercialBuilding::reopenBuilding() {
  */
 bool CommercialBuilding::isClosed() const {
     return closed;
+}
+
+
+// Getters and Setters
+double CommercialBuilding::getAnnualRevenue() const { 
+    return annualRevenue; 
+}
+
+void CommercialBuilding::setAnnualRevenue(double revenue) { 
+    annualRevenue = revenue; 
+}    
+
+double CommercialBuilding::calculateTax() const {
+    return annualRevenue * getBusinessTax();
 }

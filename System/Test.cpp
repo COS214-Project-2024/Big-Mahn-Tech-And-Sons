@@ -31,24 +31,35 @@
 
 TEST_CASE("Citizen initialisation")
 {
-    // // DepartmentOfPR*  pr = new DepartmentOfPR(NULL,NULL, NULL,NULL);
-    // Citizen *person = new Citizen("one", 50, 10, 10, NULL);
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    // CHECK(person->getAge() == 1);
-    // for (int i = 0; i < 20; i++)
-    // {
-    //     person->getOlder();
-    // }
-    // CHECK(person->getStateName() == "Adult");
+    Water *water = new Water("Sparkling", 10000);
+    Power *power = new Power("Power", 1456.3);
 
-    // person->increaseSatisfaction(20);
-    // CHECK(person->getSatisfactionLevelName() == "Happy");
+    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
 
-    // person->decreaseSatisfaction(50);
-    // CHECK(person->getSatisfactionLevelName() == "Sad");
+    utilitiesDept->setSuccessor(powerUtil);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+
+    DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
+
+    Citizen person("John Doe", prDept);
+
+    CHECK(person.getAge() == 1);
+    for (int i = 0; i < 20; i++)
+    {
+        person.getOlder();
+    }
+    CHECK(person.getStateName() == "Adult");
+
+    person.increaseSatisfaction(20);
+    CHECK(person.getSatisfactionLevelName() == "Happy");
+
+    person.decreaseSatisfaction(50);
+    CHECK(person.getSatisfactionLevelName() == "Sad");
 }
-
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
 TEST_CASE("Citizen Initialization")
 {
@@ -66,7 +77,7 @@ TEST_CASE("Citizen Initialization")
 
     // DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    // Citizen citizen("John Doe", 50.0, 10, 20, prDept);
+    Citizen citizen("John Doe", prDept);
 
     // CHECK(citizen.getName() == "John Doe");
     // CHECK(citizen.getAge() == 1);                  // Starts at age 1 by specification
@@ -96,7 +107,7 @@ TEST_CASE("Citizen Age Increment")
 
     // DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    // Citizen citizen("Alice Smith", 50.0, 15, 25, prDept);
+    Citizen citizen("Alice Smith",prDept);
 
     // int initialAge = citizen.getAge();
     // citizen.getOlder();
@@ -127,8 +138,8 @@ TEST_CASE("Citizen Work and Spend")
 
     // DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    // Citizen citizen("Bob Brown", 50.0, 10, 20, prDept);
-    // double initialBudget = citizen.getBudget();
+    Citizen citizen("Bob Brown", prDept);
+    double initialBudget = citizen.getBudget();
 
     // SUBCASE("Earning Income")
     // {
@@ -144,11 +155,12 @@ TEST_CASE("Citizen Work and Spend")
     //     CHECK(citizen.getBudget() == initialBudget + 50.0); // Check remaining budget after spending
     // }
 
-    // SUBCASE("Unsuccessful Spending - Insufficient Budget")
-    // {
-    //     bool spendResult = citizen.Spend(1000.0);
-    //     CHECK(spendResult == false); // Should return false as spending is unsuccessful
-    // }
+    SUBCASE("Unsuccessful Spending - Insufficient Budget")
+    {
+        citizen.display();
+        bool spendResult = citizen.Spend(1000000.0);
+        CHECK(spendResult == false); // Should return false as spending is unsuccessful
+    }
 
     // delete housingDept;
     // delete utilitiesDept;
@@ -180,32 +192,46 @@ TEST_CASE("DeptOfPR initializes and interacts with Departments")
 
 TEST_CASE("DeptOfPR notifies Housing Department to build")
 {
-    // DeptOfHousing *housingDept = new DeptOfHousing(100000);
-    // Water *water = new Water(10000);
-    // DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
-    // TaxManager *taxMan = new TaxManager();
-    // DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
-    // DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
+    DeptOfHousing *housingDept = new DeptOfHousing(1000000);
+    Water *water = new Water("Sparkling", 10000);
+    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+    DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
-    // int prev = housingDept->getTotalBuildings();
-    // prDept.notifyHousingToBuild("Residential");
-    // CHECK(housingDept->getTotalBuildings() == prev + 1); // Assuming `isBuildNotified` method tracks this state
+    int prev = housingDept->getTotalBuildings();
+    prDept.notifyHousingToBuild("Apartment");
+    CHECK(housingDept->getTotalBuildings() == prev + 1); // Assuming `isBuildNotified` method tracks this state
 }
 
 TEST_CASE("DeptOfPR notifies Utilities Department")
 {
-    /*
-    DeptOfHousing* housingDept = new DeptOfHousing(100000);
-    Water* water = new Water(10000);
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfHousing* housingDept = new DeptOfHousing(100000000);
+     Water *water = new Water("Sparkling", 10000);
+    Power *power = new Power("Electricity", 1000000);
+    
+    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 500000.02, 100000, water);
+    DeptOfUtilities* powerUtil = new PowerSupply("Power", 500000000.02, 100000, power);
+
+    utilitiesDept->setSuccessor(powerUtil);
     TaxManager* taxMan = new TaxManager();
     DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
 
-    prDept.notifyUtilities();
-    CHECK(utilitiesDept->isNotified() == true);  // Assuming `isNotified` method tracks this state
-    */
+    housingDept->createResidentialBuilding("House");
+    housingDept->displayAllBuildings();
+    
+    for(Building* b : housingDept->getBuildings()) {
+        prDept.notifyUtilities("power", b);
+    }
+    housingDept->displayAllBuildings();
+
+ housingDept->getBuildings().at(0);
+
+   // prDept.notifyUtilities();
+   // CHECK(utilitiesDept->isNotified() == true);  // Assuming `isNotified` method tracks this state
+    
 }
 
 TEST_CASE("DeptOfPR notifies Taxman in Finance Department")
@@ -265,6 +291,72 @@ TEST_CASE("DeptOfPR Funding Request")
 
 TEST_CASE("DeptOfUtility chain")
 {
+
+    Water *water = new Water("Sparkling", 10000);
+    Power *power = new Power("Electricity", 1456.3);
+
+    PowerSupply powerDept("Power", 5000, 400, power);
+    WaterSupply waterDept("Water", 2000, 500, water);
+    WasteManagement wasteDept("Waste", 150, 600);
+
+    // Set up chain of responsibility
+    powerDept.setSuccessor(&waterDept);
+    waterDept.setSuccessor(&wasteDept);
+
+    Building *b1 = new House();
+    Building *b2 = new Apartment();
+    
+
+    double initialPowerLevel = powerDept.getPowerCapacity();
+    double initialWaterLevel = waterDept.getWaterCapacity();
+    double initialWasteCapacity = wasteDept.getWasteCapacity();
+
+    // Example request for power within capacity
+    Request req1("Power", b1, 100);
+    powerDept.handleRequest(req1); // Should be handled by PowerSupply
+
+    // Example request for water within capacity
+    Request req2("Water", b2, 80);
+    powerDept.handleRequest(req2); // Passed from PowerSupply to WaterSupply
+
+    // Example request for power that exceeds capacity of PowerSupply, should be passed along
+    Request req3("Power", b2, 450);
+    powerDept.handleRequest(req3); // PowerSupply can't handle, passed to WaterSupply if applicable
+
+    // Example request for waste within capacity of WasteManagement
+    Request req4("Waste", b1, 100);
+    powerDept.handleRequest(req4); // Passed from PowerSupply and WaterSupply to WasteManagement
+
+    // Example request for waste that exceeds WasteManagement capacity, should return unfulfilled
+    Request req5("Waste", b2, 700);
+    powerDept.handleRequest(req5); // No handler should be able to fulfill this request
+
+    // Example of high demand water request that exceeds all capacities
+    Request req6("Water", b2, 2000);
+    powerDept.handleRequest(req6); // No handler should be able to fulfill this request
+
+    CHECK(powerDept.getPowerCapacity() == initialPowerLevel);
+    CHECK(waterDept.getWaterCapacity() == initialWaterLevel);
+    CHECK(wasteDept.getWasteCapacity() == initialWasteCapacity);
+
+    // Edge cases:
+    // Large water request that exceeds water capacity but should not affect other departments
+    Request req7("Water", b1, 1200);
+    powerDept.handleRequest(req7); // Exceeds water capacity, should fail gracefully
+
+    // Unrecognized resource request type, should pass through all departments and remain unhandled
+    Request req8("Gas", b1, 50);
+    powerDept.handleRequest(req8); // Should go through the chain but remain unhandled
+    
+}
+
+
+
+TEST_CASE("PandemicCommand functionality") {
+    /*
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    Water *water = new Water("Sparkling", 10000);
+    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
     TaxManager *taxMan = new TaxManager();
 
     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
@@ -389,10 +481,12 @@ TEST_CASE("PandemicCommand functionality")
     //    // pandemicCommand.execute();
     //     // CHECK(pandemicCommand.isExecuted() == true);
 
-    //     // Clean up
-    //     delete citizen1;
-    //     delete citizen2;
-    //     delete citizen3;
+    // Clean up
+    delete citizen1;
+    delete citizen2;
+    delete citizen3;
+
+    */
 }
 
 TEST_CASE("Government test")
@@ -401,300 +495,298 @@ TEST_CASE("Government test")
 
 // ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
 
-TEST_CASE("Testing Residential Buildings Creation and Functionality")
-{
-    // ResidentialBuildingCreator creator;
-    // TaxManager taxManager;  // Create a TaxManager instance
 
-    // // Define an array of building types to test
-    // std::string buildingTypes[] = {"House", "Apartment", "Estate"};
 
-    // for (const std::string& type : buildingTypes) {
-    //     // Create a building using the factory
-    //     Building* building = creator.createBuilding(type);
-    //     REQUIRE(building != nullptr); // Check that the building is created successfully
+TEST_CASE("Testing Residential Buildings Creation and Functionality") {
+    ResidentialBuildingCreator creator;
+    TaxManager taxManager;  // Create a TaxManager instance
 
-    //     // Test the initial name and stats display
-    //     CHECK(building->getName() == type + ""); // Verify the initial name
-    //     building->displayStats(); // Call displayStats
+    // Define an array of building types to test
+    std::string buildingTypes[] = {"House", "Apartment", "Estate"};
 
-    //     // Set a new name and verify it
-    //     building->setName("Name 2.0");
-    //     CHECK(building->getName() == "Name 2.0"); // Verify the name change
+    for (const std::string& type : buildingTypes) {
+        // Create a building using the factory
+        Building* building = creator.createBuilding(type);
+        REQUIRE(building != nullptr); // Check that the building is created successfully
 
-    //     // Test repairClone
-    //     Building* clonedBuilding = building->repairClone();
-    //     REQUIRE(clonedBuilding != nullptr); // Check that the cloned building is created successfully
-    //     CHECK(clonedBuilding->getName() == "Name 2.0"); // Verify the cloned name
+        // Test the type and stats display
+        CHECK(building->getType() == type ); // Verify the type
+        building->displayStats(); // Call displayStats
 
-    //     // Test the accept function
-    //     building->accept(&taxManager);  // Pass the tax manager to the accept function
+        // Set a new name and verify it
+        building->setName("Name 2.0");
+        CHECK(building->getName() == "Name 2.0"); // Verify the name change
 
-    //     // Clean up
-    //     delete building;
-    //     delete clonedBuilding;
-    // }
+        // Test repairClone
+        Building* clonedBuilding = building->repairClone();
+        REQUIRE(clonedBuilding != nullptr); // Check that the cloned building is created successfully
+        CHECK(clonedBuilding->getName() == "Name 2.0"); // Verify the cloned name
+
+        // Test the accept function
+        building->accept(&taxManager);  // Pass the tax manager to the accept function
+
+        // Clean up
+        delete building;
+        delete clonedBuilding;
+    }
 }
 
-TEST_CASE("Testing Commercial Building Classes with Factory Method")
-{
-    // // Initialize the factory creator and TaxManager instance
-    // CommercialBuildingCreator creator;
-    // TaxManager taxManager;
+TEST_CASE("Testing Commercial Building Classes with Factory Method") {
+    // Initialize the factory creator and TaxManager instance
+    CommercialBuildingCreator creator;
+    TaxManager taxManager;
 
-    // // Define an array of building types to test
-    // std::string buildingTypes[] = {"School", "Office", "Hospital", "Shop"};
+    // Define an array of building types to test
+    std::string buildingTypes[] = {"School", "Office", "Hospital", "Shop"};
 
-    // for (const std::string& type : buildingTypes) {
-    //     // Create a building using the factory
-    //     Building* baseBuilding = creator.createBuilding(type);
-    //     // Attempt to cast to CommercialBuilding*
-    //     CommercialBuilding* building = dynamic_cast<CommercialBuilding*>(baseBuilding);
+    for (const std::string& type : buildingTypes) {
+        // Create a building using the factory
+        Building* baseBuilding = creator.createBuilding(type);
+        // Attempt to cast to CommercialBuilding*
+        CommercialBuilding* building = dynamic_cast<CommercialBuilding*>(baseBuilding);
+        
+        // Ensure the cast was successful
+        REQUIRE(building != nullptr);
 
-    //     // Ensure the cast was successful
-    //     REQUIRE(building != nullptr);
+        SUBCASE((type + " - Default Initialization").c_str()) {
+            if (type == "School") {
+                CHECK(building->getAvailableKidsSpaces() == building->getMaxCapacity());
+            } else if (type == "Office") {
+                CHECK(building->getAvailableJobs() == building->getMaxCapacity());
+            } else if (type == "Hospital") {
+                CHECK(building->getAvailableBeds() == building->getMaxCapacity());
+            }
+            CHECK(building->isClosed() == false);
+        }
 
-    //     SUBCASE((type + " - Default Initialization").c_str()) {
-    //         if (type == "School") {
-    //             CHECK(building->getAvailableKidsSpaces() == building->getMaxCapacity());
-    //         } else if (type == "Office") {
-    //             CHECK(building->getAvailableJobs() == building->getMaxCapacity());
-    //         } else if (type == "Hospital") {
-    //             CHECK(building->getAvailableBeds() == building->getMaxCapacity());
-    //         }
-    //         CHECK(building->isClosed() == false);
-    //     }
+        SUBCASE((type + " - Set and Get Methods").c_str()) {
+            if (type == "School") {
+                building->setAvailableKidsSpaces(10);
+                CHECK(building->getAvailableKidsSpaces() == 10);
+            } else if (type == "Office") {
+                building->setAvailableJobs(20);
+                CHECK(building->getAvailableJobs() == 20);
+            } else if (type == "Hospital") {
+                building->setAvailableBeds(15);
+                CHECK(building->getAvailableBeds() == 15);
+            }
+        }
 
-    //     SUBCASE((type + " - Set and Get Methods").c_str()) {
-    //         if (type == "School") {
-    //             building->setAvailableKidsSpaces(10);
-    //             CHECK(building->getAvailableKidsSpaces() == 10);
-    //         } else if (type == "Office") {
-    //             building->setAvailableJobs(20);
-    //             CHECK(building->getAvailableJobs() == 20);
-    //         } else if (type == "Hospital") {
-    //             building->setAvailableBeds(15);
-    //             CHECK(building->getAvailableBeds() == 15);
-    //         }
-    //     }
+        SUBCASE((type + " - Close and Reopen Building").c_str()) {
+            building->closeBuilding();
+            CHECK(building->isClosed() == true);
 
-    //     SUBCASE((type + " - Close and Reopen Building").c_str()) {
-    //         building->closeBuilding();
-    //         CHECK(building->isClosed() == true);
+            building->reopenBuilding();
+            CHECK(building->isClosed() == false);
+        }
 
-    //         building->reopenBuilding();
-    //         CHECK(building->isClosed() == false);
-    //     }
+        SUBCASE((type + " - Check Availability").c_str()) {
+            if (type == "School") {
+                CHECK(building->checkAvailability() == true);
+                building->setAvailableKidsSpaces(0);
+                CHECK(building->checkAvailability() == false);
+            } else if (type == "Office") {
+                CHECK(building->checkAvailability() == true);
+                building->setAvailableJobs(0);
+                CHECK(building->checkAvailability() == false);
+            } else if (type == "Hospital") {
+                CHECK(building->checkAvailability() == true);
+                building->setAvailableBeds(0);
+                CHECK(building->checkAvailability() == false);
+            }
+        }
 
-    //     SUBCASE((type + " - Check Availability").c_str()) {
-    //         if (type == "School") {
-    //             CHECK(building->checkAvailability() == true);
-    //             building->setAvailableKidsSpaces(0);
-    //             CHECK(building->checkAvailability() == false);
-    //         } else if (type == "Office") {
-    //             CHECK(building->checkAvailability() == true);
-    //             building->setAvailableJobs(0);
-    //             CHECK(building->checkAvailability() == false);
-    //         } else if (type == "Hospital") {
-    //             CHECK(building->checkAvailability() == true);
-    //             building->setAvailableBeds(0);
-    //             CHECK(building->checkAvailability() == false);
-    //         }
-    //     }
+        SUBCASE((type + " - Display Stats").c_str()) {
+            CHECK_NOTHROW(building->displayStats());
+        }
 
-    //     SUBCASE((type + " - Display Stats").c_str()) {
-    //         CHECK_NOTHROW(building->displayStats());
-    //     }
+        SUBCASE((type + " - Accept Function with TaxManager").c_str()) {
+            CHECK_NOTHROW(building->accept(&taxManager));
+        }
 
-    //     SUBCASE((type + " - Accept Function with TaxManager").c_str()) {
-    //         CHECK_NOTHROW(building->accept(&taxManager));
-    //     }
-
-    //     delete baseBuilding;  // Clean up created instance
-    // }
+        delete baseBuilding;  // Clean up created instance
+    }
 }
 
-TEST_CASE("Testing LandmarkBuilding classes with Factory Method")
-{
-    // LandmarkBuildingCreator creator;  // Create a factory instance
-    // TaxManager taxManager;            // Create a TaxManager instance
+TEST_CASE("Testing LandmarkBuilding classes with Factory Method") {
+    LandmarkBuildingCreator creator;  // Create a factory instance
+    TaxManager taxManager;            // Create a TaxManager instance
 
-    // // Test Park class
-    // SUBCASE("Park class tests") {
-    //     Building* building = creator.createBuilding("Park");
-    //     LandmarkBuilding* park = dynamic_cast<LandmarkBuilding*>(building);
-    //     REQUIRE(park != nullptr);  // Ensure park is created
+    // Test Park class
+    SUBCASE("Park class tests") {
+        Building* building = creator.createBuilding("Park");
+        LandmarkBuilding* park = dynamic_cast<LandmarkBuilding*>(building);
+        REQUIRE(park != nullptr);  // Ensure park is created
 
-    //     // Test the name and initial properties
-    //     CHECK(park->getName() == "Magnolia Park");
-    //     CHECK(park->getMaxCapacity() == 50);
-    //     CHECK(park->getPriceTag() == 300000.0);
+        // Test the name and initial properties
+        CHECK(park->getName() == "Magnolia Park");
+        CHECK(park->getMaxCapacity() == 50);
+        CHECK(park->getPriceTag() == 300000.0);
 
-    //     // Test displayStats function
-    //     park->displayStats();  // Verify output manually or redirect to log
+        // Test displayStats function
+        park->displayStats();  // Verify output manually or redirect to log
 
-    //     // Test repairClone
-    //     Building* clonedPark = park->repairClone();
-    //     CHECK(clonedPark->getName() == "Magnolia Park");
-    //     delete clonedPark;  // Clean up
+        // Test repairClone
+        Building* clonedPark = park->repairClone();
+        CHECK(clonedPark->getName() == "Magnolia Park");
+        delete clonedPark;  // Clean up
 
-    //     // Test the accept function
-    //     park->accept(&taxManager);  // Pass the tax manager to the accept function
+        // Test the accept function
+        park->accept(&taxManager);  // Pass the tax manager to the accept function
 
-    //     delete park;  // Clean up
-    // }
+        delete park;  // Clean up
+    }
 
-    // // Test Monument class
-    // SUBCASE("Monument class tests") {
-    //     Building* building = creator.createBuilding("Monument");
-    //     LandmarkBuilding* monument = dynamic_cast<LandmarkBuilding*>(building);
-    //     REQUIRE(monument != nullptr);  // Ensure monument is created
+    // Test Monument class
+    SUBCASE("Monument class tests") {
+        Building* building = creator.createBuilding("Monument");
+        LandmarkBuilding* monument = dynamic_cast<LandmarkBuilding*>(building);
+        REQUIRE(monument != nullptr);  // Ensure monument is created
 
-    //     // Test the name and initial properties
-    //     CHECK(monument->getName() == "Voortrekker Monument");
-    //     CHECK(monument->getMaxCapacity() == 150);
-    //     CHECK(monument->getPriceTag() == 750000.0);
+        // Test the name and initial properties
+        CHECK(monument->getName() == "Voortrekker Monument");
+        CHECK(monument->getMaxCapacity() == 150);
+        CHECK(monument->getPriceTag() == 750000.0);
 
-    //     // Test displayStats function
-    //     monument->displayStats();  // Verify output manually or redirect to log
+        // Test displayStats function
+        monument->displayStats();  // Verify output manually or redirect to log
 
-    //     // Test repairClone
-    //     Building* clonedMonument = monument->repairClone();
-    //     CHECK(clonedMonument->getName() == "Voortrekker Monument");
-    //     delete clonedMonument;  // Clean up
+        // Test repairClone
+        Building* clonedMonument = monument->repairClone();
+        CHECK(clonedMonument->getName() == "Voortrekker Monument");
+        delete clonedMonument;  // Clean up
 
-    //     // Test the accept function
-    //     monument->accept(&taxManager);  // Pass the tax manager to the accept function
+        // Test the accept function
+        monument->accept(&taxManager);  // Pass the tax manager to the accept function
 
-    //     delete monument;  // Clean up
-    // }
+        delete monument;  // Clean up
+    }
 
-    // // Test Museum class
-    // SUBCASE("Museum class tests") {
-    //     Building* building = creator.createBuilding("Museum");
-    //     LandmarkBuilding* museum = dynamic_cast<LandmarkBuilding*>(building);
-    //     REQUIRE(museum != nullptr);  // Ensure museum is created
+    // Test Museum class
+    SUBCASE("Museum class tests") {
+        Building* building = creator.createBuilding("Museum");
+        LandmarkBuilding* museum = dynamic_cast<LandmarkBuilding*>(building);
+        REQUIRE(museum != nullptr);  // Ensure museum is created
 
-    //     // Test the name and initial properties
-    //     CHECK(museum->getName() == "Pretoria Museum");
-    //     CHECK(museum->getMaxCapacity() == 80);
-    //     CHECK(museum->getPriceTag() == 500000.0);
+        // Test the name and initial properties
+        CHECK(museum->getName() == "Pretoria Museum");
+        CHECK(museum->getMaxCapacity() == 80);
+        CHECK(museum->getPriceTag() == 500000.0);
 
-    //     // Test displayStats function
-    //     museum->displayStats();  // Verify output manually or redirect to log
+        // Test displayStats function
+        museum->displayStats();  // Verify output manually or redirect to log
 
-    //     // Test repairClone
-    //     Building* clonedMuseum = museum->repairClone();
-    //     CHECK(clonedMuseum->getName() == "Pretoria Museum");
-    //     delete clonedMuseum;  // Clean up
+        // Test repairClone
+        Building* clonedMuseum = museum->repairClone();
+        CHECK(clonedMuseum->getName() == "Pretoria Museum");
+        delete clonedMuseum;  // Clean up
 
-    //     // Test the accept function
-    //     museum->accept(&taxManager);  // Pass the tax manager to the accept function
+        // Test the accept function
+        museum->accept(&taxManager);  // Pass the tax manager to the accept function
 
-    //     delete museum;  // Clean up
-    // }
+        delete museum;  // Clean up
+    }
 }
 
-TEST_CASE("Testing Industrial Building Subtypes")
-{
-    // IndustrialBuildingCreator creator;
-    // TaxManager taxManager;  // Create a TaxManager instance
+TEST_CASE("Testing Industrial Building Subtypes") {
+    IndustrialBuildingCreator creator;
+    TaxManager taxManager;  // Create a TaxManager instance
 
-    // SUBCASE("Testing Warehouse") {
-    //     Building* warehouse = creator.createBuilding("Warehouse");
+    SUBCASE("Testing Warehouse") {
+        Building* warehouse = creator.createBuilding("Warehouse");
+        
+        CHECK(warehouse->getName() == "Builder's Warehouse");
+        CHECK(warehouse->getMaxCapacity() == 100);
+        CHECK(warehouse->getType() == "Warehouse");
 
-    //     CHECK(warehouse->getName() == "Builder's Warehouse");
-    //     CHECK(warehouse->getMaxCapacity() == 100);
-    //     CHECK(warehouse->getType() == "Warehouse");
+        // Test displayStats
+        std::cout << "Warehouse displayStats:" << std::endl;
+        warehouse->displayStats();
 
-    //     // Test displayStats
-    //     std::cout << "Warehouse displayStats:" << std::endl;
-    //     warehouse->displayStats();
+        // Test accept method (stubbed, expect non-taxable message)
+        std::cout << "Warehouse accept visitor:" << std::endl;
+        warehouse->accept(&taxManager);
 
-    //     // Test accept method (stubbed, expect non-taxable message)
-    //     std::cout << "Warehouse accept visitor:" << std::endl;
-    //     warehouse->accept(&taxManager);
+        // Test repairClone method
+        Building* clonedWarehouse = warehouse->repairClone();
+        CHECK(clonedWarehouse->getName() == "Builder's Warehouse");
 
-    //     // Test repairClone method
-    //     Building* clonedWarehouse = warehouse->repairClone();
-    //     CHECK(clonedWarehouse->getName() == "Builder's Warehouse");
+        // Clean up
+        delete warehouse;
+        delete clonedWarehouse;
+    }
 
-    //     // Clean up
-    //     delete warehouse;
-    //     delete clonedWarehouse;
-    // }
+    SUBCASE("Testing Factory") {
+        Building* factory = creator.createBuilding("Factory");
 
-    // SUBCASE("Testing Factory") {
-    //     Building* factory = creator.createBuilding("Factory");
+        CHECK(factory->getName() == "Evergreen Supply Depot");
+        CHECK(factory->getMaxCapacity() == 1000);
+        CHECK(factory->getType() == "Factory");
 
-    //     CHECK(factory->getName() == "Mercedes-Benz Factory");
-    //     CHECK(factory->getMaxCapacity() == 1000);
-    //     CHECK(factory->getType() == "Factory");
+        // Test displayStats
+        std::cout << "Factory displayStats:" << std::endl;
+        factory->displayStats();
 
-    //     // Test displayStats
-    //     std::cout << "Factory displayStats:" << std::endl;
-    //     factory->displayStats();
+        // Test accept method (stubbed, expect non-taxable message)
+        std::cout << "Factory accept visitor:" << std::endl;
+        factory->accept(&taxManager);
 
-    //     // Test accept method (stubbed, expect non-taxable message)
-    //     std::cout << "Factory accept visitor:" << std::endl;
-    //     factory->accept(&taxManager);
+        // Test repairClone method
+        Building* clonedFactory = factory->repairClone();
+        CHECK(clonedFactory->getName() == "Evergreen Supply Depot");
 
-    //     // Test repairClone method
-    //     Building* clonedFactory = factory->repairClone();
-    //     CHECK(clonedFactory->getName() == "Mercedes-Benz Factory");
+        // Clean up
+        delete factory;
+        delete clonedFactory;
+    }
 
-    //     // Clean up
-    //     delete factory;
-    //     delete clonedFactory;
-    // }
+    SUBCASE("Testing Airport") {
+        Building* airport = creator.createBuilding("Airport");
 
-    // SUBCASE("Testing Airport") {
-    //     Building* airport = creator.createBuilding("Airport");
+        CHECK(airport->getName() == "OR Tambo International Airport");
+        CHECK(airport->getMaxCapacity() == 1000);
+        CHECK(airport->getType() == "Airport");
 
-    //     CHECK(airport->getName() == "OR Tambo Airport");
-    //     CHECK(airport->getMaxCapacity() == 1000);
-    //     CHECK(airport->getType() == "Airport");
+        // Test displayStats
+        std::cout << "Airport displayStats:" << std::endl;
+        airport->displayStats();
 
-    //     // Test displayStats
-    //     std::cout << "Airport displayStats:" << std::endl;
-    //     airport->displayStats();
+        // Test accept method (stubbed, expect non-taxable message)
+        std::cout << "Airport accept visitor:" << std::endl;
+        airport->accept(&taxManager);
 
-    //     // Test accept method (stubbed, expect non-taxable message)
-    //     std::cout << "Airport accept visitor:" << std::endl;
-    //     airport->accept(&taxManager);
+        // Test repairClone method
+        Building* clonedAirport = airport->repairClone();
+        CHECK(clonedAirport->getName() == "OR Tambo International Airport");
 
-    //     // Test repairClone method
-    //     Building* clonedAirport = airport->repairClone();
-    //     CHECK(clonedAirport->getName() == "OR Tambo Airport");
+        // Clean up
+        delete airport;
+        delete clonedAirport;
+    }
 
-    //     // Clean up
-    //     delete airport;
-    //     delete clonedAirport;
-    // }
+    SUBCASE("Testing Train Station") {
+        Building* trainStation = creator.createBuilding("TrainStation");
 
-    // SUBCASE("Testing Train Station") {
-    //     Building* trainStation = creator.createBuilding("TrainStation");
+        CHECK(trainStation->getName() == "Gautrain Station");
+        CHECK(trainStation->getMaxCapacity() == 500);
+        CHECK(trainStation->getType() == "TrainStation");
 
-    //     CHECK(trainStation->getName() == "Gautrain Train Station");
-    //     CHECK(trainStation->getMaxCapacity() == 500);
-    //     CHECK(trainStation->getType() == "TrainStation");
+        // Test displayStats
+        std::cout << "TrainStation displayStats:" << std::endl;
+        trainStation->displayStats();
 
-    //     // Test displayStats
-    //     std::cout << "TrainStation displayStats:" << std::endl;
-    //     trainStation->displayStats();
+        // Test accept method (stubbed, expect non-taxable message)
+        std::cout << "TrainStation accept visitor:" << std::endl;
+        trainStation->accept(&taxManager);
 
-    //     // Test accept method (stubbed, expect non-taxable message)
-    //     std::cout << "TrainStation accept visitor:" << std::endl;
-    //     trainStation->accept(&taxManager);
+        // Test repairClone method
+        Building* clonedTrainStation = trainStation->repairClone();
+        CHECK(clonedTrainStation->getName() == "Gautrain Station");
 
-    //     // Test repairClone method
-    //     Building* clonedTrainStation = trainStation->repairClone();
-    //     CHECK(clonedTrainStation->getName() == "Gautrain Train Station");
-
-    //     // Clean up
-    //     delete trainStation;
-    //     delete clonedTrainStation;
-    // }
+        // Clean up
+        delete trainStation;
+        delete clonedTrainStation;
+    }
 }
 
 // ------------------------------------------------------------------------------------------------------- //

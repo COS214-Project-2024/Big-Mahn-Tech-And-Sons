@@ -1,19 +1,63 @@
 #include "CityGrid.h"
 #include "Building.h"
 
+
+
+// .......................... CELL ...............................//
+
 Cell::Cell(int row_value, int col_value, string cardinal_point)
 {
-    /*1*/ this->cell_col_value = col_value;
-    /*2*/ this->cell_row_value = row_value;
-    /*3*/ this->cardinal_direction = cardinal_point;
-    /*4*/ this->detailed_attribute = "BLANK";
-    /*5*/ this->attribute = '.';
-    /*6*/ this->street_name = "-";
+     this->cell_col_value = col_value;
+     this->cell_row_value = row_value;
+     this->cardinal_direction = cardinal_point;
+     set_Detailed_Attribute("BLANK");
+     set_Attribute('.');
+     this->street_name = "-";
 }
 
 Cell::~Cell()
 {
     //no memory management required here.
+}
+
+bool Cell::set_Attribute(char attri)
+{
+    if(attri=='C'){ this->attribute = 'C'; return true;}    // Commercial building
+    if(attri=='H'){ this->attribute = 'H'; return true;}    // Residential building
+    if(attri=='L'){ this->attribute = 'L'; return true;}    // Landmark building
+    if(attri=='I'){ this->attribute = 'I'; return true;}    // Industrial buidling
+    if(attri=='R'){ this->attribute = 'R'; return true;}    // Road
+    if(attri=='.'){ this->attribute = '.'; return true;}    // Blank
+    if(attri=='#'){ this->attribute = '#'; return true;}    // Used
+
+    return false;
+}
+
+bool Cell::set_Detailed_Attribute(string detailed_Attri)
+{
+    if(detailed_Attri=="SCHOOL"){ this->detailed_attribute = "SCHOOL"; return true;}
+    if(detailed_Attri=="OFFICE"){ this->detailed_attribute = "OFFICE"; return true;}
+    if(detailed_Attri=="HOSPITAL"){ this->detailed_attribute = "HOSPITAL"; return true;}
+    if(detailed_Attri=="SHOP"){ this->detailed_attribute = "SHOP"; return true;}
+    
+    if(detailed_Attri=="ESTATE"){ this->detailed_attribute = "ESTATE"; return true;}
+    if(detailed_Attri=="APARTMENT"){ this->detailed_attribute = "APARTMENT"; return true;}
+    if(detailed_Attri=="HOUSE"){ this->detailed_attribute = "HOUSE"; return true;}
+
+    if(detailed_Attri=="MUSEUM"){ this->detailed_attribute = "MUSEUM"; return true;}
+    if(detailed_Attri=="MONUMENT"){ this->detailed_attribute = "MONUMENT"; return true;}
+    if(detailed_Attri=="PARK"){ this->detailed_attribute = "PARK"; return true;}
+
+    if(detailed_Attri=="FACTORY"){ this->detailed_attribute = "FACTORY"; return true;}
+    if(detailed_Attri=="AIRPORT"){ this->detailed_attribute = "AIRPORT"; return true;}
+    if(detailed_Attri=="WAREHOUSE"){ this->detailed_attribute = "WAREHOUSE"; return true;}
+    if(detailed_Attri=="TRAINSTATION"){ this->detailed_attribute = "TRAINSTATION"; return true;}
+
+    if(detailed_Attri=="ROAD"){ this->detailed_attribute = "ROAD"; return true;}
+    if(detailed_Attri=="BLANK"){ this->detailed_attribute = "BLANK"; return true;}
+    if(detailed_Attri=="USED"){ this->detailed_attribute = "USED"; return true;}
+
+    return false;
 }
 
 const char Cell::getAttribute()
@@ -25,7 +69,7 @@ void Cell::updateDetailed_Attribute(string newDetailedAttribute)
 {
     if(newDetailedAttribute!=detailed_attribute)
     {
-        detailed_attribute = newDetailedAttribute;
+        set_Detailed_Attribute(newDetailedAttribute);
     }
 }
 
@@ -37,7 +81,9 @@ const string Cell::getDetailed_Atttribute()
 void Cell::changeAttribute(char newAttribute)
 {
     if(newAttribute!=attribute)
-    attribute = newAttribute;
+    {
+        set_Attribute(newAttribute);
+    }
 }
 
 const string Cell::getCardinal_direction()
@@ -59,6 +105,12 @@ const string Cell::getStreetName()
     }
     return "-";
 }
+//................................................................//
+
+
+
+
+//........................... CITYGRID ...........................//
 
 vector<vector<Cell>>* CityGrid::citygrid = nullptr;
 
@@ -105,7 +157,7 @@ void CityGrid::printCityGrid()
         {cout<<"0"<<i<<" ";}
         else{cout<<i<<" ";}
         for (int j = 0; j < grid_num_cols; j++) {
-            cout <<setw(2)<<(*citygrid)[i][j].getAttribute()<<" ";
+            cout<<setw(2)<<(*citygrid)[i][j].getAttribute()<<" ";
         } 
         cout << endl;
     }
@@ -448,38 +500,8 @@ void CityGrid::printCityStreets()
             else
             {
 
-                cout<<setw(get_Longest_street_length())<<(*citygrid)[i][j].getAttribute()<<" ";
+                cout<<setw(2)<<(*citygrid)[i][j].getAttribute()<<" ";
             } 
-        } 
-        cout << endl;
-    }
-}
-
-int CityGrid::get_Longest_street_length()
-{
-    int longest_length=0;
-
-    for(int i=0; i<grid_num_rows; i++)
-    {
-        for(int j=0; j<grid_num_cols; j++)
-        {
-            if((*citygrid)[i][j].getStreetName().length()>longest_length)
-            {
-                longest_length = (*citygrid)[i][j].getStreetName().length();
-            }
-        }
-    }
-    return longest_length;
-}
-
-void CityGrid::printAll_DetailedAttributes()
-{
-    for (int i = 0; i < grid_num_rows ;i++)
-    {
-        cout<<i<<" ";
-        for (int j = 0; j < grid_num_cols; j++)
-        {
-            cout<<(*citygrid)[i][j].getDetailed_Atttribute()<<" ";
         } 
         cout << endl;
     }
@@ -490,29 +512,32 @@ void CityGrid::printCityRoadNetwork()
     for(int i =0; i < grid_num_cols ;i++)
     {
         if(i==0)
-        cout<<"  ";
-        cout<<i<<" ";
+        cout<<setw(3.5)<<" ";
+        if(i<10){cout<<"0"<<i<<" ";}
+        else{cout<<i<<" ";}
         if(i==(grid_num_cols-1))
         cout<<endl;
     }
 
     for (int i = 0; i < grid_num_rows ;i++)
     {
-        cout<<i<<" ";
+        if(i<10)
+        {cout<<"0"<<i<<" ";}
+        else{cout<<i<<" ";}
         for (int j = 0; j < grid_num_cols; j++)
         {
             
             if((*citygrid)[i][j].getDetailed_Atttribute()=="ROAD")
             {
-                cout<<(*citygrid)[i][j].getAttribute()<<" "; //prints roads
+                cout<<setw(2)<<(*citygrid)[i][j].getAttribute()<<" "; //prints roads
             }
-            if((*citygrid)[i][j].getDetailed_Atttribute()=="BLANK")
+            else if((*citygrid)[i][j].getDetailed_Atttribute()=="BLANK")
             {
-                cout <<(*citygrid)[i][j].getAttribute()<<" "; //prints  available space
+                cout<<setw(2)<<(*citygrid)[i][j].getAttribute()<<" "; //prints  available space
             }
-            if((*citygrid)[i][j].getDetailed_Atttribute()=="USED")
+            else
             {
-                cout <<(*citygrid)[i][j].getAttribute()<<" "; //prints  available space
+                cout<<setw(2)<<"#"<<" "; //prints  available space
             }
         } 
         cout << endl;
@@ -616,7 +641,6 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, Bu
     string detailed_Attribute = toUpper(building->getType());
     if (length < 0 || width < 0 || width > grid_num_cols || length > grid_num_rows)
     {
-        cout<<"invalid dimensions";
         return errorPair();
     }
 
@@ -660,7 +684,7 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, Bu
     return errorPair();  // No suitable location found
 }
 
-bool CityGrid::removeBuilding(vector<pair<int,int>> &buildiing)
+bool CityGrid::removeBuilding(vector<pair<int,int>> buildiing)
 {
     if(buildiing!=errorPair())
     {
@@ -794,4 +818,5 @@ int CityGrid::getDistance(Building* citizen_current_building, Building* citizen_
     return -1;
        }
 }
+
 //get distance from building a to building b

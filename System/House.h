@@ -9,7 +9,6 @@
 #define HOUSE_H
 
 #include "ResidentialBuilding.h"
-
 /**
  * @class House
  * @brief Represents a residential house with specific attributes and behavior.

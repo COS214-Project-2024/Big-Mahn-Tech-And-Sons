@@ -36,7 +36,7 @@ private:
 
 protected:
     DeptOfUtilities *successor;
-    vector<Building *> buildings; /**< Vector to store buildings to be sourced  for water supply. */
+   // vector<Building *> buildings; /**< Vector to store buildings to be sourced  for water supply. */
     double budget; /**< The budget allocated to the department. */
 
 public:
