@@ -46,7 +46,7 @@ TEST_CASE("Citizen initialisation")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen person("John Doe", 10, 20, prDept);
+    Citizen person("John Doe", prDept);
 
     CHECK(person.getAge() == 1);
     for (int i = 0; i < 20; i++)
@@ -80,7 +80,7 @@ TEST_CASE("Citizen Initialization")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen citizen("John Doe", 10, 20, prDept);
+    Citizen citizen("John Doe", prDept);
 
     CHECK(citizen.getName() == "John Doe");
     CHECK(citizen.getAge() == 1);                  // Starts at age 1 by specification
@@ -110,7 +110,7 @@ TEST_CASE("Citizen Age Increment")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen citizen("Alice Smith", 15, 25, prDept);
+    Citizen citizen("Alice Smith",prDept);
 
     int initialAge = citizen.getAge();
     citizen.getOlder();
@@ -141,7 +141,7 @@ TEST_CASE("Citizen Work and Spend")
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-    Citizen citizen("Bob Brown",  10, 20, prDept);
+    Citizen citizen("Bob Brown", prDept);
     double initialBudget = citizen.getBudget();
 
     SUBCASE("Earning Income")
@@ -160,7 +160,8 @@ TEST_CASE("Citizen Work and Spend")
 
     SUBCASE("Unsuccessful Spending - Insufficient Budget")
     {
-        bool spendResult = citizen.Spend(1000.0);
+        citizen.display();
+        bool spendResult = citizen.Spend(1000000.0);
         CHECK(spendResult == false); // Should return false as spending is unsuccessful
     }
 
@@ -194,7 +195,7 @@ TEST_CASE("DeptOfPR initializes and interacts with Departments")
 
 TEST_CASE("DeptOfPR notifies Housing Department to build")
 {
-    DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    DeptOfHousing *housingDept = new DeptOfHousing(1000000);
     Water *water = new Water("Sparkling", 10000);
     DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
     TaxManager *taxMan = new TaxManager();
@@ -202,24 +203,38 @@ TEST_CASE("DeptOfPR notifies Housing Department to build")
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
     int prev = housingDept->getTotalBuildings();
-    prDept.notifyHousingToBuild("Residential");
+    prDept.notifyHousingToBuild("Apartment");
     CHECK(housingDept->getTotalBuildings() == prev + 1); // Assuming `isBuildNotified` method tracks this state
 }
 
 TEST_CASE("DeptOfPR notifies Utilities Department")
 {
-    /*
-    DeptOfHousing* housingDept = new DeptOfHousing(100000);
-    Water* water = new Water("Sparkling", 10000);
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfHousing* housingDept = new DeptOfHousing(100000000);
+     Water *water = new Water("Sparkling", 10000);
+    Power *power = new Power("Electricity", 1000000);
+    
+    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 500000.02, 100000, water);
+    DeptOfUtilities* powerUtil = new PowerSupply("Power", 500000000.02, 100000, power);
+
+    utilitiesDept->setSuccessor(powerUtil);
     TaxManager* taxMan = new TaxManager();
     DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
 
 
-    prDept.notifyUtilities();
-    CHECK(utilitiesDept->isNotified() == true);  // Assuming `isNotified` method tracks this state
-    */
+    housingDept->createResidentialBuilding("House");
+    housingDept->displayAllBuildings();
+    
+    for(Building* b : housingDept->getBuildings()) {
+        prDept.notifyUtilities("power", b);
+    }
+    housingDept->displayAllBuildings();
+
+ housingDept->getBuildings().at(0);
+
+   // prDept.notifyUtilities();
+   // CHECK(utilitiesDept->isNotified() == true);  // Assuming `isNotified` method tracks this state
+    
 }
 
 TEST_CASE("DeptOfPR notifies Taxman in Finance Department")
@@ -293,6 +308,7 @@ TEST_CASE("DeptOfUtility chain")
 
     Building *b1 = new House();
     Building *b2 = new Apartment();
+    
 
     double initialPowerLevel = powerDept.getPowerCapacity();
     double initialWaterLevel = waterDept.getWaterCapacity();

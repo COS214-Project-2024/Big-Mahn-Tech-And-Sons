@@ -18,6 +18,7 @@
 
 class Citizen; ///< Forward declaration of Citizen class
 class TaxManager;
+class DeptOfPR;
 
 /**
  * @class Building
@@ -45,6 +46,7 @@ class Building {
         bool powerSupply;               ///< Power supply status
         std::vector<std::pair<int, int>> gridCoordinates; ///< Grid coordinates
         std::string type;               ///< Type of Building
+        DeptOfPR*  PR; /**<Reference to government's PPR */
 
     public:
         Building();  ///< Default constructor
@@ -58,7 +60,7 @@ class Building {
         void setCoordinates(const std::vector<std::pair<int, int>> &coords); ///< Sets grid coordinates
         virtual void accept(TaxManager *visitor) = 0;    ///< Accepts visitors for the visitor pattern
         virtual void displayStats() const;                 ///< Displays the statistics of the building
-
+        void notifyPR();
         // Getters
         std::string getName() const;
         int getMaxCapacity() const;

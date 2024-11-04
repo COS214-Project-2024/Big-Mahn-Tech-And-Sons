@@ -12,16 +12,16 @@
 #include "PublicTrans.h"
 #include "Building.h"
 #include "CityGrid.h"
- 
+#include "GoToCommand.h"
 
 #include <random>
 
-Citizen::Citizen(const std::string &nam, int x , int y, DeptOfPR *PR)
+Citizen::Citizen(const std::string &nam, DeptOfPR *PR)
 {
    name = nam;
    satisfaction = 50;
    this->PR = PR;
-   this->PR->addCitizen(this);
+    this->PR->addCitizen(this);
    age = 1;
    this->state = new ChildState();
 
@@ -32,14 +32,16 @@ Citizen::Citizen(const std::string &nam, int x , int y, DeptOfPR *PR)
    this->budget = distr(gen);
 
    this->health = 100.0;
-   this->satisfaction = 50.0;
    this->satisState =  new NeutralState();
    this->modeOfTransport = NULL;
-  // this->go =  NULL;
+   //this->go =  NULL;
    this->ageThreshhold = 0;
 
 
    // Set Home and work location IN
+   this->homeLocation = NULL;
+   this->workLocation = NULL;
+   this->currentLocation = NULL;
 }
 
 
@@ -75,11 +77,7 @@ void Citizen::getOlder()
 
 void Citizen::notifyPR()
 {
-   if((getSatisfactionLevelName() == "Neutral" || getSatisfactionLevelName() == "Sad") && getBudget()/100000 * 100 < 0.6 ) { // problem with finances
-      this->PR->update(this);
-   } else if(this) {
-
-   }
+   this->PR->update(this);
 }
 
 int Citizen::getAge()
@@ -114,6 +112,9 @@ void Citizen::work(double amount)
 
 bool Citizen::Spend(double amount)
 {
+   if(amount > this->budget) {
+      return false;
+   }
    this->budget -= amount;
    return true;
 }
@@ -208,6 +209,11 @@ void Citizen::setModeOfTransport(ModeOfTrans *mode)
    }
 }
 
+// void Citizen::setGoToCommand(GoToCommand *command)
+// {
+//    this->go = command;
+// }
+
 Building *Citizen::getCurrentLocation() const
 {
    return currentLocation;
@@ -223,7 +229,28 @@ Building *Citizen::getWorkLocation() const
    return workLocation;
 }
 
-void Citizen::travelTo(Building *destination, CityGrid *citi, int x, int y, const std::string &Building)
+void Citizen::setWork(Building *building)
+{
+   if(building) {
+      this->workLocation = building;
+   }
+}
+
+void Citizen::setHome(Building *building)
+{
+   if(building) {
+      this->homeLocation = building;
+   }
+}
+
+void Citizen::setCurrent(Building *building)
+{
+   if(building) {
+      this->currentLocation = building;
+   }
+}
+
+void Citizen::travelTo(Building *destination)
 {
    DeptOfTransportation *dept = DeptOfTransportation::getInstance(); 
    int distance = dept->get_distance(currentLocation,destination);

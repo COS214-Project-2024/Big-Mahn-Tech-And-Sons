@@ -53,7 +53,7 @@ int main()
     // testLandmarkBuildings();
     // testIndustrialBuildings();
 
-    //testHouse();
+    testHouse();
     //testDepartment();
 
     // testHouse();
@@ -61,7 +61,7 @@ int main()
     //testPandemic();
     //testLoadShedding();
    // testRecession();
-    Government* gov = new Government();
+    // Government* gov = new Government();
     std::cout << "End" << std::endl;
 
     return 0;
@@ -282,22 +282,41 @@ void testIndustrialBuildings() {
 }
 
 void testHouse() {
+
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
+
+    Water *water = new Water("Sparkling", 10000);
+    Power *power = new Power("Power", 1456.3);
+
+    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+
+    utilitiesDept->setSuccessor(powerUtil);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+
+    DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
     ResidentialBuildingCreator creator; // Create a ResidentialBuildingCreator instance
+    IndustrialBuildingCreator indCreator;
+
+
     TaxManager taxManager;              // Create a TaxManager instance
 
     // Create a House using the factory
     Building* house = creator.createBuilding("House");
+        Building* house1 = indCreator.createBuilding("TrainStation");
+    Building* house2 = indCreator.createBuilding("Airport");
 
     // Test initial state
     std::cout << "Testing House Stats:" << std::endl;
-    house->displayStats();
-
+    house1->displayStats();
+ house2->displayStats();
     // Create tenants and test adding them
-    Citizen* tenant1 = new Citizen("Jane", 10, 10, NULL);
-    Citizen* tenant2 = new Citizen("Peter", 20, 20, NULL);
+    Citizen* tenant1 = new Citizen("Jane",  prDept);
+    Citizen* tenant2 = new Citizen("Peter",  prDept);
     std::cout << "\nAdding tenants:" << std::endl;
-    house->addTenant(tenant1);
-    house->addTenant(tenant2);
+    house1->addTenant(tenant1);
+    house2->addTenant(tenant2);
     house->displayStats();
 
     // Test removing a tenant

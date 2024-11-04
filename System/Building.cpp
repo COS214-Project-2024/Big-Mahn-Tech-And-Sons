@@ -2,6 +2,7 @@
 
 #include "Building.h"
 #include "Citizen.h"
+#include "DeptOfPR.h"
 #include <algorithm>  // For std::find
 
 Building::Building()
@@ -19,9 +20,12 @@ Building::Building()
 bool Building::addTenant(Citizen* tenant) {
     if (tenants.size() < maxCapacity) {
         tenants.push_back(tenant);
+        tenant->setCurrent(this);
+        tenant->setHome(this);
         return true;
+    } else {
+        notifyPR();
     }
-    return false;
 }
 
 /**
@@ -39,13 +43,21 @@ bool Building::removeTenant(Citizen* tenant) {
     return false;
 }
 
+void Building::requestElectricity(double requestedElectricity)
+{
+}
+
 /**
  * @brief Gets the grid coordinates of the building.
  * 
  * @return A vector of grid coordinate pairs (x, y).
  */
-std::vector<std::pair<int, int>> Building::getGridCoordinates() const {
-    return gridCoordinates;
+void Building::requestWater(double requestedWater)
+{
+}
+std::vector<std::pair<int, int>> Building::getGridCoordinates() const
+{
+   return gridCoordinates;
 }
 
 /**
@@ -77,6 +89,11 @@ void Building::displayStats() const {
     }
 }
 
+void Building::notifyPR()
+{
+    cout << "Building notifying Department of PR observer\n";
+    PR->update(this);
+}
 
 // Getters
 std::string Building::getName() const { return name; }
@@ -112,12 +129,19 @@ void Building::setLength(int newLength) { length = newLength; }
  * @param amount Amount of water consumed (in liters).
  */
 void Building::consumeWater(double amount) {
-    if (amount <= 0 || waterUsage < amount) {
+    if(waterMeterBox <= 0) {
+        // make request for more water as we are out
+        std::cout << "Requesting more water..." << std::endl;
+        this->notifyPR();
+        return;
+    } else if (amount <= 0 || waterMeterBox < amount) {
         std::cout << "Water supply cut off due to zero or negative usage." << std::endl;
         return; // Cannot consume negative or more than available
     }
-    waterUsage -= amount; // Decrease usage
+    setWaterUsage(amount);
+    waterMeterBox -= amount; // Decrease usage
     std::cout << "Consumed " << amount << " liters of water." << std::endl;
+    setWaterMeterBox(waterMeterBox);
 }
 
 /**
@@ -126,42 +150,17 @@ void Building::consumeWater(double amount) {
  * @param amount Amount of electricity consumed (in kWh).
  */
 void Building::consumeElectricity(double amount) {
+    if(electricityMeterBox <= 0) {
+        // make request for more power as we are out
+        std::cout << "Requesting more electricity..." << std::endl;
+        this->notifyPR();
+    }
     if (amount <= 0 || electricityUsage < amount) {
         std::cout << "Power supply cut off due to zero or negative usage." << std::endl;
         return; // Cannot consume negative or more than available
     }
     electricityUsage -= amount; // Decrease usage
     std::cout << "Consumed " << amount << " kWh of electricity." << std::endl;
-}
-
-/**
- * @brief Requests electricity usage.
- * 
- * @param requestedElectricity Amount of electricity requested (in kWh).
- */
-void Building::requestElectricity(double requestedElectricity) {
-    std::cout << "Requesting " << requestedElectricity << " kWh of electricity." << std::endl;
-    if (requestedElectricity <= 0) {
-        std::cout << "Power supply cut off due to zero or negative usage." << std::endl;
-        return; // Return early if the request is invalid
-    }
-    electricityUsage += requestedElectricity; // Update electricity usage
-    electricityMeterBox += requestedElectricity; // Update meter box reading
-}
-
-/**
- * @brief Requests water usage.
- * 
- * @param requestedWater Amount of water requested (in liters).
- */
-void Building::requestWater(double requestedWater) {
-    std::cout << "Requesting " << requestedWater << " liters of water." << std::endl;
-    if (requestedWater <= 0) {
-        std::cout << "Water supply cut off due to zero or negative usage." << std::endl;
-        return; // Return early if the request is invalid
-    }
-    waterUsage += requestedWater; // Update water usage
-    waterMeterBox += requestedWater; // Update meter box reading
 }
 
 /**
