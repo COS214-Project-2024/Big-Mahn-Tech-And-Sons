@@ -23,9 +23,6 @@ using namespace std;
  */
 class GoSchool : public GoToCommand
 {
-private:
-    Citizen* citizen;           /**< Pointer to the citizen who is going to school */
-
 public:
     /**
      * @brief Constructor for the GoSchool class.
@@ -35,7 +32,11 @@ public:
      * @param citizen A pointer to the Citizen object representing the person going to school.
      * @param roadNetwork A pointer to the RoadNetwork object that the citizen will use to reach the destination.
      */
-    GoSchool(Citizen* citizen);
+    // GoSchool(Citizen* citizen);
+
+
+
+    bool execute() override;
 };
 
 #endif

@@ -4,8 +4,7 @@
 #define TRAINSTATION_H
 
 #include "IndustrialBuilding.h"
-#include "TaxManager.h"
-
+class TaxManager;
 /**
  * @class TrainStation
  * @brief Represents a train station, a subtype of IndustrialBuilding.
@@ -21,19 +20,21 @@ class TrainStation : public IndustrialBuilding {
         /**
          * @brief Displays stats specific to the train station.
          */
-        void displayStats() const override;
+        void displayStats() const ;
 
         /**
          * @brief Accepts visitors for the visitor pattern.
          * @param visitor A pointer to the visitor object.
          */
-        void accept(TaxManager* visitor) override;
+        void accept(TaxManager* visitor) ;
 
         /**
          * @brief Creates a clone of the train station for repair purposes.
          * @return A pointer to the cloned TrainStation object.
          */
-        Building* repairClone() const override;
+        Building* repairClone() const ;
+
+         double calculateTax() const ;
 };
 
 #endif // TRAINSTATION_H

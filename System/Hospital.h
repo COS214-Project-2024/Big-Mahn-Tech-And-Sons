@@ -9,7 +9,7 @@
 #define HOSPITAL_H
 
 #include "CommercialBuilding.h"
-
+class TaxManger;
 /**
  * @class Hospital
  * @brief Class representing a hospital as a subtype of CommercialBuilding.

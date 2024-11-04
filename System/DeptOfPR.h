@@ -45,6 +45,7 @@ public:
      * @param financeDept Pointer to the Finance Department.
      */
     DeptOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, DeptOfFinance *financeDept);
+  
 
     /**
      * @brief Updates the state by checking both buildings and citizens.
@@ -62,7 +63,7 @@ public:
      * This function is used when overcrowding or high demand for housing is detected.
      * It acts as a mediator, relaying the information to the Housing Department for further action.
      */
-    void notifyHousingToBuild(string type);
+    bool notifyHousingToBuild(string type);
 
     void addCitizen(Citizen* citizen);
 
@@ -88,7 +89,7 @@ public:
      * The PR Department mediates by sending this notification on behalf of observed buildings or citizens.
      * @note  work on @class Resources to be added
      *      */
-    void notifyUtilities();
+    bool notifyUtilities(string request, Building* building);
 
     /**
      * @brief Notifies the Finance Department (taxman) to adjust financial policies.

@@ -100,7 +100,13 @@ public:
      *          checks if it can handle the request, if not, PowerSupply will pass it on
      *          to the next concreteHandler.
      */
-    bool handleRequest(Request &req) override;
+    bool handleRequest(Request& req) ;
+
+    /**
+    * @brief Adds a building to the water supply system.
+    * @param b Pointer to the building to be added.
+    */
+    void addBuilding(Building * building);
 };
 
 #endif // POWERSUPPLY_H

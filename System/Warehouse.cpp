@@ -43,6 +43,12 @@ void Warehouse::accept(TaxManager* visitor) {
  * @return A pointer to the cloned Warehouse object.
  */
 Building* Warehouse::repairClone() const {
+    std::cout << "Prototype: Cloning a Warehouse building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing industrial building (Warehouse): " << getName() << "\n";
     return new Warehouse(*this);
+}
+
+double Warehouse::calculateTax() const
+{
+   return 0.0;
 }
