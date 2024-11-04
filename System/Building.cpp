@@ -8,7 +8,7 @@ Building::Building()
     : name("Building Name"), maxCapacity(100), electricityMeterBox(0.0),
       waterMeterBox(0.0), electricityUsage(0.0), waterUsage(0.0),
       wasteProduction(0.0), width(1), length(1), priceTag(0.0),
-      netWorth(0.0), waterSupply(true), powerSupply(true), type("Building") {}
+      netWorth(0.0), waterSupply(true), powerSupply(true), type("Building"), citizenTax(0.03), businessTax(0.05) {}
 
 /**
  * @brief Adds a tenant to the building.
@@ -96,6 +96,8 @@ double Building::getNetWorth() const { return netWorth; }
 int Building::getCurrentOccupants() const { return tenants.size(); }
 std::string Building::getType() const { return type; }
 double Building::getWasteAmount() const { return wasteProduction; }
+double Building::getCitizenTax() const { return citizenTax; }
+double Building::getBusinessTax() const { return businessTax; }
 
 // Setters
 void Building::setName(const std::string& newName) { name = newName; }
@@ -107,6 +109,8 @@ void Building::setWaterUsage(double usage) { waterUsage = usage; }
 void Building::setWaste(double waste) { wasteProduction = waste; }
 void Building::setWidth(int newWidth) { width = newWidth; }
 void Building::setLength(int newLength) { length = newLength; }
+void Building::setCitizenTax(double taxRate) { citizenTax = taxRate; }
+void Building::setBusinessTax(double taxRate) { businessTax = taxRate; }
 
 /**
  * @brief Consumes a specified amount of water.
@@ -114,11 +118,12 @@ void Building::setLength(int newLength) { length = newLength; }
  * @param amount Amount of water consumed (in liters).
  */
 void Building::consumeWater(double amount) {
-    if (amount <= 0 || waterUsage < amount) {
-        std::cout << "Water supply cut off due to zero or negative usage." << std::endl;
+    if (amount < 0 || waterMeterBox < amount) {
+        std::cout << "Water supply cut off due to negative usage." << std::endl;
         return; // Cannot consume negative or more than available
     }
-    waterUsage -= amount; // Decrease usage
+    waterUsage += amount; 
+    waterMeterBox -= waterUsage; // Decrease usage
     std::cout << "Consumed " << amount << " liters of water." << std::endl;
 }
 
@@ -128,11 +133,12 @@ void Building::consumeWater(double amount) {
  * @param amount Amount of electricity consumed (in kWh).
  */
 void Building::consumeElectricity(double amount) {
-    if (amount <= 0 || electricityUsage < amount) {
-        std::cout << "Power supply cut off due to zero or negative usage." << std::endl;
+    if (amount < 0 || electricityMeterBox < amount) {
+        std::cout << "Power supply cut off due to negative usage." << std::endl;
         return; // Cannot consume negative or more than available
     }
-    electricityUsage -= amount; // Decrease usage
+    electricityUsage += amount;
+    electricityMeterBox -= electricityUsage; // Decrease usage
     std::cout << "Consumed " << amount << " kWh of electricity." << std::endl;
 }
 
@@ -143,11 +149,10 @@ void Building::consumeElectricity(double amount) {
  */
 void Building::requestElectricity(double requestedElectricity) {
     std::cout << "Requesting " << requestedElectricity << " kWh of electricity." << std::endl;
-    if (requestedElectricity <= 0) {
-        std::cout << "Power supply cut off due to zero or negative usage." << std::endl;
+    if (requestedElectricity < 0) {
+        std::cout << "Power supply cut off due to negative usage." << std::endl;
         return; // Return early if the request is invalid
     }
-    electricityUsage += requestedElectricity; // Update electricity usage
     electricityMeterBox += requestedElectricity; // Update meter box reading
 }
 
@@ -158,11 +163,10 @@ void Building::requestElectricity(double requestedElectricity) {
  */
 void Building::requestWater(double requestedWater) {
     std::cout << "Requesting " << requestedWater << " liters of water." << std::endl;
-    if (requestedWater <= 0) {
-        std::cout << "Water supply cut off due to zero or negative usage." << std::endl;
+    if (requestedWater < 0) {
+        std::cout << "Water supply cut off due to negative usage." << std::endl;
         return; // Return early if the request is invalid
     }
-    waterUsage += requestedWater; // Update water usage
     waterMeterBox += requestedWater; // Update meter box reading
 }
 
