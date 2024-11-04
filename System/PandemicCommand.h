@@ -7,52 +7,53 @@
 #define PANDEMIC_COMMAND_H
 
 #include "EventsCommand.h"
-#include "Citizen.h" 
+#include "Citizen.h"
 
 /**
  * @class PandemicCommand
  * @brief Concrete command class that handles pandemic-related events.
  */
-class PandemicCommand : public EventsCommand {
-  private:
-    std::vector<Citizen*> citizens; // List of citizens affected by the pandemic
+class PandemicCommand : public EventsCommand
+{
+private:
+  std::vector<Citizen *> citizens; // List of citizens affected by the pandemic
 
 public:
-    PandemicCommand(const std::vector<Citizen*>& citizens);
-    /**
-     * @brief Imposes a lockdown in the city.
-     */
-    void imposeLockdown();
+  PandemicCommand(const std::vector<Citizen *> &citizens);
+  /**
+   * @brief Imposes a lockdown in the city.
+   */
+  void imposeLockdown();
 
-    /**
-     * @brief Increases funding for healthcare services.
-     */
-    void increaseHealthcareFunding();
+  /**
+   * @brief Increases funding for healthcare services.
+   */
+  void increaseHealthcareFunding();
 
-    /**
-     * @brief Distributes vaccines to citizens.
-     */
-    void distributeVaccines();
+  /**
+   * @brief Distributes vaccines to citizens.
+   */
+  void distributeVaccines();
 
-    /**
-     * @brief Quarantines citizens to prevent infection spread.
-     */
-    void quarantineCitizens();
+  /**
+   * @brief Quarantines citizens to prevent infection spread.
+   */
+  void quarantineCitizens();
 
-    /**
-     * @brief Manages citizen satisfaction during the pandemic.
-     */
-    void manageCitizenSatisfaction();
+  /**
+   * @brief Manages citizen satisfaction during the pandemic.
+   */
+  void manageCitizenSatisfaction();
 
-    /**
-     * @brief Tracks the infection rates of the pandemic.
-     */
-    void trackInfectionRates();
+  /**
+   * @brief Tracks the infection rates of the pandemic.
+   */
+  void trackInfectionRates();
 
-       /**
-     * @brief starts/ends the command
-     */
-    void execute();
+  /**
+   * @brief starts/ends the command
+   */
+  void execute();
 };
 
 #endif // PANDEMIC_COMMAND_H

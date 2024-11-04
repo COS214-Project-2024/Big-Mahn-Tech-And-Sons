@@ -36,8 +36,8 @@ private:
 
 protected:
     DeptOfUtilities *successor;
-   vector<Building *> buildings; /**< Vector to store buildings to be sourced  for water supply. */
-    double budget; /**< The budget allocated to the department. */
+    vector<Building *> buildings; /**< Vector to store buildings to be sourced  for water supply. */
+    double budget;                /**< The budget allocated to the department. */
 
 public:
     // PowerSupply * powerSupply;
@@ -80,7 +80,7 @@ public:
      */
     virtual void setSuccessor(DeptOfUtilities *nextDepartment);
 
-    DeptOfUtilities* getSuccessor();
+    DeptOfUtilities *getSuccessor();
     /**
      * @brief Sets the next department in the chain of responsibility.
      *

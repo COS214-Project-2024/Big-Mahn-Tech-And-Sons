@@ -3,9 +3,9 @@
 #include "Estate.h"
 #include <iostream>
 
-
 Estate::Estate()
-    : ResidentialBuilding() {
+    : ResidentialBuilding()
+{
     name = "Luxury Estate";
     maxCapacity = 10;
     width = 40;
@@ -19,18 +19,18 @@ Estate::Estate()
     type = "Estate";
 }
 
-
-void Estate::displayStats() const {
-    ResidentialBuilding::displayStats();  // Display general stats for residential buildings
+void Estate::displayStats() const
+{
+    ResidentialBuilding::displayStats(); // Display general stats for residential buildings
 }
 
-
-void Estate::accept(TaxManager* visitor) {
-   // visitor->visitResidentialBuilding(this);
+void Estate::accept(TaxManager *visitor)
+{
+    // visitor->visitResidentialBuilding(this);
 }
 
-
-Building* Estate::repairClone() const {
+Building *Estate::repairClone() const
+{
     std::cout << "Prototype: Cloning an Estate building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing residential building (Estate): " << getName() << "\n";
     return new Estate(*this);

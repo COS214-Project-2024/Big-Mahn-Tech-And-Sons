@@ -12,7 +12,8 @@
  * @class Material
  * @brief Represents material resource in the simulation.
  */
-class Material : public Resource {
+class Material : public Resource
+{
 public:
     using Resource::Resource; ///< Inherit constructors.
 

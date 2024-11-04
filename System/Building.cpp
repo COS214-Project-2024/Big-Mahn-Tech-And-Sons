@@ -3,7 +3,7 @@
 #include "Building.h"
 #include "Citizen.h"
 #include "DeptOfPR.h"
-#include <algorithm>  // For std::find
+#include <algorithm> // For std::find
 
 Building::Building()
     : name("Building Name"), maxCapacity(100), electricityMeterBox(0.0),
@@ -13,33 +13,39 @@ Building::Building()
 
 /**
  * @brief Adds a tenant to the building.
- * 
+ *
  * @param tenant Pointer to the Citizen to be added.
  * @return true if the tenant was successfully added, false if capacity is reached.
  */
-bool Building::addTenant(Citizen* tenant) {
-    if (tenants.size() < maxCapacity) {
+bool Building::addTenant(Citizen *tenant)
+{
+    if (tenants.size() < maxCapacity)
+    {
         tenants.push_back(tenant);
         tenant->setCurrent(this);
         tenant->setHome(this);
         return true;
-    } else {
+    }
+    else
+    {
         notifyPR();
     }
 }
 
 /**
  * @brief Removes a tenant from the building.
- * 
+ *
  * @param tenant Pointer to the Citizen to be removed.
  * @return true if the tenant was successfully removed, false if the tenant was not found.
  */
-bool Building::removeTenant(Citizen* tenant) {
+bool Building::removeTenant(Citizen *tenant)
+{
     auto it = std::find(tenants.begin(), tenants.end(), tenant);
-    if (it != tenants.end()) {
+    if (it != tenants.end())
+    {
         tenants.erase(it);
         return true;
-        std::cout<<"Removed successfully \n";
+        std::cout << "Removed successfully \n";
     }
     return false;
 }
@@ -50,7 +56,7 @@ void Building::requestElectricity(double requestedElectricity)
 
 /**
  * @brief Gets the grid coordinates of the building.
- * 
+ *
  * @return A vector of grid coordinate pairs (x, y).
  */
 void Building::requestWater(double requestedWater)
@@ -58,15 +64,16 @@ void Building::requestWater(double requestedWater)
 }
 std::vector<std::pair<int, int>> Building::getGridCoordinates() const
 {
-   return gridCoordinates;
+    return gridCoordinates;
 }
 
-
-void Building::setCoordinates(const std::vector<std::pair<int, int>>& coords) {
+void Building::setCoordinates(const std::vector<std::pair<int, int>> &coords)
+{
     gridCoordinates = coords;
 }
 
-void Building::displayStats() const {
+void Building::displayStats() const
+{
     std::cout << "Building Name: " << name << std::endl;
     std::cout << "Max Capacity: " << maxCapacity << std::endl;
     std::cout << "Electricity Meter: " << electricityMeterBox << " units" << std::endl;
@@ -78,8 +85,9 @@ void Building::displayStats() const {
 
     std::cout << std::endl;
     std::cout << "Tenants: \n";
-    for (const auto& tenant : tenants) {
-         tenant->display();  // Displays tenant pointers
+    for (const auto &tenant : tenants)
+    {
+        tenant->display(); // Displays tenant pointers
     }
 }
 
@@ -97,7 +105,7 @@ double Building::getWaterMeterBox() const { return waterMeterBox; }
 double Building::getElectricityUsage() const { return electricityUsage; }
 double Building::getWaterUsage() const { return waterUsage; }
 double Building::getWasteProduction() const { return wasteProduction; }
-const std::vector<Citizen*>& Building::getTenants() const { return tenants; }
+const std::vector<Citizen *> &Building::getTenants() const { return tenants; }
 int Building::getWidth() const { return width; }
 int Building::getLength() const { return length; }
 double Building::getPriceTag() const { return priceTag; }
@@ -109,11 +117,19 @@ double Building::getCitizenTax() const { return citizenTax; }
 double Building::getBusinessTax() const { return businessTax; }
 
 // Setters
-void Building::setName(const std::string& newName) { name = newName; }
+void Building::setName(const std::string &newName) { name = newName; }
 void Building::setMaxCapacity(int capacity) { maxCapacity = capacity; }
-void Building::setElectricityMeterBox(double reading) { electricityMeterBox = reading;  cout << "ElectricityMeterBox is now: " <<electricityMeterBox<<endl; }
-void Building::setWaterMeterBox(double reading) { waterMeterBox = reading; cout << "WaterMeterBox is now: "<<waterMeterBox<<endl; }
-void Building::setElectricityUsage(double usage) { electricityUsage = usage;}
+void Building::setElectricityMeterBox(double reading)
+{
+    electricityMeterBox = reading;
+    cout << "ElectricityMeterBox is now: " << electricityMeterBox << endl;
+}
+void Building::setWaterMeterBox(double reading)
+{
+    waterMeterBox = reading;
+    cout << "WaterMeterBox is now: " << waterMeterBox << endl;
+}
+void Building::setElectricityUsage(double usage) { electricityUsage = usage; }
 void Building::setWaterUsage(double usage) { waterUsage = usage; }
 void Building::setWaste(double waste) { wasteProduction = waste; }
 void Building::setWidth(int newWidth) { width = newWidth; }
@@ -123,16 +139,20 @@ void Building::setBusinessTax(double taxRate) { businessTax = taxRate; }
 
 /**
  * @brief Consumes a specified amount of water.
- * 
+ *
  * @param amount Amount of water consumed (in liters).
  */
-void Building::consumeWater(double amount) {
-    if(waterMeterBox <= 0) {
+void Building::consumeWater(double amount)
+{
+    if (waterMeterBox <= 0)
+    {
         // make request for more water as we are out
         std::cout << "Requesting more water..." << std::endl;
         this->notifyPR();
         return;
-    } else if (amount <= 0 || waterMeterBox < amount) {
+    }
+    else if (amount <= 0 || waterMeterBox < amount)
+    {
         std::cout << "Water supply cut off due to zero or negative usage." << std::endl;
         return; // Cannot consume negative or more than available
     }
@@ -140,21 +160,23 @@ void Building::consumeWater(double amount) {
     waterMeterBox -= amount; // Decrease usage
     std::cout << "Consumed " << amount << " liters of water." << std::endl;
     setWaterMeterBox(waterMeterBox);
-
 }
 
 /**
  * @brief Consumes a specified amount of electricity.
- * 
+ *
  * @param amount Amount of electricity consumed (in kWh).
  */
-void Building::consumeElectricity(double amount) {
-    if(electricityMeterBox <= 0) {
+void Building::consumeElectricity(double amount)
+{
+    if (electricityMeterBox <= 0)
+    {
         // make request for more power as we are out
         std::cout << "Requesting more electricity..." << std::endl;
         this->notifyPR();
     }
-    if (amount <= 0 || electricityUsage < amount) {
+    if (amount <= 0 || electricityUsage < amount)
+    {
         std::cout << "Power supply cut off due to zero or negative usage." << std::endl;
         return; // Cannot consume negative or more than available
     }
@@ -164,20 +186,20 @@ void Building::consumeElectricity(double amount) {
     setElectricityMeterBox(electricityMeterBox);
 }
 
-
-void Building::waterCut() {
+void Building::waterCut()
+{
     waterSupply = false;
     std::cout << "Water supply cut off." << std::endl;
 }
 
-
-void Building::powerCut() {
+void Building::powerCut()
+{
     powerSupply = false;
     std::cout << "Power supply cut off." << std::endl;
 }
 
-
-void Building::clearWaste() {
+void Building::clearWaste()
+{
     wasteProduction = 0.0; // Reset waste production
     std::cout << "Waste cleared from the building." << std::endl;
 }

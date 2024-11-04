@@ -3,13 +3,12 @@
 #include <thread>
 #include <iostream>
 
-std::string AirTrans::getName() const 
+std::string AirTrans::getName() const
 {
     return "AirPlane";
 }
 
-
-double AirTrans::getCost() const 
+double AirTrans::getCost() const
 {
     return 1500.99;
 }
@@ -17,8 +16,6 @@ double AirTrans::getCost() const
 void AirTrans::execute() const
 {
 
-    std::cout<<"Citizen has now boarded the Plane \n";
+    std::cout << "Citizen has now boarded the Plane \n";
     std::this_thread::sleep_for(std::chrono::seconds(1));
 }
-
-

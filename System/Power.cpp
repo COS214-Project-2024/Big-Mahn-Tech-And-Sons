@@ -11,7 +11,8 @@ Power::Power(double amount) : amount(amount) {}
  * @brief Gets the current amount of power.
  * @return double Current power amount.
  */
-double Power::getPowerAmount() const {
+double Power::getPowerAmount() const
+{
     return amount;
 }
 
@@ -19,11 +20,14 @@ double Power::getPowerAmount() const {
  * @brief Deducts a specified amount from the available power.
  * @param used Amount to be deducted.
  */
-void Power::usePower(double used) {
-    if (used <= amount) {
+void Power::usePower(double used)
+{
+    if (used <= amount)
+    {
         amount -= used;
-    } else {
+    }
+    else
+    {
         std::cout << "Insufficient power available to meet request." << std::endl;
     }
 }
-

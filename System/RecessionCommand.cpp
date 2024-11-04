@@ -12,19 +12,23 @@
  * @param citizens Pointer to the Citizens class.
  * @param commercialBuildings Vector of pointers to CommercialBuilding instances affected by the recession.
  */
-RecessionCommand::RecessionCommand(DeptOfFinance* finDept, Citizen* citizens, std::vector<CommercialBuilding*>& commercialBuildings)
-    : finDept(finDept), citizens(citizens), commercialBuildings(commercialBuildings) {
+RecessionCommand::RecessionCommand(DeptOfFinance *finDept, Citizen *citizens, std::vector<CommercialBuilding *> &commercialBuildings)
+    : finDept(finDept), citizens(citizens), commercialBuildings(commercialBuildings)
+{
     // Constructor implementation
 }
-
 
 /**
  * @brief Raises taxes as part of the recession response.
  */
-void RecessionCommand::raiseTaxes() {
-    if (finDept) {
+void RecessionCommand::raiseTaxes()
+{
+    if (finDept)
+    {
         finDept->increaseTaxes(5.0);
-    } else {
+    }
+    else
+    {
         std::cout << "Error: PR Department not initialized.\n";
     }
 }
@@ -32,20 +36,27 @@ void RecessionCommand::raiseTaxes() {
 /**
  * @brief Manages citizen dissatisfaction during the recession.
  */
-void RecessionCommand::manageCitizenDissatisfaction() {
-    if (citizens) {
+void RecessionCommand::manageCitizenDissatisfaction()
+{
+    if (citizens)
+    {
         citizens->decreaseSatisfaction(7);
-    } else {
-        std::cout  << "Error: Citizens data not initialized.\n";
+    }
+    else
+    {
+        std::cout << "Error: Citizens data not initialized.\n";
     }
 }
 
 /**
  * @brief Closes a portion of commercial buildings due to the recession.
  */
-void RecessionCommand::closeCommercialBuildings() {
-    for (auto* building : commercialBuildings) {
-        if (building && !building->isClosed()) {
+void RecessionCommand::closeCommercialBuildings()
+{
+    for (auto *building : commercialBuildings)
+    {
+        if (building && !building->isClosed())
+        {
             building->closeBuilding();
             // GUI: Visually mark this building as "Closed"
         }
@@ -55,7 +66,8 @@ void RecessionCommand::closeCommercialBuildings() {
 /**
  * @brief Executes all recession-related actions in sequence.
  */
-void RecessionCommand::execute() {
+void RecessionCommand::execute()
+{
     std::cout << "Executing recession response...\n";
     raiseTaxes();
     manageCitizenDissatisfaction();

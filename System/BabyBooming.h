@@ -7,15 +7,15 @@
 #include "Citizen.h"
 #include <vector>
 
-class BabyBoomingEvent : public EventsCommand {
+class BabyBoomingEvent : public EventsCommand
+{
 private:
-    Building* building;                   // Target building to add new citizens
-    std::vector<Citizen*>* citizensList;  // Reference to the city's citizens list
-
+    Building *building;                   // Target building to add new citizens
+    std::vector<Citizen *> *citizensList; // Reference to the city's citizens list
 
 public:
-    BabyBoomingEvent()= default;
-    BabyBoomingEvent(Building* building, std::vector<Citizen*>* citizens);
+    BabyBoomingEvent() = default;
+    BabyBoomingEvent(Building *building, std::vector<Citizen *> *citizens);
     void execute() override;
 };
 #endif // BABY_BOOMING_EVENT_H

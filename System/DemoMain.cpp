@@ -19,19 +19,19 @@
 
 using namespace std;
 
-//void clearTerminal();
+// void clearTerminal();
 void testFunction();
 void deptTransportation();
 void eventsCommand();
 
 int main()
 {
-    //testFunction();         //the one for city grid
-    //deptTransportation();
-    eventsCommand();
+    // testFunction();         //the one for city grid
+    // deptTransportation();
+    //  eventsCommand();
 
-    //Government gov;
-    //gov.runSim();
+    Government gov;
+    gov.runSim();
     return 0;
 }
 
@@ -113,10 +113,10 @@ void testFunction()
                 cin.get();
                 clearTerminal();
                 break;
-            
+
             case 4:
                 grid.printCityRoadNetwork();
-                
+
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout<<"\nPress any key to continue";
                 cin.get();
@@ -125,7 +125,7 @@ void testFunction()
 
             case 5:
                 grid.printCityStreets();
-                
+
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout<<"\nPress any key to continue";
                 cin.get();
@@ -160,7 +160,7 @@ void testFunction()
                 break;
             }
 
-            
+
     }
     */
 }
@@ -256,11 +256,11 @@ void deptTransportation()
                 cin.get();
                 clearTerminal();
                 break;
-            
+
             case 4:
         cout<<UNDERLINE<<".............. ROAD GRID ...........\n\n\n"<<RESET;
                 grid->printRoadNetwork();
-                
+
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout<<"\nPress any key to continue";
                 cin.get();
@@ -270,7 +270,7 @@ void deptTransportation()
             case 5:
         cout<<UNDERLINE<<".............. CITY GRID ...........\n\n\n"<<RESET;
                 grid->printCityStreets();
-                
+
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 cout<<"\nPress any key to continue";
                 cin.get();
@@ -306,10 +306,8 @@ void deptTransportation()
             }
     }
     */
-
 }
 
 void eventsCommand()
 {
-
 }

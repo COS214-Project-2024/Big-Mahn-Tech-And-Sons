@@ -20,7 +20,7 @@ Citizen::Citizen(const std::string &nam, DeptOfPR *PR)
    name = nam;
    satisfaction = 50;
    this->PR = PR;
-    this->PR->addCitizen(this);
+   this->PR->addCitizen(this);
    age = 1;
    this->state = new ChildState();
 
@@ -31,14 +31,10 @@ Citizen::Citizen(const std::string &nam, DeptOfPR *PR)
    this->budget = distr(gen);
 
    this->health = 100.0;
-   this->satisState =  new NeutralState();
+   this->satisState = new NeutralState();
    this->modeOfTransport = NULL;
-   //this->go =  NULL;
-   this->ageThreshhold = 0;
+   this->ageThreshold = 0;
 
-   // Set Home and work location IN and CurrentLocation
-
-   // Set Home and work location IN
    this->homeLocation = NULL;
    this->workLocation = NULL;
    this->currentLocation = NULL;
@@ -55,20 +51,12 @@ Citizen::~Citizen()
    {
       delete satisState;
    }
-
-   //    // if(modeOfTransport) {
-   //    //    delete modeOfTransport;
-   //    // }
-
-   // if(go) {
-   //    delete go;
-   // }
 }
 
 void Citizen::getOlder()
 {
    age++;
-   if ((this->getStateName() == "Pensioner" && age >= ageThreshhold) || this->getHealth() <= 0)
+   if ((this->getStateName() == "Pensioner" && age >= ageThreshold) || this->getHealth() <= 0)
    {
       // kill TODO
       this->PR->update(this);
@@ -114,7 +102,8 @@ void Citizen::work(double amount)
 
 bool Citizen::Spend(double amount)
 {
-   if(amount > this->budget) {
+   if (amount > this->budget)
+   {
       return false;
    }
    this->budget -= amount;
@@ -154,14 +143,14 @@ void Citizen::increaseSatisfaction(double amount)
    this->satisState->handle(this); // check if satisfaction state needs to be changed
 }
 
-void Citizen::setThreshhold(int age)
+void Citizen::setThreshold(int age)
 {
-   this->ageThreshhold = age;
+   this->ageThreshold = age;
 }
 
 int Citizen::getThreshold()
 {
-   return this->ageThreshhold;
+   return this->ageThreshold;
 }
 
 std::string Citizen::getStateName() const
@@ -212,11 +201,6 @@ void Citizen::setModeOfTransport(ModeOfTrans *mode)
    }
 }
 
-// void Citizen::setGoToCommand(GoToCommand *command)
-// {
-//    this->go = command;
-// }
-
 Building *Citizen::getCurrentLocation() const
 {
    return currentLocation;
@@ -234,35 +218,32 @@ Building *Citizen::getWorkLocation() const
 
 void Citizen::setWork(Building *building)
 {
-   if(building) {
+   if (building)
+   {
       this->workLocation = building;
    }
 }
 
 void Citizen::setHome(Building *building)
 {
-   if(building) {
+   if (building)
+   {
       this->homeLocation = building;
    }
 }
 
 void Citizen::setCurrent(Building *building)
 {
-   if(building) {
+   if (building)
+   {
       this->currentLocation = building;
    }
 }
 
 void Citizen::travelTo(Building *destination)
 {
-   // DeptOfTransportation *dept = DeptOfTransportation::getInstance();
-   // int distance = dept->get_distance(currentLocation,destination);
-   
-   // come operate here.
-   //
 
    int distance = 40;
-   
 
    std::vector<ModeOfTrans *> availableModes;
    Walk *walk = new Walk();
@@ -298,40 +279,36 @@ void Citizen::travelTo(Building *destination)
    if (choice > 0 && choice <= availableModes.size())
    {
       ModeOfTrans *selectedMode = availableModes[choice - 1];
-      if(selectedMode->getName() == "Walk"){ double totalCost = selectedMode->getCost(); }
-      else
+      if (selectedMode->getName() == "Walk")
       {
-      double totalCost = (distance * 4.5) + selectedMode->getCost();
-
-      if (this->Spend(totalCost))
-      {
-         // Execute transport
-         selectedMode->execute();
-
-         // Update locations
-         currentLocation->removeTenant(this);
-         
-         destination->addTenant(this);
-         currentLocation = destination;
-
-         std::cout << "Successfully traveled to " << destination->getName() << "\n";
+         double totalCost = selectedMode->getCost();
       }
       else
       {
-         std::cout << "Insufficient funds for travel\n";
-      }
+         double totalCost = (distance * 4.5) + selectedMode->getCost();
+
+         if (this->Spend(totalCost))
+         {
+            // Execute transport
+            selectedMode->execute();
+
+            // Update locations
+            currentLocation->removeTenant(this);
+
+            destination->addTenant(this);
+            currentLocation = destination;
+
+            std::cout << "Successfully traveled to " << destination->getName() << "\n";
+         }
+         else
+         {
+            std::cout << "Insufficient funds for travel\n";
+         }
       }
    }
-
-   // // Cleanup
-   // for (auto mode : availableModes)
-   // {
-   //    delete mode;
-   // }
 }
 
 void Citizen::setCurrentLocation(Building *b)
 {
    currentLocation = b;
-
 }

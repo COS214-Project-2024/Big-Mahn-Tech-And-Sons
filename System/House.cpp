@@ -3,9 +3,9 @@
 #include "House.h"
 #include <iostream>
 
-
 House::House()
-    : ResidentialBuilding() {
+    : ResidentialBuilding()
+{
     name = "Family House";
     maxCapacity = 4;
     width = 15;
@@ -19,18 +19,18 @@ House::House()
     type = "House";
 }
 
-
-void House::displayStats() const {
-    ResidentialBuilding::displayStats();  // Display general stats for residential buildings
+void House::displayStats() const
+{
+    ResidentialBuilding::displayStats(); // Display general stats for residential buildings
 }
 
-
-void House::accept(TaxManager* visitor) {
-   // visitor->visitResidentialBuilding(this);
+void House::accept(TaxManager *visitor)
+{
+    // visitor->visitResidentialBuilding(this);
 }
 
-
-Building* House::repairClone() const {
+Building *House::repairClone() const
+{
     std::cout << "Prototype: Cloning a Shop building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing residential building (House): " << getName() << "\n";
     return new House(*this);

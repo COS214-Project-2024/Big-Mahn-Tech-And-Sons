@@ -5,25 +5,24 @@
 bool GoHos::execute()
 {
 
-  
     cout << "Citizen " << citizen->getName() << "is going to the Hospital\n";
-    CommercialBuilding* Hosipital = NULL;
+    CommercialBuilding *Hosipital = NULL;
 
-    vector<Building*> buildings = DOH->getBuildings();
+    vector<Building *> buildings = DOH->getBuildings();
 
     for (auto building : buildings)
     {
-            CommercialBuilding* idsBuild_Hospital = dynamic_cast<CommercialBuilding*>(building);
-            if (idsBuild_Hospital  && idsBuild_Hospital->getType() == "Hospital" )
-            {
-                Hosipital = idsBuild_Hospital;
-                break;
-            }
+        CommercialBuilding *idsBuild_Hospital = dynamic_cast<CommercialBuilding *>(building);
+        if (idsBuild_Hospital && idsBuild_Hospital->getType() == "Hospital")
+        {
+            Hosipital = idsBuild_Hospital;
+            break;
+        }
     }
 
-    if(Hosipital)
+    if (Hosipital)
     {
-        citizen->travelTo(Hosipital);    
+        citizen->travelTo(Hosipital);
         return true;
     }
     else
