@@ -1,6 +1,12 @@
 #include "GoTrain.h"
 
 
+GoTrain::GoTrain(Citizen *citizen, DeptOfHousing *deptH):GoToCommand(citizen, deptH)
+{
+    this->citizen = citizen;
+    this->DOH = deptH;
+}
+
 bool GoTrain::execute()
 {
     cout << "Citizen " << citizen->getName() << "is going to the TrainStation \n";

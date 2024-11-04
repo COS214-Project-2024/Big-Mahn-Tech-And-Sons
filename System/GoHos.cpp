@@ -1,4 +1,6 @@
 #include "GoHos.h"
+#include "CommercialBuilding.h"
+#include "DeptOfHousing.h"
 
 bool GoHos::execute()
 {

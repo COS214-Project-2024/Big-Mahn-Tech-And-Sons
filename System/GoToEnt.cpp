@@ -2,10 +2,10 @@
 
 
 
-GoToEnt::GoToEnt(Citizen* citizen , DeptOfHousing* housing):GoToCommand(citizen,DOH)
+GoToEnt::GoToEnt(Citizen* citizen , DeptOfHousing* housing):GoToCommand(citizen,housing)
 {
-   citizen = citizen;
-    housing= DOH;
+   this->citizen = citizen;
+    this->DOH = housing;
 }
 
 
