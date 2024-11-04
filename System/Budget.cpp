@@ -4,6 +4,7 @@
 #include <iostream>
 
 Budget::Budget(float initialBudget) : totalBudget(initialBudget) {}
+ 
 
 Budget::~Budget() {}
 
@@ -22,4 +23,8 @@ void Budget::setTotalBudget(float budget) {
 
 void Budget::accept(TaxManager* visitor) {
     visitor->visitBudget(this);
+}
+
+void Budget::addFunds(double amount) {
+    funds += amount;
 }

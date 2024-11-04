@@ -10,12 +10,14 @@ class TaxManager;
 class Budget : public Element {
 private:
     float totalBudget;
+    double funds;
 
 public:
     Budget(float initialBudget);
     ~Budget();
     void reportStatus() const;
     float getTotalBudget() const;
+    void addFunds(double amount);
     void setTotalBudget(float budget);
     void accept(TaxManager* visitor);
 };

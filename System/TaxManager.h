@@ -44,6 +44,7 @@ public:
     void distributeBudget(const std::string& department, float allocation);
     float getCollectedTaxes() const;
     float getGovernmentBudget() const;
+    void applyCollectedTaxesToBudget(Budget& budget);
     
     // Visitor methods
     virtual void visitResidentialBuilding(ResidentialBuilding* building);
@@ -53,5 +54,6 @@ public:
     void collect(ResidentialBuilding* building);
     void collect(CommercialBuilding* building);
 };
+
 
 #endif // TAXMANAGER_H+

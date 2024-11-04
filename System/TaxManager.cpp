@@ -90,3 +90,9 @@ bool TaxManager::checkMoney()
         return false;
     }
 }
+
+void TaxManager::applyCollectedTaxesToBudget(Budget& budget) {
+    double collectedTaxes = getCollectedTaxes(); // Assuming this method exists
+    // budget.addFunds(collectedTaxes);
+    // resetCollectedTaxes(); // Reset for the next tax cycle
+}

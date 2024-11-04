@@ -19,18 +19,28 @@
 //     std::cout << "Added taxes to budget." << std::endl;
 // }
 
-visitHousing::visitHousing()
+visitHousing::visitHousing() : collectedTax(0)
 {
 }
 
 void visitHousing::visitResidentialBuilding(ResidentialBuilding *building)
 {
+    double tax = residential.getNetWorth() * 0.05;
+    residential.applyTax(tax);
+    collectedTax += tax; // Accumulate collected tax
 }
 
 void visitHousing::visitCommercialBuilding(CommercialBuilding *building)
 {
+    // No action here, as this visitor is for residential buildings
 }
 
 void visitHousing::visitBudget(Budget *budget)
 {
+    // this should add the taxes to the budget
+    budget.allocateFunds(collectedTax);
 }
+
+double visitHousing::getCollectedTax() const {
+        return collectedTax;
+    }

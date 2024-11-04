@@ -438,12 +438,9 @@ void taxManTest() {
     DeptOfFinance financeDept(taxMan);
 
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, &financeDept);
-
-    //Citizen citizen("John Doe", prDept);
     
     // 1. BUDGET SITUATION
     ResidentialBuildingCreator creator;
-    TaxManager taxManager;
     
     // Create a House and test initial state
     Building *house = creator.createBuilding("House");
@@ -471,9 +468,6 @@ void taxManTest() {
     Building *shop = commercialCreator.createBuilding("Shop");
     Building *hospital = commercialCreator.createBuilding("Hospital");
 
-    // 3. TAX MANAGER AND FINANCE DEPARTMENT
-    // DeptOfFinance financeDept(&taxManager);
-
     // 4. TAXES COLLECTION
     std::cout << "Collecting taxes from citizens\n";
     // Collect taxes from residential buildings
@@ -489,18 +483,22 @@ void taxManTest() {
 
     // 5. BUDGET UPDATE AFTER TAX COLLECTION
     std::cout << "Updating the Overall City Budget\n";
-    cityBudget.accept(&taxManager);  // Update budget with collected taxes
-    cityBudget.reportStatus();       // Report updated budget status
+    
+    // Assuming taxes are stored within TaxManager, update the budget accordingly
+    taxMan->applyCollectedTaxesToBudget(cityBudget);  // New line to apply collected taxes
+
+    cityBudget.reportStatus();  // Report updated budget status
 
     // Cleanup dynamically allocated memory
-    //delete tenant1;
-    //delete tenant2;
+    delete tenant1;
+    delete tenant2;
     delete house;
     delete estate;
     delete apartment;
     delete shop;
     delete hospital;
 }
+
 
 // void testNaturalDisaster()
 // {
