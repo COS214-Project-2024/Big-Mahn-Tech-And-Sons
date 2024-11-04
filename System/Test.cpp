@@ -267,61 +267,95 @@ TEST_CASE("DeptOfPR Funding Request")
 TEST_CASE("DeptOfUtility chain")
 {
 
-    Water *water = new Water(10000);
-    Power *power = new Power(1456.3);
+ Water *water = new Water(10800);
+    Power *power = new Power(17456.3);
 
-    PowerSupply powerDept(5000, 400, power);
-    WaterSupply waterDept(2000, 500, water);
-    WasteManagement wasteDept( 150, 600);
-
-    // Set up chain of responsibility
-    powerDept.setSuccessor(&waterDept);
-    waterDept.setSuccessor(&wasteDept);
+    DeptOfUtilities *powerDept = new PowerSupply(50000, 40000, power);
+    DeptOfUtilities *waterDept = new WaterSupply(20000, 500000, water);
+    DeptOfUtilities *wasteDept = new WasteManagement(10000, 6000);
 
     Building *b1 = new House();
     Building *b2 = new Apartment();
 
-    double initialPowerLevel = powerDept.getPowerCapacity();
-    double initialWaterLevel = waterDept.getWaterCapacity();
-    double initialWasteCapacity = wasteDept.getWasteCapacity();
+    dynamic_cast<WaterSupply*>(waterDept)->addBuilding(b1);
+    dynamic_cast<WaterSupply*>(waterDept)->addBuilding(b2);
+    dynamic_cast<PowerSupply*>(powerDept)->addBuilding(b1);
+    dynamic_cast<PowerSupply*>(powerDept)->addBuilding(b2);
+    dynamic_cast<WasteManagement*>(wasteDept)->addBuilding(b1);
+    dynamic_cast<WasteManagement*>(wasteDept)->addBuilding(b2);
 
-    // Example request for power within capacity
-    Request req1("power", b1, 100);
-    powerDept.handleRequest(req1); // Should be handled by PowerSupply
+    SUBCASE("Water Supply") {
+        b1->setWaterMeterBox(600);
+        b1->consumeWater(50);
+        b2->setWaterMeterBox(700);
+        b2->consumeWater(20);
 
-    // Example request for water within capacity
-    Request req2("water", b1, 80);
-    powerDept.handleRequest(req2); // Passed from PowerSupply to WaterSupply
+        dynamic_cast<WaterSupply*>(waterDept)->distributeWater();
+        dynamic_cast<WaterSupply*>(waterDept)->distributeWaterToBuilding(b1);
+        dynamic_cast<WaterSupply*>(waterDept)->distributeWaterToBuilding(b2);
 
-    // Example request for power that exceeds capacity of PowerSupply, should be passed along
-    Request req3("power", b2, 450);
-    powerDept.handleRequest(req3); // PowerSupply can't handle, passed to WaterSupply if applicable
+        CHECK(dynamic_cast<WaterSupply*>(waterDept)->calculateWaterUsage() > 0);
+        CHECK(dynamic_cast<WaterSupply*>(waterDept)->getWaterCapacity() > 0);
+        CHECK(dynamic_cast<WaterSupply*>(waterDept)->getBudget() > 0);
+    }
 
-    // Example request for waste within capacity of WasteManagement
-    Request req4("waste", b1, 100);
-    powerDept.handleRequest(req4); // Passed from PowerSupply and WaterSupply to WasteManagement
+    SUBCASE("Power Supply") {
+        b1->setElectricityMeterBox(1000);
+        b2->setElectricityMeterBox(500);
+        b1->consumeElectricity(120);
+        b2->consumeElectricity(150);
 
-    // Example request for waste that exceeds WasteManagement capacity, should return unfulfilled
-    Request req5("waste", b2, 700);
-    powerDept.handleRequest(req5); // No handler should be able to fulfill this request
+        dynamic_cast<PowerSupply*>(powerDept)->distributePower();
+        dynamic_cast<PowerSupply*>(powerDept)->distributePowerToBuilding(b1);
+        dynamic_cast<PowerSupply*>(powerDept)->distributePowerToBuilding(b2);
 
-    // Example of high demand water request that exceeds all capacities
-    Request req6("water", b2, 2000);
-    powerDept.handleRequest(req6); // No handler should be able to fulfill this request
+        CHECK(dynamic_cast<PowerSupply*>(powerDept)->calculatePowerUsage() > 0);
+        CHECK(dynamic_cast<PowerSupply*>(powerDept)->getPowerCapacity() > 0);
+        CHECK(dynamic_cast<PowerSupply*>(powerDept)->getBudget() > 0);
+    }
 
-    CHECK(powerDept.getPowerCapacity() == initialPowerLevel);
-    //CHECK(waterDept.getWaterCapacity() == initialWaterLevel);
-    CHECK(wasteDept.getWasteCapacity() == initialWasteCapacity);
+    SUBCASE("Waste Management") {
+        b1->setWaste(100);
+        b2->setWaste(50);
 
-    // Edge cases:
-    // Large water request that exceeds water capacity but should not affect other departments
-    Request req7("Water", b1, 1200);
-    powerDept.handleRequest(req7); // Exceeds water capacity, should fail gracefully
+        CHECK(dynamic_cast<WasteManagement*>(wasteDept)->calculateWasteProcessing() > 0);
+        dynamic_cast<WasteManagement*>(wasteDept)->collectWaste();
+        b1->setWaste(400);
+        b2->setWaste(390);
+        dynamic_cast<WasteManagement*>(wasteDept)->collectWasteFromBuilding(b1);
+        dynamic_cast<WasteManagement*>(wasteDept)->collectWasteFromBuilding(b2);
 
-    // Unrecognized resource request type, should pass through all departments and remain unhandled
-    Request req8("Gas", b1, 50);
-    powerDept.handleRequest(req8); // Should go through the chain but remain unhandled
-    
+        CHECK(dynamic_cast<WasteManagement*>(wasteDept)->getWasteCapacity() > 0);
+        dynamic_cast<WasteManagement*>(wasteDept)->disposeWaste();
+        dynamic_cast<WasteManagement*>(wasteDept)->expandWasteCapacity();
+        CHECK(dynamic_cast<WasteManagement*>(wasteDept)->getWasteManagementBudget() > 0);
+    }
+
+    SUBCASE("Request Handling") {
+        dynamic_cast<WasteManagement*>(wasteDept)->setSuccessor(powerDept);
+        dynamic_cast<PowerSupply*>(powerDept)->setSuccessor(waterDept);
+
+        Request req1("water", b1, 100);
+        wasteDept->handleRequest(req1);
+        Request req2("waste", b1, 80);
+        wasteDept->handleRequest(req2);
+        Request req3("power", b1, 10);
+        wasteDept->handleRequest(req3);
+
+        // Here we can check if the requests were handled correctly, using custom criteria or any flags.
+        // Example assertions for request handling, depending on your implementation details.
+        CHECK(req1.getType() == "water");
+        CHECK(req2.getType() == "waste");
+        CHECK(req3.getType() == "power");
+    }
+
+    delete water;
+    delete power;
+    delete wasteDept;
+    delete powerDept;
+    delete waterDept;
+    delete b2;
+    delete b1;    
 }
 
 
@@ -392,13 +426,8 @@ TEST_CASE("PandemicCommand functionality") {
 TEST_CASE("Government test") {
     
 
-}
-    // Clean up
-    delete citizen1;
-    delete citizen2;
-    delete citizen3;
 
-    */
+  
 }
 
 

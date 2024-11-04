@@ -9,13 +9,16 @@ PowerSupply::PowerSupply(double budget, double capacity, Power *powerResource)
 
 PowerSupply::~PowerSupply()
 {
-    // Delete the power resource if it was dynamically allocated
     if (powerResource)
     {
         delete powerResource;
     }
-    // Clear the vector to ensure it does not hold dangling pointers
     buildings.clear();
+}
+
+double PowerSupply::getBudget()
+{
+    return this->budget;
 }
 
 void PowerSupply::addBuilding(Building *building)
@@ -30,19 +33,24 @@ void PowerSupply::addBuilding(Building *building)
 
 void PowerSupply::distributePower() // Distributes electricity across various sectors in the city.
 {
-    for (Building *building : buildings)
+    for (Building *it : buildings)
     {
-        double usage = building->getElectricityUsage(); // Assume this method exists in Building
-        if (powerCapacity >= usage)
+        cout << "----------- Next building " << it->getName() << " gets water ----------- " << endl;
+
+        double usage = it->getElectricityUsage(); // Assume this method exists in Building
+        if (powerResource->getPowerAmount() >= usage)
         {
-            building->consumeElectricity(usage); // Assume this method exists in Building
-            powerCapacity -= usage;              // Decrease available power
+            powerResource->usePower(usage); // Decrease available power
+
+            double newVal = it->getElectricityMeterBox() + usage;
+            it->setElectricityMeterBox(newVal);
+            std::cout << "Distributed power : " << it->getElectricityUsage() << " to " << it->getName() << std::endl;
         }
         else
         {
-            building->consumeElectricity(powerCapacity); // Consume remaining power
-            powerCapacity = 0;                           // All power is consumed
-            break;                                       // Exit after distributing available power
+            powerResource->usePower(powerResource->getPowerAmount()); // Decrease available water
+            std::cout << "Only distributed power : " << powerCapacity << " to " << it->getName() << std::endl;
+            powerCapacity = 0; // All water is consumed
         }
     }
 }
@@ -50,20 +58,36 @@ void PowerSupply::distributePower() // Distributes electricity across various se
 void PowerSupply::distributePowerToBuilding(Building *b)
 {
     double usage = b->getElectricityUsage(); // Assume this method exists in Building
-        if (powerResource->getPowerAmount() >= usage)
-        {
-            b->consumeElectricity(usage); // Assume this method exists in Building
-            powerResource->usePower(usage);              // Decrease available power
-            cout << "Distributed power : " << usage << " to " << b->getName() << std::endl;
-        }
-        else
-        {
-            b->consumeElectricity(powerResource->getPowerAmount()); // Consume remaining power
-            powerResource->usePower(powerResource->getPowerAmount()); // All power is consumed
-            cout << "Only " << powerCapacity << " units of power could be distributed to " << b->getName() << std::endl;
-            powerCapacity = 0;                           // All power is consumed
-            return;                                       // Exit after distributing available power
-        }
+    if (powerResource->getPowerAmount() >= usage)
+    {
+        powerResource->usePower(usage); // Decrease available power
+
+        double newVal = b->getElectricityMeterBox() + usage;
+        b->setElectricityMeterBox(newVal);
+        std::cout << "Distributed power : " << b->getElectricityUsage() << " to " << b->getName() << std::endl;
+    }
+    else
+    {
+        powerResource->usePower(powerResource->getPowerAmount()); // Decrease available water
+        std::cout << "Only distributed power : " << powerCapacity << " to " << b->getName() << std::endl;
+        powerCapacity = 0; // All water is consumed
+    }
+}
+
+void PowerSupply::DistributePowerToBuilding(Building *b, double incomingAmt)
+{
+    double usage = b->getElectricityUsage(); // Assume this method exists in Building
+    if (incomingAmt <= usage)
+    {
+        double newVal = b->getElectricityMeterBox() + incomingAmt;
+        b->setElectricityMeterBox(newVal);
+        std::cout << "Distributed power : " << incomingAmt << " to " << b->getName() << std::endl;
+    }
+    else
+    {
+        std::cout << "Failed to distribute " << incomingAmt << " because the amount exceeds the meterBox capacity for " << b->getName() << std::endl;
+        cout << "The current power usage for " << b->getName() << " is only " << usage << endl;
+    }
 }
 
 double PowerSupply::calculatePowerUsage() // calculates the current power usage based on consumption rates.
@@ -96,18 +120,17 @@ double PowerSupply::getPowerCapacity() // Gets the current total power generatio
     return powerCapacity;
 }
 
-
 bool PowerSupply::handleRequest(Request &req)
 {
-    if ((req.getType() == "power" || req.getType() == "POWER") && this->budget >= 10000)
+    if ((req.getType() == "power" || req.getType() == "POWER" || req.getType() == "Power") && this->budget >= 1000)
     {
-        // Check if PowerSupply can fulfill the power request
         if (req.getAmount() <= powerCapacity)
         {
             std::cout << "PowerSupply handling request for " << req.getAmount()
                       << " units of power for " << req.getBuilding()->getName() << std::endl;
+            DistributePowerToBuilding(req.getBuilding(), req.getAmount());
             powerCapacity -= req.getAmount();
-            this->budget -= 10000;
+            this->budget -= 100;
             return true;
         }
         else
@@ -117,7 +140,13 @@ bool PowerSupply::handleRequest(Request &req)
     }
     else if (successor) // Forward request if type is not handled by PowerSupply
     {
-        return successor->handleRequest(req);
+        if (successor)
+        {
+            if (successor != NULL)
+            {
+                return successor->handleRequest(req);
+            }
+        }
     }
     else
     {

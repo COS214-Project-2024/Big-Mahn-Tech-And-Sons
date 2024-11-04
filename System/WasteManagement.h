@@ -25,8 +25,9 @@
 class WasteManagement : public DeptOfUtilities
 {
 private:
-    double wasteCapacity; /**< Total capacity for handling waste in the city. */
-    vector<Building *> buildings;
+    double wasteCapacity;         /**< Total capacity for handling waste in the city. */
+    double replenishedCapacity;   /**< Total capacity for replenishing waste in the city after disposal. */
+    vector<Building *> buildings; /**< Vector to store buildings for handling waste collection in the city. */
 
 public:
     /**
@@ -48,10 +49,15 @@ public:
      */
     void collectWaste();
 
-     /**
+    /**
      * @brief Collects waste from a specific building.
      */
     void collectWasteFromBuilding(Building *building);
+
+    /**
+     * @brief Collects waste from a specific building and its amount.
+     */
+    void CollectWasteFromBuilding(Building *building, double incomingAmt);
 
     /**
      * @brief Disposes of waste in landfills or dump locations.
@@ -82,12 +88,17 @@ public:
     double getWasteManagementBudget();
 
     /**
+     * @brief set the current budget of the waste management class.
+     */
+    void setWasteCapacity(double amt);
+
+    /**
      * @brief the handleRequest() function is the core method responsible for either processing
      * the request or passing it along the chain to the next handler. WasteManagement
      * checks if it can handle the request, if not, WasteManagement will pass it on
      * to the next concreteHandler.
      */
-    bool handleRequest(Request &req);
+    bool handleRequest(Request &req) override;
 
     /**
      * @brief this function adds a building to the vector to  be handled by the waste management

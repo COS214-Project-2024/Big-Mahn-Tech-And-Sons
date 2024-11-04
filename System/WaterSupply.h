@@ -2,7 +2,7 @@
  * @file WaterSupply.h
  * @author MissNcube
  * @brief Header file for the WaterSupply class, responsible for managing water distribution and supply in the city.
- *  
+ *
  *  Design Pattern used : Chain of responsibility
  *  Handler : DepartmentUtilities
  *  ConcreteHandler1 : PowerSupply
@@ -23,12 +23,13 @@
  * @brief Manages the water distribution and supply system for the city.
  * Inherits from the DeptOfUtilities class.
  */
-class WaterSupply : public DeptOfUtilities {
+class WaterSupply : public DeptOfUtilities
+{
 private:
     double budget;
-    double waterCapacity; /**< Total water capacity available for distribution. */
-    vector<Building*> buildings;    /**< Vector to store buildings to be sourced  for water supply. */
-    Water* waterResource;   /**< pointer to  the water resource. */
+    double waterCapacity;         /**< Total water capacity available for distribution. */
+    vector<Building *> buildings; /**< Vector to store buildings to be sourced  for water supply. */
+    Water *waterResource;         /**< pointer to  the water resource. */
 
 public:
     /**
@@ -36,7 +37,7 @@ public:
      * @param budget The budget allocated to the water supply department.
      * @param capacity The initial water capacity available for the department.
      */
-    WaterSupply(double budget, double capacity, Water* waterResource);
+    WaterSupply(double budget, double capacity, Water *waterResource);
 
     /**
      * @brief Destructor for WaterSupply.
@@ -52,8 +53,12 @@ public:
     /**
      * @brief Distributes water to specific building in the vector
      */
-    void distributeWaterToBuilding(Building* b);
+    void distributeWaterToBuilding(Building *b);
 
+    /**
+     * @brief Distributes specific amount of water to specific building in the vector.
+     */
+    void distributeWaterToBuilding(Building *b, double incomingAmt);
 
     /**
      * @brief Calculates the current water usage based on consumption rates.
@@ -65,7 +70,6 @@ public:
      * @brief Shuts down the water supply for water cut.
      */
     void waterShutDown();
-
 
     /**
      * @brief Increases the water storage capacity of the system.
@@ -85,18 +89,18 @@ public:
     double getBudget();
 
     /**
-     * @brief the handleRequest() function is the core method responsible for either processing 
-     *          the request or passing it along the chain to the next handler. WaterSupply 
+     * @brief the handleRequest() function is the core method responsible for either processing
+     *          the request or passing it along the chain to the next handler. WaterSupply
      *          checks if it can handle the request, if not, WaterSupply will pass it on
      *          to the next concreteHandler.
      */
-    bool handleRequest(Request &req);
+    bool handleRequest(Request &req) override;
 
     /**
-    * @brief Adds a building to the water supply system.
-    * @param b Pointer to the building to be added.
-    */
+     * @brief Adds a building to the water supply system.
+     * @param b Pointer to the building to be added.
+     */
     void addBuilding(Building *b);
 };
 
-#endif  // WATERSUPPLY_H
+#endif // WATERSUPPLY_H

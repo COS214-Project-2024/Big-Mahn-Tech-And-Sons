@@ -18,9 +18,12 @@
 using namespace std;
 
 class DeptOfPR;
+class PowerSupply;
+class WaterSupply;
+class WasteManagement;
 class Request;
 class Building;
-class PowerSupply;
+
 /**
  * @class DeptOfUtilities
  * @brief Base class for managing various city utility departments like power, water, and waste management.
@@ -28,18 +31,15 @@ class PowerSupply;
 class DeptOfUtilities
 {
 private:
-    string departmentName; /**< Name of the department (e.g., Power, Water, Waste Management). */
-    double resourceUsage;  /**< The amount of resources used by the department. */
-    DeptOfPR* PR;
-    vector<Building*> cityBuildings;
-    PowerSupply* powerSupply;
+    double resourceUsage; /**< The amount of resources used by the department. */
+    DeptOfPR *PR;
 
 protected:
     DeptOfUtilities *successor;
     double budget; /**< The budget allocated to the department. */
 
 public:
-     //PowerSupply * powerSupply; 
+    // PowerSupply * powerSupply;
     /**
      * @brief Constructor for DeptOfUtilities.
      * @param name The name of the department.
@@ -50,12 +50,7 @@ public:
     /**
      * @brief Displays the information about the department.
      */
-    void displayDepartmentInfo();
-
-    /**
-     * @brief Requests additional budget allocation from the government.
-     */
-    void requestBudget();
+    virtual void displayDepartmentInfo();
 
     /**
      * @brief the handleRequest() function is the core method responsible for either processing
@@ -67,7 +62,12 @@ public:
     /**
      * @brief if DeptOfUtilities needs to talk to another department for whatever reason
      */
-    void requestPR();
+    virtual void requestPR();
+
+    /**
+     * @brief increasing usage of resources
+     */
+    virtual void increaseUsage();
 
     /**
      * @brief Sets the next department in the chain of responsibility.
@@ -77,36 +77,18 @@ public:
      *
      * @param nextDepartment A pointer to the next department that will handle requests if the current department cannot.                      .
      */
-    void setSuccessor(DeptOfUtilities *nextDepartment);
-
-    //+++++++++++++++++========== FOR THE EVENT COMMAND +++++++++++++++++++++++++++++++
+    virtual void setSuccessor(DeptOfUtilities *nextDepartment);
 
     /**
-     * @brief Initiates power load shedding for the department.
+     * @brief Sets the next department in the chain of responsibility.
+     *
+     * This method allows the current department to set its successor When a request cannot be handled by the current department,
+     * it will pass the request to the successor department.
+     *
+     * @param nextDepartment A pointer to the next department that will handle requests if the
+     *                       current department cannot.
      */
-    void initiateLoadshedding();
-
-    /**
-     * @brief Restores power or resources after load shedding.
-     */
-    void restorePower();
-
-    /**
-     * @brief Increases the resource usage of the department.
-     */
-    void increaseUsage();
-
-    /**
-     * @brief Reduces the resource usage of the department.
-     */
-    void reduceUsage();
-
     void setPR(DeptOfPR *pr);
-
-    /**
-     * @brief Tracks the department's resource usage across various sectors or functions.
-     */
-    void trackUsage();
 };
 
 #endif // DEPTOFUTILITIES_H

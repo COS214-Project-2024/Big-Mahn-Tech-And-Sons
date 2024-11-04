@@ -28,11 +28,11 @@ Government::Government()
    simulationIsActive = true;
    transport = DeptOfTransportation::getInstance();
    housing = new DeptOfHousing(2000000);
-   Water *water = new Water("Sparkling", 10000);
-   Power *power = new Power("Power", 100000);
-   DeptOfUtilities*  waterSup = new WaterSupply("Water", 5000.02, 100000, water);
-   DeptOfUtilities* powerSup = new PowerSupply("Eskom", 1539, 1335984, power);
-  DeptOfUtilities* wasteSup = new WasteManagement("Waste", 1432, 3544.02);
+   Water *water = new Water( 10000);
+   Power *power = new Power( 100000);
+   DeptOfUtilities*  waterSup = new WaterSupply(5000.02, 100000, water);
+   DeptOfUtilities* powerSup = new PowerSupply(1539, 1335984, power);
+  DeptOfUtilities* wasteSup = new WasteManagement( 1432, 3544.02);
 
    waterSup->setSuccessor(powerSup);
    powerSup->setSuccessor(wasteSup);

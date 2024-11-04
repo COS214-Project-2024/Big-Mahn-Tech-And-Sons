@@ -41,7 +41,6 @@ void testIndustrialBuildings();
 void testHouse();
 int testDepartment();
 
-
 void testNaturalDisaster();
 void testPandemic();
 void testLoadShedding();
@@ -102,15 +101,7 @@ int main()
     return 0;
 }
 
-
-
-
-
-
-
-
 // ---------------------------------- BUILDING SECTION TESTS --------------------------------------------- //
-
 
 void buildingsTest()
 {
@@ -141,17 +132,20 @@ void buildingsTest()
               << " \t has a priceTag of:  " << esate->getPriceTag() << "\n";
 }
 
-void testResidentialBuildings() {
+void testResidentialBuildings()
+{
     ResidentialBuildingCreator creator;
-    TaxManager taxManager;  // Create a TaxManager instance
+    TaxManager taxManager; // Create a TaxManager instance
 
     // Define an array of building types to test
     std::string buildingTypes[] = {"House", "Apartment", "Estate"};
 
-    for (const std::string& type : buildingTypes) {
+    for (const std::string &type : buildingTypes)
+    {
         // Create a building using the factory
-        Building* building = creator.createBuilding(type);
-        if (building) {
+        Building *building = creator.createBuilding(type);
+        if (building)
+        {
             // Display stats
             building->displayStats();
 
@@ -159,34 +153,39 @@ void testResidentialBuildings() {
             building->setName("Name 2.0");
 
             // Test repairClone
-            Building* clonedBuilding = building->repairClone();
+            Building *clonedBuilding = building->repairClone();
             std::cout << "Cloned Building Name: " << clonedBuilding->getName() << std::endl;
 
             // Test the accept function
-            building->accept(&taxManager);  // Pass the tax manager to the accept function
+            building->accept(&taxManager); // Pass the tax manager to the accept function
 
             // Clean up
             delete building;
             delete clonedBuilding;
-        } else {
+        }
+        else
+        {
             std::cerr << "Failed to create building of type: " << type << std::endl;
         }
     }
 }
 
-void testCommercialBuildingFunctions() {
+void testCommercialBuildingFunctions()
+{
     CommercialBuildingCreator creator;
     TaxManager taxManager; // Create a TaxManager instance for visitor testing
 
     // Array of commercial building types to test
     std::string buildingTypes[] = {"Office", "School", "Hospital", "Shop"};
 
-    for (const std::string& type : buildingTypes) {
+    for (const std::string &type : buildingTypes)
+    {
         // Create a commercial building using the factory
-        Building* building = creator.createBuilding(type);
-        CommercialBuilding* commercialBuilding = dynamic_cast<CommercialBuilding*>(building);
+        Building *building = creator.createBuilding(type);
+        CommercialBuilding *commercialBuilding = dynamic_cast<CommercialBuilding *>(building);
 
-        if (commercialBuilding) {
+        if (commercialBuilding)
+        {
             std::cout << "Testing " << type << ":\n";
 
             // Display initial stats
@@ -218,7 +217,9 @@ void testCommercialBuildingFunctions() {
 
             // Clean up
             delete commercialBuilding;
-        } else {
+        }
+        else
+        {
             std::cerr << "Failed to create commercial building of type: " << type << std::endl;
         }
 
@@ -226,24 +227,26 @@ void testCommercialBuildingFunctions() {
     }
 }
 
-void testLandmarkBuildings() {
-    LandmarkBuildingCreator creator;  // Create a factory instance
-    TaxManager taxManager;  // Create a TaxManager instance
+void testLandmarkBuildings()
+{
+    LandmarkBuildingCreator creator; // Create a factory instance
+    TaxManager taxManager;           // Create a TaxManager instance
 
     // Define an array of building types to test
     std::string buildingTypes[] = {
         "Park",
         "Monument",
-        "Museum"
-    };
+        "Museum"};
 
-    for (const std::string& type : buildingTypes) {
+    for (const std::string &type : buildingTypes)
+    {
         // Create a building using the factory
-        Building* building = creator.createBuilding(type);
+        Building *building = creator.createBuilding(type);
         // Attempt to cast to LandmarkBuilding*
-        LandmarkBuilding* landmarkBuilding = dynamic_cast<LandmarkBuilding*>(building);
-        
-        if (landmarkBuilding) {
+        LandmarkBuilding *landmarkBuilding = dynamic_cast<LandmarkBuilding *>(building);
+
+        if (landmarkBuilding)
+        {
             // Display stats
             landmarkBuilding->displayStats();
 
@@ -251,52 +254,55 @@ void testLandmarkBuildings() {
             landmarkBuilding->setName("New Landmark Name");
 
             // Test repairClone
-            Building* clonedBuilding = landmarkBuilding->repairClone();
+            Building *clonedBuilding = landmarkBuilding->repairClone();
             std::cout << "Cloned Building Name: " << clonedBuilding->getName() << std::endl;
 
             // Test the accept function
-            landmarkBuilding->accept(&taxManager);  // Pass the tax manager to the accept function
+            landmarkBuilding->accept(&taxManager); // Pass the tax manager to the accept function
 
             // Clean up
             delete landmarkBuilding;
             delete clonedBuilding;
-        } else {
+        }
+        else
+        {
             std::cerr << "Failed to create building of type: " << type << std::endl;
-            delete building;  // Clean up in case of failed cast
+            delete building; // Clean up in case of failed cast
         }
     }
 }
 
-void testIndustrialBuildings() {
+void testIndustrialBuildings()
+{
     IndustrialBuildingCreator creator;
-    TaxManager taxManager;  // Create a TaxManager instance
+    TaxManager taxManager; // Create a TaxManager instance
 
     // Create buildings using the factory method
-    Building* warehouse = creator.createBuilding("Warehouse");
-    Building* factoryBuilding = creator.createBuilding("Factory");
-    Building* airport = creator.createBuilding("Airport");
-    Building* trainStation = creator.createBuilding("TrainStation");
+    Building *warehouse = creator.createBuilding("Warehouse");
+    Building *factoryBuilding = creator.createBuilding("Factory");
+    Building *airport = creator.createBuilding("Airport");
+    Building *trainStation = creator.createBuilding("TrainStation");
 
     // Display stats for each building
     std::cout << "\nTesting Warehouse:\n";
     warehouse->displayStats();
-    
+
     std::cout << "\nTesting Factory:\n";
     factoryBuilding->displayStats();
-    
+
     std::cout << "\nTesting Airport:\n";
     airport->displayStats();
-    
+
     std::cout << "\nTesting Train Station:\n";
     trainStation->displayStats();
 
     // Test the repairClone() method
     std::cout << "\nTesting Repair Clone for Warehouse:\n";
-    Building* warehouseClone = warehouse->repairClone();
+    Building *warehouseClone = warehouse->repairClone();
     warehouseClone->displayStats();
 
     std::cout << "\nTesting Repair Clone for Factory:\n";
-    Building* factoryClone = factoryBuilding->repairClone();
+    Building *factoryClone = factoryBuilding->repairClone();
     factoryClone->displayStats();
 
     // Test accept() method, assuming TaxManager is not implemented yet
@@ -315,20 +321,21 @@ void testIndustrialBuildings() {
     delete factoryClone;
 }
 
-void testHouse() {
+void testHouse()
+{
     ResidentialBuildingCreator creator; // Create a ResidentialBuildingCreator instance
     TaxManager taxManager;              // Create a TaxManager instance
 
     // Create a House using the factory
-    Building* house = creator.createBuilding("House");
+    Building *house = creator.createBuilding("House");
 
     // Test initial state
     std::cout << "Testing House Stats:" << std::endl;
     house->displayStats();
 
     // Create tenants and test adding them
-    Citizen* tenant1 = new Citizen("Jane", 10, 10, NULL);
-    Citizen* tenant2 = new Citizen("Peter", 20, 20, NULL);
+    Citizen *tenant1 = new Citizen("Jane", 10, 10, NULL);
+    Citizen *tenant2 = new Citizen("Peter", 20, 20, NULL);
     std::cout << "\nAdding tenants:" << std::endl;
     house->addTenant(tenant1);
     house->addTenant(tenant2);
@@ -380,10 +387,11 @@ void testHouse() {
     delete house;   // Clean up house
 }
 
-int testDepartment() {
+int testDepartment()
+{
     DeptOfHousing *housingDept = new DeptOfHousing(1000000);
-    Water *water = new Water("Sparkling", 10000);
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    Water *water = new Water(10000);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
     TaxManager *taxMan = new TaxManager();
     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
     DeptOfPR prDept(housingDept, utilitiesDept, financeDept);
@@ -415,10 +423,13 @@ int testDepartment() {
 
     // Testing funding request
     std::cout << "\n=== Testing Funding Request ===" << std::endl;
-    double fundingAmount = 200000;  // Example funding request
-    if (housingDept->requestFunding(fundingAmount)) {
+    double fundingAmount = 200000; // Example funding request
+    if (housingDept->requestFunding(fundingAmount))
+    {
         std::cout << "Funding request successful. New budget: " << housingDept->getRemainingBudget() << std::endl;
-    } else {
+    }
+    else
+    {
         std::cout << "Funding request failed." << std::endl;
     }
 
@@ -438,7 +449,6 @@ int testDepartment() {
     return 0;
 }
 
-
 // ------------------------------------------------------------------------------------------------------- //
 
 // ------------------------------------------------------------------------------------------------------- //
@@ -446,8 +456,8 @@ int testDepartment() {
 void testNaturalDisaster()
 {
     // Step 1: Initialize the DeptOfHousing and DeptOfTransportation
-    DeptOfHousing *deptOfHousing = new DeptOfHousing(100000000);  // Initial budget for testing
-    DeptOfTransportation* deptOfTransport = DeptOfTransportation::getInstance();
+    DeptOfHousing *deptOfHousing = new DeptOfHousing(100000000); // Initial budget for testing
+    DeptOfTransportation *deptOfTransport = DeptOfTransportation::getInstance();
 
     // Step 2: Add some buildings to the DeptOfHousing for testing
     std::cout << "Adding buildings to DeptOfHousing...\n";
@@ -461,7 +471,7 @@ void testNaturalDisaster()
     deptOfHousing->listBuildings();
 
     // Step 3: Create and execute the NaturalDisasterCommand
-    NaturalDisasterCommand* naturalDisasterCommand = new NaturalDisasterCommand(deptOfHousing, deptOfTransport);
+    NaturalDisasterCommand *naturalDisasterCommand = new NaturalDisasterCommand(deptOfHousing, deptOfTransport);
     std::cout << "\nExecuting Natural Disaster Command...\n";
     naturalDisasterCommand->execute();
 
@@ -470,19 +480,19 @@ void testNaturalDisaster()
     deptOfHousing->listBuildings();
 
     // Step 4: Clean up singleton
-    delete deptOfTransport; 
-    delete  naturalDisasterCommand;
+    delete deptOfTransport;
+    delete naturalDisasterCommand;
 }
 
 void testPandemic()
 {
     DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil);
     TaxManager *taxMan = new TaxManager();
@@ -491,40 +501,40 @@ void testPandemic()
     DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
     // Create a vector of citizens for testing
-    std::vector<Citizen*> citizens = {
-        new Citizen("Alice",10, 20, prDept),
+    std::vector<Citizen *> citizens = {
+        new Citizen("Alice", 10, 20, prDept),
         new Citizen("Bob", 12, 22, prDept),
-        new Citizen("Charlie", 14, 24, prDept)
-    };
+        new Citizen("Charlie", 14, 24, prDept)};
 
     // Display initial state of each citizen
     std::cout << "Initial citizen states:\n";
-    for (const auto& citizen : citizens) {
-        std::cout << "Citizen: " << citizen->getName() 
+    for (const auto &citizen : citizens)
+    {
+        std::cout << "Citizen: " << citizen->getName()
                   << ", Health: " << citizen->getHealth()
                   << ", Satisfaction: " << citizen->getSatisfactionLevel() << "\n";
     }
 
     // Create a PandemicCommand instance
-    PandemicCommand* pandemicCommand =  new PandemicCommand(citizens);
+    PandemicCommand *pandemicCommand = new PandemicCommand(citizens);
 
     // Execute each pandemic command individually for testing
     std::cout << "\n--- Imposing Lockdown ---\n";
     pandemicCommand->imposeLockdown();
-    
 
     std::cout << "\n--- Distributing Vaccines ---\n";
     pandemicCommand->distributeVaccines();
-    for (const auto& citizen : citizens) {
-        std::cout << "Citizen: " << citizen->getName() 
+    for (const auto &citizen : citizens)
+    {
+        std::cout << "Citizen: " << citizen->getName()
                   << ", Health: " << citizen->getHealth()
                   << ", Satisfaction: " << citizen->getSatisfactionLevel() << "\n";
     }
 
-
     std::cout << "\n--- Managing Citizen Satisfaction ---\n";
     pandemicCommand->manageCitizenSatisfaction();
-    for (const auto& citizen : citizens) {
+    for (const auto &citizen : citizens)
+    {
         std::cout << "Citizens, Satisfaction: " << citizen->getSatisfactionLevel() << "\n";
     }
 
@@ -532,53 +542,51 @@ void testPandemic()
     pandemicCommand->trackInfectionRates();
 
     // Clean up dynamically allocated citizens
-    for (auto& citizen : citizens) {
+    for (auto &citizen : citizens)
+    {
         delete citizen;
     }
- 
 }
 
 void testLoadShedding()
 {
-        ResidentialBuildingCreator *resi1 = new ResidentialBuildingCreator();
-        ResidentialBuildingCreator *resi2 = new ResidentialBuildingCreator();
-        ResidentialBuildingCreator *resi3 = new ResidentialBuildingCreator();
-        ResidentialBuildingCreator *resi4 = new ResidentialBuildingCreator();
+    ResidentialBuildingCreator *resi1 = new ResidentialBuildingCreator();
+    ResidentialBuildingCreator *resi2 = new ResidentialBuildingCreator();
+    ResidentialBuildingCreator *resi3 = new ResidentialBuildingCreator();
+    ResidentialBuildingCreator *resi4 = new ResidentialBuildingCreator();
 
-        Building *esate = resi1->createBuilding("Estate");
-        Building*  aprty = resi2->createBuilding("Apartment");
-        Building*  house  = resi3->createBuilding("House");
-     // Setup for the test
-        std::cout << "Setting up LoadShedding test..." << std::endl;
+    Building *esate = resi1->createBuilding("Estate");
+    Building *aprty = resi2->createBuilding("Apartment");
+    Building *house = resi3->createBuilding("House");
+    // Setup for the test
+    std::cout << "Setting up LoadShedding test..." << std::endl;
 
-        // Create a power resource (mock object for testing purposes)
-        Power mockPowerResource("MockPowerResource", 1000); // Assume Power class exists
-        PowerSupply powerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
-        // DeptOfUtilities* utilitiesDept = new PowerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
-        
-       
-        // Create LoadSheddingCommand with utilities department
-        LoadsheddingCommand* loadSheddingCommand = new LoadsheddingCommand(&powerSupply);
+    // Create a power resource (mock object for testing purposes)
+    Power mockPowerResource(1000); // Assume Power class exists
+    PowerSupply powerSupply(100000, 10000, &mockPowerResource);
+    // DeptOfUtilities* utilitiesDept = new PowerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
 
-        // Schedule load shedding
-        int delay = 5; // Delay of 5 seconds for testing
-        loadSheddingCommand->scheduleLoadshedding(delay);
+    // Create LoadSheddingCommand with utilities department
+    LoadsheddingCommand *loadSheddingCommand = new LoadsheddingCommand(&powerSupply);
 
-        
-        loadSheddingCommand->execute();
+    // Schedule load shedding
+    int delay = 5; // Delay of 5 seconds for testing
+    loadSheddingCommand->scheduleLoadshedding(delay);
 
-        std::cout << "LoadShedding test completed." << std::endl;
+    loadSheddingCommand->execute();
+
+    std::cout << "LoadShedding test completed." << std::endl;
 }
 
 void testFestival()
 {
-     DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
 
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil);
     TaxManager *taxMan = new TaxManager();
@@ -586,17 +594,16 @@ void testFestival()
 
     DeptOfPR *deptOfPR = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
-   Power mockPowerResource("MockPowerResource", 1000); // Assume Power class exists
-   PowerSupply powerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
+    Power mockPowerResource(1000); // Assume Power class exists
+    PowerSupply powerSupply(100000, 10000, &mockPowerResource);
 
- std::vector<Citizen*> citizens = {
+    std::vector<Citizen *> citizens = {
         new Citizen("Alice", 10, 20, deptOfPR),
         new Citizen("Bob", 12, 22, deptOfPR),
-        new Citizen("Charlie", 14, 24, deptOfPR)
-    };
-  
+        new Citizen("Charlie", 14, 24, deptOfPR)};
+
     // Create a FestivalCommand instance
-    FestivalCommand* festivalCommand = new FestivalCommand(utilitiesDept, citizens[0], deptOfPR);
+    FestivalCommand *festivalCommand = new FestivalCommand(utilitiesDept, citizens[0], deptOfPR);
 
     // Execute the festival command, triggering all festival actions
     std::cout << "Executing Festival Command..." << std::endl;
@@ -606,51 +613,48 @@ void testFestival()
     std::cout << "\n--- Festival Command Results ---" << std::endl;
     std::cout << "Citizen 1 Happiness Level: " << citizens[0]->getSatisfactionLevel() << std::endl;
     std::cout << "Citizen 2 Happiness Level: " << citizens[1]->getSatisfactionLevel() << std::endl;
-   
 }
 
-void testRecession() {
-    
-    // Create instances of CommercialBuilding using the specified method
-    CommercialBuildingCreator* resi1 = new CommercialBuildingCreator(); 
-    CommercialBuildingCreator* resi2 = new CommercialBuildingCreator();  
-    CommercialBuildingCreator* resi3 = new CommercialBuildingCreator(); 
+void testRecession()
+{
 
-    Building* shop = resi1->createBuilding("Shop"); 
-    Building* office = resi2->createBuilding("Office"); 
-    Building* school = resi3->createBuilding("School");
+    // Create instances of CommercialBuilding using the specified method
+    CommercialBuildingCreator *resi1 = new CommercialBuildingCreator();
+    CommercialBuildingCreator *resi2 = new CommercialBuildingCreator();
+    CommercialBuildingCreator *resi3 = new CommercialBuildingCreator();
+
+    Building *shop = resi1->createBuilding("Shop");
+    Building *office = resi2->createBuilding("Office");
+    Building *school = resi3->createBuilding("School");
 
     // Cast buildings to CommercialBuilding pointers if necessary
-    CommercialBuilding* shopBuilding = dynamic_cast<CommercialBuilding*>(shop);
-    CommercialBuilding* officeBuilding = dynamic_cast<CommercialBuilding*>(office);
-    CommercialBuilding* schoolBuilding = dynamic_cast<CommercialBuilding*>(school);
+    CommercialBuilding *shopBuilding = dynamic_cast<CommercialBuilding *>(shop);
+    CommercialBuilding *officeBuilding = dynamic_cast<CommercialBuilding *>(office);
+    CommercialBuilding *schoolBuilding = dynamic_cast<CommercialBuilding *>(school);
 
     // Store commercial buildings in a vector for the RecessionCommand
-    std::vector<CommercialBuilding*> commercialBuildings = {shopBuilding, officeBuilding, schoolBuilding};
-
+    std::vector<CommercialBuilding *> commercialBuildings = {shopBuilding, officeBuilding, schoolBuilding};
 
     // Create instances of the required departments and utilities
-    DeptOfHousing* housingDept = new DeptOfHousing(100000);
-    Water* water = new Water("Sparkling", 10000);
-    Power* power = new Power("Power", 1456.3);
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
+    Water *water = new Water(10000);
+    Power *power = new Power(1456.3);
 
-    DeptOfUtilities* utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities* powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply(150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil);
 
-    TaxManager* taxMan = new TaxManager();
-    DeptOfFinance* financeDept = new DeptOfFinance(taxMan);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
     DeptOfPR *deptOfPR = new DeptOfPR(housingDept, utilitiesDept, financeDept);
 
     // Create a Citizen instance
-    
 
-       Citizen* Alice =  new Citizen("Alice", 10, 20, deptOfPR);
-       
+    Citizen *Alice = new Citizen("Alice", 10, 20, deptOfPR);
 
     // Instantiate the RecessionCommand with the created objects
-    RecessionCommand* recessionCommand = new RecessionCommand(financeDept, Alice, commercialBuildings);
+    RecessionCommand *recessionCommand = new RecessionCommand(financeDept, Alice, commercialBuildings);
 
     // Test the execute method which triggers all recession actions
     std::cout << "=== Recession Response Test ===" << std::endl;
@@ -663,13 +667,14 @@ void testRecession() {
     std::cout << "Taxes should be raised by 5% (verify manually in DeptOfFinance implementation)" << std::endl;
 
     // Check citizen dissatisfaction level
-    std::cout << "Citizen's Satisfaction Level (Expected: <initial satisfaction> - 7): " 
+    std::cout << "Citizen's Satisfaction Level (Expected: <initial satisfaction> - 7): "
               << Alice->getSatisfactionLevel() << std::endl;
 
     // Check that commercial buildings are closed
-    for (size_t i = 0; i < commercialBuildings.size(); ++i) {
-        std::cout << "Commercial Building " << i + 1 
-                  << " Status (Expected: Closed): " 
+    for (size_t i = 0; i < commercialBuildings.size(); ++i)
+    {
+        std::cout << "Commercial Building " << i + 1
+                  << " Status (Expected: Closed): "
                   << (commercialBuildings[i]->isClosed() ? "Closed" : "Open") << std::endl;
     }
 
@@ -687,103 +692,3 @@ void testRecession() {
     delete Alice;
 }
 
-
-
-
-
-void TestingDptUtilities()
-{
-
-    std::cout << "\n\n\n\n"
-              << endl;
-
-    Water *water = new Water(10800);
-    Power *power = new Power(17456.3);
-
-    PowerSupply powerDept (50000, 40000, power);
-    WaterSupply waterDept(20000, 500000, water);
-    WasteManagement wasteDept(10050, 60000);
-
-    Building *b1 = new House();
-    Building *b2 = new Apartment();
-
-    powerDept.addBuilding(b1);
-    powerDept.addBuilding(b2);
-    waterDept.addBuilding(b1);
-    waterDept.addBuilding(b2);
-    wasteDept.addBuilding(b1);
-    wasteDept.addBuilding(b2);
-
-    cout << endl
-         << endl
-         << "======= TESTING WATER SUPPLY =========== " << endl;
-    b1->setWaterMeterBox(600);
-    // b2->setWaterMeterBox(700);
-    // b1->setElectricityUsage(100);
-    // b2->setElectricityUsage(200);
-    b1->consumeWater(50);
-    // waterDept.distributeWater();
-    waterDept.distributeWaterToBuilding(b1);
-    // waterDept.distributeWaterToBuilding(b2);
-    // waterDept.calculateWaterUsage();
-    // waterDept.increaseWaterCapacity();
-    // waterDept.getWaterCapacity();
-    cout << "Water in the meter box " << b1->getWaterMeterBox() ;
-    cout << "Budget for water: " << waterDept.getBudget() << endl;
-
-    cout << endl
-         << endl
-         << "======= TESTING POWERSUPPLY =========== " << endl;
-    
-    b1->setElectricityMeterBox(1000);
-    b2->setElectricityMeterBox(500);
-    b1->setElectricityUsage(120);
-    b2->setElectricityUsage(150);
-    //powerDept.distributePower();
-    powerDept.distributePowerToBuilding(b1);
-    powerDept.distributePowerToBuilding(b2);
-    powerDept.calculatePowerUsage();
-    powerDept.increasePowerCapacity();
-    powerDept.getPowerCapacity();
-
-    cout << endl
-         << endl
-         << "======= TESTING WASTEMANAGEMENT =========== " << endl;
-    b1->setWaste(100);
-    b2->setWaste(50);
-    wasteDept.collectWaste();
-    wasteDept.collectWasteFromBuilding(b1);
-    wasteDept.collectWasteFromBuilding(b2);
-    wasteDept.getWasteCapacity();
-    wasteDept.getWasteManagementBudget();
-    wasteDept.calculateWasteProcessing();
-    wasteDept.expandWasteCapacity();
-
-     cout << endl
-         << " ********* HANDLING REQUESTS ********* " << endl;
-    wasteDept.setSuccessor(&powerDept);
-    powerDept.setSuccessor(&waterDept);
-
-    cout << endl
-         << endl
-         << " ============== HANDLING REQUEST 1================" << endl
-         << endl;
-    Request req1("water", b2, 10);
-    wasteDept.handleRequest(req1); 
-    cout << endl
-         << " ============== HANDLING REQUEST 2================" << endl
-         << endl;
-    Request req2("waste", b2, 80);
-    wasteDept.handleRequest(req2); 
-
-    cout << endl
-         << " ============== HANDLING REQUEST 3================" << endl
-         << endl;
-    Request req3("power", b2, 450);
-    wasteDept.handleRequest(req3);
-
-    std::cout << endl
-              << endl
-              << endl;
-              
-}
