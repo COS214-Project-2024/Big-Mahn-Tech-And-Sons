@@ -38,6 +38,7 @@ void Monument::accept(TaxManager* visitor) {
  * @return A pointer to the cloned Monument object.
  */
 Building* Monument::repairClone() const {
+    std::cout << "Prototype: Cloning a Monument building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing landmark building (Monument): " << getName() << "\n";
     return new Monument(*this);  // Clone this Monument
 }

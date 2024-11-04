@@ -1,8 +1,8 @@
-// Class defintion and implementation of Factory Method - ConcreteProduct (classification)
+// Class defintion of Factory Method - ConcreteProduct (classification)
 
 /**
  * @file IndustrialBuilding.h
- * @brief Declaration and implementation of the IndustrialBuilding class.
+ * @brief Defines the IndustrialBuilding class, an abstract class for industrial buildings.
  */
 
 #ifndef INDUSTRIALBUILDING_H
@@ -10,43 +10,58 @@
 
 #include "Building.h"
 #include "TaxManager.h"
-#include <iostream>
 
-/**
+/**...............................................................................................................................................................................................................................................
  * @class IndustrialBuilding
- * @brief Abstract class representing industrial buildings.
+ * @brief Abstract base class for industrial buildings.
  *
- * This class provides shared attributes and operations for all industrial buildings,
- * such as production capacity, while leaving implementation details to the subtypes.
+ * Represents the shared attributes and behaviors of industrial buildings,
+ * such as production capacity. Derived classes implement specific types
+ * of industrial buildings.
  */
 class IndustrialBuilding : public Building {
 
-public:
-    /**
-     * @brief Constructor for IndustrialBuilding.
-     */
-    IndustrialBuilding()
-        : Building() {}
+    public:
+        /**
+         * @brief Default constructor for IndustrialBuilding.
+         */
+        IndustrialBuilding();
 
-    /**
-     * @brief Displays the stats specific to industrial buildings.
-     */
-    void displayStats() const {
-        Building::displayStats();  // Call base class method
-    }
+        /**
+         * @brief Displays statistics specific to industrial buildings.
+         *
+         * Provides information about the building’s usage, capacity, and
+         * other industrial-specific attributes.
+         */
+        void displayStats() const;
 
-    virtual Building* repairClone() const override {
+        /**
+         * @brief Accepts a visitor to perform operations based on building type.
+         *
+         * Enables the visitor pattern, allowing different visitor operations
+         * based on building type.
+         * 
+         * @param visitor A pointer to a TaxManager visitor.
+         */
+        virtual void accept(TaxManager* visitor) = 0;
 
-    };
-
-    /**
-     * @brief Accepts visitors for the visitor pattern.
-     * This method remains virtual, to be overridden in the final building types.
-     * @param visitor A pointer to the visitor object.
-     */
-    virtual void accept(TaxManager* visitor) {
-       // visitor->visit(this);
-    };
+        /**
+         * @brief Creates a copy of the IndustrialBuilding instance.
+         * 
+         * Supports the Prototype pattern by returning a copy of the building 
+         * with identical attributes.
+         * 
+         * @return A pointer to a cloned IndustrialBuilding instance.
+         */
+        virtual Building* repairClone() const = 0;
+    
+        /**
+         * @brief Calculates tax for a landmark.
+         * Landmarks are exempt from tax, so this function returns 0.0.
+         * 
+         * @return Tax amount (always 0.0 for landmarks).
+         */
+        double calculateTax() const override;
 };
 
 #endif // INDUSTRIALBUILDING_H

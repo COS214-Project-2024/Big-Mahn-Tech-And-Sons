@@ -225,5 +225,8 @@ public:
      void travelTo(Building *destination);
 
 
+     void setCurrentLocation(Building* b ); 
+
+
 };
 #endif // CITIZEN_H

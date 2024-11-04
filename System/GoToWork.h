@@ -25,7 +25,7 @@ class GoToWork : public GoToCommand
 private:
     Citizen* citizen;           /**< Pointer to the citizen traveling to work */
  //   RoadNetwork* roadNetwork;   /**< Pointer to the road network used for navigation */
-    DeptOfTransportation*  deptTrans;
+    DeptOfHousing* houseing;
     
 
 public:
@@ -37,7 +37,10 @@ public:
      * @param citizen A pointer to the Citizen object representing the person going to work.
      * @param roadNetwork A pointer to the RoadNetwork object used for navigating to the work destination.
      */
-    GoToWork(DeptOfTransportation*  dept);
+    GoToWork(Citizen* citizen , DeptOfHousing*  housing);
+
+
+    bool execute() override;
 };
 
 #endif

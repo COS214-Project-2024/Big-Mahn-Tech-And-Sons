@@ -8,7 +8,9 @@
 #include "DeptOfUtilities.h"
 #include "DeptOfFinance.h"
 #include "Water.h"
+#include "Power.h"
 #include "WaterSupply.h"
+#include "PowerSupply.h"
 #include "PowerSupply.h"
 
 //
@@ -26,6 +28,13 @@
 #include "PandemicCommand.h"
 #include "FestivalCommand.h"
 #include "RecessionCommand.h"
+//
+#include "GoToCommand.h"
+#include "GoTrain.h"
+#include "TrainStation.h"
+#include "DeptOfPR.h"
+#include "GoToEnt.h"
+
 
 void buildingsTest();
 void testResidentialBuildings();
@@ -42,6 +51,14 @@ void testLoadShedding();
 void testFestival();
 void testRecession();
 
+
+
+//
+void testGoToTrainStation();
+
+
+
+//
 int main()
 {
 
@@ -422,7 +439,6 @@ int testDepartment() {
 
     return 0;
 }
-
 
 // ------------------------------------------------------------------------------------------------------- //
 

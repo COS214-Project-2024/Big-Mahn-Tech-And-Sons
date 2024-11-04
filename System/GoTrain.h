@@ -8,6 +8,10 @@
 
 #include "GoToCommand.h"
 #include "Citizen.h"
+#include "DeptOfTransportation.h"
+#include "IndustrialBuilding.h"
+#include "DeptOfHousing.h"
+
 
 #include <iostream>
 using namespace std;
@@ -22,6 +26,12 @@ class GoTrain : public GoToCommand
 {
 private:
     Citizen* citizen;           /**< Pointer to the citizen traveling to the train station */
+   // DeptOfTransportation* DOT;  /**< Pointer to the Department of Transportation */
+   // IndustrialBuilding* IB;     /**< Pointer to the Industrial Building */
+    DeptOfHousing* DOH;         /**< Pointer to the Department of Housing */
+    string destination;         /**< The destination train station */
+
+
 
 public:
     /**
@@ -32,7 +42,10 @@ public:
      * @param citizen A pointer to the Citizen object representing the person traveling to the train station.
      * @param roadNetwork A pointer to the RoadNetwork object used for navigating to the train station.
      */
-    GoTrain(Citizen* citizen);
+    GoTrain(Citizen* citizen , /**/ DeptOfHousing* deptH);
+
+
+    bool execute() override ;
 };
 
 #endif

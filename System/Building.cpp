@@ -9,7 +9,7 @@ Building::Building()
     : name("Building Name"), maxCapacity(100), electricityMeterBox(0.0),
       waterMeterBox(0.0), electricityUsage(0.0), waterUsage(0.0),
       wasteProduction(0.0), width(1), length(1), priceTag(0.0),
-      netWorth(0.0), waterSupply(true), powerSupply(true), type("Building") {}
+      netWorth(0.0), waterSupply(true), powerSupply(true), type("Building"), citizenTax(0.03), businessTax(0.05) {}
 
 /**
  * @brief Adds a tenant to the building.
@@ -39,6 +39,7 @@ bool Building::removeTenant(Citizen* tenant) {
     if (it != tenants.end()) {
         tenants.erase(it);
         return true;
+        std::cout<<"Removed successfully \n";
     }
     return false;
 }
@@ -111,6 +112,8 @@ double Building::getNetWorth() const { return netWorth; }
 int Building::getCurrentOccupants() const { return tenants.size(); }
 std::string Building::getType() const { return type; }
 double Building::getWasteAmount() const { return wasteProduction; }
+double Building::getCitizenTax() const { return citizenTax; }
+double Building::getBusinessTax() const { return businessTax; }
 
 // Setters
 void Building::setName(const std::string& newName) { name = newName; }
@@ -122,6 +125,8 @@ void Building::setWaterUsage(double usage) { waterUsage = usage; }
 void Building::setWaste(double waste) { wasteProduction = waste; }
 void Building::setWidth(int newWidth) { width = newWidth; }
 void Building::setLength(int newLength) { length = newLength; }
+void Building::setCitizenTax(double taxRate) { citizenTax = taxRate; }
+void Building::setBusinessTax(double taxRate) { businessTax = taxRate; }
 
 /**
  * @brief Consumes a specified amount of water.
@@ -159,7 +164,8 @@ void Building::consumeElectricity(double amount) {
         std::cout << "Power supply cut off due to zero or negative usage." << std::endl;
         return; // Cannot consume negative or more than available
     }
-    electricityUsage -= amount; // Decrease usage
+    electricityUsage += amount;
+    electricityMeterBox -= electricityUsage; // Decrease usage
     std::cout << "Consumed " << amount << " kWh of electricity." << std::endl;
 }
 
