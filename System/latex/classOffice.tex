@@ -1,0 +1,127 @@
+\hypertarget{classOffice}{}\doxysection{Office Class Reference}
+\label{classOffice}\index{Office@{Office}}
+
+
+Class representing an office as a subtype of \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}.  
+
+
+
+
+{\ttfamily \#include $<$Office.\+h$>$}
+
+
+
+Inheritance diagram for Office\+:
+% FIG 0
+
+
+Collaboration diagram for Office\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOffice_ae799d600814e4b8282c00cfb0b882305}{Office}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classOffice}{Office}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOffice_a25db8c8fcbe9db159882940e8273f9ad}{display\+Stats}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the stats specific to the office. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOffice_ab48c91134191e0f83c2969e8fb6832cd}{check\+Availability}} () const override
+\begin{DoxyCompactList}\small\item\em Checks the availability of jobs in the office. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOffice_a3ffdb0b13375be3bc0c496373a72b0c3}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor) override
+\begin{DoxyCompactList}\small\item\em Accepts visitors for the visitor pattern. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classOffice_ad2fd8f7d63ea163f31375dad6241bfb5}{repair\+Clone}} () const override
+\begin{DoxyCompactList}\small\item\em Clones the office for repair purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing an office as a subtype of \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}. 
+
+Implements specific attributes and operations for an office, such as managing available jobs. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classOffice_ae799d600814e4b8282c00cfb0b882305}\label{classOffice_ae799d600814e4b8282c00cfb0b882305}} 
+\index{Office@{Office}!Office@{Office}}
+\index{Office@{Office}!Office@{Office}}
+\doxysubsubsection{\texorpdfstring{Office()}{Office()}}
+{\footnotesize\ttfamily Office\+::\+Office (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classOffice}{Office}}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classOffice_a3ffdb0b13375be3bc0c496373a72b0c3}\label{classOffice_a3ffdb0b13375be3bc0c496373a72b0c3}} 
+\index{Office@{Office}!accept@{accept}}
+\index{accept@{accept}!Office@{Office}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Office\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accepts visitors for the visitor pattern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the visitor object. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_ad3e91296d9a6488df79e33b0aeb75511}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classOffice_ab48c91134191e0f83c2969e8fb6832cd}\label{classOffice_ab48c91134191e0f83c2969e8fb6832cd}} 
+\index{Office@{Office}!checkAvailability@{checkAvailability}}
+\index{checkAvailability@{checkAvailability}!Office@{Office}}
+\doxysubsubsection{\texorpdfstring{checkAvailability()}{checkAvailability()}}
+{\footnotesize\ttfamily bool Office\+::check\+Availability (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks the availability of jobs in the office. 
+
+\begin{DoxyReturn}{Returns}
+True if jobs are available, otherwise false. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_a273a57479004ca22a0c497b5e5463135}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classOffice_a25db8c8fcbe9db159882940e8273f9ad}\label{classOffice_a25db8c8fcbe9db159882940e8273f9ad}} 
+\index{Office@{Office}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!Office@{Office}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Office\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the stats specific to the office. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classCommercialBuilding_aa397dc360571edb4535121dd7e5711db}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classOffice_ad2fd8f7d63ea163f31375dad6241bfb5}\label{classOffice_ad2fd8f7d63ea163f31375dad6241bfb5}} 
+\index{Office@{Office}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!Office@{Office}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Office\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clones the office for repair purposes. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the cloned office object. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_a5ed798d1d25fc35d7bdf2dca5d1897dd}{Commercial\+Building}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Office_8h}{Office.\+h}}\item 
+\mbox{\hyperlink{Office_8cpp}{Office.\+cpp}}\end{DoxyCompactItemize}

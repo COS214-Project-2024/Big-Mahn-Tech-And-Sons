@@ -1,0 +1,114 @@
+\hypertarget{classPark}{}\doxysection{Park Class Reference}
+\label{classPark}\index{Park@{Park}}
+
+
+Concrete class representing a public park.  
+
+
+
+
+{\ttfamily \#include $<$Park.\+h$>$}
+
+
+
+Inheritance diagram for Park\+:
+% FIG 0
+
+
+Collaboration diagram for Park\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPark_a56d1f4a8bbab72856a17a8de83898f1a}{Park}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classPark}{Park}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPark_a355ec9c150c4fbb2e676d2ad32e569f6}{display\+Stats}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the statistics specific to the park. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPark_a61ca9df8e875ed20a9691b8dea05a0ac}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor) override
+\begin{DoxyCompactList}\small\item\em Accepts a visitor for tax calculation using the visitor pattern. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classPark_a4fecc26e86fc91b7cdeb84104db4133a}{repair\+Clone}} () const override
+\begin{DoxyCompactList}\small\item\em Creates a clone of the park object for repair purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Concrete class representing a public park. 
+
+Parks are natural spaces designed for recreation and leisure, often containing gardens, playgrounds, or walking paths. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPark_a56d1f4a8bbab72856a17a8de83898f1a}\label{classPark_a56d1f4a8bbab72856a17a8de83898f1a}} 
+\index{Park@{Park}!Park@{Park}}
+\index{Park@{Park}!Park@{Park}}
+\doxysubsubsection{\texorpdfstring{Park()}{Park()}}
+{\footnotesize\ttfamily Park\+::\+Park (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classPark}{Park}}. 
+
+Constructor for \mbox{\hyperlink{classPark}{Park}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPark_a61ca9df8e875ed20a9691b8dea05a0ac}\label{classPark_a61ca9df8e875ed20a9691b8dea05a0ac}} 
+\index{Park@{Park}!accept@{accept}}
+\index{accept@{accept}!Park@{Park}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Park\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accepts a visitor for tax calculation using the visitor pattern. 
+
+Accepts visitors using the visitor pattern.
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the visitor (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}}).\\
+\hline
+{\em visitor} & A pointer to the visitor object.\\
+\hline
+\end{DoxyParams}
+The function is stubbed, as no tax is applied to parks. 
+
+Implements \mbox{\hyperlink{classLandmarkBuilding_a61a5d564c88d5d3484554de6bf510b48}{Landmark\+Building}}.
+
+\mbox{\Hypertarget{classPark_a355ec9c150c4fbb2e676d2ad32e569f6}\label{classPark_a355ec9c150c4fbb2e676d2ad32e569f6}} 
+\index{Park@{Park}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!Park@{Park}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Park\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the statistics specific to the park. 
+
+Displays the stats specific to the park. 
+
+Reimplemented from \mbox{\hyperlink{classLandmarkBuilding_aeec5e67bbea61af14383336ce1744a5e}{Landmark\+Building}}.
+
+\mbox{\Hypertarget{classPark_a4fecc26e86fc91b7cdeb84104db4133a}\label{classPark_a4fecc26e86fc91b7cdeb84104db4133a}} 
+\index{Park@{Park}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!Park@{Park}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Park\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a clone of the park object for repair purposes. 
+
+Clones the park object for repair purposes.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the cloned \mbox{\hyperlink{classPark}{Park}} object. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLandmarkBuilding_aa6ccdcd94e778d88cd991afad98b12f0}{Landmark\+Building}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Park_8h}{Park.\+h}}\item 
+\mbox{\hyperlink{Park_8cpp}{Park.\+cpp}}\end{DoxyCompactItemize}

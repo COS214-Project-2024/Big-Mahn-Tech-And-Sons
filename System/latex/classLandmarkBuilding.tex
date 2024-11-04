@@ -1,0 +1,143 @@
+\hypertarget{classLandmarkBuilding}{}\doxysection{Landmark\+Building Class Reference}
+\label{classLandmarkBuilding}\index{LandmarkBuilding@{LandmarkBuilding}}
+
+
+Abstract base class representing landmark buildings.  
+
+
+
+
+{\ttfamily \#include $<$Landmark\+Building.\+h$>$}
+
+
+
+Inheritance diagram for Landmark\+Building\+:
+% FIG 0
+
+
+Collaboration diagram for Landmark\+Building\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLandmarkBuilding_ab0b4584416dacaa59fe3f7cba564ed14}{Landmark\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classLandmarkBuilding}{Landmark\+Building}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLandmarkBuilding_aeec5e67bbea61af14383336ce1744a5e}{display\+Stats}} () const
+\begin{DoxyCompactList}\small\item\em Displays the stats specific to a landmark building. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classLandmarkBuilding_a61a5d564c88d5d3484554de6bf510b48}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor)=0
+\begin{DoxyCompactList}\small\item\em Abstract method to accept a visitor for the visitor pattern. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classLandmarkBuilding_aa6ccdcd94e778d88cd991afad98b12f0}{repair\+Clone}} () const =0
+\begin{DoxyCompactList}\small\item\em Abstract method to create a clone of the landmark building for repair purposes. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classLandmarkBuilding_ad7011a542925fe5f35caad8a59714ac8}{calculate\+Tax}} () const override
+\begin{DoxyCompactList}\small\item\em Calculates tax for a landmark. Landmarks are exempt from tax, so this function returns 0.\+0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class representing landmark buildings. 
+
+Landmark buildings are symbolic or special-\/purpose structures with cultural, historical, or architectural significance. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLandmarkBuilding_ab0b4584416dacaa59fe3f7cba564ed14}\label{classLandmarkBuilding_ab0b4584416dacaa59fe3f7cba564ed14}} 
+\index{LandmarkBuilding@{LandmarkBuilding}!LandmarkBuilding@{LandmarkBuilding}}
+\index{LandmarkBuilding@{LandmarkBuilding}!LandmarkBuilding@{LandmarkBuilding}}
+\doxysubsubsection{\texorpdfstring{LandmarkBuilding()}{LandmarkBuilding()}}
+{\footnotesize\ttfamily Landmark\+Building\+::\+Landmark\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classLandmarkBuilding}{Landmark\+Building}}. 
+
+Constructor for \mbox{\hyperlink{classLandmarkBuilding}{Landmark\+Building}}. Calls the base \mbox{\hyperlink{classBuilding}{Building}} constructor. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLandmarkBuilding_a61a5d564c88d5d3484554de6bf510b48}\label{classLandmarkBuilding_a61a5d564c88d5d3484554de6bf510b48}} 
+\index{LandmarkBuilding@{LandmarkBuilding}!accept@{accept}}
+\index{accept@{accept}!LandmarkBuilding@{LandmarkBuilding}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily virtual void Landmark\+Building\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Abstract method to accept a visitor for the visitor pattern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the visitor object. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBuilding_a4a7a7a42d386169eca508651f05fb70e}{Building}}.
+
+
+
+Implemented in \mbox{\hyperlink{classPark_a61ca9df8e875ed20a9691b8dea05a0ac}{Park}}, \mbox{\hyperlink{classMuseum_a94075cc768b489372b115c3ba7ec197a}{Museum}}, and \mbox{\hyperlink{classMonument_afa288c832f175da6d62fa874d5f8f5eb}{Monument}}.
+
+\mbox{\Hypertarget{classLandmarkBuilding_ad7011a542925fe5f35caad8a59714ac8}\label{classLandmarkBuilding_ad7011a542925fe5f35caad8a59714ac8}} 
+\index{LandmarkBuilding@{LandmarkBuilding}!calculateTax@{calculateTax}}
+\index{calculateTax@{calculateTax}!LandmarkBuilding@{LandmarkBuilding}}
+\doxysubsubsection{\texorpdfstring{calculateTax()}{calculateTax()}}
+{\footnotesize\ttfamily double Landmark\+Building\+::calculate\+Tax (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculates tax for a landmark. Landmarks are exempt from tax, so this function returns 0.\+0. 
+
+Calculates tax for a landmark. Since landmarks are exempt, this returns 0.\+0.
+
+\begin{DoxyReturn}{Returns}
+Tax amount (always 0.\+0 for landmarks).
+
+Tax amount (0.\+0). 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBuilding_a3038550de011deea620ef7a0d8130784}{Building}}.
+
+\mbox{\Hypertarget{classLandmarkBuilding_aeec5e67bbea61af14383336ce1744a5e}\label{classLandmarkBuilding_aeec5e67bbea61af14383336ce1744a5e}} 
+\index{LandmarkBuilding@{LandmarkBuilding}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!LandmarkBuilding@{LandmarkBuilding}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Landmark\+Building\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Displays the stats specific to a landmark building. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classBuilding_aace1b612517a40b26a1d557d1668e9e2}{Building}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classPark_a355ec9c150c4fbb2e676d2ad32e569f6}{Park}}, \mbox{\hyperlink{classMuseum_a2df0fa530fab13b6247763e79b93d1a7}{Museum}}, and \mbox{\hyperlink{classMonument_aa608a4fc9fba0b14c716f7a524f3fe3a}{Monument}}.
+
+\mbox{\Hypertarget{classLandmarkBuilding_aa6ccdcd94e778d88cd991afad98b12f0}\label{classLandmarkBuilding_aa6ccdcd94e778d88cd991afad98b12f0}} 
+\index{LandmarkBuilding@{LandmarkBuilding}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!LandmarkBuilding@{LandmarkBuilding}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classBuilding}{Building}}$\ast$ Landmark\+Building\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Abstract method to create a clone of the landmark building for repair purposes. 
+
+\begin{DoxyReturn}{Returns}
+Building$\ast$ A pointer to the cloned building. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBuilding_a51b90ecf726357a0bcee517a4a36017f}{Building}}.
+
+
+
+Implemented in \mbox{\hyperlink{classPark_a4fecc26e86fc91b7cdeb84104db4133a}{Park}}, \mbox{\hyperlink{classMuseum_a2d03a5d0d6afe020327d5ab4bee0685f}{Museum}}, and \mbox{\hyperlink{classMonument_ab6712a9ee82e4ee3be41ec19a67cc54b}{Monument}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{LandmarkBuilding_8h}{Landmark\+Building.\+h}}\item 
+\mbox{\hyperlink{LandmarkBuilding_8cpp}{Landmark\+Building.\+cpp}}\end{DoxyCompactItemize}

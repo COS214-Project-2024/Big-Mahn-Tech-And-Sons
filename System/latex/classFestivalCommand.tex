@@ -1,0 +1,84 @@
+\hypertarget{classFestivalCommand}{}\doxysection{Festival\+Command Class Reference}
+\label{classFestivalCommand}\index{FestivalCommand@{FestivalCommand}}
+
+
+Concrete command class for handling city festivals and managing their impact on citizens and resources.  
+
+
+
+
+{\ttfamily \#include $<$Festival\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Festival\+Command\+:
+% FIG 0
+
+
+Collaboration diagram for Festival\+Command\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFestivalCommand_a250b4429ed34599e9e154ab8186ded08}{Festival\+Command}} (\mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} $\ast$u, \mbox{\hyperlink{classCitizen}{Citizen}} $\ast$c, \mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}} $\ast$pr)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classFestivalCommand}{Festival\+Command}} with the necessary department receivers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFestivalCommand_ab40c67e1cd372e20023789f63e3a5c33}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Executes all festival-\/related commands in sequence. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concrete command class for handling city festivals and managing their impact on citizens and resources. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFestivalCommand_a250b4429ed34599e9e154ab8186ded08}\label{classFestivalCommand_a250b4429ed34599e9e154ab8186ded08}} 
+\index{FestivalCommand@{FestivalCommand}!FestivalCommand@{FestivalCommand}}
+\index{FestivalCommand@{FestivalCommand}!FestivalCommand@{FestivalCommand}}
+\doxysubsubsection{\texorpdfstring{FestivalCommand()}{FestivalCommand()}}
+{\footnotesize\ttfamily Festival\+Command\+::\+Festival\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} $\ast$}]{u,  }\item[{\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$}]{c,  }\item[{\mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}} $\ast$}]{pr }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classFestivalCommand}{Festival\+Command}} with the necessary department receivers. 
+
+Constructs a \mbox{\hyperlink{classFestivalCommand}{Festival\+Command}} with the specified department receivers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em u} & Pointer to \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}}, managing resource usage during the festival. \\
+\hline
+{\em c} & Pointer to Citizens, representing the population whose satisfaction is affected. \\
+\hline
+{\em pr} & Pointer to \mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}}, responsible for promoting the festival.\\
+\hline
+{\em u} & Pointer to \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}}, used to manage resource usage during the festival. \\
+\hline
+{\em c} & Pointer to Citizens, representing the population affected by the festival. \\
+\hline
+{\em pr} & Pointer to \mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}}, responsible for promoting the festival. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classFestivalCommand_ab40c67e1cd372e20023789f63e3a5c33}\label{classFestivalCommand_ab40c67e1cd372e20023789f63e3a5c33}} 
+\index{FestivalCommand@{FestivalCommand}!execute@{execute}}
+\index{execute@{execute}!FestivalCommand@{FestivalCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Festival\+Command\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes all festival-\/related commands in sequence. 
+
+This includes increasing utility usage, boosting citizen satisfaction, and promoting the festival.
+
+This includes promoting the festival, boosting citizen happiness, and increasing utility consumption. 
+
+Implements \mbox{\hyperlink{classEventsCommand_aef80ba6da5058eab16308d8b11d37103}{Events\+Command}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{FestivalCommand_8h}{Festival\+Command.\+h}}\item 
+\mbox{\hyperlink{FestivalCommand_8cpp}{Festival\+Command.\+cpp}}\end{DoxyCompactItemize}

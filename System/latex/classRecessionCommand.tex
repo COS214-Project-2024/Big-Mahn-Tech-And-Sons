@@ -1,0 +1,110 @@
+\hypertarget{classRecessionCommand}{}\doxysection{Recession\+Command Class Reference}
+\label{classRecessionCommand}\index{RecessionCommand@{RecessionCommand}}
+
+
+Command class for handling recession events.  
+
+
+
+
+{\ttfamily \#include $<$Recession\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Recession\+Command\+:
+% FIG 0
+
+
+Collaboration diagram for Recession\+Command\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRecessionCommand_ae54cf5ed491a8c800b91aced6bc93767}{Recession\+Command}} (\mbox{\hyperlink{classDeptOfFinance}{Dept\+Of\+Finance}} $\ast$fin\+Dept, \mbox{\hyperlink{classCitizen}{Citizen}} $\ast$citizens, std\+::vector$<$ \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}} $\ast$ $>$ \&commercial\+Buildings)
+\begin{DoxyCompactList}\small\item\em Constructor to initialize receivers for the recession command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRecessionCommand_a3fa663bef90869661a0c8549a906b8ce}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Executes recession-\/related actions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRecessionCommand_a9d006a4a0947abd700a119832030207e}{raise\+Taxes}} ()
+\begin{DoxyCompactList}\small\item\em Raises taxes as part of the recession response. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRecessionCommand_a2fc218fabb36d7840c217e4551b7bc97}{manage\+Citizen\+Dissatisfaction}} ()
+\begin{DoxyCompactList}\small\item\em Manages citizen dissatisfaction during the recession. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRecessionCommand_ab372dc5e798c4473a8c0bd8444e1f97b}{close\+Commercial\+Buildings}} ()
+\begin{DoxyCompactList}\small\item\em Closes a portion of commercial buildings due to the recession. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Command class for handling recession events. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRecessionCommand_ae54cf5ed491a8c800b91aced6bc93767}\label{classRecessionCommand_ae54cf5ed491a8c800b91aced6bc93767}} 
+\index{RecessionCommand@{RecessionCommand}!RecessionCommand@{RecessionCommand}}
+\index{RecessionCommand@{RecessionCommand}!RecessionCommand@{RecessionCommand}}
+\doxysubsubsection{\texorpdfstring{RecessionCommand()}{RecessionCommand()}}
+{\footnotesize\ttfamily Recession\+Command\+::\+Recession\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDeptOfFinance}{Dept\+Of\+Finance}} $\ast$}]{fin\+Dept,  }\item[{\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$}]{citizens,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}} $\ast$ $>$ \&}]{commercial\+Buildings }\end{DoxyParamCaption})}
+
+
+
+Constructor to initialize receivers for the recession command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pr\+Dept} & Pointer to the Department of Public Relations. \\
+\hline
+{\em citizens} & Pointer to the Citizens class. \\
+\hline
+{\em commercial\+Buildings} & Vector of pointers to \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}} instances affected by the recession. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRecessionCommand_ab372dc5e798c4473a8c0bd8444e1f97b}\label{classRecessionCommand_ab372dc5e798c4473a8c0bd8444e1f97b}} 
+\index{RecessionCommand@{RecessionCommand}!closeCommercialBuildings@{closeCommercialBuildings}}
+\index{closeCommercialBuildings@{closeCommercialBuildings}!RecessionCommand@{RecessionCommand}}
+\doxysubsubsection{\texorpdfstring{closeCommercialBuildings()}{closeCommercialBuildings()}}
+{\footnotesize\ttfamily void Recession\+Command\+::close\+Commercial\+Buildings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes a portion of commercial buildings due to the recession. 
+
+\mbox{\Hypertarget{classRecessionCommand_a3fa663bef90869661a0c8549a906b8ce}\label{classRecessionCommand_a3fa663bef90869661a0c8549a906b8ce}} 
+\index{RecessionCommand@{RecessionCommand}!execute@{execute}}
+\index{execute@{execute}!RecessionCommand@{RecessionCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Recession\+Command\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes recession-\/related actions. 
+
+Executes all recession-\/related actions in sequence. 
+
+Implements \mbox{\hyperlink{classEventsCommand_aef80ba6da5058eab16308d8b11d37103}{Events\+Command}}.
+
+\mbox{\Hypertarget{classRecessionCommand_a2fc218fabb36d7840c217e4551b7bc97}\label{classRecessionCommand_a2fc218fabb36d7840c217e4551b7bc97}} 
+\index{RecessionCommand@{RecessionCommand}!manageCitizenDissatisfaction@{manageCitizenDissatisfaction}}
+\index{manageCitizenDissatisfaction@{manageCitizenDissatisfaction}!RecessionCommand@{RecessionCommand}}
+\doxysubsubsection{\texorpdfstring{manageCitizenDissatisfaction()}{manageCitizenDissatisfaction()}}
+{\footnotesize\ttfamily void Recession\+Command\+::manage\+Citizen\+Dissatisfaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manages citizen dissatisfaction during the recession. 
+
+\mbox{\Hypertarget{classRecessionCommand_a9d006a4a0947abd700a119832030207e}\label{classRecessionCommand_a9d006a4a0947abd700a119832030207e}} 
+\index{RecessionCommand@{RecessionCommand}!raiseTaxes@{raiseTaxes}}
+\index{raiseTaxes@{raiseTaxes}!RecessionCommand@{RecessionCommand}}
+\doxysubsubsection{\texorpdfstring{raiseTaxes()}{raiseTaxes()}}
+{\footnotesize\ttfamily void Recession\+Command\+::raise\+Taxes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Raises taxes as part of the recession response. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{RecessionCommand_8h}{Recession\+Command.\+h}}\item 
+\mbox{\hyperlink{RecessionCommand_8cpp}{Recession\+Command.\+cpp}}\end{DoxyCompactItemize}

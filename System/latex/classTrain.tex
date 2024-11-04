@@ -1,0 +1,91 @@
+\hypertarget{classTrain}{}\doxysection{Train Class Reference}
+\label{classTrain}\index{Train@{Train}}
+
+
+Represents train transport as a mode of transport.  
+
+
+
+
+{\ttfamily \#include $<$Train.\+h$>$}
+
+
+
+Inheritance diagram for Train\+:
+% FIG 0
+
+
+Collaboration diagram for Train\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classTrain_a604eca5a0ad439ce24980d75c484cf4d}{get\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the name of the transport mode. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classTrain_a1781e792f7b6e66de0e43e9ddb760843}{get\+Cost}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the cost of train transportation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTrain_a3643c9d94404e0f345f7b213fbc715f9}{execute}} () const override
+\begin{DoxyCompactList}\small\item\em Executes the mean of transport. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents train transport as a mode of transport. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTrain_a3643c9d94404e0f345f7b213fbc715f9}\label{classTrain_a3643c9d94404e0f345f7b213fbc715f9}} 
+\index{Train@{Train}!execute@{execute}}
+\index{execute@{execute}!Train@{Train}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Train\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the mean of transport. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classModeOfTrans_a8f581cc380abd855d7067f3874162894}{Mode\+Of\+Trans}}.
+
+\mbox{\Hypertarget{classTrain_a1781e792f7b6e66de0e43e9ddb760843}\label{classTrain_a1781e792f7b6e66de0e43e9ddb760843}} 
+\index{Train@{Train}!getCost@{getCost}}
+\index{getCost@{getCost}!Train@{Train}}
+\doxysubsubsection{\texorpdfstring{getCost()}{getCost()}}
+{\footnotesize\ttfamily double Train\+::get\+Cost (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the cost of train transportation. 
+
+\begin{DoxyReturn}{Returns}
+double The cost. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classModeOfTrans_aa7e3cafc707dac257e149c4703727bde}{Mode\+Of\+Trans}}.
+
+\mbox{\Hypertarget{classTrain_a604eca5a0ad439ce24980d75c484cf4d}\label{classTrain_a604eca5a0ad439ce24980d75c484cf4d}} 
+\index{Train@{Train}!getName@{getName}}
+\index{getName@{getName}!Train@{Train}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Train\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the name of the transport mode. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string The name \char`\"{}\+Train\char`\"{}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classModeOfTrans_a222791a95005cd92532f0231a12882c8}{Mode\+Of\+Trans}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Train_8h}{Train.\+h}}\item 
+\mbox{\hyperlink{Train_8cpp}{Train.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,100 @@
+\hypertarget{classGoToCommand}{}\doxysection{Go\+To\+Command Class Reference}
+\label{classGoToCommand}\index{GoToCommand@{GoToCommand}}
+
+
+Command class for handling a citizen\textquotesingle{}s movement to a specified destination using a transport strategy.  
+
+
+
+
+{\ttfamily \#include $<$Go\+To\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Go\+To\+Command\+:
+% FIG 0
+
+
+Collaboration diagram for Go\+To\+Command\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGoToCommand_abfaaf6548809086cfaa9f855a5616d6b}{Go\+To\+Command}} (\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$\mbox{\hyperlink{classGoToCommand_ab1a02b0f71f131c8d0d2677f366bbb8a}{citizen}}, \mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}} $\ast$\mbox{\hyperlink{classGoToCommand_adf174711a8f32780017463abc054bd84}{DOH}})
+\item 
+virtual bool \mbox{\hyperlink{classGoToCommand_af1f26d8202f09a43a257163c86042747}{execute}} ()=0
+\begin{DoxyCompactList}\small\item\em Executes the command to move the citizen to the specified destination. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$ \mbox{\hyperlink{classGoToCommand_ab1a02b0f71f131c8d0d2677f366bbb8a}{citizen}}
+\begin{DoxyCompactList}\small\item\em Pointer to the citizen who will execute the command. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}} $\ast$ \mbox{\hyperlink{classGoToCommand_adf174711a8f32780017463abc054bd84}{DOH}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Command class for handling a citizen\textquotesingle{}s movement to a specified destination using a transport strategy. 
+
+\begin{DoxyAuthor}{Author}
+Lebo\+Gang
+\end{DoxyAuthor}
+The \mbox{\hyperlink{classGoToCommand}{Go\+To\+Command}} class encapsulates the behavior of a citizen traveling from their current position to a designated destination node. It uses the transport strategy defined by the \mbox{\hyperlink{classCitizen}{Citizen}} object and finds the appropriate path using the Road\+Network. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGoToCommand_abfaaf6548809086cfaa9f855a5616d6b}\label{classGoToCommand_abfaaf6548809086cfaa9f855a5616d6b}} 
+\index{GoToCommand@{GoToCommand}!GoToCommand@{GoToCommand}}
+\index{GoToCommand@{GoToCommand}!GoToCommand@{GoToCommand}}
+\doxysubsubsection{\texorpdfstring{GoToCommand()}{GoToCommand()}}
+{\footnotesize\ttfamily Go\+To\+Command\+::\+Go\+To\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$}]{citizen,  }\item[{\mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}} $\ast$}]{DOH }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGoToCommand_af1f26d8202f09a43a257163c86042747}\label{classGoToCommand_af1f26d8202f09a43a257163c86042747}} 
+\index{GoToCommand@{GoToCommand}!execute@{execute}}
+\index{execute@{execute}!GoToCommand@{GoToCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily virtual bool Go\+To\+Command\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Executes the command to move the citizen to the specified destination. 
+
+The function retrieves the citizen\textquotesingle{}s current position and checks if the destination has already been reached. If not, it uses the transport strategy to move the citizen along a path found in the road network. If no path is available, a message is displayed.
+
+\begin{DoxyNote}{Note}
+destination\+Node is set in the constructors of the relevant command. 
+\end{DoxyNote}
+\begin{DoxyAttention}{Attention}
+Citizens must have a catalog of addresses, such as Work, Home, and random Entertainment then find\+Path will do the rest. 
+\end{DoxyAttention}
+
+
+Implemented in \mbox{\hyperlink{classGoTrain_a7a207e78f635adb476373cd8aea2455c}{Go\+Train}}, \mbox{\hyperlink{classGoToWork_a5427dd7edc71dcc14e55b33d64dbfdac}{Go\+To\+Work}}, \mbox{\hyperlink{classGoToEnt_a70b5c872ee8144d02a5252461d15110b}{Go\+To\+Ent}}, \mbox{\hyperlink{classGoSchool_a88e94775e2be661d6f3bdff009008e0e}{Go\+School}}, \mbox{\hyperlink{classGoHos_a68ccc8ddf86e8b1d698f94ffb158d554}{Go\+Hos}}, \mbox{\hyperlink{classGoHome_a97f7131b0e5cc3907632169005459986}{Go\+Home}}, and \mbox{\hyperlink{classGoAirport_aaacc97eaded29843af62166b25a75279}{Go\+Airport}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classGoToCommand_ab1a02b0f71f131c8d0d2677f366bbb8a}\label{classGoToCommand_ab1a02b0f71f131c8d0d2677f366bbb8a}} 
+\index{GoToCommand@{GoToCommand}!citizen@{citizen}}
+\index{citizen@{citizen}!GoToCommand@{GoToCommand}}
+\doxysubsubsection{\texorpdfstring{citizen}{citizen}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCitizen}{Citizen}}$\ast$ Go\+To\+Command\+::citizen\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to the citizen who will execute the command. 
+
+\mbox{\Hypertarget{classGoToCommand_adf174711a8f32780017463abc054bd84}\label{classGoToCommand_adf174711a8f32780017463abc054bd84}} 
+\index{GoToCommand@{GoToCommand}!DOH@{DOH}}
+\index{DOH@{DOH}!GoToCommand@{GoToCommand}}
+\doxysubsubsection{\texorpdfstring{DOH}{DOH}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}}$\ast$ Go\+To\+Command\+::\+DOH\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{GoToCommand_8h}{Go\+To\+Command.\+h}}\item 
+\mbox{\hyperlink{GoToCommand_8cpp}{Go\+To\+Command.\+cpp}}\end{DoxyCompactItemize}

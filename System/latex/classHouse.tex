@@ -1,0 +1,106 @@
+\hypertarget{classHouse}{}\doxysection{House Class Reference}
+\label{classHouse}\index{House@{House}}
+
+
+Represents a residential house with specific attributes and behavior.  
+
+
+
+
+{\ttfamily \#include $<$House.\+h$>$}
+
+
+
+Inheritance diagram for House\+:
+% FIG 0
+
+
+Collaboration diagram for House\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHouse_a21bec2b1cbc4b866ec6f31201f4589c5}{House}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classHouse}{House}}, initializing unique house attributes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHouse_a7d84de58a00dfe003adfa02963fc3328}{display\+Stats}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the statistics of the house, including specific and inherited details. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHouse_ab9b192031363ecba5509d9acf3e157c3}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor) override
+\begin{DoxyCompactList}\small\item\em Accepts a visitor for the visitor pattern, allowing specific actions for tax management. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classHouse_abef7f7d61a0dd770dfef33bbd46ec35b}{repair\+Clone}} () const override
+\begin{DoxyCompactList}\small\item\em Creates a clone of the house for repair actions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Represents a residential house with specific attributes and behavior. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHouse_a21bec2b1cbc4b866ec6f31201f4589c5}\label{classHouse_a21bec2b1cbc4b866ec6f31201f4589c5}} 
+\index{House@{House}!House@{House}}
+\index{House@{House}!House@{House}}
+\doxysubsubsection{\texorpdfstring{House()}{House()}}
+{\footnotesize\ttfamily House\+::\+House (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classHouse}{House}}, initializing unique house attributes. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHouse_ab9b192031363ecba5509d9acf3e157c3}\label{classHouse_ab9b192031363ecba5509d9acf3e157c3}} 
+\index{House@{House}!accept@{accept}}
+\index{accept@{accept}!House@{House}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void House\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accepts a visitor for the visitor pattern, allowing specific actions for tax management. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the \mbox{\hyperlink{classTaxManager}{Tax\+Manager}} visitor. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classResidentialBuilding_a39765f4b794ccb38a023b07954e8b42c}{Residential\+Building}}.
+
+\mbox{\Hypertarget{classHouse_a7d84de58a00dfe003adfa02963fc3328}\label{classHouse_a7d84de58a00dfe003adfa02963fc3328}} 
+\index{House@{House}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!House@{House}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void House\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the statistics of the house, including specific and inherited details. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classBuilding_aace1b612517a40b26a1d557d1668e9e2}{Building}}.
+
+\mbox{\Hypertarget{classHouse_abef7f7d61a0dd770dfef33bbd46ec35b}\label{classHouse_abef7f7d61a0dd770dfef33bbd46ec35b}} 
+\index{House@{House}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!House@{House}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ House\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a clone of the house for repair actions. 
+
+\begin{DoxyReturn}{Returns}
+Building$\ast$ A pointer to the cloned house instance. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classResidentialBuilding_a4cd76c06b6062c508c02201650c72d25}{Residential\+Building}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{House_8h}{House.\+h}}\item 
+\mbox{\hyperlink{House_8cpp}{House.\+cpp}}\end{DoxyCompactItemize}

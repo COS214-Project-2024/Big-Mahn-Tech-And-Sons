@@ -1,0 +1,108 @@
+\hypertarget{classMonument}{}\doxysection{Monument Class Reference}
+\label{classMonument}\index{Monument@{Monument}}
+
+
+The \mbox{\hyperlink{classMonument}{Monument}} class, a specific type of \mbox{\hyperlink{classLandmarkBuilding}{Landmark\+Building}}.  
+
+
+
+
+{\ttfamily \#include $<$Monument.\+h$>$}
+
+
+
+Inheritance diagram for Monument\+:
+% FIG 0
+
+
+Collaboration diagram for Monument\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMonument_ad8b523b4fb0129d974bb5bb090e7b88a}{Monument}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classMonument}{Monument}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMonument_aa608a4fc9fba0b14c716f7a524f3fe3a}{display\+Stats}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the stats specific to the monument. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMonument_afa288c832f175da6d62fa874d5f8f5eb}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor) override
+\begin{DoxyCompactList}\small\item\em Accepts visitors using the visitor pattern. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classMonument_ab6712a9ee82e4ee3be41ec19a67cc54b}{repair\+Clone}} () const override
+\begin{DoxyCompactList}\small\item\em Clones the monument object for repair purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classMonument}{Monument}} class, a specific type of \mbox{\hyperlink{classLandmarkBuilding}{Landmark\+Building}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMonument_ad8b523b4fb0129d974bb5bb090e7b88a}\label{classMonument_ad8b523b4fb0129d974bb5bb090e7b88a}} 
+\index{Monument@{Monument}!Monument@{Monument}}
+\index{Monument@{Monument}!Monument@{Monument}}
+\doxysubsubsection{\texorpdfstring{Monument()}{Monument()}}
+{\footnotesize\ttfamily Monument\+::\+Monument (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classMonument}{Monument}}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMonument_afa288c832f175da6d62fa874d5f8f5eb}\label{classMonument_afa288c832f175da6d62fa874d5f8f5eb}} 
+\index{Monument@{Monument}!accept@{accept}}
+\index{accept@{accept}!Monument@{Monument}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Monument\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accepts visitors using the visitor pattern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the visitor object.\\
+\hline
+{\em visitor} & A pointer to the visitor object.\\
+\hline
+\end{DoxyParams}
+The function is stubbed, as no tax is applied to monuments. 
+
+Implements \mbox{\hyperlink{classLandmarkBuilding_a61a5d564c88d5d3484554de6bf510b48}{Landmark\+Building}}.
+
+\mbox{\Hypertarget{classMonument_aa608a4fc9fba0b14c716f7a524f3fe3a}\label{classMonument_aa608a4fc9fba0b14c716f7a524f3fe3a}} 
+\index{Monument@{Monument}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!Monument@{Monument}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Monument\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the stats specific to the monument. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classLandmarkBuilding_aeec5e67bbea61af14383336ce1744a5e}{Landmark\+Building}}.
+
+\mbox{\Hypertarget{classMonument_ab6712a9ee82e4ee3be41ec19a67cc54b}\label{classMonument_ab6712a9ee82e4ee3be41ec19a67cc54b}} 
+\index{Monument@{Monument}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!Monument@{Monument}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Monument\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clones the monument object for repair purposes. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the cloned \mbox{\hyperlink{classMonument}{Monument}} object. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLandmarkBuilding_aa6ccdcd94e778d88cd991afad98b12f0}{Landmark\+Building}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Monument_8h}{Monument.\+h}}\item 
+\mbox{\hyperlink{Monument_8cpp}{Monument.\+cpp}}\end{DoxyCompactItemize}

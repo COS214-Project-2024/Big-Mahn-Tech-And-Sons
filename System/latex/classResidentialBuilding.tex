@@ -1,0 +1,141 @@
+\hypertarget{classResidentialBuilding}{}\doxysection{Residential\+Building Class Reference}
+\label{classResidentialBuilding}\index{ResidentialBuilding@{ResidentialBuilding}}
+
+
+Abstract base class for residential buildings.  
+
+
+
+
+{\ttfamily \#include $<$Residential\+Building.\+h$>$}
+
+
+
+Inheritance diagram for Residential\+Building\+:
+% FIG 0
+
+
+Collaboration diagram for Residential\+Building\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classResidentialBuilding_a853b2fc11fc125b8493d9e392487c52e}{Residential\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classResidentialBuilding}{Residential\+Building}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classResidentialBuilding_a962a4bf061d230e363224de309c2ab0d}{display\+Stats}} () const
+\begin{DoxyCompactList}\small\item\em Displays statistics specific to residential buildings. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classResidentialBuilding_a39765f4b794ccb38a023b07954e8b42c}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor)=0
+\begin{DoxyCompactList}\small\item\em Accepts a visitor to perform operations based on building type. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classResidentialBuilding_a4cd76c06b6062c508c02201650c72d25}{repair\+Clone}} () const =0
+\begin{DoxyCompactList}\small\item\em Creates a copy of the \mbox{\hyperlink{classResidentialBuilding}{Residential\+Building}} instance. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classResidentialBuilding_aa927daebdb3163db47d94f8047794b92}{calculate\+Tax}} () const override
+\begin{DoxyCompactList}\small\item\em Calculates the tax amount for the residential building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for residential buildings. 
+
+Represents the shared attributes and behaviors of residential buildings, including utility management and visitor acceptance. Derived classes implement specific types of residential buildings. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classResidentialBuilding_a853b2fc11fc125b8493d9e392487c52e}\label{classResidentialBuilding_a853b2fc11fc125b8493d9e392487c52e}} 
+\index{ResidentialBuilding@{ResidentialBuilding}!ResidentialBuilding@{ResidentialBuilding}}
+\index{ResidentialBuilding@{ResidentialBuilding}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{ResidentialBuilding()}{ResidentialBuilding()}}
+{\footnotesize\ttfamily Residential\+Building\+::\+Residential\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classResidentialBuilding}{Residential\+Building}}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classResidentialBuilding_a39765f4b794ccb38a023b07954e8b42c}\label{classResidentialBuilding_a39765f4b794ccb38a023b07954e8b42c}} 
+\index{ResidentialBuilding@{ResidentialBuilding}!accept@{accept}}
+\index{accept@{accept}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily virtual void Residential\+Building\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Accepts a visitor to perform operations based on building type. 
+
+Enables the visitor pattern, allowing different visitor operations based on building type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to a \mbox{\hyperlink{classTaxManager}{Tax\+Manager}} visitor. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBuilding_a4a7a7a42d386169eca508651f05fb70e}{Building}}.
+
+
+
+Implemented in \mbox{\hyperlink{classHouse_ab9b192031363ecba5509d9acf3e157c3}{House}}, \mbox{\hyperlink{classEstate_a8a8e4e3f552a6091f88d00d8a5596730}{Estate}}, and \mbox{\hyperlink{classApartment_afc17d2ed4b35f6aca93e45d4ee96c72d}{Apartment}}.
+
+\mbox{\Hypertarget{classResidentialBuilding_aa927daebdb3163db47d94f8047794b92}\label{classResidentialBuilding_aa927daebdb3163db47d94f8047794b92}} 
+\index{ResidentialBuilding@{ResidentialBuilding}!calculateTax@{calculateTax}}
+\index{calculateTax@{calculateTax}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{calculateTax()}{calculateTax()}}
+{\footnotesize\ttfamily double Residential\+Building\+::calculate\+Tax (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculates the tax amount for the residential building. 
+
+The tax amount is calculated based on the number of occupants and the tax rate per occupant.
+
+\begin{DoxyReturn}{Returns}
+The calculated tax amount for the building. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBuilding_a3038550de011deea620ef7a0d8130784}{Building}}.
+
+\mbox{\Hypertarget{classResidentialBuilding_a962a4bf061d230e363224de309c2ab0d}\label{classResidentialBuilding_a962a4bf061d230e363224de309c2ab0d}} 
+\index{ResidentialBuilding@{ResidentialBuilding}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Residential\+Building\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Displays statistics specific to residential buildings. 
+
+This function provides information about the building’s usage, capacity, and other residential-\/specific attributes. 
+
+Reimplemented from \mbox{\hyperlink{classBuilding_aace1b612517a40b26a1d557d1668e9e2}{Building}}.
+
+\mbox{\Hypertarget{classResidentialBuilding_a4cd76c06b6062c508c02201650c72d25}\label{classResidentialBuilding_a4cd76c06b6062c508c02201650c72d25}} 
+\index{ResidentialBuilding@{ResidentialBuilding}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!ResidentialBuilding@{ResidentialBuilding}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classBuilding}{Building}}$\ast$ Residential\+Building\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Creates a copy of the \mbox{\hyperlink{classResidentialBuilding}{Residential\+Building}} instance. 
+
+Supports the Prototype pattern by returning a copy of the building with identical attributes.
+
+\begin{DoxyReturn}{Returns}
+A pointer to a cloned \mbox{\hyperlink{classResidentialBuilding}{Residential\+Building}} instance. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBuilding_a51b90ecf726357a0bcee517a4a36017f}{Building}}.
+
+
+
+Implemented in \mbox{\hyperlink{classHouse_abef7f7d61a0dd770dfef33bbd46ec35b}{House}}, \mbox{\hyperlink{classEstate_a5038ac4f493894760dfbc4a61e514f83}{Estate}}, and \mbox{\hyperlink{classApartment_aad3c2993cc52906b2d7985bf87e7229b}{Apartment}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ResidentialBuilding_8h}{Residential\+Building.\+h}}\item 
+\mbox{\hyperlink{ResidentialBuilding_8cpp}{Residential\+Building.\+cpp}}\end{DoxyCompactItemize}

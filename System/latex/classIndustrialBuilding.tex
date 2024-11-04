@@ -1,0 +1,153 @@
+\hypertarget{classIndustrialBuilding}{}\doxysection{Industrial\+Building Class Reference}
+\label{classIndustrialBuilding}\index{IndustrialBuilding@{IndustrialBuilding}}
+
+
+Abstract base class for industrial buildings.  
+
+
+
+
+{\ttfamily \#include $<$Industrial\+Building.\+h$>$}
+
+
+
+Inheritance diagram for Industrial\+Building\+:
+% FIG 0
+
+
+Collaboration diagram for Industrial\+Building\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classIndustrialBuilding_a76c37aaebfa3468c162133f6bdde5e2c}{Industrial\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classIndustrialBuilding}{Industrial\+Building}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classIndustrialBuilding_ab2d070226016b643f60fec2188eaa46d}{display\+Stats}} () const override
+\begin{DoxyCompactList}\small\item\em Displays statistics specific to industrial buildings. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIndustrialBuilding_af64e08035136b0e25dbd7d4bbb47e587}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor) override
+\begin{DoxyCompactList}\small\item\em Accepts a visitor to perform operations based on building type. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classIndustrialBuilding_a8d7a6e2878bccd17c357366303c1fc3e}{repair\+Clone}} () const override
+\begin{DoxyCompactList}\small\item\em Creates a copy of the \mbox{\hyperlink{classIndustrialBuilding}{Industrial\+Building}} instance. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classIndustrialBuilding_acf365a12f3bebedfecfd0d12670b3996}{calculate\+Tax}} () const override
+\begin{DoxyCompactList}\small\item\em Calculates tax for a landmark. Landmarks are exempt from tax, so this function returns 0.\+0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for industrial buildings. 
+
+...............................................................................................................................................................................................................................................
+
+Represents the shared attributes and behaviors of industrial buildings, such as production capacity. Derived classes implement specific types of industrial buildings. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classIndustrialBuilding_a76c37aaebfa3468c162133f6bdde5e2c}\label{classIndustrialBuilding_a76c37aaebfa3468c162133f6bdde5e2c}} 
+\index{IndustrialBuilding@{IndustrialBuilding}!IndustrialBuilding@{IndustrialBuilding}}
+\index{IndustrialBuilding@{IndustrialBuilding}!IndustrialBuilding@{IndustrialBuilding}}
+\doxysubsubsection{\texorpdfstring{IndustrialBuilding()}{IndustrialBuilding()}}
+{\footnotesize\ttfamily Industrial\+Building\+::\+Industrial\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classIndustrialBuilding}{Industrial\+Building}}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIndustrialBuilding_af64e08035136b0e25dbd7d4bbb47e587}\label{classIndustrialBuilding_af64e08035136b0e25dbd7d4bbb47e587}} 
+\index{IndustrialBuilding@{IndustrialBuilding}!accept@{accept}}
+\index{accept@{accept}!IndustrialBuilding@{IndustrialBuilding}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Industrial\+Building\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accepts a visitor to perform operations based on building type. 
+
+Enables the visitor pattern, allowing different visitor operations based on building type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to a \mbox{\hyperlink{classTaxManager}{Tax\+Manager}} visitor. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBuilding_a4a7a7a42d386169eca508651f05fb70e}{Building}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classWarehouse_a17a3e17487acb1c9435c2d89d0e82b09}{Warehouse}}, \mbox{\hyperlink{classTrainStation_a46cd33ff64661f61a1f7f93adf3dc184}{Train\+Station}}, \mbox{\hyperlink{classFactory_a4dcb77639743750a4f3eb696496cde47}{Factory}}, and \mbox{\hyperlink{classAirport_adfdf30a43cafbe07de324f1b3ccfc0ea}{Airport}}.
+
+\mbox{\Hypertarget{classIndustrialBuilding_acf365a12f3bebedfecfd0d12670b3996}\label{classIndustrialBuilding_acf365a12f3bebedfecfd0d12670b3996}} 
+\index{IndustrialBuilding@{IndustrialBuilding}!calculateTax@{calculateTax}}
+\index{calculateTax@{calculateTax}!IndustrialBuilding@{IndustrialBuilding}}
+\doxysubsubsection{\texorpdfstring{calculateTax()}{calculateTax()}}
+{\footnotesize\ttfamily double Industrial\+Building\+::calculate\+Tax (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculates tax for a landmark. Landmarks are exempt from tax, so this function returns 0.\+0. 
+
+\begin{DoxyReturn}{Returns}
+Tax amount (always 0.\+0 for landmarks). 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBuilding_a3038550de011deea620ef7a0d8130784}{Building}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classWarehouse_ae9470a9475e37fecb8926a1f3cce52a0}{Warehouse}}, \mbox{\hyperlink{classTrainStation_a8168668d3489bc60dc82ef6bb7ab1da1}{Train\+Station}}, \mbox{\hyperlink{classFactory_a10b682d5c2a761518ea719966275fbf4}{Factory}}, and \mbox{\hyperlink{classAirport_ae07275cf9d44f09788a152edad3066f3}{Airport}}.
+
+\mbox{\Hypertarget{classIndustrialBuilding_ab2d070226016b643f60fec2188eaa46d}\label{classIndustrialBuilding_ab2d070226016b643f60fec2188eaa46d}} 
+\index{IndustrialBuilding@{IndustrialBuilding}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!IndustrialBuilding@{IndustrialBuilding}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Industrial\+Building\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays statistics specific to industrial buildings. 
+
+Provides information about the building’s usage, capacity, and other industrial-\/specific attributes. 
+
+Reimplemented from \mbox{\hyperlink{classBuilding_aace1b612517a40b26a1d557d1668e9e2}{Building}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classWarehouse_a19f0594a203411eed69f03d252895a75}{Warehouse}}, and \mbox{\hyperlink{classTrainStation_a751b29833bcef0a2253c0f64e468dbcf}{Train\+Station}}.
+
+\mbox{\Hypertarget{classIndustrialBuilding_a8d7a6e2878bccd17c357366303c1fc3e}\label{classIndustrialBuilding_a8d7a6e2878bccd17c357366303c1fc3e}} 
+\index{IndustrialBuilding@{IndustrialBuilding}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!IndustrialBuilding@{IndustrialBuilding}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Industrial\+Building\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a copy of the \mbox{\hyperlink{classIndustrialBuilding}{Industrial\+Building}} instance. 
+
+Calculates tax for an industrial building. Since industrial buildings are exempt, this returns 0.\+0.
+
+Supports the Prototype pattern by returning a copy of the building with identical attributes.
+
+\begin{DoxyReturn}{Returns}
+A pointer to a cloned \mbox{\hyperlink{classIndustrialBuilding}{Industrial\+Building}} instance.
+
+Tax amount (0.\+0). 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBuilding_a51b90ecf726357a0bcee517a4a36017f}{Building}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classWarehouse_ad433be520ab0f25d4b337a88bce17e06}{Warehouse}}, \mbox{\hyperlink{classTrainStation_a35b9bbbbcc7fb009e322962543123925}{Train\+Station}}, \mbox{\hyperlink{classFactory_aa517198f92acf135a8c2dda09c6d08cd}{Factory}}, and \mbox{\hyperlink{classAirport_a48fa655ce5b325c56e24a4f57e82cdf1}{Airport}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{IndustrialBuilding_8h}{Industrial\+Building.\+h}}\item 
+\mbox{\hyperlink{IndustrialBuilding_8cpp}{Industrial\+Building.\+cpp}}\end{DoxyCompactItemize}

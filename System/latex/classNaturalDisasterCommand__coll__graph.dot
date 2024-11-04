@@ -1,0 +1,13 @@
+digraph "NaturalDisasterCommand"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="NaturalDisasterCommand",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Command class for handling building damage, route blocking, and infrastructure repair during a natura..."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="EventsCommand",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classEventsCommand.html",tooltip="Interface for handling city event commands."];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" deptOfTransport" ];
+  Node3 [label="DeptOfTransportation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDeptOfTransportation.html",tooltip="The Transportation department."];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" deptOfHousing" ];
+  Node4 [label="DeptOfHousing",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDeptOfHousing.html",tooltip="DeptOfHousing manages the creation and removal of buildings with budget constraints."];
+}
