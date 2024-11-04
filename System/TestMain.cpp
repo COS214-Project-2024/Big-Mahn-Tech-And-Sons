@@ -86,7 +86,7 @@ int main()
 
     // Report budget status after tax collection
     cityBudget.reportStatus();
-
+*/
     std::cout << "Hello World" << std::endl;
 
     // buildingsTest();
@@ -99,17 +99,17 @@ int main()
     // testDepartment();
 
     // testHouse();
-    // testNaturalDisaster();
-    // testPandemic();
-    // testLoadShedding();
-    // testRecession();
-    // testFestival();
-    // testRecession();
+    testNaturalDisaster();
+    testPandemic();
+    testLoadShedding();
+    testRecession();
+    testFestival();
+    testRecession();
   //  Government* gov = new Government();
     std::cout << "End" << std::endl;
-*/
+
     // TestingDptUtilities();
-    testGoToTrainStation();
+   // testGoToTrainStation();
     return 0;
 }
 
@@ -575,7 +575,7 @@ void testGoToTrainStation()
     // ------------------------------------------------------------------------------------------------------- //
 
     // ------------------------------------------------------------------------------------------------------- //
-    /*
+    
     void testNaturalDisaster()
     {
         // Step 1: Initialize the DeptOfHousing and DeptOfTransportation
@@ -607,17 +607,22 @@ void testGoToTrainStation()
         delete  naturalDisasterCommand;
     }
 
-    /*
+    
 
     void testPandemic()
     {
-       DeptOfPR* prDepartment;
+        DeptOfHousing *housingDept = new DeptOfHousing(1000000);
+        Water *water = new Water( 10000);
+        DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+        TaxManager *taxMan = new TaxManager();
+        DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+        DeptOfPR prDepartment(housingDept, utilitiesDept, financeDept);
 
         // Create a vector of citizens for testing
         std::vector<Citizen*> citizens = {
-            new Citizen("Alice", 80.0, 10, 20, prDepartment),
-            new Citizen("Bob", 70.0, 12, 22, prDepartment),
-            new Citizen("Charlie", 60.0, 14, 24, prDepartment)
+            new Citizen("Alice",  &prDepartment),
+            new Citizen("Bob",  &prDepartment),
+            new Citizen("Charlie",  &prDepartment)
         };
 
         // Display initial state of each citizen
@@ -698,17 +703,20 @@ void testGoToTrainStation()
 
     void testFestival()
     {
-        Power mockPowerResource("MockPowerResource", 1000);
-        DeptOfUtilities* utilitiesDept = new PowerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
-          DeptOfPR* deptOfPR;
+DeptOfHousing *housingDept = new DeptOfHousing(1000000);
+        Water *water = new Water( 10000);
+        DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+        TaxManager *taxMan = new TaxManager();
+        DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+        DeptOfPR deptOfPR(housingDept, utilitiesDept, financeDept);
      std::vector<Citizen*> citizens = {
-            new Citizen("Alice", 80.0, 10, 20, deptOfPR),
-            new Citizen("Bob", 70.0, 12, 22, deptOfPR),
-            new Citizen("Charlie", 60.0, 14, 24, deptOfPR)
+            new Citizen("Alice",&deptOfPR),
+            new Citizen("Bob", &deptOfPR),
+            new Citizen("Charlie",  &deptOfPR)
         };
 
         // Create a FestivalCommand instance
-        FestivalCommand* festivalCommand = new FestivalCommand(utilitiesDept, citizens[0], deptOfPR);
+        FestivalCommand* festivalCommand = new FestivalCommand(utilitiesDept, citizens[0], &deptOfPR);
 
         // Execute the festival command, triggering all festival actions
         std::cout << "Executing Festival Command..." << std::endl;
@@ -723,29 +731,31 @@ void testGoToTrainStation()
 
     void testRecession()
     {
-       // Create mock finance department
-        DeptOfFinance* financeDept;
-        DeptOfPR* prDepartment;
+       DeptOfHousing *housingDept = new DeptOfHousing(1000000);
+        Water *water = new Water( 10000);
+        DeptOfUtilities *utilitiesDept = new WaterSupply(5000.02, 100000, water);
+        TaxManager *taxMan = new TaxManager();
+        DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+        DeptOfPR prDepartment(housingDept, utilitiesDept, financeDept);
 
         // Create citizens
         std::vector<Citizen*> citizens = {
-            new Citizen("Alice", 80.0, 10, 20, prDepartment),
-            new Citizen("Bob", 70.0, 12, 22, prDepartment),
-            new Citizen("Charlie", 60.0, 14, 24, prDepartment)
+            new Citizen("Alice",  &prDepartment),
+            new Citizen("Bob", &prDepartment),
+            new Citizen("Charlie",  &prDepartment)
         };
 
-         DeptOfHousing *housingDept = new DeptOfHousing(1000000);
         // Create commercial buildings
        housingDept->createCommercialBuilding("Office");
         housingDept->createCommercialBuilding("School");
         housingDept->createCommercialBuilding("Hospital");
 
-        // Create the recession command
-        RecessionCommand* recessionCommand;
+        // // Create the recession command
+        // RecessionCommand recessionCommand(financeDept, citizens,housingDept );
 
         // Execute the recession command
-        std::cout << "Executing Recession Command...\n";
-        recessionCommand->execute();
+        // std::cout << "Executing Recession Command...\n";
+        // recessionCommand.execute();
 
         // Cleanup
         for(auto& citizens : citizens)
@@ -756,7 +766,7 @@ void testGoToTrainStation()
         delete financeDept;
     }
 
-    */
+    
 
 
    void TestingDptUtilities()
@@ -783,7 +793,7 @@ void testGoToTrainStation()
 
     TaxManager *taxMan = new TaxManager();
     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
-    // DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
 
     housingDept->createResidentialBuilding("House");
     housingDept->createResidentialBuilding("Apartment");
@@ -792,7 +802,6 @@ void testGoToTrainStation()
     housingDept->createCommercialBuilding("Shop");
 
     // housingDept->displayAllBuildings();
-    DeptOfPR *prDept = new DeptOfPR(housingDept, wasteDept, financeDept);
 
     cout << endl;
     vector<Building *> buildings = housingDept->getBuildings();
