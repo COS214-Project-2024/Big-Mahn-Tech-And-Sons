@@ -700,71 +700,90 @@ void TestingDptUtilities()
     Water *water = new Water(10800);
     Power *power = new Power(17456.3);
 
-    PowerSupply powerDept(50000, 40000, power);
+    PowerSupply powerDept (50000, 40000, power);
     WaterSupply waterDept(20000, 500000, water);
     WasteManagement wasteDept(10050, 60000);
 
     Building *b1 = new House();
     Building *b2 = new Apartment();
 
-    // b2->consumeElectricity(20);
-    b2->consumeWater(30);
-    b1->clearWaste();
-    b1->powerCut();
-    b1->waterCut();
-
     powerDept.addBuilding(b1);
-    // powerDept.distributePower();
+    powerDept.addBuilding(b2);
+    waterDept.addBuilding(b1);
+    waterDept.addBuilding(b2);
+    wasteDept.addBuilding(b1);
+    wasteDept.addBuilding(b2);
+
+    cout << endl
+         << endl
+         << "======= TESTING WATER SUPPLY =========== " << endl;
+    b1->setWaterMeterBox(600);
+    // b2->setWaterMeterBox(700);
+    // b1->setElectricityUsage(100);
+    // b2->setElectricityUsage(200);
+    b1->consumeWater(50);
+    // waterDept.distributeWater();
+    waterDept.distributeWaterToBuilding(b1);
+    // waterDept.distributeWaterToBuilding(b2);
+    // waterDept.calculateWaterUsage();
+    // waterDept.increaseWaterCapacity();
+    // waterDept.getWaterCapacity();
+    cout << "Water in the meter box " << b1->getWaterMeterBox() ;
+    cout << "Budget for water: " << waterDept.getBudget() << endl;
+
+    cout << endl
+         << endl
+         << "======= TESTING POWERSUPPLY =========== " << endl;
+    
+    b1->setElectricityMeterBox(1000);
+    b2->setElectricityMeterBox(500);
+    b1->setElectricityUsage(120);
+    b2->setElectricityUsage(150);
+    //powerDept.distributePower();
+    powerDept.distributePowerToBuilding(b1);
+    powerDept.distributePowerToBuilding(b2);
     powerDept.calculatePowerUsage();
     powerDept.increasePowerCapacity();
-    powerDept.powerShutDown();
-    cout << "The capacity of the water department is " << powerDept.getPowerCapacity() << endl;
-
-    waterDept.addBuilding(b2);
-    waterDept.distributeWater();
-    cout << "Total usage is at " << waterDept.calculateWaterUsage() << " 000 liters" << endl;
-    waterDept.increaseWaterCapacity();
-    waterDept.waterShutDown();
-    cout << "The capacity of the water department is " << waterDept.getWaterCapacity() << endl;
-
-    wasteDept.addBuilding(b1);
-    wasteDept.collectWaste();
-    cout << wasteDept.calculateWasteProcessing() << "units of waste  processed" << endl;
-    wasteDept.expandWasteCapacity();
-    cout << wasteDept.getWasteCapacity() << " is the current waste capacity" << endl;
+    powerDept.getPowerCapacity();
 
     cout << endl
-         << " HANDLING REQUESTS " << endl;
-    // waterDept.setSuccessor();
+         << endl
+         << "======= TESTING WASTEMANAGEMENT =========== " << endl;
+    b1->setWaste(100);
+    b2->setWaste(50);
+    wasteDept.collectWaste();
+    wasteDept.collectWasteFromBuilding(b1);
+    wasteDept.collectWasteFromBuilding(b2);
+    wasteDept.getWasteCapacity();
+    wasteDept.getWasteManagementBudget();
+    wasteDept.calculateWasteProcessing();
+    wasteDept.expandWasteCapacity();
+
+     cout << endl
+         << " ********* HANDLING REQUESTS ********* " << endl;
     wasteDept.setSuccessor(&powerDept);
     powerDept.setSuccessor(&waterDept);
-    // waterDept.setSuccessor(NULL);
 
     cout << endl
+         << endl
          << " ============== HANDLING REQUEST 1================" << endl
          << endl;
-    // Example request for power within capacity
     Request req1("water", b2, 10);
-    // WaterSupply waterS("AguaCity2", 2000000, 500000, water2);
-    wasteDept.handleRequest(req1); // Should be handled by PowerSupply
-
+    wasteDept.handleRequest(req1); 
     cout << endl
          << " ============== HANDLING REQUEST 2================" << endl
          << endl;
-    // Example request for water within capacity
     Request req2("waste", b2, 80);
-    wasteDept.handleRequest(req2); // Passed from PowerSupply to WaterSupply
+    wasteDept.handleRequest(req2); 
 
     cout << endl
          << " ============== HANDLING REQUEST 3================" << endl
          << endl;
-    // Example request for power that exceeds capacity of PowerSupply, should be passed along
     Request req3("power", b2, 450);
-    wasteDept.handleRequest(req3); // PowerSupply can't handle, passed to WaterSupply if applicable
-
-    cout << " " << endl;
+    wasteDept.handleRequest(req3);
 
     std::cout << endl
               << endl
               << endl;
+              
 }

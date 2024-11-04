@@ -37,6 +37,9 @@ void WaterSupply::distributeWater()
         {
             it->consumeWater(usage);
             waterResource->useWater(usage);
+            double newDist = it->getWaterMeterBox() + usage;
+            it->setWaterMeterBox(newDist);
+            std::cout << "Distributed water : " << newDist << " to " << it->getName() << std::endl;
         }
         else
         {
@@ -54,14 +57,14 @@ void WaterSupply::distributeWaterToBuilding(Building *b)
     cout << "Water usage so far is : " << usage << endl;
     if (waterResource->getWaterAmount() >= usage)
     {
-        cout << "bah bah "<<endl;
-        b->consumeWater(usage); // this method exists in Building
         waterResource->useWater(usage);              // Decrease available water
-        std::cout << "Distributed water : " << usage << " to " << b->getName() << std::endl;
+        double newDist = b->getWaterMeterBox() + usage;
+        b->setWaterMeterBox(newDist);
+        std::cout << "Distributed water : " << newDist << " to " << b->getName() << std::endl;
     }
     else
     {
-        b->consumeWater(waterResource->getWaterAmount()); // Provide remaining water to the building
+        //b->consumeWater(waterResource->getWaterAmount()); // Provide remaining water to the building
         waterResource->useWater(waterResource->getWaterAmount()); // Decrease available water
         std::cout << "Only distributed water : " << waterCapacity << " to " << b->getName() << std::endl;
         waterCapacity = 0;                           // All water is consumed
@@ -115,7 +118,7 @@ bool WaterSupply::handleRequest(Request &req)
             std::cout << "WaterSupply handling request for " << req.getAmount()
                       << " units of power for " << req.getBuilding()->getName() << std::endl;
             waterCapacity -= req.getAmount();
-            this->budget -= 1000;
+            this->budget -= 10000;
             return true;
         }
         else

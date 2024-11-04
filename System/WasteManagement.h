@@ -48,6 +48,11 @@ public:
      */
     void collectWaste();
 
+     /**
+     * @brief Collects waste from a specific building.
+     */
+    void collectWasteFromBuilding(Building *building);
+
     /**
      * @brief Disposes of waste in landfills or dump locations.
      */

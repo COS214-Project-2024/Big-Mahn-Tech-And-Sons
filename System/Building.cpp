@@ -99,7 +99,7 @@ double Building::getWasteAmount() const { return wasteProduction; }
 void Building::setName(const std::string& newName) { name = newName; }
 void Building::setMaxCapacity(int capacity) { maxCapacity = capacity; }
 void Building::setElectricityMeterBox(double reading) { electricityMeterBox = reading; }
-void Building::setWaterMeterBox(double reading) { waterMeterBox = reading; cout << "WaterMeterBox is now : "<<waterMeterBox<<endl; }
+void Building::setWaterMeterBox(double reading) { waterMeterBox = reading; cout << "this right here : "<<waterMeterBox<<endl; }
 void Building::setElectricityUsage(double usage) { electricityUsage = usage; }
 void Building::setWaterUsage(double usage) { waterUsage = usage; }
 void Building::setWaste(double waste) { wasteProduction = waste; }

@@ -40,6 +40,21 @@ void WasteManagement::collectWaste()
     }
 }
 
+void WasteManagement::collectWasteFromBuilding(Building* building)
+{
+    double wasteAmount = building->getWasteAmount(); // Building has this method
+    if (wasteCapacity >= wasteAmount)
+    {
+        building->clearWaste(); // building has this method
+        wasteCapacity -= wasteAmount;
+        cout << "Collected " << wasteAmount << " units of waste from " << building->getName() << endl;
+    }
+    else
+    {
+        cout << "Not enough waste capacity to collect waste from " << building->getName() << endl;
+    }
+}
+
 double WasteManagement::getWasteCapacity()
 {
     return wasteCapacity;
