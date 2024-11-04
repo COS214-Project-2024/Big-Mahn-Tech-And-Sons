@@ -1,10 +1,5 @@
 // Class implementation of Factory Method - ConcreteCreator participant
 
-/**
- * @file IndustrialBuildingCreator.cpp
- * @brief Implements the IndustrialBuildingCreator class.
- */
-
 #include "IndustrialBuildingCreator.h"
 
 

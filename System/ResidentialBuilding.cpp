@@ -1,21 +1,12 @@
 // Class implementation of Factory Method - ConcreteProduct participant (classification)
 
-/**
- * @file ResidentialBuilding.cpp
- * @brief Implements the ResidentialBuilding class.
- */
-
 #include "ResidentialBuilding.h"
 
-/**
- * @brief Default constructor for ResidentialBuilding.
- */
+
 ResidentialBuilding::ResidentialBuilding()
     : Building() {}
 
-/**
- * @brief Displays statistics specific to residential buildings.
- */
+
 void ResidentialBuilding::displayStats() const {
     Building::displayStats();
 }
