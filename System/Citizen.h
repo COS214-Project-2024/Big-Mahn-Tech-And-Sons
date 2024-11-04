@@ -40,7 +40,7 @@ private:
     Building* workLocation; /**<Citizen's work location */
     Building* homeLocation; /**<Citizen's home location */
     DeptOfTransportation* DT;
-    // GoToCommand* go;
+    //GoToCommand* go;
     CitizenState* state; /**< Current state of the citizen */
     SatisfactionState* satisState; /**< Current satisfaction state of citizen */
     int age; /**< Age of the citizen */
@@ -67,7 +67,7 @@ public:
      * @note initialize health to 100
      * @note intilize statifaction level at 50
      */
-    Citizen(const std::string& nam, int x, int y, DeptOfPR* PR);
+    Citizen(const std::string& nam, DeptOfPR* PR);
 
     /**
      * @brief Destroys the Citizen object.
@@ -198,6 +198,7 @@ public:
      */
     void setModeOfTransport(ModeOfTrans* mode);
 
+    //void setGoToCommand(GoToCommand* command);
     /**
      * @brief Gets the current building location.
      * 
@@ -209,6 +210,11 @@ public:
     Building* getHomeLocation() const;
 
     Building* getWorkLocation() const;
+
+
+    void setWork(Building* building);
+    void setHome(Building* building);
+    void setCurrent(Building* building);
     /**
      * @brief Travels to another building.
      * 
@@ -216,7 +222,10 @@ public:
      * 
      * If @param destination is (work, home, school etc) execute the relevant command
      */
-     void travelTo(Building *destination , CityGrid *citi, int x, int y, const std::string &Building);
+     void travelTo(Building *destination);
+
+
+     void setCurrentLocation(Building* b ); 
 
 
 };

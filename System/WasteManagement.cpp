@@ -1,95 +1,121 @@
 #include "WasteManagement.h"
 
-WasteManagement::WasteManagement(string name, double budget, double capacity)
-    : DeptOfUtilities(name, budget), wasteCapacity(capacity) {}
-
-/**
- * @brief Adds a building to the waste management system.
- * @param building Pointer to the building to add.
- */
-void WasteManagement::addBuilding(Building *building)
+WasteManagement::WasteManagement(double budget, double capacity)
+    : DeptOfUtilities(budget), wasteCapacity(capacity), replenishedCapacity(capacity)
 {
-    buildings.push_back(building);
+    cout << "Waste Management Department created  with capacity : "
+         << capacity << " kilograms and budget: ZAR" << this->budget << endl
+         << endl;
 }
 
-/**
- * @brief Collects waste from various parts of the city.
- */
+WasteManagement::~WasteManagement()
+{
+    buildings.clear(); // Clear the vector
+}
+
 void WasteManagement::collectWaste()
 {
+    this->requestPR("building");
     for (Building *building : buildings)
     {
-        double wasteAmount = building->getWasteAmount(); // Assuming Building has this method
+        cout << "----------- Next building: " << building->getName() << " gets waste removed ----------- " << endl;
+
+        double wasteAmount = building->getWasteAmount(); // Building has this method
         if (wasteCapacity >= wasteAmount)
         {
-            building->clearWaste(); // Assuming Building has this method
+            building->clearWaste(); // building has this method
             wasteCapacity -= wasteAmount;
-            cout << "Collected " << wasteAmount << " units of waste from " << building->getName() << endl;
+            cout << "Cleared " << wasteAmount << " kilograms of waste from " << building->getName() << endl;
+            this->budget -= 500;
         }
         else
         {
             cout << "Not enough waste capacity to collect waste from " << building->getName() << endl;
         }
+        cout << endl;
     }
 }
 
-/**
- * @brief Disposes of waste in landfills or dump locations.
- */
-void WasteManagement::disposeWaste()
+void WasteManagement::collectWasteFromBuilding(Building *building)
 {
-    // Logic for disposing of waste
-    cout << "Waste has been disposed of in designated landfill sites." << endl;
-}
-
-/**
- * @brief Calculates the current amount of waste being processed.
- * @return The amount of waste being processed.
- */
-double WasteManagement::calculateWasteProcessing()
-{
-    double totalWaste = 0.0;
-    for (Building *building : buildings)
+    double wasteAmount = building->getWasteAmount(); // Building has this method
+    if (wasteCapacity >= wasteAmount)
     {
-        totalWaste += building->getWasteAmount(); // Assuming Building has this method
+        building->clearWaste(); // building has this method
+        wasteCapacity -= wasteAmount;
+        cout << "Cleared " << wasteAmount << " kilograms of waste from: " << building->getName() << endl;
+        this->budget -= 250;
     }
-    return totalWaste;
+    else
+    {
+        cout << "Not enough waste capacity to collect waste from " << building->getName() << endl;
+    }
 }
 
-/**
- * @brief Expands the waste handling capacity to accommodate city growth.
- */
-void WasteManagement::expandWasteCapacity()
+void WasteManagement::CollectWasteFromBuilding(Building *building, double incomingAmt)
 {
-    wasteCapacity += 500; // Example: Increase waste capacity by 500 units
-    cout << "Expanded waste capacity. New capacity: " << wasteCapacity << " units." << endl;
+    if (wasteCapacity >= incomingAmt)
+    {
+        building->clearWaste(); // building has this method
+        wasteCapacity -= incomingAmt;
+        cout << "Cleared " << incomingAmt << " kilogrmas of waste from: " << building->getName() << endl;
+        this->budget -= 250;
+    }
+    else
+    {
+        cout << "Not enough waste capacity to collect waste from " << building->getName() << endl;
+    }
 }
 
-/**
- * @brief Gets the current total waste handling capacity.
- * @return The current waste handling capacity available.
- */
 double WasteManagement::getWasteCapacity()
 {
     return wasteCapacity;
 }
 
-/**
- * @brief The handleRequest() function is the core method responsible for either processing
- *          the request or passing it along the chain to the next handler. WasteManagement
- *          checks if it can handle the request, if not, WasteManagement will pass it on
- *          to the next concreteHandler.
- */
+double WasteManagement::getWasteManagementBudget()
+{
+    return budget;
+}
+
+void WasteManagement::disposeWaste()
+{
+    cout << "Waste has been disposed of in designated landfill sites." << endl;
+    this->budget -= 300;
+    wasteCapacity = replenishedCapacity;
+    cout << "Waste capacity replenished back to: " << wasteCapacity << " kilograms" << endl;
+}
+
+double WasteManagement::calculateWasteProcessing() // Calculates the current amount of waste being processed.
+{
+    double totalWaste = 0.0;
+    this->requestPR("building");
+    for (Building *building : buildings)
+    {
+        if (building != NULL)
+        {
+            totalWaste += building->getWasteProduction(); // Assuming Building has this method
+        }
+    }
+    return totalWaste; // The amount of waste being processed.
+}
+
+void WasteManagement::expandWasteCapacity()
+{
+    wasteCapacity *= 1.5; // Example: Increase waste capacity by 500 units to accommodate city growth.
+    cout << "Expanded waste capacity. New capacity: " << wasteCapacity << " kilograms." << endl;
+}
+
 bool WasteManagement::handleRequest(Request &req)
 {
-    if (req.getType() == "Waste" && this->budget >= 10000)
+    if ((req.getType() == "waste" || req.getType() == "WASTE" || req.getType() == "Waste") && this->budget >= 1000)
     {
         double wasteAmount = req.getAmount();
-        if (wasteCapacity >= wasteAmount )
+        if (wasteCapacity >= wasteAmount)
         {
-            collectWaste();
-            std::cout << "WasteManagement: Collected and processed " << wasteAmount << " units of waste.\n";
-            this->budget -= 10000;
+            CollectWasteFromBuilding(req.getBuilding(), req.getAmount());
+            std::cout << "WasteManagement: Collected and processed " << wasteAmount << " kilograms of waste.\n";
+            disposeWaste();
+            this->budget -= 200;
             return true;
         }
         else
@@ -100,11 +126,13 @@ bool WasteManagement::handleRequest(Request &req)
     }
     else if (successor)
     {
-        successor->handleRequest(req);
+        if (successor != NULL)
+        {
+            return successor->handleRequest(req);
+        }
     }
     else
     {
-        std::cout << "WasteManagement: Request could not be handled.\n";
         return false;
     }
 }

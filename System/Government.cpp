@@ -22,17 +22,18 @@
 #include <cstdlib>
 #include <ctime>
 #include <limits>
+#include <random>
 
 Government::Government()
 {
    simulationIsActive = true;
    transport = DeptOfTransportation::getInstance();
    housing = new DeptOfHousing(2000000);
-   Water *water = new Water("Sparkling", 10000);
-   Power *power = new Power("Power", 100000);
-   DeptOfUtilities*  waterSup = new WaterSupply("Water", 5000.02, 100000, water);
-   DeptOfUtilities* powerSup = new PowerSupply("Eskom", 1539, 1335984, power);
-  DeptOfUtilities* wasteSup = new WasteManagement("Waste", 1432, 3544.02);
+   Water *water = new Water( 10000);
+   Power *power = new Power( 100000);
+   DeptOfUtilities*  waterSup = new WaterSupply(5000.02, 100000, water);
+   DeptOfUtilities* powerSup = new PowerSupply(1539, 1335984, power);
+  DeptOfUtilities* wasteSup = new WasteManagement( 1432, 3544.02);
 
    waterSup->setSuccessor(powerSup);
    powerSup->setSuccessor(wasteSup);
@@ -65,7 +66,7 @@ Government::Government()
    for (int i = 0; i < 5; i++)
    {
       string name = "ID: " + to_string(i) + " ";
-      Citizen *c1 = new Citizen(name, 1, 1, PR);
+      Citizen *c1 = new Citizen(name, PR);
 
       housing->getBuildings().at(i % 4)->addTenant(PR->getCitizen(i));
       // transport->add_Building()
@@ -105,7 +106,8 @@ void Government::addNewCitizens()
    for (int i = 0; i < newCitizensCount; i++)
    {
       std::string name = "NewCitizen_" + std::to_string(this->PR->numCitizens());
-      Citizen *newCitizen = new Citizen(name, 1, 1, PR);
+
+      Citizen *newCitizen = new Citizen(name, PR);
 
       // Assign the new citizen to an available building
       if (!housing->getBuildings().empty())
@@ -171,6 +173,8 @@ void Government::simulateYear() {
     // Age all citizens by one year
     for (int i = 0; i < PR->numCitizens(); i++) {
         PR->getCitizen(i)->getOlder();
+        PR->getCitizen(i)->Spend(1200);
+        
     }
 
     // Add new citizens at the end of each year
@@ -178,9 +182,53 @@ void Government::simulateYear() {
 
     std::cout << "Yearly simulation complete.\n";
 
+
 }
 void Government::handleCitizenNeeds()
 {
+}
+
+void Government::simulateDailyOperations() {
+    // Seed for randomness
+    /*
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_int_distribution<> commandDist(0, 4); // 0-4 for different commands, including "stay home"
+    std::uniform_int_distribution<> delayDist(0, 2);   // 0-2 hours delay to stagger citizen actions
+
+    // Possible commands for the day
+    /*
+    std::vector<std::function<void(Citizen*)>> commands = {
+        [](Citizen* c) { c->setGoToCommand(new GoToWork()); },
+        [](Citizen* c) { c->setGoToCommand(new GoToEnt()); },
+        [](Citizen* c) { c->setGoToCommand(new GoToLeisureCommand()); }, // Leisure activity
+        [](Citizen* c) { c->setGoToCommand(new GoHomeCommand()); },
+        nullptr // Represents staying home for the day
+    };
+*/
+
+/*
+    // Iterate through each citizen with varied activities
+    for (int i = 0; i < PR->numCitizens();i++) {
+        int commandIndex = commandDist(gen); // Randomly select a command
+        int delay = delayDist(gen);          // Random delay
+        Citizen* citizen = PR->getCitizen(i);
+
+        if (commands[commandIndex] != nullptr) {
+            // Assign the selected command and execute it after a delay
+            commands[commandIndex](citizen);
+            // Simulate delay before execution
+            std::this_thread::sleep_for(std::chrono::hours(delay));
+            citizen->go()->execute(citizen);
+            
+            // Cleanup if commands are dynamically allocated
+           // delete citizen->getGoTo();
+        } else {
+            // Citizen stays home; no command assigned
+            std::cout << citizen->getName() << " is staying home today.\n";
+        }
+    }
+    */
 }
 
 void Government::stopSim()

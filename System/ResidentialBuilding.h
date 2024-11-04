@@ -9,8 +9,7 @@
 #define RESIDENTIALBUILDING_H
 
 #include "Building.h"
-#include "TaxManager.h"
-
+class TaxManager;
 /**
  * @class ResidentialBuilding
  * @brief Abstract base class for residential buildings.
@@ -54,6 +53,18 @@ class ResidentialBuilding : public Building {
          * @return A pointer to a cloned ResidentialBuilding instance.
          */
         virtual Building* repairClone() const = 0;
+
+        /**
+         * @brief Calculates the tax amount for the residential building.
+         * 
+         * The tax amount is calculated based on the number of occupants 
+         * and the tax rate per occupant.
+         * 
+         * @return The calculated tax amount for the building.
+         */
+         virtual double calculateTax() const override;
+
+
 };
 
 #endif // RESIDENTIALBUILDING_H

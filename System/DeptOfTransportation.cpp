@@ -4,7 +4,7 @@ DeptOfTransportation* DeptOfTransportation::instance = nullptr;
 
 DeptOfTransportation::DeptOfTransportation()
 {
-    cityGrid = new CityGrid(20,20);
+    cityGrid = new CityGrid(30,30);
 }
 
 DeptOfTransportation::~DeptOfTransportation()
@@ -86,7 +86,7 @@ const vector<pair<int,int>> DeptOfTransportation::add_Building(int length, int w
     return result;
 }
 
-bool DeptOfTransportation::remove_Building(vector<pair<int,int>>& buidling)
+bool DeptOfTransportation::remove_Building(vector<pair<int,int>> buidling)
 {
     if(cityGrid->removeBuilding(buidling))
     {
@@ -99,5 +99,5 @@ bool DeptOfTransportation::remove_Building(vector<pair<int,int>>& buidling)
 
 int DeptOfTransportation::get_distance(Building* citizen_current_building, Building* citizen_destination_building)
 {
-    return cityGrid->getDistance(citizen_current_building,citizen_destination_building);
+    return 1+cityGrid->getDistance(citizen_current_building,citizen_destination_building);  // added 1 , because of the off by 1 error.
 }

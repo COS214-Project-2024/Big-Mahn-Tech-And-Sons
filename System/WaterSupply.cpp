@@ -1,133 +1,159 @@
 #include "WaterSupply.h"
 
-WaterSupply::WaterSupply(string name, double budget, double capacity, Water *waterResource)
-    : DeptOfUtilities(name, budget), waterCapacity(capacity), waterResource(waterResource) {}
-
-/**
- * @brief Adds a building to the water supply system.
- * @param building Pointer to the building to add.
- */
-void WaterSupply::addBuilding(Building *building)
+WaterSupply::WaterSupply(double budget, double capacity, Water *waterResource)
+    : DeptOfUtilities(budget), waterCapacity(capacity), waterResource(waterResource), budg2(budget)
 {
-    buildings.push_back(building);
+    cout << "Water Supply Department created with capacity : " << capacity
+         << " kiloLiters and budget: ZAR" << this->budg2 << endl
+         << endl;
 }
 
-/**
- * @brief Destructor for WaterSupply.
- * This destructor releases any dynamically allocated resources.
- */
 WaterSupply::~WaterSupply()
 {
-    // // Delete the water resource if it was dynamically allocated
-    // if (waterResource)
-    // {
-    //     delete waterResource;
-    // }
-
-    // // Iterate through the vector of buildings and delete each one if it was dynamically allocated
-    // for (Building *building : buildings)
-    // {
-    //     if (building)
-    //     {
-    //         delete building;
-    //     }
-    // }
-    // // Clear the vector to ensure it does not hold dangling pointers
-    // buildings.clear();
+    if (waterResource)
+    {
+        delete waterResource;
+    }
 }
 
-/**
- * @brief Distributes water to various sectors of the city based on demand.
- */
 void WaterSupply::distributeWater()
 {
-    for (auto &building : buildings)
+    this->requestPR("building");
+    for (Building *it : buildings)
     {
-        double usage = building->getWaterUsage();
-        if (waterResource->getAmount() >= usage)
+        if (it != NULL)
         {
-            building->consumeWater(usage);
-            waterResource->use(usage);
-        }
-        else
-        {
-            building->consumeWater(waterResource->getAmount());
-            waterResource->use(waterResource->getAmount());
-            break;
+            cout << "----------- Next building " << it->getName() << " gets water ----------- " << endl;
+
+            double usage = it->getWaterUsage(); // this method exists in Building
+            cout << "Water usage so far is : " << usage << " kiloLiters"<< endl;
+            if (waterResource->getWaterAmount() >= usage)
+            {
+                waterResource->useWater(usage); // Decrease available water
+
+                double newDist = it->getWaterMeterBox() + usage;
+                it->setWaterMeterBox(newDist);
+                std::cout << "Distributed water : " << it->getWaterUsage() << " kiloLiters to " << it->getName() << std::endl;
+            }
+            else
+            {
+                waterResource->useWater(waterResource->getWaterAmount()); // Decrease available water
+                std::cout << "Only distributed water : " << waterCapacity << " kiloLiters to " << it->getName() << std::endl;
+                waterCapacity = 0;
+                this->budget -= 500; // All water is consumed
+            }
         }
     }
 }
 
-/**
- * @brief Calculates the current water usage based on consumption rates.
- * @return The amount of water used.
- */
+void WaterSupply::distributeWaterToBuilding(Building *b)
+{
+    double usage = b->getWaterUsage(); // this method exists in Building
+    cout << "Water usage for building : " << b->getName() << ": " << usage << " kiloLiters" << endl;
+    if (waterResource->getWaterAmount() >= usage)
+    {
+
+        waterResource->useWater(usage); // Decrease available water
+        double newDist = b->getWaterMeterBox() + usage;
+        b->setWaterMeterBox(newDist);
+        this->budget -= 300;
+
+        std::cout << "Distributed water : " << b->getWaterUsage() << " kiloLiters to " << b->getName() << std::endl;
+    }
+    else
+    {
+        waterResource->useWater(waterResource->getWaterAmount()); // Decrease available water
+        std::cout << "Only distributed water : " << waterCapacity << "  kiloLiters to " << b->getName() << std::endl;
+        waterCapacity = 0; // All water is consumed
+    }
+}
+
+void WaterSupply::distributeWaterToBuilding(Building *b, double incomingAmt)
+{
+    double usage = b->getWaterUsage(); // this method exists in Building
+    if (incomingAmt <= usage)
+    {
+        double newDist = b->getWaterMeterBox() + incomingAmt;
+        b->setWaterMeterBox(newDist);
+        std::cout << "Distributed water : " << incomingAmt << " kiloLiters to " << b->getName() << std::endl;
+        this->budget -= 300;
+    }
+    else
+    {
+        std::cout << "Failed to distribute " << incomingAmt << " kiloLiters because the water amount exceeds the meterBox capacity for " << b->getName() << std::endl;
+        cout << "The current water usage for " << b->getName() << " kiloLiters is only " << usage << endl;
+    }
+}
+
 double WaterSupply::calculateWaterUsage()
 {
     double totalUsage = 0.0;
-    for (Building *building : buildings)
+    this->requestPR("building");
+    for (Building *it : buildings)
     {
-        totalUsage += building->getWaterUsage(); // Assume this method exists
+        if (it != NULL)
+        {
+            totalUsage += it->getWaterUsage(); // Assume this method exists
+        }
     }
     return totalUsage;
 }
 
-/**
- * @brief Shuts down the water supply for water cut.
- */
 void WaterSupply::waterShutDown()
 {
-    for (Building *building : buildings)
+    this->requestPR("building");
+    for (Building *it : buildings)
     {
-        building->waterCut(); // Assuming Building has this method
+        if (it != NULL)
+        {
+            it->waterCut(); // Assuming Building has this method
+        }
     }
     cout << "Water supply has been shut down for all buildings." << endl;
 }
 
-/**
- * @brief Increases the water storage capacity of the system.
- */
 void WaterSupply::increaseWaterCapacity()
 {
     waterCapacity *= 1.5; // Increase capacity by 50%, might change as citizens  demand more
-    // TODO : Implement logic to increase storage capacity
-    cout << "Increased water storage capacity. New capacity: " << waterCapacity << " liters." << endl;
+    cout << "Increased water storage capacity. New capacity: " << waterCapacity << " kiloLiters." << endl;
 }
 
-/**
- * @brief Gets the current total water capacity.
- * @return The current water capacity available.
- */
 double WaterSupply::getWaterCapacity()
 {
     return waterCapacity;
 }
 
-/**
- * @brief The handleRequest() function is the core method responsible for either processing
- *          the request or passing it along the chain to the next handler. WaterSupply
- *          checks if it can handle the request, if not, WaterSupply will pass it on
- *          to the next concreteHandler.
- */
-bool WaterSupply::handleRequest(Request &req) {
-    if (req.getType() == "Water" && this->budget >= 10000) {
-        double demand = req.getAmount();
-        if (waterCapacity >= demand ) {
-            distributeWater();
-            std::cout << "WaterSupply: Distributed " << demand << " units of water.\n";
-            this->budget -= 10000;
+double WaterSupply::getBudget()
+{
+    return budg2;
+}
+bool WaterSupply::handleRequest(Request &req)
+{
+    if ((req.getType() == "water" || req.getType() == "WATER" || req.getType() == "Water") && this->getBudget() >= 1000)
+    {
+        if (req.getAmount() <= waterCapacity)
+        {
+            std::cout << "WaterSupply handling request for " << req.getAmount()
+                      << " kiloLiters of water for " << req.getBuilding()->getName() << std::endl;
+            distributeWaterToBuilding(req.getBuilding(), req.getAmount());
+            waterCapacity -= req.getAmount();
             return true;
-        } else {
+        }
+        else
+        {
             std::cout << "WaterSupply: Insufficient water capacity.\n";
             return false;
         }
-    } 
-    else if (successor) 
+    }
+    else if (successor)
     {
-        successor->handleRequest(req);
-    } else 
+        if (successor != NULL)
+        {
+            return successor->handleRequest(req);
+        }
+    }
+    else
     {
-        std::cout << "WaterSupply: Request could not be handled.\n";
         return false;
     }
 }

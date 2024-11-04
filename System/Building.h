@@ -18,6 +18,7 @@
 
 class Citizen; ///< Forward declaration of Citizen class
 class TaxManager;
+class DeptOfPR;
 
 /**
  * @class Building
@@ -26,7 +27,7 @@ class TaxManager;
  * This class provides the common attributes and functionalities for all building types,
  * including managing tenants, utilities, and grid placement.
  */
-class Building {
+class Building : public Element{
 
     protected:
         std::string name;               ///< Name of the building
@@ -45,6 +46,11 @@ class Building {
         bool powerSupply;               ///< Power supply status
         std::vector<std::pair<int, int>> gridCoordinates; ///< Grid coordinates
         std::string type;               ///< Type of Building
+        DeptOfPR*  PR; /**<Reference to government's PPR */
+        double citizenTax;              ///< Tax rate for citizens
+        double businessTax;             ///< Tax rate for businesses
+
+        
 
     public:
         Building();  ///< Default constructor
@@ -57,8 +63,9 @@ class Building {
         std::vector<std::pair<int, int>> getGridCoordinates() const; ///< Gets grid coordinates
         void setCoordinates(const std::vector<std::pair<int, int>> &coords); ///< Sets grid coordinates
         virtual void accept(TaxManager *visitor) = 0;    ///< Accepts visitors for the visitor pattern
+        virtual double calculateTax() const = 0;  ///< Pure virtual function for tax calculation
         virtual void displayStats() const;                 ///< Displays the statistics of the building
-
+        void notifyPR();
         // Getters
         std::string getName() const;
         int getMaxCapacity() const;
@@ -75,6 +82,8 @@ class Building {
         int getCurrentOccupants() const; ///< Gets the current number of occupants
         std::string getType() const;  ///< Gets the type of the building
         double getWasteAmount() const; ///< Retrieves the current waste amount
+        double getCitizenTax() const; ///< Gets the citizen tax rate
+        double getBusinessTax() const; ///< Gets the business tax rate
 
         // Setters
         void setName(const std::string &name);
@@ -86,6 +95,8 @@ class Building {
         void setWaste(double waste);
         void setWidth(int width);
         void setLength(int length);
+        void setCitizenTax(double taxRate); ///< Sets the citizen tax rate
+        void setBusinessTax(double taxRate); ///< Sets the business tax rate
 
         virtual void consumeWater(double amount);      ///< Consumes water based on the specified amount
         virtual void consumeElectricity(double amount); ///< Consumes electricity based on the specified amount

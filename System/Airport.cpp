@@ -3,10 +3,7 @@
 #include "Airport.h"
 #include <iostream>
 
-/**
- * @brief Default Constructor for Airport.
- * Initializes the airport with specific default values.
- */
+
 Airport::Airport()
     : IndustrialBuilding() {
     name = "OR Tambo International Airport";
@@ -22,28 +19,25 @@ Airport::Airport()
     type = "Airport";
 }
 
-/**
- * @brief Displays stats specific to the airport.
- */
+
 void Airport::displayStats() const {
     IndustrialBuilding::displayStats();  // Call base class method.
 }
 
-/**
- * @brief Accepts a visitor for applying the Visitor pattern.
- * @param visitor A pointer to the TaxManager object.
- * Displays that airports are non-taxable.
- */
+
 void Airport::accept(TaxManager* visitor) {
     std::cout << "No tax applied to airport: " << getName() 
               << ". Airports are non-taxable." << std::endl;
 }
 
-/**
- * @brief Clones the airport for repair purposes.
- * @return A pointer to the cloned Airport object.
- */
+
 Building* Airport::repairClone() const {
+    std::cout << "Prototype: Cloning an Airport building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing industrial building (Airport): " << getName() << "\n";
     return new Airport(*this);
+}
+
+double Airport::calculateTax() const
+{
+   return 0.0;
 }

@@ -1,16 +1,9 @@
 // Class implementation of Factory Method - ConcreteProduct participant (subtype)
 
-/**
- * @file Apartment.cpp
- * @brief Implementation of the Apartment class.
- */
-
 #include "Apartment.h"
 #include <iostream>
 
-/**
- * @brief Constructs an Apartment with default values specific to urban apartments.
- */
+
 Apartment::Apartment()
     : ResidentialBuilding() {
     name = "Urban Apartment";
@@ -26,27 +19,19 @@ Apartment::Apartment()
     type = "Apartment";
 }
 
-/**
- * @brief Displays the statistics of the apartment, including inherited and specific attributes.
- */
+
 void Apartment::displayStats() const {
     ResidentialBuilding::displayStats();  // Display general stats for residential buildings
 }
 
-/**
- * @brief Accepts a TaxManager visitor for performing tax-related operations.
- * @param visitor A pointer to the TaxManager visitor.
- */
+
 void Apartment::accept(TaxManager* visitor) {
-    visitor->visitResidentialBuilding(this);
+  //  visitor->visitResidentialBuilding(this);
 }
 
-/**
- * @brief Clones the Apartment for repair, supporting restoration after damage.
- * @return Building* A pointer to the newly cloned Apartment instance.
- */
+
 Building* Apartment::repairClone() const {
+    std::cout << "Prototype: Cloning an Apartment building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing residential building (Apartment): " << getName() << "\n";
     return new Apartment(*this);
 }
-
