@@ -27,19 +27,21 @@ void Resource::removeAmount(double removalAmount) {
 
 
 
-void Resource::visitCommercialBuilding(CommercialBuilding* building) 
+bool Resource::visitCommercialBuilding(CommercialBuilding* building) 
 {
     //
+    return true;
 }
 
 
-void Resource::visitResidentialBuilding(Building* building) 
+bool Resource::visitResidentialBuilding(Building* building) 
 {
     //
+    return true;
 }
 
 
-void Resource::visitBudget(Budget* budget , double amount) 
+bool Resource::visitBudget(Budget* budget , double amount) 
 {
-    
+    return true;
 }

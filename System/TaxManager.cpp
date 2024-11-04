@@ -50,7 +50,7 @@ double TaxManager::calculateBusinessTax(CommercialBuilding *building)
 //     collect(building);
 // }
 
-void TaxManager::visitBuildingForCitizen(Building *building)
+bool TaxManager::visitBuildingForCitizen(Building *building)
 {
     
     ResidentialBuilding *residentialBuilding = dynamic_cast<ResidentialBuilding *>(building);
@@ -65,14 +65,16 @@ void TaxManager::visitBuildingForCitizen(Building *building)
                 citizen->Spend(tax);
             }
         }
+        return true;
     }
     else
     {
         std::cerr << "Error: Building is not a residential building." << std::endl;
+        return false;
     }
 }
 
-void TaxManager::visitBuildingForBuilding(Building *building)
+bool TaxManager::visitBuildingForBuilding(Building *building)
 {
     
     CommercialBuilding *commercialBuilding = dynamic_cast<CommercialBuilding *>(building);
@@ -81,19 +83,26 @@ void TaxManager::visitBuildingForBuilding(Building *building)
         double tax = calculateBusinessTax(commercialBuilding);
         collectedTaxes += tax;
         commercialBuilding->setAnnualRevenue(commercialBuilding->getAnnualRevenue() - tax); // Deduct from revenue
+        return true;
     }
     else
     {
         std::cerr << "Error: Building is not a commercial building." << std::endl;
+        return false;
     }
 }
 
-void TaxManager::visitBudget(Budget *budget)
+bool TaxManager::visitBudget(Budget *budget)
 {
-
+    if(budget)
+    {
     budget->addFunds(collectedTaxes);
     std::cout << "Added " << collectedTaxes << " to the budget." << std::endl;
     collectedTaxes = 0;
+    return true;
+    }
+
+    return false;
 }
 
 // void TaxManager::applyCollectedTaxesToBudget(Budget &budget)

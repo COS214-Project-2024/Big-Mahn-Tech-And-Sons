@@ -48,9 +48,9 @@ public:
     double setTaxCollected(double collectedTaxes);
  
     // Visitor methods
-     void visitBuildingForCitizen(Building* building); // New method for citizens
-    void visitBuildingForBuilding(Building* building); // New method for buildings
-    virtual void visitBudget(Budget* budget);
+     bool visitBuildingForCitizen(Building* building); // New method for citizens
+    bool visitBuildingForBuilding(Building* building); // New method for buildings
+    bool  visitBudget(Budget* budget);
     
     
     void collect(ResidentialBuilding* building);

@@ -1,0 +1,1074 @@
+==23209== Memcheck, a memory error detector
+==23209== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==23209== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==23209== Command: ./unit
+==23209== 
+==23209== Invalid free() / delete / delete[] / realloc()
+==23209==    at 0x484B8AF: operator delete(void*) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1835D3: PowerSupply::~PowerSupply() (PowerSupply.cpp:15)
+==23209==    by 0x130D5D: DOCTEST_ANON_FUNC_63() (Test.cpp:712)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Address 0x1ffefff560 is on thread 1's stack
+==23209==  in frame #2, created by DOCTEST_ANON_FUNC_63() (Test.cpp:668)
+==23209== 
+==23209== Invalid write of size 8
+==23209==    at 0x142589: DeptOfUtilities::~DeptOfUtilities() (DeptOfUtilities.h:31)
+==23209==    by 0x1320A8: DOCTEST_ANON_FUNC_67() (Test.cpp:810)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Address 0x4e0ac00 is 0 bytes inside a block of size 80 free'd
+==23209==    at 0x484B8AF: operator delete(void*) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x132094: DOCTEST_ANON_FUNC_67() (Test.cpp:809)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Block was alloc'd at
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13196D: DOCTEST_ANON_FUNC_67() (Test.cpp:770)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== Invalid read of size 8
+==23209==    at 0x1465C5: std::vector<Building*, std::allocator<Building*> >::~vector() (stl_vector.h:680)
+==23209==    by 0x14259B: DeptOfUtilities::~DeptOfUtilities() (DeptOfUtilities.h:31)
+==23209==    by 0x1320A8: DOCTEST_ANON_FUNC_67() (Test.cpp:810)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Address 0x4e0ac28 is 40 bytes inside a block of size 80 free'd
+==23209==    at 0x484B8AF: operator delete(void*) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x132094: DOCTEST_ANON_FUNC_67() (Test.cpp:809)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Block was alloc'd at
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13196D: DOCTEST_ANON_FUNC_67() (Test.cpp:770)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== Invalid read of size 8
+==23209==    at 0x1465CD: std::vector<Building*, std::allocator<Building*> >::~vector() (stl_vector.h:680)
+==23209==    by 0x14259B: DeptOfUtilities::~DeptOfUtilities() (DeptOfUtilities.h:31)
+==23209==    by 0x1320A8: DOCTEST_ANON_FUNC_67() (Test.cpp:810)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Address 0x4e0ac20 is 32 bytes inside a block of size 80 free'd
+==23209==    at 0x484B8AF: operator delete(void*) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x132094: DOCTEST_ANON_FUNC_67() (Test.cpp:809)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Block was alloc'd at
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13196D: DOCTEST_ANON_FUNC_67() (Test.cpp:770)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== Invalid read of size 8
+==23209==    at 0x14D9F8: std::_Vector_base<Building*, std::allocator<Building*> >::~_Vector_base() (stl_vector.h:336)
+==23209==    by 0x1465E6: std::vector<Building*, std::allocator<Building*> >::~vector() (stl_vector.h:683)
+==23209==    by 0x14259B: DeptOfUtilities::~DeptOfUtilities() (DeptOfUtilities.h:31)
+==23209==    by 0x1320A8: DOCTEST_ANON_FUNC_67() (Test.cpp:810)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Address 0x4e0ac30 is 48 bytes inside a block of size 80 free'd
+==23209==    at 0x484B8AF: operator delete(void*) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x132094: DOCTEST_ANON_FUNC_67() (Test.cpp:809)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Block was alloc'd at
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13196D: DOCTEST_ANON_FUNC_67() (Test.cpp:770)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== Invalid read of size 8
+==23209==    at 0x14DA00: std::_Vector_base<Building*, std::allocator<Building*> >::~_Vector_base() (stl_vector.h:336)
+==23209==    by 0x1465E6: std::vector<Building*, std::allocator<Building*> >::~vector() (stl_vector.h:683)
+==23209==    by 0x14259B: DeptOfUtilities::~DeptOfUtilities() (DeptOfUtilities.h:31)
+==23209==    by 0x1320A8: DOCTEST_ANON_FUNC_67() (Test.cpp:810)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Address 0x4e0ac20 is 32 bytes inside a block of size 80 free'd
+==23209==    at 0x484B8AF: operator delete(void*) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x132094: DOCTEST_ANON_FUNC_67() (Test.cpp:809)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Block was alloc'd at
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13196D: DOCTEST_ANON_FUNC_67() (Test.cpp:770)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== Invalid read of size 8
+==23209==    at 0x14DA14: std::_Vector_base<Building*, std::allocator<Building*> >::~_Vector_base() (stl_vector.h:335)
+==23209==    by 0x1465E6: std::vector<Building*, std::allocator<Building*> >::~vector() (stl_vector.h:683)
+==23209==    by 0x14259B: DeptOfUtilities::~DeptOfUtilities() (DeptOfUtilities.h:31)
+==23209==    by 0x1320A8: DOCTEST_ANON_FUNC_67() (Test.cpp:810)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Address 0x4e0ac20 is 32 bytes inside a block of size 80 free'd
+==23209==    at 0x484B8AF: operator delete(void*) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x132094: DOCTEST_ANON_FUNC_67() (Test.cpp:809)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Block was alloc'd at
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13196D: DOCTEST_ANON_FUNC_67() (Test.cpp:770)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== Invalid free() / delete / delete[] / realloc()
+==23209==    at 0x484B8AF: operator delete(void*) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1320B0: DOCTEST_ANON_FUNC_67() (Test.cpp:810)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Address 0x4e0ac00 is 0 bytes inside a block of size 80 free'd
+==23209==    at 0x484B8AF: operator delete(void*) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x132094: DOCTEST_ANON_FUNC_67() (Test.cpp:809)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209==  Block was alloc'd at
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13196D: DOCTEST_ANON_FUNC_67() (Test.cpp:770)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+Error: Building is not a commercial building.
+Error: Building is not a commercial building.
+Error: Building is not a commercial building.
+Error: Building is not a residential building.
+Error: Building is not a residential building.
+Error: Building is not a residential building.
+Error: Building is not a residential building.
+Error: Building is not a residential building.
+Error: Building is not a commercial building.
+==23209== 
+==23209== HEAP SUMMARY:
+==23209==     in use at exit: 17,594 bytes in 201 blocks
+==23209==   total heap usage: 2,585 allocs, 2,386 frees, 345,099 bytes allocated
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 1 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12805E: DOCTEST_ANON_FUNC_14() (Test.cpp:52)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 2 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x128086: DOCTEST_ANON_FUNC_14() (Test.cpp:53)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 3 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x15A449: __gnu_cxx::new_allocator<Citizen*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==23209==    by 0x157BFF: std::allocator_traits<std::allocator<Citizen*> >::allocate(std::allocator<Citizen*>&, unsigned long) (alloc_traits.h:464)
+==23209==    by 0x154817: std::_Vector_base<Citizen*, std::allocator<Citizen*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==23209==    by 0x16302E: void std::vector<Citizen*, std::allocator<Citizen*> >::_M_realloc_insert<Citizen* const&>(__gnu_cxx::__normal_iterator<Citizen**, std::vector<Citizen*, std::allocator<Citizen*> > >, Citizen* const&) (vector.tcc:440)
+==23209==    by 0x162F13: std::vector<Citizen*, std::allocator<Citizen*> >::push_back(Citizen* const&) (stl_vector.h:1198)
+==23209==    by 0x179A2A: DeptOfPR::addCitizen(Citizen*) (DeptOfPR.cpp:110)
+==23209==    by 0x1661FA: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, DeptOfPR*) (Citizen.cpp:23)
+==23209==    by 0x12820C: DOCTEST_ANON_FUNC_14() (Test.cpp:64)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 4 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x128C16: DOCTEST_ANON_FUNC_16() (Test.cpp:85)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 5 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x129752: DOCTEST_ANON_FUNC_18() (Test.cpp:115)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 6 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AA8B: DOCTEST_ANON_FUNC_25() (Test.cpp:192)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 7 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AAB3: DOCTEST_ANON_FUNC_25() (Test.cpp:193)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 8 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AEEA: DOCTEST_ANON_FUNC_27() (Test.cpp:212)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 9 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x178889: __gnu_cxx::new_allocator<Building*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==23209==    by 0x17862B: std::allocator_traits<std::allocator<Building*> >::allocate(std::allocator<Building*>&, unsigned long) (alloc_traits.h:464)
+==23209==    by 0x1783AD: std::_Vector_base<Building*, std::allocator<Building*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==23209==    by 0x177CA8: void std::vector<Building*, std::allocator<Building*> >::_M_realloc_insert<Building* const&>(__gnu_cxx::__normal_iterator<Building**, std::vector<Building*, std::allocator<Building*> > >, Building* const&) (vector.tcc:440)
+==23209==    by 0x17774F: std::vector<Building*, std::allocator<Building*> >::push_back(Building* const&) (stl_vector.h:1198)
+==23209==    by 0x17664A: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:40)
+==23209==    by 0x17685E: DeptOfHousing::createResidentialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:54)
+==23209==    by 0x179743: DeptOfPR::notifyHousingToBuild(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (DeptOfPR.cpp:80)
+==23209==    by 0x12B009: DOCTEST_ANON_FUNC_27() (Test.cpp:219)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 10 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B33B: DOCTEST_ANON_FUNC_29() (Test.cpp:226)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 11 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B363: DOCTEST_ANON_FUNC_29() (Test.cpp:227)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 12 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x178889: __gnu_cxx::new_allocator<Building*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==23209==    by 0x17862B: std::allocator_traits<std::allocator<Building*> >::allocate(std::allocator<Building*>&, unsigned long) (alloc_traits.h:464)
+==23209==    by 0x1783AD: std::_Vector_base<Building*, std::allocator<Building*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==23209==    by 0x177CA8: void std::vector<Building*, std::allocator<Building*> >::_M_realloc_insert<Building* const&>(__gnu_cxx::__normal_iterator<Building**, std::vector<Building*, std::allocator<Building*> > >, Building* const&) (vector.tcc:440)
+==23209==    by 0x17774F: std::vector<Building*, std::allocator<Building*> >::push_back(Building* const&) (stl_vector.h:1198)
+==23209==    by 0x17664A: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:40)
+==23209==    by 0x17685E: DeptOfHousing::createResidentialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:54)
+==23209==    by 0x12B4C9: DOCTEST_ANON_FUNC_29() (Test.cpp:238)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 13 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B82C: DOCTEST_ANON_FUNC_31() (Test.cpp:257)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 14 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BA85: DOCTEST_ANON_FUNC_33() (Test.cpp:273)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 15 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BD18: DOCTEST_ANON_FUNC_35() (Test.cpp:293)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 16 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1318A1: DOCTEST_ANON_FUNC_67() (Test.cpp:765)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 17 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1318C9: DOCTEST_ANON_FUNC_67() (Test.cpp:766)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are indirectly lost in loss record 18 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x15A449: __gnu_cxx::new_allocator<Citizen*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==23209==    by 0x157BFF: std::allocator_traits<std::allocator<Citizen*> >::allocate(std::allocator<Citizen*>&, unsigned long) (alloc_traits.h:464)
+==23209==    by 0x154817: std::_Vector_base<Citizen*, std::allocator<Citizen*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==23209==    by 0x16302E: void std::vector<Citizen*, std::allocator<Citizen*> >::_M_realloc_insert<Citizen* const&>(__gnu_cxx::__normal_iterator<Citizen**, std::vector<Citizen*, std::allocator<Citizen*> > >, Citizen* const&) (vector.tcc:440)
+==23209==    by 0x162F13: std::vector<Citizen*, std::allocator<Citizen*> >::push_back(Citizen* const&) (stl_vector.h:1198)
+==23209==    by 0x179A2A: DeptOfPR::addCitizen(Citizen*) (DeptOfPR.cpp:110)
+==23209==    by 0x1661FA: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, DeptOfPR*) (Citizen.cpp:23)
+==23209==    by 0x131D04: DOCTEST_ANON_FUNC_67() (Test.cpp:789)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are definitely lost in loss record 19 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x128BEE: DOCTEST_ANON_FUNC_16() (Test.cpp:84)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are definitely lost in loss record 20 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12972A: DOCTEST_ANON_FUNC_18() (Test.cpp:114)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are definitely lost in loss record 21 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x130F66: DOCTEST_ANON_FUNC_65() (Test.cpp:722)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 8 bytes in 1 blocks are definitely lost in loss record 22 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x130F8E: DOCTEST_ANON_FUNC_65() (Test.cpp:723)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 24 bytes in 3 blocks are indirectly lost in loss record 23 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x129D1A: DOCTEST_ANON_FUNC_20() (Test.cpp:146)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 24 bytes in 3 blocks are indirectly lost in loss record 24 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13A739: DOCTEST_ANON_FUNC_90() (Test.cpp:1134)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 24 bytes in 3 blocks are indirectly lost in loss record 25 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13A761: DOCTEST_ANON_FUNC_90() (Test.cpp:1135)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 24 bytes in 3 blocks are indirectly lost in loss record 26 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x166212: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, DeptOfPR*) (Citizen.cpp:25)
+==23209==    by 0x13A8C7: DOCTEST_ANON_FUNC_90() (Test.cpp:1144)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 24 bytes in 3 blocks are indirectly lost in loss record 27 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1662CF: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, DeptOfPR*) (Citizen.cpp:34)
+==23209==    by 0x13A8C7: DOCTEST_ANON_FUNC_90() (Test.cpp:1144)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 24 bytes in 3 blocks are indirectly lost in loss record 28 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x166212: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, DeptOfPR*) (Citizen.cpp:25)
+==23209==    by 0x13A944: DOCTEST_ANON_FUNC_90() (Test.cpp:1145)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 24 bytes in 3 blocks are indirectly lost in loss record 29 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1662CF: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, DeptOfPR*) (Citizen.cpp:34)
+==23209==    by 0x13A944: DOCTEST_ANON_FUNC_90() (Test.cpp:1145)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 24 bytes in 3 blocks are definitely lost in loss record 30 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x129CF2: DOCTEST_ANON_FUNC_20() (Test.cpp:145)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 31 bytes in 1 blocks are indirectly lost in loss record 31 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x49AF0BD: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==23209==    by 0x49B025D: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==23209==    by 0x17BCDA: Factory::Factory() (Factory.cpp:9)
+==23209==    by 0x180F06: IndustrialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (IndustrialBuildingCreator.cpp:9)
+==23209==    by 0x1765B9: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:33)
+==23209==    by 0x1769F2: DeptOfHousing::createIndustrialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:64)
+==23209==    by 0x12DC21: DOCTEST_ANON_FUNC_45() (Test.cpp:532)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 31 bytes in 1 blocks are indirectly lost in loss record 32 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x49AF0BD: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==23209==    by 0x49B025D: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==23209==    by 0x17BCDA: Factory::Factory() (Factory.cpp:9)
+==23209==    by 0x180F06: IndustrialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (IndustrialBuildingCreator.cpp:9)
+==23209==    by 0x1765B9: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:33)
+==23209==    by 0x1769F2: DeptOfHousing::createIndustrialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:64)
+==23209==    by 0x12E1E0: DOCTEST_ANON_FUNC_49() (Test.cpp:543)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 31 bytes in 1 blocks are indirectly lost in loss record 33 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x49AF0BD: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==23209==    by 0x49B025D: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==23209==    by 0x17BCDA: Factory::Factory() (Factory.cpp:9)
+==23209==    by 0x180F06: IndustrialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (IndustrialBuildingCreator.cpp:9)
+==23209==    by 0x1765B9: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:33)
+==23209==    by 0x1769F2: DeptOfHousing::createIndustrialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:64)
+==23209==    by 0x12E500: DOCTEST_ANON_FUNC_51() (Test.cpp:560)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 32 bytes in 1 blocks are indirectly lost in loss record 34 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x15A449: __gnu_cxx::new_allocator<Citizen*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==23209==    by 0x157BFF: std::allocator_traits<std::allocator<Citizen*> >::allocate(std::allocator<Citizen*>&, unsigned long) (alloc_traits.h:464)
+==23209==    by 0x154817: std::_Vector_base<Citizen*, std::allocator<Citizen*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==23209==    by 0x16302E: void std::vector<Citizen*, std::allocator<Citizen*> >::_M_realloc_insert<Citizen* const&>(__gnu_cxx::__normal_iterator<Citizen**, std::vector<Citizen*, std::allocator<Citizen*> > >, Citizen* const&) (vector.tcc:440)
+==23209==    by 0x162F13: std::vector<Citizen*, std::allocator<Citizen*> >::push_back(Citizen* const&) (stl_vector.h:1198)
+==23209==    by 0x179A2A: DeptOfPR::addCitizen(Citizen*) (DeptOfPR.cpp:110)
+==23209==    by 0x1661FA: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, DeptOfPR*) (Citizen.cpp:23)
+==23209==    by 0x1311F4: DOCTEST_ANON_FUNC_65() (Test.cpp:736)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 1 blocks are indirectly lost in loss record 35 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12816D: DOCTEST_ANON_FUNC_14() (Test.cpp:60)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 1 blocks are indirectly lost in loss record 36 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x128193: DOCTEST_ANON_FUNC_14() (Test.cpp:62)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 1 blocks are indirectly lost in loss record 37 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AB9A: DOCTEST_ANON_FUNC_25() (Test.cpp:200)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 1 blocks are indirectly lost in loss record 38 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12ABC0: DOCTEST_ANON_FUNC_25() (Test.cpp:203)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 1 blocks are indirectly lost in loss record 39 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1310B4: DOCTEST_ANON_FUNC_65() (Test.cpp:731)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 1 blocks are indirectly lost in loss record 40 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1319EF: DOCTEST_ANON_FUNC_67() (Test.cpp:774)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 3 blocks are indirectly lost in loss record 41 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x15A449: __gnu_cxx::new_allocator<Citizen*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==23209==    by 0x157BFF: std::allocator_traits<std::allocator<Citizen*> >::allocate(std::allocator<Citizen*>&, unsigned long) (alloc_traits.h:464)
+==23209==    by 0x154817: std::_Vector_base<Citizen*, std::allocator<Citizen*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==23209==    by 0x16302E: void std::vector<Citizen*, std::allocator<Citizen*> >::_M_realloc_insert<Citizen* const&>(__gnu_cxx::__normal_iterator<Citizen**, std::vector<Citizen*, std::allocator<Citizen*> > >, Citizen* const&) (vector.tcc:440)
+==23209==    by 0x162F13: std::vector<Citizen*, std::allocator<Citizen*> >::push_back(Citizen* const&) (stl_vector.h:1198)
+==23209==    by 0x179A2A: DeptOfPR::addCitizen(Citizen*) (DeptOfPR.cpp:110)
+==23209==    by 0x1661FA: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, DeptOfPR*) (Citizen.cpp:23)
+==23209==    by 0x13A944: DOCTEST_ANON_FUNC_90() (Test.cpp:1145)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 3 blocks are indirectly lost in loss record 42 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x15A449: __gnu_cxx::new_allocator<Citizen*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==23209==    by 0x157BFF: std::allocator_traits<std::allocator<Citizen*> >::allocate(std::allocator<Citizen*>&, unsigned long) (alloc_traits.h:464)
+==23209==    by 0x154817: std::_Vector_base<Citizen*, std::allocator<Citizen*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==23209==    by 0x16302E: void std::vector<Citizen*, std::allocator<Citizen*> >::_M_realloc_insert<Citizen* const&>(__gnu_cxx::__normal_iterator<Citizen**, std::vector<Citizen*, std::allocator<Citizen*> > >, Citizen* const&) (vector.tcc:440)
+==23209==    by 0x162F13: std::vector<Citizen*, std::allocator<Citizen*> >::push_back(Citizen* const&) (stl_vector.h:1198)
+==23209==    by 0x163D88: Building::addTenant(Citizen*) (Building.cpp:22)
+==23209==    by 0x13AA16: DOCTEST_ANON_FUNC_90() (Test.cpp:1152)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 3 blocks are indirectly lost in loss record 43 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x15A449: __gnu_cxx::new_allocator<Citizen*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==23209==    by 0x157BFF: std::allocator_traits<std::allocator<Citizen*> >::allocate(std::allocator<Citizen*>&, unsigned long) (alloc_traits.h:464)
+==23209==    by 0x154817: std::_Vector_base<Citizen*, std::allocator<Citizen*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==23209==    by 0x16302E: void std::vector<Citizen*, std::allocator<Citizen*> >::_M_realloc_insert<Citizen* const&>(__gnu_cxx::__normal_iterator<Citizen**, std::vector<Citizen*, std::allocator<Citizen*> > >, Citizen* const&) (vector.tcc:440)
+==23209==    by 0x162F13: std::vector<Citizen*, std::allocator<Citizen*> >::push_back(Citizen* const&) (stl_vector.h:1198)
+==23209==    by 0x163D88: Building::addTenant(Citizen*) (Building.cpp:22)
+==23209==    by 0x13ACB0: DOCTEST_ANON_FUNC_90() (Test.cpp:1167)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 1 blocks are definitely lost in loss record 44 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x179D30: DeptOfPR::notifyUtilities(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, Building*) (DeptOfPR.cpp:154)
+==23209==    by 0x12B5AA: DOCTEST_ANON_FUNC_29() (Test.cpp:242)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 6 blocks are definitely lost in loss record 45 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12E8B4: DOCTEST_ANON_FUNC_55() (Test.cpp:582)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 48 bytes in 6 blocks are definitely lost in loss record 46 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12E8DC: DOCTEST_ANON_FUNC_55() (Test.cpp:583)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 72 bytes in 1 blocks are indirectly lost in loss record 47 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x130F3E: DOCTEST_ANON_FUNC_65() (Test.cpp:720)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 72 bytes in 1 blocks are definitely lost in loss record 48 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B804: DOCTEST_ANON_FUNC_31() (Test.cpp:256)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 72 bytes in 1 blocks are definitely lost in loss record 49 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BA5D: DOCTEST_ANON_FUNC_33() (Test.cpp:272)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 72 bytes in 1 blocks are definitely lost in loss record 50 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BCF0: DOCTEST_ANON_FUNC_35() (Test.cpp:292)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 80 bytes in 1 blocks are indirectly lost in loss record 51 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1280EC: DOCTEST_ANON_FUNC_14() (Test.cpp:56)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 80 bytes in 1 blocks are indirectly lost in loss record 52 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AB19: DOCTEST_ANON_FUNC_25() (Test.cpp:196)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 80 bytes in 1 blocks are indirectly lost in loss record 53 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B3C9: DOCTEST_ANON_FUNC_29() (Test.cpp:230)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 88 (80 direct, 8 indirect) bytes in 1 blocks are definitely lost in loss record 54 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x128C7C: DOCTEST_ANON_FUNC_16() (Test.cpp:88)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 88 (80 direct, 8 indirect) bytes in 1 blocks are definitely lost in loss record 55 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1297B8: DOCTEST_ANON_FUNC_18() (Test.cpp:118)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 93 bytes in 3 blocks are indirectly lost in loss record 56 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x49AF0BD: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_mutate(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==23209==    by 0x49B025D: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_replace(unsigned long, unsigned long, char const*, unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==23209==    by 0x182500: Office::Office() (Office.cpp:10)
+==23209==    by 0x174D4D: CommercialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (CommercialBuildingCreator.cpp:11)
+==23209==    by 0x13AC24: DOCTEST_ANON_FUNC_90() (Test.cpp:1164)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 96 bytes in 1 blocks are indirectly lost in loss record 57 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1280AE: DOCTEST_ANON_FUNC_14() (Test.cpp:55)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 96 bytes in 1 blocks are indirectly lost in loss record 58 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AADB: DOCTEST_ANON_FUNC_25() (Test.cpp:195)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 96 bytes in 1 blocks are indirectly lost in loss record 59 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13192F: DOCTEST_ANON_FUNC_67() (Test.cpp:769)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 104 (96 direct, 8 indirect) bytes in 1 blocks are definitely lost in loss record 60 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AF12: DOCTEST_ANON_FUNC_27() (Test.cpp:213)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 104 (96 direct, 8 indirect) bytes in 1 blocks are definitely lost in loss record 61 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B854: DOCTEST_ANON_FUNC_31() (Test.cpp:258)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 104 (96 direct, 8 indirect) bytes in 1 blocks are definitely lost in loss record 62 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BAAD: DOCTEST_ANON_FUNC_33() (Test.cpp:274)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 104 (96 direct, 8 indirect) bytes in 1 blocks are definitely lost in loss record 63 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BD40: DOCTEST_ANON_FUNC_35() (Test.cpp:294)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 128 (72 direct, 56 indirect) bytes in 1 blocks are definitely lost in loss record 64 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x131879: DOCTEST_ANON_FUNC_67() (Test.cpp:763)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 144 bytes in 3 blocks are indirectly lost in loss record 65 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13A845: DOCTEST_ANON_FUNC_90() (Test.cpp:1142)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are indirectly lost in loss record 66 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x128151: DOCTEST_ANON_FUNC_14() (Test.cpp:59)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are indirectly lost in loss record 67 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AB7E: DOCTEST_ANON_FUNC_25() (Test.cpp:199)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are indirectly lost in loss record 68 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AF50: DOCTEST_ANON_FUNC_27() (Test.cpp:214)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are indirectly lost in loss record 69 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B42E: DOCTEST_ANON_FUNC_29() (Test.cpp:233)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are indirectly lost in loss record 70 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B892: DOCTEST_ANON_FUNC_31() (Test.cpp:259)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are indirectly lost in loss record 71 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BAEB: DOCTEST_ANON_FUNC_33() (Test.cpp:275)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are indirectly lost in loss record 72 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BD7E: DOCTEST_ANON_FUNC_35() (Test.cpp:295)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are indirectly lost in loss record 73 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x130EFC: DOCTEST_ANON_FUNC_65() (Test.cpp:716)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are definitely lost in loss record 74 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x128CE1: DOCTEST_ANON_FUNC_16() (Test.cpp:91)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are definitely lost in loss record 75 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12981D: DOCTEST_ANON_FUNC_18() (Test.cpp:121)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 168 bytes in 1 blocks are definitely lost in loss record 76 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x131837: DOCTEST_ANON_FUNC_67() (Test.cpp:759)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 192 bytes in 4 blocks are indirectly lost in loss record 77 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12C114: DOCTEST_ANON_FUNC_37() (Test.cpp:323)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 192 (96 direct, 96 indirect) bytes in 1 blocks are definitely lost in loss record 78 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B38B: DOCTEST_ANON_FUNC_29() (Test.cpp:229)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 192 (80 direct, 112 indirect) bytes in 1 blocks are definitely lost in loss record 79 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1318F1: DOCTEST_ANON_FUNC_67() (Test.cpp:768)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 216 (48 direct, 168 indirect) bytes in 1 blocks are definitely lost in loss record 80 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AF6C: DOCTEST_ANON_FUNC_27() (Test.cpp:215)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 216 (48 direct, 168 indirect) bytes in 1 blocks are definitely lost in loss record 81 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B44A: DOCTEST_ANON_FUNC_29() (Test.cpp:234)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 216 (48 direct, 168 indirect) bytes in 1 blocks are definitely lost in loss record 82 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B8AB: DOCTEST_ANON_FUNC_31() (Test.cpp:260)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 216 (48 direct, 168 indirect) bytes in 1 blocks are definitely lost in loss record 83 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BB07: DOCTEST_ANON_FUNC_33() (Test.cpp:276)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 216 (48 direct, 168 indirect) bytes in 1 blocks are definitely lost in loss record 84 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BD9A: DOCTEST_ANON_FUNC_35() (Test.cpp:296)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are indirectly lost in loss record 85 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1852F8: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:13)
+==23209==    by 0x176548: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:29)
+==23209==    by 0x17685E: DeptOfHousing::createResidentialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:54)
+==23209==    by 0x179743: DeptOfPR::notifyHousingToBuild(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (DeptOfPR.cpp:80)
+==23209==    by 0x12B009: DOCTEST_ANON_FUNC_27() (Test.cpp:219)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are indirectly lost in loss record 86 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x185345: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:16)
+==23209==    by 0x176548: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:29)
+==23209==    by 0x17685E: DeptOfHousing::createResidentialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:54)
+==23209==    by 0x12B4C9: DOCTEST_ANON_FUNC_29() (Test.cpp:238)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 87 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1852F8: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:13)
+==23209==    by 0x176548: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:29)
+==23209==    by 0x17685E: DeptOfHousing::createResidentialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:54)
+==23209==    by 0x12D93E: DOCTEST_ANON_FUNC_45() (Test.cpp:525)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 88 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1852F8: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:13)
+==23209==    by 0x176548: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:29)
+==23209==    by 0x17685E: DeptOfHousing::createResidentialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:54)
+==23209==    by 0x12DB55: DOCTEST_ANON_FUNC_45() (Test.cpp:530)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 89 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1812E1: LandmarkBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (LandmarkBuildingCreator.cpp:19)
+==23209==    by 0x1765F0: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:35)
+==23209==    by 0x176ABC: DeptOfHousing::createLandmarkBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:69)
+==23209==    by 0x12DC87: DOCTEST_ANON_FUNC_45() (Test.cpp:533)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 90 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1852F8: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:13)
+==23209==    by 0x176548: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:29)
+==23209==    by 0x17685E: DeptOfHousing::createResidentialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:54)
+==23209==    by 0x12E126: DOCTEST_ANON_FUNC_49() (Test.cpp:541)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 91 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1852F8: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:13)
+==23209==    by 0x176548: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:29)
+==23209==    by 0x17685E: DeptOfHousing::createResidentialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:54)
+==23209==    by 0x12E434: DOCTEST_ANON_FUNC_51() (Test.cpp:558)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 92 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x181247: LandmarkBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (LandmarkBuildingCreator.cpp:13)
+==23209==    by 0x1765F0: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:35)
+==23209==    by 0x176ABC: DeptOfHousing::createLandmarkBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:69)
+==23209==    by 0x1799B1: DeptOfPR::notifyHousingToBuild(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (DeptOfPR.cpp:98)
+==23209==    by 0x179580: DeptOfPR::update(Citizen*) (DeptOfPR.cpp:71)
+==23209==    by 0x166542: Citizen::notifyPR() (Citizen.cpp:82)
+==23209==    by 0x182986: PandemicCommand::imposeLockdown() (PandemicCommand.cpp:16)
+==23209==    by 0x12F03F: DOCTEST_ANON_FUNC_55() (Test.cpp:609)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 93 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x181247: LandmarkBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (LandmarkBuildingCreator.cpp:13)
+==23209==    by 0x1765F0: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:35)
+==23209==    by 0x176ABC: DeptOfHousing::createLandmarkBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:69)
+==23209==    by 0x1799B1: DeptOfPR::notifyHousingToBuild(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (DeptOfPR.cpp:98)
+==23209==    by 0x179580: DeptOfPR::update(Citizen*) (DeptOfPR.cpp:71)
+==23209==    by 0x166542: Citizen::notifyPR() (Citizen.cpp:82)
+==23209==    by 0x182986: PandemicCommand::imposeLockdown() (PandemicCommand.cpp:16)
+==23209==    by 0x12F403: DOCTEST_ANON_FUNC_55() (Test.cpp:618)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 94 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x181247: LandmarkBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (LandmarkBuildingCreator.cpp:13)
+==23209==    by 0x1765F0: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:35)
+==23209==    by 0x176ABC: DeptOfHousing::createLandmarkBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:69)
+==23209==    by 0x1799B1: DeptOfPR::notifyHousingToBuild(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (DeptOfPR.cpp:98)
+==23209==    by 0x179580: DeptOfPR::update(Citizen*) (DeptOfPR.cpp:71)
+==23209==    by 0x166542: Citizen::notifyPR() (Citizen.cpp:82)
+==23209==    by 0x182B1C: PandemicCommand::distributeVaccines() (PandemicCommand.cpp:33)
+==23209==    by 0x12F412: DOCTEST_ANON_FUNC_55() (Test.cpp:619)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 95 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x181247: LandmarkBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (LandmarkBuildingCreator.cpp:13)
+==23209==    by 0x1765F0: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:35)
+==23209==    by 0x176ABC: DeptOfHousing::createLandmarkBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:69)
+==23209==    by 0x1799B1: DeptOfPR::notifyHousingToBuild(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (DeptOfPR.cpp:98)
+==23209==    by 0x179580: DeptOfPR::update(Citizen*) (DeptOfPR.cpp:71)
+==23209==    by 0x166542: Citizen::notifyPR() (Citizen.cpp:82)
+==23209==    by 0x182986: PandemicCommand::imposeLockdown() (PandemicCommand.cpp:16)
+==23209==    by 0x182E10: PandemicCommand::execute() (PandemicCommand.cpp:61)
+==23209==    by 0x12FBCA: DOCTEST_ANON_FUNC_55() (Test.cpp:647)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 96 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x181247: LandmarkBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (LandmarkBuildingCreator.cpp:13)
+==23209==    by 0x1765F0: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:35)
+==23209==    by 0x176ABC: DeptOfHousing::createLandmarkBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:69)
+==23209==    by 0x1799B1: DeptOfPR::notifyHousingToBuild(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (DeptOfPR.cpp:98)
+==23209==    by 0x179580: DeptOfPR::update(Citizen*) (DeptOfPR.cpp:71)
+==23209==    by 0x166542: Citizen::notifyPR() (Citizen.cpp:82)
+==23209==    by 0x182B1C: PandemicCommand::distributeVaccines() (PandemicCommand.cpp:33)
+==23209==    by 0x182E1C: PandemicCommand::execute() (PandemicCommand.cpp:62)
+==23209==    by 0x12FBCA: DOCTEST_ANON_FUNC_55() (Test.cpp:647)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 224 bytes in 1 blocks are definitely lost in loss record 97 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x181247: LandmarkBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (LandmarkBuildingCreator.cpp:13)
+==23209==    by 0x1765F0: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:35)
+==23209==    by 0x176ABC: DeptOfHousing::createLandmarkBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:69)
+==23209==    by 0x1799B1: DeptOfPR::notifyHousingToBuild(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (DeptOfPR.cpp:98)
+==23209==    by 0x179580: DeptOfPR::update(Citizen*) (DeptOfPR.cpp:71)
+==23209==    by 0x166542: Citizen::notifyPR() (Citizen.cpp:82)
+==23209==    by 0x182C39: PandemicCommand::manageCitizenSatisfaction() (PandemicCommand.cpp:42)
+==23209==    by 0x182E28: PandemicCommand::execute() (PandemicCommand.cpp:63)
+==23209==    by 0x12FBCA: DOCTEST_ANON_FUNC_55() (Test.cpp:647)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 240 bytes in 3 blocks are indirectly lost in loss record 98 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13A7C7: DOCTEST_ANON_FUNC_90() (Test.cpp:1138)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 248 bytes in 1 blocks are definitely lost in loss record 99 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x174CF5: CommercialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (CommercialBuildingCreator.cpp:8)
+==23209==    by 0x176582: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:31)
+==23209==    by 0x176928: DeptOfHousing::createCommercialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:59)
+==23209==    by 0x12DBBB: DOCTEST_ANON_FUNC_45() (Test.cpp:531)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 248 bytes in 1 blocks are definitely lost in loss record 100 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x174CF5: CommercialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (CommercialBuildingCreator.cpp:8)
+==23209==    by 0x176582: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:31)
+==23209==    by 0x176928: DeptOfHousing::createCommercialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:59)
+==23209==    by 0x12E183: DOCTEST_ANON_FUNC_49() (Test.cpp:542)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 255 (224 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 101 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x180EFB: IndustrialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (IndustrialBuildingCreator.cpp:9)
+==23209==    by 0x1765B9: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:33)
+==23209==    by 0x1769F2: DeptOfHousing::createIndustrialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:64)
+==23209==    by 0x12DC21: DOCTEST_ANON_FUNC_45() (Test.cpp:532)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 255 (224 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 102 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x180EFB: IndustrialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (IndustrialBuildingCreator.cpp:9)
+==23209==    by 0x1765B9: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:33)
+==23209==    by 0x1769F2: DeptOfHousing::createIndustrialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:64)
+==23209==    by 0x12E1E0: DOCTEST_ANON_FUNC_49() (Test.cpp:543)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 255 (224 direct, 31 indirect) bytes in 1 blocks are definitely lost in loss record 103 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x180EFB: IndustrialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (IndustrialBuildingCreator.cpp:9)
+==23209==    by 0x1765B9: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:33)
+==23209==    by 0x1769F2: DeptOfHousing::createIndustrialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:64)
+==23209==    by 0x12E500: DOCTEST_ANON_FUNC_51() (Test.cpp:560)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 264 (240 direct, 24 indirect) bytes in 3 blocks are definitely lost in loss record 104 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x129D80: DOCTEST_ANON_FUNC_20() (Test.cpp:149)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 288 bytes in 3 blocks are indirectly lost in loss record 105 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13A789: DOCTEST_ANON_FUNC_90() (Test.cpp:1137)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 304 (72 direct, 232 indirect) bytes in 1 blocks are definitely lost in loss record 106 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AEC2: DOCTEST_ANON_FUNC_27() (Test.cpp:211)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 304 (72 direct, 232 indirect) bytes in 1 blocks are definitely lost in loss record 107 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12B313: DOCTEST_ANON_FUNC_29() (Test.cpp:225)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 368 (48 direct, 320 indirect) bytes in 1 blocks are definitely lost in loss record 108 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x130F18: DOCTEST_ANON_FUNC_65() (Test.cpp:718)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 384 bytes in 3 blocks are indirectly lost in loss record 109 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13A8AF: DOCTEST_ANON_FUNC_90() (Test.cpp:1144)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 384 bytes in 3 blocks are indirectly lost in loss record 110 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13A92C: DOCTEST_ANON_FUNC_90() (Test.cpp:1145)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 480 bytes in 6 blocks are definitely lost in loss record 111 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12E980: DOCTEST_ANON_FUNC_55() (Test.cpp:587)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 504 bytes in 3 blocks are definitely lost in loss record 112 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x129DE5: DOCTEST_ANON_FUNC_20() (Test.cpp:152)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 504 bytes in 3 blocks are definitely lost in loss record 113 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13A6F5: DOCTEST_ANON_FUNC_90() (Test.cpp:1129)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 528 (72 direct, 456 indirect) bytes in 1 blocks are definitely lost in loss record 114 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12AA63: DOCTEST_ANON_FUNC_25() (Test.cpp:190)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 536 (72 direct, 464 indirect) bytes in 1 blocks are definitely lost in loss record 115 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x128036: DOCTEST_ANON_FUNC_14() (Test.cpp:50)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 672 bytes in 4 blocks are indirectly lost in loss record 116 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BF5C: DOCTEST_ANON_FUNC_37() (Test.cpp:308)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 672 bytes in 3 blocks are definitely lost in loss record 117 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x181247: LandmarkBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (LandmarkBuildingCreator.cpp:13)
+==23209==    by 0x1765F0: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:35)
+==23209==    by 0x176ABC: DeptOfHousing::createLandmarkBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:69)
+==23209==    by 0x1799B1: DeptOfPR::notifyHousingToBuild(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (DeptOfPR.cpp:98)
+==23209==    by 0x179580: DeptOfPR::update(Citizen*) (DeptOfPR.cpp:71)
+==23209==    by 0x166542: Citizen::notifyPR() (Citizen.cpp:82)
+==23209==    by 0x182986: PandemicCommand::imposeLockdown() (PandemicCommand.cpp:16)
+==23209==    by 0x12F8DD: DOCTEST_ANON_FUNC_55() (Test.cpp:633)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 720 (672 direct, 48 indirect) bytes in 3 blocks are definitely lost in loss record 118 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x185345: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:16)
+==23209==    by 0x13A9BF: DOCTEST_ANON_FUNC_90() (Test.cpp:1150)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 744 bytes in 3 blocks are indirectly lost in loss record 119 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x174D42: CommercialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (CommercialBuildingCreator.cpp:11)
+==23209==    by 0x13AC24: DOCTEST_ANON_FUNC_90() (Test.cpp:1164)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 896 bytes in 4 blocks are definitely lost in loss record 120 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x185345: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:16)
+==23209==    by 0x176548: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:29)
+==23209==    by 0x17685E: DeptOfHousing::createResidentialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:54)
+==23209==    by 0x12C186: DOCTEST_ANON_FUNC_37() (Test.cpp:325)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 896 bytes in 4 blocks are definitely lost in loss record 121 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x1852F8: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:13)
+==23209==    by 0x176548: DeptOfHousing::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:29)
+==23209==    by 0x17685E: DeptOfHousing::createResidentialBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (DeptOfHousing.cpp:54)
+==23209==    by 0x12C1EC: DOCTEST_ANON_FUNC_37() (Test.cpp:326)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 1,056 (192 direct, 864 indirect) bytes in 4 blocks are definitely lost in loss record 122 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x12BF78: DOCTEST_ANON_FUNC_37() (Test.cpp:310)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== 2,733 (216 direct, 2,517 indirect) bytes in 3 blocks are definitely lost in loss record 123 of 123
+==23209==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==23209==    by 0x13A711: DOCTEST_ANON_FUNC_90() (Test.cpp:1133)
+==23209==    by 0x127582: doctest::Context::run() (doctest.h:7007)
+==23209==    by 0x127FC0: main (doctest.h:7085)
+==23209== 
+==23209== LEAK SUMMARY:
+==23209==    definitely lost: 11,192 bytes in 97 blocks
+==23209==    indirectly lost: 6,402 bytes in 104 blocks
+==23209==      possibly lost: 0 bytes in 0 blocks
+==23209==    still reachable: 0 bytes in 0 blocks
+==23209==         suppressed: 0 bytes in 0 blocks
+==23209== 
+==23209== For lists of detected and suppressed errors, rerun with: -s
+==23209== ERROR SUMMARY: 67 errors from 67 contexts (suppressed: 0 from 0)

@@ -6,18 +6,32 @@
 #include <iostream>
 
 double totalTax = 0;
-void visitHousing::visitResidentialBuilding(Building *building)
+bool visitHousing::visitResidentialBuilding(Building *building)
 {
+    if(building)
+    {
     TaxManager::visitBuildingForCitizen(building);
+    return true;
+    }
+    return false;
 }
 
-void visitHousing::visitCommercialBuilding(CommercialBuilding *building)
+bool visitHousing::visitCommercialBuilding(CommercialBuilding *building)
 {
-    
+    if(building)
+    {
     TaxManager::visitBuildingForBuilding(building);
+    return true;
+    }
+    return false;
 }
 
-void visitHousing::visitBudget(Budget *budget)
+bool visitHousing::visitBudget(Budget *budget)
 {
+    if(budget)
+    {
     TaxManager::visitBudget(budget);
+    return true;
+    }
+    return false;
 }

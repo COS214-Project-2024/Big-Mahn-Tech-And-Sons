@@ -71,9 +71,9 @@ public:
      */
     void removeAmount(double amount);
 
-    void visitCommercialBuilding(CommercialBuilding *building);
+    bool visitCommercialBuilding(CommercialBuilding *building);
 
-    void visitResidentialBuilding(Building *building);
+    bool visitResidentialBuilding(Building *building);
 
     /**
      * @brief Reports the current status of the resource.
@@ -82,7 +82,7 @@ public:
      */
      void reportStatus() const ;
 
-    void visitBudget(Budget* budget ,  double amount);
+    bool visitBudget(Budget* budget ,  double amount);
 
 };
 

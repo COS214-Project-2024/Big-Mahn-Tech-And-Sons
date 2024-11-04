@@ -481,23 +481,11 @@ void taxManTest()
     }
     std::cout << "Done collecting taxes from commercial building\n";
 
-    // Budget update after tax collection
-    Budget cityBudget(10000); // Initialize budget
-    taxMan->visitBudget(&cityBudget); // Update the budget with collected taxes
-    cityBudget.reportStatus(); // Report updated budget status
 
-    // // Cleanup dynamically allocated memory
-    // delete tenant1;
-    // delete tenant2;
-    // delete house;
-    // delete comH;
-    // delete taxMan;
-    // delete housingDept;
-    // delete utilitiesDept;
-    // delete powerUtil;
-    // delete prDept;
-    // delete water;
-    // delete power;
+    Budget cityBudget(10000); 
+    taxMan->visitBudget(&cityBudget); // Update the budget with collected taxes
+    cityBudget.reportStatus(); 
+
 }
 
 
