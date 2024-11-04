@@ -692,3 +692,146 @@ void testRecession()
     delete Alice;
 }
 
+void TestingDptUtilities()
+{
+
+    std::cout << "\n\n\n\n"
+              << endl;
+
+    Water *water = new Water(10800);
+    Power *power = new Power(17456.3);
+
+    DeptOfUtilities *powerDept = new PowerSupply(50000, 40000, power);
+    DeptOfUtilities *waterDept = new WaterSupply(20000, 500000, water);
+    DeptOfUtilities *wasteDept = new WasteManagement(10000, 6000);
+
+    Building *b1 = new House();
+    Building *b2 = new Apartment();
+
+    dynamic_cast<WaterSupply*>(waterDept)->addBuilding(b1);
+    dynamic_cast<WaterSupply*>(waterDept)->addBuilding(b2);
+    dynamic_cast<PowerSupply*>(powerDept)->addBuilding(b1);
+    dynamic_cast<PowerSupply*>(powerDept)->addBuilding(b2);
+    dynamic_cast<WasteManagement*>(wasteDept)->addBuilding(b1);
+    dynamic_cast<WasteManagement*>(wasteDept)->addBuilding(b2);
+
+    cout << endl
+         << endl
+         << "======= TESTING WATER SUPPLY =========== " << endl;
+    b1->setWaterMeterBox(600);
+    b1->consumeWater(50);
+    b2->setWaterMeterBox(700);
+    b2->consumeWater(20);
+    
+
+    cout << endl
+         << " ++++++++++++++++++++++ " << endl
+         << endl;
+
+    dynamic_cast<WaterSupply*>(waterDept)->distributeWater();
+    cout << endl;
+    dynamic_cast<WaterSupply*>(waterDept)->distributeWaterToBuilding(b1);
+    cout << endl;
+    dynamic_cast<WaterSupply*>(waterDept)->distributeWaterToBuilding(b2);
+    cout << endl;
+    cout << "Total water usage in all buildings: " << dynamic_cast<WaterSupply*>(waterDept)->calculateWaterUsage() << endl;
+    dynamic_cast<WaterSupply*>(waterDept)->increaseWaterCapacity();
+    cout << endl;
+    cout << "Water capacity is currently at: " << dynamic_cast<WaterSupply*>(waterDept)->getWaterCapacity() << endl;
+    cout << "Water in the meter box " << b1->getWaterMeterBox() << endl;
+    cout << "Water in the meter box " << b2->getWaterMeterBox() << endl;
+    cout << "Budget for water: " << dynamic_cast<WaterSupply*>(waterDept)->getBudget() << endl;
+
+    cout << endl
+         << endl
+         << "======= TESTING POWERSUPPLY =========== " << endl;
+    dynamic_cast<PowerSupply*>(powerDept)->addBuilding(b1);
+    dynamic_cast<PowerSupply*>(powerDept)->addBuilding(b2);
+    b1->setElectricityMeterBox(1000);
+    cout << endl;
+    b2->setElectricityMeterBox(500);
+    cout << endl;
+    b1->consumeElectricity(120);
+    cout << endl;
+    b2->consumeElectricity(150);
+    cout << endl;
+    dynamic_cast<PowerSupply*>(powerDept)->distributePower();
+    cout << endl;
+    dynamic_cast<PowerSupply*>(powerDept)->distributePowerToBuilding(b1);
+    cout << endl;
+    dynamic_cast<PowerSupply*>(powerDept)->distributePowerToBuilding(b2);
+    cout << endl;
+    cout << "Total power usage in all buildings: " << dynamic_cast<PowerSupply*>(powerDept)->calculatePowerUsage() << " KWh" << endl;
+
+    dynamic_cast<PowerSupply*>(powerDept)->increasePowerCapacity();
+    cout << endl;
+    cout << "Power capacity is currently at: " << dynamic_cast<PowerSupply*>(powerDept)->getPowerCapacity() << "KWh" << endl;
+    cout << "Power in the meter box " << b1->getElectricityMeterBox() << endl;
+    cout << "Power in the meter box " << b2->getElectricityMeterBox() << endl;
+    cout << "Budget for power : USD$" << dynamic_cast<PowerSupply*>(powerDept)->getBudget() << endl;
+
+    cout << endl
+         << endl
+         << "======= TESTING WASTEMANAGEMENT =========== " << endl;
+    cout << "Waste capacity is : " << dynamic_cast<WasteManagement*>(wasteDept)->getWasteCapacity() << endl;
+
+    b1->setWaste(100);
+    b2->setWaste(50);
+    cout << "Waste processing is : " << dynamic_cast<WasteManagement*>(wasteDept)->calculateWasteProcessing() << endl;
+    dynamic_cast<WasteManagement*>(wasteDept)->collectWaste();
+    cout << endl;
+    b1->setWaste(400);
+    b2->setWaste(390);
+    cout << "Waste processing is : " << dynamic_cast<WasteManagement*>(wasteDept)->calculateWasteProcessing() << endl;
+    dynamic_cast<WasteManagement*>(wasteDept)->collectWasteFromBuilding(b1);
+    dynamic_cast<WasteManagement*>(wasteDept)->collectWasteFromBuilding(b2);
+    cout << endl;
+    cout << "Waste capacity is : " << dynamic_cast<WasteManagement*>(wasteDept)->getWasteCapacity() << endl;
+    cout << endl;
+    dynamic_cast<WasteManagement*>(wasteDept)->disposeWaste();
+    cout << endl;
+    dynamic_cast<WasteManagement*>(wasteDept)->expandWasteCapacity();
+    cout << endl;
+    cout << "Waste budget is currently at: "
+         << dynamic_cast<WasteManagement*>(wasteDept)->getWasteManagementBudget() << endl;
+
+    cout << endl
+         << " ********* HANDLING REQUESTS ********* " << endl;
+    dynamic_cast<WasteManagement*>(wasteDept)->setSuccessor(powerDept);
+    dynamic_cast<PowerSupply*>(powerDept)->setSuccessor(waterDept);
+
+    cout << endl
+         << endl
+         << " ============== HANDLING REQUEST 1================" << endl
+         << endl;
+    Request req1("water", b1, 100);
+    wasteDept->handleRequest(req1);
+    cout << endl
+         << " ============== HANDLING REQUEST 2================" << endl
+         << endl;
+    Request req2("waste", b1, 80);
+    wasteDept->handleRequest(req2);
+
+    cout << endl
+         << " ============== HANDLING REQUEST 3================" << endl
+         << endl;
+    Request req3("power", b1, 10);
+    wasteDept->handleRequest(req3);
+    
+
+    std::cout << endl
+              << endl
+              << endl;
+
+    delete water;
+    delete power;
+    delete wasteDept;
+    delete powerDept;
+    delete waterDept;
+    delete b2;
+    delete b1;
+    
+
+}
+
+
