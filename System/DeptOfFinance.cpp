@@ -88,22 +88,22 @@ void DeptOfFinance::setPR(DeptOfPR *PR)
     this->PR = PR;
 }
 
-void DeptOfFinance::collectTaxes() {
-    for (Element* element : elements) {
-        element->accept(taxManager); // Apply visitor to each building
-    }
-}
+// void DeptOfFinance::collectTaxes() {
+//     for (Element* element : elements) {
+//         element->accept(taxManager); // Apply visitor to each building
+//     }
+// }
 
-void DeptOfFinance::applyTaxes(TaxManager* visitor) {
-    for (auto& element : elements) {
-        element->accept(visitor);
-    }
-}
+// void DeptOfFinance::applyTaxes(TaxManager* visitor) {
+//     for (auto& element : elements) {
+//         element->accept(visitor);
+//     }
+// }
 
-void DeptOfFinance::allocateBudget(const std::string& department, double amount) {
-    Resource resource;
-    budget->accept(&resource);  // This will add to budget via the Resource visitor
-    if (budget->getTotalBudget() >= amount) {
-        budget->setTotalBudget(budget->getTotalBudget() - amount);
-    }
-}
+// void DeptOfFinance::allocateBudget(const std::string& department, double amount) {
+//     Resource resource;
+//     budget->accept(&resource);  // This will add to budget via the Resource visitor
+//     if (budget->getTotalBudget() >= amount) {
+//         budget->setTotalBudget(budget->getTotalBudget() - amount);
+//     }
+// }

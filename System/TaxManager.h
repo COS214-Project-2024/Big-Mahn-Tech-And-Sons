@@ -1,4 +1,3 @@
-// TaxManager.h
 #ifndef TAXMANAGER_H
 #define TAXMANAGER_H
 

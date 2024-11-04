@@ -16,79 +16,66 @@
  */
 
 
-// class Resource : public TaxManager {
-// protected:
-//     std::string name; ///< The name of the resource.
-//     double amount; ///< The amount of the resource available.
-
-// public:
-//     Resource() {
-//         name = "";
-//         amount = 0;
-//     }
-//     /**
-//      * @brief Constructs a new Resource object.
-//      * 
-//      * @param name Name of the resource.
-//      * @param amount Initial amount of the resource.
-//      */
-//     Resource(const std::string& name, double amount);
-
-//     /**
-//      * @brief Destroys the Resource object.
-//      */
-//     // virtual ~Resource() {}
-
-//     /**
-//      * @brief Gets the name of the resource.
-//      * 
-//      * @return std::string The resource's name.
-//      */
-//     std::string getName() const;
-
-//     /**
-//      * @brief Gets the amount of the resource.
-//      * 
-//      * @return double The amount of the resource.
-//      */
-//     double getAmount() const;
-
-//     /**
-//      * @brief Adds an amount to the resource.
-//      * 
-//      * @param amount The amount to be added.
-//      */
-//     void addAmount(double amount);
-
-//     /**
-//      * @brief Removes an amount from the resource.
-//      * 
-//      * @param amount The amount to be removed.
-//      */
-//     void removeAmount(double amount);
-
-//     /**
-//      * @brief Reports the current status of the resource.
-//      * 
-//      * This method should be overridden by derived classes to provide specific information.
-//      */
-//      void reportStatus() const ;
-
-//     void visitBudget(Budget* budget);
-
-// };
-
 class Resource : public TaxManager {
+protected:
+    std::string name; ///< The name of the resource.
+    double amount; ///< The amount of the resource available.
+
 public:
-    void visitResidentialBuilding(ResidentialBuilding* building) override {}
-    void visitCommercialBuilding(CommercialBuilding* building) override {}
-
-    void visitBudget(Budget* budget) override {
-        // Here we could implement some logic for resource allocation in budget
-        // For example, just an illustrative addition
-        budget->setTotalBudget(budget->getTotalBudget() * 1.05); // e.g., add 5% to the budget
+    Resource() {
+        name = "";
+        amount = 0;
     }
-};
+    /**
+     * @brief Constructs a new Resource object.
+     * 
+     * @param name Name of the resource.
+     * @param amount Initial amount of the resource.
+     */
+    Resource(const std::string& name, double amount);
 
+    /**
+     * @brief Destroys the Resource object.
+     */
+    // virtual ~Resource() {}
+
+    /**
+     * @brief Gets the name of the resource.
+     * 
+     * @return std::string The resource's name.
+     */
+    std::string getName() const;
+
+    /**
+     * @brief Gets the amount of the resource.
+     * 
+     * @return double The amount of the resource.
+     */
+    double getAmount() const;
+
+    /**
+     * @brief Adds an amount to the resource.
+     * 
+     * @param amount The amount to be added.
+     */
+    void addAmount(double amount);
+
+    /**
+     * @brief Removes an amount from the resource.
+     * 
+     * @param amount The amount to be removed.
+     */
+    void removeAmount(double amount);
+
+    /**
+     * @brief Reports the current status of the resource.
+     * 
+     * This method should be overridden by derived classes to provide specific information.
+     */
+     void reportStatus() const ;
+
+    void visitBudget(Budget* budget);
+
+};
 
 #endif // RESOURCE_H

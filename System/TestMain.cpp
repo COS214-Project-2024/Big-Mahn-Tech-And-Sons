@@ -494,13 +494,13 @@ void taxManTest() {
     cityBudget.reportStatus();  // Report updated budget status
 
     // Cleanup dynamically allocated memory
-    delete tenant1;
-    delete tenant2;
-    delete house;
-    delete estate;
-    delete apartment;
-    delete shop;
-    delete hospital;
+    //delete tenant1;
+    //delete tenant2;
+    ///delete house;
+    //delete estate;
+    //delete apartment;
+    //delete shop;
+    //delete hospital;
 }
 
 
@@ -630,138 +630,3 @@ void taxManTest() {
 
 //         std::cout << "LoadShedding test completed." << std::endl;
 // }
-
-// void testFestival()
-// {
-//      DeptOfHousing *housingDept = new DeptOfHousing(100000);
-
-//     Water *water = new Water("Sparkling", 10000);
-//     Power *power = new Power("Power", 1456.3);
-
-//     DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-//     DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
-
-//     utilitiesDept->setSuccessor(powerUtil);
-//     TaxManager *taxMan = new TaxManager();
-//     DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
-
-//     DeptOfPR *deptOfPR = new DeptOfPR(housingDept, utilitiesDept, financeDept);
-
-    // Testing building creation
-    std::cout << "=== Testing Building Creation ===" << std::endl;
-    housingDept->createResidentialBuilding("House");
-    housingDept->createResidentialBuilding("Apartment");
-    housingDept->createCommercialBuilding("Shop");
-    housingDept->createIndustrialBuilding("Factory");
-    housingDept->createLandmarkBuilding("Park");
-
-    // Display all created buildings
-    housingDept->displayAllBuildings();
-
-    // Check the total buildings and budget status
-    std::cout << "Total Buildings: " << housingDept->getTotalBuildings() << std::endl;
-    std::cout << "Total Price of Buildings: " << housingDept->getTotalPrice() << std::endl;
-    std::cout << "Remaining Budget: " << housingDept->getRemainingBudget() << std::endl;
-
-    // Testing building removal
-    std::cout << "\n=== Testing Building Removal ===" << std::endl;
-    housingDept->removeBuildingByName("Family House");
-    housingDept->displayAllBuildings();
-
-    // Attempt to remove a non-existing building
-    std::cout << "\nAttempting to remove a non-existing building:" << std::endl;
-    housingDept->removeBuildingByName("NonExistentBuilding");
-
-    // Testing funding request
-    std::cout << "\n=== Testing Funding Request ===" << std::endl;
-    double fundingAmount = 200000;  // Example funding request
-    if (housingDept->requestFunding(fundingAmount)) {
-        std::cout << "Funding request successful. New budget: " << housingDept->getRemainingBudget() << std::endl;
-    } else {
-        std::cout << "Funding request failed." << std::endl;
-    }
-
-    // Listing buildings
-    std::cout << "\n=== Listing Buildings ===" << std::endl;
-    housingDept->listBuildings();
-
-    // Testing building repairs
-    std::cout << "\n=== Testing Building Repairs ===" << std::endl;
-    housingDept->repairBuilding("Residential");
-    housingDept->displayAllBuildings();
-
-    // Final state
-    std::cout << "\n=== Final State of Buildings ===" << std::endl;
-    housingDept->displayAllBuildings();
-
-    return 0;
-}
-
-
-int testTaxing() {
-
-    DeptOfHousing *housingDept = new DeptOfHousing(100000);
-
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
-
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
-
-    utilitiesDept->setSuccessor(powerUtil);
-    TaxManager *taxMan = new TaxManager();
-    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
-
-    DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
-
-
-    // Create a ResidentialBuildingCreator instance
-    ResidentialBuildingCreator creator;
-
-    // Create a House using the factory
-    Building* house = creator.createBuilding("House");
-
-    // Test initial state of the House
-    std::cout << "Testing House Stats (Initial State):" << std::endl;
-    house->displayStats();
-
-    // Create tenants and add them to the house
-    Citizen* tenant1 = new Citizen("Jane", 50, 10, 10, prDept);
-    Citizen* tenant2 = new Citizen("Peter", 30, 20, 20, prDept);
-    std::cout << "\nAdding tenants:" << std::endl;
-    house->addTenant(tenant1);
-    house->addTenant(tenant2);
-    house->displayStats();  // Display stats after adding tenants
-
-    // Calculate tax for the house
-    std::cout << "\nCalculating tax for House:" << std::endl;
-    house->accept(taxMan);  // Apply the TaxManager visitor
-    std::cout << "Expected tax for House: " << house->calculateTax() << std::endl;
-
-    // Create a ResidentialBuildingCreator instance
-    CommercialBuildingCreator creator2;
-
-    // Create a House using the factory
-    Building* office = creator2.createBuilding("Office");
-    Building* shop = creator2.createBuilding("Shop");
-
-    // Calculate tax for the house
-    std::cout << "\nCalculating tax for Office:" << std::endl;
-    office->accept(taxMan);  // Apply the TaxManager visitor
-    std::cout << "Expected tax for Office: " << office->calculateTax() << std::endl;
-
-    std::cout << "\nCalculating tax for Shop:" << std::endl;
-    shop->accept(taxMan);  // Apply the TaxManager visitor
-    std::cout << "Expected tax for Shop: " << shop->calculateTax() << std::endl;
-
-    // Cleanup
-    delete house;
-    delete office;
-    delete shop;
-
-    return 0;
-}
-
-
-// ------------------------------------------------------------------------------------------------------- //
-

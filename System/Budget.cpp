@@ -1,10 +1,8 @@
 #include "Budget.h"
-#include "Element.h"
 #include "TaxManager.h"
 #include <iostream>
 
 Budget::Budget(float initialBudget) : totalBudget(initialBudget) {}
- 
 
 Budget::~Budget() {}
 
@@ -26,5 +24,5 @@ void Budget::accept(TaxManager* visitor) {
 }
 
 void Budget::addFunds(double amount) {
-    funds += amount;
+    totalBudget += amount;
 }

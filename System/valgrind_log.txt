@@ -1,0 +1,142 @@
+==2533== Memcheck, a memory error detector
+==2533== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2533== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==2533== Command: ./test
+==2533== 
+==2533== error calling PR_SET_PTRACER, vgdb might block
+==2533== 
+==2533== HEAP SUMMARY:
+==2533==     in use at exit: 2,112 bytes in 20 blocks
+==2533==   total heap usage: 27 allocs, 7 frees, 77,967 bytes allocated
+==2533== 
+==2533== 8 bytes in 1 blocks are indirectly lost in loss record 1 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x11611C: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int, int, DeptOfPR*) (Citizen.cpp:26)
+==2533==    by 0x10EDCE: taxManTest() (TestMain.cpp:455)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 8 bytes in 1 blocks are indirectly lost in loss record 2 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x1161ED: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int, int, DeptOfPR*) (Citizen.cpp:36)
+==2533==    by 0x10EDCE: taxManTest() (TestMain.cpp:455)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 8 bytes in 1 blocks are indirectly lost in loss record 3 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x11611C: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int, int, DeptOfPR*) (Citizen.cpp:26)
+==2533==    by 0x10EE4C: taxManTest() (TestMain.cpp:456)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 8 bytes in 1 blocks are indirectly lost in loss record 4 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x1161ED: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int, int, DeptOfPR*) (Citizen.cpp:36)
+==2533==    by 0x10EE4C: taxManTest() (TestMain.cpp:456)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 16 bytes in 1 blocks are indirectly lost in loss record 5 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x111F3F: __gnu_cxx::new_allocator<Citizen*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==2533==    by 0x111D90: std::allocator_traits<std::allocator<Citizen*> >::allocate(std::allocator<Citizen*>&, unsigned long) (alloc_traits.h:464)
+==2533==    by 0x111BE3: std::_Vector_base<Citizen*, std::allocator<Citizen*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==2533==    by 0x112E16: void std::vector<Citizen*, std::allocator<Citizen*> >::_M_realloc_insert<Citizen* const&>(__gnu_cxx::__normal_iterator<Citizen**, std::vector<Citizen*, std::allocator<Citizen*> > >, Citizen* const&) (vector.tcc:440)
+==2533==    by 0x112C99: std::vector<Citizen*, std::allocator<Citizen*> >::push_back(Citizen* const&) (stl_vector.h:1198)
+==2533==    by 0x1298D2: DeptOfPR::addCitizen(Citizen*) (DeptOfPR.cpp:72)
+==2533==    by 0x116104: Citizen::Citizen(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, int, int, DeptOfPR*) (Citizen.cpp:24)
+==2533==    by 0x10EE4C: taxManTest() (TestMain.cpp:456)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 16 bytes in 1 blocks are indirectly lost in loss record 6 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x111F3F: __gnu_cxx::new_allocator<Citizen*>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==2533==    by 0x111D90: std::allocator_traits<std::allocator<Citizen*> >::allocate(std::allocator<Citizen*>&, unsigned long) (alloc_traits.h:464)
+==2533==    by 0x111BE3: std::_Vector_base<Citizen*, std::allocator<Citizen*> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==2533==    by 0x112E16: void std::vector<Citizen*, std::allocator<Citizen*> >::_M_realloc_insert<Citizen* const&>(__gnu_cxx::__normal_iterator<Citizen**, std::vector<Citizen*, std::allocator<Citizen*> > >, Citizen* const&) (vector.tcc:440)
+==2533==    by 0x112C99: std::vector<Citizen*, std::allocator<Citizen*> >::push_back(Citizen* const&) (stl_vector.h:1198)
+==2533==    by 0x113C98: Building::addTenant(Citizen*) (Building.cpp:21)
+==2533==    by 0x10EEB9: taxManTest() (TestMain.cpp:459)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 40 bytes in 1 blocks are indirectly lost in loss record 7 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x10EAA8: taxManTest() (TestMain.cpp:434)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 40 bytes in 1 blocks are indirectly lost in loss record 8 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x10EB15: taxManTest() (TestMain.cpp:435)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 48 bytes in 1 blocks are indirectly lost in loss record 9 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x10ECA3: taxManTest() (TestMain.cpp:444)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 128 bytes in 1 blocks are indirectly lost in loss record 10 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x10EDAC: taxManTest() (TestMain.cpp:455)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 128 bytes in 1 blocks are indirectly lost in loss record 11 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x10EE2A: taxManTest() (TestMain.cpp:456)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 144 bytes in 1 blocks are indirectly lost in loss record 12 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x10EB82: taxManTest() (TestMain.cpp:437)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 144 bytes in 1 blocks are indirectly lost in loss record 13 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x10EC02: taxManTest() (TestMain.cpp:438)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 176 bytes in 1 blocks are definitely lost in loss record 14 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x10EC71: taxManTest() (TestMain.cpp:441)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 216 bytes in 1 blocks are definitely lost in loss record 15 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x1333E5: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:23)
+==2533==    by 0x10EF59: taxManTest() (TestMain.cpp:468)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 216 bytes in 1 blocks are definitely lost in loss record 16 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x133432: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:26)
+==2533==    by 0x10EFBD: taxManTest() (TestMain.cpp:469)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 232 (216 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 17 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x13347F: ResidentialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (ResidentialBuildingCreator.cpp:29)
+==2533==    by 0x10ED1A: taxManTest() (TestMain.cpp:450)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 240 bytes in 1 blocks are definitely lost in loss record 18 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x124D2D: CommercialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (CommercialBuildingCreator.cpp:23)
+==2533==    by 0x10F02F: taxManTest() (TestMain.cpp:472)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 240 bytes in 1 blocks are definitely lost in loss record 19 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x124E14: CommercialBuildingCreator::createBuilding(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const (CommercialBuildingCreator.cpp:32)
+==2533==    by 0x10F093: taxManTest() (TestMain.cpp:473)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== 792 (72 direct, 720 indirect) bytes in 1 blocks are definitely lost in loss record 20 of 20
+==2533==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==2533==    by 0x10EA56: taxManTest() (TestMain.cpp:432)
+==2533==    by 0x10E9E0: main (TestMain.cpp:60)
+==2533== 
+==2533== LEAK SUMMARY:
+==2533==    definitely lost: 1,376 bytes in 7 blocks
+==2533==    indirectly lost: 736 bytes in 13 blocks
+==2533==      possibly lost: 0 bytes in 0 blocks
+==2533==    still reachable: 0 bytes in 0 blocks
+==2533==         suppressed: 0 bytes in 0 blocks
+==2533== 
+==2533== For lists of detected and suppressed errors, rerun with: -s
+==2533== ERROR SUMMARY: 7 errors from 7 contexts (suppressed: 0 from 0)
