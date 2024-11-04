@@ -26,6 +26,7 @@ Shop::Shop()
     priceTag = 100000.0;       // Default price tag for Shop
     netWorth = 80000.0;
     type = "Shop";
+    annualRevenue = 50000.0;   // Default annual revenue for Shop
 }
 
 /**
@@ -57,6 +58,7 @@ void Shop::accept(TaxManager* visitor) {
  * @return Pointer to the cloned shop object.
  */
 Building* Shop::repairClone() const {
+    std::cout << "Prototype: Cloning a Shop building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing commercial building (Shop): " << getName() << "\n";
     return new Shop(*this);  // Return a new cloned instance of Shop
 }

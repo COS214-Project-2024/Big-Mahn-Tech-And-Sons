@@ -46,6 +46,7 @@ void Estate::accept(TaxManager* visitor) {
  * @return Building* A pointer to the newly cloned Estate instance.
  */
 Building* Estate::repairClone() const {
+    std::cout << "Prototype: Cloning an Estate building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing residential building (Estate): " << getName() << "\n";
     return new Estate(*this);
 }

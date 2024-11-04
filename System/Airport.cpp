@@ -44,6 +44,7 @@ void Airport::accept(TaxManager* visitor) {
  * @return A pointer to the cloned Airport object.
  */
 Building* Airport::repairClone() const {
+    std::cout << "Prototype: Cloning an Airport building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing industrial building (Airport): " << getName() << "\n";
     return new Airport(*this);
 }

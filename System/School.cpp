@@ -26,6 +26,7 @@ School::School()
     priceTag = 300000.0;             // Default price tag for School
     netWorth = 1200000.0;
     type = "School";
+    annualRevenue = 200000.0;       // Default annual revenue for School
 }
 
 /**
@@ -57,6 +58,7 @@ void School::accept(TaxManager* visitor) {
  * @return Pointer to the cloned school object.
  */
 Building* School::repairClone() const {
+    std::cout << "Prototype: Cloning a School building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing commercial building (School): " << getName() << "\n";
     return new School(*this);  // Return a new cloned instance of School
 }

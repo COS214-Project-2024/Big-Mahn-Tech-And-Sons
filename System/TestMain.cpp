@@ -7,7 +7,9 @@
 #include "DeptOfUtilities.h"
 #include "DeptOfFinance.h"
 #include "Water.h"
+#include "Power.h"
 #include "WaterSupply.h"
+#include "PowerSupply.h"
 
 //
 #include "visitHousing.h"
@@ -26,6 +28,8 @@ void testLandmarkBuildings();
 void testIndustrialBuildings();
 void testHouse();
 int testDepartment();
+int testTaxing();
+
 
 int main()
 {
@@ -38,7 +42,9 @@ int main()
     // testLandmarkBuildings();
     // testIndustrialBuildings();
     // testHouse();
-    testDepartment();
+    // testDepartment();
+
+    testTaxing();
 
     std::cout << "End" << std::endl;
 
@@ -381,6 +387,72 @@ int testDepartment() {
 
     return 0;
 }
+
+
+int testTaxing() {
+
+    DeptOfHousing *housingDept = new DeptOfHousing(100000);
+
+    Water *water = new Water("Sparkling", 10000);
+    Power *power = new Power("Power", 1456.3);
+
+    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+
+    utilitiesDept->setSuccessor(powerUtil);
+    TaxManager *taxMan = new TaxManager();
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+
+    DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
+
+
+    // Create a ResidentialBuildingCreator instance
+    ResidentialBuildingCreator creator;
+
+    // Create a House using the factory
+    Building* house = creator.createBuilding("House");
+
+    // Test initial state of the House
+    std::cout << "Testing House Stats (Initial State):" << std::endl;
+    house->displayStats();
+
+    // Create tenants and add them to the house
+    Citizen* tenant1 = new Citizen("Jane", 50, 10, 10, prDept);
+    Citizen* tenant2 = new Citizen("Peter", 30, 20, 20, prDept);
+    std::cout << "\nAdding tenants:" << std::endl;
+    house->addTenant(tenant1);
+    house->addTenant(tenant2);
+    house->displayStats();  // Display stats after adding tenants
+
+    // Calculate tax for the house
+    std::cout << "\nCalculating tax for House:" << std::endl;
+    house->accept(taxMan);  // Apply the TaxManager visitor
+    std::cout << "Expected tax for House: " << house->calculateTax() << std::endl;
+
+    // Create a ResidentialBuildingCreator instance
+    CommercialBuildingCreator creator2;
+
+    // Create a House using the factory
+    Building* office = creator2.createBuilding("Office");
+    Building* shop = creator2.createBuilding("Shop");
+
+    // Calculate tax for the house
+    std::cout << "\nCalculating tax for Office:" << std::endl;
+    office->accept(taxMan);  // Apply the TaxManager visitor
+    std::cout << "Expected tax for Office: " << office->calculateTax() << std::endl;
+
+    std::cout << "\nCalculating tax for Shop:" << std::endl;
+    shop->accept(taxMan);  // Apply the TaxManager visitor
+    std::cout << "Expected tax for Shop: " << shop->calculateTax() << std::endl;
+
+    // Cleanup
+    delete house;
+    delete office;
+    delete shop;
+
+    return 0;
+}
+
 
 // ------------------------------------------------------------------------------------------------------- //
 

@@ -34,6 +34,7 @@ void Factory::displayStats() const {
  * @return A pointer to the cloned Factory object.
  */
 Building* Factory::repairClone() const {
+    std::cout << "Prototype: Cloning a Factory building.\n"; // Output indicating Prototype pattern
     std::cout << "Repairing industrial building (Factory): " << getName() << "\n";
     return new Factory(*this);
 }

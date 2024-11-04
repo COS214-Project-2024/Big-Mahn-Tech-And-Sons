@@ -19,3 +19,8 @@ ResidentialBuilding::ResidentialBuilding()
 void ResidentialBuilding::displayStats() const {
     Building::displayStats();
 }
+
+double ResidentialBuilding::calculateTax() const {
+    int numOccupants = getCurrentOccupants();
+    return numOccupants * getCitizenTax() * 1000; // tax per occupant
+}
