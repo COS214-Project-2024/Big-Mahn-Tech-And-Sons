@@ -216,7 +216,10 @@ public:
      * 
      * If @param destination is (work, home, school etc) execute the relevant command
      */
-     void travelTo(Building *destination , CityGrid *citi, int x, int y, const std::string &Building);
+     void travelTo(Building *destination);
+
+
+     void setCurrentLocation(Building* b ); 
 
 
 };

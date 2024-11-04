@@ -26,6 +26,13 @@
 #include "PandemicCommand.h"
 #include "FestivalCommand.h"
 #include "RecessionCommand.h"
+//
+#include "GoToCommand.h"
+#include "GoTrain.h"
+#include "TrainStation.h"
+#include "DeptOfPR.h"
+
+
 
 void buildingsTest();
 void testResidentialBuildings();
@@ -42,6 +49,14 @@ void testLoadShedding();
 void testFestival();
 void testRecession();
 
+
+
+//
+void testGoToTrainStation();
+
+
+
+//
 int main()
 {
 
@@ -56,13 +71,15 @@ int main()
     //testHouse();
     //testDepartment();
 
+    testGoToTrainStation();
+
     // testHouse();
     // testNaturalDisaster();
     //testPandemic();
     //testLoadShedding();
    // testRecession();
-    Government* gov = new Government();
-    std::cout << "End" << std::endl;
+    // Government* gov = new Government();
+    // std::cout << "End" << std::endl;
 
     return 0;
 }
@@ -404,6 +421,73 @@ int testDepartment() {
     return 0;
 }
 
+void testGoToTrainStation()
+{
+
+     DeptOfHousing *housingDept = new DeptOfHousing(1000000);
+    Water *water = new Water("Sparkling", 10000);
+    Power *power = new Power("Power", 1456.3);
+    
+    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    utilitiesDept->setSuccessor(powerUtil);
+
+    TaxManager *taxMan = new TaxManager();
+
+    DeptOfFinance *financeDept = new DeptOfFinance(taxMan);
+    DeptOfPR *prDept = new DeptOfPR(housingDept, utilitiesDept, financeDept);
+
+
+
+     housingDept->createIndustrialBuilding("TrainStation");
+     housingDept->createResidentialBuilding("House");
+
+
+     std::cout << "Total Buildings: " << housingDept->getTotalBuildings() << std::endl;
+
+    IndustrialBuilding* TrainStation = NULL;
+    ResidentialBuilding* houseC = NULL;
+
+
+    Citizen* citizen = new Citizen("Jane", 10, 10, prDept);
+
+
+    std::cout<< "Test getALLBUILDINGS VECTOR: "<<"\n";
+    vector<Building*> buildings =  housingDept->getBuildings();
+
+    for (auto building : buildings)
+{
+    if (building == nullptr) continue;
+
+    IndustrialBuilding* TrainStationDest = dynamic_cast<IndustrialBuilding*>(building);
+    ResidentialBuilding* House1 = dynamic_cast<ResidentialBuilding*>(building);
+
+    if (TrainStationDest != nullptr && TrainStationDest->getType() == "TrainStation")
+    {
+        std::cout << "Found the TrainStation: " << TrainStationDest->getName() << "\n";
+        TrainStation = TrainStationDest;
+    }
+    else if (House1 != nullptr && House1->getType() == "House")
+    {
+        std::cout << "Found the House: " << House1->getName() << "\n";
+        houseC = House1;
+    }
+
+    if (TrainStation != nullptr && houseC != nullptr)
+    {
+        break;
+    }
+}
+
+    houseC->addTenant(citizen);
+   std::cout<< "Num ppl in trainStation : " << TrainStation->getCurrentOccupants() << '\n';  
+   std::cout << citizen->getBudget() << "\n";
+    GoTrain* gotoTrainStasie = new GoTrain(citizen , housingDept);
+    gotoTrainStasie->execute();
+    std::cout<< "Num ppl at TrainStation : " << TrainStation->getCurrentOccupants() << '\n';
+    std::cout << citizen->getBudget() << "\n";
+
+}
 
 // ------------------------------------------------------------------------------------------------------- //
 

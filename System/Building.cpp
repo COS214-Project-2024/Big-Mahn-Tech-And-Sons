@@ -19,6 +19,7 @@ Building::Building()
 bool Building::addTenant(Citizen* tenant) {
     if (tenants.size() < maxCapacity) {
         tenants.push_back(tenant);
+        tenant->setCurrentLocation(this) ;
         return true;
     }
     return false;
@@ -35,6 +36,7 @@ bool Building::removeTenant(Citizen* tenant) {
     if (it != tenants.end()) {
         tenants.erase(it);
         return true;
+        std::cout<<"Removed successfully \n";
     }
     return false;
 }

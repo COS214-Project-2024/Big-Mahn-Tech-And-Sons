@@ -46,6 +46,8 @@ class Building {
         std::vector<std::pair<int, int>> gridCoordinates; ///< Grid coordinates
         std::string type;               ///< Type of Building
 
+        
+
     public:
         Building();  ///< Default constructor
         virtual ~Building() = default;  ///< Virtual destructor to allow polymorphism

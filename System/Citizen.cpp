@@ -5,18 +5,16 @@
 #include "SatisfactionState.h"
 #include "NeutralState.h"
 
-
 #include "AirTrans.h"
 #include "Train.h"
 #include "Walk.h"
 #include "PublicTrans.h"
 #include "Building.h"
 #include "CityGrid.h"
- 
 
 #include <random>
 
-Citizen::Citizen(const std::string &nam, int x , int y, DeptOfPR *PR)
+Citizen::Citizen(const std::string &nam, int x, int y, DeptOfPR *PR)
 {
    name = nam;
    satisfaction = 50;
@@ -33,29 +31,30 @@ Citizen::Citizen(const std::string &nam, int x , int y, DeptOfPR *PR)
 
    this->health = 100.0;
    this->satisfaction = 50.0;
-   this->satisState =  new NeutralState();
+   this->satisState = new NeutralState();
    this->modeOfTransport = NULL;
-  // this->go =  NULL;
+   // this->go =  NULL;
    this->ageThreshhold = 0;
 
+   // Set Home and work location IN and CurrentLocation
 
-   // Set Home and work location IN
 }
-
 
 Citizen::~Citizen()
 {
-   if(state) {
+   if (state)
+   {
       delete state;
    }
 
-   if(satisState) {
+   if (satisState)
+   {
       delete satisState;
    }
 
-//    // if(modeOfTransport) {
-//    //    delete modeOfTransport;
-//    // }
+   //    // if(modeOfTransport) {
+   //    //    delete modeOfTransport;
+   //    // }
 
    // if(go) {
    //    delete go;
@@ -65,7 +64,8 @@ Citizen::~Citizen()
 void Citizen::getOlder()
 {
    age++;
-   if(this->getStateName() == "Pensioner" && age >= ageThreshhold) {
+   if (this->getStateName() == "Pensioner" && age >= ageThreshhold)
+   {
       // kill TODO
       this->PR->update(this);
       return;
@@ -75,10 +75,12 @@ void Citizen::getOlder()
 
 void Citizen::notifyPR()
 {
-   if((getSatisfactionLevelName() == "Neutral" || getSatisfactionLevelName() == "Sad") && getBudget()/100000 * 100 < 0.6 ) { // problem with finances
+   if ((getSatisfactionLevelName() == "Neutral" || getSatisfactionLevelName() == "Sad") && getBudget() / 100000 * 100 < 0.6)
+   { // problem with finances
       this->PR->update(this);
-   } else if(this) {
-
+   }
+   else if (this)
+   {
    }
 }
 
@@ -94,7 +96,7 @@ std::string Citizen::getName() const
 
 double Citizen::getHealth()
 {
-    return this->health;
+   return this->health;
 }
 
 double Citizen::getSatisfactionLevel()
@@ -118,14 +120,15 @@ bool Citizen::Spend(double amount)
    return true;
 }
 
-void Citizen::display() {
-   std::cout << "====                ====" <<  std::endl;
+void Citizen::display()
+{
+   std::cout << "====                ====" << std::endl;
    std::cout << "Name: " << this->name << std::endl;
    std::cout << "Age: " << this->age << std::endl;
    std::cout << "Health: " << this->health << std::endl;
    std::cout << "Satisfaction: " << this->getSatisfactionLevelName() << std::endl;
    std::cout << "Budget: " << this->budget << std::endl;
-   std::cout << "====                ====" <<  std::endl;
+   std::cout << "====                ====" << std::endl;
 }
 
 void Citizen::decreaseHealth(double percentage)
@@ -148,10 +151,7 @@ void Citizen::increaseSatisfaction(double amount)
 {
    this->satisfaction += amount;
    this->satisState->handle(this); // check if satisfaction state needs to be changed
-
 }
-
-
 
 void Citizen::setThreshhold(int age)
 {
@@ -175,7 +175,8 @@ std::string Citizen::getSatisfactionLevelName() const
 
 void Citizen::setSatisfactionState(SatisfactionState *state)
 {
-   if(this->satisState) {
+   if (this->satisState)
+   {
       delete this->satisState;
    }
 
@@ -184,7 +185,8 @@ void Citizen::setSatisfactionState(SatisfactionState *state)
 
 void Citizen::setState(CitizenState *state)
 {
-   if(this->state) {
+   if (this->state)
+   {
       delete this->state;
    }
 
@@ -203,8 +205,9 @@ ModeOfTrans *Citizen::getModeOfTransport() const
 
 void Citizen::setModeOfTransport(ModeOfTrans *mode)
 {
-   if(mode) {
-      this->modeOfTransport =  mode;
+   if (mode)
+   {
+      this->modeOfTransport = mode;
    }
 }
 
@@ -223,67 +226,85 @@ Building *Citizen::getWorkLocation() const
    return workLocation;
 }
 
-void Citizen::travelTo(Building *destination, CityGrid *citi, int x, int y, const std::string &Building)
+void Citizen::travelTo(Building *destination)
 {
-   DeptOfTransportation *dept = DeptOfTransportation::getInstance(); 
-   int distance = dept->get_distance(currentLocation,destination);
-   //
-   //come operate here.
+   // DeptOfTransportation *dept = DeptOfTransportation::getInstance();
+   // int distance = dept->get_distance(currentLocation,destination);
+   
+   // come operate here.
    //
 
-    
-    std::vector<ModeOfTrans*> availableModes;
-    Walk* walk = new Walk();
-    availableModes.push_back(walk); // Always available
-    if (distance > 5)
-      {  
-         PublicTrans* publicT = new PublicTrans();
-         availableModes.push_back(publicT);
-      }
-    if (distance > 15)
-    {
-         Train* train = new Train();
-         availableModes.push_back(train);
-    } 
-    if (distance > 30)
-    { 
-      AirTrans* air = new AirTrans();
+   int distance = 40;
+   
+
+   std::vector<ModeOfTrans *> availableModes;
+   Walk *walk = new Walk();
+   availableModes.push_back(walk); // Always available
+   if (distance > 5)
+   {
+      PublicTrans *publicT = new PublicTrans();
+      availableModes.push_back(publicT);
+   }
+   if (distance > 15)
+   {
+      Train *train = new Train();
+      availableModes.push_back(train);
+   }
+   if (distance > 30)
+   {
+      AirTrans *air = new AirTrans();
       availableModes.push_back(air);
-    }
-    
-    
-    std::cout << "Available transport modes for distance " << distance << "km:\n";
-    for (size_t i = 0; i < availableModes.size(); i++) {
-        std::cout << i + 1 << ". " << availableModes[i]->getName() 
-                 << " (Cost: R" << availableModes[i]->getCost() << ")\n";
-    }
-    
-    // Get user choice
-    int choice;
-    std::cout << "Choose transport mode (1-" << availableModes.size() << "): ";
-    std::cin >> choice;
-    
-    if (choice > 0 && choice <= availableModes.size()) {
-        ModeOfTrans* selectedMode = availableModes[choice - 1];
-        double totalCost = (distance * 4.5) + selectedMode->getCost();
-        
-        if (this->Spend(totalCost)) {
-            // Execute transport
-            selectedMode->execute();
-            
-            // Update locations
-            currentLocation->removeTenant(this);
-            destination->addTenant(this);
-            currentLocation = destination;
-            
-            std::cout << "Successfully traveled to " << destination->getName() << "\n";
-        } else {
-            std::cout << "Insufficient funds for travel\n";
-        }
-    }
-    
-    // Cleanup
-    for (auto mode : availableModes) {
-        delete mode;
-    }
+   }
+
+   std::cout << "Available transport modes for distance " << distance << "km:\n";
+   for (size_t i = 0; i < availableModes.size(); i++)
+   {
+      std::cout << i + 1 << ". " << availableModes[i]->getName()
+                << " (Cost: R" << availableModes[i]->getCost() << ")\n";
+   }
+
+   // Get user choice
+   int choice;
+   std::cout << "Choose transport mode (1-" << availableModes.size() << "): ";
+   std::cin >> choice;
+
+   if (choice > 0 && choice <= availableModes.size())
+   {
+      ModeOfTrans *selectedMode = availableModes[choice - 1];
+      if(selectedMode->getName() == "Walk"){ double totalCost = selectedMode->getCost(); }
+      else
+      {
+      double totalCost = (distance * 4.5) + selectedMode->getCost();
+
+      if (this->Spend(totalCost))
+      {
+         // Execute transport
+         selectedMode->execute();
+
+         // Update locations
+         currentLocation->removeTenant(this);
+         
+         destination->addTenant(this);
+         currentLocation = destination;
+
+         std::cout << "Successfully traveled to " << destination->getName() << "\n";
+      }
+      else
+      {
+         std::cout << "Insufficient funds for travel\n";
+      }
+      }
+   }
+
+   // // Cleanup
+   // for (auto mode : availableModes)
+   // {
+   //    delete mode;
+   // }
+}
+
+void Citizen::setCurrentLocation(Building *b)
+{
+   currentLocation = b;
+
 }

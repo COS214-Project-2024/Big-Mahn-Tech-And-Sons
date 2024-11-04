@@ -45,6 +45,7 @@ public:
      * @param financeDept Pointer to the Finance Department.
      */
     DeptOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, DeptOfFinance *financeDept);
+  
 
     /**
      * @brief Updates the state by checking both buildings and citizens.
