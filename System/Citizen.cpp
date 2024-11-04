@@ -21,7 +21,7 @@ Citizen::Citizen(const std::string &nam, int x , int y, DeptOfPR *PR)
    name = nam;
    satisfaction = 50;
    this->PR = PR;
-   this->PR->addCitizen(this);
+   //this->PR->addCitizen(this);
    age = 1;
    this->state = new ChildState();
 

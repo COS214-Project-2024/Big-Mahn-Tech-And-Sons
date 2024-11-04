@@ -57,12 +57,12 @@ int main()
     //testDepartment();
 
     // testHouse();
-    //testNaturalDisaster();
-    //testPandemic();
-    //testLoadShedding();
-    //testRecession();
-    //testFestival();
-    testRecession();
+    // testNaturalDisaster();
+    // testPandemic();
+    // testLoadShedding();
+    // testRecession();
+    // testFestival();
+    // testRecession();
   //  Government* gov = new Government();
     std::cout << "End" << std::endl;
 
@@ -479,7 +479,11 @@ void testPandemic()
     // Execute each pandemic command individually for testing
     std::cout << "\n--- Imposing Lockdown ---\n";
     pandemicCommand->imposeLockdown();
-    
+    for (const auto& citizen : citizens) {
+        std::cout << "Citizen: " << citizen->getName() 
+                  << ", Health: " << citizen->getHealth()
+                  << ", Satisfaction: " << citizen->getSatisfactionLevel() << "\n";
+    }
 
     std::cout << "\n--- Distributing Vaccines ---\n";
     pandemicCommand->distributeVaccines();
