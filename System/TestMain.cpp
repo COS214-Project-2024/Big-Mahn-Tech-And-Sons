@@ -429,11 +429,11 @@ void taxManTest()
 
     // A. Department of PR Initialization
     DeptOfHousing *housingDept = new DeptOfHousing(100000);
-    Water *water = new Water("Sparkling", 10000);
-    Power *power = new Power("Power", 1456.3);
+    Water *water = new Water( 10000);
+    Power *power = new Power( 1456.3);
 
-    DeptOfUtilities *utilitiesDept = new WaterSupply("Water", 5000.02, 100000, water);
-    DeptOfUtilities *powerUtil = new PowerSupply("Eskom", 150000, 4035, power);
+    DeptOfUtilities *utilitiesDept = new WaterSupply( 5000.02, 100000, water);
+    DeptOfUtilities *powerUtil = new PowerSupply( 150000, 4035, power);
 
     utilitiesDept->setSuccessor(powerUtil);
     TaxManager *taxMan = new TaxManager();
@@ -447,8 +447,8 @@ void taxManTest()
     house->displayStats();
 
     // Adding tenants
-    Citizen *tenant1 = new Citizen("Jane", 30, 10, prDept);
-    Citizen *tenant2 = new Citizen("Peter", 30, 20, prDept);
+    Citizen *tenant1 = new Citizen("Jane", prDept);
+    Citizen *tenant2 = new Citizen("Peter", prDept);
     house->addTenant(tenant1);
     house->addTenant(tenant2);
 
