@@ -207,7 +207,9 @@ This was done to avoid multiple instances of the rid beng created for the variou
    git clone <https://github.com/COS214-Project-2024/Big-Mahn-Tech-And-Sons>
    cd System
    
-2. Build and run the project using the Makefile:
+2. Build and run the TestingMain, UnitTesting, DemoMain respectively using the Makefile:
  ```bash
 make run
+make unit_run
+make demo_run
 
