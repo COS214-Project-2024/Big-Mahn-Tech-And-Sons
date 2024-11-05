@@ -194,17 +194,27 @@ This was done to avoid multiple instances of the rid beng created for the variou
 ---
 
 ## 📁 File Structure
-- **System/**: Contains all source files (.h and .cpp) and the Makefile to compile the project.
+- **System/**: Contains all source files (.h and .cpp) and the Makefile to compile the project + Auto-generated documentation for classes and methods using Doxygen.
 - **Data/**: Includes required data files to run the program.
 - **Report/**: Contains the final project report in PDF format and a Google Docs link to the latest version.
-- **Doxygen/**: Auto-generated documentation for classes and methods using Doxygen.
+  
+---
+
+## 🧑 Group Members
+- Nobuhle Mtshali - u22526171
+- Malaika Kamangu - u23618583
+- Mpho Siminya - u21824241
+- Aundrea Ncube - u22747363
+- Lebogang Masenya - u23535246
+- Amantle Temo - u23539764
+- David Kalu - u23534975
 
 ---
 
 ## 🔧 How to Build and Run
 1. Clone the repository:
    ```bash
-   git clone <https://github.com/COS214-Project-2024/Big-Mahn-Tech-And-Sons>
+   git clone https://github.com/COS214-Project-2024/Big-Mahn-Tech-And-Sons.git
    cd System
    
 2. Build and run the TestingMain, UnitTesting, DemoMain respectively using the Makefile:
