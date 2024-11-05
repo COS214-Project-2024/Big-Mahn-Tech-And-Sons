@@ -1,0 +1,58 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "Development", "PRdept", "NewDeptTrans", DptUtilities, "Taxes" ]
+  pull_request:
+    branches: [ "Development", "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Step 2: Run Super-Linter to lint the code
+      - name: Run linter
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          DEFAULT_BRANCH: "main"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Step 3: Set up C++ dependencies
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y g++ make valgrind
+
+      # Step 4: Build the application and unit test executable
+      - name: Build application
+        run: |
+          make clean  # Clean any previous builds
+          make all    # Build all targets, including unit tests
+          make unit   # Ensure the unit tests are built
+
+      # Step 5: Run unit tests with Valgrind
+      - name: Run unit tests with Valgrind
+        run: |
+          make unit_run  # Run the unit tests with Valgrind for memory leak checks
+        continue-on-error: true  # Continue to next steps even if this step fails
+
+      # Step 6: Save Valgrind output as an artifact
+      - name: Upload Valgrind log
+        uses: actions/upload-artifact@v3
+        if: failure() || success()
+        with:
+          name: valgrind-log
+          path: valgrind_log.txt
+
+      # Optional Step: Capture GDB output if debugging needed
+      - name: Run unit tests with GDB (Debugging)
+        if: failure()
+        run: |
+          make unit_debug  # Run unit tests with GDB
+        continue-on-error: true
