@@ -33,6 +33,12 @@ public:
      *
      * @return True if the navigation to the school is successful; false otherwise.
      */
+    // GoSchool(Citizen* citizen);
+
+    GoSchool(Citizen *citizen, DeptOfHousing *housing);
+
+
+
     bool execute() override;
 };
 

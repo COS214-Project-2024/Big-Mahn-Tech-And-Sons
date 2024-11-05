@@ -93,22 +93,6 @@ void DeptOfHousing::removeBuildingByName(const std::string &name)
     }
 }
 
-void DeptOfHousing::displayAllBuildings() const
-{
-    if (buildings.empty())
-    {
-        std::cout << "No buildings are currently managed." << std::endl;
-        return;
-    }
-
-    std::cout << "List of Managed Buildings:" << std::endl;
-    for (const auto &building : buildings)
-    {
-        building->displayStats();
-        std::cout << "--------------------------" << std::endl;
-    }
-}
-
 int DeptOfHousing::getTotalBuildings() const
 {
     return buildings.size();
@@ -167,6 +151,36 @@ bool DeptOfHousing::requestFunding(double amount)
     {
         std::cout << "Funding request denied.\n";
         return false;
+    }
+}
+
+Building* DeptOfHousing::getBuildingByName(const std::string& name) {
+    int index = findBuildingIndex(name);
+    if (index != -1) {
+       return this->getBuildings().at(index);
+    } else {
+        std::cout << "Building with name '" << name << "' not found." << std::endl;
+        return NULL;
+    }
+
+
+}
+
+
+
+
+void DeptOfHousing::displayAllBuildings() const {
+    if (buildings.empty()) {
+        std::cout << "No buildings are currently managed." << std::endl;
+        return;
+    }
+
+    std::cout << "List of Managed Buildings:" << this->getTotalBuildings() << std::endl;
+    std::cout << "Budget "  << this->budget << std::endl;
+    std::cout << "Price " << this->getTotalPrice() << std::endl;
+    for (const auto& building : buildings) {
+        building->displayStats();
+        std::cout << "--------------------------" << std::endl;
     }
 }
 
