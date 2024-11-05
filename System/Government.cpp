@@ -205,7 +205,7 @@ int Government::pov_menu(Settings settings)
         {
             option = government_pov_menu(settings); 
         }
-        while(option!=7);
+        while(option!=6);
         option=-1;
         break;
 

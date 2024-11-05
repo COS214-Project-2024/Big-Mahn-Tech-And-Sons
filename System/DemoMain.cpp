@@ -6,7 +6,6 @@
 
 #include "Government.h"
 
-
 using namespace std;
 
 

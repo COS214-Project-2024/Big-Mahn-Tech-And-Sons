@@ -6,7 +6,7 @@ GoToWork::GoToWork(Citizen* citizen , DeptOfHousing* housing):GoToCommand(citize
 {
    this->citizen = citizen;
     this->DOH = housing;
-    this->houseing = housing;
+    
 }
 
 bool GoToWork::execute()
