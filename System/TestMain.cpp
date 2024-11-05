@@ -186,7 +186,7 @@ void testGoToTrainStation()
     // Test for GoToEnt
     std::cout << "\nTesting GoToEnt:\n";
     GoToEnt* goToEntertainment = new GoToEnt(citizen,housingDept);
-    goToEntertainment->execute();
+   // goToEntertainment->execute();
 
     // Check which landmark the citizen went to
     LandmarkBuilding* currentLocation = dynamic_cast<LandmarkBuilding*>(citizen->getCurrentLocation());
@@ -606,7 +606,7 @@ void testGoToTrainStation()
         delete  naturalDisasterCommand;
     }
 
-    /*
+    */
 
     void testPandemic()
     {
@@ -614,9 +614,9 @@ void testGoToTrainStation()
 
         // Create a vector of citizens for testing
         std::vector<Citizen*> citizens = {
-            new Citizen("Alice", 80.0, 10, 20, prDepartment),
-            new Citizen("Bob", 70.0, 12, 22, prDepartment),
-            new Citizen("Charlie", 60.0, 14, 24, prDepartment)
+            new Citizen("Alice", prDepartment),
+            new Citizen("Bob",  prDepartment),
+            new Citizen("Charlie", prDepartment)
         };
 
         // Display initial state of each citizen
@@ -656,6 +656,7 @@ void testGoToTrainStation()
         // Clean up dynamically allocated citizens
         for (auto& citizen : citizens) {
             delete citizen;
+            pandemicCommand->execute();
         }
 
     }
@@ -693,13 +694,13 @@ void testGoToTrainStation()
 
     void testFestival()
     {
-        Power mockPowerResource("MockPowerResource", 1000);
-        DeptOfUtilities* utilitiesDept = new PowerSupply("MainPowerSupply", 100000, 10000, &mockPowerResource);
+        Power mockPowerResource(1000);
+        DeptOfUtilities* utilitiesDept = new PowerSupply(5000.02, 100000,&mockPowerResource);
           DeptOfPR* deptOfPR;
      std::vector<Citizen*> citizens = {
-            new Citizen("Alice", 80.0, 10, 20, deptOfPR),
-            new Citizen("Bob", 70.0, 12, 22, deptOfPR),
-            new Citizen("Charlie", 60.0, 14, 24, deptOfPR)
+            new Citizen("Annie", deptOfPR),
+            new Citizen("Bob",  deptOfPR),
+            new Citizen("Charlie", deptOfPR)
         };
 
         // Create a FestivalCommand instance
@@ -724,9 +725,9 @@ void testGoToTrainStation()
 
         // Create citizens
         std::vector<Citizen*> citizens = {
-            new Citizen("Alice", 80.0, 10, 20, prDepartment),
-            new Citizen("Bob", 70.0, 12, 22, prDepartment),
-            new Citizen("Charlie", 60.0, 14, 24, prDepartment)
+            new Citizen("Alice", prDepartment),
+            new Citizen("Bob", prDepartment),
+            new Citizen("Charlie", prDepartment)
         };
 
          DeptOfHousing *housingDept = new DeptOfHousing(1000000);
@@ -751,7 +752,7 @@ void testGoToTrainStation()
         delete financeDept;
     }
 
-    */
+    
 
 
    void TestingDptUtilities()

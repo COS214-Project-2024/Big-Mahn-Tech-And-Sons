@@ -17,7 +17,7 @@
 #include "NaturalDisasterCommand.h"
 #include "RecessionCommand.h"
 #include "FestivalCommand.h"
-#include "BabyBoom.h"
+#include "BabyBooming.h"
 #include "Settings.h"
 
 #include "GoAirport.h"
@@ -42,7 +42,7 @@ Government::Government()
    Water *water = new Water( 10000);
    Power *power = new Power( 100000);
    DeptOfUtilities*  waterSup = new WaterSupply(5000.02, 100000, water);
-   DeptOfUtilities* powerSup = new PowerSupply(1539, 1335984, power);
+   DeptOfUtilities* powerSup = new PowerSupply(1539, 13359, power);
   DeptOfUtilities* wasteSup = new WasteManagement( 1432, 3544.02);
 
    waterSup->setSuccessor(powerSup);
@@ -51,7 +51,14 @@ Government::Government()
    TaxManager *taxMan = new TaxManager();
    finance = new DeptOfFinance(taxMan);
    PR = new DeptOfPR(housing, waterSup, finance);
+    pandemic = new PandemicCommand(this->PR->getCitizens());
+   // RecessionCommand* recession = new RecessionCommand(this->finance)
+   //festive = new FestivalCommand(waterSup,this->PR->getCitizen(0),this->PR);
+   // BabyBoomingEvent* baby = new BabyBoomingEvent(housing->getBuildings().at(0), this->PR->getCitizens());
+    disaster = new NaturalDisasterCommand(this->housing, this->transport);
+    //LoadsheddingCommand* loadshed = new LoadsheddingCommand(powerSup);
 
+    year=2024;
 
    // Seed the random number generator
    srand(time(0));
@@ -135,6 +142,7 @@ void Government::addNewCitizens()
 void Government::runSim() // main_menu
 {
     Settings settings;
+    settings.clear_terminal();
     int option;
     cityname = settings.get_string(2,20,"Enter a city Name:");
     while(option!=2)
@@ -149,7 +157,8 @@ void Government::runSim() // main_menu
 int Government::main_menu(Settings settings)
 {
     settings.clear_terminal();
-    cout<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<"\n"<<cityname<<"\n\n"<<RESET;
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
     int option;
     cout<<"1) START CITY BUILDER SIMULATION\n"
         <<"2) EXIT SIMULATION\n";
@@ -176,7 +185,8 @@ int Government::main_menu(Settings settings)
 int Government::pov_menu(Settings settings)
 {
     settings.clear_terminal();
-    cout<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<"\n"<<cityname<<"\n\n"<<RESET;
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
     int option;
     cout<<"1) VIEW CITIZEN POV\n"
         <<"2) VIEW GOVERNMENT POV\n"
@@ -198,7 +208,7 @@ int Government::pov_menu(Settings settings)
         {
             option = government_pov_menu(settings); 
         }
-        while(option!=3);
+        while(option!=7);
         option=-1;
         break;
 
@@ -212,7 +222,8 @@ int Government::pov_menu(Settings settings)
 int Government::city_grid_menu(Settings settings)
 {
     settings.clear_terminal();
-    cout<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<"\n"<<cityname<<"\n\n"<<RESET;
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
     int option,x,y,z;
     string buildingType,a,b;
     string buildingname;
@@ -333,12 +344,16 @@ int Government::city_grid_menu(Settings settings)
 int Government::government_pov_menu(Settings settings)
 {
     settings.clear_terminal();
-    cout<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<"\n"<<cityname<<"\n\n"<<RESET;
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
     int option;
     cout<<"1) VIEW CITY GRID\n"
         <<"2) VIEW DEPARTMENT STATISTICS\n"
-        <<"3) EXIT\n";
-    option = settings.get_int(1,3,"select option: ");
+        <<"3) SIMULATE YEAR\n"
+        <<"4) CREATE A PANDEMIC\n"
+        <<"5) INVOKE NATURAL DISASTER\n"
+        <<"6) EXIT\n";
+    option = settings.get_int(1,6,"select option: ");
     switch (option)
     {
     case 1:
@@ -360,7 +375,29 @@ int Government::government_pov_menu(Settings settings)
         break;
 
     case 3:
-        option = 3;
+        
+        simulateYear();
+
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 4:
+
+        pandemic->execute();
+
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 5:
+        disaster->execute();
+
+        settings.enter_to_continue();
+        option=-1;
+        break;
+    case 6:
+        option = 6;
         break;
     }
     return option;
@@ -369,7 +406,8 @@ int Government::government_pov_menu(Settings settings)
 int Government::government_stats_menu(Settings settings)
 {
     settings.clear_terminal();
-    cout<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<"\n"<<cityname<<"\n\n"<<RESET;
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
     int option;
     cout<<"1) DISPLAY DEPARTMENT OF FINANCE STATS\n"
         <<"2) DISPLAY DEPARTMENT OF HOUSING STATS\n"
@@ -414,7 +452,8 @@ int Government::government_stats_menu(Settings settings)
 int Government::citizen_pov_menu(Settings settings)
 {
     settings.clear_terminal();
-    cout<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<"\n"<<cityname<<"\n\n"<<RESET;
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
     int option;
     static std::random_device rd;
     static std::mt19937 gen(rd());
@@ -510,15 +549,11 @@ int Government::citizen_pov_menu(Settings settings)
 
 
 
-
-
-
-
-
-
 void Government::simulateYear() {
     // Trigger a random event from the available commands
     int eventIndex = rand() % 7; // Adjust based on the number of commands
+
+    cout<<"Current year: "<<year<<endl;
     /*
     switch (eventIndex) {
         case 0: pandemic->execute(); break;
@@ -539,7 +574,9 @@ void Government::simulateYear() {
 
     // Add new citizens at the end of each year
     addNewCitizens();
-
+    year+=1;
+    Settings settings;
+    settings.sleep(2);
     std::cout << "Yearly simulation complete.\n";
 
 
@@ -741,4 +778,7 @@ void Government::addRoad() {
 
     // Optionally display the grid after adding
     transport->printCityGrid();
+}
+
+void Government::events() {
 }

@@ -15,7 +15,5 @@ int main()
 {
     Government gov;
     gov.runSim();
-
-    
     return 0;
 }

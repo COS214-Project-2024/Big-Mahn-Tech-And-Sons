@@ -71,6 +71,7 @@ public:
 
 
     Citizen* getCitizen(int i);
+    vector<Citizen*> getCitizens();
 
     int numCitizens();
 

@@ -39,6 +39,7 @@ public:
     string get_string(int min, int max, string rmessage);
     void enter_to_continue();
     void clear_terminal();
+    void sleep(int);
 };
 
 #endif /* SETTINGS_H */

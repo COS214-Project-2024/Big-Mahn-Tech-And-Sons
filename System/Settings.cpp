@@ -140,3 +140,8 @@ void Settings::clear_terminal()
     system("clear");  // Clear the screen on Unix/Linux/macOS
     #endif
 }
+
+void Settings::sleep(int duration)
+{
+    std::this_thread::sleep_for(std::chrono::seconds(duration));
+}

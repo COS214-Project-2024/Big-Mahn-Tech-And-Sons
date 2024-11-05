@@ -132,6 +132,11 @@ Citizen *DeptOfPR::getCitizen(int i)
    return this->citizens.at(i);
 }
 
+vector<Citizen *> DeptOfPR::getCitizens()
+{
+    return this->citizens;
+}
+
 int DeptOfPR::numCitizens()
 {
    return this->citizens.size();
