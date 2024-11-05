@@ -1,0 +1,190 @@
+\hypertarget{classWaterSupply}{}\doxysection{Water\+Supply Class Reference}
+\label{classWaterSupply}\index{WaterSupply@{WaterSupply}}
+
+
+Manages the water distribution and supply system for the city. Inherits from the \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} class.  
+
+
+
+
+{\ttfamily \#include $<$Water\+Supply.\+h$>$}
+
+
+
+Inheritance diagram for Water\+Supply\+:
+% FIG 0
+
+
+Collaboration diagram for Water\+Supply\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWaterSupply_af62e65b420287653cd8258e8484471c3}{Water\+Supply}} (double budget, double capacity, \mbox{\hyperlink{classWater}{Water}} $\ast$water\+Resource)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classWaterSupply}{Water\+Supply}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWaterSupply_a248d7aa796e3f45c018acb73a577191c}{$\sim$\+Water\+Supply}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{classWaterSupply}{Water\+Supply}}. This destructor releases any dynamically allocated resources. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWaterSupply_a486820f1132e5a051f7a7fddad3a5925}{distribute\+Water}} ()
+\begin{DoxyCompactList}\small\item\em Distributes water to various sectors of the city based on demand. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWaterSupply_a1226207ae8e513740bdddd2f21970cae}{distribute\+Water\+To\+Building}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$b)
+\begin{DoxyCompactList}\small\item\em Distributes water to specific building in the vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWaterSupply_ac9d2ec59a4ba7d5f3fd315c129b49651}{distribute\+Water\+To\+Building}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$b, double incoming\+Amt)
+\begin{DoxyCompactList}\small\item\em Distributes specific amount of water to specific building in the vector. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classWaterSupply_a149a2ccdb355389b14e047903c2a9b9d}{calculate\+Water\+Usage}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the current water usage based on consumption rates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWaterSupply_ab574aec079404bb6a836cc5071feb7a7}{water\+Shut\+Down}} ()
+\begin{DoxyCompactList}\small\item\em Shuts down the water supply for water cut. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWaterSupply_a43056620c6a7efefd8485d9d01c6cf16}{increase\+Water\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Increases the water storage capacity of the system. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classWaterSupply_a6139de55a76776c6a5a8b3b713864ba3}{get\+Water\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current total water capacity. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classWaterSupply_a7a20ac4c50ec1d2d379b868899d44812}{get\+Budget}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current total budget. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWaterSupply_a6cb958b9da08d612b1f15bfe150b0846}{handle\+Request}} (\mbox{\hyperlink{classRequest}{Request}} \&req) override
+\begin{DoxyCompactList}\small\item\em the \mbox{\hyperlink{classWaterSupply_a6cb958b9da08d612b1f15bfe150b0846}{handle\+Request()}} function is the core method responsible for either processing the request or passing it along the chain to the next handler. \mbox{\hyperlink{classWaterSupply}{Water\+Supply}} checks if it can handle the request, if not, \mbox{\hyperlink{classWaterSupply}{Water\+Supply}} will pass it on to the next concrete\+Handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Manages the water distribution and supply system for the city. Inherits from the \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWaterSupply_af62e65b420287653cd8258e8484471c3}\label{classWaterSupply_af62e65b420287653cd8258e8484471c3}} 
+\index{WaterSupply@{WaterSupply}!WaterSupply@{WaterSupply}}
+\index{WaterSupply@{WaterSupply}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{WaterSupply()}{WaterSupply()}}
+{\footnotesize\ttfamily Water\+Supply\+::\+Water\+Supply (\begin{DoxyParamCaption}\item[{double}]{budget,  }\item[{double}]{capacity,  }\item[{\mbox{\hyperlink{classWater}{Water}} $\ast$}]{water\+Resource }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classWaterSupply}{Water\+Supply}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em budget} & The budget allocated to the water supply department. \\
+\hline
+{\em capacity} & The initial water capacity available for the department. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWaterSupply_a248d7aa796e3f45c018acb73a577191c}\label{classWaterSupply_a248d7aa796e3f45c018acb73a577191c}} 
+\index{WaterSupply@{WaterSupply}!````~WaterSupply@{$\sim$WaterSupply}}
+\index{````~WaterSupply@{$\sim$WaterSupply}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{$\sim$WaterSupply()}{~WaterSupply()}}
+{\footnotesize\ttfamily Water\+Supply\+::$\sim$\+Water\+Supply (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for \mbox{\hyperlink{classWaterSupply}{Water\+Supply}}. This destructor releases any dynamically allocated resources. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWaterSupply_a149a2ccdb355389b14e047903c2a9b9d}\label{classWaterSupply_a149a2ccdb355389b14e047903c2a9b9d}} 
+\index{WaterSupply@{WaterSupply}!calculateWaterUsage@{calculateWaterUsage}}
+\index{calculateWaterUsage@{calculateWaterUsage}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{calculateWaterUsage()}{calculateWaterUsage()}}
+{\footnotesize\ttfamily double Water\+Supply\+::calculate\+Water\+Usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the current water usage based on consumption rates. 
+
+\begin{DoxyReturn}{Returns}
+The amount of water used. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWaterSupply_a486820f1132e5a051f7a7fddad3a5925}\label{classWaterSupply_a486820f1132e5a051f7a7fddad3a5925}} 
+\index{WaterSupply@{WaterSupply}!distributeWater@{distributeWater}}
+\index{distributeWater@{distributeWater}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{distributeWater()}{distributeWater()}}
+{\footnotesize\ttfamily void Water\+Supply\+::distribute\+Water (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Distributes water to various sectors of the city based on demand. 
+
+\mbox{\Hypertarget{classWaterSupply_a1226207ae8e513740bdddd2f21970cae}\label{classWaterSupply_a1226207ae8e513740bdddd2f21970cae}} 
+\index{WaterSupply@{WaterSupply}!distributeWaterToBuilding@{distributeWaterToBuilding}}
+\index{distributeWaterToBuilding@{distributeWaterToBuilding}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{distributeWaterToBuilding()}{distributeWaterToBuilding()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Water\+Supply\+::distribute\+Water\+To\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Distributes water to specific building in the vector. 
+
+\mbox{\Hypertarget{classWaterSupply_ac9d2ec59a4ba7d5f3fd315c129b49651}\label{classWaterSupply_ac9d2ec59a4ba7d5f3fd315c129b49651}} 
+\index{WaterSupply@{WaterSupply}!distributeWaterToBuilding@{distributeWaterToBuilding}}
+\index{distributeWaterToBuilding@{distributeWaterToBuilding}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{distributeWaterToBuilding()}{distributeWaterToBuilding()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Water\+Supply\+::distribute\+Water\+To\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{b,  }\item[{double}]{incoming\+Amt }\end{DoxyParamCaption})}
+
+
+
+Distributes specific amount of water to specific building in the vector. 
+
+\mbox{\Hypertarget{classWaterSupply_a7a20ac4c50ec1d2d379b868899d44812}\label{classWaterSupply_a7a20ac4c50ec1d2d379b868899d44812}} 
+\index{WaterSupply@{WaterSupply}!getBudget@{getBudget}}
+\index{getBudget@{getBudget}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{getBudget()}{getBudget()}}
+{\footnotesize\ttfamily double Water\+Supply\+::get\+Budget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current total budget. 
+
+\begin{DoxyReturn}{Returns}
+The current budget available. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWaterSupply_a6139de55a76776c6a5a8b3b713864ba3}\label{classWaterSupply_a6139de55a76776c6a5a8b3b713864ba3}} 
+\index{WaterSupply@{WaterSupply}!getWaterCapacity@{getWaterCapacity}}
+\index{getWaterCapacity@{getWaterCapacity}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{getWaterCapacity()}{getWaterCapacity()}}
+{\footnotesize\ttfamily double Water\+Supply\+::get\+Water\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current total water capacity. 
+
+\begin{DoxyReturn}{Returns}
+The current water capacity available. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWaterSupply_a6cb958b9da08d612b1f15bfe150b0846}\label{classWaterSupply_a6cb958b9da08d612b1f15bfe150b0846}} 
+\index{WaterSupply@{WaterSupply}!handleRequest@{handleRequest}}
+\index{handleRequest@{handleRequest}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{handleRequest()}{handleRequest()}}
+{\footnotesize\ttfamily bool Water\+Supply\+::handle\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRequest}{Request}} \&}]{req }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+the \mbox{\hyperlink{classWaterSupply_a6cb958b9da08d612b1f15bfe150b0846}{handle\+Request()}} function is the core method responsible for either processing the request or passing it along the chain to the next handler. \mbox{\hyperlink{classWaterSupply}{Water\+Supply}} checks if it can handle the request, if not, \mbox{\hyperlink{classWaterSupply}{Water\+Supply}} will pass it on to the next concrete\+Handler. 
+
+
+
+Implements \mbox{\hyperlink{classDeptOfUtilities_a0cfd1fd63b2ef210cdcf7468998560a2}{Dept\+Of\+Utilities}}.
+
+\mbox{\Hypertarget{classWaterSupply_a43056620c6a7efefd8485d9d01c6cf16}\label{classWaterSupply_a43056620c6a7efefd8485d9d01c6cf16}} 
+\index{WaterSupply@{WaterSupply}!increaseWaterCapacity@{increaseWaterCapacity}}
+\index{increaseWaterCapacity@{increaseWaterCapacity}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{increaseWaterCapacity()}{increaseWaterCapacity()}}
+{\footnotesize\ttfamily void Water\+Supply\+::increase\+Water\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Increases the water storage capacity of the system. 
+
+\mbox{\Hypertarget{classWaterSupply_ab574aec079404bb6a836cc5071feb7a7}\label{classWaterSupply_ab574aec079404bb6a836cc5071feb7a7}} 
+\index{WaterSupply@{WaterSupply}!waterShutDown@{waterShutDown}}
+\index{waterShutDown@{waterShutDown}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{waterShutDown()}{waterShutDown()}}
+{\footnotesize\ttfamily void Water\+Supply\+::water\+Shut\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shuts down the water supply for water cut. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WaterSupply_8h}{Water\+Supply.\+h}}\item 
+\mbox{\hyperlink{WaterSupply_8cpp}{Water\+Supply.\+cpp}}\end{DoxyCompactItemize}

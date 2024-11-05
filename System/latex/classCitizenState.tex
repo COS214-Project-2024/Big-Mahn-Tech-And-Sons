@@ -1,0 +1,66 @@
+\hypertarget{classCitizenState}{}\doxysection{Citizen\+State Class Reference}
+\label{classCitizenState}\index{CitizenState@{CitizenState}}
+
+
+Abstract base class representing the state of a citizen.  
+
+
+
+
+{\ttfamily \#include $<$Citizen\+States.\+h$>$}
+
+
+
+Inheritance diagram for Citizen\+State\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classCitizenState_a7f61a696c3bc9a1800861d49f4631a69}{handle}} (\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$citizen)=0
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{classCitizenState_ad32a1f4855ba702372d0e6ba43113223}{get\+State\+Name}} () const =0
+\begin{DoxyCompactList}\small\item\em Gets the name of the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class representing the state of a citizen. 
+
+Defines the interface for different states of a citizen (e.\+g., Child, Adult, Pensioner). 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCitizenState_ad32a1f4855ba702372d0e6ba43113223}\label{classCitizenState_ad32a1f4855ba702372d0e6ba43113223}} 
+\index{CitizenState@{CitizenState}!getStateName@{getStateName}}
+\index{getStateName@{getStateName}!CitizenState@{CitizenState}}
+\doxysubsubsection{\texorpdfstring{getStateName()}{getStateName()}}
+{\footnotesize\ttfamily virtual std\+::string Citizen\+State\+::get\+State\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gets the name of the state. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string The state name. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classPensionerState_aa6d8e3c41f360e9eeffe85c354391468}{Pensioner\+State}}, \mbox{\hyperlink{classChildState_acf3c458a6fa2b5c236790bcf045ac864}{Child\+State}}, and \mbox{\hyperlink{classAdultState_a084f72057f39f9c7f2d915d2db365832}{Adult\+State}}.
+
+\mbox{\Hypertarget{classCitizenState_a7f61a696c3bc9a1800861d49f4631a69}\label{classCitizenState_a7f61a696c3bc9a1800861d49f4631a69}} 
+\index{CitizenState@{CitizenState}!handle@{handle}}
+\index{handle@{handle}!CitizenState@{CitizenState}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}}
+{\footnotesize\ttfamily virtual void Citizen\+State\+::handle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$}]{citizen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Virtual destructor. 
+
+
+
+Implemented in \mbox{\hyperlink{classPensionerState_af21c1198659ae966196f0748ad7aeea4}{Pensioner\+State}}, \mbox{\hyperlink{classChildState_a15e9f58507b6fa6ce2f67610a61260cc}{Child\+State}}, and \mbox{\hyperlink{classAdultState_a5ea8dbd03ae474e0b6c277406ef325b0}{Adult\+State}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{CitizenStates_8h}{Citizen\+States.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,365 @@
+\hypertarget{classCommercialBuilding}{}\doxysection{Commercial\+Building Class Reference}
+\label{classCommercialBuilding}\index{CommercialBuilding@{CommercialBuilding}}
+
+
+Abstract class representing commercial buildings.  
+
+
+
+
+{\ttfamily \#include $<$Commercial\+Building.\+h$>$}
+
+
+
+Inheritance diagram for Commercial\+Building\+:
+% FIG 0
+
+
+Collaboration diagram for Commercial\+Building\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCommercialBuilding_abbb9fe8dab3fc33d375d9f93514255f1}{Commercial\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCommercialBuilding_aa397dc360571edb4535121dd7e5711db}{display\+Stats}} () const
+\begin{DoxyCompactList}\small\item\em Displays the stats specific to commercial buildings. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCommercialBuilding_a95ee5afb4af5cb1896d1340c63e86c23}{get\+Available\+Jobs}} () const
+\begin{DoxyCompactList}\small\item\em Gets the available jobs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCommercialBuilding_af588ac4c74109df2024b5771d4b7dd45}{set\+Available\+Jobs}} (int jobs)
+\begin{DoxyCompactList}\small\item\em Sets the available jobs. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCommercialBuilding_a66a8d9ebdffc08d3a7ede111801bf25d}{get\+Available\+Kids\+Spaces}} () const
+\begin{DoxyCompactList}\small\item\em Gets the available kids\textquotesingle{} spaces. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCommercialBuilding_a0bf220e37e0ecff28a941394b1786395}{set\+Available\+Kids\+Spaces}} (int kids\+Spaces)
+\begin{DoxyCompactList}\small\item\em Sets the available kids\textquotesingle{} spaces. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCommercialBuilding_ac49423aa8839958935a11416787f5dac}{get\+Available\+Beds}} () const
+\begin{DoxyCompactList}\small\item\em Gets the available beds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCommercialBuilding_a3197fdf9a0b0f037167b17c3de84c4e3}{set\+Available\+Beds}} (int beds)
+\begin{DoxyCompactList}\small\item\em Sets the available beds. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCommercialBuilding_a273a57479004ca22a0c497b5e5463135}{check\+Availability}} () const =0
+\begin{DoxyCompactList}\small\item\em Checks the availability of resources depending on the subtype. Pure virtual function to be defined in derived classes. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classCommercialBuilding_ad3e91296d9a6488df79e33b0aeb75511}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor)=0
+\begin{DoxyCompactList}\small\item\em Accepts visitors for the visitor pattern. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCommercialBuilding_a7f9fea86eb06baf8fbc31e21697d5e21}{close\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Closes the building due to recession. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCommercialBuilding_a4fd8a22ff68a95aeafaa3f289cf8fd41}{reopen\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Reopens the building and restores resources to maximum capacity. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCommercialBuilding_a9e1a5fefb5de022dc75eeca24556d490}{is\+Closed}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the building is closed. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classCommercialBuilding_a5ed798d1d25fc35d7bdf2dca5d1897dd}{repair\+Clone}} () const =0
+\begin{DoxyCompactList}\small\item\em Clones the commercial building for repairs. Pure virtual method to be defined in derived classes. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCommercialBuilding_ac15f4e09243f1370404cd746285d61c0}{get\+Annual\+Revenue}} () const
+\item 
+void \mbox{\hyperlink{classCommercialBuilding_a57f79743072fdcbf2a5e96cbd9f983b6}{set\+Annual\+Revenue}} (double revenue)
+\item 
+double \mbox{\hyperlink{classCommercialBuilding_ac66e25d0b3641bed4ae6df886181521a}{calculate\+Tax}} () const override
+\begin{DoxyCompactList}\small\item\em Pure virtual function for tax calculation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classCommercialBuilding_aa334368f2eb03e652881c3bbd09d7745}{available\+Jobs}}
+\begin{DoxyCompactList}\small\item\em Available jobs (for shops and offices). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCommercialBuilding_ae11ec2cb442348068c2203179996a392}{available\+Kids\+Spaces}}
+\begin{DoxyCompactList}\small\item\em Available kid spaces (for schools). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCommercialBuilding_a7c18e85c186f8de3be409c5ce4cd0bf7}{available\+Beds}}
+\begin{DoxyCompactList}\small\item\em Available beds (for hospitals). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCommercialBuilding_a60ef99a1e5f6bc845b61e6868072b664}{closed}}
+\begin{DoxyCompactList}\small\item\em Indicates if the building is closed due to recession. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCommercialBuilding_aba5c82092045136da7c16075e6d3a504}{annual\+Revenue}}
+\begin{DoxyCompactList}\small\item\em Annual revenue generated by the building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class representing commercial buildings. 
+
+Provides shared attributes and operations for all commercial buildings, such as available jobs, kid spaces, and beds. Subtypes handle specific implementations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCommercialBuilding_abbb9fe8dab3fc33d375d9f93514255f1}\label{classCommercialBuilding_abbb9fe8dab3fc33d375d9f93514255f1}} 
+\index{CommercialBuilding@{CommercialBuilding}!CommercialBuilding@{CommercialBuilding}}
+\index{CommercialBuilding@{CommercialBuilding}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{CommercialBuilding()}{CommercialBuilding()}}
+{\footnotesize\ttfamily Commercial\+Building\+::\+Commercial\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}. 
+
+Constructor for \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}. Initializes default values for job, kid space, and bed availability. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCommercialBuilding_ad3e91296d9a6488df79e33b0aeb75511}\label{classCommercialBuilding_ad3e91296d9a6488df79e33b0aeb75511}} 
+\index{CommercialBuilding@{CommercialBuilding}!accept@{accept}}
+\index{accept@{accept}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily virtual void Commercial\+Building\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Accepts visitors for the visitor pattern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & Pointer to a \mbox{\hyperlink{classTaxManager}{Tax\+Manager}} object. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBuilding_a4a7a7a42d386169eca508651f05fb70e}{Building}}.
+
+
+
+Implemented in \mbox{\hyperlink{classShop_aaa5b61a154d68ddb94802349c808adb5}{Shop}}, \mbox{\hyperlink{classSchool_a3933696fe63e3d19a0835fe0a72b98b9}{School}}, \mbox{\hyperlink{classOffice_a3ffdb0b13375be3bc0c496373a72b0c3}{Office}}, and \mbox{\hyperlink{classHospital_a165d7fce5f8ba46a4ee996f9f8678be0}{Hospital}}.
+
+\mbox{\Hypertarget{classCommercialBuilding_ac66e25d0b3641bed4ae6df886181521a}\label{classCommercialBuilding_ac66e25d0b3641bed4ae6df886181521a}} 
+\index{CommercialBuilding@{CommercialBuilding}!calculateTax@{calculateTax}}
+\index{calculateTax@{calculateTax}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{calculateTax()}{calculateTax()}}
+{\footnotesize\ttfamily double Commercial\+Building\+::calculate\+Tax (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Pure virtual function for tax calculation. 
+
+
+
+Implements \mbox{\hyperlink{classBuilding_a3038550de011deea620ef7a0d8130784}{Building}}.
+
+\mbox{\Hypertarget{classCommercialBuilding_a273a57479004ca22a0c497b5e5463135}\label{classCommercialBuilding_a273a57479004ca22a0c497b5e5463135}} 
+\index{CommercialBuilding@{CommercialBuilding}!checkAvailability@{checkAvailability}}
+\index{checkAvailability@{checkAvailability}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{checkAvailability()}{checkAvailability()}}
+{\footnotesize\ttfamily virtual bool Commercial\+Building\+::check\+Availability (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Checks the availability of resources depending on the subtype. Pure virtual function to be defined in derived classes. 
+
+
+
+Implemented in \mbox{\hyperlink{classShop_a138bd64be6d697de646f2630216f62be}{Shop}}, \mbox{\hyperlink{classSchool_ad388b2fa802bea01168ac4488f8b90a6}{School}}, \mbox{\hyperlink{classOffice_ab48c91134191e0f83c2969e8fb6832cd}{Office}}, and \mbox{\hyperlink{classHospital_a130af10cde8047ebb1d7f36c50fa5d0d}{Hospital}}.
+
+\mbox{\Hypertarget{classCommercialBuilding_a7f9fea86eb06baf8fbc31e21697d5e21}\label{classCommercialBuilding_a7f9fea86eb06baf8fbc31e21697d5e21}} 
+\index{CommercialBuilding@{CommercialBuilding}!closeBuilding@{closeBuilding}}
+\index{closeBuilding@{closeBuilding}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{closeBuilding()}{closeBuilding()}}
+{\footnotesize\ttfamily void Commercial\+Building\+::close\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the building due to recession. 
+
+\mbox{\Hypertarget{classCommercialBuilding_aa397dc360571edb4535121dd7e5711db}\label{classCommercialBuilding_aa397dc360571edb4535121dd7e5711db}} 
+\index{CommercialBuilding@{CommercialBuilding}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Commercial\+Building\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Displays the stats specific to commercial buildings. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classBuilding_aace1b612517a40b26a1d557d1668e9e2}{Building}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classShop_a1a5516dd89a9458e121f7304ebf22206}{Shop}}, \mbox{\hyperlink{classSchool_aaf42aa3719b500335e460f827e653cf3}{School}}, \mbox{\hyperlink{classOffice_a25db8c8fcbe9db159882940e8273f9ad}{Office}}, and \mbox{\hyperlink{classHospital_a0ac7f95dea4c54d7815d7168f4d5edf0}{Hospital}}.
+
+\mbox{\Hypertarget{classCommercialBuilding_ac15f4e09243f1370404cd746285d61c0}\label{classCommercialBuilding_ac15f4e09243f1370404cd746285d61c0}} 
+\index{CommercialBuilding@{CommercialBuilding}!getAnnualRevenue@{getAnnualRevenue}}
+\index{getAnnualRevenue@{getAnnualRevenue}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{getAnnualRevenue()}{getAnnualRevenue()}}
+{\footnotesize\ttfamily double Commercial\+Building\+::get\+Annual\+Revenue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classCommercialBuilding_ac49423aa8839958935a11416787f5dac}\label{classCommercialBuilding_ac49423aa8839958935a11416787f5dac}} 
+\index{CommercialBuilding@{CommercialBuilding}!getAvailableBeds@{getAvailableBeds}}
+\index{getAvailableBeds@{getAvailableBeds}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{getAvailableBeds()}{getAvailableBeds()}}
+{\footnotesize\ttfamily int Commercial\+Building\+::get\+Available\+Beds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the available beds. 
+
+\begin{DoxyReturn}{Returns}
+The number of available beds. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCommercialBuilding_a95ee5afb4af5cb1896d1340c63e86c23}\label{classCommercialBuilding_a95ee5afb4af5cb1896d1340c63e86c23}} 
+\index{CommercialBuilding@{CommercialBuilding}!getAvailableJobs@{getAvailableJobs}}
+\index{getAvailableJobs@{getAvailableJobs}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{getAvailableJobs()}{getAvailableJobs()}}
+{\footnotesize\ttfamily int Commercial\+Building\+::get\+Available\+Jobs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the available jobs. 
+
+\begin{DoxyReturn}{Returns}
+The number of available jobs. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCommercialBuilding_a66a8d9ebdffc08d3a7ede111801bf25d}\label{classCommercialBuilding_a66a8d9ebdffc08d3a7ede111801bf25d}} 
+\index{CommercialBuilding@{CommercialBuilding}!getAvailableKidsSpaces@{getAvailableKidsSpaces}}
+\index{getAvailableKidsSpaces@{getAvailableKidsSpaces}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{getAvailableKidsSpaces()}{getAvailableKidsSpaces()}}
+{\footnotesize\ttfamily int Commercial\+Building\+::get\+Available\+Kids\+Spaces (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the available kids\textquotesingle{} spaces. 
+
+\begin{DoxyReturn}{Returns}
+The number of available kids\textquotesingle{} spaces. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCommercialBuilding_a9e1a5fefb5de022dc75eeca24556d490}\label{classCommercialBuilding_a9e1a5fefb5de022dc75eeca24556d490}} 
+\index{CommercialBuilding@{CommercialBuilding}!isClosed@{isClosed}}
+\index{isClosed@{isClosed}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{isClosed()}{isClosed()}}
+{\footnotesize\ttfamily bool Commercial\+Building\+::is\+Closed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the building is closed. 
+
+\begin{DoxyReturn}{Returns}
+True if the building is closed, otherwise false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCommercialBuilding_a4fd8a22ff68a95aeafaa3f289cf8fd41}\label{classCommercialBuilding_a4fd8a22ff68a95aeafaa3f289cf8fd41}} 
+\index{CommercialBuilding@{CommercialBuilding}!reopenBuilding@{reopenBuilding}}
+\index{reopenBuilding@{reopenBuilding}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{reopenBuilding()}{reopenBuilding()}}
+{\footnotesize\ttfamily void Commercial\+Building\+::reopen\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reopens the building and restores resources to maximum capacity. 
+
+\mbox{\Hypertarget{classCommercialBuilding_a5ed798d1d25fc35d7bdf2dca5d1897dd}\label{classCommercialBuilding_a5ed798d1d25fc35d7bdf2dca5d1897dd}} 
+\index{CommercialBuilding@{CommercialBuilding}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classBuilding}{Building}}$\ast$ Commercial\+Building\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Clones the commercial building for repairs. Pure virtual method to be defined in derived classes. 
+
+
+
+Implements \mbox{\hyperlink{classBuilding_a51b90ecf726357a0bcee517a4a36017f}{Building}}.
+
+
+
+Implemented in \mbox{\hyperlink{classShop_ad92a0727576b2edc04f45d4815e6aa1b}{Shop}}, \mbox{\hyperlink{classSchool_a106067f5666af00199f4710f24b38846}{School}}, \mbox{\hyperlink{classOffice_ad2fd8f7d63ea163f31375dad6241bfb5}{Office}}, and \mbox{\hyperlink{classHospital_ac354bfbcb2a478be5e49455d61de8a67}{Hospital}}.
+
+\mbox{\Hypertarget{classCommercialBuilding_a57f79743072fdcbf2a5e96cbd9f983b6}\label{classCommercialBuilding_a57f79743072fdcbf2a5e96cbd9f983b6}} 
+\index{CommercialBuilding@{CommercialBuilding}!setAnnualRevenue@{setAnnualRevenue}}
+\index{setAnnualRevenue@{setAnnualRevenue}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{setAnnualRevenue()}{setAnnualRevenue()}}
+{\footnotesize\ttfamily void Commercial\+Building\+::set\+Annual\+Revenue (\begin{DoxyParamCaption}\item[{double}]{revenue }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCommercialBuilding_a3197fdf9a0b0f037167b17c3de84c4e3}\label{classCommercialBuilding_a3197fdf9a0b0f037167b17c3de84c4e3}} 
+\index{CommercialBuilding@{CommercialBuilding}!setAvailableBeds@{setAvailableBeds}}
+\index{setAvailableBeds@{setAvailableBeds}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{setAvailableBeds()}{setAvailableBeds()}}
+{\footnotesize\ttfamily void Commercial\+Building\+::set\+Available\+Beds (\begin{DoxyParamCaption}\item[{int}]{beds }\end{DoxyParamCaption})}
+
+
+
+Sets the available beds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em beds} & Number of available beds to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCommercialBuilding_af588ac4c74109df2024b5771d4b7dd45}\label{classCommercialBuilding_af588ac4c74109df2024b5771d4b7dd45}} 
+\index{CommercialBuilding@{CommercialBuilding}!setAvailableJobs@{setAvailableJobs}}
+\index{setAvailableJobs@{setAvailableJobs}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{setAvailableJobs()}{setAvailableJobs()}}
+{\footnotesize\ttfamily void Commercial\+Building\+::set\+Available\+Jobs (\begin{DoxyParamCaption}\item[{int}]{jobs }\end{DoxyParamCaption})}
+
+
+
+Sets the available jobs. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em jobs} & Number of available jobs to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCommercialBuilding_a0bf220e37e0ecff28a941394b1786395}\label{classCommercialBuilding_a0bf220e37e0ecff28a941394b1786395}} 
+\index{CommercialBuilding@{CommercialBuilding}!setAvailableKidsSpaces@{setAvailableKidsSpaces}}
+\index{setAvailableKidsSpaces@{setAvailableKidsSpaces}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{setAvailableKidsSpaces()}{setAvailableKidsSpaces()}}
+{\footnotesize\ttfamily void Commercial\+Building\+::set\+Available\+Kids\+Spaces (\begin{DoxyParamCaption}\item[{int}]{kids\+Spaces }\end{DoxyParamCaption})}
+
+
+
+Sets the available kids\textquotesingle{} spaces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em kids\+Spaces} & Number of available kids\textquotesingle{} spaces to set. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classCommercialBuilding_aba5c82092045136da7c16075e6d3a504}\label{classCommercialBuilding_aba5c82092045136da7c16075e6d3a504}} 
+\index{CommercialBuilding@{CommercialBuilding}!annualRevenue@{annualRevenue}}
+\index{annualRevenue@{annualRevenue}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{annualRevenue}{annualRevenue}}
+{\footnotesize\ttfamily double Commercial\+Building\+::annual\+Revenue\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Annual revenue generated by the building. 
+
+\mbox{\Hypertarget{classCommercialBuilding_a7c18e85c186f8de3be409c5ce4cd0bf7}\label{classCommercialBuilding_a7c18e85c186f8de3be409c5ce4cd0bf7}} 
+\index{CommercialBuilding@{CommercialBuilding}!availableBeds@{availableBeds}}
+\index{availableBeds@{availableBeds}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{availableBeds}{availableBeds}}
+{\footnotesize\ttfamily int Commercial\+Building\+::available\+Beds\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Available beds (for hospitals). 
+
+\mbox{\Hypertarget{classCommercialBuilding_aa334368f2eb03e652881c3bbd09d7745}\label{classCommercialBuilding_aa334368f2eb03e652881c3bbd09d7745}} 
+\index{CommercialBuilding@{CommercialBuilding}!availableJobs@{availableJobs}}
+\index{availableJobs@{availableJobs}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{availableJobs}{availableJobs}}
+{\footnotesize\ttfamily int Commercial\+Building\+::available\+Jobs\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Available jobs (for shops and offices). 
+
+\mbox{\Hypertarget{classCommercialBuilding_ae11ec2cb442348068c2203179996a392}\label{classCommercialBuilding_ae11ec2cb442348068c2203179996a392}} 
+\index{CommercialBuilding@{CommercialBuilding}!availableKidsSpaces@{availableKidsSpaces}}
+\index{availableKidsSpaces@{availableKidsSpaces}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{availableKidsSpaces}{availableKidsSpaces}}
+{\footnotesize\ttfamily int Commercial\+Building\+::available\+Kids\+Spaces\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Available kid spaces (for schools). 
+
+\mbox{\Hypertarget{classCommercialBuilding_a60ef99a1e5f6bc845b61e6868072b664}\label{classCommercialBuilding_a60ef99a1e5f6bc845b61e6868072b664}} 
+\index{CommercialBuilding@{CommercialBuilding}!closed@{closed}}
+\index{closed@{closed}!CommercialBuilding@{CommercialBuilding}}
+\doxysubsubsection{\texorpdfstring{closed}{closed}}
+{\footnotesize\ttfamily bool Commercial\+Building\+::closed\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Indicates if the building is closed due to recession. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{CommercialBuilding_8h}{Commercial\+Building.\+h}}\item 
+\mbox{\hyperlink{CommercialBuilding_8cpp}{Commercial\+Building.\+cpp}}\end{DoxyCompactItemize}

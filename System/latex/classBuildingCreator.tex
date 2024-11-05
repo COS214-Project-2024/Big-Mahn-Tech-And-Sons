@@ -1,0 +1,77 @@
+\hypertarget{classBuildingCreator}{}\doxysection{Building\+Creator Class Reference}
+\label{classBuildingCreator}\index{BuildingCreator@{BuildingCreator}}
+
+
+Interface for creating building objects of various types.  
+
+
+
+
+{\ttfamily \#include $<$Building\+Creator.\+h$>$}
+
+
+
+Inheritance diagram for Building\+Creator\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classBuildingCreator_a97e81edd7567f7707a92d14443916f5a}{create\+Building}} (const std\+::string \&type) const =0
+\begin{DoxyCompactList}\small\item\em Creates a building object based on the specified type. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classBuildingCreator_a6604f9ba03908ceb9924bc0c5fe84fc4}{$\sim$\+Building\+Creator}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for the \mbox{\hyperlink{classBuildingCreator}{Building\+Creator}} interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for creating building objects of various types. 
+
+\mbox{\hyperlink{classBuildingCreator}{Building\+Creator}} defines an interface for generating buildings. Concrete creator classes (e.\+g., \mbox{\hyperlink{classResidentialBuildingCreator}{Residential\+Building\+Creator}}) implement this interface to create specific types of buildings based on input. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBuildingCreator_a6604f9ba03908ceb9924bc0c5fe84fc4}\label{classBuildingCreator_a6604f9ba03908ceb9924bc0c5fe84fc4}} 
+\index{BuildingCreator@{BuildingCreator}!````~BuildingCreator@{$\sim$BuildingCreator}}
+\index{````~BuildingCreator@{$\sim$BuildingCreator}!BuildingCreator@{BuildingCreator}}
+\doxysubsubsection{\texorpdfstring{$\sim$BuildingCreator()}{~BuildingCreator()}}
+{\footnotesize\ttfamily virtual Building\+Creator\+::$\sim$\+Building\+Creator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Virtual destructor for the \mbox{\hyperlink{classBuildingCreator}{Building\+Creator}} interface. 
+
+Ensures derived classes are properly cleaned up when deleted via a base pointer. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBuildingCreator_a97e81edd7567f7707a92d14443916f5a}\label{classBuildingCreator_a97e81edd7567f7707a92d14443916f5a}} 
+\index{BuildingCreator@{BuildingCreator}!createBuilding@{createBuilding}}
+\index{createBuilding@{createBuilding}!BuildingCreator@{BuildingCreator}}
+\doxysubsubsection{\texorpdfstring{createBuilding()}{createBuilding()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classBuilding}{Building}}$\ast$ Building\+Creator\+::create\+Building (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Creates a building object based on the specified type. 
+
+This function enables the creation of different building types (e.\+g., residential, commercial) according to the provided type string. Each subclass of \mbox{\hyperlink{classBuildingCreator}{Building\+Creator}} implements this method for particular building types.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & A string representing the building type (e.\+g., \char`\"{}estate\char`\"{}, \char`\"{}hospital\char`\"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Building$\ast$ A pointer to the newly created building object. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & if the building type is not recognized. \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \mbox{\hyperlink{classResidentialBuildingCreator_a7de8f6d91a45cdc3998705aebe9f039e}{Residential\+Building\+Creator}}, \mbox{\hyperlink{classLandmarkBuildingCreator_a87e47f56612f7f6ec6218679ff234533}{Landmark\+Building\+Creator}}, \mbox{\hyperlink{classIndustrialBuildingCreator_adc920e38b543ebedc2dbee42a5a3c25c}{Industrial\+Building\+Creator}}, and \mbox{\hyperlink{classCommercialBuildingCreator_ad0038426acf05bbe036ec4bd3eaf847a}{Commercial\+Building\+Creator}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{BuildingCreator_8h}{Building\+Creator.\+h}}\end{DoxyCompactItemize}

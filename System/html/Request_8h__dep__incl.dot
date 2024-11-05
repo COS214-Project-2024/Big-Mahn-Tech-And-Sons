@@ -1,0 +1,42 @@
+digraph "Request.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Request.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="DeptOfPR.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$DeptOfPR_8cpp.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="DeptOfUtilities.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$DeptOfUtilities_8cpp.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="PowerSupply.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$PowerSupply_8h.html",tooltip="Header file for the PowerSupply class, responsible for managing electricity generation and distributi..."];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Government.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$Government_8cpp.html",tooltip=" "];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="LoadsheddingCommand.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$LoadsheddingCommand_8cpp.html",tooltip=" "];
+  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="PowerSupply.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$PowerSupply_8cpp.html",tooltip=" "];
+  Node4 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Test.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$Test_8cpp.html",tooltip=" "];
+  Node4 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="TestMain.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$TestMain_8cpp.html",tooltip=" "];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Request.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$Request_8cpp.html",tooltip=" "];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="WasteManagement.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$WasteManagement_8h.html",tooltip="Header file for the WasteManagement class, responsible for handling waste collection,..."];
+  Node11 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="WasteManagement.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$WasteManagement_8cpp.html",tooltip=" "];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="WaterSupply.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$WaterSupply_8h.html",tooltip="Header file for the WaterSupply class, responsible for managing water distribution and supply in the ..."];
+  Node13 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="WaterSupply.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$WaterSupply_8cpp.html",tooltip=" "];
+}
