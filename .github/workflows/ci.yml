@@ -39,12 +39,14 @@ jobs:
       # Step 3: Build the application and unit tests
       - name: Build application
         run: |
+          cd System
           make clean  # Clean previous builds
           make all    # Build all targets, including unit tests
 
       # Step 4: Run unit tests with Valgrind
       - name: Run unit tests with Valgrind
         run: |
+          cd System
           make unit_run
         continue-on-error: true  # Continue even if Valgrind finds issues
 
@@ -54,10 +56,3 @@ jobs:
         with:
           name: valgrind-log
           path: valgrind_log.txt
-
-      # Optional Step: Capture GDB output if debugging is needed
-      - name: Run unit tests with GDB (Debugging)
-        if: failure()
-        run: |
-          make unit_debug
-        continue-on-error: true
