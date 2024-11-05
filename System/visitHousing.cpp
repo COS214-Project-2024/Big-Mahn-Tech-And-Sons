@@ -6,7 +6,7 @@
 #include <iostream>
 
 double totalTax = 0;
-bool visitHousing::visitResidentialBuilding(Building *building)
+bool visitHousing::visitBuildingForCitizens(Building *building)
 {
     if(building)
     {
@@ -16,7 +16,7 @@ bool visitHousing::visitResidentialBuilding(Building *building)
     return false;
 }
 
-bool visitHousing::visitCommercialBuilding(CommercialBuilding *building)
+bool visitHousing::visitBuildingForBuilding(Building *building)
 {
     if(building)
     {

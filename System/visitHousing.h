@@ -9,9 +9,8 @@ class visitHousing : public TaxManager
 {
 public:
     static double totalTax;
-    bool visitResidentialBuilding(Building *building);
-    bool visitCommercialBuilding(CommercialBuilding *building);
-
+    bool visitBuildingForCitizens(Building *building);
+    bool visitBuildingForBuilding(Building *building);
     bool visitBudget(Budget *budget);
 
     // void visitBudget(Budget *budget, double);
