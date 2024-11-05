@@ -11,15 +11,57 @@ Cell::Cell(int row_value, int col_value, string cardinal_point)
     set_Detailed_Attribute("BLANK");
     set_Attribute('.');
     this->street_name = "-";
+    this->cell_col_value = col_value;
+    this->cell_row_value = row_value;
+    this->cardinal_direction = cardinal_point;
+    set_Detailed_Attribute("BLANK");
+    set_Attribute('.');
+    this->street_name = "-";
 }
 
 Cell::~Cell()
 {
     // no memory management required here.
+    // no memory management required here.
 }
 
 bool Cell::set_Attribute(char attri)
 {
+    if (attri == 'C')
+    {
+        this->attribute = 'C';
+        return true;
+    } // Commercial building
+    if (attri == 'H')
+    {
+        this->attribute = 'H';
+        return true;
+    } // Residential building
+    if (attri == 'L')
+    {
+        this->attribute = 'L';
+        return true;
+    } // Landmark building
+    if (attri == 'I')
+    {
+        this->attribute = 'I';
+        return true;
+    } // Industrial buidling
+    if (attri == 'R')
+    {
+        this->attribute = 'R';
+        return true;
+    } // Road
+    if (attri == '.')
+    {
+        this->attribute = '.';
+        return true;
+    } // Blank
+    if (attri == '#')
+    {
+        this->attribute = '#';
+        return true;
+    } // Used
     if (attri == 'C')
     {
         this->attribute = 'C';
@@ -871,11 +913,11 @@ std::vector<std::pair<int, int>> CityGrid::addBuilding(int length, int width, Bu
                 if (placeBuilding(up_left_row, up_left_col, up_right_col, down_left_row, detailed_Attribute))
                 {
                     // Return the corner positions
-                    cout << "is it adding correct co-ords";
-                    cout << "(" << up_left_row << "," << up_left_col << ")\n";
-                    cout << "(" << up_right_row << "," << up_right_col << ")\n";
-                    cout << "(" << down_left_row << "," << down_left_col << ")\n";
-                    cout << "(" << down_right_row << "," << down_right_col << ")\n";
+                    // cout<<"is it adding correct co-ords";
+                    // cout<<"("<<up_left_row<<","<<up_left_col<<")\n";
+                    // cout<<"("<<up_right_row<<","<<up_right_col<<")\n";
+                    // cout<<"("<<down_left_row<<","<<down_left_col<<")\n";
+                    // cout<<"("<<down_right_row<<","<<down_right_col<<")\n";
                     std::vector<std::pair<int, int>> coord = {
                         {up_left_row, up_left_col},        // up left corner
                         {up_right_row, up_right_col},      // up right corner
@@ -958,6 +1000,40 @@ vector<std::pair<int, int>> CityGrid::getAdjacentRoadCells(int uplr, int uplc, i
 
 int CityGrid::getDistance(Building *citizen_current_building, Building *citizen_destination_building)
 {
+    //..........
+    // cout<<"("<<citizen_current_building->getGridCoordinates()[0].first
+    //     <<","<<citizen_current_building->getGridCoordinates()[0].second<<")\n";
+    // cout<<"("<<citizen_current_building->getGridCoordinates()[1].first
+    //     <<","<<citizen_current_building->getGridCoordinates()[1].second<<")\n";
+    // cout<<"("<<citizen_current_building->getGridCoordinates()[2].first
+    //     <<","<<citizen_current_building->getGridCoordinates()[2].second<<")\n";
+    // cout<<"("<<citizen_current_building->getGridCoordinates()[3].first
+    //     <<","<<citizen_current_building->getGridCoordinates()[3].second<<")\n\n";
+
+    // cout<<"("<<citizen_destination_building->getGridCoordinates()[0].first
+    //     <<","<<citizen_destination_building->getGridCoordinates()[0].second<<")\n";
+    // cout<<"("<<citizen_destination_building->getGridCoordinates()[1].first
+    //     <<","<<citizen_destination_building->getGridCoordinates()[1].second<<")\n";
+    // cout<<"("<<citizen_destination_building->getGridCoordinates()[2].first
+    //     <<","<<citizen_destination_building->getGridCoordinates()[2].second<<")\n";
+    // cout<<"("<<citizen_destination_building->getGridCoordinates()[3].first
+    //     <<","<<citizen_destination_building->getGridCoordinates()[3].second<<")\n\n";
+
+    
+            
+            
+
+
+    //........
+    if (citizen_current_building == nullptr)
+    {
+        return -2;
+    }
+    if (citizen_destination_building == nullptr)
+    {
+        cout << "Destination null\n";
+        return -3;
+    }
     vector<pair<int, int>> curr_building = citizen_current_building->getGridCoordinates();
     vector<pair<int, int>> dest_building = citizen_destination_building->getGridCoordinates();
     if (isNextToRoad(curr_building[0].first, curr_building[0].second, curr_building[1].second, curr_building[2].first) &&
@@ -976,6 +1052,11 @@ int CityGrid::getDistance(Building *citizen_current_building, Building *citizen_
             citizen_destination_building->getGridCoordinates()[1].second,
             citizen_destination_building->getGridCoordinates()[2].first);
 
+        // Early exit if no road cells adjacent to either building
+        if (currRoadCells.empty() || destRoadCells.empty())
+        {
+            return -1;
+        }
         // Early exit if no road cells adjacent to either building
         if (currRoadCells.empty() || destRoadCells.empty())
         {
@@ -1035,6 +1116,7 @@ int CityGrid::getDistance(Building *citizen_current_building, Building *citizen_
         // If no path found, return -1
         return -1;
     }
+
 }
 
 // get distance from building a to building b

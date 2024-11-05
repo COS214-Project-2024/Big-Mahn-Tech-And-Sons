@@ -35,74 +35,19 @@ private:
     double budget;      /**< Total budget allocated to the department */
     DeptOfPR *deptOfPR; /**< Reference to the DeptOfPR */
 
-public:
-    /**
-     * @brief Constructor for DeptOfHousing.
-     *
-     * @param initialBudget Initial budget allocated to the department.
-     */
-    DeptOfHousing(double initialBudget);
-
-    /**
-     * @brief Sets the Department of Public Relations.
-     *
-     * @param PR Pointer to the DeptOfPR.
-     */
-    void setPR(DeptOfPR *PR);
-
-    /**
-     * @brief Creates a residential building of a specified type.
-     *
-     * @param type The type of residential building to create.
-     */
-    void createResidentialBuilding(const std::string &type);
-
-    /**
-     * @brief Creates a commercial building of a specified type.
-     *
-     * @param type The type of commercial building to create.
-     */
-    void createCommercialBuilding(const std::string &type);
-
-    /**
-     * @brief Creates an industrial building of a specified type.
-     *
-     * @param type The type of industrial building to create.
-     */
-    void createIndustrialBuilding(const std::string &type);
-
-    /**
-     * @brief Creates a landmark building of a specified type.
-     *
-     * @param type The type of landmark building to create.
-     */
-    void createLandmarkBuilding(const std::string &type);
-
-    /**
-     * @brief Displays details of all buildings managed by the department.
-     */
-    void displayAllBuildings() const;
-
-    /**
-     * @brief Gets the total number of buildings managed by the department.
-     *
-     * @return Total number of buildings.
-     */
-    int getTotalBuildings() const;
-
-    /**
-     * @brief Calculates the total price of all buildings.
-     *
-     * @return Total price of all buildings.
-     */
-    double getTotalPrice() const;
-
-    /**
-     * @brief Gets the remaining budget of the department.
-     *
-     * @return Remaining budget.
-     */
-    double getRemainingBudget() const;
+    public:
+        DeptOfHousing(double initialBudget);
+        Building* getBuildingByName(const std::string& name);
+        void setPR(DeptOfPR *PR);
+        void createResidentialBuilding(const std::string& type);
+        void createCommercialBuilding(const std::string& type);
+        void createIndustrialBuilding(const std::string& type);
+        void createLandmarkBuilding(const std::string& type);
+        
+        void displayAllBuildings() const;
+        int getTotalBuildings() const;
+        double getTotalPrice() const;
+        double getRemainingBudget() const;
 
     /**
      * @brief Removes a building by name.

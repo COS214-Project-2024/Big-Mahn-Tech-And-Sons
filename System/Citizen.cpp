@@ -242,8 +242,24 @@ void Citizen::setCurrent(Building *building)
 
 void Citizen::travelTo(Building *destination)
 {
-
-   int distance = 40;
+   DeptOfTransportation *dept = DeptOfTransportation::getInstance();
+   int distance = dept->get_distance(currentLocation,destination);
+   
+   // come operate here.
+   //
+   if(distance == 0) {
+      cout << "There is no road to " << destination->getName() << std::endl;
+      return;
+   }
+   if(distance == -1) {
+      cout<< " Current building does not exist \n";
+      return;
+   }
+   if(distance== -2) {
+      cout<< " Destination building does not exist \n";
+      return;
+   }
+   
 
    std::vector<ModeOfTrans *> availableModes;
    Walk *walk = new Walk();

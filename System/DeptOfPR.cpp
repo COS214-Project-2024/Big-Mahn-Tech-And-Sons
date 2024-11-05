@@ -12,30 +12,45 @@ DeptOfPR::DeptOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, D
 
    housingDept->setPR(this);
    utilitiesDept->setPR(this);
-
-   if (utilities->getSuccessor())
-   {
+   
+   if(utilities->getSuccessor()) {
       utilities->getSuccessor()->setPR(this);
 
-      if (utilities->getSuccessor()->getSuccessor())
-      {
+      if(utilities->getSuccessor()->getSuccessor()) {
          utilities->getSuccessor()->getSuccessor()->setPR(this);
       }
    }
    financeDept->setPR(this);
 }
 
+void DeptOfPR::displayStats()
+   {
+      std::cout << "=====Department of Public Relations===" << std::endl;
+      std::cout << "Population " << this->numCitizens() <<  std::endl;
+      std::cout << "Satisfaction: " << this->getAverageSatisfaction() << std::endl;
+   }
+
+   double DeptOfPR::getAverageSatisfaction()
+   {
+      double value = 0;
+      for (int i = 0; i < this->numCitizens(); i++) {
+         value += this->getCitizen(i)->getSatisfactionLevel();
+      }
+
+      return value/numCitizens();
+   }
+
 void DeptOfPR::update(Building *building)
 {
    if (building->getCurrentOccupants() >= building->getMaxCapacity())
    { // building asking
-     //  std::cout << "Building is at maximum capacity. Check to add new building or move to another building\n";
+    //  std::cout << "Building is at maximum capacity. Check to add new building or move to another building\n";
 
       notifyHousingToBuild(building->getType());
    }
    else if (building->getElectricityMeterBox() == 0)
    {
-      notifyUtilities("power", building);
+      notifyUtilities("power", building); 
    }
    else if (building->getWaterMeterBox() == 0)
    {
@@ -45,6 +60,7 @@ void DeptOfPR::update(Building *building)
    {
       notifyUtilities("waste", building);
    }
+
 }
 void DeptOfPR::update(Citizen *citizen)
 {
@@ -54,7 +70,7 @@ void DeptOfPR::update(Citizen *citizen)
       if (citizen->getCurrentLocation()->removeTenant(citizen) == false)
       {
          // citizen was not found, thus hunt him down, trying to cheat death
-         // cout << "Citizen not found, on the run :(\n";
+        // cout << "Citizen not found, on the run :(\n";
       }
       else
       {
@@ -63,8 +79,7 @@ void DeptOfPR::update(Citizen *citizen)
       }
 
       return;
-   }
-   else if ((citizen->getSatisfactionLevelName() == "Neutral" || citizen->getSatisfactionLevelName() == "Sad") && citizen->getBudget() / 100000 * 100 < 0.6)
+   } else if ((citizen->getSatisfactionLevelName() == "Neutral" || citizen->getSatisfactionLevelName() == "Sad") && citizen->getBudget() / 100000 * 100 < 0.6)
    {
       notifyTaxman("Citizen");
    }
@@ -84,7 +99,7 @@ bool DeptOfPR::notifyHousingToBuild(string type) // change to BOOL
    }
    else if (type == "Shop" || type == "Office" || type == "Hospital" || type == "School")
    {
-      cout << "Department of PR Notify Housing to build " << type << " for citizen\n";
+     cout << "Department of PR Notify Housing to build " << type << " for citizen\n";
       this->housing->createCommercialBuilding(type);
       return true;
    }
@@ -117,14 +132,19 @@ Citizen *DeptOfPR::getCitizen(int i)
    return this->citizens.at(i);
 }
 
+vector<Citizen *> DeptOfPR::getCitizens()
+{
+    return this->citizens;
+}
+
 int DeptOfPR::numCitizens()
 {
    return this->citizens.size();
 }
 
-vector<Building *> DeptOfPR::getBuildings()
+vector<Building*> DeptOfPR::getBuildings()
 {
-
+   
    return this->housing->getBuildings();
 }
 
@@ -151,26 +171,24 @@ bool DeptOfPR::notifyUtilities(string request, Building *building)
          delete req;
          return false;
       }
-   }
-   else if (request == "power")
+   } else if (request == "power")
    {
       req = new Request("Power", building, 50000);
 
       if (!this->utilities->handleRequest(*req))
       {
          cout << "Unable to handle power request.\n";
-         delete req;
+          delete req;
          return false;
       }
-   }
-   else if (request == "waste")
+   } else if (request == "waste")
    {
       req = new Request(request, building, 300);
 
       if (!this->utilities->handleRequest(*req))
       {
          cout << "Unable to handle waste request.\n";
-         delete req;
+          delete req;
          return false;
       }
    }
@@ -178,73 +196,73 @@ bool DeptOfPR::notifyUtilities(string request, Building *building)
    cout << "Department of PR mediated resource request to Department of Utility.\n";
 
    return true;
+
 }
 
-bool DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure only departments are passed in, CHANGE TO BOOL
-{
-   // Economic conditions
-   bool healthyEconomy = this->finance->checkMoney(); // e.g., >2.5% GDP growth
-
-   if (deptName != "Housing" || deptName != "Citizen" || deptName != "Finance" || deptName != "Utility" || deptName != "Building")
+   bool DeptOfPR::notifyTaxman(string deptName) // add else if checks to make sure only departments are passed in, CHANGE TO BOOL
    {
+      // Economic conditions
+      bool healthyEconomy = this->finance->checkMoney(); // e.g., >2.5% GDP growth
+
+      if (deptName != "Housing" || deptName != "Citizen" || deptName != "Finance" || deptName != "Utility" || deptName != "Building")
+      {
+         return false;
+      }
+
+      // Decision making to decrease taxes
+      if (deptName == "Citizen" && healthyEconomy)
+      {
+         this->finance->decreaseTaxes();
+         cout << "Department of PR mediated decrease tax request to Department of Finance\n";
+         return true;
+         // Decision making to increase taxes
+      }
+      else if (deptName == "Housing")
+      { // check dept housing request funding function
+         this->finance->increaseTaxes(10);
+         this->finance->allocateBudget("Housing", 100000);
+         cout << "Department of PR mediated funding request of Department of Housing to Department of Finance\n";
+
+         /*
+         bool request = finance->allocateBudget(deptName, 2000000); //<< allocate budget to change to budget
+         if(request) {
+            housing->addBudget(2000000);
+         } else {
+            std::cout << "Budget allocation failed." << std::endl;
+         }
+         */
+         return true;
+      }
+      else if (deptName == "Utility")
+      {
+         this->finance->allocateBudget("Utility", 10000);
+         cout << "Department of PR mediated funding request of Department of Utilities to Department of Finance\n";
+
+         return true;
+      }
+
       return false;
    }
 
-   // Decision making to decrease taxes
-   if (deptName == "Citizen" && healthyEconomy)
+   /**
+    * @brief Promotes the city-wide festival to citizens and other departments.
+    */
+   void DeptOfPR::promoteFestival()
    {
-      this->finance->decreaseTaxes();
-      cout << "Department of PR mediated decrease tax request to Department of Finance\n";
-      return true;
-      // Decision making to increase taxes
-   }
-   else if (deptName == "Housing")
-   { // check dept housing request funding function
-      this->finance->increaseTaxes(10);
-      this->finance->allocateBudget("Housing", 100000);
-      cout << "Department of PR mediated funding request of Department of Housing to Department of Finance\n";
+      std::cout << "🎉 The city is excited to announce an upcoming festival! 🎉" << std::endl;
 
-      /*
-      bool request = finance->allocateBudget(deptName, 2000000); //<< allocate budget to change to budget
-      if(request) {
-         housing->addBudget(2000000);
-      } else {
-         std::cout << "Budget allocation failed." << std::endl;
+      // Notify each citizen about the festival
+      for (Citizen *citizen : citizens)
+      {
+         citizen->increaseSatisfaction(10); // Increase satisfaction for attending the festival
+         std::cout << "Notifying " << citizen->getName() << " about the festival!" << std::endl;
       }
-      */
-      return true;
+
+      // notify utilities for increased demand
+      for(Building* b : this->housing->getBuildings()) {
+         notifyUtilities("power", b);
+         notifyUtilities("waste", b);
+      }
+      // Print an overall summary of the festival promotion
+      std::cout << "Festival promotion completed successfully!" << std::endl;
    }
-   else if (deptName == "Utility")
-   {
-      this->finance->allocateBudget("Utility", 10000);
-      cout << "Department of PR mediated funding request of Department of Utilities to Department of Finance\n";
-
-      return true;
-   }
-
-   return false;
-}
-
-/**
- * @brief Promotes the city-wide festival to citizens and other departments.
- */
-void DeptOfPR::promoteFestival()
-{
-   std::cout << "🎉 The city is excited to announce an upcoming festival! 🎉" << std::endl;
-
-   // Notify each citizen about the festival
-   for (Citizen *citizen : citizens)
-   {
-      citizen->increaseSatisfaction(10); // Increase satisfaction for attending the festival
-      std::cout << "Notifying " << citizen->getName() << " about the festival!" << std::endl;
-   }
-
-   // notify utilities for increased demand
-   for (Building *b : this->housing->getBuildings())
-   {
-      notifyUtilities("power", b);
-      notifyUtilities("waste", b);
-   }
-   // Print an overall summary of the festival promotion
-   std::cout << "Festival promotion completed successfully!" << std::endl;
-}

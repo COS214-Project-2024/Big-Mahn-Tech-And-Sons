@@ -15,25 +15,13 @@ using namespace std;
  */
 class GoHome : public GoToCommand
 {
-private:
-  Citizen *citizen; ///< Pointer to the Citizen object representing the citizen who will execute the command.
-
-public:
-  /**
-   * @brief Constructs a GoHome command for a specified citizen.
-   *
-   * @param citizen Pointer to the Citizen object who will go home.
-   */
-  GoHome(Citizen *citizen);
-
-  /**
-   * @brief Executes the command to move the citizen home.
-   *
-   * This method initiates the action of the citizen traveling to their home.
-   *
-   * @return True if the command was successfully executed, false otherwise.
-   */
+   private:
+   Citizen* citizen;
+   DeptOfHousing* DOH;
+  public:
+  GoHome(Citizen *citizen, DeptOfHousing *housing);
+  
   bool execute() override;
 };
 
-#endif // GOHOME_H
+#endif
