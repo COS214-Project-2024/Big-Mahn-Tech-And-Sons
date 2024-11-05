@@ -8,126 +8,184 @@
 
 #include <string>
 #include <vector>
-#include "Element.h"
-#include "TaxManager.h"
+#include <iostream>  // For std::cout
+#include <utility>   // For std::pair
+#include <algorithm> // For std::find
 
-class Node; ///< Forward declaration of Node class
+#include "Element.h"
+
 class Citizen; ///< Forward declaration of Citizen class
+class TaxManager;
+class DeptOfPR;
 
 /**
  * @class Building
- * @brief Abstract base class for all types of buildings. Represents a building in the simulation.
+ * @brief Base class for all types of buildings.
  *
- * Each building is located at a specific node in the road network.
+ * This class provides the common attributes and functionalities for all building types,
+ * including managing tenants, utilities, and grid placement.
  */
-class Building {
-private:
-    std::string name; ///< The name of the building.
-    int capacity; ///< Maximum capacity of the building.
-    std::vector<Citizen*> tenants; ///< Tenants residing in the building.
-    Node* location; ///< Pointer to the node where the building is located.
+class Building : public Element
+{
+
+protected:
+    std::string name;                                 ///< Name of the building
+    int maxCapacity;                                  ///< Maximum capacity of people in the building
+    double electricityMeterBox;                       ///< Electric meter reading
+    double waterMeterBox;                             ///< Water meter reading
+    double electricityUsage;                          ///< Total electricity usage
+    double waterUsage;                                ///< Total water usage
+    double wasteProduction;                           ///< Total waste produced
+    std::vector<Citizen *> tenants;                   ///< Vector to store tenants or workers
+    int width;                                        ///< Width of the building for grid placement
+    int length;                                       ///< Length of the building for grid placement
+    double priceTag;                                  ///< Price tag of the building
+    double netWorth;                                  ///< Net worth of the building
+    bool waterSupply;                                 ///< Water supply status
+    bool powerSupply;                                 ///< Power supply status
+    std::vector<std::pair<int, int>> gridCoordinates; ///< Grid coordinates
+    std::string type;                                 ///< Type of Building
+    DeptOfPR *PR;                                     ///< Reference to the government’s DeptOfPR
+    double citizenTax;                                ///< Tax rate for citizens
+    double businessTax;                               ///< Tax rate for businesses
 
 public:
     /**
-     * @brief Constructs a new Building object.
-     * 
-     * @param name Name of the building.
-     * @param capacity Maximum number of tenants the building can accommodate.
-     * @param location Pointer to the node where the building is located.
+     * @brief Default constructor.
      */
-    Building(const std::string& name, int capacity, Node* location);
+    Building();
 
     /**
-     * @brief Destroys the Building object.
+     * @brief Virtual destructor to allow polymorphism.
      */
-    virtual ~Building() {}
-
-    /**
-     * @brief Gets the name of the building.
-     * 
-     * @return std::string The building's name.
-     */
-    std::string getName() const;
-
-    /**
-     * @brief Gets the capacity of the building.
-     * 
-     * @return int The capacity of the building.
-     */
-    int getCapacity() const;
+    virtual ~Building() = default;
 
     /**
      * @brief Adds a tenant to the building.
-     * 
-     * @param tenant The citizen to be added as a tenant.
+     * @param tenant A pointer to the Citizen to be added as a tenant.
+     * @return True if the tenant was added, false if capacity is full.
      */
-    void addTenant(Citizen* tenant);
+    bool addTenant(Citizen *tenant);
 
     /**
-     * @brief Gets the current number of tenants in the building.
-     * 
-     * @return int The current number of tenants.
+     * @brief Removes a tenant from the building.
+     * @param tenant A pointer to the Citizen to be removed.
+     * @return True if the tenant was removed, false otherwise.
      */
-    int getCurrentTenants() const;
+    bool removeTenant(Citizen *tenant);
 
     /**
-     * @brief Virtual method to get resource usage, to be overridden by derived classes.
+     * @brief Requests electricity usage.
+     * @param requestedElectricity Amount of electricity requested.
      */
-    virtual void reportResourceUsage() const = 0;
+    void requestElectricity(double requestedElectricity);
 
     /**
-     * @brief Gets the location node of the building.
-     * 
-     * @return Node* Pointer to the location node.
+     * @brief Requests water usage.
+     * @param requestedWater Amount of water requested.
      */
-    Node* getLocation() const;
+    void requestWater(double requestedWater);
 
     /**
-     * @brief Sets the location node of the building.
-     * 
-     * @param node Pointer to the new location node.
+     * @brief Gets the grid coordinates of the building.
+     * @return A vector of coordinate pairs.
      */
-    void setLocation(Node* node);
+    std::vector<std::pair<int, int>> getGridCoordinates() const;
 
     /**
-     * @brief Damages the building by a certain percentage.
-     * 
-     * @param percentage The percentage of damage applied to the building.
+     * @brief Sets the grid coordinates of the building.
+     * @param coords A vector of coordinate pairs to be set.
      */
-    void damage(double percentage);
+    void setCoordinates(const std::vector<std::pair<int, int>> &coords);
 
     /**
-     * @brief Repairs the building after it has been damaged.
+     * @brief Accepts a visitor for the visitor pattern.
+     * @param visitor A pointer to the TaxManager visitor.
      */
-    void repair();
+    virtual void accept(TaxManager *visitor) = 0;
 
     /**
-     * @brief Simulates the closure of a building (e.g., during a recession).
+     * @brief Calculates the tax for the building.
+     * @return The calculated tax amount.
      */
-    void close();
+    virtual double calculateTax() const = 0;
 
     /**
-     * @brief Reopens a building after it was closed during an event.
+     * @brief Displays the statistics of the building.
      */
-    void reopen();
+    virtual void displayStats() const;
 
     /**
-     * @brief Increases the resource consumption of the building (e.g., during a festival).
+     * @brief Notifies the DeptOfPR about an update or request.
      */
-    void increaseResourceConsumption();
+    void notifyPR();
+
+    // Getters
+
+    std::string getName() const;
+    int getMaxCapacity() const;
+    double getElectricityMeterBox() const;
+    double getWaterMeterBox() const;
+    double getElectricityUsage() const;
+    double getWaterUsage() const;
+    double getWasteProduction() const;
+    const std::vector<Citizen *> &getTenants() const;
+    int getWidth() const;
+    int getLength() const;
+    double getPriceTag() const;
+    double getNetWorth() const;
+    int getCurrentOccupants() const;
+    std::string getType() const;
+    double getWasteAmount() const;
+    double getCitizenTax() const;
+    double getBusinessTax() const;
+
+    // Setters
+
+    void setName(const std::string &name);
+    void setMaxCapacity(int capacity);
+    void setElectricityMeterBox(double reading);
+    void setWaterMeterBox(double reading);
+    void setElectricityUsage(double usage);
+    void setWaterUsage(double usage);
+    void setWaste(double waste);
+    void setWidth(int width);
+    void setLength(int length);
+    void setCitizenTax(double taxRate);
+    void setBusinessTax(double taxRate);
 
     /**
-     * @brief Decreases the resource consumption of the building, returning it to normal levels.
+     * @brief Consumes water based on the specified amount.
+     * @param amount The amount of water to consume.
      */
-    void decreaseResourceConsumption();
+    virtual void consumeWater(double amount);
 
-    // Note: The visit and accept methods are typically related to the Visitor design pattern.
-    // virtual void visit(Building* building) = 0;
     /**
-     * @brief Accepts a visitor (TaxManager).
-     * @param visitor The visitor object.
+     * @brief Consumes electricity based on the specified amount.
+     * @param amount The amount of electricity to consume.
      */
-    virtual void accept(TaxManager* visitor) = 0;
+    virtual void consumeElectricity(double amount);
+
+    /**
+     * @brief Cuts off the water supply to the building.
+     */
+    virtual void waterCut();
+
+    /**
+     * @brief Cuts off the power supply to the building.
+     */
+    virtual void powerCut();
+
+    /**
+     * @brief Clears the waste produced by the building.
+     */
+    virtual void clearWaste();
+
+    /**
+     * @brief Creates a clone of the building for repair purposes.
+     * @return A pointer to a new Building object that is a clone of this building.
+     */
+    virtual Building *repairClone() const = 0;
 };
 
 #endif // BUILDING_H

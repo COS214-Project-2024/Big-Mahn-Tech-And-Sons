@@ -1,0 +1,106 @@
+\hypertarget{classEstate}{}\doxysection{Estate Class Reference}
+\label{classEstate}\index{Estate@{Estate}}
+
+
+Represents a residential estate with luxury features.  
+
+
+
+
+{\ttfamily \#include $<$Estate.\+h$>$}
+
+
+
+Inheritance diagram for Estate\+:
+% FIG 0
+
+
+Collaboration diagram for Estate\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEstate_a61fa5dc41265a8afd306301c66d73878}{Estate}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classEstate}{Estate}}, initializing luxury-\/specific attributes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEstate_ad9c9f0297891506eb79e32690b16dc7e}{display\+Stats}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the estate\textquotesingle{}s statistics, including specific and inherited details. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEstate_a8a8e4e3f552a6091f88d00d8a5596730}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor) override
+\begin{DoxyCompactList}\small\item\em Accepts a visitor for tax and management operations. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classEstate_a5038ac4f493894760dfbc4a61e514f83}{repair\+Clone}} () const override
+\begin{DoxyCompactList}\small\item\em Creates a clone of the estate for restoration purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Represents a residential estate with luxury features. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEstate_a61fa5dc41265a8afd306301c66d73878}\label{classEstate_a61fa5dc41265a8afd306301c66d73878}} 
+\index{Estate@{Estate}!Estate@{Estate}}
+\index{Estate@{Estate}!Estate@{Estate}}
+\doxysubsubsection{\texorpdfstring{Estate()}{Estate()}}
+{\footnotesize\ttfamily Estate\+::\+Estate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classEstate}{Estate}}, initializing luxury-\/specific attributes. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEstate_a8a8e4e3f552a6091f88d00d8a5596730}\label{classEstate_a8a8e4e3f552a6091f88d00d8a5596730}} 
+\index{Estate@{Estate}!accept@{accept}}
+\index{accept@{accept}!Estate@{Estate}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Estate\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accepts a visitor for tax and management operations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the \mbox{\hyperlink{classTaxManager}{Tax\+Manager}} visitor. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classResidentialBuilding_a39765f4b794ccb38a023b07954e8b42c}{Residential\+Building}}.
+
+\mbox{\Hypertarget{classEstate_ad9c9f0297891506eb79e32690b16dc7e}\label{classEstate_ad9c9f0297891506eb79e32690b16dc7e}} 
+\index{Estate@{Estate}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!Estate@{Estate}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Estate\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the estate\textquotesingle{}s statistics, including specific and inherited details. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classBuilding_aace1b612517a40b26a1d557d1668e9e2}{Building}}.
+
+\mbox{\Hypertarget{classEstate_a5038ac4f493894760dfbc4a61e514f83}\label{classEstate_a5038ac4f493894760dfbc4a61e514f83}} 
+\index{Estate@{Estate}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!Estate@{Estate}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Estate\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a clone of the estate for restoration purposes. 
+
+\begin{DoxyReturn}{Returns}
+Building$\ast$ A pointer to the cloned \mbox{\hyperlink{classEstate}{Estate}} instance. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classResidentialBuilding_a4cd76c06b6062c508c02201650c72d25}{Residential\+Building}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Estate_8h}{Estate.\+h}}\item 
+\mbox{\hyperlink{Estate_8cpp}{Estate.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,183 @@
+\hypertarget{classCell}{}\doxysection{Cell Class Reference}
+\label{classCell}\index{Cell@{Cell}}
+
+
+Represents a cell in the city grid.  
+
+
+
+
+{\ttfamily \#include $<$City\+Grid.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCell_a063d2748329252fd46e8fba509999926}{Cell}} (int row\+\_\+value, int col\+\_\+value, string cardinal\+\_\+point)
+\item 
+\mbox{\hyperlink{classCell_a9fa559f7a28e2b4336c6879ca09304d8}{$\sim$\+Cell}} ()
+\begin{DoxyCompactList}\small\item\em creates the cell and initializes the class member variables. \end{DoxyCompactList}\item 
+const char \mbox{\hyperlink{classCell_a8b0562b7daa536f6df6d9fadda39eb48}{get\+Attribute}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the cell no dynamic memory allocation therefore this destructor does nothing. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCell_a7c89c2ee74a0e8ed74b258bb986f3e67}{set\+\_\+\+Attribute}} (char)
+\begin{DoxyCompactList}\small\item\em simple getter function \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCell_a43b612864e9fe2af579de7554eb2eef6}{set\+\_\+\+Detailed\+\_\+\+Attribute}} (string)
+\begin{DoxyCompactList}\small\item\em simple setter function \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{classCell_a41921d6b8957385a5a5eba3e1642da44}{get\+Detailed\+\_\+\+Atttribute}} ()
+\begin{DoxyCompactList}\small\item\em sets the detailed\+\_\+attribute member variable \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCell_a1a21ed943102407c6568829d6a172235}{update\+Detailed\+\_\+\+Attribute}} (string)
+\begin{DoxyCompactList}\small\item\em gets the detailed attribute member variable \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{classCell_a80e2a9b2d6b93e8b590d3da1101bd8b9}{get\+Cardinal\+\_\+direction}} ()
+\begin{DoxyCompactList}\small\item\em update the detailed\+\_\+attribute member variable \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCell_aea440eb2d130338e05fec6ffc52c38ea}{change\+Attribute}} (char)
+\begin{DoxyCompactList}\small\item\em gets the cardinal direction of the cell \end{DoxyCompactList}\item 
+const string \mbox{\hyperlink{classCell_afce9cec625c32df9925724369d569da4}{get\+Street\+Name}} ()
+\begin{DoxyCompactList}\small\item\em changes the attribute member variable \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCell_a66934a31b2a7dea4ed7c5e97de08cdf3}{update\+Street\+Name}} (string)
+\begin{DoxyCompactList}\small\item\em gets the street name only if the cell is a road \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a cell in the city grid. 
+
+This calls holds attributes of a cell in the grid that is used by \mbox{\hyperlink{classCityGrid}{City\+Grid}} class It\textquotesingle{}s purpose is to represent what the cell is. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCell_a063d2748329252fd46e8fba509999926}\label{classCell_a063d2748329252fd46e8fba509999926}} 
+\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}}
+{\footnotesize\ttfamily Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{int}]{row\+\_\+value,  }\item[{int}]{col\+\_\+value,  }\item[{string}]{cardinal\+\_\+point }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classCell_a9fa559f7a28e2b4336c6879ca09304d8}\label{classCell_a9fa559f7a28e2b4336c6879ca09304d8}} 
+\index{Cell@{Cell}!````~Cell@{$\sim$Cell}}
+\index{````~Cell@{$\sim$Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{$\sim$Cell()}{~Cell()}}
+{\footnotesize\ttfamily Cell\+::$\sim$\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+creates the cell and initializes the class member variables. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em row\+\_\+value} & row co-\/ordinate. \\
+\hline
+{\em col\+\_\+value} & column co-\/ordinate. \\
+\hline
+{\em cardinal\+\_\+point} & cardinal point of cell \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCell_aea440eb2d130338e05fec6ffc52c38ea}\label{classCell_aea440eb2d130338e05fec6ffc52c38ea}} 
+\index{Cell@{Cell}!changeAttribute@{changeAttribute}}
+\index{changeAttribute@{changeAttribute}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{changeAttribute()}{changeAttribute()}}
+{\footnotesize\ttfamily void Cell\+::change\+Attribute (\begin{DoxyParamCaption}\item[{char}]{new\+Attribute }\end{DoxyParamCaption})}
+
+
+
+gets the cardinal direction of the cell 
+
+\mbox{\Hypertarget{classCell_a8b0562b7daa536f6df6d9fadda39eb48}\label{classCell_a8b0562b7daa536f6df6d9fadda39eb48}} 
+\index{Cell@{Cell}!getAttribute@{getAttribute}}
+\index{getAttribute@{getAttribute}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getAttribute()}{getAttribute()}}
+{\footnotesize\ttfamily const char Cell\+::get\+Attribute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the cell no dynamic memory allocation therefore this destructor does nothing. 
+
+\mbox{\Hypertarget{classCell_a80e2a9b2d6b93e8b590d3da1101bd8b9}\label{classCell_a80e2a9b2d6b93e8b590d3da1101bd8b9}} 
+\index{Cell@{Cell}!getCardinal\_direction@{getCardinal\_direction}}
+\index{getCardinal\_direction@{getCardinal\_direction}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getCardinal\_direction()}{getCardinal\_direction()}}
+{\footnotesize\ttfamily const string Cell\+::get\+Cardinal\+\_\+direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+update the detailed\+\_\+attribute member variable 
+
+\mbox{\Hypertarget{classCell_a41921d6b8957385a5a5eba3e1642da44}\label{classCell_a41921d6b8957385a5a5eba3e1642da44}} 
+\index{Cell@{Cell}!getDetailed\_Atttribute@{getDetailed\_Atttribute}}
+\index{getDetailed\_Atttribute@{getDetailed\_Atttribute}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getDetailed\_Atttribute()}{getDetailed\_Atttribute()}}
+{\footnotesize\ttfamily const string Cell\+::get\+Detailed\+\_\+\+Atttribute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+sets the detailed\+\_\+attribute member variable 
+
+\begin{DoxyReturn}{Returns}
+boolean, true or false as to whether the set was successful or not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCell_afce9cec625c32df9925724369d569da4}\label{classCell_afce9cec625c32df9925724369d569da4}} 
+\index{Cell@{Cell}!getStreetName@{getStreetName}}
+\index{getStreetName@{getStreetName}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getStreetName()}{getStreetName()}}
+{\footnotesize\ttfamily const string Cell\+::get\+Street\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+changes the attribute member variable 
+
+\mbox{\Hypertarget{classCell_a7c89c2ee74a0e8ed74b258bb986f3e67}\label{classCell_a7c89c2ee74a0e8ed74b258bb986f3e67}} 
+\index{Cell@{Cell}!set\_Attribute@{set\_Attribute}}
+\index{set\_Attribute@{set\_Attribute}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{set\_Attribute()}{set\_Attribute()}}
+{\footnotesize\ttfamily bool Cell\+::set\+\_\+\+Attribute (\begin{DoxyParamCaption}\item[{char}]{attri }\end{DoxyParamCaption})}
+
+
+
+simple getter function 
+
+\begin{DoxyReturn}{Returns}
+char the attribute of the cell 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCell_a43b612864e9fe2af579de7554eb2eef6}\label{classCell_a43b612864e9fe2af579de7554eb2eef6}} 
+\index{Cell@{Cell}!set\_Detailed\_Attribute@{set\_Detailed\_Attribute}}
+\index{set\_Detailed\_Attribute@{set\_Detailed\_Attribute}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{set\_Detailed\_Attribute()}{set\_Detailed\_Attribute()}}
+{\footnotesize\ttfamily bool Cell\+::set\+\_\+\+Detailed\+\_\+\+Attribute (\begin{DoxyParamCaption}\item[{string}]{detailed\+\_\+\+Attri }\end{DoxyParamCaption})}
+
+
+
+simple setter function 
+
+\begin{DoxyReturn}{Returns}
+boolean, true of false as to whether the set was successful 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCell_a1a21ed943102407c6568829d6a172235}\label{classCell_a1a21ed943102407c6568829d6a172235}} 
+\index{Cell@{Cell}!updateDetailed\_Attribute@{updateDetailed\_Attribute}}
+\index{updateDetailed\_Attribute@{updateDetailed\_Attribute}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{updateDetailed\_Attribute()}{updateDetailed\_Attribute()}}
+{\footnotesize\ttfamily void Cell\+::update\+Detailed\+\_\+\+Attribute (\begin{DoxyParamCaption}\item[{string}]{new\+Detailed\+Attribute }\end{DoxyParamCaption})}
+
+
+
+gets the detailed attribute member variable 
+
+\begin{DoxyReturn}{Returns}
+const string, the detailed attribute 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCell_a66934a31b2a7dea4ed7c5e97de08cdf3}\label{classCell_a66934a31b2a7dea4ed7c5e97de08cdf3}} 
+\index{Cell@{Cell}!updateStreetName@{updateStreetName}}
+\index{updateStreetName@{updateStreetName}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{updateStreetName()}{updateStreetName()}}
+{\footnotesize\ttfamily void Cell\+::update\+Street\+Name (\begin{DoxyParamCaption}\item[{string}]{street\+Name }\end{DoxyParamCaption})}
+
+
+
+gets the street name only if the cell is a road 
+
+\begin{DoxyReturn}{Returns}
+constant string, string of the street name. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{CityGrid_8h}{City\+Grid.\+h}}\item 
+\mbox{\hyperlink{CityGrid_8cpp}{City\+Grid.\+cpp}}\end{DoxyCompactItemize}

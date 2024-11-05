@@ -1,0 +1,16 @@
+digraph "BuildingCreator"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="BuildingCreator",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Interface for creating building objects of various types."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="CommercialBuildingCreator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classCommercialBuildingCreator.html",tooltip="Concrete creator for generating commercial buildings."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="IndustrialBuildingCreator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classIndustrialBuildingCreator.html",tooltip="Concrete creator for generating industrial buildings."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="LandmarkBuildingCreator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLandmarkBuildingCreator.html",tooltip="Concrete creator for generating landmark buildings."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="ResidentialBuildingCreator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classResidentialBuildingCreator.html",tooltip="Concrete creator for generating residential buildings."];
+}

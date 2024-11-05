@@ -1,0 +1,90 @@
+\hypertarget{classModeOfTrans}{}\doxysection{Mode\+Of\+Trans Class Reference}
+\label{classModeOfTrans}\index{ModeOfTrans@{ModeOfTrans}}
+
+
+Abstract base class for different modes of transport.  
+
+
+
+
+{\ttfamily \#include $<$Mode\+Of\+Trans.\+h$>$}
+
+
+
+Inheritance diagram for Mode\+Of\+Trans\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::string \mbox{\hyperlink{classModeOfTrans_a222791a95005cd92532f0231a12882c8}{get\+Name}} () const =0
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{classModeOfTrans_aa7e3cafc707dac257e149c4703727bde}{get\+Cost}} () const =0
+\begin{DoxyCompactList}\small\item\em Gets the cost of the transport mode. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classModeOfTrans_a8f581cc380abd855d7067f3874162894}{execute}} () const =0
+\begin{DoxyCompactList}\small\item\em Executes the mean of the transport i.\+e)drives. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for different modes of transport. 
+
+Defines the interface for various transport modes such as \mbox{\hyperlink{classWalk}{Walk}}, Public Transport, Air Transport, and \mbox{\hyperlink{classTrain}{Train}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classModeOfTrans_a8f581cc380abd855d7067f3874162894}\label{classModeOfTrans_a8f581cc380abd855d7067f3874162894}} 
+\index{ModeOfTrans@{ModeOfTrans}!execute@{execute}}
+\index{execute@{execute}!ModeOfTrans@{ModeOfTrans}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily virtual void Mode\+Of\+Trans\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Executes the mean of the transport i.\+e)drives. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classWalk_adf7f351dab0a56b600035df7c4b5b595}{Walk}}, \mbox{\hyperlink{classTrain_a3643c9d94404e0f345f7b213fbc715f9}{Train}}, \mbox{\hyperlink{classPublicTrans_a918867053f4f8347c8a9112b9edd4208}{Public\+Trans}}, and \mbox{\hyperlink{classAirTrans_a9f10b64b581a5662e93c7c8ff402f8ef}{Air\+Trans}}.
+
+\mbox{\Hypertarget{classModeOfTrans_aa7e3cafc707dac257e149c4703727bde}\label{classModeOfTrans_aa7e3cafc707dac257e149c4703727bde}} 
+\index{ModeOfTrans@{ModeOfTrans}!getCost@{getCost}}
+\index{getCost@{getCost}!ModeOfTrans@{ModeOfTrans}}
+\doxysubsubsection{\texorpdfstring{getCost()}{getCost()}}
+{\footnotesize\ttfamily virtual double Mode\+Of\+Trans\+::get\+Cost (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gets the cost of the transport mode. 
+
+\begin{DoxyReturn}{Returns}
+double The cost 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classWalk_a620b3fa535a3f1d57ceb4e835c918d76}{Walk}}, \mbox{\hyperlink{classTrain_a1781e792f7b6e66de0e43e9ddb760843}{Train}}, \mbox{\hyperlink{classPublicTrans_ad9edab0612fe3e7fc678ecb6efb45513}{Public\+Trans}}, and \mbox{\hyperlink{classAirTrans_a783afe237e610e34ef070ea6fc472e74}{Air\+Trans}}.
+
+\mbox{\Hypertarget{classModeOfTrans_a222791a95005cd92532f0231a12882c8}\label{classModeOfTrans_a222791a95005cd92532f0231a12882c8}} 
+\index{ModeOfTrans@{ModeOfTrans}!getName@{getName}}
+\index{getName@{getName}!ModeOfTrans@{ModeOfTrans}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily virtual std\+::string Mode\+Of\+Trans\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Virtual destructor. 
+
+Gets the name of the transport mode.
+
+\begin{DoxyReturn}{Returns}
+std\+::string The name of the transport mode. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classWalk_a1a756c80069ee0f8746f1041adb3ad64}{Walk}}, \mbox{\hyperlink{classTrain_a604eca5a0ad439ce24980d75c484cf4d}{Train}}, \mbox{\hyperlink{classPublicTrans_a3e3a498a861cb39e34f0fd2d84d8a92d}{Public\+Trans}}, and \mbox{\hyperlink{classAirTrans_aee763fe8b38cd94fc41f248fa0ed5fe7}{Air\+Trans}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{ModeOfTrans_8h}{Mode\+Of\+Trans.\+h}}\end{DoxyCompactItemize}

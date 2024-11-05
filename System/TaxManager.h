@@ -1,7 +1,4 @@
-/** 
- * * @author u21824241_(add yours guys)
- */
-
+// TaxManager.h
 #ifndef TAXMANAGER_H
 #define TAXMANAGER_H
 
@@ -9,124 +6,152 @@
 #include <vector>
 #include <string>
 #include "Citizen.h"
-#include "visitHousing.h"
-#include "Resource.h"
-#include "CommercialBuilding.h"
-#include "ResidentialBuilding.h"
-#include "Budget.h"
+
+class Budget;
+class CommercialBuilding;
+class ResidentialBuilding;
 
 /**
  * @class TaxManager
- * @brief Manages taxation policies and visits buildings and resources in the city.
- * 
- * The TaxManager is responsible for managing the taxation system in the city.
- * It collects taxes from citizens and businesses and distributes the city's budget to different departments.
- * The TaxManager also applies tax policies and interacts with buildings and resources using the Visitor pattern.
+ * @brief Manages the taxation system and financial distribution within the city.
+ *
+ * The TaxManager is responsible for overseeing the city's taxation policies,
+ * collecting taxes from citizens and businesses, and allocating the city's budget
+ * to various departments. It employs the Visitor design pattern to interact
+ * with different building types and resources efficiently.
  */
-class TaxManager {
+class TaxManager
+{
 private:
-    std::map<std::string, float> taxRates;   /**< Map of tax rates (e.g., "IncomeTax", "PropertyTax", "SalesTax"). */
-    float collectedTaxes;                    /**< Total taxes collected. */
-    std::vector<Citizen*> citizenList;       /**< List of citizens for tax calculation. */
-    std::vector<CommercialBuilding*> commercialBuildings; /**< List of commercial buildings for business tax calculation. */
-    std::vector<ResidentialBuilding*> residentialBuildings; /**< List of residential buildings for citizen tax collection. */
-    float governmentBudget;                  /**< City budget after tax collection. */
+    std::map<std::string, float> taxRates;                   /**< Map storing tax rates for different categories */
+    float collectedTaxes;                                    /**< Total taxes collected by the TaxManager */
+    std::vector<Citizen *> citizenList;                      /**< List of citizens for tax calculations */
+    std::vector<CommercialBuilding *> commercialBuildings;   /**< List of commercial buildings for tax calculations */
+    std::vector<ResidentialBuilding *> residentialBuildings; /**< List of residential buildings for tax calculations */
+    float governmentBudget;                                  /**< The overall budget of the government */
 
 public:
     /**
-     * @brief Constructor for TaxManager.
+     * @brief Default constructor for TaxManager.
      */
     TaxManager();
-    
+
     /**
-     * @brief Sets the tax rate for a specific tax type.
-     * @param type The type of tax (e.g., "IncomeTax", "PropertyTax").
-     * @param rate The tax rate to be applied.
+     * @brief Sets the tax rate for a specific type of tax.
+     *
+     * This method allows setting a tax rate for different categories such as
+     * residential, commercial, and other relevant types.
+     *
+     * @param type The category of tax (e.g., "Residential", "Commercial").
+     * @param rate The tax rate to be set for the specified category.
      */
-    void setTaxRate(const std::string& type, float rate);
-    
+    void setTaxRate(const std::string &type, float rate);
+
     /**
-     * @brief Calculates the tax for a given citizen based on their budget.
-     * @param citizen Pointer to the citizen object.
-     * @return The calculated tax amount.
+     * @brief Calculates the tax owed by a citizen.
+     *
+     * This method computes the tax for a given citizen based on their income
+     * and applicable tax rates.
+     *
+     * @param citizen A pointer to the Citizen object for tax calculation.
+     * @return The calculated tax amount for the citizen.
      */
-    float calculateCitizenTax(Citizen* citizen);
-    
+    float calculateCitizenTax(Citizen *citizen);
+
     /**
-     * @brief Calculates the tax for a commercial building.
-     * @param building Pointer to the commercial building object.
-     * @return The calculated business tax amount.
+     * @brief Calculates the tax owed by a commercial building.
+     *
+     * This method computes the business tax for a given commercial building
+     * based on its revenue and applicable tax rates.
+     *
+     * @param building A pointer to the CommercialBuilding object for tax calculation.
+     * @return The calculated business tax amount for the building.
      */
-    float calculateBusinessTax(CommercialBuilding* building);
-    
+    float calculateBusinessTax(CommercialBuilding *building);
+
     /**
-     * @brief Collects taxes from all citizens and businesses in the city.
+     * @brief Collects taxes from all citizens and businesses.
+     *
+     * This method iterates over all citizens and buildings to collect taxes,
+     * updating the total amount of collected taxes.
      */
     void collectTaxes();
-    
+
     /**
-     * @brief Distributes a portion of the city's budget to a specified department.
-     * @param department The name of the department to allocate funds to.
-     * @param allocation The amount of budget to be allocated.
+     * @brief Distributes the budget to a specific department.
+     *
+     * This method allocates a portion of the collected budget to the specified
+     * department, ensuring financial support where needed.
+     *
+     * @param department The name of the department receiving the allocation.
+     * @param allocation The amount of budget to allocate to the department.
      */
-    void distributeBudget(const std::string& department, float allocation);
-    
-    /**
-     * @brief Applies any changes to the tax policies.
-     * 
-     * This method can be used to update tax policies and rates during the simulation.
-     */
-    void applyTaxChanges();
-    
+    void distributeBudget(const std::string &department, float allocation);
+
     /**
      * @brief Gets the total amount of taxes collected.
-     * @return The total taxes collected.
+     *
+     * @return The total collected taxes.
      */
     float getCollectedTaxes() const;
-    
+
     /**
      * @brief Gets the current government budget.
-     * @return The current government budget after tax collection and allocations.
+     *
+     * @return The current government budget amount.
      */
     float getGovernmentBudget() const;
 
+    // Visitor methods
     /**
-     * @brief Sets the list of citizens in the city for tax calculation.
-     * @param citizens A vector of pointers to the citizens.
+     * @brief Visits a residential building for tax-related operations.
+     *
+     * This method can be overridden to implement specific operations
+     * when interacting with residential buildings.
+     *
+     * @param building A pointer to the ResidentialBuilding object being visited.
      */
-    void setCitizenList(const std::vector<Citizen*>& citizens);
-    
-    /**
-     * @brief Sets the list of commercial buildings in the city.
-     * @param businesses A vector of pointers to the commercial buildings.
-     */
-    void setCommercialBuildings(const std::vector<CommercialBuilding*>& businesses);
-    
-    /**
-     * @brief Sets the list of residential buildings in the city.
-     * @param buildings A vector of pointers to the residential buildings.
-     */
-    void setResidentialBuildings(const std::vector<ResidentialBuilding*>& buildings);
-
-    // Visitor methods for visiting buildings and resources
+    virtual void visitResidentialBuilding(ResidentialBuilding *building);
 
     /**
-     * @brief Visits a residential building to collect taxes from its residents.
-     * @param residentialBuilding Pointer to the residential building to visit.
+     * @brief Visits a commercial building for tax-related operations.
+     *
+     * This method can be overridden to implement specific operations
+     * when interacting with commercial buildings.
+     *
+     * @param building A pointer to the CommercialBuilding object being visited.
      */
-    void visitResidentialBuilding(ResidentialBuilding* residentialBuilding);
-    
+    virtual void visitCommercialBuilding(CommercialBuilding *building);
+
     /**
-     * @brief Visits a commercial building to collect business taxes.
-     * @param commercialBuilding Pointer to the commercial building to visit.
+     * @brief Visits the budget for financial operations.
+     *
+     * This method can be overridden to implement specific operations
+     * related to the budget.
+     *
+     * @param budget A pointer to the Budget object being visited.
      */
-    void visitCommercialBuilding(CommercialBuilding* commercialBuilding);
-    
+    virtual void visitBudget(Budget *budget);
+
     /**
-     * @brief Visits the city's budget to allocate collected taxes.
-     * @param budget Pointer to the budget resource to visit.
+     * @brief Collects taxes from a residential building.
+     *
+     * This method is responsible for handling tax collection for
+     * residential buildings specifically.
+     *
+     * @param building A pointer to the ResidentialBuilding object from which to collect taxes.
      */
-    void visitBudget(Budget* budget);
+    void collect(ResidentialBuilding *building);
+
+    /**
+     * @brief Collects taxes from a commercial building.
+     *
+     * This method is responsible for handling tax collection for
+     * commercial buildings specifically.
+     *
+     * @param building A pointer to the CommercialBuilding object from which to collect taxes.
+     */
+    void collect(CommercialBuilding *building);
 };
 
 #endif // TAXMANAGER_H

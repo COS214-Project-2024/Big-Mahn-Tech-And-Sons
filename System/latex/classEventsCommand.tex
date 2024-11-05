@@ -1,0 +1,47 @@
+\hypertarget{classEventsCommand}{}\doxysection{Events\+Command Class Reference}
+\label{classEventsCommand}\index{EventsCommand@{EventsCommand}}
+
+
+Interface for handling city event commands.  
+
+
+
+
+{\ttfamily \#include $<$Events\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Events\+Command\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classEventsCommand_aef80ba6da5058eab16308d8b11d37103}{execute}} ()=0
+\begin{DoxyCompactList}\small\item\em will execute/start relevant command \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for handling city event commands. 
+
+The {\ttfamily \mbox{\hyperlink{classEventsCommand}{Events\+Command}}} class provides an interface with various virtual methods that correspond to actions for different types of events, including pandemics, natural disasters, load-\/shedding, festivals, and recessions. Derived classes implement these methods. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEventsCommand_aef80ba6da5058eab16308d8b11d37103}\label{classEventsCommand_aef80ba6da5058eab16308d8b11d37103}} 
+\index{EventsCommand@{EventsCommand}!execute@{execute}}
+\index{execute@{execute}!EventsCommand@{EventsCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily virtual void Events\+Command\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+will execute/start relevant command 
+
+
+
+Implemented in \mbox{\hyperlink{classRecessionCommand_a3fa663bef90869661a0c8549a906b8ce}{Recession\+Command}}, \mbox{\hyperlink{classIncreaseEconomy_ae17db189c576fc311f77da651c312d35}{Increase\+Economy}}, \mbox{\hyperlink{classIncreaseEconomicPerformance_a4ba9e5c4b11a070a759bf5542e62e7e2}{Increase\+Economic\+Performance}}, \mbox{\hyperlink{classFestivalCommand_ab40c67e1cd372e20023789f63e3a5c33}{Festival\+Command}}, \mbox{\hyperlink{classBabyBoomingEvent_a6ddea46d84e78be378520102e76a577d}{Baby\+Booming\+Event}}, \mbox{\hyperlink{classBabyBoom_abe4a1c8650d4a4abbf2ecf7c11cb0dee}{Baby\+Boom}}, \mbox{\hyperlink{classPandemicCommand_a51b38df34c9b8c1bc1bd61926daad2ae}{Pandemic\+Command}}, and \mbox{\hyperlink{classNaturalDisasterCommand_ad13ec388ddd75ed12f8cccc6fb462eff}{Natural\+Disaster\+Command}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{EventsCommand_8h}{Events\+Command.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,194 @@
+\hypertarget{classDeptOfTransportation}{}\doxysection{Dept\+Of\+Transportation Class Reference}
+\label{classDeptOfTransportation}\index{DeptOfTransportation@{DeptOfTransportation}}
+
+
+The Transportation department.  
+
+
+
+
+{\ttfamily \#include $<$Dept\+Of\+Transportation.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDeptOfTransportation_adb0c77b05be9ace807e44e30d6284882}{$\sim$\+Dept\+Of\+Transportation}} ()
+\begin{DoxyCompactList}\small\item\em gets the instance of the Transportation object \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfTransportation_a266d798e229408a0989e9c8d43469aff}{print\+City\+Grid}} ()
+\begin{DoxyCompactList}\small\item\em the destructor to the \mbox{\hyperlink{classDeptOfTransportation}{Dept\+Of\+Transportation}} object ?should it be private? \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfTransportation_aee3e534279705f03988e69add72bf58f}{print\+Road\+Network}} ()
+\begin{DoxyCompactList}\small\item\em prints the citygrid which is the attributes only. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfTransportation_af02ef6dd973089972cb91b4b84fd3c83}{print\+City\+Cardinal\+Points}} ()
+\begin{DoxyCompactList}\small\item\em prints the road network of the city, which is the road and the used and blank spaces \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfTransportation_a685aaa10077fa6b8683987b5b84ef7a0}{print\+City\+Streets}} ()
+\begin{DoxyCompactList}\small\item\em prints the city cardinal points \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeptOfTransportation_a4d88647e0f94babdfc6dc7b13dd95562}{add\+\_\+\+Road}} (int, int, int, string, string)
+\begin{DoxyCompactList}\small\item\em prints the city streets with the street name \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeptOfTransportation_a6e8910c72045eaa3e0431d48b7744c62}{remove\+\_\+\+Road}} (int, int, int, string)
+\begin{DoxyCompactList}\small\item\em adds a road to the city grid \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeptOfTransportation_a2c5d23987078b09acda961074eebff9b}{remove\+\_\+\+Road}} (string)
+\begin{DoxyCompactList}\small\item\em removes a road from the city grid \end{DoxyCompactList}\item 
+const vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{classDeptOfTransportation_aa287e4504d6f97cd13f2f55156528666}{add\+\_\+\+Building}} (int, int, \mbox{\hyperlink{classBuilding}{Building}} $\ast$)
+\begin{DoxyCompactList}\small\item\em removes a road from the city grid overloaded function \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeptOfTransportation_a31e49926f5598e1a11ed4213ae746e50}{remove\+\_\+\+Building}} (vector$<$ pair$<$ int, int $>$$>$)
+\begin{DoxyCompactList}\small\item\em adds a building to the city grid \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDeptOfTransportation_a15888dcea7f2732a7250290e0afa02c4}{get\+\_\+distance}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$, \mbox{\hyperlink{classBuilding}{Building}} $\ast$)
+\begin{DoxyCompactList}\small\item\em removes a building from the city grid \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classDeptOfTransportation}{Dept\+Of\+Transportation}} $\ast$ \mbox{\hyperlink{classDeptOfTransportation_aabfc6fd0f382668b620e685e7d4033ad}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em the constructor of the Class object private so that no class can create another instance of the class object \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The Transportation department. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDeptOfTransportation_adb0c77b05be9ace807e44e30d6284882}\label{classDeptOfTransportation_adb0c77b05be9ace807e44e30d6284882}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!````~DeptOfTransportation@{$\sim$DeptOfTransportation}}
+\index{````~DeptOfTransportation@{$\sim$DeptOfTransportation}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{$\sim$DeptOfTransportation()}{~DeptOfTransportation()}}
+{\footnotesize\ttfamily Dept\+Of\+Transportation\+::$\sim$\+Dept\+Of\+Transportation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+gets the instance of the Transportation object 
+
+\begin{DoxyReturn}{Returns}
+Dept\+Of\+Transportation$\ast$, returns the single instance of the \mbox{\hyperlink{classDeptOfTransportation}{Dept\+Of\+Transportation}} via a pointer. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDeptOfTransportation_aa287e4504d6f97cd13f2f55156528666}\label{classDeptOfTransportation_aa287e4504d6f97cd13f2f55156528666}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!add\_Building@{add\_Building}}
+\index{add\_Building@{add\_Building}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{add\_Building()}{add\_Building()}}
+{\footnotesize\ttfamily const vector$<$ pair$<$ int, int $>$ $>$ Dept\+Of\+Transportation\+::add\+\_\+\+Building (\begin{DoxyParamCaption}\item[{int}]{length,  }\item[{int}]{width,  }\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{building }\end{DoxyParamCaption})}
+
+
+
+removes a road from the city grid overloaded function 
+
+\begin{DoxyReturn}{Returns}
+boolean, returns true or false as to whether the road was added to the grid or not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfTransportation_a4d88647e0f94babdfc6dc7b13dd95562}\label{classDeptOfTransportation_a4d88647e0f94babdfc6dc7b13dd95562}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!add\_Road@{add\_Road}}
+\index{add\_Road@{add\_Road}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{add\_Road()}{add\_Road()}}
+{\footnotesize\ttfamily bool Dept\+Of\+Transportation\+::add\+\_\+\+Road (\begin{DoxyParamCaption}\item[{int}]{start\+\_\+row,  }\item[{int}]{start\+\_\+col,  }\item[{int}]{street\+\_\+\+Length,  }\item[{string}]{direction,  }\item[{string}]{street\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+prints the city streets with the street name 
+
+\mbox{\Hypertarget{classDeptOfTransportation_a15888dcea7f2732a7250290e0afa02c4}\label{classDeptOfTransportation_a15888dcea7f2732a7250290e0afa02c4}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!get\_distance@{get\_distance}}
+\index{get\_distance@{get\_distance}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{get\_distance()}{get\_distance()}}
+{\footnotesize\ttfamily int Dept\+Of\+Transportation\+::get\+\_\+distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{citizen\+\_\+current\+\_\+building,  }\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{citizen\+\_\+destination\+\_\+building }\end{DoxyParamCaption})}
+
+
+
+removes a building from the city grid 
+
+\begin{DoxyReturn}{Returns}
+boolean, returns true or false as to whether the building was added to the grid or not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfTransportation_aabfc6fd0f382668b620e685e7d4033ad}\label{classDeptOfTransportation_aabfc6fd0f382668b620e685e7d4033ad}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDeptOfTransportation}{Dept\+Of\+Transportation}} $\ast$ Dept\+Of\+Transportation\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+the constructor of the Class object private so that no class can create another instance of the class object 
+
+\mbox{\Hypertarget{classDeptOfTransportation_af02ef6dd973089972cb91b4b84fd3c83}\label{classDeptOfTransportation_af02ef6dd973089972cb91b4b84fd3c83}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!printCityCardinalPoints@{printCityCardinalPoints}}
+\index{printCityCardinalPoints@{printCityCardinalPoints}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{printCityCardinalPoints()}{printCityCardinalPoints()}}
+{\footnotesize\ttfamily void Dept\+Of\+Transportation\+::print\+City\+Cardinal\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints the road network of the city, which is the road and the used and blank spaces 
+
+\mbox{\Hypertarget{classDeptOfTransportation_a266d798e229408a0989e9c8d43469aff}\label{classDeptOfTransportation_a266d798e229408a0989e9c8d43469aff}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!printCityGrid@{printCityGrid}}
+\index{printCityGrid@{printCityGrid}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{printCityGrid()}{printCityGrid()}}
+{\footnotesize\ttfamily void Dept\+Of\+Transportation\+::print\+City\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+the destructor to the \mbox{\hyperlink{classDeptOfTransportation}{Dept\+Of\+Transportation}} object ?should it be private? 
+
+\mbox{\Hypertarget{classDeptOfTransportation_a685aaa10077fa6b8683987b5b84ef7a0}\label{classDeptOfTransportation_a685aaa10077fa6b8683987b5b84ef7a0}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!printCityStreets@{printCityStreets}}
+\index{printCityStreets@{printCityStreets}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{printCityStreets()}{printCityStreets()}}
+{\footnotesize\ttfamily void Dept\+Of\+Transportation\+::print\+City\+Streets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints the city cardinal points 
+
+\mbox{\Hypertarget{classDeptOfTransportation_aee3e534279705f03988e69add72bf58f}\label{classDeptOfTransportation_aee3e534279705f03988e69add72bf58f}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!printRoadNetwork@{printRoadNetwork}}
+\index{printRoadNetwork@{printRoadNetwork}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{printRoadNetwork()}{printRoadNetwork()}}
+{\footnotesize\ttfamily void Dept\+Of\+Transportation\+::print\+Road\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints the citygrid which is the attributes only. 
+
+\mbox{\Hypertarget{classDeptOfTransportation_a31e49926f5598e1a11ed4213ae746e50}\label{classDeptOfTransportation_a31e49926f5598e1a11ed4213ae746e50}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!remove\_Building@{remove\_Building}}
+\index{remove\_Building@{remove\_Building}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{remove\_Building()}{remove\_Building()}}
+{\footnotesize\ttfamily bool Dept\+Of\+Transportation\+::remove\+\_\+\+Building (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ int, int $>$$>$}]{buidling }\end{DoxyParamCaption})}
+
+
+
+adds a building to the city grid 
+
+\begin{DoxyReturn}{Returns}
+const vector$<$pair$<$int,int$>$$>$ , returns the building co-\/ordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfTransportation_a6e8910c72045eaa3e0431d48b7744c62}\label{classDeptOfTransportation_a6e8910c72045eaa3e0431d48b7744c62}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!remove\_Road@{remove\_Road}}
+\index{remove\_Road@{remove\_Road}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{remove\_Road()}{remove\_Road()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Dept\+Of\+Transportation\+::remove\+\_\+\+Road (\begin{DoxyParamCaption}\item[{int}]{start\+\_\+row,  }\item[{int}]{start\+\_\+col,  }\item[{int}]{road\+\_\+length,  }\item[{string}]{direction }\end{DoxyParamCaption})}
+
+
+
+adds a road to the city grid 
+
+\begin{DoxyReturn}{Returns}
+boolean, returns a true or false as to whether the road was added to the grid or not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfTransportation_a2c5d23987078b09acda961074eebff9b}\label{classDeptOfTransportation_a2c5d23987078b09acda961074eebff9b}} 
+\index{DeptOfTransportation@{DeptOfTransportation}!remove\_Road@{remove\_Road}}
+\index{remove\_Road@{remove\_Road}!DeptOfTransportation@{DeptOfTransportation}}
+\doxysubsubsection{\texorpdfstring{remove\_Road()}{remove\_Road()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Dept\+Of\+Transportation\+::remove\+\_\+\+Road (\begin{DoxyParamCaption}\item[{string}]{street\+Name }\end{DoxyParamCaption})}
+
+
+
+removes a road from the city grid 
+
+\begin{DoxyReturn}{Returns}
+boolean, returns true or false as to whether the road was added to the grid or not 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{DeptOfTransportation_8h}{Dept\+Of\+Transportation.\+h}}\item 
+\mbox{\hyperlink{DeptOfTransportation_8cpp}{Dept\+Of\+Transportation.\+cpp}}\end{DoxyCompactItemize}

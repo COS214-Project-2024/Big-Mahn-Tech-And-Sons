@@ -9,7 +9,6 @@
 #include <string>
 #include <vector>
 class Citizen;
-class Node;
 using namespace std;
  
 /**
@@ -23,7 +22,7 @@ public:
     /**
      * @brief Virtual destructor.
      */
-    virtual ~ModeOfTrans() {}
+    // virtual ~ModeOfTrans() {}
     
     /**
      * @brief Gets the name of the transport mode.
@@ -44,13 +43,8 @@ public:
      * 
      * @return void
      */
-    virtual void execute(Citizen* citizen, vector<Node*> node ) const = 0;
-    /**
-     * @brief Static method for selecting a transportation mode based on the distance to travel.
-     * @param distance Distance between nodes in kilometers.
-     * @return Pointer to the selected ModeOfTrans object.
-     */
-    static ModeOfTrans* selectModeByDistance(double distance);
+    virtual void execute() const = 0;
+  
     
 };
 

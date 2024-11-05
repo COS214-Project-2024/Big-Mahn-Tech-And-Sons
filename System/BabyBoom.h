@@ -11,19 +11,19 @@
 /**
  * @class BabyBoom
  * @brief A concrete command that simulates a sudden increase in population due to a baby boom event.
- * 
- * The `BabyBoom` class inherits from `EventsCommand` and represents an event where the population 
- * of the city sees a significant rise due to an increase in birth rates. This event can impact various 
+ *
+ * The `BabyBoom` class inherits from `EventsCommand` and represents an event where the population
+ * of the city sees a significant rise due to an increase in birth rates. This event can impact various
  * city aspects such as housing demand, resource allocation, and overall citizen behavior.
- * 
- * @details When executed, this command triggers a process that adjusts the population count within 
- * the simulation, creating new citizens and potentially leading to subsequent effects on the city's 
- * infrastructure, economy, and services. The increase in population can have implications for 
+ *
+ * @details When executed, this command triggers a process that adjusts the population count within
+ * the simulation, creating new citizens and potentially leading to subsequent effects on the city's
+ * infrastructure, economy, and services. The increase in population can have implications for
  * resource management, schooling, and housing policies, requiring adjustments to the city's planning.
- * 
- * @note This class does not directly handle the creation of new citizens but interacts with the 
+ *
+ * @note This class does not directly handle the creation of new citizens but interacts with the
  * relevant systems responsible for population management.
- * 
+ *
  * @author LeboGang
  */
 class BabyBoom : public EventsCommand
@@ -34,7 +34,7 @@ private:
 public:
     /**
      * @brief Default constructor for the BabyBoom event.
-     * 
+     *
      * Initializes the BabyBoom event, setting up any necessary parameters or configurations
      * that define how the population increase should be handled within the simulation.
      */
@@ -42,17 +42,17 @@ public:
 
     /**
      * @brief Destructor for the BabyBoom event.
-     * 
+     *
      * Cleans up any resources used by the BabyBoom event when it is no longer needed.
      */
-    ~BabyBoom();
+    // ~BabyBoom();
 
     /**
      * @brief Executes the BabyBoom event, simulating an increase in the population.
-     * 
-     * @details This function is responsible for adjusting the population of the city. When triggered, 
-     * it will simulate a sudden surge in birth rates, leading to a rise in the number of citizens. 
-     * This may affect other systems such as housing, healthcare, and education, which must respond 
+     *
+     * @details This function is responsible for adjusting the population of the city. When triggered,
+     * it will simulate a sudden surge in birth rates, leading to a rise in the number of citizens.
+     * This may affect other systems such as housing, healthcare, and education, which must respond
      * to the new population demands.
      */
     void execute() override;

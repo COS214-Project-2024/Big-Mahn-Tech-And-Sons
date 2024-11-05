@@ -1,22 +1,40 @@
-/**
- * @file Monument.h
- * @brief Declaration of the Monument class.
- */
+// Class definition of Factory Method - ConcreteProduct (subtype)
 
 #ifndef MONUMENT_H
 #define MONUMENT_H
 
 #include "LandmarkBuilding.h"
+#include "TaxManager.h"
+#include <string>
 
 /**
- * @class Library
- * @brief Represents a Monument in the simulation.
+ * @brief The Monument class, a specific type of LandmarkBuilding.
  */
-class Monument : public LandmarkBuilding {
-public:
-    using LandmarkBuilding::LandmarkBuilding; ///< Inherit constructors.
+class Monument : public LandmarkBuilding
+{
 
-    void reportResourceUsage() const override;
+public:
+    /**
+     * @brief Constructor for Monument.
+     */
+    Monument();
+
+    /**
+     * @brief Displays the stats specific to the monument.
+     */
+    void displayStats() const override;
+
+    /**
+     * @brief Accepts visitors using the visitor pattern.
+     * @param visitor A pointer to the visitor object.
+     */
+    void accept(TaxManager *visitor) override;
+
+    /**
+     * @brief Clones the monument object for repair purposes.
+     * @return A pointer to the cloned Monument object.
+     */
+    Building *repairClone() const override;
 };
 
 #endif // MONUMENT_H

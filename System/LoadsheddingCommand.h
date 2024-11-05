@@ -3,46 +3,40 @@
  * @brief Defines the LoadsheddingCommand class for handling load-shedding events.
  */
 
-#ifndef LOADSHEDDING_COMMAND_H
-#define LOADSHEDDING_COMMAND_H
+#ifndef LOADSHEDDINGCOMMAND_H
+#define LOADSHEDDINGCOMMAND_H
 
-#include "EventsCommand.h"
+#include <ctime>
+
+class PowerSupply;
 
 /**
  * @class LoadsheddingCommand
- * @brief Concrete command class for managing load-shedding and power outages.
+ * @brief Represents a load-shedding event command that can be executed on specified buildings.
  */
-class LoadsheddingCommand : public EventsCommand {
+class LoadsheddingCommand
+{
 public:
     /**
-     * @brief Cuts electricity to specific buildings during load-shedding.
+     * @brief Constructs a LoadsheddingCommand with the utilities department.
+     * @param utilitiesDept Pointer to the DeptOfUtilities handling power resources.
      */
-    void cutElectricityToBuildings();
+    LoadsheddingCommand(PowerSupply *powerSupply);
 
     /**
-     * @brief Notifies citizens of upcoming outages.
+     * @brief Schedules load-shedding to occur after a specified delay.
+     * @param delayInSeconds The delay in seconds before load-shedding starts.
      */
-    void notifyCitizensOfOutages();
+    void scheduleLoadshedding(int delayInSeconds);
 
     /**
-     * @brief Schedules load-shedding events.
-     */
-    void scheduleLoadshedding();
-
-    /**
-     * @brief Allocates energy resources during load-shedding.
-     */
-    void allocateEnergyResources();
-
-    /**
-     * @brief Manages complaints related to utility outages.
-     */
-    void manageUtilityComplaints();
-
-       /**
-     * @brief starts/ends the command
+     * @brief Executes the load-shedding event by triggering load-shedding in the utilities department.
      */
     void execute();
+
+private:
+    PowerSupply *powerSupply; ///< Manages energy allocation and power resources.
+    std::time_t scheduleTime; ///< Time the load-shedding is scheduled to start.
 };
 
-#endif // LOADSHEDDING_COMMAND_H
+#endif // LOADSHEDDINGCOMMAND_H

@@ -12,8 +12,6 @@
 #include <iostream>
 #include "GoToCommand.h"
 #include "Citizen.h"
-#include "RoadNetWork.h"
-#include "Node.h"
 
 using namespace std;
 
@@ -26,21 +24,22 @@ using namespace std;
  */
 class GoSchool : public GoToCommand
 {
-private:
-    Citizen* citizen;           /**< Pointer to the citizen who is going to school */
-    Node* destination;          /**< Pointer to the destination (school node) */
-    RoadNetwork* roadNetwork;   /**< Pointer to the road network used for navigation */
-
 public:
     /**
-     * @brief Constructor for the GoSchool class.
-     * 
-     * Initializes a GoSchool command for the specified citizen within the given road network.
-     * 
-     * @param citizen A pointer to the Citizen object representing the person going to school.
-     * @param roadNetwork A pointer to the RoadNetwork object that the citizen will use to reach the destination.
+     * @brief Executes the command for the citizen to go to school.
+     *
+     * This method simulates the action of the citizen navigating the road network
+     * to reach the school destination.
+     *
+     * @return True if the navigation to the school is successful; false otherwise.
      */
-    GoSchool(Citizen* citizen, RoadNetwork* roadNetwork);
+    // GoSchool(Citizen* citizen);
+
+    GoSchool(Citizen *citizen, DeptOfHousing *housing);
+
+
+
+    bool execute() override;
 };
 
-#endif
+#endif // GOSCHOOL_H
