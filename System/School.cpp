@@ -1,5 +1,7 @@
 #include "School.h"
 #include <iostream>
+#include "TaxManager.h"
+
 
 School::School()
     : CommercialBuilding()
@@ -31,9 +33,9 @@ bool School::checkAvailability() const
     return availableKidsSpaces > 0; // Kids' spaces are available if any exist
 }
 
-void School::accept(TaxManager *visitor)
-{
-    // visitor->visitCommercialBuilding(this);
+void School::accept(TaxManager* visitor) {
+     visitor->visitBuildingForBuilding(this);
+    visitor->visitBuildingForCitizen(this);
 }
 
 Building *School::repairClone() const

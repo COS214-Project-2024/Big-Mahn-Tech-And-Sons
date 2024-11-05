@@ -1,6 +1,7 @@
 // Class implementation of Factory Method - ConcreteProduct participant (subtype)
 
 #include "Apartment.h"
+#include "TaxManager.h"
 #include <iostream>
 
 Apartment::Apartment()
@@ -24,9 +25,10 @@ void Apartment::displayStats() const
     ResidentialBuilding::displayStats(); // Display general stats for residential buildings
 }
 
-void Apartment::accept(TaxManager *visitor)
-{
-    //  visitor->visitResidentialBuilding(this);
+
+void Apartment::accept(TaxManager* visitor) {
+    visitor->visitBuildingForBuilding(this);
+    visitor->visitBuildingForCitizen(this);
 }
 
 Building *Apartment::repairClone() const

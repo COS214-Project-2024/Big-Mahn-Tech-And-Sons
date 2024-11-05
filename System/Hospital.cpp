@@ -34,9 +34,9 @@ bool Hospital::checkAvailability() const
     return availableBeds > 0; // Beds are available if any exist
 }
 
-void Hospital::accept(TaxManager *visitor)
-{
-    visitor->visitCommercialBuilding(this);
+void Hospital::accept(TaxManager* visitor) {
+     visitor->visitBuildingForBuilding(this);
+    visitor->visitBuildingForCitizen(this);
 }
 
 Building *Hospital::repairClone() const

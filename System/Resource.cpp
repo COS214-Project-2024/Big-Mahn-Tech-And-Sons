@@ -25,7 +25,23 @@ void Resource::removeAmount(double removalAmount) {
     }
 }
 
-void Resource::visitBudget(Budget* budget) {
-    // Default implementation - can be overridden by derived classes
-    budget->setTotalBudget(budget->getTotalBudget() + getCollectedTaxes());
+
+
+bool Resource::visitBuildingForBuilding(Building* building) 
+{
+    //
+    return true;
+}
+
+
+bool Resource::visitBuildingForCitizen(Building* building) 
+{
+    //
+    return true;
+}
+
+
+bool Resource::visitBudget(Budget* budget , double amount) 
+{
+    return true;
 }

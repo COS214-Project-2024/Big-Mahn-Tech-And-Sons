@@ -209,34 +209,28 @@ bool DeptOfPR::notifyUtilities(string request, Building *building)
          return false;
       }
 
-      // Decision making to decrease taxes
-      if (deptName == "Citizen" && healthyEconomy)
-      {
-         this->finance->decreaseTaxes();
-         cout << "Department of PR mediated decrease tax request to Department of Finance\n";
-         return true;
-         // Decision making to increase taxes
+   // Decision making to decrease taxes
+   if (deptName == "Citizen" && healthyEconomy) {
+      this->finance->decreaseTaxes(10);
+      std::cout << "Taxes have been lowered based on economic conditions and citizen feedback." << std::endl;
+      return true;
+      // Decision making to increase taxes
+   } else if(deptName == "Housing") { // check dept housing request funding function
+      this->finance->increaseTaxes(10);
+      this->finance->allocateBudget("Housing", 100000);
+      /*
+      bool request = finance->allocateBudget(deptName, 2000000); //<< allocate budget to change to budget
+      if(request) {
+         housing->addBudget(2000000);
+      } else {
+         std::cout << "Budget allocation failed." << std::endl;
       }
-      else if (deptName == "Housing")
-      { // check dept housing request funding function
-         this->finance->increaseTaxes(10);
-         this->finance->allocateBudget("Housing", 100000);
-         cout << "Department of PR mediated funding request of Department of Housing to Department of Finance\n";
-
-         /*
-         bool request = finance->allocateBudget(deptName, 2000000); //<< allocate budget to change to budget
-         if(request) {
-            housing->addBudget(2000000);
-         } else {
-            std::cout << "Budget allocation failed." << std::endl;
-         }
-         */
-         return true;
-      }
-      else if (deptName == "Utility")
-      {
-         this->finance->allocateBudget("Utility", 10000);
-         cout << "Department of PR mediated funding request of Department of Utilities to Department of Finance\n";
+      */
+      std::cout << "Taxes have been increased to support government funding needs." << std::endl;
+      return true;
+   } else if(deptName == "Utility") {
+      this->finance->allocateBudget("Utility", 10000);
+      std::cout << "Budget allocated to Utility department." << std::endl;
 
          return true;
       }

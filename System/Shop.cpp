@@ -1,6 +1,7 @@
 // Class implementation of Factory Method - ConcreteProduct participant (subtype)
 
 #include "Shop.h"
+#include "TaxManager.h"
 #include <iostream>
 
 
@@ -35,7 +36,8 @@ bool Shop::checkAvailability() const {
 
 
 void Shop::accept(TaxManager* visitor) {
-  //  visitor->visitCommercialBuilding(this);
+    visitor->visitBuildingForBuilding(this);
+    visitor->visitBuildingForCitizen(this);
 }
 
 

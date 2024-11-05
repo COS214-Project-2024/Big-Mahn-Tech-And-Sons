@@ -36,7 +36,6 @@ Building *Airport::repairClone() const
     std::cout << "Repairing industrial building (Airport): " << getName() << "\n";
     return new Airport(*this);
 }
-
 double Airport::calculateTax() const
 {
     return 0.0;

@@ -18,7 +18,8 @@ class TaxManager;
 class Budget : public Element
 {
 private:
-    float totalBudget; /**< The total budget available for management. */
+    float totalBudget;
+    double funds;
 
 public:
     /**
@@ -26,12 +27,7 @@ public:
      * @param initialBudget The initial budget value to be set.
      */
     Budget(float initialBudget);
-
-    // ~Budget(); // Uncomment if the destructor is defined in the implementation
-
-    /**
-     * @brief Reports the current budget status, displaying relevant budget details.
-     */
+    ~Budget();
     void reportStatus() const;
 
     /**
@@ -45,12 +41,7 @@ public:
      * @param budget The new budget amount to be set.
      */
     void setTotalBudget(float budget);
-
-    /**
-     * @brief Accepts a visitor for tax management or other visitor pattern operations.
-     * @param visitor A pointer to the TaxManager visitor.
-     */
-    void accept(TaxManager *visitor) override;
+    virtual void accept(TaxManager* visitor) override ;
 };
 
 #endif // BUDGET_H

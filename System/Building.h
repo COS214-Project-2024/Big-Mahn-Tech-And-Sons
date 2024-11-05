@@ -27,7 +27,29 @@ class DeptOfPR;
  */
 class Building : public Element
 {
+class Building : public Element
+{
 
+protected:
+    std::string name;                                 ///< Name of the building
+    int maxCapacity;                                  ///< Maximum capacity of people in the building
+    double electricityMeterBox;                       ///< Electric meter reading
+    double waterMeterBox;                             ///< Water meter reading
+    double electricityUsage;                          ///< Total electricity usage
+    double waterUsage;                                ///< Total water usage
+    double wasteProduction;                           ///< Total waste produced
+    std::vector<Citizen *> tenants;                   ///< Vector to store tenants or workers
+    int width;                                        ///< Width of the building for grid placement
+    int length;                                       ///< Length of the building for grid placement
+    double priceTag;                                  ///< Price tag of the building
+    double netWorth;                                  ///< Net worth of the building
+    bool waterSupply;                                 ///< Water supply status
+    bool powerSupply;                                 ///< Power supply status
+    std::vector<std::pair<int, int>> gridCoordinates; ///< Grid coordinates
+    std::string type;                                 ///< Type of Building
+    DeptOfPR *PR;                                     ///< Reference to the government’s DeptOfPR
+    double citizenTax;                                ///< Tax rate for citizens
+    double businessTax;                               ///< Tax rate for businesses
 protected:
     std::string name;                                 ///< Name of the building
     int maxCapacity;                                  ///< Maximum capacity of people in the building
@@ -66,6 +88,8 @@ public:
      * @return True if the tenant was added, false if capacity is full.
      */
     bool addTenant(Citizen *tenant);
+
+    std::vector<Citizen *> getOccupants();
 
     /**
      * @brief Removes a tenant from the building.
@@ -140,6 +164,52 @@ public:
     double getCitizenTax() const;
     double getBusinessTax() const;
 
+    // Setters
+
+    void setName(const std::string &name);
+    void setMaxCapacity(int capacity);
+    void setElectricityMeterBox(double reading);
+    void setWaterMeterBox(double reading);
+    void setElectricityUsage(double usage);
+    void setWaterUsage(double usage);
+    void setWaste(double waste);
+    void setWidth(int width);
+    void setLength(int length);
+    void setCitizenTax(double taxRate);
+    void setBusinessTax(double taxRate);
+
+    /**
+     * @brief Consumes water based on the specified amount.
+     * @param amount The amount of water to consume.
+     */
+    virtual void consumeWater(double amount);
+
+    /**
+     * @brief Consumes electricity based on the specified amount.
+     * @param amount The amount of electricity to consume.
+     */
+    virtual void consumeElectricity(double amount);
+
+    /**
+     * @brief Cuts off the water supply to the building.
+     */
+    virtual void waterCut();
+
+    /**
+     * @brief Cuts off the power supply to the building.
+     */
+    virtual void powerCut();
+
+    /**
+     * @brief Clears the waste produced by the building.
+     */
+    virtual void clearWaste();
+
+    /**
+     * @brief Creates a clone of the building for repair purposes.
+     * @return A pointer to a new Building object that is a clone of this building.
+     */
+    virtual Building *repairClone() const = 0;
     // Setters
 
     void setName(const std::string &name);
