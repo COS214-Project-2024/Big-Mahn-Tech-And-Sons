@@ -1,0 +1,170 @@
+\hypertarget{classApartment}{}\doxysection{Apartment Class Reference}
+\label{classApartment}\index{Apartment@{Apartment}}
+
+
+Represents an apartment building with multiple residential units.  
+
+
+
+
+{\ttfamily \#include $<$Apartment.\+h$>$}
+
+
+
+Inheritance diagram for Apartment\+:
+% FIG 0
+
+
+Collaboration diagram for Apartment\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classApartment_a29776e921e0a96385245bed5087e5123}{Apartment}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classApartment}{Apartment}}, initializing unique apartment attributes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classApartment_a4b0af2a0b9946fe4454e4b2232dbd5ec}{display\+Stats}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the statistics of the apartment, including specific and inherited details. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classApartment_afc17d2ed4b35f6aca93e45d4ee96c72d}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor) override
+\begin{DoxyCompactList}\small\item\em Accepts a visitor for tax management or other visitor pattern operations. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classApartment_aad3c2993cc52906b2d7985bf87e7229b}{repair\+Clone}} () const
+\begin{DoxyCompactList}\small\item\em Creates a clone of the \mbox{\hyperlink{classApartment}{Apartment}} for repair purposes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classApartment_a2d6853ee89dbb08795ff94172d057d76}{get\+Num\+Units}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of units in the apartment building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classApartment_a2769453943df14424dbc9c8b75a2ee34}{set\+Num\+Units}} (int units)
+\begin{DoxyCompactList}\small\item\em Sets the number of units in the apartment building. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classApartment_aa836b31ca1aae645762e5575ea7784f6}{get\+Has\+Elevator}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the apartment building has an elevator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classApartment_ae61c74ec93822493ec4ec488d508e436}{set\+Has\+Elevator}} (bool elevator)
+\begin{DoxyCompactList}\small\item\em Sets the elevator availability in the apartment building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Represents an apartment building with multiple residential units. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classApartment_a29776e921e0a96385245bed5087e5123}\label{classApartment_a29776e921e0a96385245bed5087e5123}} 
+\index{Apartment@{Apartment}!Apartment@{Apartment}}
+\index{Apartment@{Apartment}!Apartment@{Apartment}}
+\doxysubsubsection{\texorpdfstring{Apartment()}{Apartment()}}
+{\footnotesize\ttfamily Apartment\+::\+Apartment (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classApartment}{Apartment}}, initializing unique apartment attributes. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classApartment_afc17d2ed4b35f6aca93e45d4ee96c72d}\label{classApartment_afc17d2ed4b35f6aca93e45d4ee96c72d}} 
+\index{Apartment@{Apartment}!accept@{accept}}
+\index{accept@{accept}!Apartment@{Apartment}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Apartment\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accepts a visitor for tax management or other visitor pattern operations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the \mbox{\hyperlink{classTaxManager}{Tax\+Manager}} visitor. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classResidentialBuilding_a39765f4b794ccb38a023b07954e8b42c}{Residential\+Building}}.
+
+\mbox{\Hypertarget{classApartment_a4b0af2a0b9946fe4454e4b2232dbd5ec}\label{classApartment_a4b0af2a0b9946fe4454e4b2232dbd5ec}} 
+\index{Apartment@{Apartment}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!Apartment@{Apartment}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Apartment\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the statistics of the apartment, including specific and inherited details. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classBuilding_aace1b612517a40b26a1d557d1668e9e2}{Building}}.
+
+\mbox{\Hypertarget{classApartment_aa836b31ca1aae645762e5575ea7784f6}\label{classApartment_aa836b31ca1aae645762e5575ea7784f6}} 
+\index{Apartment@{Apartment}!getHasElevator@{getHasElevator}}
+\index{getHasElevator@{getHasElevator}!Apartment@{Apartment}}
+\doxysubsubsection{\texorpdfstring{getHasElevator()}{getHasElevator()}}
+{\footnotesize\ttfamily bool Apartment\+::get\+Has\+Elevator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the apartment building has an elevator. 
+
+\begin{DoxyReturn}{Returns}
+True if the building has an elevator, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classApartment_a2d6853ee89dbb08795ff94172d057d76}\label{classApartment_a2d6853ee89dbb08795ff94172d057d76}} 
+\index{Apartment@{Apartment}!getNumUnits@{getNumUnits}}
+\index{getNumUnits@{getNumUnits}!Apartment@{Apartment}}
+\doxysubsubsection{\texorpdfstring{getNumUnits()}{getNumUnits()}}
+{\footnotesize\ttfamily int Apartment\+::get\+Num\+Units (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of units in the apartment building. 
+
+\begin{DoxyReturn}{Returns}
+The number of residential units. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classApartment_aad3c2993cc52906b2d7985bf87e7229b}\label{classApartment_aad3c2993cc52906b2d7985bf87e7229b}} 
+\index{Apartment@{Apartment}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!Apartment@{Apartment}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Apartment\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Creates a clone of the \mbox{\hyperlink{classApartment}{Apartment}} for repair purposes. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to a new \mbox{\hyperlink{classBuilding}{Building}} object that is a clone of this \mbox{\hyperlink{classApartment}{Apartment}}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classResidentialBuilding_a4cd76c06b6062c508c02201650c72d25}{Residential\+Building}}.
+
+\mbox{\Hypertarget{classApartment_ae61c74ec93822493ec4ec488d508e436}\label{classApartment_ae61c74ec93822493ec4ec488d508e436}} 
+\index{Apartment@{Apartment}!setHasElevator@{setHasElevator}}
+\index{setHasElevator@{setHasElevator}!Apartment@{Apartment}}
+\doxysubsubsection{\texorpdfstring{setHasElevator()}{setHasElevator()}}
+{\footnotesize\ttfamily void Apartment\+::set\+Has\+Elevator (\begin{DoxyParamCaption}\item[{bool}]{elevator }\end{DoxyParamCaption})}
+
+
+
+Sets the elevator availability in the apartment building. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elevator} & A boolean indicating the presence of an elevator. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classApartment_a2769453943df14424dbc9c8b75a2ee34}\label{classApartment_a2769453943df14424dbc9c8b75a2ee34}} 
+\index{Apartment@{Apartment}!setNumUnits@{setNumUnits}}
+\index{setNumUnits@{setNumUnits}!Apartment@{Apartment}}
+\doxysubsubsection{\texorpdfstring{setNumUnits()}{setNumUnits()}}
+{\footnotesize\ttfamily void Apartment\+::set\+Num\+Units (\begin{DoxyParamCaption}\item[{int}]{units }\end{DoxyParamCaption})}
+
+
+
+Sets the number of units in the apartment building. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em units} & The number of residential units to be set. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Apartment_8h}{Apartment.\+h}}\item 
+\mbox{\hyperlink{Apartment_8cpp}{Apartment.\+cpp}}\end{DoxyCompactItemize}

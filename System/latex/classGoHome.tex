@@ -1,0 +1,78 @@
+\hypertarget{classGoHome}{}\doxysection{Go\+Home Class Reference}
+\label{classGoHome}\index{GoHome@{GoHome}}
+
+
+This class is a concrete command that allows a citizen to travel from their current position to home.  
+
+
+
+
+{\ttfamily \#include $<$Go\+Home.\+h$>$}
+
+
+
+Inheritance diagram for Go\+Home\+:
+% FIG 0
+
+
+Collaboration diagram for Go\+Home\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGoHome_a5b0308c9e81188103b340645f089d1be}{Go\+Home}} (\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$citizen)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classGoHome}{Go\+Home}} command for a specified citizen. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGoHome_a97f7131b0e5cc3907632169005459986}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Executes the command to move the citizen home. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This class is a concrete command that allows a citizen to travel from their current position to home. 
+
+The \mbox{\hyperlink{classGoHome}{Go\+Home}} command encapsulates the action of a citizen returning home, providing a mechanism to execute this command within the system\textquotesingle{}s command pattern. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGoHome_a5b0308c9e81188103b340645f089d1be}\label{classGoHome_a5b0308c9e81188103b340645f089d1be}} 
+\index{GoHome@{GoHome}!GoHome@{GoHome}}
+\index{GoHome@{GoHome}!GoHome@{GoHome}}
+\doxysubsubsection{\texorpdfstring{GoHome()}{GoHome()}}
+{\footnotesize\ttfamily Go\+Home\+::\+Go\+Home (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$}]{citizen }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classGoHome}{Go\+Home}} command for a specified citizen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em citizen} & Pointer to the \mbox{\hyperlink{classCitizen}{Citizen}} object who will go home. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGoHome_a97f7131b0e5cc3907632169005459986}\label{classGoHome_a97f7131b0e5cc3907632169005459986}} 
+\index{GoHome@{GoHome}!execute@{execute}}
+\index{execute@{execute}!GoHome@{GoHome}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily bool Go\+Home\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the command to move the citizen home. 
+
+This method initiates the action of the citizen traveling to their home.
+
+\begin{DoxyReturn}{Returns}
+True if the command was successfully executed, false otherwise. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classGoToCommand_af1f26d8202f09a43a257163c86042747}{Go\+To\+Command}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{GoHome_8h}{Go\+Home.\+h}}\item 
+\mbox{\hyperlink{GoHome_8cpp}{Go\+Home.\+cpp}}\end{DoxyCompactItemize}

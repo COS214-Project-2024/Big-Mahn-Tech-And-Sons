@@ -1,0 +1,62 @@
+\hypertarget{classCommercialBuildingCreator}{}\doxysection{Commercial\+Building\+Creator Class Reference}
+\label{classCommercialBuildingCreator}\index{CommercialBuildingCreator@{CommercialBuildingCreator}}
+
+
+Concrete creator for generating commercial buildings.  
+
+
+
+
+{\ttfamily \#include $<$Commercial\+Building\+Creator.\+h$>$}
+
+
+
+Inheritance diagram for Commercial\+Building\+Creator\+:
+% FIG 0
+
+
+Collaboration diagram for Commercial\+Building\+Creator\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classCommercialBuildingCreator_ad0038426acf05bbe036ec4bd3eaf847a}{create\+Building}} (const std\+::string \&type) const override
+\begin{DoxyCompactList}\small\item\em Creates a commercial building of the specified type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concrete creator for generating commercial buildings. 
+
+Implements the factory method to create various types of commercial buildings such as shops, offices, schools, and hospitals. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCommercialBuildingCreator_ad0038426acf05bbe036ec4bd3eaf847a}\label{classCommercialBuildingCreator_ad0038426acf05bbe036ec4bd3eaf847a}} 
+\index{CommercialBuildingCreator@{CommercialBuildingCreator}!createBuilding@{createBuilding}}
+\index{createBuilding@{createBuilding}!CommercialBuildingCreator@{CommercialBuildingCreator}}
+\doxysubsubsection{\texorpdfstring{createBuilding()}{createBuilding()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Commercial\+Building\+Creator\+::create\+Building (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a commercial building of the specified type. 
+
+Based on the provided type string, this function returns a pointer to the corresponding commercial building.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type of the commercial building to create (e.\+g., \char`\"{}\+Shop\char`\"{}, \char`\"{}\+Office\char`\"{}, \char`\"{}\+School\char`\"{}, \char`\"{}\+Hospital\char`\"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Building$\ast$ Pointer to the created commercial building or {\ttfamily nullptr} if the type is unknown. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBuildingCreator_a97e81edd7567f7707a92d14443916f5a}{Building\+Creator}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{CommercialBuildingCreator_8h}{Commercial\+Building\+Creator.\+h}}\item 
+\mbox{\hyperlink{CommercialBuildingCreator_8cpp}{Commercial\+Building\+Creator.\+cpp}}\end{DoxyCompactItemize}

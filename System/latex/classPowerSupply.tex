@@ -1,0 +1,216 @@
+\hypertarget{classPowerSupply}{}\doxysection{Power\+Supply Class Reference}
+\label{classPowerSupply}\index{PowerSupply@{PowerSupply}}
+
+
+Manages the electricity generation and distribution system for the city. Inherits from the Department\+Utilities class.  
+
+
+
+
+{\ttfamily \#include $<$Power\+Supply.\+h$>$}
+
+
+
+Inheritance diagram for Power\+Supply\+:
+% FIG 0
+
+
+Collaboration diagram for Power\+Supply\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPowerSupply_a07f7965136e5ffe27b348cb3922b2276}{Power\+Supply}} (double \mbox{\hyperlink{classDeptOfUtilities_a1a4e416af5a947f4fe4befa076b2eb8b}{budget}}, double capacity, \mbox{\hyperlink{classPower}{Power}} $\ast$power\+Resource)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classPowerSupply}{Power\+Supply}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classPowerSupply_aba4a51e723b33985928e2a5f30bc79cf}{$\sim$\+Power\+Supply}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{classPowerSupply}{Power\+Supply}} class. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPowerSupply_a59eb0b224625cd2ae3364a6e2d427172}{get\+Budget}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current budget of the \mbox{\hyperlink{classPowerSupply}{Power\+Supply}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPowerSupply_a3d6b959c04dd09c7e38f621ad10aab06}{distribute\+Power}} ()
+\begin{DoxyCompactList}\small\item\em Distributes electricity across various sectors in the city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPowerSupply_ab020a1403e9371eafbd0bd42004ffe16}{distribute\+Power\+To\+Building}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$b)
+\begin{DoxyCompactList}\small\item\em Distributes electricity to a specific building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPowerSupply_aab5a0f3658f2e4c8c306dbc91269229f}{Distribute\+Power\+To\+Building}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$b, double incoming\+Amt)
+\begin{DoxyCompactList}\small\item\em Distributes power to a specified building. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPowerSupply_ab90840f38d94d676b25a6725293ec7d2}{calculate\+Power\+Usage}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the current power usage based on consumption rates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPowerSupply_ae1d3a849d2232d206a42da3e2d4df360}{power\+Shut\+Down}} ()
+\begin{DoxyCompactList}\small\item\em Shuts down power generation for maintenance or emergency purposes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPowerSupply_a73fc3666f1d4308ac0090efa64b33f01}{increase\+Power\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Increases the electricity generation capacity of the power plants. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classPowerSupply_a7ace80d9027fc99b4efb94cd72a525cf}{get\+Power\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current total power generation capacity. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPowerSupply_a91702ad9d332b74121595ce5bdb73319}{handle\+Request}} (\mbox{\hyperlink{classRequest}{Request}} \&req)
+\begin{DoxyCompactList}\small\item\em the \mbox{\hyperlink{classPowerSupply_a91702ad9d332b74121595ce5bdb73319}{handle\+Request()}} function is the core method responsible for either processing the request or passing it along the chain to the next handler. \mbox{\hyperlink{classPowerSupply}{Power\+Supply}} checks if it can handle the request, if not, \mbox{\hyperlink{classPowerSupply}{Power\+Supply}} will pass it on to the next concrete\+Handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPowerSupply_abc6f887e41d4acc495d32e4fbc764506}{add\+Building}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$building)
+\begin{DoxyCompactList}\small\item\em Adds a building to the water supply system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Manages the electricity generation and distribution system for the city. Inherits from the Department\+Utilities class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPowerSupply_a07f7965136e5ffe27b348cb3922b2276}\label{classPowerSupply_a07f7965136e5ffe27b348cb3922b2276}} 
+\index{PowerSupply@{PowerSupply}!PowerSupply@{PowerSupply}}
+\index{PowerSupply@{PowerSupply}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{PowerSupply()}{PowerSupply()}}
+{\footnotesize\ttfamily Power\+Supply\+::\+Power\+Supply (\begin{DoxyParamCaption}\item[{double}]{budget,  }\item[{double}]{capacity,  }\item[{\mbox{\hyperlink{classPower}{Power}} $\ast$}]{power\+Resource }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classPowerSupply}{Power\+Supply}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em budget} & The budget allocated to the power supply department. \\
+\hline
+{\em capacity} & The initial power capacity available for the department. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPowerSupply_aba4a51e723b33985928e2a5f30bc79cf}\label{classPowerSupply_aba4a51e723b33985928e2a5f30bc79cf}} 
+\index{PowerSupply@{PowerSupply}!````~PowerSupply@{$\sim$PowerSupply}}
+\index{````~PowerSupply@{$\sim$PowerSupply}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{$\sim$PowerSupply()}{~PowerSupply()}}
+{\footnotesize\ttfamily Power\+Supply\+::$\sim$\+Power\+Supply (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for the \mbox{\hyperlink{classPowerSupply}{Power\+Supply}} class. 
+
+This destructor cleans up any resources allocated by the \mbox{\hyperlink{classPowerSupply}{Power\+Supply}} instance. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPowerSupply_abc6f887e41d4acc495d32e4fbc764506}\label{classPowerSupply_abc6f887e41d4acc495d32e4fbc764506}} 
+\index{PowerSupply@{PowerSupply}!addBuilding@{addBuilding}}
+\index{addBuilding@{addBuilding}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{addBuilding()}{addBuilding()}}
+{\footnotesize\ttfamily void Power\+Supply\+::add\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{building }\end{DoxyParamCaption})}
+
+
+
+Adds a building to the water supply system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the building to be added. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPowerSupply_ab90840f38d94d676b25a6725293ec7d2}\label{classPowerSupply_ab90840f38d94d676b25a6725293ec7d2}} 
+\index{PowerSupply@{PowerSupply}!calculatePowerUsage@{calculatePowerUsage}}
+\index{calculatePowerUsage@{calculatePowerUsage}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{calculatePowerUsage()}{calculatePowerUsage()}}
+{\footnotesize\ttfamily double Power\+Supply\+::calculate\+Power\+Usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the current power usage based on consumption rates. 
+
+\begin{DoxyReturn}{Returns}
+The amount of electricity consumed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPowerSupply_a3d6b959c04dd09c7e38f621ad10aab06}\label{classPowerSupply_a3d6b959c04dd09c7e38f621ad10aab06}} 
+\index{PowerSupply@{PowerSupply}!distributePower@{distributePower}}
+\index{distributePower@{distributePower}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{distributePower()}{distributePower()}}
+{\footnotesize\ttfamily void Power\+Supply\+::distribute\+Power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Distributes electricity across various sectors in the city. 
+
+\mbox{\Hypertarget{classPowerSupply_ab020a1403e9371eafbd0bd42004ffe16}\label{classPowerSupply_ab020a1403e9371eafbd0bd42004ffe16}} 
+\index{PowerSupply@{PowerSupply}!distributePowerToBuilding@{distributePowerToBuilding}}
+\index{distributePowerToBuilding@{distributePowerToBuilding}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{distributePowerToBuilding()}{distributePowerToBuilding()}}
+{\footnotesize\ttfamily void Power\+Supply\+::distribute\+Power\+To\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Distributes electricity to a specific building. 
+
+\mbox{\Hypertarget{classPowerSupply_aab5a0f3658f2e4c8c306dbc91269229f}\label{classPowerSupply_aab5a0f3658f2e4c8c306dbc91269229f}} 
+\index{PowerSupply@{PowerSupply}!DistributePowerToBuilding@{DistributePowerToBuilding}}
+\index{DistributePowerToBuilding@{DistributePowerToBuilding}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{DistributePowerToBuilding()}{DistributePowerToBuilding()}}
+{\footnotesize\ttfamily void Power\+Supply\+::\+Distribute\+Power\+To\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{b,  }\item[{double}]{incoming\+Amt }\end{DoxyParamCaption})}
+
+
+
+Distributes power to a specified building. 
+
+This method attempts to distribute a specified amount of power to the given building. If the incoming amount exceeds the building\textquotesingle{}s capacity, it will not distribute the excess.
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the \mbox{\hyperlink{classBuilding}{Building}} object to which power will be distributed. \\
+\hline
+{\em incoming\+Amt} & The amount of power to be distributed to the building. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPowerSupply_a59eb0b224625cd2ae3364a6e2d427172}\label{classPowerSupply_a59eb0b224625cd2ae3364a6e2d427172}} 
+\index{PowerSupply@{PowerSupply}!getBudget@{getBudget}}
+\index{getBudget@{getBudget}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{getBudget()}{getBudget()}}
+{\footnotesize\ttfamily double Power\+Supply\+::get\+Budget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the current budget of the \mbox{\hyperlink{classPowerSupply}{Power\+Supply}}. 
+
+\begin{DoxyReturn}{Returns}
+The current budget as a double value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPowerSupply_a7ace80d9027fc99b4efb94cd72a525cf}\label{classPowerSupply_a7ace80d9027fc99b4efb94cd72a525cf}} 
+\index{PowerSupply@{PowerSupply}!getPowerCapacity@{getPowerCapacity}}
+\index{getPowerCapacity@{getPowerCapacity}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{getPowerCapacity()}{getPowerCapacity()}}
+{\footnotesize\ttfamily double Power\+Supply\+::get\+Power\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the current total power generation capacity. 
+
+\begin{DoxyReturn}{Returns}
+The current power generation capacity available. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPowerSupply_a91702ad9d332b74121595ce5bdb73319}\label{classPowerSupply_a91702ad9d332b74121595ce5bdb73319}} 
+\index{PowerSupply@{PowerSupply}!handleRequest@{handleRequest}}
+\index{handleRequest@{handleRequest}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{handleRequest()}{handleRequest()}}
+{\footnotesize\ttfamily bool Power\+Supply\+::handle\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRequest}{Request}} \&}]{req }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+the \mbox{\hyperlink{classPowerSupply_a91702ad9d332b74121595ce5bdb73319}{handle\+Request()}} function is the core method responsible for either processing the request or passing it along the chain to the next handler. \mbox{\hyperlink{classPowerSupply}{Power\+Supply}} checks if it can handle the request, if not, \mbox{\hyperlink{classPowerSupply}{Power\+Supply}} will pass it on to the next concrete\+Handler. 
+
+
+
+Implements \mbox{\hyperlink{classDeptOfUtilities_a0cfd1fd63b2ef210cdcf7468998560a2}{Dept\+Of\+Utilities}}.
+
+\mbox{\Hypertarget{classPowerSupply_a73fc3666f1d4308ac0090efa64b33f01}\label{classPowerSupply_a73fc3666f1d4308ac0090efa64b33f01}} 
+\index{PowerSupply@{PowerSupply}!increasePowerCapacity@{increasePowerCapacity}}
+\index{increasePowerCapacity@{increasePowerCapacity}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{increasePowerCapacity()}{increasePowerCapacity()}}
+{\footnotesize\ttfamily void Power\+Supply\+::increase\+Power\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Increases the electricity generation capacity of the power plants. 
+
+\mbox{\Hypertarget{classPowerSupply_ae1d3a849d2232d206a42da3e2d4df360}\label{classPowerSupply_ae1d3a849d2232d206a42da3e2d4df360}} 
+\index{PowerSupply@{PowerSupply}!powerShutDown@{powerShutDown}}
+\index{powerShutDown@{powerShutDown}!PowerSupply@{PowerSupply}}
+\doxysubsubsection{\texorpdfstring{powerShutDown()}{powerShutDown()}}
+{\footnotesize\ttfamily void Power\+Supply\+::power\+Shut\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shuts down power generation for maintenance or emergency purposes. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{PowerSupply_8h}{Power\+Supply.\+h}}\item 
+\mbox{\hyperlink{PowerSupply_8cpp}{Power\+Supply.\+cpp}}\end{DoxyCompactItemize}

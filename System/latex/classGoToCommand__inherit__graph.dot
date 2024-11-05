@@ -1,0 +1,21 @@
+digraph "GoToCommand"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="GoToCommand",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Command class for handling a citizen's movement to a specified destination using a transport strategy..."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="GoAirport",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classGoAirport.html",tooltip="A concrete command class that allows a citizen to travel from their current position to an airport."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="GoHome",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classGoHome.html",tooltip="This class is a concrete command that allows a citizen to travel from their current position to home."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="GoHos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classGoHos.html",tooltip="A class representing the action of a citizen going to a hospital within the road network."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="GoSchool",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classGoSchool.html",tooltip="A class representing the action of a citizen going to school within the road network."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="GoToEnt",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classGoToEnt.html",tooltip="A concrete command that allows a citizen to travel from their current position to a random entertainm..."];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="GoToWork",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classGoToWork.html",tooltip="A concrete command class that allows a citizen to travel from their current position to their work de..."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="GoTrain",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classGoTrain.html",tooltip="A concrete command class that allows a citizen to travel from their current position to a train stati..."];
+}

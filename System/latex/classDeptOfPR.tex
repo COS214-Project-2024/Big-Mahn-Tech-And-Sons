@@ -1,0 +1,265 @@
+\hypertarget{classDeptOfPR}{}\doxysection{Dept\+Of\+PR Class Reference}
+\label{classDeptOfPR}\index{DeptOfPR@{DeptOfPR}}
+
+
+Manages the public relations aspect of the city system, observing buildings and citizens, and acting as a mediator to other departments.  
+
+
+
+
+{\ttfamily \#include $<$Dept\+Of\+PR.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDeptOfPR_a5022e0fb2942b4a89a12185565b255f7}{Dept\+Of\+PR}} (\mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}} $\ast$housing\+Dept, \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} $\ast$utilities\+Dept, \mbox{\hyperlink{classDeptOfFinance}{Dept\+Of\+Finance}} $\ast$finance\+Dept)
+\begin{DoxyCompactList}\small\item\em Constructs the Department of PR with references to other departments. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfPR_a878f8ffef2e5d05a8c53ee46a9707802}{update}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$building)
+\begin{DoxyCompactList}\small\item\em Updates the state by checking both buildings and citizens. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfPR_ad008f6c72564674d6432f26a46110ba4}{update}} (\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$citizen)
+\begin{DoxyCompactList}\small\item\em Updates the state by checking a citizen\textquotesingle{}s status. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeptOfPR_ac5abc4748fdd596263fc0356265c3c84}{notify\+Housing\+To\+Build}} (string type)
+\begin{DoxyCompactList}\small\item\em Notifies the Housing Department to consider building more residential structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfPR_a43472d1ec00cf4798c5e6e58db9abba3}{add\+Citizen}} (\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$citizen)
+\begin{DoxyCompactList}\small\item\em Adds a citizen to the list of citizens monitored by the PR department. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$ \mbox{\hyperlink{classDeptOfPR_ab748704bfb1312bedc780e2668f32a12}{get\+Citizen}} (int i)
+\begin{DoxyCompactList}\small\item\em Retrieves a citizen by index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDeptOfPR_ab16c805425cf0056c37e0a77f761b1ba}{num\+Citizens}} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of citizens being monitored. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classBuilding}{Building}} $\ast$ $>$ \mbox{\hyperlink{classDeptOfPR_a63f2feb0e08f495a70a43e8a4a0eab6a}{get\+Buildings}} ()
+\begin{DoxyCompactList}\small\item\em Returns a vector of buildings managed by the department. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfPR_a6baeaa0eb32e154309e70fc92bab1849}{notify\+Housing\+To\+Remove}} (string type)
+\begin{DoxyCompactList}\small\item\em Notifies the Housing Department to remove a building type if waste levels are critical. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeptOfPR_a550363d2e1f34de8b48528fa361d7d39}{notify\+Utilities}} (string request, \mbox{\hyperlink{classBuilding}{Building}} $\ast$building)
+\item 
+bool \mbox{\hyperlink{classDeptOfPR_a6eb3cb2017eb55ec1e7aa5cf8394b8d5}{notify\+Taxman}} (string dept\+Name)
+\begin{DoxyCompactList}\small\item\em Notifies the Finance Department to adjust financial policies. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfPR_af37a194a7ba6f9a9de2b9035ee6a50a1}{promote\+Festival}} ()
+\begin{DoxyCompactList}\small\item\em Promotes a festival to improve community engagement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the public relations aspect of the city system, observing buildings and citizens, and acting as a mediator to other departments. 
+
+The {\ttfamily \mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}}} serves two main purposes\+:
+
+\begin{DoxyNote}{Note}
+1. {\bfseries{Observer Pattern}}\+:
+\begin{DoxyItemize}
+\item It observes buildings and citizens to monitor their state. If issues are detected, it takes necessary actions.
+\item For example, if a building is overpopulated, it can notify the housing department to plan more buildings.
+\end{DoxyItemize}
+
+2. {\bfseries{Mediator Pattern}}\+:
+\begin{DoxyItemize}
+\item It acts as a mediator by coordinating communication between departments such as Housing, Utilities, and Finance.
+\item This helps in streamlining requests, ensuring that departments do not need to communicate directly with each other but rather through this central hub. 
+\end{DoxyItemize}
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDeptOfPR_a5022e0fb2942b4a89a12185565b255f7}\label{classDeptOfPR_a5022e0fb2942b4a89a12185565b255f7}} 
+\index{DeptOfPR@{DeptOfPR}!DeptOfPR@{DeptOfPR}}
+\index{DeptOfPR@{DeptOfPR}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{DeptOfPR()}{DeptOfPR()}}
+{\footnotesize\ttfamily Dept\+Of\+PR\+::\+Dept\+Of\+PR (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}} $\ast$}]{housing\+Dept,  }\item[{\mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} $\ast$}]{utilities\+Dept,  }\item[{\mbox{\hyperlink{classDeptOfFinance}{Dept\+Of\+Finance}} $\ast$}]{finance\+Dept }\end{DoxyParamCaption})}
+
+
+
+Constructs the Department of PR with references to other departments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em housing\+Dept} & Pointer to the Housing Department. \\
+\hline
+{\em utilities\+Dept} & Pointer to the Utilities Department. \\
+\hline
+{\em finance\+Dept} & Pointer to the Finance Department. \\
+\hline
+\end{DoxyParams}
+$<$ access to the housing department/
+
+$<$ access to the utilities department
+
+$<$ access to the finance depart
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDeptOfPR_a43472d1ec00cf4798c5e6e58db9abba3}\label{classDeptOfPR_a43472d1ec00cf4798c5e6e58db9abba3}} 
+\index{DeptOfPR@{DeptOfPR}!addCitizen@{addCitizen}}
+\index{addCitizen@{addCitizen}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{addCitizen()}{addCitizen()}}
+{\footnotesize\ttfamily void Dept\+Of\+PR\+::add\+Citizen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$}]{citizen }\end{DoxyParamCaption})}
+
+
+
+Adds a citizen to the list of citizens monitored by the PR department. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em citizen} & Pointer to the \mbox{\hyperlink{classCitizen}{Citizen}} to be added. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfPR_a63f2feb0e08f495a70a43e8a4a0eab6a}\label{classDeptOfPR_a63f2feb0e08f495a70a43e8a4a0eab6a}} 
+\index{DeptOfPR@{DeptOfPR}!getBuildings@{getBuildings}}
+\index{getBuildings@{getBuildings}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{getBuildings()}{getBuildings()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classBuilding}{Building}} $\ast$ $>$ Dept\+Of\+PR\+::get\+Buildings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a vector of buildings managed by the department. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing pointers to all buildings. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfPR_ab748704bfb1312bedc780e2668f32a12}\label{classDeptOfPR_ab748704bfb1312bedc780e2668f32a12}} 
+\index{DeptOfPR@{DeptOfPR}!getCitizen@{getCitizen}}
+\index{getCitizen@{getCitizen}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{getCitizen()}{getCitizen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classCitizen}{Citizen}} $\ast$ Dept\+Of\+PR\+::get\+Citizen (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Retrieves a citizen by index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Index of the citizen. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the specified \mbox{\hyperlink{classCitizen}{Citizen}}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfPR_ac5abc4748fdd596263fc0356265c3c84}\label{classDeptOfPR_ac5abc4748fdd596263fc0356265c3c84}} 
+\index{DeptOfPR@{DeptOfPR}!notifyHousingToBuild@{notifyHousingToBuild}}
+\index{notifyHousingToBuild@{notifyHousingToBuild}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{notifyHousingToBuild()}{notifyHousingToBuild()}}
+{\footnotesize\ttfamily bool Dept\+Of\+PR\+::notify\+Housing\+To\+Build (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption})}
+
+
+
+Notifies the Housing Department to consider building more residential structures. 
+
+This function is used when overcrowding or high demand for housing is detected. It acts as a mediator, relaying the information to the Housing Department for further action.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of residential building requested. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the notification was successful, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfPR_a6baeaa0eb32e154309e70fc92bab1849}\label{classDeptOfPR_a6baeaa0eb32e154309e70fc92bab1849}} 
+\index{DeptOfPR@{DeptOfPR}!notifyHousingToRemove@{notifyHousingToRemove}}
+\index{notifyHousingToRemove@{notifyHousingToRemove}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{notifyHousingToRemove()}{notifyHousingToRemove()}}
+{\footnotesize\ttfamily void Dept\+Of\+PR\+::notify\+Housing\+To\+Remove (\begin{DoxyParamCaption}\item[{string}]{type }\end{DoxyParamCaption})}
+
+
+
+Notifies the Housing Department to remove a building type if waste levels are critical. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of building to be removed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfPR_a6eb3cb2017eb55ec1e7aa5cf8394b8d5}\label{classDeptOfPR_a6eb3cb2017eb55ec1e7aa5cf8394b8d5}} 
+\index{DeptOfPR@{DeptOfPR}!notifyTaxman@{notifyTaxman}}
+\index{notifyTaxman@{notifyTaxman}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{notifyTaxman()}{notifyTaxman()}}
+{\footnotesize\ttfamily bool Dept\+Of\+PR\+::notify\+Taxman (\begin{DoxyParamCaption}\item[{string}]{dept\+Name }\end{DoxyParamCaption})}
+
+
+
+Notifies the Finance Department to adjust financial policies. 
+
+If economic issues, tax concerns, or financial imbalances are detected, this function will notify the Finance Department. The PR Department mediates communication, ensuring efficient inter-\/departmental collaboration.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dept\+Name} & The name of the department requesting financial policy adjustment. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the notification was successful, false otherwise. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The taxman is either notified to try to lower taxes or improve economic health. 
+\end{DoxyNote}
+\mbox{\Hypertarget{classDeptOfPR_a550363d2e1f34de8b48528fa361d7d39}\label{classDeptOfPR_a550363d2e1f34de8b48528fa361d7d39}} 
+\index{DeptOfPR@{DeptOfPR}!notifyUtilities@{notifyUtilities}}
+\index{notifyUtilities@{notifyUtilities}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{notifyUtilities()}{notifyUtilities()}}
+{\footnotesize\ttfamily bool Dept\+Of\+PR\+::notify\+Utilities (\begin{DoxyParamCaption}\item[{string}]{request,  }\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{building }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classDeptOfPR_ab16c805425cf0056c37e0a77f761b1ba}\label{classDeptOfPR_ab16c805425cf0056c37e0a77f761b1ba}} 
+\index{DeptOfPR@{DeptOfPR}!numCitizens@{numCitizens}}
+\index{numCitizens@{numCitizens}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{numCitizens()}{numCitizens()}}
+{\footnotesize\ttfamily int Dept\+Of\+PR\+::num\+Citizens (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of citizens being monitored. 
+
+\begin{DoxyReturn}{Returns}
+The count of citizens. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfPR_af37a194a7ba6f9a9de2b9035ee6a50a1}\label{classDeptOfPR_af37a194a7ba6f9a9de2b9035ee6a50a1}} 
+\index{DeptOfPR@{DeptOfPR}!promoteFestival@{promoteFestival}}
+\index{promoteFestival@{promoteFestival}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{promoteFestival()}{promoteFestival()}}
+{\footnotesize\ttfamily void Dept\+Of\+PR\+::promote\+Festival (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Promotes a festival to improve community engagement. 
+
+Promotes the city-\/wide festival to citizens and other departments.
+
+This function can be called to organize or promote community events. \mbox{\Hypertarget{classDeptOfPR_a878f8ffef2e5d05a8c53ee46a9707802}\label{classDeptOfPR_a878f8ffef2e5d05a8c53ee46a9707802}} 
+\index{DeptOfPR@{DeptOfPR}!update@{update}}
+\index{update@{update}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Dept\+Of\+PR\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{building }\end{DoxyParamCaption})}
+
+
+
+Updates the state by checking both buildings and citizens. 
+
+This function calls \begin{DoxySeeAlso}{See also}
+{\ttfamily check\+Buildings()} and 
+
+{\ttfamily check\+Citizens()} to monitor and ensure everything is functioning as expected. If any issues are detected, appropriate actions are taken by notifying other departments.
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em building} & Pointer to the \mbox{\hyperlink{classBuilding}{Building}} to be checked. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfPR_ad008f6c72564674d6432f26a46110ba4}\label{classDeptOfPR_ad008f6c72564674d6432f26a46110ba4}} 
+\index{DeptOfPR@{DeptOfPR}!update@{update}}
+\index{update@{update}!DeptOfPR@{DeptOfPR}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Dept\+Of\+PR\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$}]{citizen }\end{DoxyParamCaption})}
+
+
+
+Updates the state by checking a citizen\textquotesingle{}s status. 
+
+This function monitors the citizen and takes necessary actions based on their state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em citizen} & Pointer to the \mbox{\hyperlink{classCitizen}{Citizen}} to be checked. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{DeptOfPR_8h}{Dept\+Of\+PR.\+h}}\item 
+\mbox{\hyperlink{DeptOfPR_8cpp}{Dept\+Of\+PR.\+cpp}}\end{DoxyCompactItemize}

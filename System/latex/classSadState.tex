@@ -1,0 +1,80 @@
+\hypertarget{classSadState}{}\doxysection{Sad\+State Class Reference}
+\label{classSadState}\index{SadState@{SadState}}
+
+
+Represents a state of low satisfaction for a citizen.  
+
+
+
+
+{\ttfamily \#include $<$Sad\+State.\+h$>$}
+
+
+
+Inheritance diagram for Sad\+State\+:
+% FIG 0
+
+
+Collaboration diagram for Sad\+State\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSadState_a6815942fd2433d4ad6c79b86e47aab7e}{handle}} (\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$citizen) override
+\begin{DoxyCompactList}\small\item\em Handles the behavior of a citizen in a sad state. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classSadState_a481db56fa440113fdb2fa59ff0f42ef5}{get\+State\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the name of the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a state of low satisfaction for a citizen. 
+
+This class inherits from \mbox{\hyperlink{classSatisfactionState}{Satisfaction\+State}} and is responsible for handling situations where a citizen\textquotesingle{}s satisfaction level falls below a specified threshold. It defines actions to be taken when a citizen is in a sad state and can contribute to a broader satisfaction management system. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSadState_a481db56fa440113fdb2fa59ff0f42ef5}\label{classSadState_a481db56fa440113fdb2fa59ff0f42ef5}} 
+\index{SadState@{SadState}!getStateName@{getStateName}}
+\index{getStateName@{getStateName}!SadState@{SadState}}
+\doxysubsubsection{\texorpdfstring{getStateName()}{getStateName()}}
+{\footnotesize\ttfamily string Sad\+State\+::get\+State\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the name of the state. 
+
+This method returns a string representation of the \mbox{\hyperlink{classSadState}{Sad\+State}}, which can be used for logging or display purposes.
+
+\begin{DoxyReturn}{Returns}
+A string indicating the name of the state (e.\+g., \char`\"{}\+Sad\char`\"{}). 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classSatisfactionState_a2aa56036f8bc422aa4f988b85ee42a45}{Satisfaction\+State}}.
+
+\mbox{\Hypertarget{classSadState_a6815942fd2433d4ad6c79b86e47aab7e}\label{classSadState_a6815942fd2433d4ad6c79b86e47aab7e}} 
+\index{SadState@{SadState}!handle@{handle}}
+\index{handle@{handle}!SadState@{SadState}}
+\doxysubsubsection{\texorpdfstring{handle()}{handle()}}
+{\footnotesize\ttfamily void Sad\+State\+::handle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$}]{citizen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Handles the behavior of a citizen in a sad state. 
+
+This method defines the actions or responses that should occur when a citizen\textquotesingle{}s satisfaction is below the threshold (less than 45). Specific behaviors may include interactions with other systems to improve citizen satisfaction or address underlying issues.
+
+
+\begin{DoxyParams}{Parameters}
+{\em citizen} & A pointer to the \mbox{\hyperlink{classCitizen}{Citizen}} object whose state is being handled. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classSatisfactionState_a344b8e4a4c1c581590f112c3e7b5b29e}{Satisfaction\+State}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{SadState_8h}{Sad\+State.\+h}}\item 
+\mbox{\hyperlink{SadState_8cpp}{Sad\+State.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,127 @@
+\hypertarget{classSchool}{}\doxysection{School Class Reference}
+\label{classSchool}\index{School@{School}}
+
+
+Class representing a school as a subtype of \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}.  
+
+
+
+
+{\ttfamily \#include $<$School.\+h$>$}
+
+
+
+Inheritance diagram for School\+:
+% FIG 0
+
+
+Collaboration diagram for School\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSchool_a475ade234208c06b2031acaf4cc30a4d}{School}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classSchool}{School}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSchool_aaf42aa3719b500335e460f827e653cf3}{display\+Stats}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the stats specific to the school. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classSchool_ad388b2fa802bea01168ac4488f8b90a6}{check\+Availability}} () const override
+\begin{DoxyCompactList}\small\item\em Checks the availability of kids\textquotesingle{} spaces in the school. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSchool_a3933696fe63e3d19a0835fe0a72b98b9}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor) override
+\begin{DoxyCompactList}\small\item\em Accepts visitors for the visitor pattern. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classSchool_a106067f5666af00199f4710f24b38846}{repair\+Clone}} () const override
+\begin{DoxyCompactList}\small\item\em Clones the school for repair purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing a school as a subtype of \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}. 
+
+Implements specific attributes and operations for a school, such as managing available kids\textquotesingle{} spaces. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSchool_a475ade234208c06b2031acaf4cc30a4d}\label{classSchool_a475ade234208c06b2031acaf4cc30a4d}} 
+\index{School@{School}!School@{School}}
+\index{School@{School}!School@{School}}
+\doxysubsubsection{\texorpdfstring{School()}{School()}}
+{\footnotesize\ttfamily School\+::\+School (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classSchool}{School}}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSchool_a3933696fe63e3d19a0835fe0a72b98b9}\label{classSchool_a3933696fe63e3d19a0835fe0a72b98b9}} 
+\index{School@{School}!accept@{accept}}
+\index{accept@{accept}!School@{School}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void School\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accepts visitors for the visitor pattern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the visitor object. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_ad3e91296d9a6488df79e33b0aeb75511}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classSchool_ad388b2fa802bea01168ac4488f8b90a6}\label{classSchool_ad388b2fa802bea01168ac4488f8b90a6}} 
+\index{School@{School}!checkAvailability@{checkAvailability}}
+\index{checkAvailability@{checkAvailability}!School@{School}}
+\doxysubsubsection{\texorpdfstring{checkAvailability()}{checkAvailability()}}
+{\footnotesize\ttfamily bool School\+::check\+Availability (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks the availability of kids\textquotesingle{} spaces in the school. 
+
+\begin{DoxyReturn}{Returns}
+True if kids\textquotesingle{} spaces are available, otherwise false. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_a273a57479004ca22a0c497b5e5463135}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classSchool_aaf42aa3719b500335e460f827e653cf3}\label{classSchool_aaf42aa3719b500335e460f827e653cf3}} 
+\index{School@{School}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!School@{School}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void School\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the stats specific to the school. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classCommercialBuilding_aa397dc360571edb4535121dd7e5711db}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classSchool_a106067f5666af00199f4710f24b38846}\label{classSchool_a106067f5666af00199f4710f24b38846}} 
+\index{School@{School}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!School@{School}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ School\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clones the school for repair purposes. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the cloned school object. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_a5ed798d1d25fc35d7bdf2dca5d1897dd}{Commercial\+Building}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{School_8h}{School.\+h}}\item 
+\mbox{\hyperlink{School_8cpp}{School.\+cpp}}\end{DoxyCompactItemize}

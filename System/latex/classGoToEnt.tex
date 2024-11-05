@@ -1,0 +1,82 @@
+\hypertarget{classGoToEnt}{}\doxysection{Go\+To\+Ent Class Reference}
+\label{classGoToEnt}\index{GoToEnt@{GoToEnt}}
+
+
+A concrete command that allows a citizen to travel from their current position to a random entertainment node.  
+
+
+
+
+{\ttfamily \#include $<$Go\+To\+Ent.\+h$>$}
+
+
+
+Inheritance diagram for Go\+To\+Ent\+:
+% FIG 0
+
+
+Collaboration diagram for Go\+To\+Ent\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGoToEnt_a60405f0fde6fbb3bc2c249ede3a24822}{Go\+To\+Ent}} (\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$citizen, \mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}} $\ast$housing)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classGoToEnt}{Go\+To\+Ent}} command for the specified citizen. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGoToEnt_a70b5c872ee8144d02a5252461d15110b}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Executes the command for the citizen to go to a random entertainment node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A concrete command that allows a citizen to travel from their current position to a random entertainment node. 
+
+This class inherits from \mbox{\hyperlink{classGoToCommand}{Go\+To\+Command}} and encapsulates the logic required for a citizen to navigate to an entertainment location within the city. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGoToEnt_a60405f0fde6fbb3bc2c249ede3a24822}\label{classGoToEnt_a60405f0fde6fbb3bc2c249ede3a24822}} 
+\index{GoToEnt@{GoToEnt}!GoToEnt@{GoToEnt}}
+\index{GoToEnt@{GoToEnt}!GoToEnt@{GoToEnt}}
+\doxysubsubsection{\texorpdfstring{GoToEnt()}{GoToEnt()}}
+{\footnotesize\ttfamily Go\+To\+Ent\+::\+Go\+To\+Ent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCitizen}{Citizen}} $\ast$}]{citizen,  }\item[{\mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}} $\ast$}]{housing }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classGoToEnt}{Go\+To\+Ent}} command for the specified citizen. 
+
+Initializes the \mbox{\hyperlink{classGoToEnt}{Go\+To\+Ent}} command with the given citizen and references the Department of Housing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em citizen} & A pointer to the \mbox{\hyperlink{classCitizen}{Citizen}} object representing the person going to the entertainment location. \\
+\hline
+{\em housing} & A pointer to the \mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}} object for accessing related functionalities. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGoToEnt_a70b5c872ee8144d02a5252461d15110b}\label{classGoToEnt_a70b5c872ee8144d02a5252461d15110b}} 
+\index{GoToEnt@{GoToEnt}!execute@{execute}}
+\index{execute@{execute}!GoToEnt@{GoToEnt}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily bool Go\+To\+Ent\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the command for the citizen to go to a random entertainment node. 
+
+This method simulates the action of the citizen navigating the road network to reach a selected entertainment destination.
+
+\begin{DoxyReturn}{Returns}
+True if the navigation to the entertainment location is successful; false otherwise. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classGoToCommand_af1f26d8202f09a43a257163c86042747}{Go\+To\+Command}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{GoToEnt_8h}{Go\+To\+Ent.\+h}}\item 
+\mbox{\hyperlink{GoToEnt_8cpp}{Go\+To\+Ent.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,127 @@
+\hypertarget{classHospital}{}\doxysection{Hospital Class Reference}
+\label{classHospital}\index{Hospital@{Hospital}}
+
+
+Class representing a hospital as a subtype of \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}.  
+
+
+
+
+{\ttfamily \#include $<$Hospital.\+h$>$}
+
+
+
+Inheritance diagram for Hospital\+:
+% FIG 0
+
+
+Collaboration diagram for Hospital\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classHospital_a130b3a6c6e3dd35443437e1f5144b1ac}{Hospital}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classHospital}{Hospital}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHospital_a0ac7f95dea4c54d7815d7168f4d5edf0}{display\+Stats}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the stats specific to the hospital. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classHospital_a130af10cde8047ebb1d7f36c50fa5d0d}{check\+Availability}} () const override
+\begin{DoxyCompactList}\small\item\em Checks the availability of beds in the hospital. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classHospital_a165d7fce5f8ba46a4ee996f9f8678be0}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor) override
+\begin{DoxyCompactList}\small\item\em Accepts visitors for the visitor pattern. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classHospital_ac354bfbcb2a478be5e49455d61de8a67}{repair\+Clone}} () const override
+\begin{DoxyCompactList}\small\item\em Clones the hospital for repair purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing a hospital as a subtype of \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}. 
+
+Implements specific attributes and operations for a hospital, such as managing available beds. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classHospital_a130b3a6c6e3dd35443437e1f5144b1ac}\label{classHospital_a130b3a6c6e3dd35443437e1f5144b1ac}} 
+\index{Hospital@{Hospital}!Hospital@{Hospital}}
+\index{Hospital@{Hospital}!Hospital@{Hospital}}
+\doxysubsubsection{\texorpdfstring{Hospital()}{Hospital()}}
+{\footnotesize\ttfamily Hospital\+::\+Hospital (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classHospital}{Hospital}}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classHospital_a165d7fce5f8ba46a4ee996f9f8678be0}\label{classHospital_a165d7fce5f8ba46a4ee996f9f8678be0}} 
+\index{Hospital@{Hospital}!accept@{accept}}
+\index{accept@{accept}!Hospital@{Hospital}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Hospital\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accepts visitors for the visitor pattern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the \mbox{\hyperlink{classTaxManager}{Tax\+Manager}} object. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_ad3e91296d9a6488df79e33b0aeb75511}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classHospital_a130af10cde8047ebb1d7f36c50fa5d0d}\label{classHospital_a130af10cde8047ebb1d7f36c50fa5d0d}} 
+\index{Hospital@{Hospital}!checkAvailability@{checkAvailability}}
+\index{checkAvailability@{checkAvailability}!Hospital@{Hospital}}
+\doxysubsubsection{\texorpdfstring{checkAvailability()}{checkAvailability()}}
+{\footnotesize\ttfamily bool Hospital\+::check\+Availability (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks the availability of beds in the hospital. 
+
+\begin{DoxyReturn}{Returns}
+True if beds are available, otherwise false. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_a273a57479004ca22a0c497b5e5463135}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classHospital_a0ac7f95dea4c54d7815d7168f4d5edf0}\label{classHospital_a0ac7f95dea4c54d7815d7168f4d5edf0}} 
+\index{Hospital@{Hospital}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!Hospital@{Hospital}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Hospital\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the stats specific to the hospital. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classCommercialBuilding_aa397dc360571edb4535121dd7e5711db}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classHospital_ac354bfbcb2a478be5e49455d61de8a67}\label{classHospital_ac354bfbcb2a478be5e49455d61de8a67}} 
+\index{Hospital@{Hospital}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!Hospital@{Hospital}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Hospital\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clones the hospital for repair purposes. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the cloned hospital object. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_a5ed798d1d25fc35d7bdf2dca5d1897dd}{Commercial\+Building}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Hospital_8h}{Hospital.\+h}}\item 
+\mbox{\hyperlink{Hospital_8cpp}{Hospital.\+cpp}}\end{DoxyCompactItemize}

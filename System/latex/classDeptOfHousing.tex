@@ -1,0 +1,308 @@
+\hypertarget{classDeptOfHousing}{}\doxysection{Dept\+Of\+Housing Class Reference}
+\label{classDeptOfHousing}\index{DeptOfHousing@{DeptOfHousing}}
+
+
+Manages the creation and removal of buildings with budget constraints.  
+
+
+
+
+{\ttfamily \#include $<$Dept\+Of\+Housing.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDeptOfHousing_aaa951612af268ef25414bb7a62ea6754}{Dept\+Of\+Housing}} (double initial\+Budget)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfHousing_aaa9340b950a1957162f03d336e20e4c5}{set\+PR}} (\mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}} $\ast$PR)
+\begin{DoxyCompactList}\small\item\em Sets the Department of Public Relations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfHousing_a61a3d430d2de4921e88f1cbd107b5374}{create\+Residential\+Building}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Creates a residential building of a specified type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfHousing_a6c263b288dd49dcfe76eebf6f1361f39}{create\+Commercial\+Building}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Creates a commercial building of a specified type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfHousing_ae18ea7b3b673d08741925998623848e1}{create\+Industrial\+Building}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Creates an industrial building of a specified type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfHousing_a71bcb66d0480ac2bfc769d6f3b93944d}{create\+Landmark\+Building}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Creates a landmark building of a specified type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfHousing_abc4856ba396cd096567720e95cf2a453}{display\+All\+Buildings}} () const
+\begin{DoxyCompactList}\small\item\em Displays details of all buildings managed by the department. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDeptOfHousing_a426658289057a4abc2f9523673212a19}{get\+Total\+Buildings}} () const
+\begin{DoxyCompactList}\small\item\em Gets the total number of buildings managed by the department. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classDeptOfHousing_aa7094014c241efd4143d615366551c0a}{get\+Total\+Price}} () const
+\begin{DoxyCompactList}\small\item\em Calculates the total price of all buildings. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classDeptOfHousing_a6d6479e11734df397f6dfd84704fc795}{get\+Remaining\+Budget}} () const
+\begin{DoxyCompactList}\small\item\em Gets the remaining budget of the department. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfHousing_a00d25077cf8007c459a41a7e0b27825c}{remove\+Building\+By\+Name}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Removes a building by name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfHousing_ae27364af2ac201bdb99676f9021dde90}{list\+Buildings}} () const
+\begin{DoxyCompactList}\small\item\em Lists all buildings managed by the department. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classBuilding}{Building}} $\ast$ $>$ \mbox{\hyperlink{classDeptOfHousing_a5debbde306d7d9afc8db530b20692582}{get\+Buildings}} ()
+\begin{DoxyCompactList}\small\item\em Gets a list of all managed buildings. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDeptOfHousing_a8566acc19e8332b888e15bed7b866973}{request\+Funding}} (double amount)
+\begin{DoxyCompactList}\small\item\em Requests additional funding for the department. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDeptOfHousing_a4be6e690fc9806e31e0328df08b27cf9}{get\+Building\+Name}} (int index) const
+\begin{DoxyCompactList}\small\item\em Gets the name of a building at a specified index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfHousing_a7fb12d57547934232957bf4dc5edfd17}{repair\+Building}} (const std\+::string \&type)
+\begin{DoxyCompactList}\small\item\em Repairs a building of a specified type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeptOfHousing_a50ea96cc21880a52c5ca85886c6e5bdd}{add\+Budget}} (double amount)
+\begin{DoxyCompactList}\small\item\em Adds an amount to the department\textquotesingle{}s budget. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the creation and removal of buildings with budget constraints. 
+
+\mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}} is responsible for managing the lifecycle of buildings, including residential, commercial, industrial, and landmark buildings, while adhering to a set budget. It also facilitates interactions with the \mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}} for public relations needs. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDeptOfHousing_aaa951612af268ef25414bb7a62ea6754}\label{classDeptOfHousing_aaa951612af268ef25414bb7a62ea6754}} 
+\index{DeptOfHousing@{DeptOfHousing}!DeptOfHousing@{DeptOfHousing}}
+\index{DeptOfHousing@{DeptOfHousing}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{DeptOfHousing()}{DeptOfHousing()}}
+{\footnotesize\ttfamily Dept\+Of\+Housing\+::\+Dept\+Of\+Housing (\begin{DoxyParamCaption}\item[{double}]{initial\+Budget }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classDeptOfHousing}{Dept\+Of\+Housing}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+Budget} & Initial budget allocated to the department. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDeptOfHousing_a50ea96cc21880a52c5ca85886c6e5bdd}\label{classDeptOfHousing_a50ea96cc21880a52c5ca85886c6e5bdd}} 
+\index{DeptOfHousing@{DeptOfHousing}!addBudget@{addBudget}}
+\index{addBudget@{addBudget}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{addBudget()}{addBudget()}}
+{\footnotesize\ttfamily void Dept\+Of\+Housing\+::add\+Budget (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+
+
+Adds an amount to the department\textquotesingle{}s budget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount to add to the budget. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfHousing_a6c263b288dd49dcfe76eebf6f1361f39}\label{classDeptOfHousing_a6c263b288dd49dcfe76eebf6f1361f39}} 
+\index{DeptOfHousing@{DeptOfHousing}!createCommercialBuilding@{createCommercialBuilding}}
+\index{createCommercialBuilding@{createCommercialBuilding}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{createCommercialBuilding()}{createCommercialBuilding()}}
+{\footnotesize\ttfamily void Dept\+Of\+Housing\+::create\+Commercial\+Building (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Creates a commercial building of a specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of commercial building to create. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfHousing_ae18ea7b3b673d08741925998623848e1}\label{classDeptOfHousing_ae18ea7b3b673d08741925998623848e1}} 
+\index{DeptOfHousing@{DeptOfHousing}!createIndustrialBuilding@{createIndustrialBuilding}}
+\index{createIndustrialBuilding@{createIndustrialBuilding}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{createIndustrialBuilding()}{createIndustrialBuilding()}}
+{\footnotesize\ttfamily void Dept\+Of\+Housing\+::create\+Industrial\+Building (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Creates an industrial building of a specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of industrial building to create. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfHousing_a71bcb66d0480ac2bfc769d6f3b93944d}\label{classDeptOfHousing_a71bcb66d0480ac2bfc769d6f3b93944d}} 
+\index{DeptOfHousing@{DeptOfHousing}!createLandmarkBuilding@{createLandmarkBuilding}}
+\index{createLandmarkBuilding@{createLandmarkBuilding}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{createLandmarkBuilding()}{createLandmarkBuilding()}}
+{\footnotesize\ttfamily void Dept\+Of\+Housing\+::create\+Landmark\+Building (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Creates a landmark building of a specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of landmark building to create. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfHousing_a61a3d430d2de4921e88f1cbd107b5374}\label{classDeptOfHousing_a61a3d430d2de4921e88f1cbd107b5374}} 
+\index{DeptOfHousing@{DeptOfHousing}!createResidentialBuilding@{createResidentialBuilding}}
+\index{createResidentialBuilding@{createResidentialBuilding}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{createResidentialBuilding()}{createResidentialBuilding()}}
+{\footnotesize\ttfamily void Dept\+Of\+Housing\+::create\+Residential\+Building (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Creates a residential building of a specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of residential building to create. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfHousing_abc4856ba396cd096567720e95cf2a453}\label{classDeptOfHousing_abc4856ba396cd096567720e95cf2a453}} 
+\index{DeptOfHousing@{DeptOfHousing}!displayAllBuildings@{displayAllBuildings}}
+\index{displayAllBuildings@{displayAllBuildings}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{displayAllBuildings()}{displayAllBuildings()}}
+{\footnotesize\ttfamily void Dept\+Of\+Housing\+::display\+All\+Buildings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Displays details of all buildings managed by the department. 
+
+\mbox{\Hypertarget{classDeptOfHousing_a4be6e690fc9806e31e0328df08b27cf9}\label{classDeptOfHousing_a4be6e690fc9806e31e0328df08b27cf9}} 
+\index{DeptOfHousing@{DeptOfHousing}!getBuildingName@{getBuildingName}}
+\index{getBuildingName@{getBuildingName}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{getBuildingName()}{getBuildingName()}}
+{\footnotesize\ttfamily std\+::string Dept\+Of\+Housing\+::get\+Building\+Name (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Gets the name of a building at a specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the building. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name of the building. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfHousing_a5debbde306d7d9afc8db530b20692582}\label{classDeptOfHousing_a5debbde306d7d9afc8db530b20692582}} 
+\index{DeptOfHousing@{DeptOfHousing}!getBuildings@{getBuildings}}
+\index{getBuildings@{getBuildings}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{getBuildings()}{getBuildings()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classBuilding}{Building}} $\ast$ $>$ Dept\+Of\+Housing\+::get\+Buildings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets a list of all managed buildings. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing pointers to all buildings. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfHousing_a6d6479e11734df397f6dfd84704fc795}\label{classDeptOfHousing_a6d6479e11734df397f6dfd84704fc795}} 
+\index{DeptOfHousing@{DeptOfHousing}!getRemainingBudget@{getRemainingBudget}}
+\index{getRemainingBudget@{getRemainingBudget}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{getRemainingBudget()}{getRemainingBudget()}}
+{\footnotesize\ttfamily double Dept\+Of\+Housing\+::get\+Remaining\+Budget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the remaining budget of the department. 
+
+\begin{DoxyReturn}{Returns}
+Remaining budget. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfHousing_a426658289057a4abc2f9523673212a19}\label{classDeptOfHousing_a426658289057a4abc2f9523673212a19}} 
+\index{DeptOfHousing@{DeptOfHousing}!getTotalBuildings@{getTotalBuildings}}
+\index{getTotalBuildings@{getTotalBuildings}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{getTotalBuildings()}{getTotalBuildings()}}
+{\footnotesize\ttfamily int Dept\+Of\+Housing\+::get\+Total\+Buildings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the total number of buildings managed by the department. 
+
+\begin{DoxyReturn}{Returns}
+Total number of buildings. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfHousing_aa7094014c241efd4143d615366551c0a}\label{classDeptOfHousing_aa7094014c241efd4143d615366551c0a}} 
+\index{DeptOfHousing@{DeptOfHousing}!getTotalPrice@{getTotalPrice}}
+\index{getTotalPrice@{getTotalPrice}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{getTotalPrice()}{getTotalPrice()}}
+{\footnotesize\ttfamily double Dept\+Of\+Housing\+::get\+Total\+Price (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Calculates the total price of all buildings. 
+
+\begin{DoxyReturn}{Returns}
+Total price of all buildings. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfHousing_ae27364af2ac201bdb99676f9021dde90}\label{classDeptOfHousing_ae27364af2ac201bdb99676f9021dde90}} 
+\index{DeptOfHousing@{DeptOfHousing}!listBuildings@{listBuildings}}
+\index{listBuildings@{listBuildings}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{listBuildings()}{listBuildings()}}
+{\footnotesize\ttfamily void Dept\+Of\+Housing\+::list\+Buildings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Lists all buildings managed by the department. 
+
+\mbox{\Hypertarget{classDeptOfHousing_a00d25077cf8007c459a41a7e0b27825c}\label{classDeptOfHousing_a00d25077cf8007c459a41a7e0b27825c}} 
+\index{DeptOfHousing@{DeptOfHousing}!removeBuildingByName@{removeBuildingByName}}
+\index{removeBuildingByName@{removeBuildingByName}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{removeBuildingByName()}{removeBuildingByName()}}
+{\footnotesize\ttfamily void Dept\+Of\+Housing\+::remove\+Building\+By\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Removes a building by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the building to remove. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfHousing_a7fb12d57547934232957bf4dc5edfd17}\label{classDeptOfHousing_a7fb12d57547934232957bf4dc5edfd17}} 
+\index{DeptOfHousing@{DeptOfHousing}!repairBuilding@{repairBuilding}}
+\index{repairBuilding@{repairBuilding}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{repairBuilding()}{repairBuilding()}}
+{\footnotesize\ttfamily void Dept\+Of\+Housing\+::repair\+Building (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Repairs a building of a specified type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of building to repair. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfHousing_a8566acc19e8332b888e15bed7b866973}\label{classDeptOfHousing_a8566acc19e8332b888e15bed7b866973}} 
+\index{DeptOfHousing@{DeptOfHousing}!requestFunding@{requestFunding}}
+\index{requestFunding@{requestFunding}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{requestFunding()}{requestFunding()}}
+{\footnotesize\ttfamily bool Dept\+Of\+Housing\+::request\+Funding (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+
+
+Requests additional funding for the department. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount of funding requested. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if funding is approved, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeptOfHousing_aaa9340b950a1957162f03d336e20e4c5}\label{classDeptOfHousing_aaa9340b950a1957162f03d336e20e4c5}} 
+\index{DeptOfHousing@{DeptOfHousing}!setPR@{setPR}}
+\index{setPR@{setPR}!DeptOfHousing@{DeptOfHousing}}
+\doxysubsubsection{\texorpdfstring{setPR()}{setPR()}}
+{\footnotesize\ttfamily void Dept\+Of\+Housing\+::set\+PR (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}} $\ast$}]{PR }\end{DoxyParamCaption})}
+
+
+
+Sets the Department of Public Relations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em PR} & Pointer to the \mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}}. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{DeptOfHousing_8h}{Dept\+Of\+Housing.\+h}}\item 
+\mbox{\hyperlink{DeptOfHousing_8cpp}{Dept\+Of\+Housing.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,50 @@
+digraph "DeptOfUtilities.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="DeptOfUtilities.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Header file for the DeptOfUtilities class that manages city utility departments like power,..."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="DeptOfPR.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$DeptOfPR_8cpp.html",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="DeptOfUtilities.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$DeptOfUtilities_8cpp.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="FestivalCommand.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$FestivalCommand_8h.html",tooltip="Defines the FestivalCommand class for organizing and managing city-wide festivals."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="FestivalCommand.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$FestivalCommand_8cpp.html",tooltip="Implements the FestivalCommand class for organizing and managing city-wide festivals."];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="Government.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$Government_8cpp.html",tooltip=" "];
+  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="Test.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$Test_8cpp.html",tooltip=" "];
+  Node4 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="TestMain.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$TestMain_8cpp.html",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="PowerSupply.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$PowerSupply_8h.html",tooltip="Header file for the PowerSupply class, responsible for managing electricity generation and distributi..."];
+  Node9 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="LoadsheddingCommand.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$LoadsheddingCommand_8cpp.html",tooltip=" "];
+  Node9 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="PowerSupply.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$PowerSupply_8cpp.html",tooltip=" "];
+  Node9 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="WasteManagement.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$WasteManagement_8h.html",tooltip="Header file for the WasteManagement class, responsible for handling waste collection,..."];
+  Node12 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="WasteManagement.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$WasteManagement_8cpp.html",tooltip=" "];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="WaterSupply.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$WaterSupply_8h.html",tooltip="Header file for the WaterSupply class, responsible for managing water distribution and supply in the ..."];
+  Node14 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node15 [label="WaterSupply.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$WaterSupply_8cpp.html",tooltip=" "];
+}

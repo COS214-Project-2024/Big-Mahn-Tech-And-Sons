@@ -1,0 +1,58 @@
+digraph "EventsCommand.h"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="EventsCommand.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Defines the EventsCommand interface that provides virtual methods for various event-related actions."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="BabyBoom.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$BabyBoom_8h.html",tooltip="Defines the BabyBoom class for increasing city population rapidly."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Government.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$Government_8cpp.html",tooltip=" "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="BabyBooming.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$BabyBooming_8h.html",tooltip=" "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Babybooming.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$Babybooming_8cpp.html",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="FestivalCommand.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$FestivalCommand_8h.html",tooltip="Defines the FestivalCommand class for organizing and managing city-wide festivals."];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="FestivalCommand.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$FestivalCommand_8cpp.html",tooltip="Implements the FestivalCommand class for organizing and managing city-wide festivals."];
+  Node6 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Test.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$Test_8cpp.html",tooltip=" "];
+  Node6 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="TestMain.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$TestMain_8cpp.html",tooltip=" "];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Government.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$Government_8h.html",tooltip="Declaration of the Government class acting as the facade."];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="DemoMain.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$DemoMain_8cpp.html",tooltip=" "];
+  Node10 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="IncreaseEconomicPerformance.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$IncreaseEconomicPerformance_8h.html",tooltip=" "];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="IncreaseEconomicPerformance.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$IncreaseEconomicPerformance_8cpp.html",tooltip=" "];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="IncreaseEconomy.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$IncreaseEconomy_8h.html",tooltip=" "];
+  Node14 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="NaturalDisasterCommand.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$NaturalDisasterCommand_8h.html",tooltip="Defines the NaturalDisasterCommand class for handling natural disaster events."];
+  Node15 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="NaturalDisasterCommand.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$NaturalDisasterCommand_8cpp.html",tooltip=" "];
+  Node15 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="PandemicCommand.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$PandemicCommand_8h.html",tooltip="Defines the PandemicCommand class responsible for handling events related to a pandemic."];
+  Node17 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="PandemicCommand.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$PandemicCommand_8cpp.html",tooltip=" "];
+  Node17 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="RecessionCommand.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$RecessionCommand_8h.html",tooltip="Defines the RecessionCommand class for handling city-wide recession events."];
+  Node19 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="RecessionCommand.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$RecessionCommand_8cpp.html",tooltip=" "];
+  Node19 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

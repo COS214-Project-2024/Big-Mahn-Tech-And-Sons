@@ -1,0 +1,75 @@
+\hypertarget{classLoadsheddingCommand}{}\doxysection{Loadshedding\+Command Class Reference}
+\label{classLoadsheddingCommand}\index{LoadsheddingCommand@{LoadsheddingCommand}}
+
+
+Represents a load-\/shedding event command that can be executed on specified buildings.  
+
+
+
+
+{\ttfamily \#include $<$Loadshedding\+Command.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLoadsheddingCommand_adf1488997e3d32e3574767810d1333ed}{Loadshedding\+Command}} (\mbox{\hyperlink{classPowerSupply}{Power\+Supply}} $\ast$power\+Supply)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classLoadsheddingCommand}{Loadshedding\+Command}} with the utilities department. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadsheddingCommand_a8559e774240de25d416f3122fdd598e0}{schedule\+Loadshedding}} (int delay\+In\+Seconds)
+\begin{DoxyCompactList}\small\item\em Schedules load-\/shedding to occur after a specified delay. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadsheddingCommand_aebee3531178c4f12b891f984badf464d}{execute}} ()
+\begin{DoxyCompactList}\small\item\em Executes the load-\/shedding event by triggering load-\/shedding in the utilities department. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a load-\/shedding event command that can be executed on specified buildings. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLoadsheddingCommand_adf1488997e3d32e3574767810d1333ed}\label{classLoadsheddingCommand_adf1488997e3d32e3574767810d1333ed}} 
+\index{LoadsheddingCommand@{LoadsheddingCommand}!LoadsheddingCommand@{LoadsheddingCommand}}
+\index{LoadsheddingCommand@{LoadsheddingCommand}!LoadsheddingCommand@{LoadsheddingCommand}}
+\doxysubsubsection{\texorpdfstring{LoadsheddingCommand()}{LoadsheddingCommand()}}
+{\footnotesize\ttfamily Loadshedding\+Command\+::\+Loadshedding\+Command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPowerSupply}{Power\+Supply}} $\ast$}]{power\+Supply }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classLoadsheddingCommand}{Loadshedding\+Command}} with the utilities department. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em utilities\+Dept} & Pointer to the \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} handling power resources. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLoadsheddingCommand_aebee3531178c4f12b891f984badf464d}\label{classLoadsheddingCommand_aebee3531178c4f12b891f984badf464d}} 
+\index{LoadsheddingCommand@{LoadsheddingCommand}!execute@{execute}}
+\index{execute@{execute}!LoadsheddingCommand@{LoadsheddingCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Loadshedding\+Command\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Executes the load-\/shedding event by triggering load-\/shedding in the utilities department. 
+
+\mbox{\Hypertarget{classLoadsheddingCommand_a8559e774240de25d416f3122fdd598e0}\label{classLoadsheddingCommand_a8559e774240de25d416f3122fdd598e0}} 
+\index{LoadsheddingCommand@{LoadsheddingCommand}!scheduleLoadshedding@{scheduleLoadshedding}}
+\index{scheduleLoadshedding@{scheduleLoadshedding}!LoadsheddingCommand@{LoadsheddingCommand}}
+\doxysubsubsection{\texorpdfstring{scheduleLoadshedding()}{scheduleLoadshedding()}}
+{\footnotesize\ttfamily void Loadshedding\+Command\+::schedule\+Loadshedding (\begin{DoxyParamCaption}\item[{int}]{delay\+In\+Seconds }\end{DoxyParamCaption})}
+
+
+
+Schedules load-\/shedding to occur after a specified delay. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay\+In\+Seconds} & The delay in seconds before load-\/shedding starts. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{LoadsheddingCommand_8h}{Loadshedding\+Command.\+h}}\item 
+\mbox{\hyperlink{LoadsheddingCommand_8cpp}{Loadshedding\+Command.\+cpp}}\end{DoxyCompactItemize}

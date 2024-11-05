@@ -1,0 +1,561 @@
+\hypertarget{classCitizen}{}\doxysection{Citizen Class Reference}
+\label{classCitizen}\index{Citizen@{Citizen}}
+
+
+Represents a citizen in the life simulation game.  
+
+
+
+
+{\ttfamily \#include $<$Citizen.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCitizen_a4aaa1819f180095c9c143539b3dfac73}{Citizen}} (const std\+::string \&nam, \mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}} $\ast$PR)
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{classCitizen}{Citizen}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCitizen_a5232bf42d9a211d81ce3e5e3cefcf04c}{$\sim$\+Citizen}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{classCitizen}{Citizen}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_ad47bdb21ad29e99c0d4e67d29d5bf868}{get\+Older}} ()
+\begin{DoxyCompactList}\small\item\em Increases the citizen\textquotesingle{}s age by one year. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_a3dbd75a2a1a1f9a1a742c78a6a48fa87}{notify\+PR}} ()
+\begin{DoxyCompactList}\small\item\em Notifies the PR department of any state change. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCitizen_a96e445dc5c4468d9c85faa49475c329a}{get\+Age}} ()
+\begin{DoxyCompactList}\small\item\em Gets the age of the citizen. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classCitizen_afb8548eee68238fd58fe0fb3a68307bc}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Gets the name of the citizen. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCitizen_a327887f389e5c37c6442057e5e557c59}{get\+Health}} ()
+\begin{DoxyCompactList}\small\item\em Gets the health level of the citizen. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCitizen_abb9c3b38c30dcba61b119855ea149aa8}{get\+Satisfaction\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Gets the satisfaction level of the citizen. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classCitizen_a2758e1d6e6fa50be6a5880520c902a7b}{get\+Budget}} () const
+\begin{DoxyCompactList}\small\item\em Gets the budget of the citizen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_a4c0d1d3859fc27822dec25cac1268e96}{work}} (double amount)
+\begin{DoxyCompactList}\small\item\em Adds income to the citizen\textquotesingle{}s budget. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCitizen_a63d96213dbb5f11e2512d31b8db64925}{Spend}} (double amount)
+\begin{DoxyCompactList}\small\item\em Spends an amount from the citizen\textquotesingle{}s budget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_adae9c29152d73fc595e25e6c933d093c}{display}} ()
+\begin{DoxyCompactList}\small\item\em Displays the citizen\textquotesingle{}s details. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_ae63b45f77f2a9ac501aa51b5c52776dc}{decrease\+Health}} (double percentage)
+\begin{DoxyCompactList}\small\item\em Decreases the health of the citizen by a certain percentage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_ab845e519344abaabdf72f84c8f6a8550}{increase\+Health}} (double percentage)
+\begin{DoxyCompactList}\small\item\em Increases the health of the citizen by a certain percentage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_a6916cdda554e46b7dbf8c61b13ca6704}{decrease\+Satisfaction}} (double amount)
+\begin{DoxyCompactList}\small\item\em Lowers the citizen\textquotesingle{}s satisfaction by a certain amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_ac06a6d8217242d2e916f34773a8ad9ec}{increase\+Satisfaction}} (double amount)
+\begin{DoxyCompactList}\small\item\em Increases the citizen\textquotesingle{}s satisfaction by a certain amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_abbee95526529b17f35204d8e13596d45}{set\+Threshold}} (int age)
+\begin{DoxyCompactList}\small\item\em Sets the age threshold for the citizen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCitizen_ad85c2c83e09ca2d75a4afea99c61f982}{get\+Threshold}} ()
+\begin{DoxyCompactList}\small\item\em Gets the citizen\textquotesingle{}s age threshold. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classCitizen_a4725b1dbaf2f55fc3938f791ae2f9b3a}{get\+State\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Gets the name of the citizen\textquotesingle{}s current state. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classCitizen_a2850ad3c0f880b908a4ecdc204d2e133}{get\+Satisfaction\+Level\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Gets the name of the citizen\textquotesingle{}s current satisfaction level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_a66e951264874fe7966c624dd370096d3}{set\+Satisfaction\+State}} (\mbox{\hyperlink{classSatisfactionState}{Satisfaction\+State}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Sets the citizen\textquotesingle{}s satisfaction state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_a60b85c0c046208036891ef6fc2cd926d}{set\+State}} (\mbox{\hyperlink{classCitizenState}{Citizen\+State}} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Sets the citizen\textquotesingle{}s state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_a131a4c5ae0b8f2e14b03f08def0860b6}{update\+State}} ()
+\begin{DoxyCompactList}\small\item\em Updates the citizen\textquotesingle{}s state based on their age. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classModeOfTrans}{Mode\+Of\+Trans}} $\ast$ \mbox{\hyperlink{classCitizen_a770d0fd1d4aedbd549a8c590c1338dda}{get\+Mode\+Of\+Transport}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current mode of transport. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_ac03b1fc7ae5f120990df7c77fb943ad4}{set\+Mode\+Of\+Transport}} (\mbox{\hyperlink{classModeOfTrans}{Mode\+Of\+Trans}} $\ast$mode)
+\begin{DoxyCompactList}\small\item\em Sets the citizen\textquotesingle{}s mode of transport. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classCitizen_a64bdfed12476b3ec4ab00040e270937b}{get\+Current\+Location}} () const
+\begin{DoxyCompactList}\small\item\em Gets the citizen\textquotesingle{}s current building location. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classCitizen_a4c9d9594a475b24a830f3571ac7bc52c}{get\+Home\+Location}} () const
+\begin{DoxyCompactList}\small\item\em Gets the citizen\textquotesingle{}s home location. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classCitizen_ab32bc3f26bb3bf9e33513c149f34b520}{get\+Work\+Location}} () const
+\begin{DoxyCompactList}\small\item\em Gets the citizen\textquotesingle{}s work location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_a82464e7c154b6c0af79ccb924e8a28c4}{set\+Work}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$building)
+\begin{DoxyCompactList}\small\item\em Sets the citizen\textquotesingle{}s work location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_a8bcd2c673cdc1afa6c59292854f47e59}{set\+Home}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$building)
+\begin{DoxyCompactList}\small\item\em Sets the citizen\textquotesingle{}s home location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_ace1dccd0e97dab6ddcc3ede1e8b31786}{set\+Current}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$building)
+\begin{DoxyCompactList}\small\item\em Sets the citizen\textquotesingle{}s current location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_ae2c869f1f4eb4751fb04ceaef16803d1}{travel\+To}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$destination)
+\begin{DoxyCompactList}\small\item\em Travels to another building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCitizen_a40d50833843222cb7151fbf3fb288954}{set\+Current\+Location}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$b)
+\begin{DoxyCompactList}\small\item\em Sets the citizen\textquotesingle{}s current building location. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a citizen in the life simulation game. 
+
+A \mbox{\hyperlink{classCitizen}{Citizen}} can travel between buildings using various modes of transport. The \mbox{\hyperlink{classCitizen}{Citizen}}\textquotesingle{}s behavior changes based on their state (Child, Adult, Pensioner). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCitizen_a4aaa1819f180095c9c143539b3dfac73}\label{classCitizen_a4aaa1819f180095c9c143539b3dfac73}} 
+\index{Citizen@{Citizen}!Citizen@{Citizen}}
+\index{Citizen@{Citizen}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{Citizen()}{Citizen()}}
+{\footnotesize\ttfamily Citizen\+::\+Citizen (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{nam,  }\item[{\mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}} $\ast$}]{PR }\end{DoxyParamCaption})}
+
+
+
+Constructs a new \mbox{\hyperlink{classCitizen}{Citizen}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nam} & Name of the citizen. \\
+\hline
+{\em PR} & Reference to the government\textquotesingle{}s PR department.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Initializes the citizen\textquotesingle{}s age at 1. 
+
+Initializes health to 100 and satisfaction level at 50. 
+
+Randomizes the initial budget. 
+
+Sets the initial state to \mbox{\hyperlink{classChildState}{Child\+State}}. 
+\end{DoxyNote}
+$<$ Set this-\/$>$budget to a random double between 15000 and 200000\mbox{\Hypertarget{classCitizen_a5232bf42d9a211d81ce3e5e3cefcf04c}\label{classCitizen_a5232bf42d9a211d81ce3e5e3cefcf04c}} 
+\index{Citizen@{Citizen}!````~Citizen@{$\sim$Citizen}}
+\index{````~Citizen@{$\sim$Citizen}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{$\sim$Citizen()}{~Citizen()}}
+{\footnotesize\ttfamily Citizen\+::$\sim$\+Citizen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the \mbox{\hyperlink{classCitizen}{Citizen}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCitizen_ae63b45f77f2a9ac501aa51b5c52776dc}\label{classCitizen_ae63b45f77f2a9ac501aa51b5c52776dc}} 
+\index{Citizen@{Citizen}!decreaseHealth@{decreaseHealth}}
+\index{decreaseHealth@{decreaseHealth}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{decreaseHealth()}{decreaseHealth()}}
+{\footnotesize\ttfamily void Citizen\+::decrease\+Health (\begin{DoxyParamCaption}\item[{double}]{percentage }\end{DoxyParamCaption})}
+
+
+
+Decreases the health of the citizen by a certain percentage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em percentage} & The percentage by which the health is decreased. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_a6916cdda554e46b7dbf8c61b13ca6704}\label{classCitizen_a6916cdda554e46b7dbf8c61b13ca6704}} 
+\index{Citizen@{Citizen}!decreaseSatisfaction@{decreaseSatisfaction}}
+\index{decreaseSatisfaction@{decreaseSatisfaction}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{decreaseSatisfaction()}{decreaseSatisfaction()}}
+{\footnotesize\ttfamily void Citizen\+::decrease\+Satisfaction (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+
+
+Lowers the citizen\textquotesingle{}s satisfaction by a certain amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount by which satisfaction decreases. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_adae9c29152d73fc595e25e6c933d093c}\label{classCitizen_adae9c29152d73fc595e25e6c933d093c}} 
+\index{Citizen@{Citizen}!display@{display}}
+\index{display@{display}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void Citizen\+::display (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the citizen\textquotesingle{}s details. 
+
+\mbox{\Hypertarget{classCitizen_a96e445dc5c4468d9c85faa49475c329a}\label{classCitizen_a96e445dc5c4468d9c85faa49475c329a}} 
+\index{Citizen@{Citizen}!getAge@{getAge}}
+\index{getAge@{getAge}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getAge()}{getAge()}}
+{\footnotesize\ttfamily int Citizen\+::get\+Age (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the age of the citizen. 
+
+\begin{DoxyReturn}{Returns}
+int The current age of the citizen. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_a2758e1d6e6fa50be6a5880520c902a7b}\label{classCitizen_a2758e1d6e6fa50be6a5880520c902a7b}} 
+\index{Citizen@{Citizen}!getBudget@{getBudget}}
+\index{getBudget@{getBudget}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getBudget()}{getBudget()}}
+{\footnotesize\ttfamily double Citizen\+::get\+Budget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the budget of the citizen. 
+
+\begin{DoxyReturn}{Returns}
+double The current budget. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_a64bdfed12476b3ec4ab00040e270937b}\label{classCitizen_a64bdfed12476b3ec4ab00040e270937b}} 
+\index{Citizen@{Citizen}!getCurrentLocation@{getCurrentLocation}}
+\index{getCurrentLocation@{getCurrentLocation}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getCurrentLocation()}{getCurrentLocation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Citizen\+::get\+Current\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the citizen\textquotesingle{}s current building location. 
+
+\begin{DoxyReturn}{Returns}
+Building$\ast$ Pointer to the current building. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_a327887f389e5c37c6442057e5e557c59}\label{classCitizen_a327887f389e5c37c6442057e5e557c59}} 
+\index{Citizen@{Citizen}!getHealth@{getHealth}}
+\index{getHealth@{getHealth}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getHealth()}{getHealth()}}
+{\footnotesize\ttfamily double Citizen\+::get\+Health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the health level of the citizen. 
+
+\begin{DoxyReturn}{Returns}
+double The current health level. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_a4c9d9594a475b24a830f3571ac7bc52c}\label{classCitizen_a4c9d9594a475b24a830f3571ac7bc52c}} 
+\index{Citizen@{Citizen}!getHomeLocation@{getHomeLocation}}
+\index{getHomeLocation@{getHomeLocation}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getHomeLocation()}{getHomeLocation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Citizen\+::get\+Home\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the citizen\textquotesingle{}s home location. 
+
+\begin{DoxyReturn}{Returns}
+Building$\ast$ Pointer to the home location. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_a770d0fd1d4aedbd549a8c590c1338dda}\label{classCitizen_a770d0fd1d4aedbd549a8c590c1338dda}} 
+\index{Citizen@{Citizen}!getModeOfTransport@{getModeOfTransport}}
+\index{getModeOfTransport@{getModeOfTransport}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getModeOfTransport()}{getModeOfTransport()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classModeOfTrans}{Mode\+Of\+Trans}} $\ast$ Citizen\+::get\+Mode\+Of\+Transport (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the current mode of transport. 
+
+\begin{DoxyReturn}{Returns}
+Mode\+Of\+Trans$\ast$ Pointer to the current mode of transport. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_afb8548eee68238fd58fe0fb3a68307bc}\label{classCitizen_afb8548eee68238fd58fe0fb3a68307bc}} 
+\index{Citizen@{Citizen}!getName@{getName}}
+\index{getName@{getName}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Citizen\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the name of the citizen. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string The name of the citizen. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_ad47bdb21ad29e99c0d4e67d29d5bf868}\label{classCitizen_ad47bdb21ad29e99c0d4e67d29d5bf868}} 
+\index{Citizen@{Citizen}!getOlder@{getOlder}}
+\index{getOlder@{getOlder}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getOlder()}{getOlder()}}
+{\footnotesize\ttfamily void Citizen\+::get\+Older (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Increases the citizen\textquotesingle{}s age by one year. 
+
+If the citizen is in the pensioner state, calculates a new age threshold. If the citizen reaches this threshold, they die. \mbox{\Hypertarget{classCitizen_abb9c3b38c30dcba61b119855ea149aa8}\label{classCitizen_abb9c3b38c30dcba61b119855ea149aa8}} 
+\index{Citizen@{Citizen}!getSatisfactionLevel@{getSatisfactionLevel}}
+\index{getSatisfactionLevel@{getSatisfactionLevel}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getSatisfactionLevel()}{getSatisfactionLevel()}}
+{\footnotesize\ttfamily double Citizen\+::get\+Satisfaction\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the satisfaction level of the citizen. 
+
+\begin{DoxyReturn}{Returns}
+double The current satisfaction level. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_a2850ad3c0f880b908a4ecdc204d2e133}\label{classCitizen_a2850ad3c0f880b908a4ecdc204d2e133}} 
+\index{Citizen@{Citizen}!getSatisfactionLevelName@{getSatisfactionLevelName}}
+\index{getSatisfactionLevelName@{getSatisfactionLevelName}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getSatisfactionLevelName()}{getSatisfactionLevelName()}}
+{\footnotesize\ttfamily std\+::string Citizen\+::get\+Satisfaction\+Level\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the name of the citizen\textquotesingle{}s current satisfaction level. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string The satisfaction level name. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_a4725b1dbaf2f55fc3938f791ae2f9b3a}\label{classCitizen_a4725b1dbaf2f55fc3938f791ae2f9b3a}} 
+\index{Citizen@{Citizen}!getStateName@{getStateName}}
+\index{getStateName@{getStateName}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getStateName()}{getStateName()}}
+{\footnotesize\ttfamily std\+::string Citizen\+::get\+State\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the name of the citizen\textquotesingle{}s current state. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string The state name. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_ad85c2c83e09ca2d75a4afea99c61f982}\label{classCitizen_ad85c2c83e09ca2d75a4afea99c61f982}} 
+\index{Citizen@{Citizen}!getThreshold@{getThreshold}}
+\index{getThreshold@{getThreshold}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getThreshold()}{getThreshold()}}
+{\footnotesize\ttfamily int Citizen\+::get\+Threshold (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the citizen\textquotesingle{}s age threshold. 
+
+\begin{DoxyReturn}{Returns}
+int The age threshold. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_ab32bc3f26bb3bf9e33513c149f34b520}\label{classCitizen_ab32bc3f26bb3bf9e33513c149f34b520}} 
+\index{Citizen@{Citizen}!getWorkLocation@{getWorkLocation}}
+\index{getWorkLocation@{getWorkLocation}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getWorkLocation()}{getWorkLocation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Citizen\+::get\+Work\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the citizen\textquotesingle{}s work location. 
+
+\begin{DoxyReturn}{Returns}
+Building$\ast$ Pointer to the work location. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_ab845e519344abaabdf72f84c8f6a8550}\label{classCitizen_ab845e519344abaabdf72f84c8f6a8550}} 
+\index{Citizen@{Citizen}!increaseHealth@{increaseHealth}}
+\index{increaseHealth@{increaseHealth}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{increaseHealth()}{increaseHealth()}}
+{\footnotesize\ttfamily void Citizen\+::increase\+Health (\begin{DoxyParamCaption}\item[{double}]{percentage }\end{DoxyParamCaption})}
+
+
+
+Increases the health of the citizen by a certain percentage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em percentage} & The percentage by which the health is increased. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_ac06a6d8217242d2e916f34773a8ad9ec}\label{classCitizen_ac06a6d8217242d2e916f34773a8ad9ec}} 
+\index{Citizen@{Citizen}!increaseSatisfaction@{increaseSatisfaction}}
+\index{increaseSatisfaction@{increaseSatisfaction}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{increaseSatisfaction()}{increaseSatisfaction()}}
+{\footnotesize\ttfamily void Citizen\+::increase\+Satisfaction (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+
+
+Increases the citizen\textquotesingle{}s satisfaction by a certain amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount by which satisfaction increases. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_a3dbd75a2a1a1f9a1a742c78a6a48fa87}\label{classCitizen_a3dbd75a2a1a1f9a1a742c78a6a48fa87}} 
+\index{Citizen@{Citizen}!notifyPR@{notifyPR}}
+\index{notifyPR@{notifyPR}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{notifyPR()}{notifyPR()}}
+{\footnotesize\ttfamily void Citizen\+::notify\+PR (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Notifies the PR department of any state change. 
+
+\mbox{\Hypertarget{classCitizen_ace1dccd0e97dab6ddcc3ede1e8b31786}\label{classCitizen_ace1dccd0e97dab6ddcc3ede1e8b31786}} 
+\index{Citizen@{Citizen}!setCurrent@{setCurrent}}
+\index{setCurrent@{setCurrent}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{setCurrent()}{setCurrent()}}
+{\footnotesize\ttfamily void Citizen\+::set\+Current (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{building }\end{DoxyParamCaption})}
+
+
+
+Sets the citizen\textquotesingle{}s current location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em building} & Pointer to the current building. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_a40d50833843222cb7151fbf3fb288954}\label{classCitizen_a40d50833843222cb7151fbf3fb288954}} 
+\index{Citizen@{Citizen}!setCurrentLocation@{setCurrentLocation}}
+\index{setCurrentLocation@{setCurrentLocation}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{setCurrentLocation()}{setCurrentLocation()}}
+{\footnotesize\ttfamily void Citizen\+::set\+Current\+Location (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Sets the citizen\textquotesingle{}s current building location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to the building. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_a8bcd2c673cdc1afa6c59292854f47e59}\label{classCitizen_a8bcd2c673cdc1afa6c59292854f47e59}} 
+\index{Citizen@{Citizen}!setHome@{setHome}}
+\index{setHome@{setHome}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{setHome()}{setHome()}}
+{\footnotesize\ttfamily void Citizen\+::set\+Home (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{building }\end{DoxyParamCaption})}
+
+
+
+Sets the citizen\textquotesingle{}s home location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em building} & Pointer to the home building. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_ac03b1fc7ae5f120990df7c77fb943ad4}\label{classCitizen_ac03b1fc7ae5f120990df7c77fb943ad4}} 
+\index{Citizen@{Citizen}!setModeOfTransport@{setModeOfTransport}}
+\index{setModeOfTransport@{setModeOfTransport}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{setModeOfTransport()}{setModeOfTransport()}}
+{\footnotesize\ttfamily void Citizen\+::set\+Mode\+Of\+Transport (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classModeOfTrans}{Mode\+Of\+Trans}} $\ast$}]{mode }\end{DoxyParamCaption})}
+
+
+
+Sets the citizen\textquotesingle{}s mode of transport. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Pointer to the new mode of transport. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_a66e951264874fe7966c624dd370096d3}\label{classCitizen_a66e951264874fe7966c624dd370096d3}} 
+\index{Citizen@{Citizen}!setSatisfactionState@{setSatisfactionState}}
+\index{setSatisfactionState@{setSatisfactionState}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{setSatisfactionState()}{setSatisfactionState()}}
+{\footnotesize\ttfamily void Citizen\+::set\+Satisfaction\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSatisfactionState}{Satisfaction\+State}} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Sets the citizen\textquotesingle{}s satisfaction state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the new satisfaction state. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_a60b85c0c046208036891ef6fc2cd926d}\label{classCitizen_a60b85c0c046208036891ef6fc2cd926d}} 
+\index{Citizen@{Citizen}!setState@{setState}}
+\index{setState@{setState}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily void Citizen\+::set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCitizenState}{Citizen\+State}} $\ast$}]{state }\end{DoxyParamCaption})}
+
+
+
+Sets the citizen\textquotesingle{}s state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Pointer to the new state. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_abbee95526529b17f35204d8e13596d45}\label{classCitizen_abbee95526529b17f35204d8e13596d45}} 
+\index{Citizen@{Citizen}!setThreshold@{setThreshold}}
+\index{setThreshold@{setThreshold}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{setThreshold()}{setThreshold()}}
+{\footnotesize\ttfamily void Citizen\+::set\+Threshold (\begin{DoxyParamCaption}\item[{int}]{age }\end{DoxyParamCaption})}
+
+
+
+Sets the age threshold for the citizen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em age} & The age threshold. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_a82464e7c154b6c0af79ccb924e8a28c4}\label{classCitizen_a82464e7c154b6c0af79ccb924e8a28c4}} 
+\index{Citizen@{Citizen}!setWork@{setWork}}
+\index{setWork@{setWork}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{setWork()}{setWork()}}
+{\footnotesize\ttfamily void Citizen\+::set\+Work (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{building }\end{DoxyParamCaption})}
+
+
+
+Sets the citizen\textquotesingle{}s work location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em building} & Pointer to the work building. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_a63d96213dbb5f11e2512d31b8db64925}\label{classCitizen_a63d96213dbb5f11e2512d31b8db64925}} 
+\index{Citizen@{Citizen}!Spend@{Spend}}
+\index{Spend@{Spend}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{Spend()}{Spend()}}
+{\footnotesize\ttfamily bool Citizen\+::\+Spend (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+
+
+Spends an amount from the citizen\textquotesingle{}s budget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount to spend. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If the spending was successful. 
+
+false If there was insufficient budget. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCitizen_ae2c869f1f4eb4751fb04ceaef16803d1}\label{classCitizen_ae2c869f1f4eb4751fb04ceaef16803d1}} 
+\index{Citizen@{Citizen}!travelTo@{travelTo}}
+\index{travelTo@{travelTo}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{travelTo()}{travelTo()}}
+{\footnotesize\ttfamily void Citizen\+::travel\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{destination }\end{DoxyParamCaption})}
+
+
+
+Travels to another building. 
+
+Executes the relevant command if the destination is a specific type (work, home, school, etc.).
+
+
+\begin{DoxyParams}{Parameters}
+{\em destination} & Pointer to the destination building. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCitizen_a131a4c5ae0b8f2e14b03f08def0860b6}\label{classCitizen_a131a4c5ae0b8f2e14b03f08def0860b6}} 
+\index{Citizen@{Citizen}!updateState@{updateState}}
+\index{updateState@{updateState}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{updateState()}{updateState()}}
+{\footnotesize\ttfamily void Citizen\+::update\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the citizen\textquotesingle{}s state based on their age. 
+
+\mbox{\Hypertarget{classCitizen_a4c0d1d3859fc27822dec25cac1268e96}\label{classCitizen_a4c0d1d3859fc27822dec25cac1268e96}} 
+\index{Citizen@{Citizen}!work@{work}}
+\index{work@{work}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{work()}{work()}}
+{\footnotesize\ttfamily void Citizen\+::work (\begin{DoxyParamCaption}\item[{double}]{amount }\end{DoxyParamCaption})}
+
+
+
+Adds income to the citizen\textquotesingle{}s budget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount to add to the budget. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Citizen_8h}{Citizen.\+h}}\item 
+\mbox{\hyperlink{Citizen_8cpp}{Citizen.\+cpp}}\end{DoxyCompactItemize}

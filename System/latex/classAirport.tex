@@ -1,0 +1,139 @@
+\hypertarget{classAirport}{}\doxysection{Airport Class Reference}
+\label{classAirport}\index{Airport@{Airport}}
+
+
+Represents an airport, a subtype of \mbox{\hyperlink{classIndustrialBuilding}{Industrial\+Building}}.  
+
+
+
+
+{\ttfamily \#include $<$Airport.\+h$>$}
+
+
+
+Inheritance diagram for Airport\+:
+% FIG 0
+
+
+Collaboration diagram for Airport\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAirport_a2fc0f2402c94225b9deaf76176bb887f}{Airport}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor for \mbox{\hyperlink{classAirport}{Airport}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAirport_ae8cf84290678fea0128f745927b9e763}{display\+Stats}} () const
+\begin{DoxyCompactList}\small\item\em Displays stats specific to the airport. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAirport_adfdf30a43cafbe07de324f1b3ccfc0ea}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor)
+\begin{DoxyCompactList}\small\item\em Accepts visitors for the visitor pattern. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classAirport_a48fa655ce5b325c56e24a4f57e82cdf1}{repair\+Clone}} () const
+\begin{DoxyCompactList}\small\item\em Creates a clone of the airport for repair purposes. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classAirport_ae07275cf9d44f09788a152edad3066f3}{calculate\+Tax}} () const
+\begin{DoxyCompactList}\small\item\em method calculates the tax \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Represents an airport, a subtype of \mbox{\hyperlink{classIndustrialBuilding}{Industrial\+Building}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAirport_a2fc0f2402c94225b9deaf76176bb887f}\label{classAirport_a2fc0f2402c94225b9deaf76176bb887f}} 
+\index{Airport@{Airport}!Airport@{Airport}}
+\index{Airport@{Airport}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{Airport()}{Airport()}}
+{\footnotesize\ttfamily Airport\+::\+Airport (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Constructor for \mbox{\hyperlink{classAirport}{Airport}}. 
+
+$<$ Example width of the airport.
+
+$<$ Example length of the airport.
+
+$<$ Initial electricity meter reading.
+
+$<$ Initial water meter reading.
+
+$<$ Initial electricity usage.
+
+$<$ Initial water usage.
+
+$<$ Initial waste production.
+
+$<$ Default price tag for an airport.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAirport_adfdf30a43cafbe07de324f1b3ccfc0ea}\label{classAirport_adfdf30a43cafbe07de324f1b3ccfc0ea}} 
+\index{Airport@{Airport}!accept@{accept}}
+\index{accept@{accept}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Airport\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Accepts visitors for the visitor pattern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the visitor object. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIndustrialBuilding_af64e08035136b0e25dbd7d4bbb47e587}{Industrial\+Building}}.
+
+\mbox{\Hypertarget{classAirport_ae07275cf9d44f09788a152edad3066f3}\label{classAirport_ae07275cf9d44f09788a152edad3066f3}} 
+\index{Airport@{Airport}!calculateTax@{calculateTax}}
+\index{calculateTax@{calculateTax}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{calculateTax()}{calculateTax()}}
+{\footnotesize\ttfamily double Airport\+::calculate\+Tax (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+method calculates the tax 
+
+\begin{DoxyReturn}{Returns}
+the calculaed tax 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classIndustrialBuilding_acf365a12f3bebedfecfd0d12670b3996}{Industrial\+Building}}.
+
+\mbox{\Hypertarget{classAirport_ae8cf84290678fea0128f745927b9e763}\label{classAirport_ae8cf84290678fea0128f745927b9e763}} 
+\index{Airport@{Airport}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Airport\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Displays stats specific to the airport. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classBuilding_aace1b612517a40b26a1d557d1668e9e2}{Building}}.
+
+\mbox{\Hypertarget{classAirport_a48fa655ce5b325c56e24a4f57e82cdf1}\label{classAirport_a48fa655ce5b325c56e24a4f57e82cdf1}} 
+\index{Airport@{Airport}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Airport\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Creates a clone of the airport for repair purposes. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the cloned \mbox{\hyperlink{classAirport}{Airport}} object. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classIndustrialBuilding_a8d7a6e2878bccd17c357366303c1fc3e}{Industrial\+Building}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Airport_8h}{Airport.\+h}}\item 
+\mbox{\hyperlink{Airport_8cpp}{Airport.\+cpp}}\end{DoxyCompactItemize}

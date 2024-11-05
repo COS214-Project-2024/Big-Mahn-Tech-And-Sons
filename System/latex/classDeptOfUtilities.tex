@@ -1,0 +1,182 @@
+\hypertarget{classDeptOfUtilities}{}\doxysection{Dept\+Of\+Utilities Class Reference}
+\label{classDeptOfUtilities}\index{DeptOfUtilities@{DeptOfUtilities}}
+
+
+Base class for managing various city utility departments like power, water, and waste management.  
+
+
+
+
+{\ttfamily \#include $<$Dept\+Of\+Utilities.\+h$>$}
+
+
+
+Inheritance diagram for Dept\+Of\+Utilities\+:
+% FIG 0
+
+
+Collaboration diagram for Dept\+Of\+Utilities\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDeptOfUtilities_a0755d061311d50d2fdec36301f5bb6f9}{Dept\+Of\+Utilities}} (double \mbox{\hyperlink{classDeptOfUtilities_a1a4e416af5a947f4fe4befa076b2eb8b}{budget}})
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classDeptOfUtilities_a9f25ef472ae70b34a5c0fee84c0a4b6b}{display\+Department\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Displays the information about the department. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classDeptOfUtilities_a0cfd1fd63b2ef210cdcf7468998560a2}{handle\+Request}} (\mbox{\hyperlink{classRequest}{Request}} \&req)=0
+\begin{DoxyCompactList}\small\item\em the \mbox{\hyperlink{classDeptOfUtilities_a0cfd1fd63b2ef210cdcf7468998560a2}{handle\+Request()}} function is the core method responsible for either processing the request or passing it along the chain to the next handler. It is in the inherited classes \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classDeptOfUtilities_a24ce9c416e225206e8b4f24c43a4d6c1}{request\+PR}} (string request)
+\begin{DoxyCompactList}\small\item\em if \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} needs to talk to another department for whatever reason \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classDeptOfUtilities_a1c0a3f408c3e23381735487ecdb31fa4}{increase\+Usage}} ()
+\begin{DoxyCompactList}\small\item\em increasing usage of resources \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classDeptOfUtilities_ab3c846899fadfe8db9cd5275b0c48db9}{set\+Successor}} (\mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} $\ast$next\+Department)
+\begin{DoxyCompactList}\small\item\em Sets the next department in the chain of responsibility. This method allows the current department to set its successor,enabling the chain of responsibility pattern. When a request cannot be handled by the current department, it will pass the request to the successor department. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} $\ast$ \mbox{\hyperlink{classDeptOfUtilities_adc99718a0a080a85bc585821e8df2714}{get\+Successor}} ()
+\item 
+void \mbox{\hyperlink{classDeptOfUtilities_a10eda076e08f448c149994a7af76ba1e}{set\+PR}} (\mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}} $\ast$pr)
+\begin{DoxyCompactList}\small\item\em Sets the next department in the chain of responsibility. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} $\ast$ \mbox{\hyperlink{classDeptOfUtilities_a55a6e6ff1dd94b1d61f81cebe37dceec}{successor}}
+\item 
+vector$<$ \mbox{\hyperlink{classBuilding}{Building}} $\ast$ $>$ \mbox{\hyperlink{classDeptOfUtilities_ad77fff1a02d98049e6d1879bcfeaf2c7}{buildings}}
+\item 
+double \mbox{\hyperlink{classDeptOfUtilities_a1a4e416af5a947f4fe4befa076b2eb8b}{budget}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for managing various city utility departments like power, water, and waste management. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDeptOfUtilities_a0755d061311d50d2fdec36301f5bb6f9}\label{classDeptOfUtilities_a0755d061311d50d2fdec36301f5bb6f9}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!DeptOfUtilities@{DeptOfUtilities}}
+\index{DeptOfUtilities@{DeptOfUtilities}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{DeptOfUtilities()}{DeptOfUtilities()}}
+{\footnotesize\ttfamily Dept\+Of\+Utilities\+::\+Dept\+Of\+Utilities (\begin{DoxyParamCaption}\item[{double}]{budget }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the department. \\
+\hline
+{\em budget} & The initial budget allocated to the department. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDeptOfUtilities_a9f25ef472ae70b34a5c0fee84c0a4b6b}\label{classDeptOfUtilities_a9f25ef472ae70b34a5c0fee84c0a4b6b}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!displayDepartmentInfo@{displayDepartmentInfo}}
+\index{displayDepartmentInfo@{displayDepartmentInfo}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{displayDepartmentInfo()}{displayDepartmentInfo()}}
+{\footnotesize\ttfamily void Dept\+Of\+Utilities\+::display\+Department\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Displays the information about the department. 
+
+\mbox{\Hypertarget{classDeptOfUtilities_adc99718a0a080a85bc585821e8df2714}\label{classDeptOfUtilities_adc99718a0a080a85bc585821e8df2714}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!getSuccessor@{getSuccessor}}
+\index{getSuccessor@{getSuccessor}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{getSuccessor()}{getSuccessor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} $\ast$ Dept\+Of\+Utilities\+::get\+Successor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classDeptOfUtilities_a0cfd1fd63b2ef210cdcf7468998560a2}\label{classDeptOfUtilities_a0cfd1fd63b2ef210cdcf7468998560a2}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!handleRequest@{handleRequest}}
+\index{handleRequest@{handleRequest}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{handleRequest()}{handleRequest()}}
+{\footnotesize\ttfamily virtual bool Dept\+Of\+Utilities\+::handle\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRequest}{Request}} \&}]{req }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+the \mbox{\hyperlink{classDeptOfUtilities_a0cfd1fd63b2ef210cdcf7468998560a2}{handle\+Request()}} function is the core method responsible for either processing the request or passing it along the chain to the next handler. It is in the inherited classes 
+
+
+
+Implemented in \mbox{\hyperlink{classWaterSupply_a6cb958b9da08d612b1f15bfe150b0846}{Water\+Supply}}, \mbox{\hyperlink{classWasteManagement_a2d73e560802cfef3247c7150a7460907}{Waste\+Management}}, and \mbox{\hyperlink{classPowerSupply_a91702ad9d332b74121595ce5bdb73319}{Power\+Supply}}.
+
+\mbox{\Hypertarget{classDeptOfUtilities_a1c0a3f408c3e23381735487ecdb31fa4}\label{classDeptOfUtilities_a1c0a3f408c3e23381735487ecdb31fa4}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!increaseUsage@{increaseUsage}}
+\index{increaseUsage@{increaseUsage}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{increaseUsage()}{increaseUsage()}}
+{\footnotesize\ttfamily void Dept\+Of\+Utilities\+::increase\+Usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+increasing usage of resources 
+
+\mbox{\Hypertarget{classDeptOfUtilities_a24ce9c416e225206e8b4f24c43a4d6c1}\label{classDeptOfUtilities_a24ce9c416e225206e8b4f24c43a4d6c1}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!requestPR@{requestPR}}
+\index{requestPR@{requestPR}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{requestPR()}{requestPR()}}
+{\footnotesize\ttfamily void Dept\+Of\+Utilities\+::request\+PR (\begin{DoxyParamCaption}\item[{string}]{request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+if \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} needs to talk to another department for whatever reason 
+
+\mbox{\Hypertarget{classDeptOfUtilities_a10eda076e08f448c149994a7af76ba1e}\label{classDeptOfUtilities_a10eda076e08f448c149994a7af76ba1e}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!setPR@{setPR}}
+\index{setPR@{setPR}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{setPR()}{setPR()}}
+{\footnotesize\ttfamily void Dept\+Of\+Utilities\+::set\+PR (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDeptOfPR}{Dept\+Of\+PR}} $\ast$}]{pr }\end{DoxyParamCaption})}
+
+
+
+Sets the next department in the chain of responsibility. 
+
+This method allows the current department to set its successor When a request cannot be handled by the current department, it will pass the request to the successor department.
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Department} & A pointer to the next department that will handle requests if the current department cannot. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeptOfUtilities_ab3c846899fadfe8db9cd5275b0c48db9}\label{classDeptOfUtilities_ab3c846899fadfe8db9cd5275b0c48db9}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!setSuccessor@{setSuccessor}}
+\index{setSuccessor@{setSuccessor}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{setSuccessor()}{setSuccessor()}}
+{\footnotesize\ttfamily void Dept\+Of\+Utilities\+::set\+Successor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}} $\ast$}]{next\+Department }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the next department in the chain of responsibility. This method allows the current department to set its successor,enabling the chain of responsibility pattern. When a request cannot be handled by the current department, it will pass the request to the successor department. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+Department} & A pointer to the next department that will handle requests if the current department cannot. . \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classDeptOfUtilities_a1a4e416af5a947f4fe4befa076b2eb8b}\label{classDeptOfUtilities_a1a4e416af5a947f4fe4befa076b2eb8b}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!budget@{budget}}
+\index{budget@{budget}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{budget}{budget}}
+{\footnotesize\ttfamily double Dept\+Of\+Utilities\+::budget\hspace{0.3cm}{\ttfamily [protected]}}
+
+The budget allocated to the department. \mbox{\Hypertarget{classDeptOfUtilities_ad77fff1a02d98049e6d1879bcfeaf2c7}\label{classDeptOfUtilities_ad77fff1a02d98049e6d1879bcfeaf2c7}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!buildings@{buildings}}
+\index{buildings@{buildings}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{buildings}{buildings}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classBuilding}{Building}} $\ast$$>$ Dept\+Of\+Utilities\+::buildings\hspace{0.3cm}{\ttfamily [protected]}}
+
+Vector to store buildings to be sourced for water supply. \mbox{\Hypertarget{classDeptOfUtilities_a55a6e6ff1dd94b1d61f81cebe37dceec}\label{classDeptOfUtilities_a55a6e6ff1dd94b1d61f81cebe37dceec}} 
+\index{DeptOfUtilities@{DeptOfUtilities}!successor@{successor}}
+\index{successor@{successor}!DeptOfUtilities@{DeptOfUtilities}}
+\doxysubsubsection{\texorpdfstring{successor}{successor}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDeptOfUtilities}{Dept\+Of\+Utilities}}$\ast$ Dept\+Of\+Utilities\+::successor\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{DeptOfUtilities_8h}{Dept\+Of\+Utilities.\+h}}\item 
+\mbox{\hyperlink{DeptOfUtilities_8cpp}{Dept\+Of\+Utilities.\+cpp}}\end{DoxyCompactItemize}

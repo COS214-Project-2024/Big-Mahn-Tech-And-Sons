@@ -1,0 +1,147 @@
+\hypertarget{classTrainStation}{}\doxysection{Train\+Station Class Reference}
+\label{classTrainStation}\index{TrainStation@{TrainStation}}
+
+
+Represents a train station, a subtype of \mbox{\hyperlink{classIndustrialBuilding}{Industrial\+Building}}.  
+
+
+
+
+{\ttfamily \#include $<$Train\+Station.\+h$>$}
+
+
+
+Inheritance diagram for Train\+Station\+:
+% FIG 0
+
+
+Collaboration diagram for Train\+Station\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTrainStation_a3b0814b5ec95359c1184d935e582ae72}{Train\+Station}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classTrainStation}{Train\+Station}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTrainStation_a751b29833bcef0a2253c0f64e468dbcf}{display\+Stats}} () const
+\begin{DoxyCompactList}\small\item\em Displays statistics specific to the train station. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTrainStation_a46cd33ff64661f61a1f7f93adf3dc184}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor)
+\begin{DoxyCompactList}\small\item\em Accepts visitors for the visitor pattern. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classTrainStation_a35b9bbbbcc7fb009e322962543123925}{repair\+Clone}} () const
+\begin{DoxyCompactList}\small\item\em Creates a clone of the train station for repair purposes. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classTrainStation_a8168668d3489bc60dc82ef6bb7ab1da1}{calculate\+Tax}} () const
+\begin{DoxyCompactList}\small\item\em Calculates the tax for the train station. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Represents a train station, a subtype of \mbox{\hyperlink{classIndustrialBuilding}{Industrial\+Building}}. 
+
+The \mbox{\hyperlink{classTrainStation}{Train\+Station}} class models a train station, which is a specific type of industrial building in the city\textquotesingle{}s infrastructure. This class includes methods for displaying statistics specific to the train station, accepting visitors for tax calculations, and creating a clone of the train station for repair purposes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTrainStation_a3b0814b5ec95359c1184d935e582ae72}\label{classTrainStation_a3b0814b5ec95359c1184d935e582ae72}} 
+\index{TrainStation@{TrainStation}!TrainStation@{TrainStation}}
+\index{TrainStation@{TrainStation}!TrainStation@{TrainStation}}
+\doxysubsubsection{\texorpdfstring{TrainStation()}{TrainStation()}}
+{\footnotesize\ttfamily Train\+Station\+::\+Train\+Station (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classTrainStation}{Train\+Station}}. 
+
+Initializes a new instance of the \mbox{\hyperlink{classTrainStation}{Train\+Station}} class, setting up default values for its properties as defined in the \mbox{\hyperlink{classIndustrialBuilding}{Industrial\+Building}} class. $<$ Example width of the station.
+
+$<$ Example length of the station.
+
+$<$ Initial electricity meter reading.
+
+$<$ Initial water meter reading.
+
+$<$ Initial electricity usage.
+
+$<$ Initial water usage.
+
+$<$ Initial waste production.
+
+$<$ Default price tag for a train station.
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTrainStation_a46cd33ff64661f61a1f7f93adf3dc184}\label{classTrainStation_a46cd33ff64661f61a1f7f93adf3dc184}} 
+\index{TrainStation@{TrainStation}!accept@{accept}}
+\index{accept@{accept}!TrainStation@{TrainStation}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Train\+Station\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Accepts visitors for the visitor pattern. 
+
+This method allows the \mbox{\hyperlink{classTaxManager}{Tax\+Manager}} (or any other visitor) to perform operations on the \mbox{\hyperlink{classTrainStation}{Train\+Station}}, enabling tax calculations and other visitor-\/specific functionalities.
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the \mbox{\hyperlink{classTaxManager}{Tax\+Manager}} object that will visit the \mbox{\hyperlink{classTrainStation}{Train\+Station}} for tax calculations. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIndustrialBuilding_af64e08035136b0e25dbd7d4bbb47e587}{Industrial\+Building}}.
+
+\mbox{\Hypertarget{classTrainStation_a8168668d3489bc60dc82ef6bb7ab1da1}\label{classTrainStation_a8168668d3489bc60dc82ef6bb7ab1da1}} 
+\index{TrainStation@{TrainStation}!calculateTax@{calculateTax}}
+\index{calculateTax@{calculateTax}!TrainStation@{TrainStation}}
+\doxysubsubsection{\texorpdfstring{calculateTax()}{calculateTax()}}
+{\footnotesize\ttfamily double Train\+Station\+::calculate\+Tax (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calculates the tax for the train station. 
+
+This method computes the tax owed by the train station based on its specific financial metrics and the tax policies in place.
+
+\begin{DoxyReturn}{Returns}
+The calculated tax amount for the train station. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classIndustrialBuilding_acf365a12f3bebedfecfd0d12670b3996}{Industrial\+Building}}.
+
+\mbox{\Hypertarget{classTrainStation_a751b29833bcef0a2253c0f64e468dbcf}\label{classTrainStation_a751b29833bcef0a2253c0f64e468dbcf}} 
+\index{TrainStation@{TrainStation}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!TrainStation@{TrainStation}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Train\+Station\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Displays statistics specific to the train station. 
+
+This method outputs the current operational statistics of the train station, including metrics such as passenger throughput, cargo capacity, and revenue generation. 
+
+Reimplemented from \mbox{\hyperlink{classIndustrialBuilding_ab2d070226016b643f60fec2188eaa46d}{Industrial\+Building}}.
+
+\mbox{\Hypertarget{classTrainStation_a35b9bbbbcc7fb009e322962543123925}\label{classTrainStation_a35b9bbbbcc7fb009e322962543123925}} 
+\index{TrainStation@{TrainStation}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!TrainStation@{TrainStation}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Train\+Station\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Creates a clone of the train station for repair purposes. 
+
+This method generates a deep copy of the \mbox{\hyperlink{classTrainStation}{Train\+Station}} object, allowing for the repair of the building without altering the original instance.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the cloned \mbox{\hyperlink{classTrainStation}{Train\+Station}} object, representing the same state as the original at the time of cloning. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classIndustrialBuilding_a8d7a6e2878bccd17c357366303c1fc3e}{Industrial\+Building}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{TrainStation_8h}{Train\+Station.\+h}}\item 
+\mbox{\hyperlink{TrainStation_8cpp}{Train\+Station.\+cpp}}\end{DoxyCompactItemize}

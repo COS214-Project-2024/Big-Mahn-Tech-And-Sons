@@ -1,0 +1,62 @@
+\hypertarget{classGoAirport}{}\doxysection{Go\+Airport Class Reference}
+\label{classGoAirport}\index{GoAirport@{GoAirport}}
+
+
+A concrete command class that allows a citizen to travel from their current position to an airport.  
+
+
+
+
+{\ttfamily \#include $<$Go\+Airport.\+h$>$}
+
+
+
+Inheritance diagram for Go\+Airport\+:
+% FIG 0
+
+
+Collaboration diagram for Go\+Airport\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classGoAirport_aaacc97eaded29843af62166b25a75279}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Constructor for the \mbox{\hyperlink{classGoAirport}{Go\+Airport}} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A concrete command class that allows a citizen to travel from their current position to an airport. 
+
+This class is part of the Command design pattern and simulates the citizen\textquotesingle{}s journey to an airport within the road network. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGoAirport_aaacc97eaded29843af62166b25a75279}\label{classGoAirport_aaacc97eaded29843af62166b25a75279}} 
+\index{GoAirport@{GoAirport}!execute@{execute}}
+\index{execute@{execute}!GoAirport@{GoAirport}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily bool Go\+Airport\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Constructor for the \mbox{\hyperlink{classGoAirport}{Go\+Airport}} class. 
+
+Initializes a \mbox{\hyperlink{classGoAirport}{Go\+Airport}} command for the specified citizen to simulate their journey to an airport.
+
+
+\begin{DoxyParams}{Parameters}
+{\em citizen} & A pointer to the \mbox{\hyperlink{classCitizen}{Citizen}} object representing the person traveling to the airport. \\
+\hline
+{\em road\+Network} & A pointer to the Road\+Network object used for navigating to the airport. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classGoToCommand_af1f26d8202f09a43a257163c86042747}{Go\+To\+Command}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{GoAirport_8h}{Go\+Airport.\+h}}\item 
+\mbox{\hyperlink{GoAirport_8cpp}{Go\+Airport.\+cpp}}\end{DoxyCompactItemize}
