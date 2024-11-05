@@ -46,7 +46,9 @@ public:
      */
     DeptOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, DeptOfFinance *financeDept);
   
+    void displayStats();
 
+    double getAverageSatisfaction();
     /**
      * @brief Updates the state by checking both buildings and citizens.
      * 

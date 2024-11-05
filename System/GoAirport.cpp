@@ -1,5 +1,11 @@
 #include "GoAirport.h"
 
+GoAirport::GoAirport(Citizen *citizen, DeptOfHousing *housing): GoToCommand(citizen, housing)
+{
+    this->citizen = citizen;
+    this->DOH = housing;
+}
+
 bool GoAirport::execute()
 {
     

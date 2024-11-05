@@ -28,6 +28,7 @@ class GoHos : public GoToCommand
 //     Citizen* citizen;           /**< Pointer to the citizen who is going to the hospital */
 
 public:
+    GoHos(Citizen *citizen, DeptOfHousing *deptH);
     // /**
     //  * @brief Constructor for the GoHos class.
     //  * 

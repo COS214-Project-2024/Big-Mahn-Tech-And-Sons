@@ -17,8 +17,11 @@ class GoHome : public GoToCommand
 {
    private:
    Citizen* citizen;
+   DeptOfHousing* DOH;
   public:
-  GoHome(Citizen* citizen);
+  GoHome(Citizen *citizen, DeptOfHousing *housing);
+  
   bool execute() override;
 };
+
 #endif

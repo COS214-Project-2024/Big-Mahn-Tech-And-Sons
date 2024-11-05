@@ -30,7 +30,7 @@ class DeptOfHousing {
 
     public:
         DeptOfHousing(double initialBudget);
-        
+        Building* getBuildingByName(const std::string& name);
         void setPR(DeptOfPR *PR);
         void createResidentialBuilding(const std::string& type);
         void createCommercialBuilding(const std::string& type);

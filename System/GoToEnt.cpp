@@ -6,6 +6,7 @@ GoToEnt::GoToEnt(Citizen* citizen , DeptOfHousing* housing):GoToCommand(citizen,
 {
    this->citizen = citizen;
     this->DOH = housing;
+    
 }
 
 

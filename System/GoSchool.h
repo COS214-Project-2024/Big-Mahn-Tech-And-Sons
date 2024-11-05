@@ -34,6 +34,8 @@ public:
      */
     // GoSchool(Citizen* citizen);
 
+    GoSchool(Citizen *citizen, DeptOfHousing *housing);
+
 
 
     bool execute() override;

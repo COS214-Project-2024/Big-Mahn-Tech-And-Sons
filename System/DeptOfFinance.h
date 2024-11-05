@@ -26,6 +26,7 @@ public:
 
     void allocateBudget();
 
+    void display();
     /**
      * @brief Adds an element to the list.
      * 

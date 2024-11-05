@@ -2,10 +2,11 @@
 #include "GoHome.h"
 
 
-GoToWork::GoToWork(Citizen* citizen , DeptOfHousing* housing):GoToCommand(citizen,DOH)
+GoToWork::GoToWork(Citizen* citizen , DeptOfHousing* housing):GoToCommand(citizen,housing)
 {
-   citizen = citizen;
-    housing= DOH;
+   this->citizen = citizen;
+    this->DOH = housing;
+    this->houseing = housing;
 }
 
 bool GoToWork::execute()
@@ -15,13 +16,14 @@ bool GoToWork::execute()
       this->citizen->travelTo(this->citizen->getWorkLocation());
       citizen->work(1500);
 
-      GoHome* gohome = new GoHome(citizen);
+      GoHome* gohome = new GoHome(citizen, this->DOH);
       gohome->execute();
 
       return true;
    
     }
 
+    cout << citizen->getName() << " Does not have a job :( \n";
 
     return false;
 }

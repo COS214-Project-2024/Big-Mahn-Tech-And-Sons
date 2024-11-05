@@ -10,6 +10,7 @@
 #include <vector>
 #include "Citizen.h"
 #include "EventsCommand.h"
+#include "Settings.h"
 
 class DeptOfFinance;
 class DeptOfHousing;
@@ -91,7 +92,15 @@ public:
     void evaluatePolicies();
     void triggerRandomEvents();
 
+    string cityname;
+    //menus
+    int main_menu(Settings settings); //OK
+    int pov_menu(Settings settings);
+        int citizen_pov_menu(Settings settings);
 
+        int government_pov_menu(Settings settings);
+            int city_grid_menu(Settings settings);
+            int government_stats_menu(Settings settings);
 };
 
 #endif

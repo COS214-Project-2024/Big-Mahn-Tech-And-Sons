@@ -2,6 +2,12 @@
 #include "CommercialBuilding.h"
 #include "DeptOfHousing.h"
 
+GoSchool::GoSchool(Citizen *citizen, DeptOfHousing *housing) : GoToCommand(citizen,housing)
+{
+      this->citizen = citizen;
+    this->DOH = housing;
+}
+
 bool GoSchool::execute()
 {
   cout << "Citizen " << citizen->getName() << "is going to the School\n";

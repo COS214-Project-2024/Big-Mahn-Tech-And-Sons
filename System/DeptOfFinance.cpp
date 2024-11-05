@@ -63,6 +63,12 @@ void DeptOfFinance::collectTaxes()
 {
 }
 
+void DeptOfFinance::display() {
+    cout << "Department of Finance statistics\n";
+    cout << "--------------------------------\n";
+    cout << "Finance budget" << this->taxManager->getGovernmentBudget() << std::endl;
+}
+
 void DeptOfFinance::setPR(DeptOfPR *PR)
 {
     this->PR = PR;
