@@ -24,4 +24,4 @@ class GoHome : public GoToCommand
   bool execute() override;
 };
 
-#endif
+#endif // GOHOME_H

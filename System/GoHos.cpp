@@ -2,6 +2,13 @@
 #include "CommercialBuilding.h"
 #include "DeptOfHousing.h"
 
+
+GoHos::GoHos(Citizen *citizen, DeptOfHousing *deptH) :GoToCommand(citizen,deptH)
+{
+   this->citizen = citizen;
+    this->DOH = deptH;
+}
+
 bool GoHos::execute()
 {
 

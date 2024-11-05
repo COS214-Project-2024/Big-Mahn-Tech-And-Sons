@@ -30,7 +30,8 @@ bool GoTrain::execute()
     }
     else
     {
-        cout << "No TrainStation found \n";
+        cout << "No TrainStation found \n"
+             <<"";
         return false;
     }
 }
