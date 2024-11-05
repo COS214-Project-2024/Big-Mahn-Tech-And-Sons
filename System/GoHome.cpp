@@ -1,14 +1,17 @@
 #include "GoHome.h"
 
-GoHome::GoHome(Citizen *citizen):GoToCommand(citizen , DOH)
+GoHome::GoHome(Citizen *citizen, DeptOfHousing *housing):GoToCommand(citizen, housing)
 {
-    citizen=citizen;
+    this->citizen=citizen;
+    this->DOH = housing;
 }
+
+
 
 bool GoHome::execute()
 {
 
-    if(citizen)
+    if (citizen)
     {
         citizen->travelTo(citizen->getHomeLocation());
         return true;

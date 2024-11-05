@@ -1,0 +1,223 @@
+\hypertarget{classCityGrid}{}\doxysection{City\+Grid Class Reference}
+\label{classCityGrid}\index{CityGrid@{CityGrid}}
+
+
+\mbox{\hyperlink{classCityGrid}{City\+Grid}} class.  
+
+
+
+
+{\ttfamily \#include $<$City\+Grid.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCityGrid_af7bb32d06e403acc8510d68cf7f4b103}{City\+Grid}} (int, int)
+\begin{DoxyCompactList}\small\item\em helper function for get\+\_\+distance \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCityGrid_a27586143b1a028f9c6b0c65fe48a66c7}{$\sim$\+City\+Grid}} ()
+\begin{DoxyCompactList}\small\item\em initialized the city grid only use even positive integers , so cardinal\+\_\+points works as intended \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCityGrid_a93211a156d0195222d9877b4458b6682}{add\+Road}} (int, int, int, string, string)
+\begin{DoxyCompactList}\small\item\em destructor for the city grid deletes the pointer to the grid and free that space. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCityGrid_a66d9739b6a32d1f470934825d5f2ce4a}{remove\+Road}} (int, int, int, string)
+\begin{DoxyCompactList}\small\item\em adds a road to the city grid \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCityGrid_a79931f8ce425b2b8f80b020ef5ce5dff}{remove\+Road}} (string)
+\begin{DoxyCompactList}\small\item\em removes a road from the city grid \end{DoxyCompactList}\item 
+const char \mbox{\hyperlink{classCityGrid_a5b15b402cc9382690a2602b65586ffb6}{get\+Attribute\+\_\+from\+\_\+\+Detailed\+Attribute}} (string)
+\begin{DoxyCompactList}\small\item\em removes a road from the city grid \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCityGrid_a740c8558f05332d7294c702f4e2f0bd7}{print\+City\+Grid}} ()
+\begin{DoxyCompactList}\small\item\em converts the detailed attribute member variable to a char attribute \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCityGrid_a2add41beefb5df02a23cea10975c274a}{print\+City\+Cardinal}} ()
+\begin{DoxyCompactList}\small\item\em prints the city grid \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCityGrid_a07fcf662166acc328adc2ede1ff90aa4}{print\+City\+Streets}} ()
+\begin{DoxyCompactList}\small\item\em prints all the cardinal directions of every cell in the grid \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCityGrid_ab1dfaf127e09ea455ce4a8506ac87611}{print\+City\+Road\+Network}} ()
+\begin{DoxyCompactList}\small\item\em prints all streets in the city grid \end{DoxyCompactList}\item 
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{classCityGrid_a7d2db322c62fc9e3df98a2dfb5e9c17c}{error\+Pair}} ()
+\begin{DoxyCompactList}\small\item\em prints all the roads in the city \end{DoxyCompactList}\item 
+vector$<$ pair$<$ int, int $>$ $>$ \mbox{\hyperlink{classCityGrid_aca7388fc37ab3376939b46370d4bde54}{add\+Building}} (int, int, \mbox{\hyperlink{classBuilding}{Building}} $\ast$)
+\begin{DoxyCompactList}\small\item\em a constant vector pair of 4 pairs of -\/1 integers \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCityGrid_a93f5cab5b3eb9a587a6737d0259855b2}{remove\+Building}} (vector$<$ pair$<$ int, int $>$$>$)
+\begin{DoxyCompactList}\small\item\em adds a building to the city grid \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCityGrid_a295a0f7822c1d2ec68f1c5b48dfa7d66}{get\+Distance}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$, \mbox{\hyperlink{classBuilding}{Building}} $\ast$)
+\begin{DoxyCompactList}\small\item\em removes a building from the city grid \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classCityGrid}{City\+Grid}} class. 
+
+Holds all the functionality of the city grid, like adding and removing roads and buildings. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCityGrid_af7bb32d06e403acc8510d68cf7f4b103}\label{classCityGrid_af7bb32d06e403acc8510d68cf7f4b103}} 
+\index{CityGrid@{CityGrid}!CityGrid@{CityGrid}}
+\index{CityGrid@{CityGrid}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{CityGrid()}{CityGrid()}}
+{\footnotesize\ttfamily City\+Grid\+::\+City\+Grid (\begin{DoxyParamCaption}\item[{int}]{row\+\_\+dimension,  }\item[{int}]{col\+\_\+dimension }\end{DoxyParamCaption})}
+
+
+
+helper function for get\+\_\+distance 
+
+\begin{DoxyReturn}{Returns}
+vector of pair integers, vector pair of th building co-\/ordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCityGrid_a27586143b1a028f9c6b0c65fe48a66c7}\label{classCityGrid_a27586143b1a028f9c6b0c65fe48a66c7}} 
+\index{CityGrid@{CityGrid}!````~CityGrid@{$\sim$CityGrid}}
+\index{````~CityGrid@{$\sim$CityGrid}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{$\sim$CityGrid()}{~CityGrid()}}
+{\footnotesize\ttfamily City\+Grid\+::$\sim$\+City\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+initialized the city grid only use even positive integers , so cardinal\+\_\+points works as intended 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCityGrid_aca7388fc37ab3376939b46370d4bde54}\label{classCityGrid_aca7388fc37ab3376939b46370d4bde54}} 
+\index{CityGrid@{CityGrid}!addBuilding@{addBuilding}}
+\index{addBuilding@{addBuilding}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{addBuilding()}{addBuilding()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ City\+Grid\+::add\+Building (\begin{DoxyParamCaption}\item[{int}]{length,  }\item[{int}]{width,  }\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{building }\end{DoxyParamCaption})}
+
+
+
+a constant vector pair of 4 pairs of -\/1 integers 
+
+\begin{DoxyReturn}{Returns}
+vector$<$pair$<$int,int$>$$>$ ,returns the vector pair 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCityGrid_a93211a156d0195222d9877b4458b6682}\label{classCityGrid_a93211a156d0195222d9877b4458b6682}} 
+\index{CityGrid@{CityGrid}!addRoad@{addRoad}}
+\index{addRoad@{addRoad}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{addRoad()}{addRoad()}}
+{\footnotesize\ttfamily bool City\+Grid\+::add\+Road (\begin{DoxyParamCaption}\item[{int}]{start\+\_\+row,  }\item[{int}]{start\+\_\+col,  }\item[{int}]{length,  }\item[{string}]{direction,  }\item[{string}]{strname }\end{DoxyParamCaption})}
+
+
+
+destructor for the city grid deletes the pointer to the grid and free that space. 
+
+\mbox{\Hypertarget{classCityGrid_a7d2db322c62fc9e3df98a2dfb5e9c17c}\label{classCityGrid_a7d2db322c62fc9e3df98a2dfb5e9c17c}} 
+\index{CityGrid@{CityGrid}!errorPair@{errorPair}}
+\index{errorPair@{errorPair}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{errorPair()}{errorPair()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ int, int $>$ $>$ City\+Grid\+::error\+Pair (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints all the roads in the city 
+
+\mbox{\Hypertarget{classCityGrid_a5b15b402cc9382690a2602b65586ffb6}\label{classCityGrid_a5b15b402cc9382690a2602b65586ffb6}} 
+\index{CityGrid@{CityGrid}!getAttribute\_from\_DetailedAttribute@{getAttribute\_from\_DetailedAttribute}}
+\index{getAttribute\_from\_DetailedAttribute@{getAttribute\_from\_DetailedAttribute}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{getAttribute\_from\_DetailedAttribute()}{getAttribute\_from\_DetailedAttribute()}}
+{\footnotesize\ttfamily const char City\+Grid\+::get\+Attribute\+\_\+from\+\_\+\+Detailed\+Attribute (\begin{DoxyParamCaption}\item[{string}]{detailed\+\_\+\+Attribute }\end{DoxyParamCaption})}
+
+
+
+removes a road from the city grid 
+
+\begin{DoxyReturn}{Returns}
+boolean, returns true or false as to whether the road was removed or not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCityGrid_a295a0f7822c1d2ec68f1c5b48dfa7d66}\label{classCityGrid_a295a0f7822c1d2ec68f1c5b48dfa7d66}} 
+\index{CityGrid@{CityGrid}!getDistance@{getDistance}}
+\index{getDistance@{getDistance}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{getDistance()}{getDistance()}}
+{\footnotesize\ttfamily int City\+Grid\+::get\+Distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{citizen\+\_\+current\+\_\+building,  }\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{citizen\+\_\+destination\+\_\+building }\end{DoxyParamCaption})}
+
+
+
+removes a building from the city grid 
+
+\begin{DoxyReturn}{Returns}
+boolean, returns true or false as to whether the building was removed or not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCityGrid_a2add41beefb5df02a23cea10975c274a}\label{classCityGrid_a2add41beefb5df02a23cea10975c274a}} 
+\index{CityGrid@{CityGrid}!printCityCardinal@{printCityCardinal}}
+\index{printCityCardinal@{printCityCardinal}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{printCityCardinal()}{printCityCardinal()}}
+{\footnotesize\ttfamily void City\+Grid\+::print\+City\+Cardinal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints the city grid 
+
+\mbox{\Hypertarget{classCityGrid_a740c8558f05332d7294c702f4e2f0bd7}\label{classCityGrid_a740c8558f05332d7294c702f4e2f0bd7}} 
+\index{CityGrid@{CityGrid}!printCityGrid@{printCityGrid}}
+\index{printCityGrid@{printCityGrid}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{printCityGrid()}{printCityGrid()}}
+{\footnotesize\ttfamily void City\+Grid\+::print\+City\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+converts the detailed attribute member variable to a char attribute 
+
+\begin{DoxyReturn}{Returns}
+constant char, returns a constant char that is the attribute 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCityGrid_ab1dfaf127e09ea455ce4a8506ac87611}\label{classCityGrid_ab1dfaf127e09ea455ce4a8506ac87611}} 
+\index{CityGrid@{CityGrid}!printCityRoadNetwork@{printCityRoadNetwork}}
+\index{printCityRoadNetwork@{printCityRoadNetwork}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{printCityRoadNetwork()}{printCityRoadNetwork()}}
+{\footnotesize\ttfamily void City\+Grid\+::print\+City\+Road\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints all streets in the city grid 
+
+\mbox{\Hypertarget{classCityGrid_a07fcf662166acc328adc2ede1ff90aa4}\label{classCityGrid_a07fcf662166acc328adc2ede1ff90aa4}} 
+\index{CityGrid@{CityGrid}!printCityStreets@{printCityStreets}}
+\index{printCityStreets@{printCityStreets}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{printCityStreets()}{printCityStreets()}}
+{\footnotesize\ttfamily void City\+Grid\+::print\+City\+Streets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints all the cardinal directions of every cell in the grid 
+
+\mbox{\Hypertarget{classCityGrid_a93f5cab5b3eb9a587a6737d0259855b2}\label{classCityGrid_a93f5cab5b3eb9a587a6737d0259855b2}} 
+\index{CityGrid@{CityGrid}!removeBuilding@{removeBuilding}}
+\index{removeBuilding@{removeBuilding}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{removeBuilding()}{removeBuilding()}}
+{\footnotesize\ttfamily bool City\+Grid\+::remove\+Building (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ int, int $>$$>$}]{buildiing }\end{DoxyParamCaption})}
+
+
+
+adds a building to the city grid 
+
+\begin{DoxyReturn}{Returns}
+vector$<$pair$<$int,int$>$$>$ , returns the building co-\/ordiantes. All 4 corner 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCityGrid_a66d9739b6a32d1f470934825d5f2ce4a}\label{classCityGrid_a66d9739b6a32d1f470934825d5f2ce4a}} 
+\index{CityGrid@{CityGrid}!removeRoad@{removeRoad}}
+\index{removeRoad@{removeRoad}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{removeRoad()}{removeRoad()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool City\+Grid\+::remove\+Road (\begin{DoxyParamCaption}\item[{int}]{start\+\_\+row,  }\item[{int}]{start\+\_\+col,  }\item[{int}]{length,  }\item[{string}]{direction }\end{DoxyParamCaption})}
+
+
+
+adds a road to the city grid 
+
+\begin{DoxyReturn}{Returns}
+boolean, returns true or false as to whether the road was added or not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCityGrid_a79931f8ce425b2b8f80b020ef5ce5dff}\label{classCityGrid_a79931f8ce425b2b8f80b020ef5ce5dff}} 
+\index{CityGrid@{CityGrid}!removeRoad@{removeRoad}}
+\index{removeRoad@{removeRoad}!CityGrid@{CityGrid}}
+\doxysubsubsection{\texorpdfstring{removeRoad()}{removeRoad()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool City\+Grid\+::remove\+Road (\begin{DoxyParamCaption}\item[{string}]{street\+Name }\end{DoxyParamCaption})}
+
+
+
+removes a road from the city grid 
+
+\begin{DoxyReturn}{Returns}
+boolean, returns true or false as to whether the road was removed or not 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{CityGrid_8h}{City\+Grid.\+h}}\item 
+\mbox{\hyperlink{CityGrid_8cpp}{City\+Grid.\+cpp}}\end{DoxyCompactItemize}

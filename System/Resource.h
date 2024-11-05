@@ -19,11 +19,11 @@ class CommercialBuilding;
  * This class provides a base for different types of resources used in the simulation.
  */
 
-
-class Resource : public TaxManager {
+class Resource : public TaxManager
+{
 protected:
     std::string name; ///< The name of the resource.
-    double amount; ///< The amount of the resource available.
+    double amount;    ///< The amount of the resource available.
 
 public:
     Resource() {
@@ -32,11 +32,11 @@ public:
     }
     /**
      * @brief Constructs a new Resource object.
-     * 
+     *
      * @param name Name of the resource.
      * @param amount Initial amount of the resource.
      */
-    Resource(const std::string& name, double amount);
+    Resource(const std::string &name, double amount);
 
     /**
      * @brief Destroys the Resource object.
@@ -45,28 +45,28 @@ public:
 
     /**
      * @brief Gets the name of the resource.
-     * 
+     *
      * @return std::string The resource's name.
      */
     std::string getName() const;
 
     /**
      * @brief Gets the amount of the resource.
-     * 
+     *
      * @return double The amount of the resource.
      */
     double getAmount() const;
 
     /**
      * @brief Adds an amount to the resource.
-     * 
+     *
      * @param amount The amount to be added.
      */
     void addAmount(double amount);
 
     /**
      * @brief Removes an amount from the resource.
-     * 
+     *
      * @param amount The amount to be removed.
      */
     void removeAmount(double amount);
@@ -77,10 +77,10 @@ public:
 
     /**
      * @brief Reports the current status of the resource.
-     * 
+     *
      * This method should be overridden by derived classes to provide specific information.
      */
-     void reportStatus() const ;
+    void reportStatus() const;
 
     bool visitBudget(Budget* budget ,  double amount);
 

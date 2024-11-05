@@ -1,0 +1,91 @@
+\hypertarget{classWalk}{}\doxysection{Walk Class Reference}
+\label{classWalk}\index{Walk@{Walk}}
+
+
+Represents walking as a mode of transport.  
+
+
+
+
+{\ttfamily \#include $<$Walk.\+h$>$}
+
+
+
+Inheritance diagram for Walk\+:
+% FIG 0
+
+
+Collaboration diagram for Walk\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classWalk_a1a756c80069ee0f8746f1041adb3ad64}{get\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the name of the transport mode. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classWalk_a620b3fa535a3f1d57ceb4e835c918d76}{get\+Cost}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the cost per kilometer of walking. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWalk_adf7f351dab0a56b600035df7c4b5b595}{execute}} () const override
+\begin{DoxyCompactList}\small\item\em Executes the mean of transport. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents walking as a mode of transport. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWalk_adf7f351dab0a56b600035df7c4b5b595}\label{classWalk_adf7f351dab0a56b600035df7c4b5b595}} 
+\index{Walk@{Walk}!execute@{execute}}
+\index{execute@{execute}!Walk@{Walk}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Walk\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the mean of transport. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classModeOfTrans_a8f581cc380abd855d7067f3874162894}{Mode\+Of\+Trans}}.
+
+\mbox{\Hypertarget{classWalk_a620b3fa535a3f1d57ceb4e835c918d76}\label{classWalk_a620b3fa535a3f1d57ceb4e835c918d76}} 
+\index{Walk@{Walk}!getCost@{getCost}}
+\index{getCost@{getCost}!Walk@{Walk}}
+\doxysubsubsection{\texorpdfstring{getCost()}{getCost()}}
+{\footnotesize\ttfamily double Walk\+::get\+Cost (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the cost per kilometer of walking. 
+
+\begin{DoxyReturn}{Returns}
+double The cost (0.\+0). 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classModeOfTrans_aa7e3cafc707dac257e149c4703727bde}{Mode\+Of\+Trans}}.
+
+\mbox{\Hypertarget{classWalk_a1a756c80069ee0f8746f1041adb3ad64}\label{classWalk_a1a756c80069ee0f8746f1041adb3ad64}} 
+\index{Walk@{Walk}!getName@{getName}}
+\index{getName@{getName}!Walk@{Walk}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Walk\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the name of the transport mode. 
+
+\begin{DoxyReturn}{Returns}
+std\+::string The name \char`\"{}\+Walk\char`\"{}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classModeOfTrans_a222791a95005cd92532f0231a12882c8}{Mode\+Of\+Trans}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Walk_8h}{Walk.\+h}}\item 
+\mbox{\hyperlink{Walk_8cpp}{Walk.\+cpp}}\end{DoxyCompactItemize}

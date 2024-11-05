@@ -5,21 +5,22 @@
 #include <vector>
 #include <string>
 #include "Citizen.h"
-class visitHousing;
-class Budget;
 
+class Budget;
 class CommercialBuilding;
 class ResidentialBuilding;
 
 /**
  * @class TaxManager
- * @brief Manages taxation policies and visits buildings and resources in the city.
- * 
- * The TaxManager is responsible for managing the taxation system in the city.
- * It collects taxes from citizens and businesses and distributes the city's budget to different departments.
- * The TaxManager also applies tax policies and interacts with buildings and resources using the Visitor pattern.
+ * @brief Manages the taxation system and financial distribution within the city.
+ *
+ * The TaxManager is responsible for overseeing the city's taxation policies,
+ * collecting taxes from citizens and businesses, and allocating the city's budget
+ * to various departments. It employs the Visitor design pattern to interact
+ * with different building types and resources efficiently.
  */
-class TaxManager {
+class TaxManager
+{
 private:
     std::map<std::string, float> taxRates;
     double collectedTaxes;
@@ -31,6 +32,9 @@ private:
     float governmentBudget;
 
 public:
+    /**
+     * @brief Default constructor for TaxManager.
+     */
     TaxManager();
     // virtual ~TaxManager() = default;
 

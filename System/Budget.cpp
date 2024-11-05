@@ -8,14 +8,20 @@ Budget::~Budget() {}
 
 void Budget::reportStatus() const
 {
+void Budget::reportStatus() const
+{
     std::cout << "Current budget: " << totalBudget << std::endl;
 }
 
 float Budget::getTotalBudget() const
 {
+float Budget::getTotalBudget() const
+{
     return totalBudget;
 }
 
+void Budget::setTotalBudget(float budget)
+{
 void Budget::setTotalBudget(float budget)
 {
     totalBudget = budget;

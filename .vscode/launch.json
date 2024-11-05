@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/akt/COS214/Big-Mahn-Tech-And-Sons/System",
-      "program": "/home/akt/COS214/Big-Mahn-Tech-And-Sons/System/build/Debug/outDebug",
+      "cwd": "/home/akt/COS214/COS214Prac6/Big-Mahn-Tech-And-Sons/System",
+      "program": "/home/akt/COS214/COS214Prac6/Big-Mahn-Tech-And-Sons/System/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

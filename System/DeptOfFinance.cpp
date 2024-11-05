@@ -5,9 +5,10 @@
 #include "DeptOfPR.h"
 #include "Resource.h"
 
-DeptOfFinance::DeptOfFinance(TaxManager* taxManager) : taxManager(taxManager) {}
+DeptOfFinance::DeptOfFinance(TaxManager *taxManager) : taxManager(taxManager) {}
 
-void DeptOfFinance::collectTaxes(Building* building) {
+void DeptOfFinance::collectTaxes(Building *building)
+{
     std::string buildingType = building->getType();
     if (buildingType == "Estate" || buildingType == "Apartment" || buildingType == "House") {
         std::cout << "Collecting taxes from residential building: " << buildingType << std::endl;
@@ -38,7 +39,8 @@ void DeptOfFinance::addElement(Element *element)
 
 void DeptOfFinance::applyTaxes(TaxManager *visitor)
 {
-    for (auto &element : elements) {
+    for (auto &element : elements)
+    {
         element->accept(visitor);
     }
 }
@@ -80,6 +82,12 @@ bool DeptOfFinance::checkMoney()
 
 void DeptOfFinance::collectTaxes()
 {
+}
+
+void DeptOfFinance::display() {
+    cout << "Department of Finance statistics\n";
+    cout << "--------------------------------\n";
+    cout << "Finance budget" << this->taxManager->getGovernmentBudget() << std::endl;
 }
 
 void DeptOfFinance::setPR(DeptOfPR *PR)

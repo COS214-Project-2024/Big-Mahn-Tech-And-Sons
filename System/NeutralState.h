@@ -6,11 +6,11 @@
 
 using namespace std;
 
-
-class NeutralState: public SatisfactionState {
-   public:
-     // 45 <= satisfaction < 65
-      void handle(Citizen* citizen) override;
-      string getStateName() const override;
+class NeutralState : public SatisfactionState
+{
+public:
+  // 45 <= satisfaction < 65
+  void handle(Citizen *citizen) override;
+  string getStateName() const override;
 };
 #endif

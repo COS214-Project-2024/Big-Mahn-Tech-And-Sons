@@ -1,8 +1,8 @@
 /**
  * @file GoHos.h
  * @brief Header file for the GoHos class, which simulates a citizen going to a hospital in a road network.
- * 
- * This file contains the declaration of the GoHos class, which inherits from the GoToCommand class. 
+ *
+ * This file contains the declaration of the GoHos class, which inherits from the GoToCommand class.
  * It is responsible for handling the process of a citizen navigating the road network to reach a hospital destination.
  */
 
@@ -18,16 +18,17 @@ using namespace std;
 /**
  * @class GoHos
  * @brief A class representing the action of a citizen going to a hospital within the road network.
- * 
- * This class is derived from GoToCommand and simulates the process of a citizen 
+ *
+ * This class is derived from GoToCommand and simulates the process of a citizen
  * navigating the road network to reach their hospital destination.
  */
 class GoHos : public GoToCommand
 {
-// private:
-//     Citizen* citizen;           /**< Pointer to the citizen who is going to the hospital */
+    // private:
+    //     Citizen* citizen;           /**< Pointer to the citizen who is going to the hospital */
 
 public:
+    GoHos(Citizen *citizen, DeptOfHousing *deptH);
     // /**
     //  * @brief Constructor for the GoHos class.
     //  * 
@@ -41,5 +42,4 @@ public:
 
     bool execute() override;
 };
-
 #endif

@@ -14,13 +14,14 @@ class PowerSupply;
  * @class LoadsheddingCommand
  * @brief Represents a load-shedding event command that can be executed on specified buildings.
  */
-class LoadsheddingCommand {
+class LoadsheddingCommand
+{
 public:
     /**
      * @brief Constructs a LoadsheddingCommand with the utilities department.
      * @param utilitiesDept Pointer to the DeptOfUtilities handling power resources.
      */
-    LoadsheddingCommand(PowerSupply* powerSupply);
+    LoadsheddingCommand(PowerSupply *powerSupply);
 
     /**
      * @brief Schedules load-shedding to occur after a specified delay.
@@ -34,8 +35,8 @@ public:
     void execute();
 
 private:
-    PowerSupply* powerSupply;      ///< Manages energy allocation and power resources.
-    std::time_t scheduleTime;                ///< Time the load-shedding is scheduled to start.
+    PowerSupply *powerSupply; ///< Manages energy allocation and power resources.
+    std::time_t scheduleTime; ///< Time the load-shedding is scheduled to start.
 };
 
 #endif // LOADSHEDDINGCOMMAND_H

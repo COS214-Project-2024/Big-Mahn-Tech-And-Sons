@@ -12,6 +12,7 @@
 #include <iostream>
 #include "GoToCommand.h"
 #include "Citizen.h"
+
 using namespace std;
 
 /**
@@ -25,18 +26,20 @@ class GoSchool : public GoToCommand
 {
 public:
     /**
-     * @brief Constructor for the GoSchool class.
-     * 
-     * Initializes a GoSchool command for the specified citizen within the given road network.
-     * 
-     * @param citizen A pointer to the Citizen object representing the person going to school.
-     * @param roadNetwork A pointer to the RoadNetwork object that the citizen will use to reach the destination.
+     * @brief Executes the command for the citizen to go to school.
+     *
+     * This method simulates the action of the citizen navigating the road network
+     * to reach the school destination.
+     *
+     * @return True if the navigation to the school is successful; false otherwise.
      */
     // GoSchool(Citizen* citizen);
+
+    GoSchool(Citizen *citizen, DeptOfHousing *housing);
 
 
 
     bool execute() override;
 };
 
-#endif
+#endif // GOSCHOOL_H

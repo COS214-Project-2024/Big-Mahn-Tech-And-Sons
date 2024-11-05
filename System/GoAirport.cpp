@@ -1,26 +1,32 @@
 #include "GoAirport.h"
 
+GoAirport::GoAirport(Citizen *citizen, DeptOfHousing *housing): GoToCommand(citizen, housing)
+{
+    this->citizen = citizen;
+    this->DOH = housing;
+}
+
 bool GoAirport::execute()
 {
-    
-    cout << "Citizen " << citizen->getName() << "is going to the Airport \n";
-    IndustrialBuilding* Airport = NULL;
 
-    vector<Building*> buildings = DOH->getBuildings();
+    cout << "Citizen " << citizen->getName() << "is going to the Airport \n";
+    IndustrialBuilding *Airport = NULL;
+
+    vector<Building *> buildings = DOH->getBuildings();
 
     for (auto building : buildings)
     {
-            IndustrialBuilding* idsBuild_Airport = dynamic_cast<IndustrialBuilding*>(building);
-            if (idsBuild_Airport  && idsBuild_Airport->getType() == "Airport" )
-            {
-                Airport = idsBuild_Airport;
-                break;
-            }
+        IndustrialBuilding *idsBuild_Airport = dynamic_cast<IndustrialBuilding *>(building);
+        if (idsBuild_Airport && idsBuild_Airport->getType() == "Airport")
+        {
+            Airport = idsBuild_Airport;
+            break;
+        }
     }
 
-    if(Airport)
+    if (Airport)
     {
-        citizen->travelTo(Airport);    
+        citizen->travelTo(Airport);
         return true;
     }
     else

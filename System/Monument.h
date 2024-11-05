@@ -10,30 +10,31 @@
 /**
  * @brief The Monument class, a specific type of LandmarkBuilding.
  */
-class Monument : public LandmarkBuilding {
+class Monument : public LandmarkBuilding
+{
 
-    public:
-        /**
-         * @brief Constructor for Monument.
-         */
-        Monument();
+public:
+    /**
+     * @brief Constructor for Monument.
+     */
+    Monument();
 
-        /**
-         * @brief Displays the stats specific to the monument.
-         */
-        void displayStats() const override;
+    /**
+     * @brief Displays the stats specific to the monument.
+     */
+    void displayStats() const override;
 
-        /**
-         * @brief Accepts visitors using the visitor pattern.
-         * @param visitor A pointer to the visitor object.
-         */
-        void accept(TaxManager* visitor) override;
+    /**
+     * @brief Accepts visitors using the visitor pattern.
+     * @param visitor A pointer to the visitor object.
+     */
+    void accept(TaxManager *visitor) override;
 
-        /**
-         * @brief Clones the monument object for repair purposes.
-         * @return A pointer to the cloned Monument object.
-         */
-        Building* repairClone() const override;
+    /**
+     * @brief Clones the monument object for repair purposes.
+     * @return A pointer to the cloned Monument object.
+     */
+    Building *repairClone() const override;
 };
 
 #endif // MONUMENT_H

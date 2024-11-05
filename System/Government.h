@@ -9,12 +9,17 @@
 #include <string>
 #include <vector>
 #include "Citizen.h"
-#include "EventsCommand.h"
+#include "Settings.h"
 
 class DeptOfFinance;
 class DeptOfHousing;
 class DeptOfPR;
+class PandemicCommnad;
+class FestivalCommand;
+class NaturalDisasterCommand;
+
 #include <iostream>
+#include "PandemicCommand.h"
 
 
 using namespace std;
@@ -56,6 +61,7 @@ public:
     // WasteManagement* wasteS;
     DeptOfFinance* finance;
     DeptOfHousing* housing;
+    int year;
     
     string commercialTypes[4] = {"Shop", "Office", "School", "Hospital"};
     string residentialTypes[3] = {"House", "Apartment", "Estate"};
@@ -64,14 +70,11 @@ public:
 
     DeptOfTransportation* transport;
 
-    EventsCommand* pandemic;
-    EventsCommand* economicDownturn;
-    EventsCommand* naturalDisaster;
-    EventsCommand* loadsheding;
-    EventsCommand* festive;
-    EventsCommand* babyBoom;
-    EventsCommand* increaseEconomy;
+    PandemicCommand* pandemic;
 
+FestivalCommand* festive;
+
+NaturalDisasterCommand* disaster;
     // Simulation status
     bool simulationIsActive;
 
@@ -87,11 +90,17 @@ public:
     void displayCity();
     void addRoad();
     void addBuilding();
-    void manageResources();
-    void evaluatePolicies();
-    void triggerRandomEvents();
+    void events();
 
+    string cityname;
+    //menus
+    int main_menu(Settings settings); //OK
+    int pov_menu(Settings settings);
+        int citizen_pov_menu(Settings settings);
 
+        int government_pov_menu(Settings settings);
+            int city_grid_menu(Settings settings);
+            int government_stats_menu(Settings settings);
 };
 
 #endif

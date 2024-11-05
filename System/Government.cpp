@@ -17,148 +17,541 @@
 #include "NaturalDisasterCommand.h"
 #include "RecessionCommand.h"
 #include "FestivalCommand.h"
-#include "BabyBoom.h"
+#include "BabyBooming.h"
+#include "Settings.h"
+
+#include "GoAirport.h"
+#include "GoHome.h"
+#include "GoTrain.h"
+#include "GoHos.h"
+#include "GoSchool.h"
+#include "GoToCommand.h"
+#include "GoToEnt.h"
 
 #include <cstdlib>
 #include <ctime>
 #include <limits>
 #include <random>
+#include "GoToWork.h"
 
 Government::Government()
 {
    simulationIsActive = true;
    transport = DeptOfTransportation::getInstance();
-   housing = new DeptOfHousing(2000000);
+   housing = new DeptOfHousing(200000000);
    Water *water = new Water( 10000);
    Power *power = new Power( 100000);
    DeptOfUtilities*  waterSup = new WaterSupply(5000.02, 100000, water);
-   DeptOfUtilities* powerSup = new PowerSupply(1539, 1335984, power);
+   DeptOfUtilities* powerSup = new PowerSupply(1539, 13359, power);
   DeptOfUtilities* wasteSup = new WasteManagement( 1432, 3544.02);
 
-   waterSup->setSuccessor(powerSup);
-   powerSup->setSuccessor(wasteSup);
+    waterSup->setSuccessor(powerSup);
+    powerSup->setSuccessor(wasteSup);
 
    TaxManager *taxMan = new TaxManager();
    finance = new DeptOfFinance(taxMan);
    PR = new DeptOfPR(housing, waterSup, finance);
+    pandemic = new PandemicCommand(this->PR->getCitizens());
+   // RecessionCommand* recession = new RecessionCommand(this->finance)
+   //festive = new FestivalCommand(waterSup,this->PR->getCitizen(0),this->PR);
+   // BabyBoomingEvent* baby = new BabyBoomingEvent(housing->getBuildings().at(0), this->PR->getCitizens());
+    disaster = new NaturalDisasterCommand(this->housing, this->transport);
+    //LoadsheddingCommand* loadshed = new LoadsheddingCommand(powerSup);
 
+    year=2024;
 
-   // Seed the random number generator
-   srand(time(0));
+    // Seed the random number generator
+    srand(time(0));
 
-   // set width and height of building
-   int w  = 2;
-   int h = 2;
+    // set width and height of building
+    int w = 2;
+    int h = 2;
 
    housing->createCommercialBuilding(commercialTypes[rand() % 4]);
    housing->createResidentialBuilding(residentialTypes[rand() % 3]);
    housing->createLandmarkBuilding(landmarkTypes[rand() % 3]);
    housing->createIndustrialBuilding(industrialTypes[rand() % 4]);
+
+
+housing->createLandmarkBuilding("Park");
    // initialize starting citizens
 
-   transport->add_Road(0,0,10,"right","R1");
-   transport->add_Road(4,0,10,"right","R2");
-   transport->add_Road(9,0,10,"right","R3");
-   transport->add_Road(0,19,10,"down","R4");
-   transport->add_Road(19,0,20,"right","R5");
+    transport->add_Road(0, 0, 10, "right", "R1");
+    transport->add_Road(4, 0, 10, "right", "R2");
+    transport->add_Road(9, 0, 10, "right", "R3");
+    transport->add_Road(0, 19, 10, "down", "R4");
+    transport->add_Road(19, 0, 20, "right", "R5");
 
-   transport->printCityGrid();
+ //  transport->printCityGrid();
    for (int i = 0; i < 5; i++)
    {
       string name = "ID: " + to_string(i) + " ";
       Citizen *c1 = new Citizen(name, PR);
 
-      housing->getBuildings().at(i % 4)->addTenant(PR->getCitizen(i));
+      transport->add_Building(w,h,housing->getBuildings().at(i % 3));
+
+      housing->getBuildings().at(i % 3)->addTenant(PR->getCitizen(i));
       // transport->add_Building()
 
          // ADD BUILDINGS TO CITY GRID
-      transport->add_Building(w,h,housing->getBuildings().at(i % 4));
       //std::cout << "added building" <<housing->getBuildings().at(i % 4)->getType() << endl;
 
    }
   
-   auto gridCoordinates =   transport->add_Building(w,h,housing->getBuildings().at(1));
+//    auto gridCoordinates =   transport->add_Building(w,h,housing->getBuildings().at(1));
  //transport->printCityGrid();
-   std::cout << "Removing " << housing->getBuildings().at(2 % 4)->getType() << endl;
-   transport->remove_Building(gridCoordinates);
+//    std::cout << "Removing " << housing->getBuildings().at(2 % 4)->getType() << endl;
+//    transport->remove_Building(gridCoordinates);
    //   transport->printCityGrid();
 
-  // Request req("water", housing->getBuildings().at(1 % 4), 100);
+    // Request req("water", housing->getBuildings().at(1 % 4), 100);
 
+    /*
+       pandemic = new PandemicCommand(citizens);
+       economicDownturn = new RecessionCommand(finance, citizens.at(1), housing.);
+       naturalDisaster = new NaturalDisasterCommand()
+       loadsheding = new LoadsheddingCommand();
+       festive = new FestivalCommand();
+       babyBoom = new BabyBoom();
+       increaseEconomy = new IncreaseEconomy();
 
-   /*
-      pandemic = new PandemicCommand(citizens);
-      economicDownturn = new RecessionCommand(finance, citizens.at(1), housing.);
-      naturalDisaster = new NaturalDisasterCommand()
-      loadsheding = new LoadsheddingCommand();
-      festive = new FestivalCommand();
-      babyBoom = new BabyBoom();
-      increaseEconomy = new IncreaseEconomy();
-
-   */
-
+    */
 }
 
 void Government::addNewCitizens()
 {
-   
-   int newCitizensCount = rand() % 5 + 1; // Random number of new citizens per year
-   for (int i = 0; i < newCitizensCount; i++)
-   {
-      std::string name = "NewCitizen_" + std::to_string(this->PR->numCitizens());
 
-      Citizen *newCitizen = new Citizen(name, PR);
+    int newCitizensCount = rand() % 5 + 1; // Random number of new citizens per year
+    for (int i = 0; i < newCitizensCount; i++)
+    {
+        std::string name = "NewCitizen_" + std::to_string(this->PR->numCitizens());
 
-      // Assign the new citizen to an available building
-      if (!housing->getBuildings().empty())
-      {
-         housing->getBuildings().at(rand() % housing->getBuildings().size())->addTenant(newCitizen);
-      }
-   }
-   
-}
+        Citizen *newCitizen = new Citizen(name, PR);
 
-void Government::runSim()
-{
- int year = 2024;
-    bool simulationRunning = true;
-
-    while (simulationRunning) {
-        std::cout << "\n--- Year " << year << " ---\n";
-        std::cout << "Select an option:\n1. Add Building\n2. Add Road\n3. Run Simulation for this Year\n4. View City\n5. Exit\nChoice: ";
-        
-        int choice;
-        cin >> choice;
-
-        switch (choice) {
-            case 1:
-                addBuilding();
-                break;
-            case 2:
-                addRoad();
-                break;
-            case 3:
-                // Execute yearly simulation actions
-                simulateYear();
-                year++; // Increment year after the simulation completes
-                break;
-            case 4:
-                std::cout << "Displaying city...\n";
-                displayCity();
-                break;
-            case 5:
-               std::cout << "Exiting simulation...\n";
-                simulationRunning = false;
-                break;
-            default:
-                std::cout << "Invalid choice. Please try again.\n";
+        // Assign the new citizen to an available building
+        if (!housing->getBuildings().empty())
+        {
+            housing->getBuildings().at(rand() % housing->getBuildings().size())->addTenant(newCitizen);
         }
     }
 }
 
-void Government::simulateYear() {
+void Government::runSim() // main_menu
+{
+    Settings settings;
+    settings.clear_terminal();
+    int option;
+    cityname = settings.get_string(2,20,"Enter a city Name:");
+    while(option!=2)
+    {
+        option = main_menu(settings);
+        
+    }
+
+    cout<<"\n\nEnd of "<<cityname<<" simulation\n\n";
+}
+
+int Government::main_menu(Settings settings)
+{
+    settings.clear_terminal();
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
+    int option;
+    cout<<"1) START CITY BUILDER SIMULATION\n"
+        <<"2) EXIT SIMULATION\n";
+    option = settings.get_int(1,2,"select option: ");
+    switch (option)
+    {
+    case 1:
+        do
+        {
+            option = pov_menu(settings);
+            // 3 options in pov menu
+        }
+        while(option!=3);
+        option=-1;
+        break;
+
+    case 2:
+        option = 2;
+        break;
+    }
+    return option;
+}
+
+int Government::pov_menu(Settings settings)
+{
+    settings.clear_terminal();
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
+    int option;
+    cout<<"1) VIEW CITIZEN POV\n"
+        <<"2) VIEW GOVERNMENT POV\n"
+        <<"3) EXIT\n";
+    option = settings.get_int(1,3,"select option: ");
+    switch (option)
+    {
+    case 1:
+        do
+        {
+            option = citizen_pov_menu(settings);
+        }
+        while(option!=8);
+        option=-1;
+        break;
+
+    case 2:
+        do
+        {
+            option = government_pov_menu(settings); 
+        }
+        while(option!=6);
+        option=-1;
+        break;
+
+    case 3:
+        option = 3;
+        break;
+    }
+    return option;
+}
+
+int Government::city_grid_menu(Settings settings)
+{
+    settings.clear_terminal();
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
+    int option,x,y,z;
+    string buildingType,a,b;
+    string buildingname;
+    Building* building;
+
+    cout<<BOLD<<BRIGHT_GREEN<<"1) ADD "<<RESET<<"ROAD"<<endl
+        <<BOLD<<BRIGHT_GREEN<<"2) ADD "<<RESET<<"BUILDING"<<endl<<endl
+        <<BOLD<<BRIGHT_RED<<"3) REMOVE "<<RESET<<"ROAD - "<<ITALICS<<" by street name"<<RESET<<endl
+        <<BOLD<<BRIGHT_RED<<"4) REMOVE "<<RESET<<"ROAD - "<<ITALICS<<" by co-ordinate"<<RESET<<endl
+        <<BOLD<<BRIGHT_RED<<"5) REMOVE "<<RESET<<"BUILDING"<<endl<<endl
+        <<"6) PRINT CITYGRID - "<<ITALICS<<" buildings and roads"<<RESET<<endl
+        <<"7) PRINT ROAD NETWORK - "<<ITALICS<<" roads only"<<RESET<<endl
+        <<"8) PRINT CITY STREETS - "<<ITALICS<<" streets only"<<RESET<<endl
+        <<"9) EXIT\n";
+
+    option = settings.get_int(1,9,"select option: ");
+    
+    switch (option)
+    {
+    case 1:
+        transport->printRoadNetwork();
+        x = settings.get_int(0,1000,"Enter row co-ordinate: ");
+        y = settings.get_int(0,1000,"Enter column co-ordinate: ");
+        z = settings.get_int(0,1000,"Enter Road Length: ");
+        a = settings.get_string(2,5,"Enter direction the road should go [up,down,left,right]: ");
+        b = settings.get_string(1,2,"Enter street name: ");
+
+        transport->add_Road(x,y,z,a,b);
+
+        transport->printCityGrid();
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 2:
+        buildingType = settings.get_string(8,13,"Enter building type [Commercial, Residential, Industrial, Landmark]");
+        if(buildingType=="Commercial")
+        {housing->createCommercialBuilding(commercialTypes[rand()%4]);}
+        else if(buildingType=="Residential")
+        {housing->createResidentialBuilding(residentialTypes[rand()%3]);}
+        else if(buildingType=="Industrial")
+        {housing->createIndustrialBuilding(industrialTypes[rand()%4]);}
+        else if(buildingType=="Landmark")
+        {housing->createLandmarkBuilding(landmarkTypes[rand()%3]);}
+        else
+        {cout<<"Invalid building type\n"; option=-1; break;}
+
+        building = housing->getBuildings().back();
+        x = settings.get_int(1,30,"Enter building length: ");
+        y = settings.get_int(1,30,"Enter building width: ");
+        transport->add_Building(x,y,building);
+        transport->printCityGrid();
+        settings.enter_to_continue();
+
+        option=-1;
+        break;
+
+    case 3:
+        a = settings.get_string(0,2,"Enter street name: ");
+        transport->remove_Road(a);
+
+        transport->printCityGrid();
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 4:
+        x = settings.get_int(-1000,1000,"Enter row co-ordinate: ");
+        y = settings.get_int(0,1000,"Enter column co-ordinate: ");
+        z = settings.get_int(0,30,"Enter road legnth: ");
+        a = settings.get_string(2,5,"Enter the roads direction [up,down,left,right]");
+        transport->remove_Road(x,y,z,a);
+
+        transport->printRoadNetwork();
+        settings.enter_to_continue();
+
+        option=-1;
+        break;
+
+    case 5:
+        this->housing->listBuildings();
+        buildingname = settings.get_string(0,30,"Choose building to delete from building list\n");        
+        this->housing->removeBuildingByName(buildingname);
+        building = this->housing->getBuildingByName(buildingname);
+        this->transport->remove_Building(building->getGridCoordinates());
+
+        transport->printCityGrid();
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 6:
+        transport->printCityGrid();
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 7:
+        transport->printRoadNetwork();
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 8:
+        transport->printCityStreets();
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 9:
+        option = 9;
+        break;
+    }
+    
+    return option;
+}
+
+int Government::government_pov_menu(Settings settings)
+{
+    settings.clear_terminal();
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
+    int option;
+    cout<<"1) VIEW CITY GRID\n"
+        <<"2) VIEW DEPARTMENT STATISTICS\n"
+        <<"3) SIMULATE YEAR\n"
+        <<"4) CREATE A PANDEMIC\n"
+        <<"5) INVOKE NATURAL DISASTER\n"
+        <<"6) EXIT\n";
+    option = settings.get_int(1,6,"select option: ");
+    switch (option)
+    {
+    case 1:
+        do
+        {
+            option = city_grid_menu(settings);
+        }
+        while(option!=9);
+        option=-1;
+        break;
+
+    case 2:
+        do
+        {
+            option = government_stats_menu(settings);
+        }
+        while(option!=4);
+        option=-1;
+        break;
+
+    case 3:
+        
+        simulateYear();
+
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 4:
+
+        pandemic->execute();
+
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 5:
+        disaster->execute();
+
+        settings.enter_to_continue();
+        option=-1;
+        break;
+    case 6:
+        option = 6;
+        break;
+    }
+    return option;
+}
+
+int Government::government_stats_menu(Settings settings)
+{
+    settings.clear_terminal();
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
+    int option;
+    cout<<"1) DISPLAY DEPARTMENT OF FINANCE STATS\n"
+        <<"2) DISPLAY DEPARTMENT OF HOUSING STATS\n"
+        <<"3) DISPLAY DEPARTMENT OF PR STATS\n"
+        <<"4) EXIT\n";
+    option = settings.get_int(1,4,"select option: ");
+    switch (option)
+    {
+    case 1:
+        this->finance->display();
+
+        settings.enter_to_continue();
+
+        option=-1;
+        break;
+
+    case 2:
+        this->housing->displayAllBuildings();
+        
+        settings.enter_to_continue();
+
+
+        option=-1;
+        break;
+
+    case 3:
+        
+        this->PR->displayStats();
+        
+        settings.enter_to_continue();
+
+        option=-1;
+        break;
+
+    case 4:
+        option = 4;
+        break;
+    }
+    return option;
+}
+
+int Government::citizen_pov_menu(Settings settings)
+{
+    settings.clear_terminal();
+    cout<<endl<<"City: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<cityname<<RESET
+        <<endl<<"Year: "<<UNDERLINE<<BRIGHT_YELLOW<<BOLD<<year<<RESET<<endl<<endl;
+    int option;
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    std::uniform_int_distribution<> commandDist(0, this->PR->numCitizens()-1); // 0-4 for different commands, including "stay home"
+    int i = commandDist(gen);
+    string name= this->PR->getCitizen(i)->getName();
+    Citizen* c =  this->PR->getCitizen(i);
+    GoAirport* airport = new GoAirport(c,this->housing);
+    GoHome* home = new GoHome(c, this->housing);
+    GoToWork* work = new GoToWork(c, this->housing);
+    GoSchool* school = new GoSchool(c, this->housing);
+    GoToEnt* fun = new GoToEnt(c, this->housing);
+    GoTrain* goTrain = new GoTrain(c, this->housing);
+
+
+    cout<<ITALICS<<" This is a random citizen (you can interact with) :\n"<<RESET<<name<<RESET
+        <<"\n1) GO TO TRAINSTATION\n"
+        <<"2) GO TO WORK\n"
+        <<"3) GO HAVE FUN\n"
+        <<"4) GO TO AIRPORT\n"
+        <<"5) GO TO HOME\n"
+        <<"6) GO TO SCHOOL\n"
+        <<"7) VIEW CITIZEN STATS\n"
+        <<"8) EXIT SIMULATION\n";
+    option = settings.get_int(1,8,"select option: ");
+    switch (option)
+    {
+    case 1:
+        goTrain->execute();
+
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 2:
+        
+        work->execute();
+
+        settings.enter_to_continue();
+        option=-1;
+        break;
+
+    case 3:
+        
+        fun->execute();
+        settings.enter_to_continue();
+        
+        option=-1;
+        break;
+
+    case 4:
+        
+        airport->execute();
+        settings.enter_to_continue();
+        
+        option=-1;
+        break;
+
+    case 5:
+        
+        home->execute();
+        settings.enter_to_continue();
+        
+        option=-1;
+        break;
+
+    case 6:
+        
+        school->execute();
+        settings.enter_to_continue();
+        
+        option=-1;
+        break;
+
+    case 7:
+        c->display();
+
+        settings.enter_to_continue();
+
+        option=-1;
+        break;
+
+    case 8:
+        option = 8;
+        break;
+    }
+    return option;
+}
+
+
+
+
+
+
+
+void Government::simulateYear()
+{
     // Trigger a random event from the available commands
     int eventIndex = rand() % 7; // Adjust based on the number of commands
+
+    cout<<"Current year: "<<year<<endl;
     /*
     switch (eventIndex) {
         case 0: pandemic->execute(); break;
@@ -171,24 +564,25 @@ void Government::simulateYear() {
     }
 */
     // Age all citizens by one year
-    for (int i = 0; i < PR->numCitizens(); i++) {
+    for (int i = 0; i < PR->numCitizens(); i++)
+    {
         PR->getCitizen(i)->getOlder();
         PR->getCitizen(i)->Spend(1200);
-        
     }
 
     // Add new citizens at the end of each year
     addNewCitizens();
-
+    year+=1;
+    Settings settings;
+    settings.sleep(2);
     std::cout << "Yearly simulation complete.\n";
-
-
 }
 void Government::handleCitizenNeeds()
 {
 }
 
-void Government::simulateDailyOperations() {
+void Government::simulateDailyOperations()
+{
     // Seed for randomness
     /*
     static std::random_device rd;
@@ -207,53 +601,58 @@ void Government::simulateDailyOperations() {
     };
 */
 
-/*
-    // Iterate through each citizen with varied activities
-    for (int i = 0; i < PR->numCitizens();i++) {
-        int commandIndex = commandDist(gen); // Randomly select a command
-        int delay = delayDist(gen);          // Random delay
-        Citizen* citizen = PR->getCitizen(i);
+    /*
+        // Iterate through each citizen with varied activities
+        for (int i = 0; i < PR->numCitizens();i++) {
+            int commandIndex = commandDist(gen); // Randomly select a command
+            int delay = delayDist(gen);          // Random delay
+            Citizen* citizen = PR->getCitizen(i);
 
-        if (commands[commandIndex] != nullptr) {
-            // Assign the selected command and execute it after a delay
-            commands[commandIndex](citizen);
-            // Simulate delay before execution
-            std::this_thread::sleep_for(std::chrono::hours(delay));
-            citizen->go()->execute(citizen);
-            
-            // Cleanup if commands are dynamically allocated
-           // delete citizen->getGoTo();
-        } else {
-            // Citizen stays home; no command assigned
-            std::cout << citizen->getName() << " is staying home today.\n";
+            if (commands[commandIndex] != nullptr) {
+                // Assign the selected command and execute it after a delay
+                commands[commandIndex](citizen);
+                // Simulate delay before execution
+                std::this_thread::sleep_for(std::chrono::hours(delay));
+                citizen->go()->execute(citizen);
+
+                // Cleanup if commands are dynamically allocated
+               // delete citizen->getGoTo();
+            } else {
+                // Citizen stays home; no command assigned
+                std::cout << citizen->getName() << " is staying home today.\n";
+            }
         }
-    }
-    */
+        */
 }
 
 void Government::stopSim()
 {
-   simulationIsActive = false;
-}  
+    simulationIsActive = false;
+}
 
-
-int get_int() {
+int get_int()
+{
     int value;
-    while (true) {
+    while (true)
+    {
         cout << "Enter an option: ";
         cin >> value;
-        if (cin.fail()) {
+        if (cin.fail())
+        {
             cin.clear();
             cin.ignore(1000, '\n');
             cout << "Invalid input. Please enter an integer: ";
-        } else {
+        }
+        else
+        {
             cin.ignore(1000, '\n');
             return value;
         }
     }
 }
 
-void clearTerminal() {
+void clearTerminal()
+{
 #ifdef _WIN32
     system("cls");
 #else
@@ -261,13 +660,15 @@ void clearTerminal() {
 #endif
 }
 
-int DeptOfTransportation_menu(DeptOfTransportation* dept) {
+int DeptOfTransportation_menu(DeptOfTransportation *dept)
+{
     int option = 0;
     bool status;
     int a, b, c;
     std::string x, y;
-    
-    while (option != 5) {
+
+    while (option != 5)
+    {
         clearTerminal();
         cout << ".............. DEPARTMENT OF TRANSPORTATION ..............\n\n";
         cout << "1 - ADD ROAD\n";
@@ -275,121 +676,78 @@ int DeptOfTransportation_menu(DeptOfTransportation* dept) {
         cout << "3 - REMOVE ROAD\n";
         cout << "4 - REMOVE BUILDING\n";
         cout << "5 - RETURN TO MAIN MENU\n\n";
-        
+
         option = get_int();
-        switch (option) {
-            case 1:
-                dept->printCityGrid();
-                cout << "start row: ";
-                cin >> a;
-                cout << "start column: ";
-                std::cin >> b;
-                cout << "road length: ";
-                cin >> c;
-                cout << "road direction: ";
-                cin >> x;
-                cout << "road name: ";
-                cin >> y;
-                status = dept->add_Road(a, b, c, x, y);
-                clearTerminal();
-                dept->printCityGrid();
-                cout << (status ? "Road added!\n" : "Road not added!\n");
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Press any key to continue";
-                cin.get();
-                break;
-            case 2:
-                cout << "Adding building feature...\n";
-                break;
-            case 3:
-                cout << "Removing road feature...\n";
-                break;
-            case 4:
-                cout << "Removing building feature...\n";
-                break;
-            case 5:
-                cout << "Returning to main menu...\n";
-                break;
-            default:
-                cout << "Invalid option. Choose between 1 and 5.\n";
-                break;
+        switch (option)
+        {
+        case 1:
+            dept->printCityGrid();
+            cout << "start row: ";
+            cin >> a;
+            cout << "start column: ";
+            std::cin >> b;
+            cout << "road length: ";
+            cin >> c;
+            cout << "road direction: ";
+            cin >> x;
+            cout << "road name: ";
+            cin >> y;
+            status = dept->add_Road(a, b, c, x, y);
+            clearTerminal();
+            dept->printCityGrid();
+            cout << (status ? "Road added!\n" : "Road not added!\n");
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Press any key to continue";
+            cin.get();
+            break;
+        case 2:
+            cout << "Adding building feature...\n";
+            break;
+        case 3:
+            cout << "Removing road feature...\n";
+            break;
+        case 4:
+            cout << "Removing building feature...\n";
+            break;
+        case 5:
+            cout << "Returning to main menu...\n";
+            break;
+        default:
+            cout << "Invalid option. Choose between 1 and 5.\n";
+            break;
         }
     }
     return 0;
 }
 
-/*
-void deptTransportation() {
-    int w = 1, x, y, z;
-    string a, b;
-    
-    while (w != 7) {
-        clearTerminal();
-        cout << ".............. CITY GRID MENU ..............\n\n";
-        cout << "1) ADD ROAD\n";
-        cout << "2) REMOVE ROAD (streetName only)\n";
-        cout << "3) REMOVE ROAD (standard way)\n";
-        cout << "4) PRINT ROAD NETWORK\n";
-        cout << "5) PRINT STREETS\n";
-        cout << "6) ADD BUILDING\n";
-        cout << "7) EXIT TO MAIN MENU\n\n";
-        
-        w = get_int();
-        
-        switch (w) {
-            case 1:
-                cout << "\nstart_row: "; cin >> x;
-                cout << "start_column: "; cin >> y;
-                cout << "road_length: "; cin >> z;
-                cout << "road_direction: "; cin >> a;
-                cout << "street_name: "; cin >> b;
-                grid.addRoad(x, y, z, a, b);
-                clearTerminal();
-                grid.printCityGrid();
-                break;
-            case 2:
-                cout << "Remove road by street name\n";
-                break;
-            case 3:
-                cout << "Remove road (standard way)\n";
-                break;
-            case 4:
-                grid.printCityRoadNetwork();
-                break;
-            case 5:
-                grid.printCityStreets();
-                break;
-            case 6:
-                cout << "Adding building to grid\n";
-                break;
-            case 7:
-                cout << "Returning to main menu...\n";
-                break;
-            default:
-                cout << "Invalid option. Choose between 1 and 7.\n";
-                break;
-        }
-    }
-}
-*/
 
-void Government::addBuilding() {
+void Government::addBuilding()
+{
     string buildingType;
     int x, y;
-    
+
     cout << "Enter building type (Commercial, Residential, Industrial, Landmark): ";
     cin >> buildingType;
 
     // Determine the type of building to create and add it to housing
-    if (buildingType == "Commercial") {
+    if (buildingType == "Commercial")
+    {
         housing->createCommercialBuilding(commercialTypes[rand() % 4]);
-    } else if (buildingType == "Residential") {
+    }
+    else if (buildingType == "Residential")
+    {
         housing->createResidentialBuilding(residentialTypes[rand() % 3]);
-    } else if (buildingType == "Industrial") {
+    }
+    else if (buildingType == "Industrial")
+    {
         housing->createIndustrialBuilding(industrialTypes[rand() % 4]);
-    } else if (buildingType == "Landmark") {
+    }
+    else if (buildingType == "Landmark")
+    {
         housing->createLandmarkBuilding(landmarkTypes[rand() % 3]);
-    } else {
+    }
+    else
+    {
         cout << "Invalid building type.\n";
         return;
     }
@@ -407,12 +765,14 @@ void Government::addBuilding() {
     transport->printCityGrid();
 }
 
-void Government::displayCity() {
+void Government::displayCity()
+{
     transport->printCityGrid();
     this->housing->listBuildings();
 }
 
-void Government::addRoad() {
+void Government::addRoad()
+{
     int x, y, roadLength;
     string roadDirection, roadID;
 
@@ -425,14 +785,20 @@ void Government::addRoad() {
     cout << "Enter direction (right or down): ";
     cin >> roadDirection;
 
-    if (roadDirection == "right" || roadDirection == "down") {
+    if (roadDirection == "right" || roadDirection == "down")
+    {
         transport->add_Road(x, y, roadLength, roadDirection, roadID);
-        cout << "Added road " << roadID << " starting at (" << x << ", " << y 
+        cout << "Added road " << roadID << " starting at (" << x << ", " << y
              << ") going " << roadDirection << " for " << roadLength << " units.\n";
-    } else {
+    }
+    else
+    {
         cout << "Invalid direction.\n";
     }
 
     // Optionally display the grid after adding
     transport->printCityGrid();
+}
+
+void Government::events() {
 }

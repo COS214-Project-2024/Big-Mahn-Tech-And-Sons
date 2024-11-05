@@ -23,10 +23,3 @@ double Request::getAmount()
 {
     return amount;
 }
-
-/**
- * @brief Destructor for Request.
- */
-// Request::~Request() {
-// Clean up resources if needed
-// }

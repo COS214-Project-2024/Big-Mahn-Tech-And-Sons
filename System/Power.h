@@ -13,13 +13,13 @@ using namespace std;
  * @class Power
  * @brief Represents power resource in  the simulation.
  */
-class Power{
+class Power
+{
 
 private:
     double amount; ///< The amount of the resource available.
 
 public:
-
     Power(double amount); ///< Constructor.
 
     /**

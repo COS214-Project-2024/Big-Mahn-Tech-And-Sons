@@ -1,7 +1,7 @@
 #include "PublicTrans.h"
 #include <iostream>
 #include <chrono>
-#include<thread>
+#include <thread>
 
 std::string PublicTrans::getName() const
 {
@@ -13,9 +13,8 @@ double PublicTrans::getCost() const
     return 150;
 }
 
-
-void  PublicTrans::execute() const 
+void PublicTrans::execute() const
 {
-     std::cout<<"Citizen has now got in public transport \n";
+    std::cout << "Citizen has now got in public transport \n";
     std::this_thread::sleep_for(std::chrono::seconds(2));
 }

@@ -1,0 +1,204 @@
+\hypertarget{classWasteManagement}{}\doxysection{Waste\+Management Class Reference}
+\label{classWasteManagement}\index{WasteManagement@{WasteManagement}}
+
+
+Manages the waste collection, disposal, and recycling systems for the city. Inherits from the Department\+Utilities class.  
+
+
+
+
+{\ttfamily \#include $<$Waste\+Management.\+h$>$}
+
+
+
+Inheritance diagram for Waste\+Management\+:
+% FIG 0
+
+
+Collaboration diagram for Waste\+Management\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWasteManagement_abe0caa34a224bfa9fac210902f6ef743}{Waste\+Management}} (double \mbox{\hyperlink{classDeptOfUtilities_a1a4e416af5a947f4fe4befa076b2eb8b}{budget}}, double capacity)
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classWasteManagement}{Waste\+Management}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWasteManagement_a42315c19956443149881665f3e769dc8}{$\sim$\+Waste\+Management}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{classWasteManagement}{Waste\+Management}}. Cleans up the buildings vector if the \mbox{\hyperlink{classWasteManagement}{Waste\+Management}} class owns the \mbox{\hyperlink{classBuilding}{Building}} instances. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWasteManagement_ab625202f49ec88063437667d5c7b44a4}{collect\+Waste}} ()
+\begin{DoxyCompactList}\small\item\em Collects waste from various parts of the city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWasteManagement_ae7ed229f6a43f55698d2a5115c5971d8}{collect\+Waste\+From\+Building}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$building)
+\begin{DoxyCompactList}\small\item\em Collects waste from a specific building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWasteManagement_a5605a4b8aee9266e564b57b152bc5c10}{Collect\+Waste\+From\+Building}} (\mbox{\hyperlink{classBuilding}{Building}} $\ast$building, double incoming\+Amt)
+\begin{DoxyCompactList}\small\item\em Collects waste from a specific building and its amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWasteManagement_a3ae88c72ca46455929d31fc0a1de5813}{dispose\+Waste}} ()
+\begin{DoxyCompactList}\small\item\em Disposes of waste in landfills or dump locations. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classWasteManagement_a9fb18c14a45c7cb804bccba1421cebe5}{calculate\+Waste\+Processing}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the current amount of waste being processed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWasteManagement_a5767ebf19eb343002ef1639452a7bc07}{expand\+Waste\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Expands the waste handling capacity to accommodate city growth. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classWasteManagement_ad36bce4dcee96f0e193e995c0cc9dfa0}{get\+Waste\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Fetch the current capacity of the waste management class. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classWasteManagement_a6f8c82d973d5d4f88a0faeb3cd1ed26d}{get\+Waste\+Management\+Budget}} ()
+\begin{DoxyCompactList}\small\item\em Fetch the current budget of the waste management class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWasteManagement_a7051c97b9a9e90cbaa0d6742e7c84542}{set\+Waste\+Capacity}} (double amt)
+\begin{DoxyCompactList}\small\item\em set the current budget of the waste management class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWasteManagement_a2d73e560802cfef3247c7150a7460907}{handle\+Request}} (\mbox{\hyperlink{classRequest}{Request}} \&req) override
+\begin{DoxyCompactList}\small\item\em the \mbox{\hyperlink{classWasteManagement_a2d73e560802cfef3247c7150a7460907}{handle\+Request()}} function is the core method responsible for either processing the request or passing it along the chain to the next handler. \mbox{\hyperlink{classWasteManagement}{Waste\+Management}} checks if it can handle the request, if not, \mbox{\hyperlink{classWasteManagement}{Waste\+Management}} will pass it on to the next concrete\+Handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Manages the waste collection, disposal, and recycling systems for the city. Inherits from the Department\+Utilities class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWasteManagement_abe0caa34a224bfa9fac210902f6ef743}\label{classWasteManagement_abe0caa34a224bfa9fac210902f6ef743}} 
+\index{WasteManagement@{WasteManagement}!WasteManagement@{WasteManagement}}
+\index{WasteManagement@{WasteManagement}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{WasteManagement()}{WasteManagement()}}
+{\footnotesize\ttfamily Waste\+Management\+::\+Waste\+Management (\begin{DoxyParamCaption}\item[{double}]{budget,  }\item[{double}]{capacity }\end{DoxyParamCaption})}
+
+
+
+Constructor for \mbox{\hyperlink{classWasteManagement}{Waste\+Management}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the department. \\
+\hline
+{\em budget} & The budget allocated to the waste management department. \\
+\hline
+{\em capacity} & The initial waste handling capacity available for the department. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWasteManagement_a42315c19956443149881665f3e769dc8}\label{classWasteManagement_a42315c19956443149881665f3e769dc8}} 
+\index{WasteManagement@{WasteManagement}!````~WasteManagement@{$\sim$WasteManagement}}
+\index{````~WasteManagement@{$\sim$WasteManagement}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{$\sim$WasteManagement()}{~WasteManagement()}}
+{\footnotesize\ttfamily Waste\+Management\+::$\sim$\+Waste\+Management (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for \mbox{\hyperlink{classWasteManagement}{Waste\+Management}}. Cleans up the buildings vector if the \mbox{\hyperlink{classWasteManagement}{Waste\+Management}} class owns the \mbox{\hyperlink{classBuilding}{Building}} instances. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWasteManagement_a9fb18c14a45c7cb804bccba1421cebe5}\label{classWasteManagement_a9fb18c14a45c7cb804bccba1421cebe5}} 
+\index{WasteManagement@{WasteManagement}!calculateWasteProcessing@{calculateWasteProcessing}}
+\index{calculateWasteProcessing@{calculateWasteProcessing}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{calculateWasteProcessing()}{calculateWasteProcessing()}}
+{\footnotesize\ttfamily double Waste\+Management\+::calculate\+Waste\+Processing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculates the current amount of waste being processed. 
+
+\begin{DoxyReturn}{Returns}
+The amount of waste being processed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWasteManagement_ab625202f49ec88063437667d5c7b44a4}\label{classWasteManagement_ab625202f49ec88063437667d5c7b44a4}} 
+\index{WasteManagement@{WasteManagement}!collectWaste@{collectWaste}}
+\index{collectWaste@{collectWaste}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{collectWaste()}{collectWaste()}}
+{\footnotesize\ttfamily void Waste\+Management\+::collect\+Waste (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Collects waste from various parts of the city. 
+
+\mbox{\Hypertarget{classWasteManagement_ae7ed229f6a43f55698d2a5115c5971d8}\label{classWasteManagement_ae7ed229f6a43f55698d2a5115c5971d8}} 
+\index{WasteManagement@{WasteManagement}!collectWasteFromBuilding@{collectWasteFromBuilding}}
+\index{collectWasteFromBuilding@{collectWasteFromBuilding}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{collectWasteFromBuilding()}{collectWasteFromBuilding()}}
+{\footnotesize\ttfamily void Waste\+Management\+::collect\+Waste\+From\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{building }\end{DoxyParamCaption})}
+
+
+
+Collects waste from a specific building. 
+
+\mbox{\Hypertarget{classWasteManagement_a5605a4b8aee9266e564b57b152bc5c10}\label{classWasteManagement_a5605a4b8aee9266e564b57b152bc5c10}} 
+\index{WasteManagement@{WasteManagement}!CollectWasteFromBuilding@{CollectWasteFromBuilding}}
+\index{CollectWasteFromBuilding@{CollectWasteFromBuilding}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{CollectWasteFromBuilding()}{CollectWasteFromBuilding()}}
+{\footnotesize\ttfamily void Waste\+Management\+::\+Collect\+Waste\+From\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBuilding}{Building}} $\ast$}]{building,  }\item[{double}]{incoming\+Amt }\end{DoxyParamCaption})}
+
+
+
+Collects waste from a specific building and its amount. 
+
+\mbox{\Hypertarget{classWasteManagement_a3ae88c72ca46455929d31fc0a1de5813}\label{classWasteManagement_a3ae88c72ca46455929d31fc0a1de5813}} 
+\index{WasteManagement@{WasteManagement}!disposeWaste@{disposeWaste}}
+\index{disposeWaste@{disposeWaste}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{disposeWaste()}{disposeWaste()}}
+{\footnotesize\ttfamily void Waste\+Management\+::dispose\+Waste (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disposes of waste in landfills or dump locations. 
+
+\mbox{\Hypertarget{classWasteManagement_a5767ebf19eb343002ef1639452a7bc07}\label{classWasteManagement_a5767ebf19eb343002ef1639452a7bc07}} 
+\index{WasteManagement@{WasteManagement}!expandWasteCapacity@{expandWasteCapacity}}
+\index{expandWasteCapacity@{expandWasteCapacity}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{expandWasteCapacity()}{expandWasteCapacity()}}
+{\footnotesize\ttfamily void Waste\+Management\+::expand\+Waste\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Expands the waste handling capacity to accommodate city growth. 
+
+\mbox{\Hypertarget{classWasteManagement_ad36bce4dcee96f0e193e995c0cc9dfa0}\label{classWasteManagement_ad36bce4dcee96f0e193e995c0cc9dfa0}} 
+\index{WasteManagement@{WasteManagement}!getWasteCapacity@{getWasteCapacity}}
+\index{getWasteCapacity@{getWasteCapacity}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{getWasteCapacity()}{getWasteCapacity()}}
+{\footnotesize\ttfamily double Waste\+Management\+::get\+Waste\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fetch the current capacity of the waste management class. 
+
+\begin{DoxyReturn}{Returns}
+current capacity of the waste management , how much it can handle and proccess at a time. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWasteManagement_a6f8c82d973d5d4f88a0faeb3cd1ed26d}\label{classWasteManagement_a6f8c82d973d5d4f88a0faeb3cd1ed26d}} 
+\index{WasteManagement@{WasteManagement}!getWasteManagementBudget@{getWasteManagementBudget}}
+\index{getWasteManagementBudget@{getWasteManagementBudget}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{getWasteManagementBudget()}{getWasteManagementBudget()}}
+{\footnotesize\ttfamily double Waste\+Management\+::get\+Waste\+Management\+Budget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fetch the current budget of the waste management class. 
+
+\begin{DoxyReturn}{Returns}
+The budget allocated to the waste management department. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWasteManagement_a2d73e560802cfef3247c7150a7460907}\label{classWasteManagement_a2d73e560802cfef3247c7150a7460907}} 
+\index{WasteManagement@{WasteManagement}!handleRequest@{handleRequest}}
+\index{handleRequest@{handleRequest}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{handleRequest()}{handleRequest()}}
+{\footnotesize\ttfamily bool Waste\+Management\+::handle\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRequest}{Request}} \&}]{req }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+the \mbox{\hyperlink{classWasteManagement_a2d73e560802cfef3247c7150a7460907}{handle\+Request()}} function is the core method responsible for either processing the request or passing it along the chain to the next handler. \mbox{\hyperlink{classWasteManagement}{Waste\+Management}} checks if it can handle the request, if not, \mbox{\hyperlink{classWasteManagement}{Waste\+Management}} will pass it on to the next concrete\+Handler. 
+
+
+
+Implements \mbox{\hyperlink{classDeptOfUtilities_a0cfd1fd63b2ef210cdcf7468998560a2}{Dept\+Of\+Utilities}}.
+
+\mbox{\Hypertarget{classWasteManagement_a7051c97b9a9e90cbaa0d6742e7c84542}\label{classWasteManagement_a7051c97b9a9e90cbaa0d6742e7c84542}} 
+\index{WasteManagement@{WasteManagement}!setWasteCapacity@{setWasteCapacity}}
+\index{setWasteCapacity@{setWasteCapacity}!WasteManagement@{WasteManagement}}
+\doxysubsubsection{\texorpdfstring{setWasteCapacity()}{setWasteCapacity()}}
+{\footnotesize\ttfamily void Waste\+Management\+::set\+Waste\+Capacity (\begin{DoxyParamCaption}\item[{double}]{amt }\end{DoxyParamCaption})}
+
+
+
+set the current budget of the waste management class. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WasteManagement_8h}{Waste\+Management.\+h}}\item 
+\mbox{\hyperlink{WasteManagement_8cpp}{Waste\+Management.\+cpp}}\end{DoxyCompactItemize}

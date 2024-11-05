@@ -1,6 +1,6 @@
 # 🌆 Big Mahn Tech & Sons: City Builder Simulation
 
-![City Simulation Concept](assests/images/City%20Simulation%20Concept.png)
+![City Simulation Concept](assets/images/City%20Simulation%20Concept.png)
 
 ---
 
@@ -206,3 +206,4 @@ This was done to avoid multiple instances of the rid beng created for the variou
 2. Build and run the project using the Makefile:
  ```bash
 make run
+

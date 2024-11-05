@@ -23,7 +23,7 @@ public:
      * @brief Gets the current amount of water.
      * @return double Current water amount.
      */
-    double getWaterAmount() ;
+    double getWaterAmount();
 
     /**
      * @brief Deducts a specified amount from the available water.

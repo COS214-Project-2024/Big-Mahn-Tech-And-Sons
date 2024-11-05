@@ -1,0 +1,127 @@
+\hypertarget{classShop}{}\doxysection{Shop Class Reference}
+\label{classShop}\index{Shop@{Shop}}
+
+
+Class representing a shop as a subtype of \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}.  
+
+
+
+
+{\ttfamily \#include $<$Shop.\+h$>$}
+
+
+
+Inheritance diagram for Shop\+:
+% FIG 0
+
+
+Collaboration diagram for Shop\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classShop_a579ed9f949f7db3f90c22dfe10b25797}{Shop}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \mbox{\hyperlink{classShop}{Shop}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classShop_a1a5516dd89a9458e121f7304ebf22206}{display\+Stats}} () const override
+\begin{DoxyCompactList}\small\item\em Displays the stats specific to the shop. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classShop_a138bd64be6d697de646f2630216f62be}{check\+Availability}} () const override
+\begin{DoxyCompactList}\small\item\em Checks the availability of jobs in the shop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classShop_aaa5b61a154d68ddb94802349c808adb5}{accept}} (\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$visitor) override
+\begin{DoxyCompactList}\small\item\em Accepts visitors for the visitor pattern. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBuilding}{Building}} $\ast$ \mbox{\hyperlink{classShop_ad92a0727576b2edc04f45d4815e6aa1b}{repair\+Clone}} () const override
+\begin{DoxyCompactList}\small\item\em Clones the shop for repair purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Class representing a shop as a subtype of \mbox{\hyperlink{classCommercialBuilding}{Commercial\+Building}}. 
+
+Implements specific attributes and operations for a shop, such as managing available jobs. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classShop_a579ed9f949f7db3f90c22dfe10b25797}\label{classShop_a579ed9f949f7db3f90c22dfe10b25797}} 
+\index{Shop@{Shop}!Shop@{Shop}}
+\index{Shop@{Shop}!Shop@{Shop}}
+\doxysubsubsection{\texorpdfstring{Shop()}{Shop()}}
+{\footnotesize\ttfamily Shop\+::\+Shop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for \mbox{\hyperlink{classShop}{Shop}}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classShop_aaa5b61a154d68ddb94802349c808adb5}\label{classShop_aaa5b61a154d68ddb94802349c808adb5}} 
+\index{Shop@{Shop}!accept@{accept}}
+\index{accept@{accept}!Shop@{Shop}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void Shop\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTaxManager}{Tax\+Manager}} $\ast$}]{visitor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Accepts visitors for the visitor pattern. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visitor} & A pointer to the visitor object. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_ad3e91296d9a6488df79e33b0aeb75511}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classShop_a138bd64be6d697de646f2630216f62be}\label{classShop_a138bd64be6d697de646f2630216f62be}} 
+\index{Shop@{Shop}!checkAvailability@{checkAvailability}}
+\index{checkAvailability@{checkAvailability}!Shop@{Shop}}
+\doxysubsubsection{\texorpdfstring{checkAvailability()}{checkAvailability()}}
+{\footnotesize\ttfamily bool Shop\+::check\+Availability (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks the availability of jobs in the shop. 
+
+\begin{DoxyReturn}{Returns}
+True if jobs are available, otherwise false. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_a273a57479004ca22a0c497b5e5463135}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classShop_a1a5516dd89a9458e121f7304ebf22206}\label{classShop_a1a5516dd89a9458e121f7304ebf22206}} 
+\index{Shop@{Shop}!displayStats@{displayStats}}
+\index{displayStats@{displayStats}!Shop@{Shop}}
+\doxysubsubsection{\texorpdfstring{displayStats()}{displayStats()}}
+{\footnotesize\ttfamily void Shop\+::display\+Stats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the stats specific to the shop. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classCommercialBuilding_aa397dc360571edb4535121dd7e5711db}{Commercial\+Building}}.
+
+\mbox{\Hypertarget{classShop_ad92a0727576b2edc04f45d4815e6aa1b}\label{classShop_ad92a0727576b2edc04f45d4815e6aa1b}} 
+\index{Shop@{Shop}!repairClone@{repairClone}}
+\index{repairClone@{repairClone}!Shop@{Shop}}
+\doxysubsubsection{\texorpdfstring{repairClone()}{repairClone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBuilding}{Building}} $\ast$ Shop\+::repair\+Clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clones the shop for repair purposes. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the cloned shop object. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classCommercialBuilding_a5ed798d1d25fc35d7bdf2dca5d1897dd}{Commercial\+Building}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Shop_8h}{Shop.\+h}}\item 
+\mbox{\hyperlink{Shop_8cpp}{Shop.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,133 @@
+\hypertarget{classPandemicCommand}{}\doxysection{Pandemic\+Command Class Reference}
+\label{classPandemicCommand}\index{PandemicCommand@{PandemicCommand}}
+
+
+Concrete command class that handles pandemic-\/related events.  
+
+
+
+
+{\ttfamily \#include $<$Pandemic\+Command.\+h$>$}
+
+
+
+Inheritance diagram for Pandemic\+Command\+:
+% FIG 0
+
+
+Collaboration diagram for Pandemic\+Command\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPandemicCommand_a70a638d8dd5579f266494579066de3b7}{Pandemic\+Command}} (const std\+::vector$<$ \mbox{\hyperlink{classCitizen}{Citizen}} $\ast$ $>$ \&citizens)
+\item 
+void \mbox{\hyperlink{classPandemicCommand_ac0395df4359df454348cdebc081d39b7}{impose\+Lockdown}} ()
+\begin{DoxyCompactList}\small\item\em Imposes a lockdown in the city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPandemicCommand_a4d3100853b7340519037314ecf5d00ae}{increase\+Healthcare\+Funding}} ()
+\begin{DoxyCompactList}\small\item\em Increases funding for healthcare services. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPandemicCommand_aa38330b14fe54a839ce373a6ce2a02ba}{distribute\+Vaccines}} ()
+\begin{DoxyCompactList}\small\item\em Distributes vaccines to citizens. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPandemicCommand_af99574d7443deaa3dec07b9ca27b9392}{quarantine\+Citizens}} ()
+\begin{DoxyCompactList}\small\item\em Quarantines citizens to prevent infection spread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPandemicCommand_a45fd7b849d1589545f5c1acadd7e8cae}{manage\+Citizen\+Satisfaction}} ()
+\begin{DoxyCompactList}\small\item\em Manages citizen satisfaction during the pandemic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPandemicCommand_a88fb2ba691a4c8179956d3982e54368b}{track\+Infection\+Rates}} ()
+\begin{DoxyCompactList}\small\item\em Tracks the infection rates of the pandemic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPandemicCommand_a51b38df34c9b8c1bc1bd61926daad2ae}{execute}} ()
+\begin{DoxyCompactList}\small\item\em starts/ends the command \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concrete command class that handles pandemic-\/related events. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPandemicCommand_a70a638d8dd5579f266494579066de3b7}\label{classPandemicCommand_a70a638d8dd5579f266494579066de3b7}} 
+\index{PandemicCommand@{PandemicCommand}!PandemicCommand@{PandemicCommand}}
+\index{PandemicCommand@{PandemicCommand}!PandemicCommand@{PandemicCommand}}
+\doxysubsubsection{\texorpdfstring{PandemicCommand()}{PandemicCommand()}}
+{\footnotesize\ttfamily Pandemic\+Command\+::\+Pandemic\+Command (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classCitizen}{Citizen}} $\ast$ $>$ \&}]{citizens }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPandemicCommand_aa38330b14fe54a839ce373a6ce2a02ba}\label{classPandemicCommand_aa38330b14fe54a839ce373a6ce2a02ba}} 
+\index{PandemicCommand@{PandemicCommand}!distributeVaccines@{distributeVaccines}}
+\index{distributeVaccines@{distributeVaccines}!PandemicCommand@{PandemicCommand}}
+\doxysubsubsection{\texorpdfstring{distributeVaccines()}{distributeVaccines()}}
+{\footnotesize\ttfamily void Pandemic\+Command\+::distribute\+Vaccines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Distributes vaccines to citizens. 
+
+\mbox{\Hypertarget{classPandemicCommand_a51b38df34c9b8c1bc1bd61926daad2ae}\label{classPandemicCommand_a51b38df34c9b8c1bc1bd61926daad2ae}} 
+\index{PandemicCommand@{PandemicCommand}!execute@{execute}}
+\index{execute@{execute}!PandemicCommand@{PandemicCommand}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void Pandemic\+Command\+::execute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+starts/ends the command 
+
+
+
+Implements \mbox{\hyperlink{classEventsCommand_aef80ba6da5058eab16308d8b11d37103}{Events\+Command}}.
+
+\mbox{\Hypertarget{classPandemicCommand_ac0395df4359df454348cdebc081d39b7}\label{classPandemicCommand_ac0395df4359df454348cdebc081d39b7}} 
+\index{PandemicCommand@{PandemicCommand}!imposeLockdown@{imposeLockdown}}
+\index{imposeLockdown@{imposeLockdown}!PandemicCommand@{PandemicCommand}}
+\doxysubsubsection{\texorpdfstring{imposeLockdown()}{imposeLockdown()}}
+{\footnotesize\ttfamily void Pandemic\+Command\+::impose\+Lockdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Imposes a lockdown in the city. 
+
+\mbox{\Hypertarget{classPandemicCommand_a4d3100853b7340519037314ecf5d00ae}\label{classPandemicCommand_a4d3100853b7340519037314ecf5d00ae}} 
+\index{PandemicCommand@{PandemicCommand}!increaseHealthcareFunding@{increaseHealthcareFunding}}
+\index{increaseHealthcareFunding@{increaseHealthcareFunding}!PandemicCommand@{PandemicCommand}}
+\doxysubsubsection{\texorpdfstring{increaseHealthcareFunding()}{increaseHealthcareFunding()}}
+{\footnotesize\ttfamily void Pandemic\+Command\+::increase\+Healthcare\+Funding (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Increases funding for healthcare services. 
+
+\mbox{\Hypertarget{classPandemicCommand_a45fd7b849d1589545f5c1acadd7e8cae}\label{classPandemicCommand_a45fd7b849d1589545f5c1acadd7e8cae}} 
+\index{PandemicCommand@{PandemicCommand}!manageCitizenSatisfaction@{manageCitizenSatisfaction}}
+\index{manageCitizenSatisfaction@{manageCitizenSatisfaction}!PandemicCommand@{PandemicCommand}}
+\doxysubsubsection{\texorpdfstring{manageCitizenSatisfaction()}{manageCitizenSatisfaction()}}
+{\footnotesize\ttfamily void Pandemic\+Command\+::manage\+Citizen\+Satisfaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Manages citizen satisfaction during the pandemic. 
+
+\mbox{\Hypertarget{classPandemicCommand_af99574d7443deaa3dec07b9ca27b9392}\label{classPandemicCommand_af99574d7443deaa3dec07b9ca27b9392}} 
+\index{PandemicCommand@{PandemicCommand}!quarantineCitizens@{quarantineCitizens}}
+\index{quarantineCitizens@{quarantineCitizens}!PandemicCommand@{PandemicCommand}}
+\doxysubsubsection{\texorpdfstring{quarantineCitizens()}{quarantineCitizens()}}
+{\footnotesize\ttfamily void Pandemic\+Command\+::quarantine\+Citizens (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Quarantines citizens to prevent infection spread. 
+
+\mbox{\Hypertarget{classPandemicCommand_a88fb2ba691a4c8179956d3982e54368b}\label{classPandemicCommand_a88fb2ba691a4c8179956d3982e54368b}} 
+\index{PandemicCommand@{PandemicCommand}!trackInfectionRates@{trackInfectionRates}}
+\index{trackInfectionRates@{trackInfectionRates}!PandemicCommand@{PandemicCommand}}
+\doxysubsubsection{\texorpdfstring{trackInfectionRates()}{trackInfectionRates()}}
+{\footnotesize\ttfamily void Pandemic\+Command\+::track\+Infection\+Rates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Tracks the infection rates of the pandemic. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{PandemicCommand_8h}{Pandemic\+Command.\+h}}\item 
+\mbox{\hyperlink{PandemicCommand_8cpp}{Pandemic\+Command.\+cpp}}\end{DoxyCompactItemize}

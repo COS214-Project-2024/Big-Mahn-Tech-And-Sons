@@ -23,6 +23,23 @@ DeptOfPR::DeptOfPR(DeptOfHousing *housingDept, DeptOfUtilities *utilitiesDept, D
    financeDept->setPR(this);
 }
 
+void DeptOfPR::displayStats()
+   {
+      std::cout << "=====Department of Public Relations===" << std::endl;
+      std::cout << "Population " << this->numCitizens() <<  std::endl;
+      std::cout << "Satisfaction: " << this->getAverageSatisfaction() << std::endl;
+   }
+
+   double DeptOfPR::getAverageSatisfaction()
+   {
+      double value = 0;
+      for (int i = 0; i < this->numCitizens(); i++) {
+         value += this->getCitizen(i)->getSatisfactionLevel();
+      }
+
+      return value/numCitizens();
+   }
+
 void DeptOfPR::update(Building *building)
 {
    if (building->getCurrentOccupants() >= building->getMaxCapacity())
@@ -113,6 +130,11 @@ void DeptOfPR::addCitizen(Citizen *citizen)
 Citizen *DeptOfPR::getCitizen(int i)
 {
    return this->citizens.at(i);
+}
+
+vector<Citizen *> DeptOfPR::getCitizens()
+{
+    return this->citizens;
 }
 
 int DeptOfPR::numCitizens()

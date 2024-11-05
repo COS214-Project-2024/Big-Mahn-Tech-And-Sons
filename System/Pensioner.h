@@ -8,23 +8,22 @@
 #include <string>
 #include "CitizenStates.h"
 
-
-
 /**
  * @class PensionerState
  * @brief Represents the Pensioner state of a citizen.
  *
  * Implements behaviors specific to pensioner citizens.
  */
-class PensionerState : public CitizenState {
+class PensionerState : public CitizenState
+{
 public:
-    void handle(Citizen* citizen) override;
+    void handle(Citizen *citizen) override;
     /**
      * @brief Gets the name of the state.
-     * 
+     *
      * @return std::string The state name "Pensioner".
      */
     std::string getStateName() const override;
 };
 
-#endif 
+#endif
