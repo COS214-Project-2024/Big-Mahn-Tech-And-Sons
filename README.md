@@ -11,7 +11,7 @@ This simulation features:
 - 🏗️ Construction of various building types.
 - 💰 Resource management and taxation.
 - 😊 Citizen satisfaction monitoring and management.
-- 🔄 Interaction between city components like buildings,    utilities, and transportation.
+- 🔄 Interaction between city components like buildings, utilities, and transportation.
 - 📟 A text-based user interface for interacting with the simulation.
 
 ## Example of city simulation interface.
@@ -48,8 +48,8 @@ This pattern allows flexible resource management by decoupling service requests 
 - **Creator:** BuildingCreator
 - **ConcreteCreators:** ResidentialBuildingCreator, CommercialBuildingCreator, IndustrialBuildingCreator, LandmarkBuildingCreator
 - **Product:** Building
-- **ConcreteProduct:** House, Apartment, Estate, Shop, Office, Mall,School, Hospital, Warehouse, Factory, Airport, TrainStation, Park, Monument, Museum
-- **Client:** HousingDept
+- **ConcreteProduct:** House, Apartment, Estate, Shop, Office, School, Hospital, Warehouse, Factory, Airport, TrainStation, Park, Monument, Museum
+- **Client:** DeptOfHousing
 
 **How it Works:**  
 The Factory Method provides an interface for creating objects (buildings) without specifying the exact class of object being created. Different types of buildings (e.g., ResidentialBuilding, CommercialBuilding) are constructed through a factory.
@@ -76,11 +76,15 @@ The Observer pattern ensures real-time monitoring of important state changes, en
 ### 4. 🎮 Command
 **Use Case:** Event Management  
 **Participants:**
-- **Command Interface:** EventsCommand
+- **Command Interface:** EventsCommand, GoToCommand
 - **Concrete Commands:** 
   - PandemicCommand: Reduces citizen health.
   - NaturalDisasterCommand: Damages buildings.
   - LoadsheddingCommand: Affects utilities.
+  - EconomicPerformance:Improve city economy situation
+  - BabyBooming: Increase Citizens in city
+  - FestivalCommand: Boost Citizen Satisfaction
+  - GoTrain, GoHome, GoHos, GoToWork, GoToEnt, GoSchool, GoAirport: Citizens travelling desitinations
 
 **How it Works:**  
 Each event is encapsulated as a command object, which can be queued, scheduled, or triggered dynamically.
@@ -94,7 +98,7 @@ This pattern decouples event logic from the simulation, making it easy to add ne
 **Use Case:** Communication Between Government Departments  
 **Participants:**
 - **Mediator:** DepartmentOfPR
-- **Colleagues:** HousingDept, FinanceDept, UtilityDept, TransportDept
+- **Colleagues:** DeptOfHousing, DeptOfFinance, DeptOfUtilities, DeptOfTransportation
 
 **How it Works:**  
 The Mediator encapsulates communication logic between departments. For example, if the Finance Department needs to allocate a budget for housing, the mediator coordinates the request.
@@ -106,6 +110,9 @@ This pattern reduces direct dependencies between departments, promoting a loosel
 
 ### 6. 🏛️ Facade
 **Use Case:** Government Control  
+**Participants:**
+- **Facade:** Government
+- **Subsystem Classes:** DeptOfHousing, DeptOfFinance, DeptOfUtilities, DeptOfTransportation, DeptOfPR
 
 **How it Works:**  
 The Government class acts as a Facade, providing a unified interface to interact with various departments. Players interact with the government through this facade, which manages complex operations behind the scenes.
@@ -119,7 +126,7 @@ This pattern simplifies interactions with city departments, making the system ea
 **Use Case:** Citizen Lifecycle Management  
 **Participants:**
 - **Context:** Citizen
-- **States:** ChildState, AdultState, PensionerState
+- **States:** ChildState, AdultState, PensionerState, SatisfactionState, HappyState, NeutralState, SadState
 
 **How it Works:**  
 As citizens grow older, they transition between different states, affecting their role in the city (e.g., only adults can work and pay taxes).
@@ -133,8 +140,9 @@ The State pattern ensures citizen behavior changes dynamically based on lifecycl
 **Use Case:** Taxation System  
 **Participants:**
 - **Visitor Interface:** TaxManager
-- **Concrete Visitors:** ResidentialTaxVisitor, CommercialTaxVisitor
-- **Elements:** ResidentialBuilding, CommercialBuilding
+- **Concrete Visitors:** visitHousing, Resource
+- **Elements:** Element
+- **ConcreteElements:** House, Apartment, Estate, Shop, Office, School, Hospital, Warehouse, Factory, Airport, TrainStation, Park, Monument, Museum
 
 **How it Works:**  
 The Visitor pattern allows different taxation operations to be performed on each building type without modifying the buildings' structure.
@@ -148,7 +156,8 @@ This pattern makes it easy to extend the taxation system without changing the co
 **Use Case:** Transportation Modes  
 **Participants:**
 - **Context:** TransportSystem
-- **Strategies:** BusStrategy, TaxiStrategy, TrainStrategy
+- **Strategy:** ModOfTrans
+- **ConcreteStrategies:** Walk, AirTrans, PublicTrans, Train
 
 **How it Works:**  
 Players select different transportation strategies to travel within the city. The selected strategy determines the efficiency of citizen movement.
@@ -162,8 +171,8 @@ This pattern adds flexibility by allowing dynamic switching between transportati
 **Use Case:** To repair a destroyed building during a natural disaster.
 **Participants:**
 - **Prototype:** Building
-- **Concrete Prototype:** last layer of building 
-- **Client:** DeptOfHosuing 
+- **Concrete Prototype:** House, Apartment, Estate, Shop, Office, School, Hospital, Warehouse, Factory, Airport, TrainStation, Park, Monument, Museum
+- **Client:** DeptOfHousing 
   
 **How it Works:**  
 After a natural disaster occurs, the repair function will look for damaged buildings and replace them with  coned version of the damaged building. 
@@ -190,18 +199,13 @@ This was done to avoid multiple instances of the rid beng created for the variou
 - **Report/**: Contains the final project report in PDF format and a Google Docs link to the latest version.
 - **Doxygen/**: Auto-generated documentation for classes and methods using Doxygen.
 
-## 🖥️ GUI Research Ideas
-- **Option 1:** Qt Framework – A powerful framework for creating GUIs integrated with C++.  
-- **Option 2:** Use C++ APIs with a Web Frontend – Develop the frontend using HTML5/JavaScript.  
-- **Option 3:** Use a Game Engine (like Unreal Engine or Godot) – These engines allow C++ integration for interactive simulations.
-
 ---
 
 ## 🔧 How to Build and Run
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
-   cd CityBuilderSimulation
+   git clone <https://github.com/COS214-Project-2024/Big-Mahn-Tech-And-Sons>
+   cd System
    
 2. Build and run the project using the Makefile:
  ```bash
