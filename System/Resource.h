@@ -71,9 +71,9 @@ public:
      */
     void removeAmount(double amount);
 
-    bool visitCommercialBuilding(CommercialBuilding *building);
+    bool visitBuildingForBuilding(Building *building);
 
-    bool visitResidentialBuilding(Building *building);
+    bool visitBuildingForCitizen(Building *building);
 
     /**
      * @brief Reports the current status of the resource.
