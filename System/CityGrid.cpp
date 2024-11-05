@@ -11,15 +11,57 @@ Cell::Cell(int row_value, int col_value, string cardinal_point)
     set_Detailed_Attribute("BLANK");
     set_Attribute('.');
     this->street_name = "-";
+    this->cell_col_value = col_value;
+    this->cell_row_value = row_value;
+    this->cardinal_direction = cardinal_point;
+    set_Detailed_Attribute("BLANK");
+    set_Attribute('.');
+    this->street_name = "-";
 }
 
 Cell::~Cell()
 {
     // no memory management required here.
+    // no memory management required here.
 }
 
 bool Cell::set_Attribute(char attri)
 {
+    if (attri == 'C')
+    {
+        this->attribute = 'C';
+        return true;
+    } // Commercial building
+    if (attri == 'H')
+    {
+        this->attribute = 'H';
+        return true;
+    } // Residential building
+    if (attri == 'L')
+    {
+        this->attribute = 'L';
+        return true;
+    } // Landmark building
+    if (attri == 'I')
+    {
+        this->attribute = 'I';
+        return true;
+    } // Industrial buidling
+    if (attri == 'R')
+    {
+        this->attribute = 'R';
+        return true;
+    } // Road
+    if (attri == '.')
+    {
+        this->attribute = '.';
+        return true;
+    } // Blank
+    if (attri == '#')
+    {
+        this->attribute = '#';
+        return true;
+    } // Used
     if (attri == 'C')
     {
         this->attribute = 'C';
@@ -1010,6 +1052,11 @@ int CityGrid::getDistance(Building *citizen_current_building, Building *citizen_
             citizen_destination_building->getGridCoordinates()[1].second,
             citizen_destination_building->getGridCoordinates()[2].first);
 
+        // Early exit if no road cells adjacent to either building
+        if (currRoadCells.empty() || destRoadCells.empty())
+        {
+            return -1;
+        }
         // Early exit if no road cells adjacent to either building
         if (currRoadCells.empty() || destRoadCells.empty())
         {

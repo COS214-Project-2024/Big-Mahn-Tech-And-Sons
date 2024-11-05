@@ -11,7 +11,7 @@ GoHome::GoHome(Citizen *citizen, DeptOfHousing *housing):GoToCommand(citizen, ho
 bool GoHome::execute()
 {
 
-    if(citizen)
+    if (citizen)
     {
         citizen->travelTo(citizen->getHomeLocation());
         return true;

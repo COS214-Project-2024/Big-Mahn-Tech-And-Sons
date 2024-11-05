@@ -18,8 +18,9 @@ IndustrialBuilding::IndustrialBuilding()
 /**
  * @brief Displays statistics specific to industrial buildings.
  */
-void IndustrialBuilding::displayStats() const {
-    Building::displayStats();  // Call base class method for any common stats
+void IndustrialBuilding::displayStats() const
+{
+    Building::displayStats(); // Call base class method for any common stats
 }
 
 void IndustrialBuilding::accept(TaxManager *visitor)
@@ -29,14 +30,14 @@ void IndustrialBuilding::accept(TaxManager *visitor)
 /**
  * @brief Calculates tax for an industrial building.
  * Since industrial buildings are exempt, this returns 0.0.
- * 
+ *
  * @return Tax amount (0.0).
  */
 Building *IndustrialBuilding::repairClone() const
 {
-   return nullptr;
+    return nullptr;
 }
 double IndustrialBuilding::calculateTax() const
 {
-   return 0.0;
+    return 0.0;
 }

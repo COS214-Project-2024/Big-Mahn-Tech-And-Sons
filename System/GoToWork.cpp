@@ -11,10 +11,10 @@ GoToWork::GoToWork(Citizen* citizen , DeptOfHousing* housing):GoToCommand(citize
 
 bool GoToWork::execute()
 {
-    if(citizen->getStateName() == "Adult" && (citizen->getWorkLocation() != NULL))
-    {
-      this->citizen->travelTo(this->citizen->getWorkLocation());
-      citizen->work(1500);
+  if (citizen->getStateName() == "Adult" && (citizen->getWorkLocation() != NULL))
+  {
+    this->citizen->travelTo(this->citizen->getWorkLocation());
+    citizen->work(1500);
 
       GoHome* gohome = new GoHome(citizen, this->DOH);
       gohome->execute();
@@ -25,5 +25,5 @@ bool GoToWork::execute()
 
     cout << citizen->getName() << " Does not have a job :( \n";
 
-    return false;
+  return false;
 }

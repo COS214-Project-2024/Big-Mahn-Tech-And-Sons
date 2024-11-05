@@ -20,22 +20,31 @@ void DeptOfUtilities::displayDepartmentInfo()
 
 void DeptOfUtilities::requestPR(string request) // Requests PR department assistance.
 {
-    if (request == "water") {
-        if (PR) {  // Check if PR is not nullptr
+    if (request == "water")
+    {
+        if (PR)
+        { // Check if PR is not nullptr
             cout << "Requesting assistance from PR department for department utilities" << endl;
             PR->notifyTaxman("Water");
-        } else {
+        }
+        else
+        {
             cout << "PR department is not available" << endl;
         }
     }
-    else if (request == "building") {
-        if (PR) {  // Check if PR is not nullptr before accessing buildings
+    else if (request == "building")
+    {
+        if (PR)
+        { // Check if PR is not nullptr before accessing buildings
             this->buildings = PR->getBuildings();
-        } else {
+        }
+        else
+        {
             cout << "PR department is not available" << endl;
         }
     }
-    else {
+    else
+    {
         cout << "No PR department available." << endl;
     }
 }
@@ -52,7 +61,8 @@ void DeptOfUtilities::setSuccessor(DeptOfUtilities *nextDepartment)
 
 DeptOfUtilities *DeptOfUtilities::getSuccessor()
 {
-    if(successor != NULL) {
+    if (successor != NULL)
+    {
         return successor;
     }
 
