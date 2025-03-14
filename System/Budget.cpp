@@ -1,11 +1,10 @@
 #include "Budget.h"
-#include "Element.h"
 #include "TaxManager.h"
 #include <iostream>
 
 Budget::Budget(float initialBudget) : totalBudget(initialBudget) {}
 
-// Budget::~Budget() {}
+Budget::~Budget() {}
 
 void Budget::reportStatus() const
 {
@@ -14,7 +13,8 @@ void Budget::reportStatus() const
 
 float Budget::getTotalBudget() const
 {
-    return totalBudget;
+
+   return totalBudget;
 }
 
 void Budget::setTotalBudget(float budget)
@@ -25,5 +25,10 @@ void Budget::setTotalBudget(float budget)
 
 void Budget::accept(TaxManager *visitor)
 {
-    visitor->visitBudget(this);
+    visitor->visitBudget(this); 
+}
+
+void Budget::addFunds(double amount)
+{
+    totalBudget += amount;
 }

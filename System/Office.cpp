@@ -2,6 +2,8 @@
 
 #include "Office.h"
 #include <iostream>
+#include "TaxManager.h"
+
 
 Office::Office()
     : CommercialBuilding()
@@ -32,10 +34,12 @@ bool Office::checkAvailability() const
     return availableJobs > 0; // Jobs are available if any exist
 }
 
-void Office::accept(TaxManager *visitor)
-{
-    // visitor->visitCommercialBuilding(this);
+
+void Office::accept(TaxManager* visitor) {
+     visitor->visitBuildingForBuilding(this);
+    visitor->visitBuildingForCitizen(this);
 }
+
 
 Building *Office::repairClone() const
 {

@@ -11,6 +11,8 @@
 #include "Element.h"
 #include "TaxManager.h"
 #include "Building.h"
+#include "Budget.h"
+#include "Resource.h"
 
 class DeptOfPR;
 

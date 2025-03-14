@@ -32,6 +32,10 @@ bool Building::addTenant(Citizen *tenant)
     }
 }
 
+std::vector<Citizen*> Building::getOccupants() {
+    return tenants; // Return the vector of tenant pointers
+}
+
 /**
  * @brief Removes a tenant from the building.
  *
@@ -83,12 +87,12 @@ void Building::displayStats() const
     std::cout << "Waste Produced: " << wasteProduction << " kg" << std::endl;
     std::cout << "Dimensions (WxL): " << width << " x " << length << " units" << std::endl;
 
-    std::cout << std::endl;
     std::cout << "Tenants: \n";
     for (const auto &tenant : tenants)
     {
         tenant->display(); // Displays tenant pointers
     }
+    std::cout << std::endl;
 }
 
 void Building::notifyPR()
